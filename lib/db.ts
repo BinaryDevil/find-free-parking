@@ -1,12 +1,18 @@
 import { setDefaultResultOrder } from "dns";
 import { Pool } from "pg";
 
+// When Supabase TLS uses a self-signed cert, this prevents rejection in dev.
+if(process.env.NODE_ENV !== "production"){
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+}
+
+// setDefaultResultOrder("ipv4first");
+
 declare global {
   // eslint-disable-next-line no-var
   var _parkingDbPool: Pool | undefined;
 }
 
-// Official Supabase guidance: prefer the pooled URL (pgbouncer) when available.
 const connectionString =
   process.env.POSTGRES_PRISMA_URL ??
   process.env.POSTGRES_URL ??
@@ -18,16 +24,13 @@ if (!connectionString) {
   );
 }
 
-// Prefer IPv4 to avoid IPv6 EHOSTUNREACH on some networks.
-setDefaultResultOrder("ipv4first");
-
 const pool =
   global._parkingDbPool ??
   new Pool({
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    ssl: { rejectUnauthorized: false }, // Supabase requires TLS
+    // ssl: { rejectUnauthorized: false },
   });
 
 if (process.env.NODE_ENV !== "production") {
