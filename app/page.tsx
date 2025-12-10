@@ -9,10 +9,40 @@ import maplibregl, {
 } from "maplibre-gl";
 import { LocateFixed, Loader2, Search } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import type { FeatureCollection, Point } from "geojson";
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
 const MIN_ZOOM = 12; // prevents zooming out beyond a city-scale view
+const FIVE_MINUTES = 5 * 60 * 1000;
+
+function roundToNearestFiveMinutes(date: Date) {
+  const ms = date.getTime();
+  const rounded = Math.round(ms / FIVE_MINUTES) * FIVE_MINUTES;
+  return new Date(rounded);
+}
+
+function formatInputDateValue(date: Date) {
+  const rounded = roundToNearestFiveMinutes(date);
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  const year = rounded.getFullYear();
+  const month = pad(rounded.getMonth() + 1);
+  const day = pad(rounded.getDate());
+  const hours = pad(rounded.getHours());
+  const minutes = pad(rounded.getMinutes());
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
+}
+
+function formatDisplayDate(value: string, isCustom: boolean) {
+  if (!isCustom) return "now";
+  const date = new Date(value);
+  return date.toLocaleString(undefined, {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
 
 type SpotFeature = {
   type: "Feature";
@@ -38,6 +68,9 @@ export default function Home() {
   const [isSearching, setIsSearching] = useState(false);
   const [showCurrentLocationPlaceholder, setShowCurrentLocationPlaceholder] = useState(false);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+  const [parkingTime, setParkingTime] = useState<string>(() => formatInputDateValue(new Date()));
+  const [isCustomTime, setIsCustomTime] = useState(false);
+  const timeInputRef = useRef<HTMLInputElement | null>(null);
 
   const mapStyle = useMemo(() => {
     const key =
@@ -238,12 +271,22 @@ export default function Home() {
     map.easeTo({ center, zoom });
   }
 
+  function openTimePicker() {
+    const input = timeInputRef.current;
+    if (!input) return;
+    if ("showPicker" in input && typeof input.showPicker === "function") {
+      input.showPicker();
+    } else {
+      input.focus();
+    }
+  }
+
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
     const source = map.getSource("user-location") as maplibregl.GeoJSONSource | undefined;
     if (!source) return;
-    const data = userLocation
+    const data: FeatureCollection<Point> = userLocation
       ? {
           type: "FeatureCollection",
           features: [
@@ -360,6 +403,32 @@ export default function Home() {
               )}
             </button>
           </form>
+          <div className="mt-3 flex justify-center">
+            <div className="relative inline-flex">
+              <button
+                type="button"
+                onClick={openTimePicker}
+                className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              >
+                <span className="text-slate-500">Start parking</span>
+                <span className="text-slate-900">
+                  {formatDisplayDate(parkingTime, isCustomTime)}
+                </span>
+              </button>
+              <input
+                ref={timeInputRef}
+                type="datetime-local"
+                className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                value={parkingTime}
+                step={300}
+                onChange={(e) => {
+                  setParkingTime(e.target.value);
+                  setIsCustomTime(true);
+                }}
+                aria-label="Select start parking time"
+              />
+            </div>
+          </div>
           <div className="mt-3 flex justify-center">
             <div className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
               Find free parking
