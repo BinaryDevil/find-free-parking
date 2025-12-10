@@ -29,6 +29,7 @@ type ZoneRow = {
   created_at: string;
   updated_at: string;
   geom_geojson: string;
+  metadata: any;
 };
 
 type Bbox = {
@@ -77,6 +78,7 @@ function mapRowToFeature(row: ZoneRow) {
       verified: row.verified,
       createdAt: row.created_at,
       updatedAt: row.updated_at,
+      metadata: row.metadata,
     },
   };
 }
@@ -126,6 +128,7 @@ export async function GET(req: Request) {
           verified,
           created_at,
           updated_at,
+          metadata,
           st_asgeojson(geom) as geom_geojson
         from public.parking_zones
         where geom && st_makeenvelope($1, $2, $3, $4, 4326)
@@ -173,6 +176,7 @@ export async function GET(req: Request) {
         verified,
         created_at,
         updated_at,
+        metadata,
         st_asgeojson(geom) as geom_geojson
       from public.parking_zones
       where st_intersects(

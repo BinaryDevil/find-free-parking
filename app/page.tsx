@@ -52,8 +52,23 @@ type SpotFeature = {
     city: string;
     type: string;
     timeLimitMinutes?: number | null;
+
     notes?: string | null;
     distanceMeters?: number;
+    metadata?: any;
+  };
+};
+
+type ZoneFeature = {
+  type: "Feature";
+  geometry: { type: "Polygon" | "MultiPolygon"; coordinates: any };
+  properties: {
+    id: string;
+    city: string;
+    type: string;
+    timeLimitMinutes?: number | null;
+    notes?: string | null;
+    metadata?: any;
   };
 };
 
@@ -131,6 +146,29 @@ export default function Home() {
         type: "geojson",
         data: { type: "FeatureCollection", features: [] },
       });
+      map.addSource("zones", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+
+      map.addLayer({
+        id: "zones-fill",
+        type: "fill",
+        source: "zones",
+        paint: {
+          "fill-color": "#16a34a",
+          "fill-opacity": 0.4,
+        },
+      });
+      map.addLayer({
+        id: "zones-line",
+        type: "line",
+        source: "zones",
+        paint: {
+          "line-color": "#15803d",
+          "line-width": 2,
+        },
+      });
 
       map.addLayer({
         id: "spots-clusters",
@@ -199,6 +237,21 @@ export default function Home() {
                    : ""
                }
                ${props.notes ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>` : ""}
+               ${
+                 props.metadata?.timeineffe
+                   ? `<div style="margin-top:4px;font-weight:600;color:#1f2937">${props.metadata.timeineffe}</div>`
+                   : ""
+               }
+               ${
+                 props.metadata?.r_mf_9a_6p
+                   ? `<div style="margin-top:4px;color:#475569">M-F 9a-6p: ${props.metadata.r_mf_9a_6p}</div>`
+                   : ""
+               }
+               ${
+                  props.metadata?.creditcard === 'Yes'
+                  ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>` 
+                  : ""
+               }
              </div>`,
           )
           .addTo(map);
@@ -222,6 +275,21 @@ export default function Home() {
           .catch((err) => {
             console.error("Failed to expand cluster", err);
           });
+      });
+
+      map.on("click", "zones-fill", (e) => {
+        const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
+        if (!feature) return;
+        new maplibregl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(
+            `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
+               <div style="font-weight:600">${feature.properties?.type ?? "Zone"}</div>
+               <div style="color:#475569">${feature.properties?.city ?? ""}</div>
+                ${feature.properties?.notes ? `<div style="margin-top:4px;color:#4b5563">${feature.properties.notes}</div>` : ""}
+             </div>`,
+          )
+          .addTo(map);
       });
 
       map.on("moveend", () => {
@@ -277,6 +345,18 @@ export default function Home() {
         source.setData({ type: "FeatureCollection", features });
       }
       setLastCount(features.length);
+      
+      // Also load zones
+      const zonesRes = await fetch(`/api/parking/zones?${queryParams.toString()}`);
+      if (zonesRes.ok) {
+        const zonesData = await zonesRes.json();
+        const zoneFeatures = (zonesData.features ?? []) as ZoneFeature[];
+        const zoneSource = map.getSource("zones") as maplibregl.GeoJSONSource | undefined;
+        if (zoneSource) {
+           zoneSource.setData({ type: "FeatureCollection", features: zoneFeatures });
+        }
+      }
+
       setStatus("idle");
     } catch (err) {
       console.error("Failed to load spots", err);

@@ -31,6 +31,7 @@ type SpotRow = {
   updated_at: string;
   geom_geojson: string;
   distance_m?: number;
+  metadata: any;
 };
 
 type Bbox = {
@@ -80,6 +81,7 @@ function mapRowToFeature(row: SpotRow) {
       createdAt: row.created_at,
       updatedAt: row.updated_at,
       distanceMeters: row.distance_m,
+      metadata: row.metadata,
     },
   };
 }
@@ -167,6 +169,7 @@ export async function GET(req: Request) {
         verified,
         created_at,
         updated_at,
+        metadata,
         st_asgeojson(geom) as geom_geojson
     `;
     const params: unknown[] = [];
