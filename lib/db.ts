@@ -1,12 +1,8 @@
 import { setDefaultResultOrder } from "dns";
 import { Pool } from "pg";
 
-// When Supabase TLS uses a self-signed cert, this prevents rejection in dev.
-if(process.env.NODE_ENV !== "production"){
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-}
-
-// setDefaultResultOrder("ipv4first");
+// Prefer IPv4 when resolving hosts.
+setDefaultResultOrder("ipv4first");
 
 declare global {
   // eslint-disable-next-line no-var
@@ -30,7 +26,8 @@ const pool =
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    // ssl: { rejectUnauthorized: false },
+    // Supabase requires TLS; allow self-signed/intermediate chains.
+    ssl: { rejectUnauthorized: false },
   });
 
 if (process.env.NODE_ENV !== "production") {
