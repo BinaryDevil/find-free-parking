@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 
 const DEFAULT_RADIUS_METERS = 500;
 const MAX_RADIUS_METERS = 5_000;
-const MAX_LIMIT = 200;
+const MAX_LIMIT = 2000;
 const spotTypes = new Set([
   "FREE_UNLIMITED",
   "FREE_LIMITED",

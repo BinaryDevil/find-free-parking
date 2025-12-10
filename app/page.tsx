@@ -331,7 +331,7 @@ export default function Home() {
       // Pass filterType and parkingTime (as datetime ISO string)
       const queryParams = new URLSearchParams({
         bbox,
-        limit: "500",
+        limit: "1000",
         type: filterType,
         datetime: new Date(parkingTime).toISOString()
       });
