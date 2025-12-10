@@ -103,7 +103,7 @@ export async function GET(req: Request) {
       ? Math.floor(limitParam)
       : 100;
 
-  if (type && !zoneTypes.has(type)) {
+  if (type && !zoneTypes.has(type) && type !== "FREE" && type !== "PAID") {
     return badRequest("Invalid type parameter.");
   }
 
@@ -134,7 +134,11 @@ export async function GET(req: Request) {
         where geom && st_makeenvelope($1, $2, $3, $4, 4326)
       `;
 
-      if (type) {
+      if (type === "FREE") {
+        sql += " and type IN ('FREE_UNLIMITED', 'FREE_LIMITED', 'EV_FREE')";
+      } else if (type === "PAID") {
+        sql += " and type IN ('PAID', 'MIXED', 'PERMIT_ONLY')";
+      } else if (type) {
         sql += ` and type = $${++paramIndex}`;
         params.push(type);
       }
@@ -185,7 +189,11 @@ export async function GET(req: Request) {
       )
     `;
 
-    if (type) {
+    if (type === "FREE") {
+      sql += " and type IN ('FREE_UNLIMITED', 'FREE_LIMITED', 'EV_FREE')";
+    } else if (type === "PAID") {
+      sql += " and type IN ('PAID', 'MIXED', 'PERMIT_ONLY')";
+    } else if (type) {
       sql += ` and type = $${++paramIndex}`;
       params.push(type);
     }
@@ -214,7 +222,7 @@ export async function GET(req: Request) {
     console.error("Error fetching parking zones", error);
     return NextResponse.json(
       { error: "Failed to fetch parking zones" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

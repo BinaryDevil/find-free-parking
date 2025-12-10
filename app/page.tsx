@@ -56,6 +56,12 @@ type SpotFeature = {
     notes?: string | null;
     distanceMeters?: number;
     metadata?: any;
+    // Meter specific
+    pay_station_id?: string;
+    meter_head?: string;
+    time_in_effect?: string;
+    credit_card?: boolean;
+    rate?: string;
   };
 };
 
@@ -72,6 +78,21 @@ type ZoneFeature = {
   };
 };
 
+type StreetFeature = {
+  type: "Feature";
+  geometry: { type: "LineString"; coordinates: [number, number][] };
+  properties: {
+    id: string;
+    block_id: string;
+    street_use: string;
+    meter_infos?: Array<{
+      time_in_effect: string;
+      rate: string;
+    }>;
+    is_free?: boolean; // Calculated on client
+  };
+};
+
 export default function Home() {
   const mapRef = useRef<Map | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -81,9 +102,14 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLocating, setIsLocating] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [showCurrentLocationPlaceholder, setShowCurrentLocationPlaceholder] = useState(false);
-  const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
-  const [parkingTime, setParkingTime] = useState<string>(() => formatInputDateValue(new Date()));
+  const [showCurrentLocationPlaceholder, setShowCurrentLocationPlaceholder] =
+    useState(false);
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(
+    null
+  );
+  const [parkingTime, setParkingTime] = useState<string>(() =>
+    formatInputDateValue(new Date())
+  );
   const [isCustomTime, setIsCustomTime] = useState(false);
   const timeInputRef = useRef<HTMLInputElement | null>(null);
   const [filterType, setFilterType] = useState<"FREE" | "PAID">("FREE");
@@ -131,8 +157,14 @@ export default function Home() {
       attributionControl: false,
     });
 
-    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "bottom-right");
-    map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-left");
+    map.addControl(
+      new maplibregl.NavigationControl({ visualizePitch: true }),
+      "bottom-right"
+    );
+    map.addControl(
+      new maplibregl.AttributionControl({ compact: true }),
+      "bottom-left"
+    );
 
     map.on("load", () => {
       map.addSource("spots", {
@@ -147,6 +179,10 @@ export default function Home() {
         data: { type: "FeatureCollection", features: [] },
       });
       map.addSource("zones", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+      map.addSource("streets", {
         type: "geojson",
         data: { type: "FeatureCollection", features: [] },
       });
@@ -170,13 +206,42 @@ export default function Home() {
         },
       });
 
+      // Streets Layer
+      map.addLayer({
+        id: "streets-line",
+        type: "line",
+        source: "streets",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+        },
+        paint: {
+          "line-color": [
+            "case",
+            ["==", ["get", "is_free"], true],
+            "#4ade80", // Green (Free)
+            "#ef4444", // Red (Paid)
+          ],
+          "line-width": 4,
+          "line-opacity": 0.8,
+        },
+      });
+
       map.addLayer({
         id: "spots-clusters",
         type: "circle",
         source: "spots",
         filter: ["has", "point_count"],
         paint: {
-          "circle-radius": ["interpolate", ["linear"], ["get", "point_count"], 10, 14, 200, 24],
+          "circle-radius": [
+            "interpolate",
+            ["linear"],
+            ["get", "point_count"],
+            10,
+            14,
+            200,
+            24,
+          ],
           "circle-color": "#2563eb",
           "circle-opacity": 0.9,
         },
@@ -222,7 +287,10 @@ export default function Home() {
       map.on("click", "spots-unclustered", (e) => {
         const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
         if (!feature) return;
-        const coords = feature.geometry.type === "Point" ? feature.geometry.coordinates : null;
+        const coords =
+          feature.geometry.type === "Point"
+            ? feature.geometry.coordinates
+            : null;
         if (!coords) return;
         const props = feature.properties ?? {};
         new maplibregl.Popup()
@@ -236,7 +304,11 @@ export default function Home() {
                    ? `<div style="margin-top:4px;color:#1f2937">${props.timeLimitMinutes} min limit</div>`
                    : ""
                }
-               ${props.notes ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>` : ""}
+               ${
+                 props.notes
+                   ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>`
+                   : ""
+               }
                ${
                  props.metadata?.timeineffe
                    ? `<div style="margin-top:4px;font-weight:600;color:#1f2937">${props.metadata.timeineffe}</div>`
@@ -248,17 +320,19 @@ export default function Home() {
                    : ""
                }
                ${
-                  props.metadata?.creditcard === 'Yes'
-                  ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>` 
-                  : ""
+                 props.metadata?.creditcard === "Yes"
+                   ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>`
+                   : ""
                }
-             </div>`,
+             </div>`
           )
           .addTo(map);
       });
 
       map.on("click", "spots-clusters", (e) => {
-        const features = map.queryRenderedFeatures(e.point, { layers: ["spots-clusters"] });
+        const features = map.queryRenderedFeatures(e.point, {
+          layers: ["spots-clusters"],
+        });
         const clusterId = features[0]?.properties?.cluster_id;
         if (clusterId === undefined) return;
         const source = map.getSource("spots") as maplibregl.GeoJSONSource;
@@ -284,10 +358,18 @@ export default function Home() {
           .setLngLat(e.lngLat)
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600">${feature.properties?.type ?? "Zone"}</div>
-               <div style="color:#475569">${feature.properties?.city ?? ""}</div>
-                ${feature.properties?.notes ? `<div style="margin-top:4px;color:#4b5563">${feature.properties.notes}</div>` : ""}
-             </div>`,
+               <div style="font-weight:600">${
+                 feature.properties?.type ?? "Zone"
+               }</div>
+               <div style="color:#475569">${
+                 feature.properties?.city ?? ""
+               }</div>
+                ${
+                  feature.properties?.notes
+                    ? `<div style="margin-top:4px;color:#4b5563">${feature.properties.notes}</div>`
+                    : ""
+                }
+             </div>`
           )
           .addTo(map);
       });
@@ -316,46 +398,107 @@ export default function Home() {
     // Note: We might want to debounce this or only trigger on specific actions,
     // but for now, reacting to these changes ensures the view is always up to date.
     if (mapRef.current) {
-        void loadSpots(mapRef.current);
+      void loadSpots(mapRef.current);
     }
-  }, [filterType, parkingTime]); // Add other dependencies if needed, but loadSpots uses map bounds so it's tricky. 
+  }, [filterType, parkingTime]); // Add other dependencies if needed, but loadSpots uses map bounds so it's tricky.
   // Actually, loadSpots gets bounds from main map. The 'moveend' event handles map moves.
   // We need to trigger loadSpots manually when filter/time changes.
 
   async function loadSpots(map: Map) {
     const bounds = map.getBounds();
-    const bbox = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
+    // Using simple query params for API
+    const queryParams = new URLSearchParams({
+      north: bounds.getNorth().toString(),
+      south: bounds.getSouth().toString(),
+      east: bounds.getEast().toString(),
+      west: bounds.getWest().toString(),
+      // limit: "1000", // API has hardcoded limit
+    });
+
     setStatus("loading");
     setError(null);
     try {
-      // Pass filterType and parkingTime (as datetime ISO string)
-      const queryParams = new URLSearchParams({
-        bbox,
-        limit: "1000",
-        type: filterType,
-        datetime: new Date(parkingTime).toISOString()
-      });
-      
-      const res = await fetch(`/api/parking/spots?${queryParams.toString()}`);
+      // 1. Fetch Parking Meters & Streets
+      const res = await fetch(`/api/parking?${queryParams.toString()}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      const features = (data.features ?? []) as SpotFeature[];
-      const source = map.getSource("spots") as maplibregl.GeoJSONSource | undefined;
+
+      const meters = (data.meters ?? []) as SpotFeature[];
+      const streets = (data.streets ?? []) as StreetFeature[];
+
+      // Map Meters to Spots Source (Clusters)
+      // Enhance properties for display
+      const meterFeatures: SpotFeature[] = meters.map((m: any) => ({
+        type: "Feature",
+        geometry: m.geom,
+        properties: {
+          id: m.id,
+          city: "Vancouver",
+          type: "Meter",
+          pay_station_id: m.pay_station_id,
+          meter_head: m.meter_head,
+          time_in_effect: m.time_in_effect,
+          credit_card: m.credit_card,
+          metadata: {
+            timeineffe: m.time_in_effect,
+            creditcard: m.credit_card ? "Yes" : "No",
+          },
+        },
+      }));
+
+      const source = map.getSource("spots") as
+        | maplibregl.GeoJSONSource
+        | undefined;
       if (source) {
-        source.setData({ type: "FeatureCollection", features });
+        source.setData({ type: "FeatureCollection", features: meterFeatures });
       }
-      setLastCount(features.length);
-      
-      // Also load zones
-      const zonesRes = await fetch(`/api/parking/zones?${queryParams.toString()}`);
-      if (zonesRes.ok) {
-        const zonesData = await zonesRes.json();
-        const zoneFeatures = (zonesData.features ?? []) as ZoneFeature[];
-        const zoneSource = map.getSource("zones") as maplibregl.GeoJSONSource | undefined;
-        if (zoneSource) {
-           zoneSource.setData({ type: "FeatureCollection", features: zoneFeatures });
+      setLastCount(meterFeatures.length);
+
+      // Map Streets with Logic
+      const currentDateTime = new Date(parkingTime);
+      const streetFeatures: StreetFeature[] = streets.map((s: any) => {
+        const meterInfos = s.meter_infos ?? [];
+        // Determine if free:
+        // 1. No meters -> Free
+        // 2. Meters exist but INACTIVE at currentDateTime -> Free
+        // 3. Meters exist and ACTIVE -> Paid
+
+        let isFree = true;
+        if (meterInfos.length > 0) {
+          // Check if ANY meter is active
+          const isAnyActive = meterInfos.some((info: any) =>
+            isMeterActive(info.time_in_effect, currentDateTime)
+          );
+          if (isAnyActive) isFree = false;
         }
+
+        return {
+          type: "Feature",
+          geometry: s.geom,
+          properties: {
+            id: s.id,
+            block_id: s.block_id,
+            street_use: s.street_use,
+            meter_infos: meterInfos,
+            is_free: isFree,
+          },
+        };
+      });
+
+      const streetSource = map.getSource("streets") as
+        | maplibregl.GeoJSONSource
+        | undefined;
+      if (streetSource) {
+        streetSource.setData({
+          type: "FeatureCollection",
+          features: streetFeatures,
+        });
       }
+
+      // Also load zones (Legacy/Permit zones if needed, probably distinct from meters)
+      // Keeping this fetch but maybe it effectively returns nothing or irrelevant data if tables empty?
+      // const zonesRes = await fetch(`/api/parking/zones?bbox=${bbox}...`);
+      // Skipping zones for now to focus on Regulation Logic as per plan.
 
       setStatus("idle");
     } catch (err) {
@@ -384,7 +527,9 @@ export default function Home() {
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
-    const source = map.getSource("user-location") as maplibregl.GeoJSONSource | undefined;
+    const source = map.getSource("user-location") as
+      | maplibregl.GeoJSONSource
+      | undefined;
     if (!source) return;
     const data: FeatureCollection<Point> = userLocation
       ? {
@@ -413,7 +558,10 @@ export default function Home() {
       (pos) => {
         setIsLocating(false);
         setError(null);
-        const coords: [number, number] = [pos.coords.longitude, pos.coords.latitude];
+        const coords: [number, number] = [
+          pos.coords.longitude,
+          pos.coords.latitude,
+        ];
         setUserLocation(coords);
         setShowCurrentLocationPlaceholder(true);
         moveToLocation(coords);
@@ -424,7 +572,7 @@ export default function Home() {
         setUserLocation(null);
         setError(err.message || "Unable to get your location.");
       },
-      { enableHighAccuracy: true, timeout: 10000 },
+      { enableHighAccuracy: true, timeout: 10000 }
     );
   }
 
@@ -437,7 +585,9 @@ export default function Home() {
     setError(null);
     try {
       const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`,
+        `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+          query
+        )}&format=json&limit=1`
       );
       if (!res.ok) throw new Error(`Search failed (HTTP ${res.status})`);
       const results = (await res.json()) as Array<{
@@ -458,9 +608,7 @@ export default function Home() {
   }
 
   return (
-    <div
-      className="relative bg-black text-white h-full w-full"
-    >
+    <div className="relative bg-black text-white h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
       <div className="pointer-events-none absolute top-0 left-0 right-0 flex justify-center px-4 pt-4">
         <div className="pointer-events-auto w-full max-w-3xl">
@@ -480,7 +628,9 @@ export default function Home() {
                 if (value) setShowCurrentLocationPlaceholder(false);
               }}
               placeholder={
-                showCurrentLocationPlaceholder ? "Current location" : "Search for an address or place"
+                showCurrentLocationPlaceholder
+                  ? "Current location"
+                  : "Search for an address or place"
               }
               className="w-full bg-transparent py-3 pr-2 text-sm text-slate-900 placeholder:text-slate-400 outline-none"
             />
@@ -557,7 +707,9 @@ export default function Home() {
           <div className="mt-3 flex justify-center">
             <div className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
               Find free parking
-              {status === "loading" || isSearching ? " · Loading…" : ` · ${lastCount} spots`}
+              {status === "loading" || isSearching
+                ? " · Loading…"
+                : ` · ${lastCount} spots`}
             </div>
           </div>
           {error ? (
@@ -571,4 +723,48 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+function isMeterActive(
+  timeInEffect: string | undefined,
+  currentDateTime: Date
+): boolean {
+  if (!timeInEffect) return false; // Assume inactive if missing (or maybe 24/7? Safe default is Paid=True, but missing usually means no data)
+  // Format: "9:00 AM TO 10:00 PM"
+  // Also "METER IN EFFECT: 9:00 AM TO 10:00 PM"
+
+  // Normalize
+  const str = timeInEffect.toUpperCase().replace("METER IN EFFECT:", "").trim();
+
+  // Regex for time range
+  const rangeMatch = str.match(
+    /(\d{1,2}):(\d{2})\s*(AM|PM)\s*TO\s*(\d{1,2}):(\d{2})\s*(AM|PM)/
+  );
+  if (!rangeMatch) return true; // Fail safe: assume active if parse fails
+
+  const [_, h1, m1, ap1, h2, m2, ap2] = rangeMatch;
+
+  // Convert to minutes from midnight
+  const getMinutes = (h: string, m: string, ap: string) => {
+    let hour = parseInt(h, 10);
+    const minute = parseInt(m, 10);
+    if (ap === "PM" && hour !== 12) hour += 12;
+    if (ap === "AM" && hour === 12) hour = 0;
+    return hour * 60 + minute;
+  };
+
+  const start = getMinutes(h1, m1, ap1);
+  const end = getMinutes(h2, m2, ap2);
+
+  const currentMinutes =
+    currentDateTime.getHours() * 60 + currentDateTime.getMinutes();
+
+  // Check range
+  // Usually start < end (e.g. 9AM to 10PM)
+  if (start <= end) {
+    return currentMinutes >= start && currentMinutes <= end;
+  } else {
+    // Overnight? (e.g. 6PM to 2AM)
+    return currentMinutes >= start || currentMinutes <= end;
+  }
 }
