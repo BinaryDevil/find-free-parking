@@ -71,6 +71,7 @@ export default function Home() {
   const [parkingTime, setParkingTime] = useState<string>(() => formatInputDateValue(new Date()));
   const [isCustomTime, setIsCustomTime] = useState(false);
   const timeInputRef = useRef<HTMLInputElement | null>(null);
+  const [filterType, setFilterType] = useState<"FREE" | "PAID">("FREE");
 
   const mapStyle = useMemo(() => {
     const key =
@@ -403,28 +404,56 @@ export default function Home() {
               )}
             </button>
           </form>
-          <div className="mt-3 flex justify-center">
-            <label className="relative inline-flex cursor-pointer">
-              <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5">
-                <span className="text-slate-500">Start parking</span>
-                <span className="text-slate-900">
-                  {formatDisplayDate(parkingTime, isCustomTime)}
-                </span>
+          <div className="mt-3 flex justify-center px-4">
+            <div className="flex w-full max-w-3xl flex-wrap items-center gap-3 sm:flex-nowrap">
+              <label className="relative inline-flex cursor-pointer shrink-0">
+                <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5">
+                  <span className="text-slate-500">Start parking</span>
+                  <span className="text-slate-900">
+                    {formatDisplayDate(parkingTime, isCustomTime)}
+                  </span>
+                </div>
+                <input
+                  ref={timeInputRef}
+                  type="datetime-local"
+                  className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                  value={parkingTime}
+                  step={300}
+                  onClick={openTimePicker}
+                  onChange={(e) => {
+                    setParkingTime(e.target.value);
+                    setIsCustomTime(true);
+                  }}
+                  aria-label="Select start parking time"
+                />
+              </label>
+              <div className="flex flex-1 items-center gap-2 min-w-[200px]">
+                <button
+                  type="button"
+                  onClick={() => setFilterType("FREE")}
+                  className={`flex-1 rounded-full px-4 py-2 text-sm font-semibold shadow ring-1 ring-black/5 ${
+                    filterType === "FREE"
+                      ? "bg-white text-blue-600"
+                      : "bg-white/80 text-slate-600 hover:bg-white"
+                  }`}
+                  aria-pressed={filterType === "FREE"}
+                >
+                  Free
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFilterType("PAID")}
+                  className={`flex-1 rounded-full px-4 py-2 text-sm font-semibold shadow ring-1 ring-black/5 ${
+                    filterType === "PAID"
+                      ? "bg-white text-blue-600"
+                      : "bg-white/80 text-slate-600 hover:bg-white"
+                  }`}
+                  aria-pressed={filterType === "PAID"}
+                >
+                  Paid
+                </button>
               </div>
-              <input
-                ref={timeInputRef}
-                type="datetime-local"
-                className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-                value={parkingTime}
-                step={300}
-                onClick={openTimePicker}
-                onChange={(e) => {
-                  setParkingTime(e.target.value);
-                  setIsCustomTime(true);
-                }}
-                aria-label="Select start parking time"
-              />
-            </label>
+            </div>
           </div>
           <div className="mt-3 flex justify-center">
             <div className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
