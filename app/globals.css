@@ -32,3 +32,26 @@ body {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --safe-top: max(env(safe-area-inset-top), 12px);
+  --safe-bottom: max(env(safe-area-inset-bottom), 12px);
+  --safe-right: max(env(safe-area-inset-right), 12px);
+  --safe-left: max(env(safe-area-inset-left), 12px);
+}
+
+/* Nudge maplibre controls away from notches/home indicators */
+.maplibregl-ctrl-top-right {
+  top: var(--safe-top);
+  right: var(--safe-right);
+}
+
+.maplibregl-ctrl-bottom-right {
+  bottom: var(--safe-bottom);
+  right: var(--safe-right);
+}
+
+.maplibregl-ctrl-bottom-left {
+  bottom: var(--safe-bottom);
+  left: var(--safe-left);
+}

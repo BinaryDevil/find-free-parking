@@ -217,11 +217,12 @@ export default function Home() {
   }
 
   return (
-    <div
-      className="relative bg-black text-white h-full w-full"
-    >
+    <div className="relative bg-black text-white h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
-      <div className="pointer-events-none absolute top-0 left-0 right-0 flex items-start justify-between p-4">
+      <div
+        className="pointer-events-none absolute left-0 right-0 flex items-start justify-between p-4"
+        style={{ top: "var(--safe-top)" }}
+      >
         <div className="pointer-events-auto rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
           Find free parking
           {status === "loading" ? " · Loading…" : ` · ${lastCount} spots`}
