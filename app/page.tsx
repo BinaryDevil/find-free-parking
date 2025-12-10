@@ -11,7 +11,8 @@ import { LocateFixed, Loader2, Search } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
-const DEFAULT_ZOOM = 12;
+const DEFAULT_ZOOM = 15;
+const MIN_ZOOM = 12; // prevents zooming out beyond a city-scale view
 
 type SpotFeature = {
   type: "Feature";
@@ -77,6 +78,7 @@ export default function Home() {
       style: mapStyle,
       center: DEFAULT_CENTER,
       zoom: DEFAULT_ZOOM,
+      minZoom: MIN_ZOOM,
       attributionControl: false,
     });
 
@@ -302,8 +304,9 @@ export default function Home() {
       }>;
       if (!results.length) throw new Error(`No results for "${query}".`);
       const { lat, lon } = results[0];
+      const coords: [number, number] = [parseFloat(lon), parseFloat(lat)];
       setUserLocation(null);
-      moveToLocation([parseFloat(lon), parseFloat(lat)]);
+      moveToLocation(coords);
     } catch (err) {
       setError((err as Error).message);
     } finally {
