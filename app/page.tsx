@@ -243,13 +243,32 @@ export default function Home() {
     };
   }, [mapStyle]);
 
+  useEffect(() => {
+    // Reload spots when map bounds, filter type, or parking time change.
+    // Note: We might want to debounce this or only trigger on specific actions,
+    // but for now, reacting to these changes ensures the view is always up to date.
+    if (mapRef.current) {
+        void loadSpots(mapRef.current);
+    }
+  }, [filterType, parkingTime]); // Add other dependencies if needed, but loadSpots uses map bounds so it's tricky. 
+  // Actually, loadSpots gets bounds from main map. The 'moveend' event handles map moves.
+  // We need to trigger loadSpots manually when filter/time changes.
+
   async function loadSpots(map: Map) {
     const bounds = map.getBounds();
     const bbox = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
     setStatus("loading");
     setError(null);
     try {
-      const res = await fetch(`/api/parking/spots?bbox=${bbox}&limit=500`);
+      // Pass filterType and parkingTime (as datetime ISO string)
+      const queryParams = new URLSearchParams({
+        bbox,
+        limit: "500",
+        type: filterType,
+        datetime: new Date(parkingTime).toISOString()
+      });
+      
+      const res = await fetch(`/api/parking/spots?${queryParams.toString()}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       const features = (data.features ?? []) as SpotFeature[];
