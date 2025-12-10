@@ -159,13 +159,19 @@ export default function Home() {
         const clusterId = features[0]?.properties?.cluster_id;
         if (clusterId === undefined) return;
         const source = map.getSource("spots") as maplibregl.GeoJSONSource;
-        source.getClusterExpansionZoom(clusterId, (err, zoom) => {
-          if (err) return;
-          map.easeTo({
-            center: (features[0].geometry as any).coordinates,
-            zoom,
+        source
+          .getClusterExpansionZoom(clusterId)
+          .then((zoom) => {
+            if (features[0].geometry.type === "Point") {
+              map.easeTo({
+                center: features[0].geometry.coordinates as [number, number],
+                zoom,
+              });
+            }
+          })
+          .catch((err) => {
+            console.error("Failed to expand cluster", err);
           });
-        });
       });
 
       map.on("moveend", () => {
