@@ -270,7 +270,8 @@ export default function Home() {
         setError(null);
         const coords: [number, number] = [pos.coords.longitude, pos.coords.latitude];
         setUserLocation(coords);
-        moveToLocation([pos.coords.longitude, pos.coords.latitude]);
+        setShowCurrentLocationPlaceholder(true);
+        moveToLocation(coords);
       },
       (err) => {
         setIsLocating(false);
