@@ -1,7 +1,8 @@
 import { setDefaultResultOrder } from "dns";
 import { Pool } from "pg";
 
-// Prefer IPv4 when resolving hosts.
+// Allow self-signed certs (Supabase chain) and prefer IPv4.
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 setDefaultResultOrder("ipv4first");
 
 declare global {
@@ -26,7 +27,6 @@ const pool =
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    // Supabase requires TLS; allow self-signed/intermediate chains.
     ssl: { rejectUnauthorized: false },
   });
 
