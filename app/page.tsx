@@ -404,30 +404,27 @@ export default function Home() {
             </button>
           </form>
           <div className="mt-3 flex justify-center">
-            <div className="relative inline-flex">
-              <button
-                type="button"
-                onClick={openTimePicker}
-                className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-              >
+            <label className="relative inline-flex cursor-pointer">
+              <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5">
                 <span className="text-slate-500">Start parking</span>
                 <span className="text-slate-900">
                   {formatDisplayDate(parkingTime, isCustomTime)}
                 </span>
-              </button>
+              </div>
               <input
                 ref={timeInputRef}
                 type="datetime-local"
                 className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
                 value={parkingTime}
                 step={300}
+                onClick={openTimePicker}
                 onChange={(e) => {
                   setParkingTime(e.target.value);
                   setIsCustomTime(true);
                 }}
                 aria-label="Select start parking time"
               />
-            </div>
+            </label>
           </div>
           <div className="mt-3 flex justify-center">
             <div className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
