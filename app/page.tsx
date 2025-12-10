@@ -9,7 +9,7 @@ import maplibregl, {
 } from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const DEFAULT_CENTER: [number, number] = [-79.3832, 43.6532]; // Toronto
+const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 12;
 
 type SpotFeature = {
@@ -212,8 +212,10 @@ export default function Home() {
   }
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black text-white">
-      <div ref={containerRef} className="absolute inset-0" />
+    <div
+      className="relative bg-black text-white h-full w-full"
+    >
+      <div ref={containerRef} className="h-full w-full" />
       <div className="pointer-events-none absolute top-0 left-0 right-0 flex items-start justify-between p-4">
         <div className="pointer-events-auto rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
           Find free parking
