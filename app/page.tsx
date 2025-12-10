@@ -404,8 +404,8 @@ export default function Home() {
               )}
             </button>
           </form>
-          <div className="mt-3 flex justify-center px-4">
-            <div className="flex w-full max-w-3xl flex-wrap items-center gap-3 sm:flex-nowrap">
+          <div className="mt-3 w-full">
+            <div className="flex w-full flex-wrap items-center gap-3 sm:flex-nowrap">
               <label className="relative inline-flex cursor-pointer shrink-0">
                 <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5">
                   <span className="text-slate-500">Start parking</span>
