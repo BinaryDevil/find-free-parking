@@ -74,7 +74,7 @@ export async function POST(req: Request) {
         created_at
     `;
 
-    const { rows } = await query<ReportRow>(insertSql, [
+    const { rows } = await query(insertSql, [
       targetType,
       targetId,
       reason,

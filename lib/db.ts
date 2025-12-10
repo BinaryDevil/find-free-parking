@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== "production") {
   global._parkingDbPool = pool;
 }
 
-export async function query<T>(sql: string, params: unknown[] = []) {
-  const result = await pool.query<T>(sql, params);
+export async function query(sql: string, params: unknown[] = []) {
+  const result = await pool.query(sql, params);
   return result;
 }

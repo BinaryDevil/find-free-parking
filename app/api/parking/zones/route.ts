@@ -144,7 +144,7 @@ export async function GET(req: Request) {
       sql += ` order by created_at desc limit $${++paramIndex}`;
       params.push(limit);
 
-      const { rows } = await query<ZoneRow>(sql, params);
+      const { rows } = await query(sql, params);
       const features = rows.map(mapRowToFeature);
 
       return NextResponse.json({
@@ -197,7 +197,7 @@ export async function GET(req: Request) {
     `;
     params.push(limit);
 
-    const { rows } = await query<ZoneRow>(sql, params);
+    const { rows } = await query(sql, params);
     const features = rows.map(mapRowToFeature);
 
     return NextResponse.json({
