@@ -1015,7 +1015,7 @@ export default function Home() {
       {/* Help Modal */}
       {isHelpOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md animate-in fade-in zoom-in-95 rounded-2xl bg-white p-6 text-slate-900 shadow-2xl">
+          <div className="w-full max-w-md max-h-[85vh] overflow-y-auto animate-in fade-in zoom-in-95 rounded-2xl bg-white p-6 text-slate-900 shadow-2xl">
             <h2 className="mb-4 text-xl font-bold text-slate-900">
               How to Find Free Parking
             </h2>
