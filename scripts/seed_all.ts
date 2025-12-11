@@ -1,6 +1,7 @@
 import { seedVancouver } from "./seed_vancouver";
 import { seedCoquitlam } from "./seed_coquitlam";
 import { seedSurrey } from "./seed_surrey";
+import { seedSeattle } from "./seed_seattle";
 import { getDbPool } from "./seed_utils";
 import { clearDatabase } from "./clear_db";
 
@@ -70,7 +71,24 @@ async function runAll() {
       await seedSurrey();
     }
 
-    // 4. Note on zones
+    // 4. Seattle
+    let skipSeattle = false;
+    if (!shouldClean) {
+      const seattleCount = await pool.query(
+        "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Seattle'"
+      );
+      if (parseInt(seattleCount.rows[0].count) > 0) {
+        console.log(
+          `[Seattle] Data exists (${seattleCount.rows[0].count} items). Skipping seed.`
+        );
+        skipSeattle = true;
+      }
+    }
+    if (!skipSeattle) {
+      await seedSeattle();
+    }
+
+    // 5. Note on zones
     const zonesCount = await pool.query("SELECT count(*) FROM parking_zones");
     if (parseInt(zonesCount.rows[0].count) > 0) {
       console.log(
