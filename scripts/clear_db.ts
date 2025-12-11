@@ -1,49 +1,12 @@
-import { Pool } from "pg";
-import fs from "fs";
-import path from "path";
+// ... (env loading same as before or imported from utils? utils is better but keeping as is for now to avoid breaking changes if utils differs)
+// Actually clear_db duplicates env loading.
+// I will use getDbPool from utils to simplify clear_db too!
 
-// Env loading
-[".env", ".env.local"].forEach((file) => {
-  const filePath = path.join(process.cwd(), file);
-  if (fs.existsSync(filePath)) {
-    const envConfig = fs.readFileSync(filePath, "utf8");
-    envConfig.split("\n").forEach((line) => {
-      if (!line.trim() || line.trim().startsWith("#")) return;
-      const [key, ...rest] = line.split("=");
-      let val = rest.join("=");
-      if (key && val) {
-        val = val.trim();
-        if (
-          (val.startsWith('"') && val.endsWith('"')) ||
-          (val.startsWith("'") && val.endsWith("'"))
-        ) {
-          val = val.slice(1, -1);
-        }
-        process.env[key.trim()] = val;
-      }
-    });
-  }
-});
+import { getDbPool } from "./seed_utils";
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+const pool = getDbPool();
 
-const connectionString =
-  process.env.POSTGRES_URL_NON_POOLING ||
-  process.env.POSTGRES_PRISMA_URL ||
-  process.env.POSTGRES_URL ||
-  process.env.DATABASE_URL;
-
-if (!connectionString) {
-  console.error("No connection string found!");
-  process.exit(1);
-}
-
-const pool = new Pool({
-  connectionString,
-  ssl: { rejectUnauthorized: false },
-});
-
-async function run() {
+export async function clearDatabase() {
   try {
     console.log("Clearing database...");
     await pool.query(
@@ -52,10 +15,10 @@ async function run() {
     console.log("Database cleared successfully.");
   } catch (e) {
     console.error("Failed to clear DB:", e);
-    process.exit(1);
-  } finally {
-    await pool.end();
+    throw e;
   }
 }
 
-run();
+if (require.main === module) {
+  clearDatabase().finally(() => pool.end());
+}

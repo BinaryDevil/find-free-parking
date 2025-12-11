@@ -4,7 +4,7 @@ const pool = getDbPool();
 
 async function run() {
   try {
-    const res = await pool.query(`
+    const resMeters = await pool.query(`
       SELECT 
         raw_data->>'city' as city, 
         COUNT(*) as count 
@@ -13,10 +13,18 @@ async function run() {
       ORDER BY count DESC;
     `);
 
-    console.log("=== Parking Meters Count by City ===");
-    res.rows.forEach((row) => {
-      console.log(`${row.city || "Unknown"}: ${row.count}`);
+    const resStreets = await pool.query(`
+      SELECT COUNT(*) as count FROM street_segments;
+    `);
+
+    console.log("=== Database Counts ===");
+    console.log("--- Parking Meters ---");
+    resMeters.rows.forEach((row) => {
+      console.log(`${row.city || "Unknown/Vancouver"}: ${row.count}`);
     });
+
+    console.log("--- Street Segments ---");
+    console.log(`Total: ${resStreets.rows[0].count}`);
   } catch (e) {
     console.error("Error:", e);
   } finally {

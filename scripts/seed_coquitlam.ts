@@ -2,13 +2,13 @@ import { getDbPool } from "./seed_utils";
 
 const pool = getDbPool();
 
-async function fetchArcGisGeoJson(url: string) {
-  // Append query params for GeoJSON
-  // ArcGIS REST API: query?where=1=1&outFields=*&f=geojson
-  const fetchUrl = `${url}/query?where=1=1&outFields=*&f=geojson`;
-  console.log(`[Coquitlam] Fetching ${fetchUrl}...`);
-  const res = await fetch(fetchUrl);
-  if (!res.ok) throw new Error(`Status ${res.status}`);
+async function fetchArcGisGeoJson() {
+  const url =
+    "https://services2.arcgis.com/Q6Lq3evZUGfPrN7o/arcgis/rest/services/Transportation/FeatureServer/6/query?where=1=1&outFields=*&f=geojson";
+  console.log(`[Coquitlam] Fetching ${url}...`);
+  const res = await fetch(url);
+  if (!res.ok)
+    throw new Error(`Failed to fetch Coquitlam data: ${res.statusText}`);
   return (await res.json()) as any; // FeatureCollection
 }
 
@@ -16,11 +16,9 @@ export async function seedCoquitlam() {
   console.log("Starting Coquitlam Seeding...");
   try {
     // Coquitlam "On Street Pay Parking"
-    // URL: https://gisservices.coquitlam.ca/arcgis/rest/services/DynamicServices/Transportation/MapServer/8
-    const url =
-      "https://gisservices.coquitlam.ca/arcgis/rest/services/DynamicServices/Transportation/MapServer/8";
+    // URL: https://maps.coquitlam.ca/arcgis/rest/services/DynamicServices/Transportation/MapServer/8
 
-    const data = await fetchArcGisGeoJson(url);
+    const data = await fetchArcGisGeoJson();
     console.log(`[Coquitlam] Fetched ${data.features.length} records.`);
 
     let inserted = 0;
@@ -80,10 +78,18 @@ export async function seedCoquitlam() {
         city: "Coquitlam",
       };
 
+      // 5. Handle Geometry (Convert LineString -> Point/Centroid if needed)
+      // The dataset might be "Pay Parking Zones" (Lines) instead of Meters (Points).
+      // We store them as standard "Meters" (Points) for the UI to render a clickable cluster.
+      const isPoint = item.geometry.type === "Point";
+      const geomExpr = isPoint
+        ? "ST_GeomFromGeoJSON($5)"
+        : "ST_Centroid(ST_GeomFromGeoJSON($5))";
+
       await pool.query(
         `
           INSERT INTO parking_meters (id, pay_station_id, meter_head, time_in_effect, credit_card, geom, raw_data)
-          VALUES (gen_random_uuid(), $1, $2, $3, $4, ST_GeomFromGeoJSON($5), $6)
+          VALUES (gen_random_uuid(), $1, $2, $3, $4, ${geomExpr}, $6)
         `,
         [
           payStationId,
