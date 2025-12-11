@@ -39,15 +39,15 @@ The `seedOsmParkingLots` function uses **conservative classification**:
 
 1. **Research Data Source**:
 
-   - search_web for "${city} open data parking meters API" or "${city} ArcGIS REST pay parking".
-   - Look for "Parking Meters" (Points) or "Pay Parking Zones" (Lines) datasets.
-   - **Goal**: Find a direct JSON/GeoJSON API URL.
+   - For each data type (`parking_meters` points, `street_segments` lines, `parking_zones` polygons, `covered_cities` boundary), search_web for `${city} open data <type> API` and `${city} ArcGIS REST <type>`, plus downloadable datasets (JSON/GeoJSON/CSV/SHP/KML) on the portal.
+   - Accept APIs and downloads (ArcGIS REST, WFS, Socrata, CKAN, static files)—use anything available to maximize coverage.
+   - **Goal**: Collect every available feed or file for each data type.
 
-2. **Fallback - Manual/Browser Download**:
+2. **Manual/Browser Download (in addition to APIs)**:
 
-   - If no API, search for "${city} open data portal" and browse for "Parking" datasets.
+   - Even if an API exists, also capture downloadable datasets for each layer to ensure completeness; if no API, use downloads exclusively.
    - Use `browser_subagent` if necessary to navigate and locate a download link.
-   - Download the file to `sample_data/${city}_parking.geojson`.
+   - Download the file to `sample_data/${city}_<type>.geojson` (or appropriate extension) so each layer is captured.
 
 3. **Develop Seeding Script**:
 
