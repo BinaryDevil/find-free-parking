@@ -516,6 +516,7 @@ export default function Home() {
 
         let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
 
+        // TODO: Free meters after effect time(for example 10PM) display info is very blurry, user might doesn't know it's free or not(saying Max stay 2 hrs and rate and stuff) 
         // Header
         contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
           isFree ? "Free Parking" : "Paid / Restricted"
