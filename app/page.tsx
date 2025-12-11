@@ -116,6 +116,12 @@ export default function Home() {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [dontShowHelp, setDontShowHelp] = useState(false);
 
+  // Destination state (from search)
+  const [destinationLocation, setDestinationLocation] = useState<
+    [number, number] | null
+  >(null);
+  const destinationLocationRef = useRef<[number, number] | null>(null);
+
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
   const parkingTimeRef = useRef(parkingTime);
@@ -123,7 +129,8 @@ export default function Home() {
   useEffect(() => {
     filterTypeRef.current = filterType;
     parkingTimeRef.current = parkingTime;
-  }, [filterType, parkingTime]);
+    destinationLocationRef.current = destinationLocation;
+  }, [filterType, parkingTime, destinationLocation]);
 
   useEffect(() => {
     // Check local storage on mount
@@ -138,6 +145,30 @@ export default function Home() {
     if (dontShowHelp) {
       localStorage.setItem("find-free-parking-help-seen", "true");
     }
+  }
+
+  // Simple Haversine distance and walking time estimate
+  function getWalkingEstimates(start: [number, number], end: [number, number]) {
+    const R = 6371e3; // metres
+    const φ1 = (start[1] * Math.PI) / 180;
+    const φ2 = (end[1] * Math.PI) / 180;
+    const Δφ = ((end[1] - start[1]) * Math.PI) / 180;
+    const Δλ = ((end[0] - start[0]) * Math.PI) / 180;
+
+    const a =
+      Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+      Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // distance in meters
+
+    // Walking speed ~1.4 m/s (5 km/h)
+    const timeSeconds = d / 1.4;
+    const timeMinutes = Math.ceil(timeSeconds / 60);
+
+    return {
+      distance: Math.round(d),
+      minutes: timeMinutes,
+    };
   }
 
   const mapStyle = useMemo(() => {
@@ -319,12 +350,34 @@ export default function Home() {
             : null;
         if (!coords) return;
         const props = feature.properties ?? {};
+
+        // Calculate walking info if destination is set
+        let walkingHtml = "";
+        const dest = destinationLocationRef.current;
+        if (dest) {
+          const { distance, minutes } = getWalkingEstimates(
+            coords as [number, number],
+            dest
+          );
+          walkingHtml = `
+            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
+              <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
+              <div style="font-size:13px;color:#475569;">
+                🚶 ${minutes} min walk (${distance}m)
+              </div>
+            </div>
+          `;
+        }
+
         new maplibregl.Popup()
           .setLngLat(coords as [number, number])
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600">${props.type ?? "Parking"}</div>
+               <div style="font-weight:600;color:#0f172a">${
+                 props.type ?? "Parking"
+               }</div>
                <div style="color:#475569">${props.city ?? ""}</div>
+               ${walkingHtml}
                ${
                  props.timeLimitMinutes
                    ? `<div style="margin-top:4px;color:#1f2937">${props.timeLimitMinutes} min limit</div>`
@@ -358,6 +411,13 @@ export default function Home() {
                     ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>`
                     : ""
                 }
+                <a href="https://www.google.com/maps/dir/?api=1&destination=${
+                  coords[1]
+                },${
+              coords[0]
+            }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+                  Get Directions
+                </a>
              </div>`
           )
           .addTo(map);
@@ -388,24 +448,147 @@ export default function Home() {
       map.on("click", "zones-fill", (e) => {
         const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
         if (!feature) return;
+
+        // Calculate walking info if destination is set
+        let walkingHtml = "";
+        const dest = destinationLocationRef.current;
+        if (dest) {
+          const { distance, minutes } = getWalkingEstimates(
+            [e.lngLat.lng, e.lngLat.lat],
+            dest
+          );
+          walkingHtml = `
+            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
+              <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
+              <div style="font-size:13px;color:#475569;">
+                🚶 ${minutes} min walk (${distance}m)
+              </div>
+            </div>
+          `;
+        }
+
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600">${
+               <div style="font-weight:600;color:#0f172a">${
                  feature.properties?.type ?? "Zone"
                }</div>
                <div style="color:#475569">${
                  feature.properties?.city ?? ""
                }</div>
+               ${walkingHtml}
                 ${
                   feature.properties?.notes
                     ? `<div style="margin-top:4px;color:#4b5563">${feature.properties.notes}</div>`
                     : ""
                 }
+                <a href="https://www.google.com/maps/dir/?api=1&destination=${
+                  e.lngLat.lat
+                },${
+              e.lngLat.lng
+            }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+                  Get Directions
+                </a>
              </div>`
           )
           .addTo(map);
+      });
+
+      // Valid click handler for Streets
+      map.on("click", "streets-line", (e) => {
+        const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
+        if (!feature) return;
+
+        const props = feature.properties ?? {};
+        const isFree = props.is_free;
+        let meterInfos: any[] = [];
+        try {
+          if (typeof props.meter_infos === "string") {
+            meterInfos = JSON.parse(props.meter_infos);
+          } else if (Array.isArray(props.meter_infos)) {
+            meterInfos = props.meter_infos;
+          }
+        } catch (e) {
+          console.error("Error parsing meter_infos", e);
+        }
+
+        let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
+
+        // Header
+        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
+          isFree ? "Free Parking" : "Paid / Restricted"
+        }</div>`;
+
+        // Street Use / Block info
+        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${
+          props.street_use ?? "Street"
+        } • Block ${props.block_id ?? "?"}</div>`;
+
+        // Calculate walking info if destination is set
+        const dest = destinationLocationRef.current;
+        if (dest) {
+          const { distance, minutes } = getWalkingEstimates(
+            [e.lngLat.lng, e.lngLat.lat],
+            dest
+          );
+          contentHtml += `
+            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
+              <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
+              <div style="font-size:13px;color:#475569;">
+                🚶 ${minutes} min walk (${distance}m)
+              </div>
+            </div>
+          `;
+        }
+
+        // Meter Infos
+        if (meterInfos.length > 0) {
+          contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
+          meterInfos.forEach((info) => {
+            contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">• ${
+              info.time_in_effect ?? ""
+            }: ${info.rate ?? ""}</div>`;
+          });
+        } else {
+          if (isFree) {
+            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking (residential/unmetered).</div>`;
+          } else {
+            contentHtml += `<div style="margin-top:8px;color:#ef4444;font-size:13px;">Restrictions may apply (e.g. No Parking, Arterial). Check signs.</div>`;
+          }
+        }
+
+        // Warning
+        contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
+          ⚠️ Verification required. Check local signs.
+        </div>`;
+
+        // Directions Button
+        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${e.lngLat.lat},${e.lngLat.lng}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+          Get Directions
+        </a>`;
+
+        contentHtml += `</div>`;
+
+        new maplibregl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(contentHtml)
+          .addTo(map);
+      });
+
+      // Cursor pointer events
+      [
+        "spots-unclustered",
+        "spots-clusters",
+        "zones-fill",
+        "streets-line",
+      ].forEach((layer) => {
+        map.on("mouseenter", layer, () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", layer, () => {
+          map.getCanvas().style.cursor = "";
+        });
       });
 
       map.on("moveend", () => {
@@ -674,6 +857,7 @@ export default function Home() {
       const { lat, lon } = results[0];
       const coords: [number, number] = [parseFloat(lon), parseFloat(lat)];
       setUserLocation(null);
+      setDestinationLocation(coords); // Set the destination
       moveToLocation(coords);
     } catch (err) {
       setError((err as Error).message);
@@ -685,6 +869,8 @@ export default function Home() {
   return (
     <div className="relative bg-black text-white h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
+
+      {/* Destination Marker (Hidden visual, logic only, or we could add a marker later) */}
 
       {/* Help Button - Bottom Right above Map Controls */}
       <div className="absolute bottom-40 right-2.5 z-10">
@@ -877,6 +1063,15 @@ export default function Home() {
                 </div>
                 <p className="mt-1 text-slate-600">
                   Paid meters or restricted zones (Arterial roads, etc).
+                </p>
+              </div>
+
+              <div className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                <p>
+                  <strong>Disclaimer:</strong> This app uses open data from
+                  municipal sources. Regulations can change. Data might be
+                  incorrect or outdated. Always verify with local signs. Use
+                  strictly at your own risk.
                 </p>
               </div>
             </div>
