@@ -1020,6 +1020,17 @@ export default function Home() {
               How to Find Free Parking
             </h2>
             <div className="space-y-4 text-sm leading-relaxed">
+              <div className="rounded-lg bg-yellow-50 p-3 border border-yellow-200">
+                <div className="flex items-center gap-2 font-bold text-yellow-800">
+                  <span>🚧 Under Development</span>
+                </div>
+                <p className="mt-1 text-yellow-700">
+                  This site is currently in <strong>Beta</strong>. Features and
+                  data might change. We are actively adding new cities and
+                  features.
+                </p>
+              </div>
+
               <p>
                 We show you where you can park <strong>right now</strong> based
                 on real-time regulations.
