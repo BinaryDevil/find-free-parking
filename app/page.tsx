@@ -125,6 +125,7 @@ export default function Home() {
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
   const parkingTimeRef = useRef(parkingTime);
+  const loadSpotsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     filterTypeRef.current = filterType;
@@ -592,9 +593,15 @@ export default function Home() {
       });
 
       map.on("moveend", () => {
-        void loadSpots(map);
+        if (loadSpotsTimeoutRef.current) {
+          clearTimeout(loadSpotsTimeoutRef.current);
+        }
+        loadSpotsTimeoutRef.current = setTimeout(() => {
+          void loadSpots(map);
+        }, 700);
       });
 
+      // Initial load
       void loadSpots(map);
     });
 
@@ -607,6 +614,9 @@ export default function Home() {
     return () => {
       map.remove();
       mapRef.current = null;
+      if (loadSpotsTimeoutRef.current) {
+        clearTimeout(loadSpotsTimeoutRef.current);
+      }
     };
   }, [mapStyle]);
 
