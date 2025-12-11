@@ -13,7 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://www.findfreeparking.info";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Find Free Parking - Canada",
   description:
     "Find free and paid parking spots in Vancouver, Coquitlam, and other Canadian cities. Real-time map with rates, time limits, and street parking info.",
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_CA",
-    url: "https://findfreeparking.ca",
+    url: siteUrl,
     title: "Find Free Parking - Canada",
     description:
       "Find free and paid parking spots in Vancouver, Coquitlam, and other Canadian cities.",

@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+const siteUrl = "https://www.findfreeparking.info";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/",
     },
-    sitemap: "https://findfreeparking.ca/sitemap.xml",
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

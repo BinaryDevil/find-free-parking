@@ -1,9 +1,11 @@
 import { MetadataRoute } from "next";
 
+const siteUrl = "https://www.findfreeparking.info";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://findfreeparking.ca",
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
