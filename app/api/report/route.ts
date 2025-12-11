@@ -22,9 +22,9 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!["METER", "STREET"].includes(target_type)) {
+    if (!["METER", "STREET", "ZONE"].includes(target_type)) {
       return NextResponse.json(
-        { error: "Invalid target_type. Must be METER or STREET" },
+        { error: "Invalid target_type. Must be METER, STREET, or ZONE" },
         { status: 400 }
       );
     }

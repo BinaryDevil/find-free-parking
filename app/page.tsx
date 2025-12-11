@@ -140,7 +140,7 @@ export default function Home() {
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [reportTargetId, setReportTargetId] = useState<string | null>(null);
   const [reportTargetType, setReportTargetType] = useState<
-    "METER" | "STREET" | null
+    "METER" | "STREET" | "ZONE" | null
   >(null);
   const [reportDefaultStatus, setReportDefaultStatus] = useState<
     "FREE" | "PAID"
@@ -571,15 +571,69 @@ export default function Home() {
         const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
         if (!feature) return;
 
-        // Calculate walking info if destination is set
-        let walkingHtml = "";
+        const props = feature.properties ?? {};
+        const zoneType = props.type as string;
+        const reportCounts = props.report_counts
+          ? typeof props.report_counts === "string"
+            ? JSON.parse(props.report_counts)
+            : props.report_counts
+          : {};
+        const reportedFree = (reportCounts["FREE"] || 0) >= 3;
+        const reportedPaid = (reportCounts["PAID"] || 0) >= 3;
+
+        // Determine display status
+        const isFreeType = [
+          "FREE_UNLIMITED",
+          "FREE_LIMITED",
+          "EV_FREE",
+        ].includes(zoneType);
+        const isPaidType = ["PAID", "MIXED", "PERMIT_ONLY"].includes(zoneType);
+
+        let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
+
+        // Header with icon
+        let headerIcon = "🅿️";
+        let headerText = props.name || "Parking Lot";
+        let headerColor = "#0f172a";
+
+        if (reportedFree) {
+          headerIcon = "✅";
+          headerColor = "#16a34a";
+        } else if (reportedPaid) {
+          headerIcon = "💲";
+          headerColor = "#dc2626";
+        } else if (isFreeType) {
+          headerIcon = "🅿️";
+          headerColor = "#16a34a";
+        } else if (isPaidType) {
+          headerIcon = "💲";
+          headerColor = "#dc2626";
+        }
+
+        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${headerText}</div>`;
+
+        // Type and City - use friendly labels
+        const friendlyType: Record<string, string> = {
+          FREE_UNLIMITED: "Free Parking",
+          FREE_LIMITED: "Free (Time Limited)",
+          EV_FREE: "Free EV Charging",
+          PAID: "Paid Parking",
+          PERMIT_ONLY: "Permit Only",
+          MIXED: "Mixed Rules",
+        };
+        const typeLabel = friendlyType[zoneType] || "Parking Lot";
+        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${typeLabel} • ${
+          props.city ?? ""
+        }</div>`;
+
+        // Walking info if destination set
         const dest = destinationLocationRef.current;
         if (dest) {
           const { distance, minutes } = getWalkingEstimates(
             [e.lngLat.lng, e.lngLat.lat],
             dest
           );
-          walkingHtml = `
+          contentHtml += `
             <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
               <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
               <div style="font-size:13px;color:#475569;">
@@ -589,31 +643,54 @@ export default function Home() {
           `;
         }
 
+        // Time limit info
+        if (props.timeLimitMinutes) {
+          contentHtml += `<div style="margin-top:8px;color:#1f2937;font-size:13px;">⏱ Time Limit: ${props.timeLimitMinutes} min</div>`;
+        }
+
+        // Status explanation
+        if (reportedFree) {
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ Verified Free (Community Reports)</div>`;
+        } else if (reportedPaid) {
+          contentHtml += `<div style="margin-top:8px;color:#dc2626;font-weight:600;font-size:12px">⚠️ Reported as Paid/Restricted (Community)</div>`;
+        } else if (isFreeType) {
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking.</div>`;
+        } else if (zoneType === "MIXED") {
+          contentHtml += `<div style="margin-top:8px;color:#eab308;font-size:13px;">Mixed rules - check signs for details.</div>`;
+        } else {
+          contentHtml += `<div style="margin-top:8px;color:#475569;font-size:13px;">May require payment or permit. Check signs.</div>`;
+        }
+
+        // Notes
+        if (props.notes) {
+          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${props.notes}</div>`;
+        }
+
+        // Warning
+        contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
+          ⚠️ Verification required. Check local signs.
+        </div>`;
+
+        // Directions Button
+        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${e.lngLat.lat},${e.lngLat.lng}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+          Get Directions
+        </a>`;
+
+        // Update Status Button
+        contentHtml += `<button 
+          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
+            props.id
+          }', type: 'ZONE', status: '${isFreeType ? "FREE" : "PAID"}' } }))"
+          style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
+        >
+          Update Status
+        </button>`;
+
+        contentHtml += `</div>`;
+
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(
-            `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600;color:#0f172a">${
-                 feature.properties?.name ?? feature.properties?.type ?? "Zone"
-               }</div>
-               <div style="font-size:12px;color:#64748b">${
-                 feature.properties?.type ?? ""
-               } • ${feature.properties?.city ?? ""}</div>
-               ${walkingHtml}
-                ${
-                  feature.properties?.notes
-                    ? `<div style="margin-top:4px;color:#4b5563">${feature.properties.notes}</div>`
-                    : ""
-                }
-                <a href="https://www.google.com/maps/dir/?api=1&destination=${
-                  e.lngLat.lat
-                },${
-              e.lngLat.lng
-            }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-                  Get Directions
-                </a>
-             </div>`
-          )
+          .setHTML(contentHtml)
           .addTo(map);
       });
 

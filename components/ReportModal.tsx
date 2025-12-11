@@ -7,7 +7,7 @@ type ReportModalProps = {
   isOpen: boolean;
   onClose: () => void;
   targetId: string | null;
-  targetType: "METER" | "STREET" | null;
+  targetType: "METER" | "STREET" | "ZONE" | null;
   defaultStatus?: "FREE" | "PAID";
 };
 
