@@ -113,6 +113,23 @@ export default function Home() {
   const [isCustomTime, setIsCustomTime] = useState(false);
   const timeInputRef = useRef<HTMLInputElement | null>(null);
   const [filterType, setFilterType] = useState<"FREE" | "PAID">("FREE");
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [dontShowHelp, setDontShowHelp] = useState(false);
+
+  useEffect(() => {
+    // Check local storage on mount
+    const seen = localStorage.getItem("find-free-parking-help-seen");
+    if (seen !== "true") {
+      setIsHelpOpen(true);
+    }
+  }, []);
+
+  function handleCloseHelp() {
+    setIsHelpOpen(false);
+    if (dontShowHelp) {
+      localStorage.setItem("find-free-parking-help-seen", "true");
+    }
+  }
 
   const mapStyle = useMemo(() => {
     const key =
@@ -649,6 +666,19 @@ export default function Home() {
   return (
     <div className="relative bg-black text-white h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
+
+      {/* Help Button - Bottom Right above Map Controls */}
+      <div className="absolute bottom-24 right-2.5 z-10">
+        <button
+          onClick={() => setIsHelpOpen(true)}
+          className="flex h-[29px] w-[29px] items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          title="How to use"
+          aria-label="How to use"
+        >
+          <span className="text-sm font-bold">?</span>
+        </button>
+      </div>
+
       <div className="pointer-events-none absolute top-0 left-0 right-0 flex justify-center px-4 pt-4">
         <div className="pointer-events-auto w-full max-w-3xl">
           <form
@@ -760,6 +790,83 @@ export default function Home() {
           ) : null}
         </div>
       </div>
+
+      {/* Help Modal */}
+      {isHelpOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
+          <div className="w-full max-w-md animate-in fade-in zoom-in-95 rounded-2xl bg-white p-6 text-slate-900 shadow-2xl">
+            <h2 className="mb-4 text-xl font-bold text-slate-900">
+              How to Find Free Parking
+            </h2>
+            <div className="space-y-4 text-sm leading-relaxed">
+              <p>
+                We show you where you can park <strong>right now</strong> based
+                on real-time regulations.
+              </p>
+
+              <div className="rounded-lg bg-green-50 p-3">
+                <div className="flex items-center gap-2 font-semibold text-green-700">
+                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                  <span>Green Points (Meters)</span>
+                </div>
+                <p className="mt-1 text-slate-600">
+                  Meters that are <strong>currently inactive</strong> (FREE).
+                  <br />
+                  <span className="font-semibold text-amber-600">
+                    ⚠️ Important:
+                  </span>{" "}
+                  Check signs for Rush Hour restriction (e.g. 7-9AM, 3-6PM).
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-green-50 p-3">
+                <div className="flex items-center gap-2 font-semibold text-green-700">
+                  <div className="h-1 w-6 rounded-full bg-green-400"></div>
+                  <span>Green Lines (Streets)</span>
+                </div>
+                <p className="mt-1 text-slate-600">
+                  Residential streets with no meters.
+                  <br />
+                  <span className="font-semibold text-amber-600">
+                    ⚠️ Note:
+                  </span>{" "}
+                  Often requires a Resident Permit or has a 2-3 hour limit for
+                  visitors. Check signs!
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-red-50 p-3">
+                <div className="flex items-center gap-2 font-semibold text-red-700">
+                  <div className="h-1 w-6 rounded-full bg-red-500"></div>
+                  <span>Red Lines / Dots</span>
+                </div>
+                <p className="mt-1 text-slate-600">
+                  Paid meters or restricted zones (Arterial roads, etc).
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-col items-center gap-3">
+              <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={dontShowHelp}
+                  onChange={(e) => setDontShowHelp(e.target.checked)}
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                Don't show this again
+              </label>
+
+              <button
+                onClick={handleCloseHelp}
+                className="w-full rounded-full bg-blue-600 py-2.5 font-semibold text-white shadow-lg transition hover:bg-blue-700 active:scale-95"
+              >
+                Got it
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
