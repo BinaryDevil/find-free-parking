@@ -618,6 +618,8 @@ export default function Home() {
           contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
 
           meterInfos.forEach((info) => {
+            if (!info.time_in_effect) return; // Skip invalid data
+
             const isActive = isMeterActive(
               info.time_in_effect,
               currentDateTime
@@ -785,17 +787,25 @@ export default function Home() {
           currentDateTime
         );
 
-        // Aggregation Overrides
-        if (reportedPaid) isActive = true; // Treat as Paid
-        if (reportedFree) isActive = false; // Treat as Free
-
         // visual flag
         if (reportedPaid) m.properties.z_status_override = "PAID";
         if (reportedFree) m.properties.z_status_override = "FREE";
 
         if (filterTypeRef.current === "FREE") {
+          // Free Filter:
+          // 1. Verified Free (Reported)
+          // 2. OR Inactive Meter (Time-based free, e.g. overnight)
+          // And NOT verified Paid
+          if (reportedPaid) return false;
+          if (reportedFree) return true;
           return !isActive;
         } else {
+          // Paid Filter:
+          // 1. Active Meter
+          // 2. OR Verified Paid
+          // And NOT verified Free
+          if (reportedFree) return false;
+          if (reportedPaid) return true;
           return isActive;
         }
       });
@@ -823,17 +833,10 @@ export default function Home() {
         // 2. Meters exist but INACTIVE at currentDateTime -> Free
         // 3. Meters exist and ACTIVE -> Paid
 
+        // Base Status
         let isFree = false;
-
-        if (meterInfos.length > 0) {
-          const isAnyActive = meterInfos.some((info: any) =>
-            isMeterActive(info.time_in_effect, currentDateTime)
-          );
-          isFree = !isAnyActive;
-        } else {
-          if (s.street_use === "Residential") {
-            isFree = true;
-          }
+        if (meterInfos.length === 0 && s.street_use === "Residential") {
+          isFree = true;
         }
 
         // Overrides
@@ -862,21 +865,23 @@ export default function Home() {
       const streetSource = map.getSource("streets") as
         | maplibregl.GeoJSONSource
         | undefined;
-      if (streetSource) {
-        streetSource.setData({
-          type: "FeatureCollection",
-          features: streetFeatures,
-        });
-      }
-
-      // Count streets based on filter alignment
-      const streetCount = streetFeatures.filter((s) => {
+      // Filter streets based on filter alignment
+      const filteredStreetFeatures = streetFeatures.filter((s) => {
         if (filterTypeRef.current === "FREE") {
           return s.properties.is_free === true;
         } else {
           return s.properties.is_free === false;
         }
-      }).length;
+      });
+
+      const streetCount = filteredStreetFeatures.length;
+
+      if (streetSource) {
+        streetSource.setData({
+          type: "FeatureCollection",
+          features: filteredStreetFeatures, // Use the filtered list!
+        });
+      }
 
       setFeatureCounts({ meters: meterCount, streets: streetCount });
 
