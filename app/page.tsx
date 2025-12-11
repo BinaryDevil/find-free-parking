@@ -668,7 +668,7 @@ export default function Home() {
       <div ref={containerRef} className="h-full w-full" />
 
       {/* Help Button - Bottom Right above Map Controls */}
-      <div className="absolute bottom-24 right-2.5 z-10">
+      <div className="absolute bottom-40 right-2.5 z-10">
         <button
           onClick={() => setIsHelpOpen(true)}
           className="flex h-[29px] w-[29px] items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
