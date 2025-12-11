@@ -17,34 +17,36 @@ const siteUrl = "https://www.findfreeparking.info";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Find Free Parking - Canada",
+  title: "Find Free Parking",
   description:
-    "Find free and paid parking spots in Vancouver, Coquitlam, and other Canadian cities. Real-time map with rates, time limits, and street parking info.",
+    "Find free and paid parking anywhere, with real-time maps, rates, time limits, and street rules. Coverage today across North America with global expansion underway.",
   keywords: [
     "free parking",
     "parking map",
-    "Vancouver parking",
-    "Coquitlam parking",
     "street parking",
-    "Canada parking",
+    "parking near me",
+    "city parking",
+    "airport parking",
+    "North America parking",
+    "global parking",
     "cheap parking",
   ],
   authors: [{ name: "Find Free Parking" }],
   creator: "Find Free Parking",
   openGraph: {
     type: "website",
-    locale: "en_CA",
+    locale: "en",
     url: siteUrl,
-    title: "Find Free Parking - Canada",
+    title: "Find Free Parking",
     description:
-      "Find free and paid parking spots in Vancouver, Coquitlam, and other Canadian cities.",
+      "Free and paid parking finder with live rates and rules. North America coverage now, global rollout next.",
     siteName: "Find Free Parking",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Find Free Parking - Canada",
+    title: "Find Free Parking",
     description:
-      "Find free and paid parking spots in Vancouver, Coquitlam, and other Canadian cities.",
+      "Find free and paid parking anywhere. Real-time map, rates, and time limits. North America today, global expansion next.",
   },
   appleWebApp: {
     capable: true,
