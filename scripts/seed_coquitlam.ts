@@ -1,4 +1,5 @@
 import { getDbPool } from "./seed_utils";
+import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 
 const pool = getDbPool();
 
@@ -102,6 +103,9 @@ export async function seedCoquitlam() {
       );
       inserted++;
     }
+    await seedOsmParkingLots("Coquitlam");
+    await seedOsmCityCoverage("Coquitlam");
+
     console.log(`[Coquitlam] Seeding Complete. Inserted ${inserted}.`);
   } catch (e) {
     console.error("Coquitlam Seeding Failed:", e);

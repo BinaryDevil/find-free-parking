@@ -77,6 +77,7 @@ type ZoneFeature = {
   properties: {
     id: string;
     city: string;
+    name?: string | null;
     type: string;
     timeLimitMinutes?: number | null;
     notes?: string | null;
@@ -141,6 +142,9 @@ export default function Home() {
   const [reportTargetType, setReportTargetType] = useState<
     "METER" | "STREET" | null
   >(null);
+  const [reportDefaultStatus, setReportDefaultStatus] = useState<
+    "FREE" | "PAID"
+  >("FREE");
 
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
@@ -174,6 +178,7 @@ export default function Home() {
       console.log("Opening report modal for", e.detail);
       setReportTargetId(e.detail.id);
       setReportTargetType(e.detail.type);
+      setReportDefaultStatus(e.detail.status || "FREE");
       setReportModalOpen(true);
     };
 
@@ -302,7 +307,17 @@ export default function Home() {
         type: "fill",
         source: "zones",
         paint: {
-          "fill-color": "#16a34a",
+          "fill-color": [
+            "match",
+            ["get", "type"],
+            ["FREE_UNLIMITED", "FREE_LIMITED", "EV_FREE"],
+            "#16a34a",
+            ["PAID", "MIXED"],
+            "#ef4444",
+            ["PERMIT_ONLY"],
+            "#eab308",
+            "#94a3b8", // Default gray
+          ],
           "fill-opacity": 0.4,
         },
       });
@@ -311,7 +326,17 @@ export default function Home() {
         type: "line",
         source: "zones",
         paint: {
-          "line-color": "#15803d",
+          "line-color": [
+            "match",
+            ["get", "type"],
+            ["FREE_UNLIMITED", "FREE_LIMITED", "EV_FREE"],
+            "#15803d",
+            ["PAID", "MIXED"],
+            "#b91c1c",
+            ["PERMIT_ONLY"],
+            "#ca8a04",
+            "#64748b",
+          ],
           "line-width": 2,
         },
       });
@@ -510,7 +535,7 @@ export default function Home() {
                 <button 
                   onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
                     props.id
-                  }', type: 'METER' } }))"
+                  }', type: 'METER', status: '${filterTypeRef.current}' } }))"
                   style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
                 >
                   Update Status
@@ -569,11 +594,11 @@ export default function Home() {
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
                <div style="font-weight:600;color:#0f172a">${
-                 feature.properties?.type ?? "Zone"
+                 feature.properties?.name ?? feature.properties?.type ?? "Zone"
                }</div>
-               <div style="color:#475569">${
-                 feature.properties?.city ?? ""
-               }</div>
+               <div style="font-size:12px;color:#64748b">${
+                 feature.properties?.type ?? ""
+               } • ${feature.properties?.city ?? ""}</div>
                ${walkingHtml}
                 ${
                   feature.properties?.notes
@@ -690,7 +715,9 @@ export default function Home() {
         </a>`;
 
         contentHtml += `<button 
-          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${props.id}', type: 'STREET' } }))"
+          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
+            props.id
+          }', type: 'STREET', status: '${isFree ? "FREE" : "PAID"}' } }))"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
           Update Status
@@ -942,10 +969,23 @@ export default function Home() {
 
       setFeatureCounts({ meters: meterCount, streets: streetCount });
 
-      // Also load zones (Legacy/Permit zones if needed, probably distinct from meters)
-      // Keeping this fetch but maybe it effectively returns nothing or irrelevant data if tables empty?
-      // const zonesRes = await fetch(`/api/parking/zones?bbox=${bbox}...`);
-      // Skipping zones for now to focus on Regulation Logic as per plan.
+      // 2. Fetch Parking Zones (Lots)
+      const bboxParam = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
+      const zonesRes = await fetch(
+        `/api/parking/zones?bbox=${bboxParam}&type=${filterTypeRef.current}&limit=500`
+      );
+      if (zonesRes.ok) {
+        const zonesData = await zonesRes.json();
+        const zonesSource = map.getSource("zones") as
+          | maplibregl.GeoJSONSource
+          | undefined;
+        if (zonesSource) {
+          zonesSource.setData({
+            type: "FeatureCollection",
+            features: zonesData.features ?? [],
+          });
+        }
+      }
 
       setStatus("idle");
     } catch (err) {
@@ -1243,6 +1283,7 @@ export default function Home() {
         onClose={() => setReportModalOpen(false)}
         targetId={reportTargetId}
         targetType={reportTargetType}
+        defaultStatus={reportDefaultStatus}
       />
     </div>
   );

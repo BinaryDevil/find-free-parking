@@ -55,7 +55,15 @@ async function runAll() {
       await seedSurrey();
     }
 
-    // 4. Others...
+    // 4. Parking Lots (Zones)
+    // Note: City scripts (Vancouver, Surrey, etc.) now handle their own OsmParkingLots seeding.
+    // We can query to check if ANY zones exist just for info.
+    const zonesCount = await pool.query("SELECT count(*) FROM parking_zones");
+    if (parseInt(zonesCount.rows[0].count) > 0) {
+      console.log(
+        `[ParkingLots] Zones exist (${zonesCount.rows[0].count} items).`
+      );
+    }
 
     console.log("=== ALL SEEDING COMPLETE ===");
   } catch (e) {

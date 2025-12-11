@@ -2,6 +2,7 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { getDbPool } from "./seed_utils";
+import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 
 const pool = getDbPool();
 
@@ -75,6 +76,12 @@ export async function seedSurrey() {
       console.error(`[Surrey] Insert failed for ${payStationId}:`, e);
     }
   }
+
+  // Seed lots from OSM
+  await seedOsmParkingLots("Surrey");
+
+  // Seed City Coverage
+  await seedOsmCityCoverage("Surrey");
 
   console.log(`[Surrey] Seeding Complete. Inserted ${inserted}.`);
 

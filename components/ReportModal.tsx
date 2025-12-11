@@ -52,15 +52,18 @@ export default function ReportModal({
   // Reset state when opening
   useEffect(() => {
     if (isOpen) {
-      setStatus("FREE"); // Default or maybe we should default to the OPPOSITE of what it is?
-      // Actually let's just default to Free or clean slate.
+      if (defaultStatus) {
+        setStatus(defaultStatus);
+      } else {
+        setStatus("FREE");
+      }
       setReason("");
       setError(null);
       setSuccess(false);
       setIsSubmitting(false);
       setSelectedReasonOption(""); // Reset selected reason option
     }
-  }, [isOpen]);
+  }, [isOpen, defaultStatus]);
 
   // When status changes, reset reason selection
   useEffect(() => {

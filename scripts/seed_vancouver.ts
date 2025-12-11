@@ -1,4 +1,5 @@
 import { getDbPool } from "./seed_utils";
+import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 
 const pool = getDbPool();
 
@@ -86,6 +87,12 @@ export async function seedVancouver() {
         JSON.stringify(item),
       ];
     });
+
+    // Seed Lots (Parking Zones) from OSM (and later Official if found)
+    await seedOsmParkingLots("Vancouver");
+
+    // Seed City Coverage
+    await seedOsmCityCoverage("Vancouver");
 
     console.log("Vancouver Seeding Complete.");
   } catch (e) {
