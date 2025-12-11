@@ -8,7 +8,17 @@ import maplibregl, {
   StyleSpecification,
 } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
-import { LocateFixed, Loader2, Search, MapPinOff, X } from "lucide-react";
+import {
+  LocateFixed,
+  Loader2,
+  Search,
+  MapPinOff,
+  X,
+  CircleDollarSign,
+  Clock,
+  AlertTriangle,
+  CheckCircle,
+} from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
@@ -157,7 +167,7 @@ export default function Home() {
     if (seen !== "true") {
       setIsHelpOpen(true);
     }
-    const coverageSeen = sessionStorage.getItem("coverage-banner-dismissed-v2");
+    const coverageSeen = sessionStorage.getItem("coverage-banner-dismissed");
     if (coverageSeen === "true") {
       setCoverageDismissed(true);
     }
@@ -1234,7 +1244,7 @@ export default function Home() {
               onClick={() => {
                 setShowCoverageBanner(false);
                 setCoverageDismissed(true);
-                sessionStorage.setItem("coverage-banner-dismissed-v2", "true");
+                sessionStorage.setItem("coverage-banner-dismissed", "true");
               }}
               className="text-slate-400 hover:text-white transition-colors"
             >
@@ -1248,97 +1258,85 @@ export default function Home() {
       {/* Help Modal */}
       {isHelpOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
-          <div className="flex flex-col w-full max-w-md max-h-[85vh] animate-in fade-in zoom-in-95 rounded-2xl bg-white text-slate-900 shadow-2xl overflow-hidden">
-            <div className="flex-1 overflow-y-auto p-6">
-              <h2 className="mb-4 text-xl font-bold text-slate-900">
-                How to Find Free Parking
-              </h2>
-              <div className="space-y-4 text-sm leading-relaxed">
-                <div className="rounded-lg bg-yellow-50 p-3 border border-yellow-200">
-                  <div className="flex items-center gap-2 font-bold text-yellow-800">
-                    <span>🚧 Under Development</span>
+          <div className="flex flex-col w-full max-w-md animate-in fade-in zoom-in-95 rounded-2xl bg-white text-slate-900 shadow-2xl overflow-hidden">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-slate-900">
+                  Find Free Parking
+                </h2>
+                <button
+                  onClick={handleCloseHelp}
+                  className="text-slate-400 hover:text-slate-600 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="grid gap-6">
+                <div className="flex gap-4">
+                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
+                    <CheckCircle className="h-5 w-5" />
                   </div>
-                  <p className="mt-1 text-yellow-700">
-                    This site is currently in <strong>Beta</strong>. Features
-                    and data might change. We are actively adding new cities and
-                    features.
-                  </p>
+                  <div>
+                    <h3 className="font-semibold text-slate-900">
+                      Green is Free
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mt-1">
+                      Green lines and dots mean parking is free{" "}
+                      <strong>right now</strong>.
+                    </p>
+                  </div>
                 </div>
 
-                <p>
-                  We show you where you can park <strong>right now</strong>{" "}
-                  based on real-time regulations.
-                </p>
-
-                <div className="rounded-lg bg-green-50 p-3">
-                  <div className="flex items-center gap-2 font-semibold text-green-700">
-                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                    <span>Green Points (Meters)</span>
+                <div className="flex gap-4">
+                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                    <Clock className="h-5 w-5" />
                   </div>
-                  <p className="mt-1 text-slate-600">
-                    Meters that are <strong>currently inactive</strong> (FREE).
-                    <br />
-                    <span className="font-semibold text-amber-600">
-                      ⚠️ Important:
-                    </span>{" "}
-                    Check signs for Rush Hour restriction (e.g. 7-9AM, 3-6PM).
-                  </p>
+                  <div>
+                    <h3 className="font-semibold text-slate-900">
+                      Real-time Updates
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mt-1">
+                      We check regulations instantly so you don't have to guess.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="rounded-lg bg-green-50 p-3">
-                  <div className="flex items-center gap-2 font-semibold text-green-700">
-                    <div className="h-1 w-6 rounded-full bg-green-400"></div>
-                    <span>Green Lines (Streets)</span>
+                <div className="flex gap-4">
+                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+                    <AlertTriangle className="h-5 w-5" />
                   </div>
-                  <p className="mt-1 text-slate-600">
-                    Residential streets with no meters.
-                    <br />
-                    <span className="font-semibold text-amber-600">
-                      ⚠️ Note:
-                    </span>{" "}
-                    Often requires a Resident Permit or has a 2-3 hour limit for
-                    visitors. Check signs!
-                  </p>
-                </div>
-
-                <div className="rounded-lg bg-red-50 p-3">
-                  <div className="flex items-center gap-2 font-semibold text-red-700">
-                    <div className="h-1 w-6 rounded-full bg-red-500"></div>
-                    <span>Red Lines / Dots</span>
+                  <div>
+                    <h3 className="font-semibold text-slate-900">
+                      Double Check Signs
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed mt-1">
+                      Data can be imperfect. Always verify local signs before
+                      leaving your car.
+                    </p>
                   </div>
-                  <p className="mt-1 text-slate-600">
-                    Paid meters or restricted zones (Arterial roads, etc).
-                  </p>
-                </div>
-
-                <div className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
-                  <p>
-                    <strong>Disclaimer:</strong> This app uses open data from
-                    municipal sources. Regulations can change. Data might be
-                    incorrect or outdated. Always verify with local signs. Use
-                    strictly at your own risk.
-                  </p>
                 </div>
               </div>
-            </div>
 
-            <div className="border-t border-slate-100 p-6 bg-white shrink-0 flex flex-col items-center gap-3">
-              <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={dontShowHelp}
-                  onChange={(e) => setDontShowHelp(e.target.checked)}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                />
-                Don't show this again
-              </label>
-
-              <button
-                onClick={handleCloseHelp}
-                className="w-full rounded-full bg-blue-600 py-2.5 font-semibold text-white shadow-lg transition hover:bg-blue-700 active:scale-95"
-              >
-                Got it
-              </button>
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <button
+                  onClick={handleCloseHelp}
+                  className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
+                >
+                  Start Parking
+                </button>
+                <div className="mt-4 flex justify-center">
+                  <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-500 hover:text-slate-700">
+                    <input
+                      type="checkbox"
+                      checked={dontShowHelp}
+                      onChange={(e) => setDontShowHelp(e.target.checked)}
+                      className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span>Don't show this again</span>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
