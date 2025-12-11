@@ -463,13 +463,22 @@ export default function Home() {
         // 2. Meters exist but INACTIVE at currentDateTime -> Free
         // 3. Meters exist and ACTIVE -> Paid
 
-        let isFree = true;
+        let isFree = false; // Default to Restricted/Paid for non-residential or unknown
+
         if (meterInfos.length > 0) {
           // Check if ANY meter is active
           const isAnyActive = meterInfos.some((info: any) =>
             isMeterActive(info.time_in_effect, currentDateTime)
           );
-          if (isAnyActive) isFree = false;
+          // If meters exist, and none are active, it is Free (Green).
+          // If any is active, it is Paid (Red).
+          isFree = !isAnyActive;
+        } else {
+          // No meters. Only Residential streets are likely free.
+          // Arterial, Collector, etc defined as 'Red' (Restricted/No Stopping likely)
+          if (s.street_use === "Residential") {
+            isFree = true;
+          }
         }
 
         return {
