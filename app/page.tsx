@@ -7,7 +7,8 @@ import maplibregl, {
   MapGeoJSONFeature,
   StyleSpecification,
 } from "maplibre-gl";
-import { LocateFixed, Loader2, Search } from "lucide-react";
+import { checkCoverage } from "@/app/actions/coverage";
+import { LocateFixed, Loader2, Search, MapPinOff, X } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 
@@ -116,6 +117,10 @@ export default function Home() {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [dontShowHelp, setDontShowHelp] = useState(false);
 
+  // Coverage check state
+  const [showCoverageBanner, setShowCoverageBanner] = useState(false);
+  const [coverageDismissed, setCoverageDismissed] = useState(false);
+
   // Destination state (from search)
   const [destinationLocation, setDestinationLocation] = useState<
     [number, number] | null
@@ -139,6 +144,15 @@ export default function Home() {
     if (seen !== "true") {
       setIsHelpOpen(true);
     }
+    const coverageSeen = sessionStorage.getItem("coverage-banner-dismissed");
+    if (coverageSeen === "true") {
+      setCoverageDismissed(true);
+    }
+
+    // Auto-locate on load without blocking UI
+    // We do this silently (visualizePitch: false logic?) or just reuse handleUseMyLocation
+    // But handleUseMyLocation sets 'isLocating' spinner. That is fine.
+    handleUseMyLocation(true);
   }, []);
 
   function handleCloseHelp() {
@@ -516,7 +530,6 @@ export default function Home() {
 
         let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
 
-        // TODO: Free meters after effect time(for example 10PM) display info is very blurry, user might doesn't know it's free or not(saying Max stay 2 hrs and rate and stuff) 
         // Header
         contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
           isFree ? "Free Parking" : "Paid / Restricted"
@@ -546,11 +559,26 @@ export default function Home() {
 
         // Meter Infos
         if (meterInfos.length > 0) {
+          const currentDateTime = new Date(parkingTimeRef.current);
+          let hasActiveMeters = false;
+
           contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
+
           meterInfos.forEach((info) => {
-            contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">• ${
-              info.time_in_effect ?? ""
-            }: ${info.rate ?? ""}</div>`;
+            const isActive = isMeterActive(
+              info.time_in_effect,
+              currentDateTime
+            );
+            if (isActive) {
+              hasActiveMeters = true;
+              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">• ${
+                info.time_in_effect ?? ""
+              }: ${info.rate ?? ""}</div>`;
+            } else {
+              contentHtml += `<div style="color:#16a34a;font-size:12px;margin-top:2px;">• ${
+                info.time_in_effect ?? ""
+              }: Free (Outside Effect Time)</div>`;
+            }
           });
         } else {
           if (isFree) {
@@ -815,16 +843,16 @@ export default function Home() {
     source.setData(data);
   }, [userLocation]);
 
-  function handleUseMyLocation() {
+  function handleUseMyLocation(isInitial = false) {
     if (!navigator.geolocation) {
-      setError("Geolocation is not supported by your browser.");
+      if (!isInitial) setError("Geolocation is not supported by your browser.");
       return;
     }
     setSearchQuery("");
-    setShowCurrentLocationPlaceholder(true);
+    if (!isInitial) setShowCurrentLocationPlaceholder(true);
     setIsLocating(true);
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
+      async (pos) => {
         setIsLocating(false);
         setError(null);
         const coords: [number, number] = [
@@ -834,12 +862,31 @@ export default function Home() {
         setUserLocation(coords);
         setShowCurrentLocationPlaceholder(true);
         moveToLocation(coords);
+
+        // Check coverage
+        if (!coverageDismissed) {
+          try {
+            const result = await checkCoverage(coords[1], coords[0]);
+            if (!result.isCovered) {
+              setShowCoverageBanner(true);
+            } else {
+              setShowCoverageBanner(false);
+            }
+          } catch (e) {
+            console.error("Coverage check failed", e);
+          }
+        }
       },
       (err) => {
         setIsLocating(false);
-        setShowCurrentLocationPlaceholder(false);
-        setUserLocation(null);
-        setError(err.message || "Unable to get your location.");
+        // On initial load, silent fail if denied. On explicit click, show error.
+        if (!isInitial) {
+          setShowCurrentLocationPlaceholder(false);
+          setUserLocation(null);
+          setError(err.message || "Unable to get your location.");
+        } else {
+          setShowCurrentLocationPlaceholder(false);
+        }
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
@@ -921,7 +968,7 @@ export default function Home() {
             />
             <button
               type="button"
-              onClick={handleUseMyLocation}
+              onClick={() => handleUseMyLocation(false)}
               className={`mr-2 inline-flex h-10 w-10 items-center justify-center rounded-full border shadow-[0_2px_8px_rgba(0,0,0,0.12)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:opacity-70 ${
                 showCurrentLocationPlaceholder || isLocating
                   ? "border-blue-600 bg-blue-600 text-white"
@@ -939,7 +986,7 @@ export default function Home() {
             </button>
           </form>
           <div className="mt-3 w-full">
-            <div className="flex w-full flex-wrap items-center gap-3 sm:flex-nowrap">
+            <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">
                 <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5">
                   <span className="text-slate-500">Start parking</span>
@@ -961,7 +1008,7 @@ export default function Home() {
                   aria-label="Select start parking time"
                 />
               </label>
-              <div className="flex flex-1 items-center gap-2 min-w-[200px]">
+              <div className="flex flex-1 items-center gap-2 min-w-[140px]">
                 <button
                   type="button"
                   onClick={() => setFilterType("FREE")}
@@ -1020,6 +1067,35 @@ export default function Home() {
               </div>
             </div>
           ) : null}
+
+          {/* Coverage Banner */}
+          {showCoverageBanner && !coverageDismissed && (
+            <div className="absolute bottom-16 left-4 right-4 md:bottom-20 md:left-1/2 md:-translate-x-1/2 md:w-auto md:max-w-lg z-50 animate-in fade-in slide-in-from-bottom-4">
+              <div className="bg-slate-900/95 backdrop-blur text-white p-4 rounded-lg shadow-lg border border-slate-700 flex items-start gap-3">
+                <MapPinOff className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
+                <div className="flex-1">
+                  <h3 className="font-semibold text-sm">
+                    Region Not Supported
+                  </h3>
+                  <p className="text-xs text-slate-300 mt-1">
+                    It looks like you are outside our current coverage area. Map
+                    data may be incomplete or missing here.
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    setShowCoverageBanner(false);
+                    setCoverageDismissed(true);
+                    sessionStorage.setItem("coverage-banner-dismissed", "true");
+                  }}
+                  className="text-slate-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">Dismiss</span>
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

@@ -57,8 +57,6 @@ export const viewport = {
   userScalable: false,
 };
 
-import { CoverageCheck } from "@/components/coverage-check";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -82,7 +80,7 @@ export default function RootLayout({
             gtag('config', 'G-F04D2JVCQ5');
           `}
         </Script>
-        <CoverageCheck />
+
         {children}
       </body>
     </html>
