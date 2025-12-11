@@ -1102,79 +1102,81 @@ export default function Home() {
       {/* Help Modal */}
       {isHelpOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-md max-h-[85vh] overflow-y-auto animate-in fade-in zoom-in-95 rounded-2xl bg-white p-6 text-slate-900 shadow-2xl">
-            <h2 className="mb-4 text-xl font-bold text-slate-900">
-              How to Find Free Parking
-            </h2>
-            <div className="space-y-4 text-sm leading-relaxed">
-              <div className="rounded-lg bg-yellow-50 p-3 border border-yellow-200">
-                <div className="flex items-center gap-2 font-bold text-yellow-800">
-                  <span>🚧 Under Development</span>
+          <div className="flex flex-col w-full max-w-md max-h-[85vh] animate-in fade-in zoom-in-95 rounded-2xl bg-white text-slate-900 shadow-2xl overflow-hidden">
+            <div className="flex-1 overflow-y-auto p-6">
+              <h2 className="mb-4 text-xl font-bold text-slate-900">
+                How to Find Free Parking
+              </h2>
+              <div className="space-y-4 text-sm leading-relaxed">
+                <div className="rounded-lg bg-yellow-50 p-3 border border-yellow-200">
+                  <div className="flex items-center gap-2 font-bold text-yellow-800">
+                    <span>🚧 Under Development</span>
+                  </div>
+                  <p className="mt-1 text-yellow-700">
+                    This site is currently in <strong>Beta</strong>. Features
+                    and data might change. We are actively adding new cities and
+                    features.
+                  </p>
                 </div>
-                <p className="mt-1 text-yellow-700">
-                  This site is currently in <strong>Beta</strong>. Features and
-                  data might change. We are actively adding new cities and
-                  features.
-                </p>
-              </div>
 
-              <p>
-                We show you where you can park <strong>right now</strong> based
-                on real-time regulations.
-              </p>
-
-              <div className="rounded-lg bg-green-50 p-3">
-                <div className="flex items-center gap-2 font-semibold text-green-700">
-                  <div className="h-3 w-3 rounded-full bg-green-500"></div>
-                  <span>Green Points (Meters)</span>
-                </div>
-                <p className="mt-1 text-slate-600">
-                  Meters that are <strong>currently inactive</strong> (FREE).
-                  <br />
-                  <span className="font-semibold text-amber-600">
-                    ⚠️ Important:
-                  </span>{" "}
-                  Check signs for Rush Hour restriction (e.g. 7-9AM, 3-6PM).
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-green-50 p-3">
-                <div className="flex items-center gap-2 font-semibold text-green-700">
-                  <div className="h-1 w-6 rounded-full bg-green-400"></div>
-                  <span>Green Lines (Streets)</span>
-                </div>
-                <p className="mt-1 text-slate-600">
-                  Residential streets with no meters.
-                  <br />
-                  <span className="font-semibold text-amber-600">
-                    ⚠️ Note:
-                  </span>{" "}
-                  Often requires a Resident Permit or has a 2-3 hour limit for
-                  visitors. Check signs!
-                </p>
-              </div>
-
-              <div className="rounded-lg bg-red-50 p-3">
-                <div className="flex items-center gap-2 font-semibold text-red-700">
-                  <div className="h-1 w-6 rounded-full bg-red-500"></div>
-                  <span>Red Lines / Dots</span>
-                </div>
-                <p className="mt-1 text-slate-600">
-                  Paid meters or restricted zones (Arterial roads, etc).
-                </p>
-              </div>
-
-              <div className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
                 <p>
-                  <strong>Disclaimer:</strong> This app uses open data from
-                  municipal sources. Regulations can change. Data might be
-                  incorrect or outdated. Always verify with local signs. Use
-                  strictly at your own risk.
+                  We show you where you can park <strong>right now</strong>{" "}
+                  based on real-time regulations.
                 </p>
+
+                <div className="rounded-lg bg-green-50 p-3">
+                  <div className="flex items-center gap-2 font-semibold text-green-700">
+                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                    <span>Green Points (Meters)</span>
+                  </div>
+                  <p className="mt-1 text-slate-600">
+                    Meters that are <strong>currently inactive</strong> (FREE).
+                    <br />
+                    <span className="font-semibold text-amber-600">
+                      ⚠️ Important:
+                    </span>{" "}
+                    Check signs for Rush Hour restriction (e.g. 7-9AM, 3-6PM).
+                  </p>
+                </div>
+
+                <div className="rounded-lg bg-green-50 p-3">
+                  <div className="flex items-center gap-2 font-semibold text-green-700">
+                    <div className="h-1 w-6 rounded-full bg-green-400"></div>
+                    <span>Green Lines (Streets)</span>
+                  </div>
+                  <p className="mt-1 text-slate-600">
+                    Residential streets with no meters.
+                    <br />
+                    <span className="font-semibold text-amber-600">
+                      ⚠️ Note:
+                    </span>{" "}
+                    Often requires a Resident Permit or has a 2-3 hour limit for
+                    visitors. Check signs!
+                  </p>
+                </div>
+
+                <div className="rounded-lg bg-red-50 p-3">
+                  <div className="flex items-center gap-2 font-semibold text-red-700">
+                    <div className="h-1 w-6 rounded-full bg-red-500"></div>
+                    <span>Red Lines / Dots</span>
+                  </div>
+                  <p className="mt-1 text-slate-600">
+                    Paid meters or restricted zones (Arterial roads, etc).
+                  </p>
+                </div>
+
+                <div className="mt-4 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                  <p>
+                    <strong>Disclaimer:</strong> This app uses open data from
+                    municipal sources. Regulations can change. Data might be
+                    incorrect or outdated. Always verify with local signs. Use
+                    strictly at your own risk.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col items-center gap-3">
+            <div className="border-t border-slate-100 p-6 bg-white shrink-0 flex flex-col items-center gap-3">
               <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer">
                 <input
                   type="checkbox"
