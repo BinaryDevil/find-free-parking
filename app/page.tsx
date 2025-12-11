@@ -8,20 +8,12 @@ import maplibregl, {
   StyleSpecification,
 } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
-import {
-  LocateFixed,
-  Loader2,
-  Search,
-  MapPinOff,
-  X,
-  CircleDollarSign,
-  Clock,
-  AlertTriangle,
-  CheckCircle,
-} from "lucide-react";
+import { LocateFixed, Loader2, Search } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
+import HelpModal from "@/components/HelpModal";
+import CoverageBanner from "@/components/CoverageBanner";
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
@@ -1229,118 +1221,22 @@ export default function Home() {
       </div>
 
       {/* Coverage Banner */}
-      {showCoverageBanner && !coverageDismissed && (
-        <div className="absolute bottom-20 left-4 right-4 md:bottom-24 md:left-1/2 md:-translate-x-1/2 md:w-auto md:max-w-lg z-[100] animate-in fade-in slide-in-from-bottom-4">
-          <div className="bg-slate-900/95 backdrop-blur text-white p-4 rounded-lg shadow-lg border border-slate-700 flex items-start gap-3">
-            <MapPinOff className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
-            <div className="flex-1">
-              <h3 className="font-semibold text-sm">Region Not Supported</h3>
-              <p className="text-xs text-slate-300 mt-1">
-                It looks like you are outside our current coverage area. Map
-                data may be incomplete or missing here.
-              </p>
-            </div>
-            <button
-              onClick={() => {
-                setShowCoverageBanner(false);
-                setCoverageDismissed(true);
-                sessionStorage.setItem("coverage-banner-dismissed", "true");
-              }}
-              className="text-slate-400 hover:text-white transition-colors"
-            >
-              <span className="sr-only">Dismiss</span>
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      )}
+      <CoverageBanner
+        isVisible={showCoverageBanner && !coverageDismissed}
+        onDismiss={() => {
+          setShowCoverageBanner(false);
+          setCoverageDismissed(true);
+          sessionStorage.setItem("coverage-banner-dismissed", "true");
+        }}
+      />
 
       {/* Help Modal */}
-      {isHelpOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
-          <div className="flex flex-col w-full max-w-md animate-in fade-in zoom-in-95 rounded-2xl bg-white text-slate-900 shadow-2xl overflow-hidden">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-slate-900">
-                  Find Free Parking
-                </h2>
-                <button
-                  onClick={handleCloseHelp}
-                  className="text-slate-400 hover:text-slate-600 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="grid gap-6">
-                <div className="flex gap-4">
-                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600">
-                    <CheckCircle className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">
-                      Green is Free
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mt-1">
-                      Green lines and dots mean parking is free{" "}
-                      <strong>right now</strong>.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <Clock className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">
-                      Real-time Updates
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mt-1">
-                      We check regulations instantly so you don't have to guess.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 text-amber-600">
-                    <AlertTriangle className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">
-                      Double Check Signs
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mt-1">
-                      Data can be imperfect. Always verify local signs before
-                      leaving your car.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-100">
-                <button
-                  onClick={handleCloseHelp}
-                  className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
-                >
-                  Start Parking
-                </button>
-                <div className="mt-4 flex justify-center">
-                  <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-500 hover:text-slate-700">
-                    <input
-                      type="checkbox"
-                      checked={dontShowHelp}
-                      onChange={(e) => setDontShowHelp(e.target.checked)}
-                      className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                    />
-                    <span>Don't show this again</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <HelpModal
+        isOpen={isHelpOpen}
+        onClose={handleCloseHelp}
+        dontShowAgain={dontShowHelp}
+        onDontShowAgainChange={setDontShowHelp}
+      />
       {/* Report Modal */}
       <ReportModal
         isOpen={reportModalOpen}
