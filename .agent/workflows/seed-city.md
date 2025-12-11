@@ -31,5 +31,10 @@ params:
    - Use the `if (count > 0) { skip } else { seed }` pattern.
 
 5. **Verify**:
+
    - Run `npx tsx scripts/seed_${city_lowercase}.ts` to test.
    - Run `npx tsx scripts/count_by_city.ts` to confirm insertion.
+
+6. **Cleanup**:
+   - Delete any temporary probe scripts (e.g., `scripts/probe_cityname.ts`) or temporary data files created during research.
+   - Keep the final `scripts/seed_cityname.ts` file.

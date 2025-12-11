@@ -43,8 +43,17 @@ async function runAll() {
       await seedCoquitlam();
     }
 
-    // 3. Surrey (Placeholder)
-    await seedSurrey();
+    // 3. Surrey
+    const surreyCount = await pool.query(
+      "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Surrey'"
+    );
+    if (parseInt(surreyCount.rows[0].count) > 0) {
+      console.log(
+        `[Surrey] Data exists (${surreyCount.rows[0].count} items). Skipping seed.`
+      );
+    } else {
+      await seedSurrey();
+    }
 
     // 4. Others...
 
