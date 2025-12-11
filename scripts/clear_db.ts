@@ -10,7 +10,14 @@ export async function clearDatabase() {
   try {
     console.log("Clearing database...");
     await pool.query(
-      "TRUNCATE parking_meters, street_segments RESTART IDENTITY CASCADE;"
+      `
+        TRUNCATE
+          parking_meters,
+          street_segments,
+          parking_zones,
+          covered_cities
+        RESTART IDENTITY CASCADE;
+      `
     );
     console.log("Database cleared successfully.");
   } catch (e) {
