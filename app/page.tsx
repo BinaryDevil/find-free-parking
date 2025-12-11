@@ -98,7 +98,7 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
-  const [lastCount, setLastCount] = useState(0);
+  const [featureCounts, setFeatureCounts] = useState({ meters: 0, streets: 0 });
   const [searchQuery, setSearchQuery] = useState("");
   const [isLocating, setIsLocating] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -115,6 +115,15 @@ export default function Home() {
   const [filterType, setFilterType] = useState<"FREE" | "PAID">("FREE");
   const [isHelpOpen, setIsHelpOpen] = useState(false);
   const [dontShowHelp, setDontShowHelp] = useState(false);
+
+  // Refs for map event listeners to avoid stale closures
+  const filterTypeRef = useRef(filterType);
+  const parkingTimeRef = useRef(parkingTime);
+
+  useEffect(() => {
+    filterTypeRef.current = filterType;
+    parkingTimeRef.current = parkingTime;
+  }, [filterType, parkingTime]);
 
   useEffect(() => {
     // Check local storage on mount
@@ -475,14 +484,13 @@ export default function Home() {
         },
       }));
 
-      // Filter Meters based on Filter Type
-      const currentDateTime = new Date(parkingTime);
+      const currentDateTime = new Date(parkingTimeRef.current);
       const filteredMeterFeatures = meterFeatures.filter((m) => {
         const isActive = isMeterActive(
           m.properties.time_in_effect,
           currentDateTime
         );
-        if (filterType === "FREE") {
+        if (filterTypeRef.current === "FREE") {
           // In Free mode, only show Meters that are NOT active (i.e. free right now)
           return !isActive;
         } else {
@@ -500,7 +508,7 @@ export default function Home() {
           features: filteredMeterFeatures,
         });
       }
-      setLastCount(filteredMeterFeatures.length);
+      const meterCount = filteredMeterFeatures.length;
 
       // Map Streets with Logic
       const streetFeatures: StreetFeature[] = streets.map((s: any) => {
@@ -550,6 +558,17 @@ export default function Home() {
           features: streetFeatures,
         });
       }
+
+      // Count streets based on filter alignment
+      const streetCount = streetFeatures.filter((s) => {
+        if (filterTypeRef.current === "FREE") {
+          return s.properties.is_free === true;
+        } else {
+          return s.properties.is_free === false;
+        }
+      }).length;
+
+      setFeatureCounts({ meters: meterCount, streets: streetCount });
 
       // Also load zones (Legacy/Permit zones if needed, probably distinct from meters)
       // Keeping this fetch but maybe it effectively returns nothing or irrelevant data if tables empty?
@@ -775,10 +794,26 @@ export default function Home() {
           </div>
           <div className="mt-3 flex justify-center">
             <div className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
-              Find free parking
+              {filterType === "FREE" ? "Free parking" : "Paid parking"}
               {status === "loading" || isSearching
                 ? " · Loading…"
-                : ` · ${lastCount} spots`}
+                : ` · ${
+                    featureCounts.meters > 0
+                      ? `${featureCounts.meters} spots`
+                      : ""
+                  }${
+                    featureCounts.meters > 0 && featureCounts.streets > 0
+                      ? " · "
+                      : ""
+                  }${
+                    featureCounts.streets > 0
+                      ? `${featureCounts.streets} blocks`
+                      : ""
+                  }${
+                    featureCounts.meters === 0 && featureCounts.streets === 0
+                      ? "None found"
+                      : ""
+                  }`}
             </div>
           </div>
           {error ? (
