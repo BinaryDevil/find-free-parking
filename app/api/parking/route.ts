@@ -41,7 +41,7 @@ export async function GET(request: Request) {
       SELECT s.id, s.block_id, s.street_use, s.report_counts,
              ST_AsGeoJSON(s.geom)::json as geom,
              (
-                SELECT json_agg(json_build_object('time_in_effect', m.time_in_effect, 'rate', m.raw_data->>'r_mf_9a_6p')) 
+                SELECT jsonb_agg(DISTINCT jsonb_build_object('time_in_effect', m.time_in_effect, 'rate', m.raw_data->>'r_mf_9a_6p')) 
                 FROM parking_meters m
                 WHERE ST_DWithin(s.geom::geography, m.geom::geography, 15)
              ) as meter_infos
