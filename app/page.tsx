@@ -304,26 +304,34 @@ export default function Home() {
                    ? `<div style="margin-top:4px;color:#1f2937">${props.timeLimitMinutes} min limit</div>`
                    : ""
                }
-               ${
-                 props.notes
-                   ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>`
-                   : ""
-               }
-               ${
-                 props.metadata?.timeineffe
-                   ? `<div style="margin-top:4px;font-weight:600;color:#1f2937">${props.metadata.timeineffe}</div>`
-                   : ""
-               }
-               ${
-                 props.metadata?.r_mf_9a_6p
-                   ? `<div style="margin-top:4px;color:#475569">M-F 9a-6p: ${props.metadata.r_mf_9a_6p}</div>`
-                   : ""
-               }
-               ${
-                 props.metadata?.creditcard === "Yes"
-                   ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>`
-                   : ""
-               }
+                ${
+                  props.t_mf_9a_6p
+                    ? `<div style="margin-top:4px;color:#1f2937">Max Stay: ${props.t_mf_9a_6p}</div>`
+                    : ""
+                }
+                ${
+                  props.r_mf_9a_6p
+                    ? `<div style="margin-top:4px;color:#475569">Rate: ${props.r_mf_9a_6p}</div>`
+                    : ""
+                }
+                ${
+                  props.notes
+                    ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>`
+                    : ""
+                }
+                ${
+                  props.timeineffe
+                    ? `<div style="margin-top:4px;font-weight:600;color:#1f2937;font-size:12px">${props.timeineffe}</div>`
+                    : ""
+                }
+                <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
+                  ⚠️ Check signs for rush hour restrictions
+                </div>
+                ${
+                  props.creditcard === "Yes"
+                    ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>`
+                    : ""
+                }
              </div>`
           )
           .addTo(map);
@@ -439,23 +447,45 @@ export default function Home() {
           meter_head: m.meter_head,
           time_in_effect: m.time_in_effect,
           credit_card: m.credit_card,
-          metadata: {
-            timeineffe: m.time_in_effect,
-            creditcard: m.credit_card ? "Yes" : "No",
-          },
+          // Flattened metadata for MapLibre compatibility
+          timeineffe: m.time_in_effect,
+          creditcard: m.credit_card ? "Yes" : "No",
+          r_mf_9a_6p: m.r_mf_9a_6p,
+          t_mf_9a_6p: m.t_mf_9a_6p,
+          r_mf_6p_10: m.r_mf_6p_10,
+          r_sa_9a_6p: m.r_sa_9a_6p,
+          r_su_9a_6p: m.r_su_9a_6p,
         },
       }));
+
+      // Filter Meters based on Filter Type
+      const currentDateTime = new Date(parkingTime);
+      const filteredMeterFeatures = meterFeatures.filter((m) => {
+        const isActive = isMeterActive(
+          m.properties.time_in_effect,
+          currentDateTime
+        );
+        if (filterType === "FREE") {
+          // In Free mode, only show Meters that are NOT active (i.e. free right now)
+          return !isActive;
+        } else {
+          // In Paid mode, show Meters that ARE active
+          return isActive;
+        }
+      });
 
       const source = map.getSource("spots") as
         | maplibregl.GeoJSONSource
         | undefined;
       if (source) {
-        source.setData({ type: "FeatureCollection", features: meterFeatures });
+        source.setData({
+          type: "FeatureCollection",
+          features: filteredMeterFeatures,
+        });
       }
-      setLastCount(meterFeatures.length);
+      setLastCount(filteredMeterFeatures.length);
 
       // Map Streets with Logic
-      const currentDateTime = new Date(parkingTime);
       const streetFeatures: StreetFeature[] = streets.map((s: any) => {
         const meterInfos = s.meter_infos ?? [];
         // Determine if free:

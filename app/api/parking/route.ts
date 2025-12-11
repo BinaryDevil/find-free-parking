@@ -15,7 +15,19 @@ export async function GET(request: Request) {
 
     // 1. Get Meters
     const metersQuery = `
-      SELECT id, pay_station_id, meter_head, time_in_effect, credit_card, 
+      SELECT id, pay_station_id, meter_head, time_in_effect, credit_card,
+             raw_data->>'t_mf_9a_6p' as t_mf_9a_6p,
+             raw_data->>'t_mf_6p_10' as t_mf_6p_10,
+             raw_data->>'t_sa_9a_6p' as t_sa_9a_6p,
+             raw_data->>'t_sa_6p_10' as t_sa_6p_10,
+             raw_data->>'t_su_9a_6p' as t_su_9a_6p,
+             raw_data->>'t_su_6p_10' as t_su_6p_10,
+             raw_data->>'r_mf_9a_6p' as r_mf_9a_6p,
+             raw_data->>'r_mf_6p_10' as r_mf_6p_10,
+             raw_data->>'r_sa_9a_6p' as r_sa_9a_6p,
+             raw_data->>'r_sa_6p_10' as r_sa_6p_10,
+             raw_data->>'r_su_9a_6p' as r_su_9a_6p,
+             raw_data->>'r_su_6p_10' as r_su_6p_10,
              ST_AsGeoJSON(geom)::json as geom
       FROM parking_meters
       WHERE ST_Intersects(geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))
