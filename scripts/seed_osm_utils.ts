@@ -32,33 +32,53 @@ async function fetchParkingLots(cityName: string) {
   }
 }
 
-function mapOsmToZoneType(tags: any): string {
-  // Logic to determine type
+function mapOsmToZoneType(tags: any): string | null {
+  // Logic to determine type - BE CONSERVATIVE
+  // Only mark as FREE if explicitly tagged as such
   const access = tags.access;
   const fee = tags.fee;
+  const parking = tags.parking; // e.g. "surface", "multi-storey", "underground"
 
+  // Filter out private/restricted access entirely
   if (
     access === "private" ||
     access === "customers" ||
     access === "no" ||
-    access === "employees"
+    access === "employees" ||
+    access === "residents" ||
+    access === "permissive" // Often means "allowed but not public"
   ) {
-    return "PERMIT_ONLY";
+    return null; // Skip entirely - don't display
   }
 
+  // Explicit fee=yes means PAID
   if (fee === "yes") {
     return "PAID";
   }
 
+  // Only FREE if EXPLICITLY tagged as fee=no AND access is public/yes/unset
   if (fee === "no") {
-    // Check for time limits
     if (tags.maxstay) {
       return "FREE_LIMITED";
     }
     return "FREE_UNLIMITED";
   }
 
-  // Default if unknown
+  // If no fee tag, check if it's a public facility (park, etc.)
+  // Common OSM patterns for free public parking
+  if (
+    access === "yes" ||
+    access === "public" ||
+    tags.operator === "City of Vancouver" ||
+    tags.operator === "City of Surrey" ||
+    parking === "park_and_ride"
+  ) {
+    // Likely public, but still not confirmed free - mark as MIXED
+    return "MIXED";
+  }
+
+  // DEFAULT: If we don't know, assume PAID (conservative)
+  // This prevents false positives for "FREE" parking
   return "PAID";
 }
 
@@ -99,17 +119,12 @@ export async function seedOsmParkingLots(cityName: string) {
 
     const tags = el.tags || {};
 
-    // Filter out private
-    if (
-      ["private", "customers", "no", "employees", "residents"].includes(
-        tags.access
-      )
-    ) {
-      continue;
+    // Determine Type (returns null if should skip)
+    const zoneType = mapOsmToZoneType(tags);
+    if (!zoneType) {
+      continue; // Skip private/restricted lots
     }
 
-    // Determine Type
-    const zoneType = mapOsmToZoneType(tags);
     const name = tags.name || `${cityName} Parking Lot`;
     const timeLimit = parseMaxStay(tags.maxstay);
 
