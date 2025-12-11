@@ -6,8 +6,6 @@ params:
 
 ## Tables to Populate
 
-When seeding a new city, the following tables should be populated:
-
 | Table             | Description                                         | Source                          |
 | ----------------- | --------------------------------------------------- | ------------------------------- |
 | `parking_meters`  | On-street paid parking points (meters/pay stations) | City Open Data                  |
@@ -15,7 +13,25 @@ When seeding a new city, the following tables should be populated:
 | `parking_zones`   | Off-street parking lots (polygons)                  | OSM via `seedOsmParkingLots`    |
 | `covered_cities`  | City boundary and metadata                          | OSM via `seedOsmCityCoverage`   |
 
-**Not seeded (runtime data):** `reports`, `user_submissions`, `city_requests`
+**Not seeded (runtime):** `reports`, `user_submissions`, `city_requests`
+
+---
+
+## Parking Zone Classification Logic
+
+The `seedOsmParkingLots` function uses **conservative classification**:
+
+| Condition                                                      | Classification    |
+| -------------------------------------------------------------- | ----------------- |
+| `access` = private/customers/no/employees/residents/permissive | **Skip entirely** |
+| `fee` = yes                                                    | PAID              |
+| `fee` = no + `maxstay` tag                                     | FREE_LIMITED      |
+| `fee` = no (no maxstay)                                        | FREE_UNLIMITED    |
+| `access` = yes/public OR city operator                         | MIXED             |
+| **Default (unknown)**                                          | **PAID**          |
+
+> [!WARNING]
+> OSM data quality varies. Some lots may be incorrectly tagged (e.g. `fee=no` for permit-only lots). Users can correct these via the "Update Status" feature.
 
 ---
 
@@ -55,7 +71,8 @@ When seeding a new city, the following tables should be populated:
 
    - Run `npx tsx scripts/seed_${city_lowercase}.ts` to test.
    - Run `npx tsx scripts/count_by_city.ts` to confirm `parking_meters`.
-   - Verify `parking_zones` and `covered_cities` via SQL queries.
+   - Verify `parking_zones`: `SELECT type, count(*) FROM parking_zones WHERE city='${city}' GROUP BY type`
+   - Verify `covered_cities`: `SELECT city_name FROM covered_cities`
 
 6. **Cleanup**:
    - Delete any temporary probe scripts or data files.
