@@ -139,9 +139,9 @@ export default function ReportModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in duration-200">
+      <div className="w-full max-w-md bg-white text-slate-900 rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in duration-200">
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
-          <h2 className="font-semibold text-gray-900">Report Issue</h2>
+          <h2 className="font-semibold text-gray-900">Update Status</h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -249,7 +249,7 @@ export default function ReportModal({
                   {isSubmitting && (
                     <Loader2 size={16} className="animate-spin" />
                   )}
-                  Submit Report
+                  Submit Update
                 </button>
               </div>
             </form>

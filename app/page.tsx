@@ -292,6 +292,7 @@ export default function Home() {
       map.addSource("streets", {
         type: "geojson",
         data: { type: "FeatureCollection", features: [] },
+        promoteId: "id",
       });
 
       map.addLayer({
@@ -313,7 +314,28 @@ export default function Home() {
         },
       });
 
-      // Streets Layer
+      // Streets Outline Layer (Background for contrast)
+      map.addLayer({
+        id: "streets-line-outline",
+        type: "line",
+        source: "streets",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+        },
+        paint: {
+          "line-color": "#ffffff",
+          "line-width": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            8, // Outline width when hovered
+            6, // Normal outline width (4px line + 1px border)
+          ],
+          "line-opacity": 1,
+        },
+      });
+
+      // Streets Layer (Main)
       map.addLayer({
         id: "streets-line",
         type: "line",
@@ -326,11 +348,16 @@ export default function Home() {
           "line-color": [
             "case",
             ["==", ["get", "is_free"], true],
-            "#4ade80", // Green (Free)
-            "#ef4444", // Red (Paid)
+            "#00A651", // High contrast accessible Green
+            "#DC2626", // High contrast Red
           ],
-          "line-width": 4,
-          "line-opacity": 0.8,
+          "line-width": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            6, // Width when hovered
+            4, // Normal width
+          ],
+          "line-opacity": 1.0,
         },
       });
 
@@ -484,7 +511,7 @@ export default function Home() {
                   }', type: 'METER' } }))"
                   style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
                 >
-                  Report Issue
+                  Update Status
                 </button>
              </div>`
           )
@@ -585,13 +612,13 @@ export default function Home() {
 
         // Header
         contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
-          isFree ? "Free Parking" : "Paid / Restricted"
+          isFree ? "🅿️ Free Street Parking" : "💲 Paid / Restricted"
         }</div>`;
 
         // Street Use / Block info
         contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${
-          props.street_use ?? "Street"
-        } • Block ${props.block_id ?? "?"}</div>`;
+          props.block_id ?? "Unknown Location"
+        }</div>`;
 
         // Calculate walking info if destination is set
         const dest = destinationLocationRef.current;
@@ -626,11 +653,11 @@ export default function Home() {
             );
             if (isActive) {
               hasActiveMeters = true;
-              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">• ${
+              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">⏱ ${
                 info.time_in_effect ?? ""
               }: ${info.rate ?? ""}</div>`;
             } else {
-              contentHtml += `<div style="color:#16a34a;font-size:12px;margin-top:2px;">• ${
+              contentHtml += `<div style="color:#16a34a;font-size:12px;margin-top:2px;">⏱ ${
                 info.time_in_effect ?? ""
               }: Free (Outside Effect Time)</div>`;
             }
@@ -645,7 +672,7 @@ export default function Home() {
 
         // Warning
         if (props.z_status_override === "FREE") {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✓ Verified Free (Community)</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ Verified Free (Community)</div>`;
         }
         if (props.z_status_override === "PAID") {
           contentHtml += `<div style="margin-top:8px;color:#eab308;font-weight:600;font-size:12px">⚠️ Reported as Paid (Community)</div>`;
@@ -664,7 +691,7 @@ export default function Home() {
           onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${props.id}', type: 'STREET' } }))"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
-          Report Issue
+          Update Status
         </button>`;
 
         contentHtml += `</div>`;
@@ -675,13 +702,41 @@ export default function Home() {
           .addTo(map);
       });
 
-      // Cursor pointer events
-      [
-        "spots-unclustered",
-        "spots-clusters",
-        "zones-fill",
-        "streets-line",
-      ].forEach((layer) => {
+      // Interactive hover effect for streets
+      let hoveredStreetId: string | number | null = null;
+
+      map.on("mousemove", "streets-line", (e) => {
+        map.getCanvas().style.cursor = "pointer";
+        if (e.features && e.features.length > 0) {
+          if (hoveredStreetId !== null) {
+            map.setFeatureState(
+              { source: "streets", id: hoveredStreetId },
+              { hover: false }
+            );
+          }
+          hoveredStreetId = e.features[0].id ?? null;
+          if (hoveredStreetId !== null) {
+            map.setFeatureState(
+              { source: "streets", id: hoveredStreetId },
+              { hover: true }
+            );
+          }
+        }
+      });
+
+      map.on("mouseleave", "streets-line", () => {
+        map.getCanvas().style.cursor = "";
+        if (hoveredStreetId !== null) {
+          map.setFeatureState(
+            { source: "streets", id: hoveredStreetId },
+            { hover: false }
+          );
+        }
+        hoveredStreetId = null;
+      });
+
+      // Cursor pointer events for other layers
+      ["spots-unclustered", "spots-clusters", "zones-fill"].forEach((layer) => {
         map.on("mouseenter", layer, () => {
           map.getCanvas().style.cursor = "pointer";
         });
@@ -1039,7 +1094,7 @@ export default function Home() {
         <div className="pointer-events-auto w-full max-w-3xl">
           <form
             onSubmit={handleSearch}
-            className="flex w-full items-center gap-3 rounded-full border border-black/5 bg-white text-slate-900 shadow-[0_4px_14px_rgba(0,0,0,0.18)] ring-1 ring-black/5 transition focus-within:ring-2 focus-within:ring-blue-500/70"
+            className="flex w-full items-center gap-3 rounded-full border border-slate-200 bg-white text-slate-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ring-1 ring-black/5 transition focus-within:ring-2 focus-within:ring-blue-500/70"
           >
             <div className="pl-4 text-slate-500">
               <Search className="h-4 w-4" aria-hidden="true" />
@@ -1057,7 +1112,7 @@ export default function Home() {
                   ? "Current location"
                   : "Search for an address or place"
               }
-              className="w-full bg-transparent py-3 pr-2 text-sm text-slate-900 placeholder:text-slate-400 outline-none"
+              className="w-full bg-transparent py-3 pr-2 text-sm text-slate-900 placeholder:text-slate-500 outline-none"
             />
             <button
               type="button"
