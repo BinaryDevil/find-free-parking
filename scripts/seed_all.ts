@@ -20,44 +20,57 @@ async function runAll() {
 
   try {
     // 1. Vancouver
-    const vanCount = await pool.query(
-      "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Vancouver'"
-    );
-    if (parseInt(vanCount.rows[0].count) > 0) {
-      console.log(
-        `[Vancouver] Data exists (${vanCount.rows[0].count} items). Skipping seed.`
+    let skipVancouver = false;
+    if (!shouldClean) {
+      const vanCount = await pool.query(
+        "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Vancouver'"
       );
-    } else {
+      if (parseInt(vanCount.rows[0].count) > 0) {
+        console.log(
+          `[Vancouver] Data exists (${vanCount.rows[0].count} items). Skipping seed.`
+        );
+        skipVancouver = true;
+      }
+    }
+    if (!skipVancouver) {
       await seedVancouver();
     }
 
     // 2. Coquitlam
-    const coqCount = await pool.query(
-      "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Coquitlam'"
-    );
-    if (parseInt(coqCount.rows[0].count) > 0) {
-      console.log(
-        `[Coquitlam] Data exists (${coqCount.rows[0].count} items). Skipping seed.`
+    let skipCoquitlam = false;
+    if (!shouldClean) {
+      const coqCount = await pool.query(
+        "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Coquitlam'"
       );
-    } else {
+      if (parseInt(coqCount.rows[0].count) > 0) {
+        console.log(
+          `[Coquitlam] Data exists (${coqCount.rows[0].count} items). Skipping seed.`
+        );
+        skipCoquitlam = true;
+      }
+    }
+    if (!skipCoquitlam) {
       await seedCoquitlam();
     }
 
     // 3. Surrey
-    const surreyCount = await pool.query(
-      "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Surrey'"
-    );
-    if (parseInt(surreyCount.rows[0].count) > 0) {
-      console.log(
-        `[Surrey] Data exists (${surreyCount.rows[0].count} items). Skipping seed.`
+    let skipSurrey = false;
+    if (!shouldClean) {
+      const surreyCount = await pool.query(
+        "SELECT count(*) FROM parking_meters WHERE raw_data->>'city' = 'Surrey'"
       );
-    } else {
+      if (parseInt(surreyCount.rows[0].count) > 0) {
+        console.log(
+          `[Surrey] Data exists (${surreyCount.rows[0].count} items). Skipping seed.`
+        );
+        skipSurrey = true;
+      }
+    }
+    if (!skipSurrey) {
       await seedSurrey();
     }
 
-    // 4. Parking Lots (Zones)
-    // Note: City scripts (Vancouver, Surrey, etc.) now handle their own OsmParkingLots seeding.
-    // We can query to check if ANY zones exist just for info.
+    // 4. Note on zones
     const zonesCount = await pool.query("SELECT count(*) FROM parking_zones");
     if (parseInt(zonesCount.rows[0].count) > 0) {
       console.log(

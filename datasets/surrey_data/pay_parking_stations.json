@@ -1,0 +1,3972 @@
+{
+	"type" : "FeatureCollection",
+	"name" : "pay_parking_stations",
+	"crs" : {
+		"type" : "name",
+		"properties" : {
+			"name" : "EPSG:26910"
+		}
+	},
+	"features" : [
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513637.52551269624, 5441112.722717285 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Staff Parking #4",
+				"METER_ID" : "EV025",
+				"METER_STATION" : "AAB-12175",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513659.89129638765, 5441215.05267334 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Visitors #1",
+				"METER_ID" : "EV018",
+				"METER_STATION" : "AAB-12169",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512521.131286622, 5447298.038513184 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 21,
+				"ZONE_NAME" : "Surrey Nature Centre",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : "$90.00",
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Surface Gravel Off-Street",
+				"NUMBER_SPACES" : 30,
+				"ADDRESS" : "14225 Green Timbers Way",
+				"PAYMENT_METHODS" : "Credit Card/PAP/Invoice",
+				"COMMENTS" : "Monthly Parking Only"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516214.98814732395, 5449185.116809268 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr DC2",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Expansion for 2nd DCFC embedded in Pad"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511615.47290039156, 5441994.670715334 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Newton Library and Senior's Centre",
+				"METER_ID" : "EV010",
+				"METER_STATION" : "183241015897",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4021-GW2",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "13775 - 70 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510997.08166150004, 5448702.135091186 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P1 #1",
+				"METER_ID" : "EV006",
+				"METER_STATION" : "183841021401",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4021-GW2",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#218",
+				"METER_STATION" : "500013501588",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "Outside of City Hall/Library Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 4295,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519687.6818352472, 5440570.0596292205 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519695.09018339776, 5440570.588796945 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Cloverdale Sport & Ice Complex #2",
+				"METER_ID" : null,
+				"METER_STATION" : "245076242541",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CP6620B-50A-L5.5",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "6336 177B Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519713.34646990895, 5440571.117964672 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Conduit + Panel Capacity - Level 2"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 521603.122274342, 5442200.377367992 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Clayton Community Centre #2",
+				"METER_ID" : null,
+				"METER_STATION" : "241276214964",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CP6020B-50A-L5.5",
+				"OPERATION_HOURS" : "6:00 AM to 9:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "7155 187A Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : "Access to Charging Station 6:00 am to 9:00 pm, gates are closed after-hours"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512865.6478881845, 5448968.064086912 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Hawthorne Park #1",
+				"METER_ID" : "EV043",
+				"METER_STATION" : "AAB-23503",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "10503 144 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 514287.0670776386, 5448965.782287598 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Guildford Recreation Centre & Library",
+				"METER_ID" : "EV011",
+				"METER_STATION" : "183441017394",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4021-GW2",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "15288 105 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516187.4714256255, 5449196.493915353 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #4",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517300.8708116235, 5432324.303554373 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Edgewood Park #2",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-23424",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "2284 165 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510661.69513154123, 5448653.900967069 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 23,
+				"ZONE_NAME" : "City Centre West On-Street",
+				"METER_ID" : "#078",
+				"METER_STATION" : "520015220783",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "Mon - Fri",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$5.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4316,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 128,
+				"ADDRESS" : "13303 Central Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510797.6160888681, 5449776.862121584 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#058",
+				"METER_STATION" : "500013271026",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13433 Gateway Dr",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510997.1397094736, 5448945.690307617 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #7",
+				"METER_ID" : "EV040",
+				"METER_STATION" : "AAB-12024",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - Inspectors]",
+				"METER_ID" : "EV031",
+				"METER_STATION" : "SOS01121700131",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AeroVironment EVSE-RSW32B25CXXW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - MODO] - EV4",
+				"METER_ID" : "EV015",
+				"METER_STATION" : "123120000088",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Siemens 8EM1111-1DA11-0AA0",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510940.43927001953, 5449814.845092775 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512521.131286622, 5447298.038513184 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 22,
+				"ZONE_NAME" : "Green Timbers - Lot 1",
+				"METER_ID" : null,
+				"METER_STATION" : "0",
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : "$85.00",
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 0,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Surface Gravel Off-Street",
+				"NUMBER_SPACES" : 26,
+				"ADDRESS" : "9800 140 St",
+				"PAYMENT_METHODS" : "Credit Card/PAP/Invoice",
+				"COMMENTS" : "Monthly Parking Only"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516082.83508300874, 5446641.167297367 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Hemlock Works Yard #1",
+				"METER_ID" : "EV032",
+				"METER_STATION" : "AAB-11804 ",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "9353 160 St",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516082.83508300874, 5446641.167297367 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Hemlock Works Yard #2",
+				"METER_ID" : "EV033",
+				"METER_STATION" : "AAB-11805",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "9353 160 St",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 509764.9423217792, 5431092.376708986 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Ocean Park Library #1",
+				"METER_ID" : "EV008",
+				"METER_STATION" : "AAB-11760",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "12854 17 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 509764.9423217792, 5431092.376708986 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Ocean Park Library #2",
+				"METER_ID" : "EV009",
+				"METER_STATION" : "AAB-11732",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "12854 17 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510627.40509033296, 5448694.900878906 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 23,
+				"ZONE_NAME" : "City Centre West On-Street",
+				"METER_ID" : "#064",
+				"METER_STATION" : "520014451698",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "Mon - Fri",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$5.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4316,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 128,
+				"ADDRESS" : "10388 133 St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511462.43750000093, 5445536.624694826 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Arts Centre at Bear Creek Park #1",
+				"METER_ID" : "EV002",
+				"METER_STATION" : "AAB-12433",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13750 88 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510915.7930908222, 5448929.196716309 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511005.97009277344, 5449368.0236816425 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #3",
+				"METER_ID" : "EV036",
+				"METER_STATION" : "AAB-12170",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - Inspectors]",
+				"METER_ID" : "EV029",
+				"METER_STATION" : "HC1C160439726",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Sun Country Highway HCS-40",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - Inspectors]",
+				"METER_ID" : "EV028",
+				"METER_STATION" : "HC1C160439727",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Sun Country Highway HCS-40",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519610.38030000124, 5439154.046500001 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Museum of Surrey",
+				"METER_ID" : null,
+				"METER_STATION" : "(L) AAB-18419 / (R) AAB-18416",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "17710 56A Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519687.6818352472, 5440570.0596292205 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Cloverdale Sport & Ice Complex #1",
+				"METER_ID" : null,
+				"METER_STATION" : "244676239852",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CP6620B-50A-L5.5",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "6336 177B Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 521054.3586515896, 5440374.337387301 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Don Christian Rec Ctr #1",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "6220 184 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Conduit only, in-ground for 4 ports: Per Facilities, tying into Bldg. will req. service upgrade ($100k+)"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513309.94628906157, 5431958.73449707 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "South Surrey Recreation Centre 2",
+				"METER_ID" : "EV005",
+				"METER_STATION" : "AAB-10632 ",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "14600 20 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512433.76026019733, 5447354.740860065 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Nature Centre #1",
+				"METER_ID" : null,
+				"METER_STATION" : "203041023356",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4020-HD-GW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "14225 Green Timbers Way",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 515494.55407714937, 5429312.483093264 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 6,
+				"ZONE_NAME" : "8 Avenue/Marine Drive On-Street",
+				"METER_ID" : "#021",
+				"METER_STATION" : "14523",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "SIEMENS SITRAFFIC PRISMA",
+				"OPERATION_HOURS" : "8:00 AM to 11:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "6",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4294,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 53,
+				"ADDRESS" : "15638 8 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 515823.6630859375, 5429313.279113771 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 6,
+				"ZONE_NAME" : "8 Avenue/Marine Drive On-Street",
+				"METER_ID" : "#023",
+				"METER_STATION" : "14525",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "SIEMENS SITRAFFIC PRISMA",
+				"OPERATION_HOURS" : "8:00 AM to 11:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "6",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4294,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 53,
+				"ADDRESS" : "15638 8 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516189.7203884553, 5449184.587641543 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #4",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516193.8214383237, 5449196.758499218 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #5",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516196.599568882, 5449184.852225402 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #2",
+				"METER_ID" : null,
+				"METER_STATION" : "210941009401",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4020-HD-GW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516203.21416544355, 5449185.116809264 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #1",
+				"METER_ID" : null,
+				"METER_STATION" : "210941009614",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4020-HD-GW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 509354.9080999978, 5449841.009099999 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "North Surrey Sport & Ice Complex #2",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : "10950 126A St",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 509355.7091862364, 5449831.486773634 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "North Surrey Sport & Ice Complex",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-14408 / AAB-14418",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10950 126A Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510770.8615112314, 5448512.301513672 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 23,
+				"ZONE_NAME" : "City Centre West On-Street",
+				"METER_ID" : "#068",
+				"METER_STATION" : "520014451702",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "Mon - Fri",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$5.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4316,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 128,
+				"ADDRESS" : "10297 133A St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511220.67932128906, 5447859.936096191 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #2",
+				"METER_ID" : "EV035",
+				"METER_STATION" : "AAB-12017",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - MODO] - EV3",
+				"METER_ID" : "EV014",
+				"METER_STATION" : "123020000056",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Siemens 8EM1111-1DA11-0AA0",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 518473.2338243136, 5428648.474781038 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "The Glades #1",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-13783",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "457 172 St",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : "Location open seasonally (Spring-Fall)"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 521602.67483050004, 5442207.4385812245 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Clayton Community Centre #1",
+				"METER_ID" : null,
+				"METER_STATION" : "241276214962",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CP6020B-50A-L5.5",
+				"OPERATION_HOURS" : "6:00 AM to 9:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "7155 187A Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : "Access to Charging Station 6:00 am to 9:00 pm, gates are closed after-hours"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510943.8614903968, 5449815.884695783 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#218",
+				"METER_STATION" : "500013501588",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13500 Blk Gateway Dr/13468 King George Blvd",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510951.68927001953, 5449591.966125488 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#215",
+				"METER_STATION" : "520014230464",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13401 108 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513309.56750488374, 5431964.291870121 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "South Surrey Recreation Centre 1",
+				"METER_ID" : "EV004",
+				"METER_STATION" : "AAB-11727",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "14600 20 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513637.52551269624, 5441112.722717285 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Staff Parking #3",
+				"METER_ID" : "EV024",
+				"METER_STATION" : "AAB-12172",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513643.5084838867, 5441112.737487793 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Staff Parking #5",
+				"METER_ID" : "EV026",
+				"METER_STATION" : "AAB-12180",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512865.75454185717, 5448961.207094178 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Hawthorne Park #3",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-23514",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "10503 144 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516206.6537556555, 5449197.02308308 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #7",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516212.73918449413, 5449197.287666939 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #8",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517299.01872458495, 5432325.62647368 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Edgewood Park #1",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-23518",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "2284 165 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510787.01068115234, 5448506.9428710975 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 27,
+				"ZONE_NAME" : "City Centre West (Parking Lot)",
+				"METER_ID" : "#202",
+				"METER_STATION" : "600208879",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$2.00",
+				"DAILY_RATE" : "$8.00",
+				"MAXIMUM_HOURS" : "All Day (to Midnight)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 50170,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Surface Gravel Off-Street",
+				"NUMBER_SPACES" : 58,
+				"ADDRESS" : "10262 133A St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511356.44970703125, 5447341.153686523 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 8,
+				"ZONE_NAME" : "Health Care Zone On-Street",
+				"METER_ID" : "#042",
+				"METER_STATION" : "600602096",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$3.00",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "4 Hours",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4309,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 142,
+				"ADDRESS" : "9600 Blk 136A St/9666 King George Blvd",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.2545166025, 5449529.864318848 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#214",
+				"METER_STATION" : "500013501589",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 5009,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#223",
+				"METER_STATION" : "520014230460",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 5009,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - MODO] - EV1",
+				"METER_ID" : "EV012",
+				"METER_STATION" : "123120000061",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Siemens 8EM1111-1DA11-0AA0",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - MODO] - EV5",
+				"METER_ID" : "EV016",
+				"METER_STATION" : "SOS01121700156",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AeroVironment EVSE-RSW32B25CXXW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - MODO] - EV2",
+				"METER_ID" : "EV013",
+				"METER_STATION" : "123120000067",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Siemens 8EM1111-1DA11-0AA0",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519725.2527437201, 5440571.117964672 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Conduit + Panel Capacity - Level 2"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510997.9672851572, 5449731.816528322 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#214",
+				"METER_STATION" : "500013501589",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "10866 City Parkway",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513632.0546875, 5441112.153503418 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Staff Parking #2",
+				"METER_ID" : "EV023",
+				"METER_STATION" : "AAB-12174",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513643.5084838867, 5441112.737487793 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Staff Parking #6",
+				"METER_ID" : "EV027",
+				"METER_STATION" : "AAB-12173",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 515396.19512939453, 5429313.211120607 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 6,
+				"ZONE_NAME" : "8 Avenue/Marine Drive On-Street",
+				"METER_ID" : "#020",
+				"METER_STATION" : "14522",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "SIEMENS SITRAFFIC PRISMA",
+				"OPERATION_HOURS" : "8:00 AM to 11:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "6",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4294,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 53,
+				"ADDRESS" : "15638 8 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 515578.42712402437, 5429312.681091309 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 6,
+				"ZONE_NAME" : "8 Avenue/Marine Drive On-Street",
+				"METER_ID" : "#022",
+				"METER_STATION" : "14524",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "SIEMENS SITRAFFIC PRISMA",
+				"OPERATION_HOURS" : "8:00 AM to 11:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "6",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4294,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 53,
+				"ADDRESS" : "15638 8 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516200.0391590921, 5449196.758499218 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #6",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517305.36873728596, 5432321.657715747 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Edgewood Park #4",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-23519",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "2284 165 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517348.09008789156, 5432414.566284182 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "South Surrey Operations Centre",
+				"METER_ID" : "EV042",
+				"METER_STATION" : "183441017396",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4021-GW2",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "2336 166 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517246.580078125, 5444407.953918457 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : "\t183241016028",
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.03/min for the 1st hour, $0.08/min each additional hour",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "16555 Fraser Hwy",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510625.2078857422, 5448545.0479125995 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 23,
+				"ZONE_NAME" : "City Centre West On-Street",
+				"METER_ID" : "#066",
+				"METER_STATION" : "520014451700",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "Mon - Fri",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$5.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4316,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 128,
+				"ADDRESS" : "10290 133 St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510833.0393066406, 5449567.934082029 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#076",
+				"METER_STATION" : "520015220781",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13380 108 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510853.92791748047, 5449660.802490236 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#075",
+				"METER_STATION" : "520015220780",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "10899 University Dr",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511410.7375850836, 5447252.674516685 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 8,
+				"ZONE_NAME" : "Health Care Zone On-Street",
+				"METER_ID" : "#051",
+				"METER_STATION" : "600606391",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$3.00",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "4 Hours",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4309,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 142,
+				"ADDRESS" : "9645 137 Street",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511499.63776288554, 5447197.111905562 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 8,
+				"ZONE_NAME" : "Health Care Zone On-Street",
+				"METER_ID" : "#052",
+				"METER_STATION" : "600606392",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$3.00",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "4 Hours",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4309,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 142,
+				"ADDRESS" : "9600 Blk 137A St/13737 96 Avenue",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511520.11712646484, 5447286.210510254 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 8,
+				"ZONE_NAME" : "Health Care Zone On-Street",
+				"METER_ID" : "#041",
+				"METER_STATION" : "600602012",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$3.00",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "4 Hours",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4309,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 142,
+				"ADDRESS" : "9688 137A St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510961.2315063495, 5449402.419494631 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #8",
+				"METER_ID" : "EV041",
+				"METER_STATION" : "AAB-12178",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 4295,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519388.982482912, 5439392.66809082 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Cloverdale Town Centre DCFC [BC Hydro]",
+				"METER_ID" : "53022",
+				"METER_STATION" : "BC1-00259 / BC1-00292",
+				"METER_TYPE" : "EV Charging Station - Level 3 / DCFC",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.3609 per kWh",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 4,
+				"ADDRESS" : "5761 176A Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : "Stations provided and managed by BC Hydro"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519701.9693638226, 5440570.853380807 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Cloverdale Sport & Ice Complex #3",
+				"METER_ID" : null,
+				"METER_STATION" : "245176243240",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CP6620B-50A-L5.5",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "6336 177B Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511006.5302734375, 5449614.335510254 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#220",
+				"METER_STATION" : "520014230462",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13479 108 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513632.0546875, 5441112.153503418 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Staff Parking #1",
+				"METER_ID" : "EV022",
+				"METER_STATION" : "AAB-12171",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513659.5858764658, 5441220.499328613 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Visitors #3",
+				"METER_ID" : "EV020",
+				"METER_STATION" : "AAB-12102",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513659.89129638765, 5441215.05267334 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Visitors #2",
+				"METER_ID" : "EV019",
+				"METER_STATION" : "AAB-12099",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512437.6566343298, 5447352.179028802 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Nature Centre #3",
+				"METER_ID" : null,
+				"METER_STATION" : "204141034173",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4020-HD-GW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "14225 Green Timbers Way",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512441.5592462998, 5447349.797774047 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Nature Centre #2",
+				"METER_ID" : null,
+				"METER_STATION" : "204141034080",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4020-HD-GW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "14225 Green Timbers Way",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516210.3579297317, 5449184.852225408 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr DC1",
+				"METER_ID" : null,
+				"METER_STATION" : "202302005614",
+				"METER_TYPE" : "EV Charging Station - Level 3 / DCFC",
+				"METER_MODEL" : "ChargePoint CPE250C-500-CCS1-CHD",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.25/min for the 1st hour, $0.45/min each additional hour",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 516219.35378105566, 5449197.552250804 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Fraser Heights Rec Ctr #9",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "10588 160 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517303.51665024925, 5432322.716051195 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Edgewood Park #3",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-23423",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "2284 165 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510700.26391601656, 5448468.282104492 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 23,
+				"ZONE_NAME" : "City Centre West On-Street",
+				"METER_ID" : "#067",
+				"METER_STATION" : "520014451701",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "Mon - Fri",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$5.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4316,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 128,
+				"ADDRESS" : "13321 102A Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510853.8356933594, 5449543.486511234 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#077",
+				"METER_STATION" : "520015220782",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13380 108 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511462.43750000093, 5445536.624694826 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Arts Centre at Bear Creek Park #2",
+				"METER_ID" : "EV003",
+				"METER_STATION" : "AAB-12434",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13750 88 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511408.8854980469, 5447388.538330078 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 8,
+				"ZONE_NAME" : "Health Care Zone On-Street",
+				"METER_ID" : "#054",
+				"METER_STATION" : "600600503",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$3.00",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "4 Hours",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4309,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 142,
+				"ADDRESS" : "9711 137 St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510957.8579101581, 5448995.608276367 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510996.81707763765, 5448708.220520023 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P1 #2",
+				"METER_ID" : "EV007",
+				"METER_STATION" : "182941013635",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4021-GW2",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #4",
+				"METER_ID" : "EV037",
+				"METER_STATION" : "AAB-12103",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #1",
+				"METER_ID" : "EV034",
+				"METER_STATION" : "AAB-12147",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #5",
+				"METER_ID" : "EV038",
+				"METER_STATION" : "AAB-12306",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511007.92871093657, 5448690.010681152 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 Employee #6",
+				"METER_ID" : "EV039",
+				"METER_STATION" : "AAB-12305",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Employee",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511008.10449218843, 5449094.727111818 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 1,
+				"ZONE_NAME" : "City Centre North On-Street",
+				"METER_ID" : "#072",
+				"METER_STATION" : "500013501590",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$6.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4317,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 327,
+				"ADDRESS" : "13461 105A Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#221",
+				"METER_STATION" : "520014230463",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 5009,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#222",
+				"METER_STATION" : "520014230461",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "Outside of City Hall/Library Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 4295,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#219",
+				"METER_STATION" : "520014230466",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "Outside of City Hall/Library Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 4295,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511021.8261108408, 5448687.624084473 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 15,
+				"ZONE_NAME" : "City Hall Parkade",
+				"METER_ID" : "#217",
+				"METER_STATION" : "500013501581",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "Outside of City Hall/Library Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : "$130.00",
+				"PAY_BY_PHONE" : 4295,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Below Ground Multi-Level Parkade",
+				"NUMBER_SPACES" : 834,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Cash/Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511022.03430175874, 5448741.399291994 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P2 [Fleet - Inspectors]",
+				"METER_ID" : "EV030",
+				"METER_STATION" : "HC1C160439728",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "Sun Country Highway HCS-40",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Fleet",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 518473.2007513344, 5428648.44170806 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "The Glades #2",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-13787",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "457 172 St",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : "Location open seasonally (Spring-Fall)"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519669.95471645705, 5440555.242932919 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Conduit + Panel Capacity - Level 2"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519670.7484680461, 5440543.336659107 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Cloverdale Sport & Ice Complex #4",
+				"METER_ID" : null,
+				"METER_STATION" : "245176243271",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CP6620B-50A-L5.5",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "6336 177B Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 521054.0229456313, 5440369.014565237 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Don Christian Rec Ctr #2",
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "6220 184 Street",
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Conduit only, in-ground for 4 ports: Per Facilities, tying into Bldg. will req. service upgrade ($100k+)"
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511078.9890842531, 5448731.067197125 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Civic Plaza / Surrey Eye Care Centre",
+				"METER_ID" : "#084",
+				"METER_STATION" : "600602095",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.50",
+				"DAILY_RATE" : "$8.00",
+				"MAXIMUM_HOURS" : "All Day",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4287,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Surface Paved Off-Street",
+				"NUMBER_SPACES" : 48,
+				"ADDRESS" : "13484 104 Avenue",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 513659.5858764658, 5441220.499328613 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey Operations Centre - Visitors #4",
+				"METER_ID" : "EV021",
+				"METER_STATION" : "AAB-12131",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie CoRe+",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "6651 148 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 512865.68305965606, 5448964.488319837 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Hawthorne Park #2",
+				"METER_ID" : null,
+				"METER_STATION" : "AAB-23512",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "AddEnergie/FLO CoRePlus v2 SC",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "10503 144 Street",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510788.07287597656, 5448659.339477541 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 23,
+				"ZONE_NAME" : "City Centre West On-Street",
+				"METER_ID" : "#069",
+				"METER_STATION" : "520014451703",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "DIGITAL PAYMENT TECHNOLOGIES LUKE II",
+				"OPERATION_HOURS" : "8:00 AM to 6:00 PM",
+				"OPERATION_DAYS" : "Mon - Fri",
+				"HOURLY_RATE" : "$0.75 each 30 Minutes",
+				"DAILY_RATE" : "$5.00",
+				"MAXIMUM_HOURS" : "All Day (to 6pm)",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4316,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 128,
+				"ADDRESS" : "10364 133A St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511587.7214965839, 5447248.89367676 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : 8,
+				"ZONE_NAME" : "Health Care Zone On-Street",
+				"METER_ID" : "#046",
+				"METER_STATION" : "600602013",
+				"METER_TYPE" : "Paystation",
+				"METER_MODEL" : "MacKay Tango",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$3.00",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : "4 Hours",
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : 4309,
+				"OWNER" : "Surrey",
+				"ON_OFF_STREET" : "On",
+				"ZONE_TYPE" : "On-Street Parking",
+				"NUMBER_SPACES" : 142,
+				"ADDRESS" : "9650 137A St",
+				"PAYMENT_METHODS" : "Credit Card/PayByPhone",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510928.03808593843, 5449418.535095215 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : null,
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 510996.81707763765, 5448708.220520023 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P1 DC1",
+				"METER_ID" : "53018",
+				"METER_STATION" : "202402005804",
+				"METER_TYPE" : "EV Charging Station - Level 3 / DCFC",
+				"METER_MODEL" : "ChargePoint CPE250C-500-CCS1-CHD",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.25/min for the 1st hour, $0.45/min each additional hour",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 511003.0780874314, 5448708.789355779 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Surrey City Hall - P1 DC2",
+				"METER_ID" : null,
+				"METER_STATION" : "202402005805",
+				"METER_TYPE" : "EV Charging Station - Level 3 / DCFC",
+				"METER_MODEL" : "ChargePoint CPE250C-500-CCS1-CHD",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$0.25/min for the 1st hour, $0.45/min each additional hour",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 1,
+				"ADDRESS" : "13450 104 Avenue",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 517914.81689453125, 5432684.281494141 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : "Grandview Heights Aquatic Centre #1",
+				"METER_ID" : "EV017",
+				"METER_STATION" : "220141000259",
+				"METER_TYPE" : "EV Charging Station - Level 2",
+				"METER_MODEL" : "ChargePoint CT4010-HD-GW",
+				"OPERATION_HOURS" : "24 Hours",
+				"OPERATION_DAYS" : "7 Days/Week",
+				"HOURLY_RATE" : "$1.25",
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : "Off",
+				"ZONE_TYPE" : "Public",
+				"NUMBER_SPACES" : 2,
+				"ADDRESS" : "16855 24 Ave",
+				"PAYMENT_METHODS" : "Credit Card via App",
+				"COMMENTS" : null
+			}
+		},
+		{
+			"type" : "Feature",
+			"geometry" : {
+				"type" : "Point",
+				"coordinates" : [ 519719.4318987448, 5440571.382548533 ]
+			},
+			"properties" : {
+				"ZONE_NUMBER" : null,
+				"ZONE_NAME" : null,
+				"METER_ID" : null,
+				"METER_STATION" : null,
+				"METER_TYPE" : "EV Charging Station - Future",
+				"METER_MODEL" : null,
+				"OPERATION_HOURS" : null,
+				"OPERATION_DAYS" : null,
+				"HOURLY_RATE" : null,
+				"DAILY_RATE" : null,
+				"MAXIMUM_HOURS" : null,
+				"MONTHLY_UNRESERVED_RATE" : null,
+				"MONTHLY_RESERVED_RATE" : null,
+				"PAY_BY_PHONE" : null,
+				"OWNER" : null,
+				"ON_OFF_STREET" : null,
+				"ZONE_TYPE" : null,
+				"NUMBER_SPACES" : null,
+				"ADDRESS" : null,
+				"PAYMENT_METHODS" : null,
+				"COMMENTS" : "Conduit + Panel Capacity - Level 2"
+			}
+		}
+	]
+}

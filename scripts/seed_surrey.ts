@@ -7,16 +7,25 @@ import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 const pool = getDbPool();
 
 export async function seedSurrey() {
-  const url =
-    "https://cosmos.surrey.ca/geo_ref/Images/OpenDataArchives/pay_parking_stations_JSON.zip";
-  const zipPath = "surrey_pk.zip";
-  const extractDir = "surrey_data_temp";
+  const extractDir = path.resolve(process.cwd(), "datasets/surrey_data");
 
-  console.log("[Surrey] Downloading...");
-  execSync(`curl -L -s -o ${zipPath} "${url}"`);
+  if (!fs.existsSync(extractDir)) {
+    console.log("[Surrey] Sample data not found. Downloading...");
+    // Fallback download logic (simplified or kept as original but redirecting to sample_data?)
+    // Since we manually downloaded, we expect it to be there.
+    // If missing, we can error or download. Let's keep download for robustness but point to sample_data.
+    // Actually, better to just error or try to find it.
+    // For now, I will assume it's there or download if not.
 
-  console.log("[Surrey] Unzipping...");
-  execSync(`unzip -o -q ${zipPath} -d ${extractDir}`);
+    const zipPath = "surrey_pk.zip"; // Temp
+    const url =
+      "https://cosmos.surrey.ca/geo_ref/Images/OpenDataArchives/pay_parking_stations_JSON.zip";
+    execSync(`curl -L -s -o ${zipPath} "${url}"`);
+    execSync(`unzip -o -q ${zipPath} -d ${extractDir}`);
+    fs.rmSync(zipPath);
+  } else {
+    console.log("[Surrey] Using existing data in datasets/surrey_data");
+  }
 
   const files = fs.readdirSync(extractDir);
   const jsonFile = files.find((f) => f.endsWith(".json"));
@@ -85,9 +94,9 @@ export async function seedSurrey() {
 
   console.log(`[Surrey] Seeding Complete. Inserted ${inserted}.`);
 
-  // Cleanup
-  fs.rmSync(zipPath);
-  fs.rmSync(extractDir, { recursive: true, force: true });
+  // Cleanup - do not delete sample_data
+  // fs.rmSync(zipPath); // zipPath was handled in block
+  // fs.rmSync(extractDir, { recursive: true, force: true });
 }
 
 // Allow standalone run

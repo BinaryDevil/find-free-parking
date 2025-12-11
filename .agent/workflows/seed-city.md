@@ -53,6 +53,10 @@ The `seedOsmParkingLots` function uses **conservative classification**:
 
    - Create `scripts/seed_${city_lowercase}.ts`.
    - Copy structure from `seed_coquitlam.ts` (Lines→Points) or `seed_vancouver.ts` (native Points).
+   - **Implement Fallback Strategy (Crucial)**:
+     - Check 1: Look for a local file in `datasets/${city}_<type>.<ext>`.
+     - Check 2: If found, read and parse the local file (fast/offline).
+     - Check 3: If missing, `fetch` from the official API URL (fallback).
    - Normalize data to match `parking_meters` schema.
    - **Always include**:
      ```typescript

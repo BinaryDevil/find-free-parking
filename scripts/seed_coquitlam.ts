@@ -3,10 +3,23 @@ import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 
 const pool = getDbPool();
 
-async function fetchArcGisGeoJson() {
+async function getCoquitlamData() {
+  const fs = await import("fs");
+  const path = await import("path");
+  const localFile = path.resolve(
+    process.cwd(),
+    "datasets/coquitlam_parking_meters.geojson"
+  );
+
+  if (fs.existsSync(localFile)) {
+    console.log(`[Coquitlam] Reading from local file: ${localFile}`);
+    const content = fs.readFileSync(localFile, "utf-8");
+    return JSON.parse(content);
+  }
+
   const url =
     "https://services2.arcgis.com/Q6Lq3evZUGfPrN7o/arcgis/rest/services/Transportation/FeatureServer/6/query?where=1=1&outFields=*&f=geojson";
-  console.log(`[Coquitlam] Fetching ${url}...`);
+  console.log(`[Coquitlam] Local file not found. Fetching ${url}...`);
   const res = await fetch(url);
   if (!res.ok)
     throw new Error(`Failed to fetch Coquitlam data: ${res.statusText}`);
@@ -19,89 +32,75 @@ export async function seedCoquitlam() {
     // Coquitlam "On Street Pay Parking"
     // URL: https://maps.coquitlam.ca/arcgis/rest/services/DynamicServices/Transportation/MapServer/8
 
-    const data = await fetchArcGisGeoJson();
+    const data = await getCoquitlamData();
     console.log(`[Coquitlam] Fetched ${data.features.length} records.`);
 
     let inserted = 0;
-    for (const item of data.features) {
-      if (!item.geometry) continue;
+    // Batch Insert Logic
+    const CHUNK_SIZE = 500;
+    for (let i = 0; i < data.features.length; i += CHUNK_SIZE) {
+      const chunk = data.features.slice(i, i + CHUNK_SIZE);
+      const values: any[] = [];
+      const placeholders: string[] = [];
+      let paramIndex = 1;
 
-      // Mapping Coquitlam -> ParkingMeters
-      // Properties: RATE_HOUR, RATE_DAY, TIME_LIMITS, TYPE, PAY_STATION_ID (maybe?)
-      // Let's inspect known fields:
-      // RATE_HOUR -> r_mf_9a_6p (Generalize)
-      // TIME_LIMITS -> time_in_effect / limit (e.g. "2 HR")
-      // TYPE -> meter_head
+      for (const item of chunk) {
+        if (!item.geometry) continue;
 
-      const p = item.properties;
-      const rate = p.RATE_HOUR ? `$${p.RATE_HOUR}/hr` : null;
-      const limit = p.TIME_LIMITS; // e.g. "2 hr"
-      const type = p.TYPE; // e.g. "Pay Station"
+        // Mapping logic copy-paste
+        const p = item.properties;
+        const rate = p.RATE_HOUR ? `$${p.RATE_HOUR}/hr` : null;
+        const limit = p.TIME_LIMITS;
+        const type = p.TYPE;
+        const payStationId = p.STATION_ID || p.PAY_STATION_ID || "Coq-Station";
 
-      // Coquitlam uses Pay Stations mostly.
-      const payStationId = p.STATION_ID || p.PAY_STATION_ID || "Coq-Station"; // Guessing ID field or generating one
+        const normalizedProps = {
+          ...p,
+          t_mf_9a_6p: limit,
+          r_mf_9a_6p: rate,
+          city: "Coquitlam",
+        };
 
-      // We need to insert into parking_meters
-      // Mapped fields:
-      // pay_station_id ->
-      // meter_head -> p.TYPE
-      // time_in_effect -> "See Sign" or p.TIME_LIMITS ?
-      // rates -> p.RATE_HOUR
+        const isPoint = item.geometry.type === "Point";
+        // Params: payStationId, type, timeInEffect ("Check Sign"), creditCard (false), geometryStr, rawData
 
-      // Construct raw_data carefully to preserve all Coquitlam fields for popup
-      const rawData = JSON.stringify(p);
-
-      // Values for DB
-      const values = [
-        payStationId,
-        type, // meter_head
-        limit, // time_in_effect (using limit as proxy for valid time text for now, or null)
-        false, // credit_card (Unknown, assume no or null)
-        JSON.stringify(item.geometry),
-        rawData,
-      ];
-
-      // Special logic: The schema expects rate columns in raw_data to be present for the popup to work?
-      // Our popup uses props.t_mf_9a_6p etc.
-      // We should inject these standardized keys into raw_data or properties.
-      // But wait, `raw_data` is JSONB. The frontend uses `properties` flattened from `raw_data`?
-      // No, frontend uses properties from API which comes from DB `raw_data`.
-      // So if we want the popup to show "Limit: 2 HR", we need `t_mf_9a_6p` in `raw_data`.
-      // Or we update Frontend to look for `RATE_HOUR` too?
-      // Better to Normalize in Seeding:
-      // Add `t_mf_9a_6p` = p.TIME_LIMITS
-      // Add `r_mf_9a_6p` = p.RATE_HOUR
-
-      const normalizedProps = {
-        ...p,
-        t_mf_9a_6p: limit, // Normalize for Frontend
-        r_mf_9a_6p: rate, // Normalize for Frontend
-        city: "Coquitlam",
-      };
-
-      // 5. Handle Geometry (Convert LineString -> Point/Centroid if needed)
-      // The dataset might be "Pay Parking Zones" (Lines) instead of Meters (Points).
-      // We store them as standard "Meters" (Points) for the UI to render a clickable cluster.
-      const isPoint = item.geometry.type === "Point";
-      const geomExpr = isPoint
-        ? "ST_GeomFromGeoJSON($5)"
-        : "ST_Centroid(ST_GeomFromGeoJSON($5))";
-
-      await pool.query(
-        `
-          INSERT INTO parking_meters (id, pay_station_id, meter_head, time_in_effect, credit_card, geom, raw_data)
-          VALUES (gen_random_uuid(), $1, $2, $3, $4, ${geomExpr}, $6)
-        `,
-        [
+        values.push(
           payStationId,
           type,
-          "Check Sign", // Time in effect generic text
+          "Check Sign",
           false,
           JSON.stringify(item.geometry),
-          JSON.stringify(normalizedProps),
-        ]
-      );
-      inserted++;
+          JSON.stringify(normalizedProps)
+        );
+
+        const pi = () => `$${paramIndex++}`;
+        const p1 = pi(); // payStationId
+        const p2 = pi(); // type
+        const p3 = pi(); // time
+        const p4 = pi(); // credit_card
+        const p5 = pi(); // geom
+        const p6 = pi(); // raw_data
+
+        const geomExpr = `ST_Centroid(ST_GeomFromGeoJSON(${p5}))`;
+
+        placeholders.push(
+          `(gen_random_uuid(), ${p1}, ${p2}, ${p3}, ${p4}, ${geomExpr}, ${p6})`
+        );
+        inserted++;
+      }
+
+      if (placeholders.length > 0) {
+        const query = `
+                INSERT INTO parking_meters (id, pay_station_id, meter_head, time_in_effect, credit_card, geom, raw_data)
+                VALUES ${placeholders.join(", ")}
+             `;
+        await pool.query(query, values);
+        console.log(
+          `[Coquitlam] Inserted batch ${i / CHUNK_SIZE + 1} (${inserted} / ${
+            data.features.length
+          })`
+        );
+      }
     }
     await seedOsmParkingLots("Coquitlam");
     await seedOsmCityCoverage("Coquitlam");
@@ -110,4 +109,9 @@ export async function seedCoquitlam() {
   } catch (e) {
     console.error("Coquitlam Seeding Failed:", e);
   }
+}
+
+// Allow direct execution
+if (require.main === module) {
+  seedCoquitlam().finally(() => pool.end());
 }
