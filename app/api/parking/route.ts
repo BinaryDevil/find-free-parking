@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
     // 1. Get Meters
     const metersQuery = `
-      SELECT id, pay_station_id, meter_head, time_in_effect, credit_card,
+      SELECT id, pay_station_id, meter_head, time_in_effect, credit_card, report_counts,
              raw_data->>'t_mf_9a_6p' as t_mf_9a_6p,
              raw_data->>'t_mf_6p_10' as t_mf_6p_10,
              raw_data->>'t_sa_9a_6p' as t_sa_9a_6p,
@@ -38,7 +38,7 @@ export async function GET(request: Request) {
     // We check if any meter is within 15 meters of the street line.
     // This implies PAIED parking is present on that block face.
     const streetsQuery = `
-      SELECT s.id, s.block_id, s.street_use,
+      SELECT s.id, s.block_id, s.street_use, s.report_counts,
              ST_AsGeoJSON(s.geom)::json as geom,
              (
                 SELECT json_agg(json_build_object('time_in_effect', m.time_in_effect, 'rate', m.raw_data->>'r_mf_9a_6p')) 

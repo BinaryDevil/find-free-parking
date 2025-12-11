@@ -11,6 +11,7 @@ import { checkCoverage } from "@/app/actions/coverage";
 import { LocateFixed, Loader2, Search, MapPinOff, X } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
+import ReportModal from "@/components/ReportModal";
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
@@ -63,6 +64,8 @@ type SpotFeature = {
     time_in_effect?: string;
     credit_card?: boolean;
     rate?: string;
+    report_counts?: Record<string, number>;
+    z_status_override?: "FREE" | "PAID" | null; // Calculated status
   };
 };
 
@@ -91,6 +94,8 @@ type StreetFeature = {
       rate: string;
     }>;
     is_free?: boolean; // Calculated on client
+    report_counts?: Record<string, number>;
+    z_status_override?: "FREE" | "PAID" | null;
   };
 };
 
@@ -125,7 +130,15 @@ export default function Home() {
   const [destinationLocation, setDestinationLocation] = useState<
     [number, number] | null
   >(null);
+
   const destinationLocationRef = useRef<[number, number] | null>(null);
+
+  // Reporting state
+  const [reportModalOpen, setReportModalOpen] = useState(false);
+  const [reportTargetId, setReportTargetId] = useState<string | null>(null);
+  const [reportTargetType, setReportTargetType] = useState<
+    "METER" | "STREET" | null
+  >(null);
 
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
@@ -153,6 +166,25 @@ export default function Home() {
     // We do this silently (visualizePitch: false logic?) or just reuse handleUseMyLocation
     // But handleUseMyLocation sets 'isLocating' spinner. That is fine.
     handleUseMyLocation(true);
+
+    // Event listener for report modal
+    const handleReportEvent = (e: CustomEvent) => {
+      console.log("Opening report modal for", e.detail);
+      setReportTargetId(e.detail.id);
+      setReportTargetType(e.detail.type);
+      setReportModalOpen(true);
+    };
+
+    window.addEventListener(
+      "open-report-modal" as any,
+      handleReportEvent as any
+    );
+    return () => {
+      window.removeEventListener(
+        "open-report-modal" as any,
+        handleReportEvent as any
+      );
+    };
   }, []);
 
   function handleCloseHelp() {
@@ -228,6 +260,9 @@ export default function Home() {
       minZoom: MIN_ZOOM,
       attributionControl: false,
     });
+
+    // Set padding to avoid UI overlapping popups (Search bar + Filters)
+    map.setPadding({ top: 180 });
 
     map.addControl(
       new maplibregl.NavigationControl({ visualizePitch: true }),
@@ -418,6 +453,16 @@ export default function Home() {
                     ? `<div style="margin-top:4px;font-weight:600;color:#1f2937;font-size:12px">${props.timeineffe}</div>`
                     : ""
                 }
+                ${
+                  props.z_status_override === "FREE"
+                    ? `<div style="margin-top:4px;color:#16a34a;font-weight:600;font-size:12px">✓ Verified Free (Community)</div>`
+                    : ""
+                }
+                ${
+                  props.z_status_override === "PAID"
+                    ? `<div style="margin-top:4px;color:#eab308;font-weight:600;font-size:12px">⚠️ Reported as Paid (Community)</div>`
+                    : ""
+                }
                 <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
                   ⚠️ Check signs for rush hour restrictions
                 </div>
@@ -433,6 +478,14 @@ export default function Home() {
             }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
                   Get Directions
                 </a>
+                <button 
+                  onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
+                    props.id
+                  }', type: 'METER' } }))"
+                  style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
+                >
+                  Report Issue
+                </button>
              </div>`
           )
           .addTo(map);
@@ -589,6 +642,13 @@ export default function Home() {
         }
 
         // Warning
+        if (props.z_status_override === "FREE") {
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✓ Verified Free (Community)</div>`;
+        }
+        if (props.z_status_override === "PAID") {
+          contentHtml += `<div style="margin-top:8px;color:#eab308;font-weight:600;font-size:12px">⚠️ Reported as Paid (Community)</div>`;
+        }
+
         contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
           ⚠️ Verification required. Check local signs.
         </div>`;
@@ -597,6 +657,13 @@ export default function Home() {
         contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${e.lngLat.lat},${e.lngLat.lng}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
           Get Directions
         </a>`;
+
+        contentHtml += `<button 
+          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${props.id}', type: 'STREET' } }))"
+          style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
+        >
+          Report Issue
+        </button>`;
 
         contentHtml += `</div>`;
 
@@ -703,20 +770,32 @@ export default function Home() {
           r_mf_6p_10: m.r_mf_6p_10,
           r_sa_9a_6p: m.r_sa_9a_6p,
           r_su_9a_6p: m.r_su_9a_6p,
+          report_counts: m.report_counts,
         },
       }));
 
       const currentDateTime = new Date(parkingTimeRef.current);
       const filteredMeterFeatures = meterFeatures.filter((m) => {
-        const isActive = isMeterActive(
+        const counts = m.properties.report_counts ?? {};
+        const reportedFree = (counts["FREE"] || 0) >= 3;
+        const reportedPaid = (counts["PAID"] || 0) >= 3;
+
+        let isActive = isMeterActive(
           m.properties.time_in_effect,
           currentDateTime
         );
+
+        // Aggregation Overrides
+        if (reportedPaid) isActive = true; // Treat as Paid
+        if (reportedFree) isActive = false; // Treat as Free
+
+        // visual flag
+        if (reportedPaid) m.properties.z_status_override = "PAID";
+        if (reportedFree) m.properties.z_status_override = "FREE";
+
         if (filterTypeRef.current === "FREE") {
-          // In Free mode, only show Meters that are NOT active (i.e. free right now)
           return !isActive;
         } else {
-          // In Paid mode, show Meters that ARE active
           return isActive;
         }
       });
@@ -735,28 +814,35 @@ export default function Home() {
       // Map Streets with Logic
       const streetFeatures: StreetFeature[] = streets.map((s: any) => {
         const meterInfos = s.meter_infos ?? [];
+        const counts = s.report_counts ?? {};
+        const reportedFree = (counts["FREE"] || 0) >= 3;
+        const reportedPaid = (counts["PAID"] || 0) >= 3;
+
         // Determine if free:
         // 1. No meters -> Free
         // 2. Meters exist but INACTIVE at currentDateTime -> Free
         // 3. Meters exist and ACTIVE -> Paid
 
-        let isFree = false; // Default to Restricted/Paid for non-residential or unknown
+        let isFree = false;
 
         if (meterInfos.length > 0) {
-          // Check if ANY meter is active
           const isAnyActive = meterInfos.some((info: any) =>
             isMeterActive(info.time_in_effect, currentDateTime)
           );
-          // If meters exist, and none are active, it is Free (Green).
-          // If any is active, it is Paid (Red).
           isFree = !isAnyActive;
         } else {
-          // No meters. Only Residential streets are likely free.
-          // Arterial, Collector, etc defined as 'Red' (Restricted/No Stopping likely)
           if (s.street_use === "Residential") {
             isFree = true;
           }
         }
+
+        // Overrides
+        if (reportedPaid) isFree = false;
+        if (reportedFree) isFree = true;
+
+        let overrideStatus: "FREE" | "PAID" | null = null;
+        if (reportedPaid) overrideStatus = "PAID";
+        if (reportedFree) overrideStatus = "FREE";
 
         return {
           type: "Feature",
@@ -767,6 +853,8 @@ export default function Home() {
             street_use: s.street_use,
             meter_infos: meterInfos,
             is_free: isFree,
+            report_counts: counts,
+            z_status_override: overrideStatus,
           },
         };
       });
@@ -1197,6 +1285,13 @@ export default function Home() {
           </div>
         </div>
       )}
+      {/* Report Modal */}
+      <ReportModal
+        isOpen={reportModalOpen}
+        onClose={() => setReportModalOpen(false)}
+        targetId={reportTargetId}
+        targetType={reportTargetType}
+      />
     </div>
   );
 }
