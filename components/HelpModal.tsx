@@ -19,7 +19,7 @@ export default function HelpModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 backdrop-blur-sm">
       <div className="flex flex-col w-full max-w-md animate-in fade-in zoom-in-95 rounded-2xl bg-white text-slate-900 shadow-2xl overflow-hidden">
         <div className="p-6">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-slate-900">
               Find Free Parking
             </h2>
@@ -29,6 +29,16 @@ export default function HelpModal({
             >
               <X className="w-5 h-5" />
             </button>
+          </div>
+
+          <div className="mb-6 rounded-lg bg-orange-50 border border-orange-100 p-3">
+            <div className="flex gap-2">
+              <AlertTriangle className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
+              <p className="text-sm text-orange-800">
+                <span className="font-semibold">Beta Version:</span> This app is
+                under active development. Please expect occasional issues.
+              </p>
+            </div>
           </div>
 
           <div className="grid gap-6">
