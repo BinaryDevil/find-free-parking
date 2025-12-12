@@ -352,8 +352,21 @@ export async function seedOsmStreets(
 
     // Default attributes for generic streets
     const defaultProps = {
-      street_use: "Unrestricted",
+      street_use: "Unknown",
       notes: "Imported from OSM (no parking data)",
+    };
+
+    /**
+     * Helper to map OSM Highway tags to Street Use
+     */
+    const getOsmStreetUse = (highway: string) => {
+      if (["primary", "secondary", "tertiary", "trunk"].includes(highway)) {
+        return "No Parking"; // Arterials usually restricted
+      }
+      if (["residential", "living_street"].includes(highway)) {
+        return "Unrestricted"; // Neighborhoods usually free
+      }
+      return "Unknown"; // Service, unclassified, etc.
     };
 
     for (const way of streets) {
@@ -398,7 +411,7 @@ export async function seedOsmStreets(
         `,
         [
           `OSM-${way.id}`, // block_id
-          defaultProps.street_use, // street_use
+          getOsmStreetUse(way.tags?.highway || ""), // street_use
           linestring, // geom
           rawData,
           JSON.stringify([]), // schedules

@@ -147,7 +147,7 @@ export function normalizeStreetUse(
  */
 export function getDefaultSegmentAttributes() {
   return {
-    street_use: "Unrestricted",
+    street_use: "Unknown",
     // We treat generic centerlines as "Unrestricted" or "Unknown" to visualize them
     // without implying specific free/paid rules unless known.
     notes: "Imported from street centerline (no parking data)",

@@ -55,7 +55,27 @@ async function seedKirklandStreets() {
       // The head output didn't show full properties for lines, but Signs had 'COMPKEY'.
 
       const defaults = getDefaultSegmentAttributes();
-      const streetUse = defaults.street_use;
+      let streetUse = defaults.street_use; // Default "Unknown"
+
+      // Kirkland Logic:
+      // FUNC_CLASS: NEIGHBORHOOD ACCESS => Unrestricted
+      // FUNC_CLASS: ARTERIAL / INTERSTATE => No Parking
+      // STREET_FLA: PRIVATE STREET => Unknown
+
+      const funcClass = (p.FUNC_CLASS || "").toUpperCase();
+      const streetFlag = (p.STREET_FLA || "").toUpperCase();
+
+      if (streetFlag.includes("PRIVATE")) {
+        streetUse = "Unknown";
+      } else if (funcClass.includes("NEIGHBORHOOD ACCESS")) {
+        streetUse = "Unrestricted";
+      } else if (
+        funcClass.includes("ARTERIAL") ||
+        funcClass.includes("INTERSTATE") ||
+        funcClass.includes("COLLECTOR")
+      ) {
+        streetUse = "No Parking";
+      }
 
       // Ensure city tag
       const streetName =

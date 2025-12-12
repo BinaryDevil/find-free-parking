@@ -52,7 +52,26 @@ async function seedRedmondStreets() {
       // Redmond has free time-limited parking downtown (2hr)
       // Without explicit parking data, we'll mark as "Unrestricted" using standard helper
       const defaults = getDefaultSegmentAttributes();
-      const streetUse = defaults.street_use;
+      let streetUse = defaults.street_use; // Default "Unknown"
+
+      // Redmond Logic:
+      // d_Ownershi: PVT (Private) => Unknown/Restricted
+      // d_Ownershi: DOT (State) => No Parking
+      // d_Classifi: 4.0 => Residential (Unrestricted)
+      // d_Classifi: 1.0, 2.0, 3.0, 520.0 => Arterials/Highway (No Parking)
+
+      const ownership = p.d_Ownershi;
+      const classifi = parseFloat(p.d_Classifi);
+
+      if (ownership === "DOT" || classifi === 520.0) {
+        streetUse = "No Parking";
+      } else if (ownership === "PVT") {
+        streetUse = "Unknown";
+      } else if (classifi === 4.0) {
+        streetUse = "Unrestricted";
+      } else if ([1.0, 2.0, 3.0].includes(classifi)) {
+        streetUse = "No Parking";
+      }
 
       const blockId = p.AssetID || `RED-${inserted}`;
       const streetName = p.StreetName || "Unknown";
