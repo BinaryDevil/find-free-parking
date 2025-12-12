@@ -37,11 +37,15 @@ The `seedOsmParkingLots` function uses **conservative classification**:
 
 ## Workflow Steps
 
-1. **Research Data Source**:
-
-   - For each data type (`parking_meters` points, `street_segments` lines, `parking_zones` polygons, `covered_cities` boundary), search_web for `${city} open data <type> API` and `${city} ArcGIS REST <type>`, plus downloadable datasets (JSON/GeoJSON/CSV/SHP/KML) on the portal.
-   - Accept APIs and downloads (ArcGIS REST, WFS, Socrata, CKAN, static files)—use anything available to maximize coverage.
-   - **Goal**: Collect every available feed or file for each data type.
+- **Search Strategy**:
+  - **Parking**: Search for "Parking Meters", "Pay Stations", "Parking Regulations", "Time Limit", "Residential Zones", "RPZ", "Curb Inventory", "Signage", "Street Assets".
+  - **Streets**: Search for "Street Centerline", "Road Network", "Transportation", "Pavement", "Right of Way".
+  - **Tip**: Many suburban cities (like Redmond) don't have meters but have "Time Limited" zones or "Permit" areas. Search for "Regulations" or "Signs" if meters are missing.
+  - **Goal**: Collect every available feed or file for each data type.
+  - **Fallback Strategy (Crucial)**:
+    - If no specific "Parking" layer is found, search for generic **"Street Centerline"**, **"Road Network"**, or **"Transportation"** datasets.
+    - Look for a "Data Downloads", "GIS Data", or "FTP" section on the city website (often separate from the main Open Data portal).
+    - **Why?** Centerline data allows us to visualize the street network and provide "Unrestricted" or "Unknown" coverage, which is better than a blank map.
 
 2. **Manual/Browser Download (in addition to APIs)**:
 

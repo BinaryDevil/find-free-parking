@@ -140,3 +140,16 @@ export function normalizeStreetUse(
 
   return "Unknown";
 }
+
+/**
+ * Returns default attributes for identifying generic street segments
+ * where no specific parking regulation data is available.
+ */
+export function getDefaultSegmentAttributes() {
+  return {
+    street_use: "Unrestricted",
+    // We treat generic centerlines as "Unrestricted" or "Unknown" to visualize them
+    // without implying specific free/paid rules unless known.
+    notes: "Imported from street centerline (no parking data)",
+  };
+}
