@@ -48,52 +48,80 @@ export async function seedSeattle() {
         if (!item.geometry || item.geometry.type !== "Point") continue;
 
         const p = item.properties;
-        // Seattle Pay Station Data Mapping based on typical fields:
-        // UNITDESC -> pay_station_id (e.g., "ELP-112")
-        // No obvious "type" field like "Single Head", assuming Pay Station kiosk.
-        // CURRENT_RATE -> Rate info (if available, mostly dynamic)
-        // PAID_AREA -> Restricted zone name?
-
-        // Actually, let's inspect the data first (via raw_data) but we guess:
+        // Seattle Pay Station Data Mapping
         const payStationId = p.ELMNTKEY || p.UNITID || `SEA-${inserted}`;
-        const type = "Pay Station"; // Seattle uses kiosks
-        const timeInEffect = "See Sign"; // Check signage
-        const creditCard = true; // Seattle is modernized
+        const type = "Pay Station";
+
+        // Parse Schedules
+        const schedules: any[] = [];
+        const daysMap: Record<string, string[]> = {
+          WKD: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+          SAT: ["Sat"],
+          SUN: ["Sun"],
+        };
+
+        const parseTime = (val: any) => {
+          if (val === null || val === undefined) return null;
+          const totalMins = Number(val);
+          if (isNaN(totalMins)) return null;
+
+          const hours = Math.floor(totalMins / 60);
+          const mins = totalMins % 60;
+          return `${String(hours).padStart(2, "0")}:${String(mins).padStart(
+            2,
+            "0"
+          )}`;
+        };
+
+        for (const [prefix, days] of Object.entries(daysMap)) {
+          for (let i = 1; i <= 3; i++) {
+            const rate = p[`${prefix}_RATE${i}`];
+            const start = p[`${prefix}_START${i}`];
+            const end = p[`${prefix}_END${i}`];
+
+            // Sometimes rate is 0 but it's a valid block? Or invalid?
+            // Assuming if start/end exist, it's a valid block.
+            if (start && end) {
+              schedules.push({
+                days,
+                start: parseTime(start),
+                end: parseTime(end),
+                rate: rate ? parseFloat(rate) : 0,
+              });
+            }
+          }
+        }
 
         const normalizedProps = {
           ...p,
           city: "Seattle",
-          // Standardized fields if we can map them
-          // t_mf_9a_6p etc. require parsing complex schedules usually found in other tables.
-          // For now, we store raw properties.
         };
 
         values.push(
           payStationId,
           type,
-          timeInEffect,
-          creditCard,
           JSON.stringify(item.geometry),
-          JSON.stringify(normalizedProps)
+          JSON.stringify(normalizedProps),
+          JSON.stringify(schedules)
         );
 
         const pi = () => `$${paramIndex++}`;
-        const p1 = pi();
-        const p2 = pi();
-        const p3 = pi();
-        const p4 = pi();
-        const p5 = pi();
-        const p6 = pi();
+        const p1 = pi(); // pay_station_id
+        const p2 = pi(); // meter_head
+        // skipping time_in_effect, credit_card (dropped)
+        const p3 = pi(); // geom
+        const p4 = pi(); // raw_data
+        const p5 = pi(); // schedules
 
         placeholders.push(
-          `(gen_random_uuid(), ${p1}, ${p2}, ${p3}, ${p4}, ST_GeomFromGeoJSON(${p5}), ${p6})`
+          `(gen_random_uuid(), ${p1}, ${p2}, ST_GeomFromGeoJSON(${p3}), ${p4}, ${p5})`
         );
         inserted++;
       }
 
       if (placeholders.length > 0) {
         const query = `
-                INSERT INTO parking_meters (id, pay_station_id, meter_head, time_in_effect, credit_card, geom, raw_data)
+                INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
                 VALUES ${placeholders.join(", ")}
              `;
         await pool.query(query, values);
@@ -149,10 +177,20 @@ async function seedSeattleStreets() {
 
         const category = p.PARKING_CATEGORY || "Unknown";
         let streetUse = category;
-        // Simple mapping logic:
-        // "Paid" -> "Paid"
-        // "Restricted Parking Zone" -> "Permit"
-        // "Unrestricted" -> "Free"
+
+        // Normalize categories to match Global Schema / Frontend expectations
+        const categoryMap: Record<string, string> = {
+          "Paid Parking": "Paid",
+          "Restricted Parking Zone": "Permit",
+          "Unrestricted Parking": "Unrestricted",
+          "Time Limited Parking": "Time Limited",
+          "No Parking Allowed": "No Parking",
+          "Car Pool Parking": "Permit", // Treat carpool as permit/restricted
+        };
+
+        if (categoryMap[category]) {
+          streetUse = categoryMap[category];
+        }
 
         const blockId = p.ELMNTKEY
           ? `SEA-${p.ELMNTKEY}`
@@ -166,18 +204,19 @@ async function seedSeattleStreets() {
           blockId,
           streetUse,
           JSON.stringify(item.geometry),
-          JSON.stringify(p)
+          JSON.stringify(p),
+          JSON.stringify([]) // schedules
         );
 
         placeholders.push(
-          `(gen_random_uuid(), $${paramIndex++}, $${paramIndex++}, ST_GeomFromGeoJSON($${paramIndex++}), $${paramIndex++})`
+          `(gen_random_uuid(), $${paramIndex++}, $${paramIndex++}, ST_GeomFromGeoJSON($${paramIndex++}), $${paramIndex++}, $${paramIndex++})`
         );
         inserted++;
       }
 
       if (placeholders.length > 0) {
         const query = `
-                    INSERT INTO street_segments (id, block_id, street_use, geom, raw_data)
+                    INSERT INTO street_segments (id, block_id, street_use, geom, raw_data, schedules)
                     VALUES ${placeholders.join(", ")}
                  `;
         await pool.query(query, values);

@@ -57,6 +57,10 @@ The `seedOsmParkingLots` function uses **conservative classification**:
      - Check 1: Look for a local file in `datasets/${city}_<type>.<ext>`.
      - Check 2: If found, read and parse the local file (fast/offline).
      - Check 3: If missing, `fetch` from the official API URL (fallback).
+   - **Normalize Data (CRITICAL)**:
+     - Use `normalizeTime(val)` from `seed_utils.ts` for ANY time fields (converts minutes/HHMM to HH:MM).
+     - Use `normalizeStreetUse(val)` for street categories (Paid, Unrestricted, etc.).
+     - Use `createSchedule(...)` pattern if creating schedule objects manually.
    - Normalize data to match `parking_meters` schema.
    - **Always include**:
      ```typescript

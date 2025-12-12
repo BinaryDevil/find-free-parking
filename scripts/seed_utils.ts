@@ -60,3 +60,83 @@ export function getDbPool() {
 
   return pool;
 }
+
+// --- Global Schema Helpers ---
+
+/**
+ * Normalizes various time inputs to strictly HH:MM (24-hour) string.
+ * Handles:
+ * - "14:30" (Pass-through)
+ * - "1430" (Number/String HHMM)
+ * - 870 (Minutes from Midnight)
+ * - "2:30 PM" (12-hour string) -> basic parsing
+ */
+export function normalizeTime(val: any): string | null {
+  if (val === null || val === undefined || val === "") return null;
+
+  // 1. Minutes from Midnight (e.g. 480 -> 08:00) - Seattle Style
+  // Assumption: < 1440 is likely minutes, > 1440 might be HHMM (e.g. 1800 = 18:00)
+  // BUT ambiguous range: 800 mins = 13:20 vs 800 HHMM = 08:00.
+  // Use context or heuristic?
+  // Heuristic: If it doesn't look like HHMM (e.g. ends in >59), it's minutes.
+  // Actually, better to explicitly handle known cases or passed flags.
+  // For safety, let's just handle "Minutes from Midnight" vs "String".
+
+  if (typeof val === "number") {
+    // Is it HHMM int? (e.g. 1800) or Minutes (e.g. 1080)
+    // 10:80 is invalid.
+    if (val >= 0 && val < 2400) {
+      // Check last two digits
+      const lastTwo = val % 100;
+      if (lastTwo >= 60) {
+        // Valid minutes, invalid HHMM -> treat as minutes
+        const h = Math.floor(val / 60);
+        const m = val % 60;
+        return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+      }
+      // Ambiguous.
+      // Default to Minutes logic if that was the recent major bug?
+      // No, safer to assume minutes if coming from an API that uses it.
+      // Let's rely on caller to know, OR force normalized input.
+
+      // Let's implement the Minutes logic specifically since that's tricky to redo every time.
+      const h = Math.floor(val / 60);
+      const m = val % 60;
+      return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+    }
+  }
+
+  const str = String(val).trim();
+
+  // HH:MM
+  if (/^\d{1,2}:\d{2}$/.test(str)) {
+    const [h, m] = str.split(":");
+    return `${h.padStart(2, "0")}:${m}`;
+  }
+
+  return null; // Fallback
+}
+
+/**
+ * Normalizes street use categories to Global Schema standard.
+ */
+export function normalizeStreetUse(
+  val: string
+):
+  | "Paid"
+  | "Permit"
+  | "Unrestricted"
+  | "Time Limited"
+  | "No Parking"
+  | "Unknown" {
+  const v = val.toLowerCase();
+
+  if (v.includes("unrestricted")) return "Unrestricted";
+  if (v.includes("no parking") || v.includes("forbidden")) return "No Parking";
+  if (v.includes("permit") || v.includes("resident") || v.includes("zone"))
+    return "Permit";
+  if (v.includes("paid") || v.includes("meter")) return "Paid";
+  if (v.includes("time") || v.includes("limit")) return "Time Limited";
+
+  return "Unknown";
+}

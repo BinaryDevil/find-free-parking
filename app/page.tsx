@@ -66,8 +66,9 @@ type SpotFeature = {
     time_in_effect?: string;
     credit_card?: boolean;
     rate?: string;
-    report_counts?: Record<string, number>;
+    report_counts?: string | Record<string, number>;
     z_status_override?: "FREE" | "PAID" | null; // Calculated status
+    schedules?: string | any[]; // JSONB
   };
 };
 
@@ -92,13 +93,11 @@ type StreetFeature = {
     id: string;
     block_id: string;
     street_use: string;
-    meter_infos?: Array<{
-      time_in_effect: string;
-      rate: string;
-    }>;
+    meter_infos?: string | any[];
     is_free?: boolean; // Calculated on client
-    report_counts?: Record<string, number>;
+    report_counts?: string | Record<string, number>;
     z_status_override?: "FREE" | "PAID" | null;
+    schedules?: string | any[];
   };
 };
 
@@ -455,6 +454,36 @@ export default function Home() {
         if (!coords) return;
         const props = feature.properties ?? {};
 
+        // Parse schedules if generic data
+        let rulesHtml = "";
+        let schedules = [];
+        try {
+          if (typeof props.schedules === "string") {
+            schedules = JSON.parse(props.schedules);
+          } else if (Array.isArray(props.schedules)) {
+            schedules = props.schedules;
+          }
+        } catch (e) {
+          /* ignore */
+        }
+
+        if (schedules.length > 0) {
+          rulesHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
+          schedules.forEach((s: any) => {
+            const days = Array.isArray(s.days) ? s.days.join(", ") : s.days;
+            const rateDisplay = s.rate
+              ? `$${parseFloat(s.rate).toFixed(2)}/hr`
+              : "Free";
+            rulesHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
+                    📅 ${days}<br>
+                    ⏱ ${s.start} - ${s.end}: <b>${rateDisplay}</b>
+                </div>`;
+          });
+        } else if (props.rate) {
+          // Fallback if legacy or raw rate field still exists in prop mapping (it shouldn't generally but just in case)
+          rulesHtml += `<div style="margin-top:4px;color:#475569">Rate: ${props.rate}</div>`;
+        }
+
         // Calculate walking info if destination is set
         let walkingHtml = "";
         const dest = destinationLocationRef.current;
@@ -487,24 +516,10 @@ export default function Home() {
                    ? `<div style="margin-top:4px;color:#1f2937">${props.timeLimitMinutes} min limit</div>`
                    : ""
                }
-                ${
-                  props.t_mf_9a_6p
-                    ? `<div style="margin-top:4px;color:#1f2937">Max Stay: ${props.t_mf_9a_6p}</div>`
-                    : ""
-                }
-                ${
-                  props.r_mf_9a_6p
-                    ? `<div style="margin-top:4px;color:#475569">Rate: ${props.r_mf_9a_6p}</div>`
-                    : ""
-                }
+                ${rulesHtml}
                 ${
                   props.notes
                     ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>`
-                    : ""
-                }
-                ${
-                  props.timeineffe
-                    ? `<div style="margin-top:4px;font-weight:600;color:#1f2937;font-size:12px">${props.timeineffe}</div>`
                     : ""
                 }
                 ${
@@ -520,11 +535,6 @@ export default function Home() {
                 <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
                   ⚠️ Check signs for rush hour restrictions
                 </div>
-                ${
-                  props.creditcard === "Yes"
-                    ? `<div style="margin-top:4px;color:#16a34a;font-size:12px">Accepts Credit Card</div>`
-                    : ""
-                }
                 <a href="https://www.google.com/maps/dir/?api=1&destination=${
                   coords[1]
                 },${
@@ -744,28 +754,43 @@ export default function Home() {
         // Meter Infos
         if (meterInfos.length > 0) {
           const currentDateTime = new Date(parkingTimeRef.current);
-          let hasActiveMeters = false;
+          let activeRules: any[] = [];
 
-          contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
-
-          meterInfos.forEach((info) => {
-            if (!info.time_in_effect) return; // Skip invalid data
-
-            const isActive = isMeterActive(
-              info.time_in_effect,
-              currentDateTime
-            );
-            if (isActive) {
-              hasActiveMeters = true;
-              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">⏱ ${
-                info.time_in_effect ?? ""
-              }: ${info.rate ?? ""}</div>`;
-            } else {
-              contentHtml += `<div style="color:#16a34a;font-size:12px;margin-top:2px;">⏱ ${
-                info.time_in_effect ?? ""
-              }: Free (Outside Effect Time)</div>`;
+          // Flatten and Deduplicate Rules
+          const uniqueRules = new Set<string>();
+          meterInfos.forEach((schedules: any) => {
+            if (Array.isArray(schedules)) {
+              schedules.forEach((rule) => {
+                const ruleStr = JSON.stringify(rule);
+                if (!uniqueRules.has(ruleStr)) {
+                  uniqueRules.add(ruleStr);
+                  // Check if active
+                  // We can reuse isScheduleActive for single rule array
+                  if (isScheduleActive([rule], currentDateTime)) {
+                    activeRules.push(rule);
+                  }
+                }
+              });
             }
           });
+
+          if (activeRules.length > 0) {
+            contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Active Rates:</div>`;
+            activeRules.forEach((rule) => {
+              const rateDisplay = rule.rate
+                ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
+                : "Paid";
+              const days = Array.isArray(rule.days)
+                ? rule.days.join(", ")
+                : rule.days;
+              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
+                     ⏱ ${rule.start} - ${rule.end}: <b>${rateDisplay}</b>
+                   </div>`;
+            });
+          } else {
+            // Meters present but none active (Free)
+            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking (Outside Meter Hours).</div>`;
+          }
         } else {
           if (isFree) {
             contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking (residential/unmetered).</div>`;
@@ -890,6 +915,52 @@ export default function Home() {
   // Actually, loadSpots gets bounds from main map. The 'moveend' event handles map moves.
   // We need to trigger loadSpots manually when filter/time changes.
 
+  // Helper to ensure MapLibre only gets primitives
+  const sanitizeFeatureProperties = (props: Record<string, any>) => {
+    const clean: Record<string, any> = {};
+    Object.keys(props).forEach((key) => {
+      const val = props[key];
+      if (val === null || val === undefined) return;
+      if (typeof val === "object") {
+        clean[key] = JSON.stringify(val);
+      } else {
+        clean[key] = val;
+      }
+    });
+    return clean;
+  };
+
+  // Helper to check schedules (Global Schema)
+  const isScheduleActive = (schedules: any[], now: Date): boolean => {
+    if (!Array.isArray(schedules) || schedules.length === 0) return false;
+
+    // Map JS day (0=Sun) to Schedule day strings
+    const dayMap = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const currentDay = dayMap[now.getDay()];
+    // HH:MM
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    const parseMinutes = (timeStr: string) => {
+      const [h, m] = timeStr.split(":").map(Number);
+      return h * 60 + m;
+    };
+
+    // Check if ANY rule matches
+    return schedules.some((rule: any) => {
+      // 1. Day Check
+      if (rule.days && !rule.days.includes(currentDay)) return false;
+
+      // 2. Time Check
+      if (rule.start && rule.end) {
+        const start = parseMinutes(rule.start);
+        const end = parseMinutes(rule.end);
+        return currentMinutes >= start && currentMinutes < end;
+      }
+      return false; // No time range? assume not active/free? Or active all day?
+      // Safest to assume inactive if malformed.
+    });
+  };
+
   async function loadSpots(map: Map) {
     const bounds = map.getBounds();
     // Using simple query params for API
@@ -914,62 +985,55 @@ export default function Home() {
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
-      const meterFeatures: SpotFeature[] = meters.map((m: any) => ({
-        type: "Feature",
-        geometry: m.geom,
-        properties: {
-          id: m.id,
-          city: "Vancouver",
-          type: "Meter",
-          pay_station_id: m.pay_station_id,
-          meter_head: m.meter_head,
-          time_in_effect: m.time_in_effect,
-          credit_card: m.credit_card,
-          // Flattened metadata for MapLibre compatibility
-          timeineffe: m.time_in_effect,
-          creditcard: m.credit_card ? "Yes" : "No",
-          r_mf_9a_6p: m.r_mf_9a_6p,
-          t_mf_9a_6p: m.t_mf_9a_6p,
-          r_mf_6p_10: m.r_mf_6p_10,
-          r_sa_9a_6p: m.r_sa_9a_6p,
-          r_su_9a_6p: m.r_su_9a_6p,
-          report_counts: m.report_counts,
-        },
-      }));
-
       const currentDateTime = new Date(parkingTimeRef.current);
-      const filteredMeterFeatures = meterFeatures.filter((m) => {
-        const counts = m.properties.report_counts ?? {};
+
+      // --- Process Meters ---
+      // 1. Filter raw meters based on logic
+      const filteredMeters = meters.filter((m: any) => {
+        const counts = m.report_counts ?? {};
         const reportedFree = (counts["FREE"] || 0) >= 3;
         const reportedPaid = (counts["PAID"] || 0) >= 3;
 
-        let isActive = isMeterActive(
-          m.properties.time_in_effect,
-          currentDateTime
-        );
+        // Calculate status override for visual use later
+        if (reportedPaid) m.z_status_override = "PAID";
+        if (reportedFree) m.z_status_override = "FREE";
 
-        // visual flag
-        if (reportedPaid) m.properties.z_status_override = "PAID";
-        if (reportedFree) m.properties.z_status_override = "FREE";
+        let isActive = false;
+        // Prioritize Schedules (New Schema)
+        if (
+          m.schedules &&
+          Array.isArray(m.schedules) &&
+          m.schedules.length > 0
+        ) {
+          isActive = isScheduleActive(m.schedules, currentDateTime);
+        }
 
         if (filterTypeRef.current === "FREE") {
-          // Free Filter:
-          // 1. Verified Free (Reported)
-          // 2. OR Inactive Meter (Time-based free, e.g. overnight)
-          // And NOT verified Paid
           if (reportedPaid) return false;
           if (reportedFree) return true;
           return !isActive;
         } else {
-          // Paid Filter:
-          // 1. Active Meter
-          // 2. OR Verified Paid
-          // And NOT verified Free
           if (reportedFree) return false;
           if (reportedPaid) return true;
           return isActive;
         }
       });
+
+      // 2. Map valid meters to features (Sanitize properties)
+      const meterFeatures: SpotFeature[] = filteredMeters.map((m: any) => ({
+        type: "Feature",
+        geometry: m.geom,
+        properties: sanitizeFeatureProperties({
+          id: m.id,
+          city: "Vancouver", // dynamic city? generic is fine
+          type: "Meter",
+          pay_station_id: m.pay_station_id,
+          meter_head: m.meter_head,
+          report_counts: m.report_counts,
+          schedules: m.schedules,
+          z_status_override: m.z_status_override,
+        }) as any,
+      }));
 
       const source = map.getSource("spots") as
         | maplibregl.GeoJSONSource
@@ -977,72 +1041,71 @@ export default function Home() {
       if (source) {
         source.setData({
           type: "FeatureCollection",
-          features: filteredMeterFeatures,
+          features: meterFeatures,
         });
       }
-      const meterCount = filteredMeterFeatures.length;
+      const meterCount = meterFeatures.length;
 
-      // Map Streets with Logic
-      const streetFeatures: StreetFeature[] = streets.map((s: any) => {
+      // --- Process Streets ---
+      // 1. Map street logic (calculate is_free)
+      const processedStreets = streets.map((s: any) => {
         const meterInfos = s.meter_infos ?? [];
         const counts = s.report_counts ?? {};
         const reportedFree = (counts["FREE"] || 0) >= 3;
         const reportedPaid = (counts["PAID"] || 0) >= 3;
 
-        // Determine if free:
-        // 1. No meters -> Free
-        // 2. Meters exist but INACTIVE at currentDateTime -> Free
-        // 3. Meters exist and ACTIVE -> Paid
-
-        // Base Status
         let isFree = false;
-        if (meterInfos.length === 0 && s.street_use === "Residential") {
+        const freeStreetTypes = ["Residential", "Unrestricted", "Time Limited"];
+        if (meterInfos.length === 0 && freeStreetTypes.includes(s.street_use)) {
           isFree = true;
         }
 
-        // Overrides
         if (reportedPaid) isFree = false;
         if (reportedFree) isFree = true;
 
-        let overrideStatus: "FREE" | "PAID" | null = null;
+        let overrideStatus: "FREE" | "PAID" | undefined;
         if (reportedPaid) overrideStatus = "PAID";
         if (reportedFree) overrideStatus = "FREE";
 
         return {
-          type: "Feature",
-          geometry: s.geom,
-          properties: {
-            id: s.id,
-            block_id: s.block_id,
-            street_use: s.street_use,
-            meter_infos: meterInfos,
-            is_free: isFree,
-            report_counts: counts,
-            z_status_override: overrideStatus,
-          },
+          ...s,
+          is_free: isFree,
+          z_status_override: overrideStatus,
         };
       });
+
+      // 2. Filter streets
+      const filteredStreets = processedStreets.filter((s: any) => {
+        return filterTypeRef.current === "FREE" ? s.is_free : !s.is_free;
+      });
+
+      // 3. Map to GeoJSON features (Sanitize properties)
+      const streetFeatures: StreetFeature[] = filteredStreets.map((s: any) => ({
+        type: "Feature",
+        geometry: s.geom,
+        properties: sanitizeFeatureProperties({
+          id: s.id,
+          block_id: s.block_id,
+          street_use: s.street_use,
+          is_free: s.is_free,
+          z_status_override: s.z_status_override,
+          meter_infos: s.meter_infos,
+          report_counts: s.report_counts,
+          schedules: s.schedules,
+        }) as any,
+      }));
 
       const streetSource = map.getSource("streets") as
         | maplibregl.GeoJSONSource
         | undefined;
-      // Filter streets based on filter alignment
-      const filteredStreetFeatures = streetFeatures.filter((s) => {
-        if (filterTypeRef.current === "FREE") {
-          return s.properties.is_free === true;
-        } else {
-          return s.properties.is_free === false;
-        }
-      });
-
-      const streetCount = filteredStreetFeatures.length;
 
       if (streetSource) {
         streetSource.setData({
           type: "FeatureCollection",
-          features: filteredStreetFeatures, // Use the filtered list!
+          features: streetFeatures,
         });
       }
+      const streetCount = streetFeatures.length;
 
       setFeatureCounts({ meters: meterCount, streets: streetCount });
 
@@ -1057,9 +1120,15 @@ export default function Home() {
           | maplibregl.GeoJSONSource
           | undefined;
         if (zonesSource) {
+          const rawFeatures = zonesData.features ?? [];
+          const zoneFeatures = rawFeatures.map((f: any) => ({
+            ...f,
+            properties: sanitizeFeatureProperties(f.properties),
+          }));
+
           zonesSource.setData({
             type: "FeatureCollection",
-            features: zonesData.features ?? [],
+            features: zoneFeatures,
           });
         }
       }
@@ -1364,48 +1433,4 @@ export default function Home() {
       />
     </div>
   );
-}
-
-function isMeterActive(
-  timeInEffect: string | undefined,
-  currentDateTime: Date
-): boolean {
-  if (!timeInEffect) return false; // Assume inactive if missing (or maybe 24/7? Safe default is Paid=True, but missing usually means no data)
-  // Format: "9:00 AM TO 10:00 PM"
-  // Also "METER IN EFFECT: 9:00 AM TO 10:00 PM"
-
-  // Normalize
-  const str = timeInEffect.toUpperCase().replace("METER IN EFFECT:", "").trim();
-
-  // Regex for time range
-  const rangeMatch = str.match(
-    /(\d{1,2}):(\d{2})\s*(AM|PM)\s*TO\s*(\d{1,2}):(\d{2})\s*(AM|PM)/
-  );
-  if (!rangeMatch) return true; // Fail safe: assume active if parse fails
-
-  const [_, h1, m1, ap1, h2, m2, ap2] = rangeMatch;
-
-  // Convert to minutes from midnight
-  const getMinutes = (h: string, m: string, ap: string) => {
-    let hour = parseInt(h, 10);
-    const minute = parseInt(m, 10);
-    if (ap === "PM" && hour !== 12) hour += 12;
-    if (ap === "AM" && hour === 12) hour = 0;
-    return hour * 60 + minute;
-  };
-
-  const start = getMinutes(h1, m1, ap1);
-  const end = getMinutes(h2, m2, ap2);
-
-  const currentMinutes =
-    currentDateTime.getHours() * 60 + currentDateTime.getMinutes();
-
-  // Check range
-  // Usually start < end (e.g. 9AM to 10PM)
-  if (start <= end) {
-    return currentMinutes >= start && currentMinutes <= end;
-  } else {
-    // Overnight? (e.g. 6PM to 2AM)
-    return currentMinutes >= start || currentMinutes <= end;
-  }
 }

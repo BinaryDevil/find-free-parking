@@ -72,13 +72,15 @@ function mapRowToFeature(row: ZoneRow) {
       timeLimitMinutes: row.time_limit_minutes,
       freeStartTime: row.free_start_time,
       freeEndTime: row.free_end_time,
-      daysApplicable: row.days_applicable,
+      daysApplicable: row.days_applicable
+        ? JSON.stringify(row.days_applicable)
+        : null,
       notes: row.notes,
       source: row.source,
       verified: row.verified,
       createdAt: row.created_at,
       updatedAt: row.updated_at,
-      metadata: row.metadata,
+      metadata: row.metadata ? JSON.stringify(row.metadata) : null,
     },
   };
 }

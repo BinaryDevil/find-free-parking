@@ -59,25 +59,23 @@ export async function seedSurrey() {
     try {
       await pool.query(
         `
-                INSERT INTO parking_meters (id, pay_station_id, meter_head, time_in_effect, credit_card, geom, raw_data)
+                INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
                 VALUES (
                     gen_random_uuid(), 
                     $1, 
                     $2, 
-                    $3, 
-                    $4, 
-                    ST_Transform(ST_SetSRID(ST_MakePoint($5, $6), 26910), 4326), 
-                    $7
+                    ST_Transform(ST_SetSRID(ST_MakePoint($3, $4), 26910), 4326), 
+                    $5,
+                    $6
                 )
             `,
         [
           payStationId,
           type,
-          timeInEffect,
-          false, // Assume false/unknown for CC
           coords[0],
           coords[1],
           JSON.stringify(normalizedProps),
+          JSON.stringify([]), // Empty schedules for now
         ]
       );
       inserted++;

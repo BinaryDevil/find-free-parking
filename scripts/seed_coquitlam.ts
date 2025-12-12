@@ -62,36 +62,33 @@ export async function seedCoquitlam() {
         };
 
         const isPoint = item.geometry.type === "Point";
-        // Params: payStationId, type, timeInEffect ("Check Sign"), creditCard (false), geometryStr, rawData
-
+        // Params: payStationId, type, geometryStr, rawData, schedules
         values.push(
           payStationId,
           type,
-          "Check Sign",
-          false,
           JSON.stringify(item.geometry),
-          JSON.stringify(normalizedProps)
+          JSON.stringify(normalizedProps),
+          JSON.stringify([]) // Empty schedules for now
         );
 
         const pi = () => `$${paramIndex++}`;
         const p1 = pi(); // payStationId
         const p2 = pi(); // type
-        const p3 = pi(); // time
-        const p4 = pi(); // credit_card
-        const p5 = pi(); // geom
-        const p6 = pi(); // raw_data
+        const p3 = pi(); // geom
+        const p4 = pi(); // raw_data
+        const p5 = pi(); // schedules
 
-        const geomExpr = `ST_Centroid(ST_GeomFromGeoJSON(${p5}))`;
+        const geomExpr = `ST_Centroid(ST_GeomFromGeoJSON(${p3}))`;
 
         placeholders.push(
-          `(gen_random_uuid(), ${p1}, ${p2}, ${p3}, ${p4}, ${geomExpr}, ${p6})`
+          `(gen_random_uuid(), ${p1}, ${p2}, ${geomExpr}, ${p4}, ${p5})`
         );
         inserted++;
       }
 
       if (placeholders.length > 0) {
         const query = `
-                INSERT INTO parking_meters (id, pay_station_id, meter_head, time_in_effect, credit_card, geom, raw_data)
+                INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
                 VALUES ${placeholders.join(", ")}
              `;
         await pool.query(query, values);
