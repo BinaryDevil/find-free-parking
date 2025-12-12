@@ -9,7 +9,7 @@ const pool = getDbPool();
 async function getRedmondStreets() {
   const localFile = path.resolve(
     process.cwd(),
-    "datasets/redmond_streets.geojson"
+    "datasets/USA/WA/Redmond/redmond_streets.geojson"
   );
 
   if (fs.existsSync(localFile)) {

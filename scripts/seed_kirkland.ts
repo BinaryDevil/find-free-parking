@@ -12,7 +12,7 @@ const pool = getDbPool();
 async function getKirklandStreets() {
   const localFile = path.resolve(
     process.cwd(),
-    "datasets/kirkland_streets.geojson"
+    "datasets/USA/WA/Kirkland/kirkland_streets.geojson"
   );
 
   if (fs.existsSync(localFile)) {
@@ -121,7 +121,7 @@ async function seedKirklandStreets() {
 async function getKirklandSigns() {
   const localFile = path.resolve(
     process.cwd(),
-    "datasets/kirkland_signs.geojson"
+    "datasets/USA/WA/Kirkland/kirkland_signs.geojson"
   );
 
   if (fs.existsSync(localFile)) {

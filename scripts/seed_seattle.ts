@@ -8,7 +8,7 @@ async function getSeattleData() {
   const path = await import("path");
   const localFile = path.resolve(
     process.cwd(),
-    "datasets/seattle_parking_meters.geojson"
+    "datasets/USA/WA/Seattle/seattle_parking_meters.geojson"
   );
 
   if (fs.existsSync(localFile)) {

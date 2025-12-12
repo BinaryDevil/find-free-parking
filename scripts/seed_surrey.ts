@@ -7,7 +7,10 @@ import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 const pool = getDbPool();
 
 export async function seedSurrey() {
-  const extractDir = path.resolve(process.cwd(), "datasets/surrey_data");
+  const extractDir = path.resolve(
+    process.cwd(),
+    "datasets/Canada/BC/Surrey/surrey_data"
+  );
 
   if (!fs.existsSync(extractDir)) {
     console.log("[Surrey] Sample data not found. Downloading...");

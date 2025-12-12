@@ -8,7 +8,7 @@ async function getCoquitlamData() {
   const path = await import("path");
   const localFile = path.resolve(
     process.cwd(),
-    "datasets/coquitlam_parking_meters.geojson"
+    "datasets/Canada/BC/Coquitlam/coquitlam_parking_meters.geojson"
   );
 
   if (fs.existsSync(localFile)) {

@@ -14,7 +14,10 @@ async function seedDataset(
   let data: any[] = [];
   const localFile = path.resolve(
     process.cwd(),
-    `datasets/vancouver_${datasetName.replace("-", "_")}.json`
+    `datasets/Canada/BC/Vancouver/vancouver_${datasetName.replace(
+      "-",
+      "_"
+    )}.json`
   );
 
   if (fs.existsSync(localFile)) {
