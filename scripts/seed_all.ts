@@ -1,6 +1,9 @@
 import { seedVancouver } from "./seed_vancouver";
 import { seedCoquitlam } from "./seed_coquitlam";
 import { seedSurrey } from "./seed_surrey";
+import { seedRedmond } from "./seed_redmond";
+import { seedKirkland } from "./seed_kirkland";
+import { seedBellevue } from "./seed_bellevue";
 import { seedSeattle } from "./seed_seattle";
 import { getDbPool } from "./seed_utils";
 import { clearDatabase } from "./clear_db";

@@ -9,19 +9,22 @@ async function fetchParkingLots(
   country: string = "Canada",
   searchAreaName: string | null = null
 ) {
-  // Determine search area (broad region/state/province) to disambiguate
-  let areaName = searchAreaName;
-  if (!areaName) {
-    areaName =
-      country === "United States"
-        ? "Washington"
-        : "Metro Vancouver Regional District";
+  // Build an area filter based on country
+  let areaFilter: string;
+  if (country === "United States") {
+    // Use admin_level=4 to get the state of Washington, not other entities
+    const stateName = searchAreaName || "Washington";
+    areaFilter = `area["name"="${stateName}"]["admin_level"="4"]->.state;`;
+  } else {
+    // Canada - use Metro Vancouver Regional District
+    const regionName = searchAreaName || "Metro Vancouver Regional District";
+    areaFilter = `area["name"="${regionName}"]->.state;`;
   }
 
   const query = `
       [out:json][timeout:60];
-      area["name"="${areaName}"]->.metro;
-      relation["name"~"${cityName}",i]["admin_level"="8"](area.metro)->.cityRel;
+      ${areaFilter}
+      relation["name"~"${cityName}",i]["admin_level"="8"](area.state)->.cityRel;
       .cityRel map_to_area -> .searchArea;
       (
         way["amenity"="parking"](area.searchArea);
@@ -202,17 +205,19 @@ export async function seedOsmCityCoverage(
     return;
   }
 
-  let areaName = searchAreaName;
-  if (!areaName) {
-    areaName =
-      country === "United States"
-        ? "Washington"
-        : "Metro Vancouver Regional District";
+  // Build an area filter based on country
+  let areaFilter: string;
+  if (country === "United States") {
+    const stateName = searchAreaName || "Washington";
+    areaFilter = `area["name"="${stateName}"]["admin_level"="4"]->.searchArea;`;
+  } else {
+    const regionName = searchAreaName || "Metro Vancouver Regional District";
+    areaFilter = `area["name"="${regionName}"]->.searchArea;`;
   }
 
   const query = `
       [out:json][timeout:60];
-      area["name"="${areaName}"]->.searchArea;
+      ${areaFilter}
       relation["name"~"${cityName}",i]["admin_level"="8"](area.searchArea);
       out geom;
     `;
