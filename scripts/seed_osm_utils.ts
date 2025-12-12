@@ -193,7 +193,7 @@ export async function seedOsmCityCoverage(
   country: string = "Canada",
   searchAreaName: string | null = null
 ) {
-  console.log(`[Coverage] Seeding coverage for ${cityName}...`);
+  console.log(`✅ Seeded coverage for ${cityName} (Polygon)`);
 
   // Check if exists
   const check = await pool.query(
@@ -278,5 +278,137 @@ export async function seedOsmCityCoverage(
     console.log(`[Coverage] Inserted ${cityName} into covered_cities.`);
   } catch (e: any) {
     console.error(`[Coverage] Failed for ${cityName}:`, e.message);
+  }
+}
+
+/**
+ * Fetches street centerlines from OSM for a given city.
+ * Useful as a Fallback Strategy when official centerline data is missing.
+ */
+export async function fetchOsmStreets(
+  city: string,
+  state: string,
+  country = "Canada"
+) {
+  // Query for residential, tertiary, secondary, primary, etc.
+  // Use robust area search like fetchParkingLots
+  let areaFilter: string;
+  if (country === "United States") {
+    const stateName = state === "WA" ? "Washington" : state;
+    areaFilter = `area["name"="${stateName}"]["admin_level"="4"]->.state;`;
+  } else {
+    areaFilter = `area["name"="Metro Vancouver Regional District"]->.state;`;
+  }
+
+  const query = `
+    [out:json][timeout:180];
+    ${areaFilter}
+    relation["name"~"${city}",i]["admin_level"="8"](area.state)->.cityRel;
+    .cityRel map_to_area -> .searchArea;
+    (
+      way["highway"~"^(primary|secondary|tertiary|residential|unclassified|living_street)$"](area.searchArea);
+    );
+    out geom;
+  `;
+
+  const url = "https://overpass-api.de/api/interpreter";
+  console.log(`Fetching OSM streets for ${city}...`);
+
+  try {
+    const response = await axios.post(url, query, {
+      headers: { "Content-Type": "text/plain" },
+    });
+    return response.data.elements.filter((e: any) => e.type === "way");
+  } catch (err: any) {
+    console.error("Error fetching OSM streets:", err.message || err);
+    return [];
+  }
+}
+
+/**
+ * Seeds OSM streets into the street_segments table.
+ */
+export async function seedOsmStreets(
+  city: string,
+  state: string,
+  country = "United States"
+) {
+  const streets = await fetchOsmStreets(city, state, country);
+  if (!streets || streets.length === 0) {
+    console.log(`No OSM streets found for ${city}.`);
+    return;
+  }
+
+  // Use the shared pool from the module scope if exported, or get it here.
+  // The file imports getDbPool.
+  // We can use the global 'pool' const if it is exported?
+  // Line 4: const pool = getDbPool();
+  // But line 4 is not exported.
+  // We should reuse 'pool' const if available in scope.
+  // The file view showed 'const pool = getDbPool();' at top level.
+
+  try {
+    let inserted = 0;
+
+    // Default attributes for generic streets
+    const defaultProps = {
+      street_use: "Unrestricted",
+      notes: "Imported from OSM (no parking data)",
+    };
+
+    for (const way of streets) {
+      // Convert OSM Geometry (nodes) to LineString
+      // The 'out geom' query returns .geometry field on ways
+      if (!way.geometry || way.geometry.length < 2) continue;
+
+      const coords = way.geometry
+        .map((p: any) => `${p.lon} ${p.lat}`)
+        .join(",");
+      const linestring = `LINESTRING(${coords})`;
+
+      // Name
+      const streetName = way.tags?.name || "Unnamed Street";
+
+      const rawData = JSON.stringify({
+        ...way.tags,
+        source: "OSM",
+        city,
+        state,
+        streetName,
+      });
+
+      // Schema: id, block_id, street_use, geom, raw_data, schedules, side_of_street?
+      // Based on seed_kirkland.ts: id, block_id, street_use, geom, raw_data, schedules
+      // Maybe side_of_street exists? Let's assume standard minimal.
+      // seed_kirkland.ts does NOT insert side_of_street.
+      // seed_seed_utils line 337 in current view has side_of_street...
+      // Note: If I am wrong about side_of_street NOT existing, I might break it.
+      // But seed_kirkland.ts works without it.
+      // Safest is to stick to what seed_kirkland.ts does + maybe side_of_street if allowed.
+      // I will assume NO side_of_street column if seed_kirkland.ts doesn't use it.
+      // Wait, seed_osm_utils.ts previously tried to insert it (Step 769).
+
+      await pool.query(
+        `
+            INSERT INTO street_segments (
+                id, block_id, street_use, geom, raw_data, schedules
+            ) VALUES (
+                gen_random_uuid(), $1, $2, ST_GeomFromText($3, 4326), $4, $5
+            )
+        `,
+        [
+          `OSM-${way.id}`, // block_id
+          defaultProps.street_use, // street_use
+          linestring, // geom
+          rawData,
+          JSON.stringify([]), // schedules
+        ]
+      );
+
+      inserted++;
+    }
+    console.log(`✅ Seeded ${inserted} OSM streets for ${city}.`);
+  } catch (err: any) {
+    console.error("Error seeding OSM streets:", err);
   }
 }

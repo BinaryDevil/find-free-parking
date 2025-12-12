@@ -37,15 +37,15 @@ The `seedOsmParkingLots` function uses **conservative classification**:
 
 ## Workflow Steps
 
-- **Search Strategy**:
-  - **Parking**: Search for "Parking Meters", "Pay Stations", "Parking Regulations", "Time Limit", "Residential Zones", "RPZ", "Curb Inventory", "Signage", "Street Assets".
-  - **Streets**: Search for "Street Centerline", "Road Network", "Transportation", "Pavement", "Right of Way".
-  - **Tip**: Many suburban cities (like Redmond) don't have meters but have "Time Limited" zones or "Permit" areas. Search for "Regulations" or "Signs" if meters are missing.
-  - **Goal**: Collect every available feed or file for each data type.
-  - **Fallback Strategy (Crucial)**:
-    - If no specific "Parking" layer is found, search for generic **"Street Centerline"**, **"Road Network"**, or **"Transportation"** datasets.
+- **Search Strategy (Expanded)**:
+  - **Primary (Parking)**: Search for "Parking Meters", "Pay Stations", "Parking Regulations", "Time Limit", "Residential Zones", "RPZ", "Curb Inventory".
+  - **Secondary (Proxies)**: If primary data is missing, YOU MUST search for **"Signs"**, **"Street Assets"**, **"Street Furniture"**, **"Traffic Control"**, or **"Utilities"**.
+    - _Why?_ "Signs" datasets often contain "PAY PARKING" or "2 HR PARKING" points which can be parsed into meters.
+  - **Tertiary (Geometry)**: If no parking data exists at all, YOU MUST search for **"Street Centerline"**, **"Road Network"**, or **"Transportation"** datasets.
+    - _Why?_ This allows us to visualize the street network and provide "Unrestricted" coverage, which is better than a blank map.
+  - **Fallback Strategy**:
     - Look for a "Data Downloads", "GIS Data", or "FTP" section on the city website (often separate from the main Open Data portal).
-    - **Why?** Centerline data allows us to visualize the street network and provide "Unrestricted" or "Unknown" coverage, which is better than a blank map.
+    - If you find a "Signs" dataset, download it and `grep` for "PAY", "METER", "LIMIT". If hits > 10, use the **Proxy Strategy** (see below).
 
 2. **Manual/Browser Download (in addition to APIs)**:
 
@@ -61,6 +61,11 @@ The `seedOsmParkingLots` function uses **conservative classification**:
      - Check 1: Look for a local file in `datasets/${city}_<type>.<ext>`.
      - Check 2: If found, read and parse the local file (fast/offline).
      - Check 3: If missing, `fetch` from the official API URL (fallback).
+   - **Implement Proxy Strategy (if using Signs)**:
+     - Use `dataset/signs.geojson`.
+     - Filter for text containing "PAY", "METER", or specific time limits.
+     - Use `parseSignText(text)` from `seed_utils.ts` (see below) to extract rate and schedule.
+     - Insert as `parking_meters` with `meter_head: "Pay Station Sign"`.
    - **Normalize Data (CRITICAL)**:
      - Use `normalizeTime(val)` from `seed_utils.ts` for ANY time fields (converts minutes/HHMM to HH:MM).
      - Use `normalizeStreetUse(val)` for street categories (Paid, Unrestricted, etc.).

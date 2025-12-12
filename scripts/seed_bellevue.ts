@@ -1,47 +1,40 @@
 import { getDbPool } from "./seed_utils";
-import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
-import fs from "fs";
-import path from "path";
-
-const pool = getDbPool();
-
-async function getBellevueData() {
-  const localFile = path.resolve(
-    process.cwd(),
-    "datasets/bellevue_meters.geojson"
-  );
-
-  if (fs.existsSync(localFile)) {
-    console.log(`[Bellevue] Reading from local file: ${localFile}`);
-    const content = fs.readFileSync(localFile, "utf-8");
-    return JSON.parse(content);
-  }
-
-  console.log(
-    "[Bellevue] Local file not found and no verified API. Skipping meters."
-  );
-  return null;
-}
+import {
+  seedOsmCityCoverage,
+  seedOsmParkingLots,
+  seedOsmStreets,
+} from "./seed_osm_utils";
 
 export async function seedBellevue() {
-  console.log("Starting Bellevue Seeding...");
-  try {
-    const data = await getBellevueData();
+  const pool = getDbPool();
 
-    if (data && data.features) {
-      console.log(`[Bellevue] Found ${data.features.length} features.`);
-      // Placeholder for meter insertion logic
-    }
+  console.log("Seeding Bellevue, WA...");
 
-    await seedOsmParkingLots("Bellevue", "United States");
-    await seedOsmCityCoverage("Bellevue", "United States");
+  // 1. City Coverage (OSM)
+  await seedOsmCityCoverage("Bellevue", "United States", "Washington");
 
-    console.log(`[Bellevue] Seeding Complete.`);
-  } catch (e) {
-    console.error("Bellevue Seeding Failed:", e);
-  }
+  // 2. Parking Lots (OSM)
+  await seedOsmParkingLots("Bellevue", "United States", "Washington");
+
+  // 3. Street Centerlines (OSM Fallback)
+  // Official data not publicly available (firewalled/token-gated).
+  // Using OSM Lines as fallback for geometry.
+  await seedOsmStreets("Bellevue", "WA", "United States");
+
+  // 4. Meters (None)
+  console.log(
+    "⚠️ No official parking meter or sign data found for Bellevue. Skipping meters."
+  );
+
+  console.log("✅ Bellevue seeding complete.");
 }
 
+// Allow running directly
 if (require.main === module) {
-  seedBellevue().finally(() => pool.end());
+  seedBellevue()
+    .then(() => process.exit(0))
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    });
 }

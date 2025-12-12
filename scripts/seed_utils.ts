@@ -153,3 +153,39 @@ export function getDefaultSegmentAttributes() {
     notes: "Imported from street centerline (no parking data)",
   };
 }
+
+/**
+ * Parses sign text to extract parking attributes (rate, limit, schedule).
+ * Useful for "Proxy Strategy" when using sign datasets.
+ */
+export function parseSignText(text: string) {
+  const t = (text || "").toUpperCase();
+
+  // Rate Parsing: "$1.00 PER HOUR"
+  let rate = null;
+  const rateMatch = t.match(/\$(\d+\.\d{2}) PER HOUR/);
+  if (rateMatch) {
+    rate = `$${rateMatch[1]}/hr`;
+  } else if (t.includes("PAY")) {
+    rate = "$1.00/hr"; // Default guess
+  }
+
+  // Limit Parsing: "2 HR", "3HR"
+  let limit = null;
+  const limitMatch = t.match(/(\d+)(?:HR| HOUR)/);
+  if (limitMatch) {
+    limit = `${limitMatch[1]}hr`;
+  } else if (t.includes("3HR")) limit = "3hr";
+  else if (t.includes("4HR")) limit = "4hr";
+
+  // Schedule Parsing: "9AM-9PM"
+  let schedule = "Mon-Sat 9am-6pm"; // Default
+  const timeMatch = t.match(
+    /(\d{1,2}(?::\d{2})?[AP]M\s*(?:-|TO)\s*\d{1,2}(?::\d{2})?[AP]M)/
+  );
+  if (timeMatch) {
+    schedule = timeMatch[0];
+  }
+
+  return { rate, limit, schedule };
+}

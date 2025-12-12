@@ -1,4 +1,5 @@
-import { getDbPool } from "./seed_utils";
+import { getDbPool, getDefaultSegmentAttributes } from "./seed_utils";
+
 import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 import fs from "fs";
 import path from "path";
@@ -49,9 +50,9 @@ async function seedRedmondStreets() {
 
       // Map ownership to category
       // Redmond has free time-limited parking downtown (2hr)
-      // Without explicit parking data, we'll mark as "Unrestricted"
-      // since this is just road geometry
-      const streetUse = "Unrestricted";
+      // Without explicit parking data, we'll mark as "Unrestricted" using standard helper
+      const defaults = getDefaultSegmentAttributes();
+      const streetUse = defaults.street_use;
 
       const blockId = p.AssetID || `RED-${inserted}`;
       const streetName = p.StreetName || "Unknown";
@@ -62,6 +63,7 @@ async function seedRedmondStreets() {
         JSON.stringify(item.geometry),
         JSON.stringify({
           ...p,
+          ...defaults,
           city: "Redmond",
           streetName,
         }),
