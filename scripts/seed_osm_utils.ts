@@ -4,16 +4,23 @@ import axios from "axios";
 const pool = getDbPool();
 
 // Overpass query helper
-async function fetchParkingLots(cityName: string, country: string = "Canada") {
-  // Use Metro Vancouver context to ensure we get the correct city in BC
-  // and use map_to_area to get the correct area for searching
+async function fetchParkingLots(
+  cityName: string,
+  country: string = "Canada",
+  searchAreaName: string | null = null
+) {
+  // Determine search area (broad region/state/province) to disambiguate
+  let areaName = searchAreaName;
+  if (!areaName) {
+    areaName =
+      country === "United States"
+        ? "Washington"
+        : "Metro Vancouver Regional District";
+  }
+
   const query = `
       [out:json][timeout:60];
-      ${
-        country === "United States"
-          ? 'area["name"="Washington"]->.metro;'
-          : 'area["name"="Metro Vancouver Regional District"]->.metro;'
-      }
+      area["name"="${areaName}"]->.metro;
       relation["name"~"${cityName}",i]["admin_level"="8"](area.metro)->.cityRel;
       .cityRel map_to_area -> .searchArea;
       (
@@ -108,10 +115,11 @@ function parseMaxStay(maxstay: string): number | null {
  */
 export async function seedOsmParkingLots(
   cityName: string,
-  country: string = "Canada"
+  country: string = "Canada",
+  searchAreaName: string | null = null
 ) {
   console.log(`[ParkingLots] Fetching data for ${cityName} from OSM...`);
-  const data = await fetchParkingLots(cityName, country);
+  const data = await fetchParkingLots(cityName, country, searchAreaName);
 
   if (!data || !data.elements) {
     console.log(`[ParkingLots] No data found for ${cityName}`);
@@ -179,7 +187,8 @@ export async function seedOsmParkingLots(
  */
 export async function seedOsmCityCoverage(
   cityName: string,
-  country: string = "Canada"
+  country: string = "Canada",
+  searchAreaName: string | null = null
 ) {
   console.log(`[Coverage] Seeding coverage for ${cityName}...`);
 
@@ -193,13 +202,17 @@ export async function seedOsmCityCoverage(
     return;
   }
 
+  let areaName = searchAreaName;
+  if (!areaName) {
+    areaName =
+      country === "United States"
+        ? "Washington"
+        : "Metro Vancouver Regional District";
+  }
+
   const query = `
       [out:json][timeout:60];
-      ${
-        country === "United States"
-          ? 'area["name"="Washington"]->.searchArea;'
-          : 'area["name"="Metro Vancouver Regional District"]->.searchArea;'
-      }
+      area["name"="${areaName}"]->.searchArea;
       relation["name"~"${cityName}",i]["admin_level"="8"](area.searchArea);
       out geom;
     `;

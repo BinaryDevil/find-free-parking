@@ -88,6 +88,8 @@ async function runAll() {
       await seedSeattle();
     }
 
+    // 5. New York
+
     // 5. Note on zones
     const zonesCount = await pool.query("SELECT count(*) FROM parking_zones");
     if (parseInt(zonesCount.rows[0].count) > 0) {

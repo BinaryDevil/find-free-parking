@@ -514,7 +514,9 @@ export default function Home() {
                <div style="font-weight:600;color:#0f172a">${
                  props.type ?? "Parking"
                }</div>
-               <div style="color:#475569">${props.city ?? ""}</div>
+               <div style="color:#475569">${
+                 props.location_desc ?? props.city ?? ""
+               }</div>
                ${walkingHtml}
                ${
                  props.timeLimitMinutes
@@ -1025,20 +1027,32 @@ export default function Home() {
       });
 
       // 2. Map valid meters to features (Sanitize properties)
-      const meterFeatures: SpotFeature[] = filteredMeters.map((m: any) => ({
-        type: "Feature",
-        geometry: m.geom,
-        properties: sanitizeFeatureProperties({
-          id: m.id,
-          city: "Vancouver", // dynamic city? generic is fine
-          type: "Meter",
-          pay_station_id: m.pay_station_id,
-          meter_head: m.meter_head,
-          report_counts: m.report_counts,
-          schedules: m.schedules,
-          z_status_override: m.z_status_override,
-        }) as any,
-      }));
+      const meterFeatures: SpotFeature[] = filteredMeters.map((m: any) => {
+        let raw = m.raw_data || {};
+        // If raw_data came as string (unlikely with pg jsonb but possible in some adapters), parse it
+        if (typeof raw === "string") {
+          try {
+            raw = JSON.parse(raw);
+          } catch (e) {}
+        }
+
+        return {
+          type: "Feature",
+          geometry: m.geom,
+          properties: sanitizeFeatureProperties({
+            id: m.id,
+            city: raw.city || "Unknown City",
+            type: "Meter",
+            pay_station_id: m.pay_station_id,
+            meter_head: m.meter_head,
+            report_counts: m.report_counts,
+            schedules: m.schedules,
+            z_status_override: m.z_status_override,
+            notes: raw.payment_info, // Use payment info as notes/subtitle context
+            location_desc: raw.on_street, // Capture street name if available
+          }) as any,
+        };
+      });
 
       const source = map.getSource("spots") as
         | maplibregl.GeoJSONSource

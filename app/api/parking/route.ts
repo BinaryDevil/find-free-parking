@@ -16,7 +16,7 @@ export async function GET(request: Request) {
     // 1. Get Meters
     const metersQuery = `
       SELECT id, pay_station_id, meter_head, report_counts,
-             schedules,
+             schedules, raw_data,
              ST_AsGeoJSON(geom)::json as geom
       FROM parking_meters
       WHERE ST_Intersects(geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))
