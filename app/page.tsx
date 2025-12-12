@@ -8,6 +8,7 @@ import maplibregl, {
   StyleSpecification,
 } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
+import { submitCoverageRequest } from "@/app/actions/request-coverage";
 import { LocateFixed, Loader2, Search } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
@@ -106,7 +107,11 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
-  const [featureCounts, setFeatureCounts] = useState({ meters: 0, streets: 0 });
+  const [featureCounts, setFeatureCounts] = useState({
+    meters: 0,
+    streets: 0,
+    zones: 0,
+  });
   const [searchQuery, setSearchQuery] = useState("");
   const [isLocating, setIsLocating] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -1107,7 +1112,7 @@ export default function Home() {
       }
       const streetCount = streetFeatures.length;
 
-      setFeatureCounts({ meters: meterCount, streets: streetCount });
+      let zoneCount = 0;
 
       // 2. Fetch Parking Zones (Lots)
       const bboxParam = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
@@ -1130,8 +1135,15 @@ export default function Home() {
             type: "FeatureCollection",
             features: zoneFeatures,
           });
+          zoneCount = zoneFeatures.length;
         }
       }
+
+      setFeatureCounts({
+        meters: meterCount,
+        streets: streetCount,
+        zones: zoneCount,
+      });
 
       setStatus("idle");
     } catch (err) {
@@ -1378,21 +1390,19 @@ export default function Home() {
               {status === "loading" || isSearching
                 ? " · Loading…"
                 : ` · ${
-                    featureCounts.meters > 0
-                      ? `${featureCounts.meters} spots`
-                      : ""
-                  }${
-                    featureCounts.meters > 0 && featureCounts.streets > 0
-                      ? " · "
-                      : ""
-                  }${
-                    featureCounts.streets > 0
-                      ? `${featureCounts.streets} blocks`
-                      : ""
-                  }${
-                    featureCounts.meters === 0 && featureCounts.streets === 0
-                      ? "None found"
-                      : ""
+                    [
+                      featureCounts.meters > 0
+                        ? `${featureCounts.meters} spots`
+                        : null,
+                      featureCounts.streets > 0
+                        ? `${featureCounts.streets} blocks`
+                        : null,
+                      featureCounts.zones > 0
+                        ? `${featureCounts.zones} lots`
+                        : null,
+                    ]
+                      .filter(Boolean)
+                      .join(" · ") || "None found"
                   }`}
             </div>
           </div>
@@ -1413,6 +1423,46 @@ export default function Home() {
           setShowCoverageBanner(false);
           setCoverageDismissed(true);
           sessionStorage.setItem("coverage-banner-dismissed", "true");
+        }}
+        onRequest={() => {
+          // If we have user location, try to request coverage
+          if (userLocation) {
+            // Need async handler
+            const request = async () => {
+              try {
+                // Reverse geocode to get city details
+                const res = await fetch(
+                  `https://nominatim.openstreetmap.org/reverse?format=json&lat=${userLocation[1]}&lon=${userLocation[0]}`
+                );
+                if (!res.ok) return;
+                const data = await res.json();
+                const address = data.address || {};
+
+                await submitCoverageRequest({
+                  city:
+                    address.city ||
+                    address.town ||
+                    address.village ||
+                    address.hamlet ||
+                    "Unknown",
+                  state: address.state,
+                  country: address.country || "Unknown",
+                  latitude: userLocation[1],
+                  longitude: userLocation[0],
+                });
+
+                // Done - simple alert or just dismiss
+                alert("Thanks! We've recorded your interest in this area.");
+                setShowCoverageBanner(false);
+                setCoverageDismissed(true);
+                sessionStorage.setItem("coverage-banner-dismissed", "true");
+              } catch (e) {
+                console.error("Failed to request coverage", e);
+                alert("Failed to submit request. Please try again later.");
+              }
+            };
+            void request();
+          }
         }}
       />
 

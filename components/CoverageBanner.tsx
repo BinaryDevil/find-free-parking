@@ -3,11 +3,13 @@ import { MapPinOff, X } from "lucide-react";
 type CoverageBannerProps = {
   isVisible: boolean;
   onDismiss: () => void;
+  onRequest?: () => void;
 };
 
 export default function CoverageBanner({
   isVisible,
   onDismiss,
+  onRequest,
 }: CoverageBannerProps) {
   if (!isVisible) return null;
 
@@ -17,10 +19,18 @@ export default function CoverageBanner({
         <MapPinOff className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
         <div className="flex-1">
           <h3 className="font-semibold text-sm">Region Not Supported</h3>
-          <p className="text-xs text-slate-300 mt-1">
+          <p className="text-xs text-slate-300 mt-1 mb-2">
             It looks like you are outside our current coverage area. Map data
             may be incomplete or missing here.
           </p>
+          {onRequest ? (
+            <button
+              onClick={onRequest}
+              className="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-md font-medium transition-colors"
+            >
+              Request Coverage
+            </button>
+          ) : null}
         </div>
         <button
           onClick={onDismiss}
