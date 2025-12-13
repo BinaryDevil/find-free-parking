@@ -121,6 +121,16 @@ export async function seedOsmParkingLots(
   country: string = "Canada",
   searchAreaName: string | null = null
 ) {
+  // Check if lots exist
+  const existing = await pool.query(
+    "SELECT 1 FROM parking_zones WHERE city = $1 LIMIT 1",
+    [cityName]
+  );
+  if ((existing.rowCount || 0) > 0) {
+    console.log(`[ParkingLots] Lots already exist for ${cityName}. Skipping.`);
+    return;
+  }
+
   console.log(`[ParkingLots] Fetching data for ${cityName} from OSM...`);
   const data = await fetchParkingLots(cityName, country, searchAreaName);
 
@@ -314,11 +324,21 @@ export async function fetchOsmStreets(
   const url = "https://overpass-api.de/api/interpreter";
   console.log(`Fetching OSM streets for ${city}...`);
 
+  console.log(`[OSM] Fetching streets for ${city} in ${state}, ${country}...`);
+  console.log(`[OSM Query]:\n${query}`);
+
   try {
-    const response = await axios.post(url, query, {
-      headers: { "Content-Type": "text/plain" },
-    });
-    return response.data.elements.filter((e: any) => e.type === "way");
+    const response = await axios.get(
+      "https://overpass-api.de/api/interpreter",
+      {
+        params: { data: query },
+      }
+    );
+    console.log(
+      `[OSM] Streets Response Status: ${response.status}. Elements: ${response.data?.elements?.length}`
+    );
+    const elements = response.data.elements;
+    return elements.filter((e: any) => e.type === "way");
   } catch (err: any) {
     console.error("Error fetching OSM streets:", err.message || err);
     return [];
@@ -333,9 +353,64 @@ export async function seedOsmStreets(
   state: string,
   country = "United States"
 ) {
-  const streets = await fetchOsmStreets(city, state, country);
+  // Check if streets exist
+  // We check via raw_data->>'city' because street_segments doesn't have a direct 'city' column
+  const existing = await pool.query(
+    "SELECT 1 FROM street_segments WHERE raw_data->>'city' = $1 LIMIT 1",
+    [city]
+  );
+  if ((existing.rowCount || 0) > 0) {
+    console.log(`[Streets] Streets already exist for ${city}. Skipping.`);
+    return;
+  }
+
+  // Auto-detect Canada for BC
+  if (state === "BC" && country === "United States") {
+    country = "Canada";
+  }
+
+  // Try standard fetch
+  let streets = await fetchOsmStreets(city, state, country);
+
+  // Fallback: Use DB Coverage Polygon
   if (!streets || streets.length === 0) {
-    console.log(`No OSM streets found for ${city}.`);
+    console.log(
+      `[OSM] Relation search failed for ${city}. Trying coverage polygon fallback...`
+    );
+
+    const cov = await pool.query(
+      "SELECT ST_AsText(bounds) as wkt FROM covered_cities WHERE city_name = $1 LIMIT 1",
+      [city]
+    );
+
+    if (cov.rows.length > 0 && cov.rows[0].wkt) {
+      const wkt = cov.rows[0].wkt; // POLYGON((lon lat, ...))
+      // Parse WKT to Overpass Poly format: "lat lon lat lon ..."
+      // Remove "POLYGON((" and "))"
+      const coordsText = wkt.replace("POLYGON((", "").replace("))", "");
+      const pairs = coordsText.split(", ");
+
+      // Overpass expects "lat lon"
+      const polyStr = pairs
+        .map((p: string) => {
+          const [lon, lat] = p.split(" ");
+          return `${lat} ${lon}`;
+        })
+        .join(" ");
+
+      streets = await fetchOsmStreetsByPoly(polyStr);
+      console.log(`[OSM] Polygon fallback found ${streets.length} streets.`);
+    } else {
+      console.log(
+        `[OSM] No coverage polygon found for ${city}. Cannot use fallback.`
+      );
+    }
+  }
+
+  if (!streets || streets.length === 0) {
+    console.log(
+      `No OSM streets found for ${city} (Standard + Fallback failed).`
+    );
     return;
   }
 
@@ -423,5 +498,30 @@ export async function seedOsmStreets(
     console.log(`✅ Seeded ${inserted} OSM streets for ${city}.`);
   } catch (err: any) {
     console.error("Error seeding OSM streets:", err);
+  }
+}
+
+async function fetchOsmStreetsByPoly(polyStr: string) {
+  const query = `
+      [out:json][timeout:180];
+      (
+        way["highway"~"^(primary|secondary|tertiary|residential|unclassified|living_street)$"](poly:"${polyStr}");
+      );
+      out geom;
+    `;
+
+  console.log(`[OSM] Fetching streets by Polygon...`);
+  try {
+    const response = await axios.get(
+      "https://overpass-api.de/api/interpreter",
+      {
+        params: { data: query },
+      }
+    );
+    const elements = response.data.elements || [];
+    return elements.filter((e: any) => e.type === "way");
+  } catch (err: any) {
+    console.error("Error fetching streets by poly:", err.message);
+    return [];
   }
 }

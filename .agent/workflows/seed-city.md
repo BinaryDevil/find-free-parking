@@ -6,12 +6,12 @@ params:
 
 ## Tables to Populate
 
-| Table             | Description                                         | Source                          |
-| ----------------- | --------------------------------------------------- | ------------------------------- |
-| `parking_meters`  | On-street paid parking points (meters/pay stations) | City Open Data                  |
-| `street_segments` | Street line geometries with parking info            | City Open Data (Vancouver only) |
-| `parking_zones`   | Off-street parking lots (polygons)                  | OSM via `seedOsmParkingLots`    |
-| `covered_cities`  | City boundary and metadata                          | OSM via `seedOsmCityCoverage`   |
+| Table             | Description                                         | Source                                                |
+| ----------------- | --------------------------------------------------- | ----------------------------------------------------- |
+| `parking_meters`  | On-street paid parking points (meters/pay stations) | City Open Data                                        |
+| `street_segments` | Street line geometries with parking info            | City Open Data OR **OSM Fallback** (`seedOsmStreets`) |
+| `parking_zones`   | Off-street parking lots (polygons)                  | OSM via `seedOsmParkingLots`                          |
+| `covered_cities`  | City boundary and metadata                          | OSM via `seedOsmCityCoverage`                         |
 
 **Not seeded (runtime):** `reports`, `user_submissions`, `city_requests`
 
@@ -43,9 +43,19 @@ The `seedOsmParkingLots` function uses **conservative classification**:
     - _Why?_ "Signs" datasets often contain "PAY PARKING" or "2 HR PARKING" points which can be parsed into meters.
   - **Tertiary (Geometry)**: If no parking data exists at all, YOU MUST search for **"Street Centerline"**, **"Road Network"**, or **"Transportation"** datasets.
     - _Why?_ This allows us to visualize the street network and provide "Unrestricted" coverage, which is better than a blank map.
-  - **Fallback Strategy**:
-    - Look for a "Data Downloads", "GIS Data", or "FTP" section on the city website (often separate from the main Open Data portal).
-    - If you find a "Signs" dataset, download it and `grep` for "PAY", "METER", "LIMIT". If hits > 10, use the **Proxy Strategy** (see below).
+
+### 3. Street Network (Fallback)
+
+If official city "Street Centerlines" or "Blockfaces" are unavailable:
+
+1.  Use `seedOsmStreets(cityName, state, country)`.
+2.  This function first attempts to find the city relation in OSM.
+3.  **Backup Strategy**: If the relation search fails (common for some administrative boundaries), it automatically falls back to using the **City Coverage Polygon** (from `covered_cities` table) to query streets spatially (`poly:"..."`).
+    - _Requirement_: `seedOsmCityCoverage` must be run BEFORE `seedOsmStreets`.
+
+- **Fallback Strategy**:
+  - Look for a "Data Downloads", "GIS Data", or "FTP" section on the city website (often separate from the main Open Data portal).
+  - If you find a "Signs" dataset, download it and `grep` for "PAY", "METER", "LIMIT". If hits > 10, use the **Proxy Strategy** (see below).
 
 2. **Manual/Browser Download (in addition to APIs)**:
 
@@ -73,10 +83,15 @@ The `seedOsmParkingLots` function uses **conservative classification**:
    - Normalize data to match `parking_meters` schema.
    - **Always include**:
      ```typescript
-     import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
+     import {
+       seedOsmParkingLots,
+       seedOsmCityCoverage,
+       seedOsmStreets,
+     } from "./seed_osm_utils";
      // At end of seed function:
      await seedOsmParkingLots("${city}");
      await seedOsmCityCoverage("${city}");
+     await seedOsmStreets("${city}", "BC");
      ```
 
 4. **Register in Master Script**:
@@ -84,13 +99,19 @@ The `seedOsmParkingLots` function uses **conservative classification**:
    - Import and call the new function in `scripts/seed_all.ts`.
    - **CRITICAL**: Check if data exists before inserting (idempotent).
 
-5. **Verify**:
+5. **Troubleshooting & Re-runs**:
+
+   - Scripts are idempotent: if data exists, they SKIP.
+   - **Missing Data?** If a script runs but no data appears (and logs say "Skipping"), you may have partial/broken data.
+   - **Fix**: Run `DELETE FROM street_segments WHERE raw_data->>'city' = '${city}'` before re-running.
+
+6. **Verify**:
 
    - Run `npx tsx scripts/seed_${city_lowercase}.ts` to test.
    - Run `npx tsx scripts/count_by_city.ts` to confirm `parking_meters`.
    - Verify `parking_zones`: `SELECT type, count(*) FROM parking_zones WHERE city='${city}' GROUP BY type`
    - Verify `covered_cities`: `SELECT city_name FROM covered_cities`
 
-6. **Cleanup**:
+7. **Cleanup**:
    - Delete any temporary probe scripts or data files.
    - Keep the final `scripts/seed_${city}.ts` file.

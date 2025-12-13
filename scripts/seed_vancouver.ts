@@ -1,5 +1,9 @@
 import { getDbPool } from "./seed_utils";
-import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
+import {
+  seedOsmParkingLots,
+  seedOsmCityCoverage,
+  seedOsmStreets,
+} from "./seed_osm_utils";
 
 const pool = getDbPool();
 
@@ -10,6 +14,25 @@ async function seedDataset(
 ) {
   const fs = await import("fs");
   const path = await import("path");
+
+  // IDEMPOTENCY CHECK
+  if (tableName === "parking_meters") {
+    const check = await pool.query(
+      "SELECT 1 FROM parking_meters WHERE raw_data->>'city' = 'Vancouver' LIMIT 1"
+    );
+    if ((check.rowCount || 0) > 0) {
+      console.log("[Vancouver] Meters already exist. Skipping.");
+      return;
+    }
+  } else if (tableName === "street_segments") {
+    const check = await pool.query(
+      "SELECT 1 FROM street_segments WHERE raw_data->>'hblock' IS NOT NULL LIMIT 1"
+    );
+    if ((check.rowCount || 0) > 0) {
+      console.log("[Vancouver] Streets already exist. Skipping.");
+      return;
+    }
+  }
 
   let data: any[] = [];
   const localFile = path.resolve(
@@ -50,35 +73,48 @@ async function seedDataset(
         const rowValues = mapper(item);
         if (!rowValues) continue;
 
-        // Construct ($1, $2, ...)
-        // rowValues corresponds to params passed to INSERT
-        // But parameters differ by table.
-        // We know the columns and order from the mapper/original code.
+        // Handle MultiLineString for streets
+        if (tableName === "street_segments") {
+          try {
+            const rawGeom = JSON.parse(rowValues[2]);
+            if (rawGeom.type === "MultiLineString") {
+              if (rawGeom.coordinates && rawGeom.coordinates.length > 0) {
+                rawGeom.type = "LineString";
+                rawGeom.coordinates = rawGeom.coordinates[0];
+                rowValues[2] = JSON.stringify(rawGeom);
+              }
+            }
+          } catch (e) {
+            // ignore parse error
+          }
+        }
 
         let rowPlaceholders = "";
+        const s = paramIndex;
+        paramIndex += 5;
 
+        // Use explicit casts to avoid type errors
         if (tableName === "parking_meters") {
-          // Cols: id, pay_station_id, meter_head, geom, raw_data, schedules
-          values.push(...rowValues);
-          // 5 params passed: pay_station_id, meter_head, geomStr, rawData, schedules
-          const p = (inc: number) => `$${paramIndex++}`;
-          rowPlaceholders = `(gen_random_uuid(), ${p(0)}, ${p(
-            0
-          )}, ST_GeomFromGeoJSON(${p(0)}), ${p(0)}, ${p(0)})`;
+          // id, pay_station_id, meter_head, geom, raw_data, schedules
+          rowPlaceholders = `(gen_random_uuid(), $${s}::text, $${
+            s + 1
+          }::text, ST_GeomFromGeoJSON($${s + 2}::json), $${s + 3}::jsonb, $${
+            s + 4
+          }::jsonb)`;
         } else if (tableName === "street_segments") {
-          // Cols: id, block_id, street_use, geom, raw_data, schedules
-          values.push(...rowValues);
-          // 4 params passed + 1 computed schedules? No, mapper should return 5.
-          // array: [block_id, street_use, geom, raw, schedules]
-          const p = (inc: number) => `$${paramIndex++}`;
-          rowPlaceholders = `(gen_random_uuid(), ${p(0)}, ${p(
-            0
-          )}, ST_GeomFromGeoJSON(${p(0)}), ${p(0)}, ${p(0)})`;
+          // id, block_id, street_use, geom, raw_data, schedules
+          rowPlaceholders = `(gen_random_uuid(), $${s}::text, $${
+            s + 1
+          }::text, ST_GeomFromGeoJSON($${s + 2}::json), $${s + 3}::jsonb, $${
+            s + 4
+          }::jsonb)`;
         }
+
+        values.push(...rowValues);
         placeholders.push(rowPlaceholders);
         inserted++;
       } catch (e: any) {
-        // Skip individual errors in mapper?
+        // Skip individual errors
       }
     }
 
@@ -167,11 +203,8 @@ export async function seedVancouver() {
 
       for (const b of blocks) {
         const rateStr = item[b.rateKey];
-        const timeStr = item[b.timeKey];
-        // Rate typically "$1.00" or "$3.50"
         if (rateStr) {
           const rate = parseFloat(rateStr.replace("$", ""));
-          // simple check if rate is valid
           if (!isNaN(rate)) {
             const rule: any = {
               days: b.days,
@@ -179,19 +212,14 @@ export async function seedVancouver() {
               end: b.end,
               rate: rate,
             };
-            if (timeStr) {
-              // Parse time formatting "2 Hr", "30 min" etc?
-              // For now just store string or simplified logical max stay logic if available
-              // or just generic max_stay
-            }
             schedules.push(rule);
           }
         }
       }
 
       return [
-        item.pay_phone,
-        item.meterhead,
+        item.pay_phone || "", // pay_station_id
+        item.meterhead || "", // meter_head
         JSON.stringify(geometry),
         JSON.stringify({ ...item, city: "Vancouver" }),
         JSON.stringify(schedules),
@@ -203,19 +231,22 @@ export async function seedVancouver() {
       if (!item.geom || !item.geom.geometry) return null;
       const geometry = item.geom.geometry;
 
+      const rawWithCity = {
+        ...item,
+        city: "Vancouver",
+        source: "Vancouver Open Data",
+      };
+
       return [
-        item.hblock,
-        item.streetuse,
+        item.hblock || "", // block_id
+        item.streetuse || "Unknown", // street_use
         JSON.stringify(geometry),
-        JSON.stringify(item),
-        "[]", // empty schedules for now
+        JSON.stringify(rawWithCity),
+        "[]", // schedules
       ];
     });
 
-    // Seed Lots (Parking Zones) from OSM (and later Official if found)
     await seedOsmParkingLots("Vancouver");
-
-    // Seed City Coverage
     await seedOsmCityCoverage("Vancouver");
 
     console.log("Vancouver Seeding Complete.");
