@@ -112,6 +112,12 @@ If official city "Street Centerlines" or "Blockfaces" are unavailable:
    - Verify `parking_zones`: `SELECT type, count(*) FROM parking_zones WHERE city='${city}' GROUP BY type`
    - Verify `covered_cities`: `SELECT city_name FROM covered_cities`
 
-7. **Cleanup**:
+7. **Register in Frontend Config**:
+
+   - Update `lib/cities.ts` to include the new city in `SUPPORTED_CITIES`.
+   - Add the city name, slug, center coordinates `[lng, lat]`, and appropriate zoom level (usually 13-15).
+   - This ensures the city page (e.g., `/en/burnaby`) works correctly.
+
+8. **Cleanup**:
    - Delete any temporary probe scripts or data files.
    - Keep the final `scripts/seed_${city}.ts` file.
