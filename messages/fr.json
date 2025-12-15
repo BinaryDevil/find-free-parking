@@ -36,7 +36,9 @@
     "paidParking": "Parking payant",
     "spots": "{count} places",
     "blocks": "{count} rues",
-    "lots": "{count} parkings"
+    "lots": "{count} parkings",
+    "metaDescription": "Trouvez un parking gratuit, les règles de stationnement dans la rue et les tarifs des parcmètres dans votre ville. Carte en temps réel avec des places vérifiées.",
+    "metaKeywords": "parking gratuit, stationnement dans la rue, carte de stationnement, parcmètres, règles de stationnement, parking pas cher"
   },
   "ReportModal": {
     "title": "Mettre à jour",

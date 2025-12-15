@@ -36,7 +36,9 @@
     "paidParking": "Estacionamento pago",
     "spots": "{count} vagas",
     "blocks": "{count} quarteirões",
-    "lots": "{count} lotes"
+    "lots": "{count} lotes",
+    "metaDescription": "Encontre estacionamento grátis, regras de estacionamento na rua e tarifas de parquímetros em sua cidade. Mapa em tempo real com vagas verificadas.",
+    "metaKeywords": "estacionamento grátis, estacionamento na rua, mapa de estacionamento, parquímetros, regras de estacionamento, estacionamento barato"
   },
   "ReportModal": {
     "title": "Atualizar Status",

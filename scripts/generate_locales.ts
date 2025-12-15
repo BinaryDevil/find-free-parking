@@ -40,6 +40,10 @@ const keys = {
     spots: "{count} spots",
     blocks: "{count} blocks",
     lots: "{count} lots",
+    metaDescription:
+      "Find free parking, street parking rules, and meter rates in your city. Real-time map with verified spots.",
+    metaKeywords:
+      "free parking, street parking, parking map, parking meters, parking rules, cheap parking",
   },
   ReportModal: {
     title: "Update Status",
@@ -96,6 +100,10 @@ const translations: Record<string, any> = {
       spots: "{count} 个车位",
       blocks: "{count} 个街区",
       lots: "{count} 个停车场",
+      metaDescription:
+        "查找您所在城市的免费停车位、路边停车规则和咪表费率。带有经过验证的停车位的实时地图。",
+      metaKeywords:
+        "免费停车, 路边停车, 停车地图, 停车咪表, 停车规则, 便宜停车",
     },
     ReportModal: {
       title: "更新状态",
@@ -144,6 +152,10 @@ const translations: Record<string, any> = {
       spots: "{count} espacios",
       blocks: "{count} cuadras",
       lots: "{count} lotes",
+      metaDescription:
+        "Encuentra estacionamiento gratuito, reglas de estacionamiento en la calle y tarifas de parquímetros en tu ciudad. Mapa en tiempo real con lugares verificados.",
+      metaKeywords:
+        "estacionamiento gratis, estacionamiento en la calle, mapa de estacionamiento, parquímetros, reglas de estacionamiento, estacionamiento barato",
     },
     ReportModal: {
       title: "Actualizar Estado",
@@ -195,6 +207,10 @@ const translations: Record<string, any> = {
       spots: "{count} places",
       blocks: "{count} rues",
       lots: "{count} parkings",
+      metaDescription:
+        "Trouvez un parking gratuit, les règles de stationnement dans la rue et les tarifs des parcmètres dans votre ville. Carte en temps réel avec des places vérifiées.",
+      metaKeywords:
+        "parking gratuit, stationnement dans la rue, carte de stationnement, parcmètres, règles de stationnement, parking pas cher",
     },
     ReportModal: {
       title: "Mettre à jour",
@@ -245,6 +261,10 @@ const translations: Record<string, any> = {
       spots: "{count} जगहें",
       blocks: "{count} ब्लॉक",
       lots: "{count} लॉट",
+      metaDescription:
+        "अपने शहर में मुफ्त पार्किंग, स्ट्रीट पार्किंग नियम और मीटर की दरें खोजें। सत्यापित स्थानों के साथ रीयल-टाइम मानचित्र।",
+      metaKeywords:
+        "मुफ्त पार्किंग, स्ट्रीट पार्किंग, पार्किंग मानचित्र, पार्किंग मीटर, पार्किंग नियम, सस्ती पार्किंग",
     },
     ReportModal: {
       title: "स्थिति अपडेट करें",
@@ -296,6 +316,10 @@ const translations: Record<string, any> = {
       spots: "{count} مكان",
       blocks: "{count} مجمعات",
       lots: "{count} مواقف",
+      metaDescription:
+        "ابحث عن مواقف مجانية للسيارات وقواعد وقوف السيارات في الشارع وأسعار العدادات في مدينتك. خريطة في الوقت الحقيقي مع مواقع تم التحقق منها.",
+      metaKeywords:
+        "مواقف مجانية, وقوف السيارات في الشارع, خريطة وقوف السيارات, عدادات وقوف السيارات, قواعد وقوف السيارات, مواقف رخيصة",
     },
     ReportModal: {
       title: "تحديث الحالة",
@@ -345,6 +369,10 @@ const translations: Record<string, any> = {
       spots: "{count} টি স্পট",
       blocks: "{count} টি ব্লক",
       lots: "{count} টি লট",
+      metaDescription:
+        "আপনার শহরে বিনামূল্যে পার্কিং, রাস্তার পার্কিং নিয়ম এবং মিটারের হার খুঁজুন। যাচাইকৃত স্পট সহ রিয়েল-টাইম ম্যাপ।",
+      metaKeywords:
+        "ফ্রি পার্কিং, স্ট্রিট পার্কিং, পার্কিং ম্যাপ, পার্কিং মিটার, পার্কিং নিয়ম, সস্তা পার্কিং",
     },
     ReportModal: {
       title: "স্থিতি আপডেট করুন",
@@ -396,6 +424,10 @@ const translations: Record<string, any> = {
       spots: "{count} vagas",
       blocks: "{count} quarteirões",
       lots: "{count} lotes",
+      metaDescription:
+        "Encontre estacionamento grátis, regras de estacionamento na rua e tarifas de parquímetros em sua cidade. Mapa em tempo real com vagas verificadas.",
+      metaKeywords:
+        "estacionamento grátis, estacionamento na rua, mapa de estacionamento, parquímetros, regras de estacionamento, estacionamento barato",
     },
     ReportModal: {
       title: "Atualizar Status",

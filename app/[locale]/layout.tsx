@@ -19,6 +19,7 @@ const siteUrl = "https://www.findfreeparking.info";
 
 import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import JsonLd from "@/components/JsonLd";
 
 export async function generateMetadata({
   params,
@@ -39,7 +40,8 @@ export async function generateMetadata({
       template: `%s | ${t("title")}`,
       default: t("title"),
     },
-    description: t("searchPlaceholder"), // Using placeholder as description for now or hardcode a generic one
+    description: t("metaDescription"),
+    keywords: t("metaKeywords"),
     openGraph: {
       type: "website",
       locale: locale,
@@ -76,22 +78,27 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F04D2JVCQ5"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
 
-            gtag('config', 'G-F04D2JVCQ5');
-          `}
-        </Script>
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `}
+            </Script>
+          </>
+        )}
 
         <NextIntlClientProvider messages={messages}>
           {children}
+          <JsonLd />
         </NextIntlClientProvider>
       </body>
     </html>

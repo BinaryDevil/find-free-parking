@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: `${t("title")} - ${cityInfo.name}`,
-    description: `Find free and paid parking in ${cityInfo.name}.`,
+    description: `${cityInfo.name} parking map. ${t("metaDescription")}`,
+    keywords: `${cityInfo.name} parking, ${t("metaKeywords")}`,
     alternates: {
       canonical: `/${locale}/${city}`,
       languages: alternates,

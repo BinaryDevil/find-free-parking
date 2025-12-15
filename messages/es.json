@@ -36,7 +36,9 @@
     "paidParking": "Estacionamiento de pago",
     "spots": "{count} espacios",
     "blocks": "{count} cuadras",
-    "lots": "{count} lotes"
+    "lots": "{count} lotes",
+    "metaDescription": "Encuentra estacionamiento gratuito, reglas de estacionamiento en la calle y tarifas de parquímetros en tu ciudad. Mapa en tiempo real con lugares verificados.",
+    "metaKeywords": "estacionamiento gratis, estacionamiento en la calle, mapa de estacionamiento, parquímetros, reglas de estacionamiento, estacionamiento barato"
   },
   "ReportModal": {
     "title": "Actualizar Estado",
