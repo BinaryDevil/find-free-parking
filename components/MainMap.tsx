@@ -15,6 +15,8 @@ import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
 import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
@@ -102,7 +104,18 @@ type StreetFeature = {
   };
 };
 
-export default function Home() {
+interface MainMapProps {
+  initialCenter?: [number, number];
+  initialZoom?: number;
+  cityName?: string;
+}
+
+export default function MainMap({
+  initialCenter,
+  initialZoom,
+  cityName,
+}: MainMapProps) {
+  const t = useTranslations("HomePage");
   const mapRef = useRef<Map | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
@@ -266,8 +279,8 @@ export default function Home() {
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: mapStyle,
-      center: DEFAULT_CENTER,
-      zoom: DEFAULT_ZOOM,
+      center: initialCenter || DEFAULT_CENTER,
+      zoom: initialZoom || DEFAULT_ZOOM,
       minZoom: MIN_ZOOM,
       attributionControl: false,
     });
@@ -1054,6 +1067,9 @@ export default function Home() {
         };
       });
 
+      const map = mapRef.current;
+      if (!map) return;
+
       const source = map.getSource("spots") as
         | maplibregl.GeoJSONSource
         | undefined;
@@ -1328,7 +1344,7 @@ export default function Home() {
       {/* Destination Marker (Hidden visual, logic only, or we could add a marker later) */}
 
       {/* Help Button - Bottom Right above Map Controls */}
-      <div className="absolute bottom-40 right-2.5 z-10">
+      <div className="absolute bottom-28 right-2.5 z-10">
         <button
           onClick={() => setIsHelpOpen(true)}
           className="flex h-[29px] w-[29px] items-center justify-center rounded-md border border-slate-300 bg-white text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -1337,6 +1353,15 @@ export default function Home() {
         >
           <span className="text-sm font-bold">?</span>
         </button>
+      </div>
+
+      <div className="absolute top-4 right-4 z-20 hidden md:block">
+        <LanguageSwitcher />
+      </div>
+
+      {/* Language Switcher - Bottom Right (Mobile) */}
+      <div className="absolute bottom-36 right-2.5 z-10 md:hidden">
+        <LanguageSwitcher />
       </div>
 
       <div className="pointer-events-none absolute top-0 left-0 right-0 flex justify-center px-4 pt-4">
@@ -1358,8 +1383,8 @@ export default function Home() {
               }}
               placeholder={
                 showCurrentLocationPlaceholder
-                  ? "Current location"
-                  : "Search for an address or place"
+                  ? t("useMyLoc")
+                  : t("searchPlaceholder")
               }
               className="w-full bg-transparent py-3 pr-2 text-sm text-slate-900 placeholder:text-slate-500 outline-none"
             />
@@ -1371,8 +1396,8 @@ export default function Home() {
                   ? "border-blue-600 bg-blue-600 text-white"
                   : "border-slate-200 bg-white text-slate-800 hover:bg-slate-50"
               }`}
-              title="Use current location"
-              aria-label="Use current location"
+              title={t("useMyLoc")}
+              aria-label={t("useMyLoc")}
               disabled={isLocating}
             >
               {isLocating ? (
@@ -1386,9 +1411,11 @@ export default function Home() {
             <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">
                 <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow ring-1 ring-black/5">
-                  <span className="text-slate-500">Start parking</span>
+                  <span className="text-slate-500">{t("startParking")}</span>
                   <span className="text-slate-900">
-                    {formatDisplayDate(parkingTime, isCustomTime)}
+                    {isCustomTime
+                      ? formatDisplayDate(parkingTime, true)
+                      : t("now")}
                   </span>
                 </div>
                 <input
@@ -1416,7 +1443,7 @@ export default function Home() {
                   }`}
                   aria-pressed={filterType === "FREE"}
                 >
-                  Free
+                  {t("free")}
                 </button>
                 <button
                   type="button"
@@ -1428,30 +1455,30 @@ export default function Home() {
                   }`}
                   aria-pressed={filterType === "PAID"}
                 >
-                  Paid
+                  {t("paid")}
                 </button>
               </div>
             </div>
           </div>
           <div className="mt-3 flex justify-center">
             <div className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-slate-800 shadow">
-              {filterType === "FREE" ? "Free parking" : "Paid parking"}
+              {filterType === "FREE" ? t("freeParking") : t("paidParking")}
               {status === "loading" || isSearching
-                ? " · Loading…"
+                ? ` · ${t("loading")}`
                 : ` · ${
                     [
                       featureCounts.meters > 0
-                        ? `${featureCounts.meters} spots`
+                        ? t("spots", { count: featureCounts.meters })
                         : null,
                       featureCounts.streets > 0
-                        ? `${featureCounts.streets} blocks`
+                        ? t("blocks", { count: featureCounts.streets })
                         : null,
                       featureCounts.zones > 0
-                        ? `${featureCounts.zones} lots`
+                        ? t("lots", { count: featureCounts.zones })
                         : null,
                     ]
                       .filter(Boolean)
-                      .join(" · ") || "None found"
+                      .join(" · ") || t("noneFound")
                   }`}
             </div>
           </div>

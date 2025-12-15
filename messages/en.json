@@ -1,0 +1,51 @@
+{
+  "HomePage": {
+    "title": "Find Free Parking",
+    "searchPlaceholder": "Search for an address or place",
+    "useMyLoc": "Use current location",
+    "startParking": "Start parking",
+    "now": "now",
+    "free": "Free",
+    "paid": "Paid",
+    "noneFound": "None found",
+    "freeParkingCount": "Free parking: {count}",
+    "paidParkingCount": "Paid parking: {count}",
+    "regionNotSupported": "Region not supported",
+    "regionNotSupportedDesc": "We currently only support specific cities.",
+    "requestCity": "Request City",
+    "helpTitle": "How to use",
+    "legendTitle": "Map Legend",
+    "unrestricted": "Unrestricted",
+    "restricted": "Restricted / Paid",
+    "freeLimited": "Free (Time Limited)",
+    "permit": "Permit Only",
+    "mixed": "Mixed Rules",
+    "unknown": "Unknown Status",
+    "reports": "Community Reports",
+    "verifiedFree": "Verified Free",
+    "reportedPaid": "Reported as Paid",
+    "getDirections": "Get Directions",
+    "updateStatus": "Update Status",
+    "walkEstimates": "{minutes} min walk ({distance}m)",
+    "toDestination": "To Destination:",
+    "timeLimit": "{minutes} min limit",
+    "checkSigns": "Check local signs.",
+    "verificationRequired": "Verification required. Check local signs."
+  },
+  "ReportModal": {
+    "title": "Update Status",
+    "thankYou": "Thank you for your report!",
+    "statusCorrect": "Status is Correct",
+    "statusIncorrect": "Status is Incorrect",
+    "comments": "Comments (optional)",
+    "submit": "Submit Report",
+    "cancel": "Cancel",
+    "other": "Other"
+  },
+  "HelpModal": {
+    "title": "How to convert to free parking",
+    "desc": "Green lines represent likely free street parking.",
+    "redLines": "Red lines are paid or restricted.",
+    "clickForDetails": "Click on any line or marker for details."
+  }
+}

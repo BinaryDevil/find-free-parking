@@ -1,0 +1,99 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+import { Geist, Geist_Mono } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import "../globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const siteUrl = "https://www.findfreeparking.info";
+
+import { routing } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "HomePage" });
+
+  const alternates: Record<string, string> = {};
+  routing.locales.forEach((l) => {
+    alternates[l] = `/${l}`;
+  });
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      template: `%s | ${t("title")}`,
+      default: t("title"),
+    },
+    description: t("searchPlaceholder"), // Using placeholder as description for now or hardcode a generic one
+    openGraph: {
+      type: "website",
+      locale: locale,
+      url: `${siteUrl}/${locale}`,
+      title: t("title"),
+      siteName: t("title"),
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: alternates,
+    },
+  };
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}>) {
+  const { locale } = await params;
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F04D2JVCQ5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-F04D2JVCQ5');
+          `}
+        </Script>
+
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}

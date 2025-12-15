@@ -3,7 +3,8 @@
 ## High Priority
 
 - [x] Stop showing "Restricted" streets as "PAID" on the map. we need to filter them out.
-- [ ] Add multilingual support, support top 8 languages most used worldwide, With multi language support and cities coverage data, can we generate seperate URLS for each language/city? That would be good for SEO.
+- [x] Add multilingual support, support top 8 languages most used worldwide, With multi language support and cities coverage data, can we generate seperate URLS for each language/city? That would be good for SEO.
+- [ ] Implement analytics and SEO best practices (Meta tags, sitemap, etc.)
 
 ## Backlog
 

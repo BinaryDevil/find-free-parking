@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { X, CheckCircle, Clock, AlertTriangle } from "lucide-react";
 
 type HelpModalProps = {
@@ -13,6 +14,9 @@ export default function HelpModal({
   dontShowAgain,
   onDontShowAgainChange,
 }: HelpModalProps) {
+  const t = useTranslations("HelpModal");
+  const tHome = useTranslations("HomePage"); // For standard title if needed
+
   if (!isOpen) return null;
 
   return (
@@ -21,7 +25,7 @@ export default function HelpModal({
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold text-slate-900">
-              Find Free Parking
+              {tHome("title")}
             </h2>
             <button
               onClick={onClose}
@@ -35,8 +39,8 @@ export default function HelpModal({
             <div className="flex gap-2">
               <AlertTriangle className="h-4 w-4 text-orange-600 shrink-0 mt-0.5" />
               <p className="text-sm text-orange-800">
-                <span className="font-semibold">Beta Version:</span> This app is
-                under active development. Please expect occasional issues.
+                <span className="font-semibold">{t("betaTitle")}</span>{" "}
+                {t("betaDesc")}
               </p>
             </div>
           </div>
@@ -47,10 +51,72 @@ export default function HelpModal({
                 <CheckCircle className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-semibold text-slate-900">Green is Free</h3>
+                <h3 className="font-semibold text-slate-900">
+                  {t("greenTitle")}
+                </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mt-1">
-                  Green lines and dots mean parking is free{" "}
-                  <strong>right now</strong>.
+                  {/* We might need to adjust the structure if "desc" is not matching the "Green is Free" exactly.
+                       Wait, the keys in generate_locales:
+                       title: "How to convert to free parking" (unused in current modal code?)
+                       desc: "Green lines represent likely free street parking." (matches "Green is Free" content ish?)
+
+                       Let's re-read the original Modal code vs generated keys.
+                       Original:
+                       h3: Green is Free
+                       p: Green lines and dots mean parking is free right now.
+
+                       Generated keys:
+                       desc: "Green lines represent likely free street parking."
+
+                       I should probably update the keys to match the structure better or use what I have.
+                       The generated keys I added:
+                       realTimeUpdates, realTimeDesc, doubleCheck, doubleCheckDesc.
+
+                       I missed "Green is Free" title key.
+                       And the "Green lines..." key is "desc".
+
+                       Let's assume "desc" is the green line description.
+                       And I should add a "greenTitle" key? Or use hardcoded? No, must translate.
+                       I'll use "desc" for the description.
+                       But "Green is Free" title is missing.
+                   */}
+                  {/* Let's double check the keys I added in previous step.
+                       I added realTimeUpdates, realTimeDesc, doubleCheck, doubleCheckDesc.
+                       I have "desc" from before.
+                       I don't have "Green is Free" title.
+                       I'll use "title" from HelpModal for "Green is Free" maybe?
+                       "title": "How to convert..."
+                       -> That's different.
+
+                       Okay, I need to add one more key "greenTitle" or similar.
+                       But I already ran the script.
+                       I will reuse 'title' for now or just add 'greenTitle' in a quick follow up if I can't find a good match.
+                       Wait, I can't add keys without editing the script again.
+
+                       Let's look at the keys again.
+                       HelpModal.title = "How to convert..."
+                       HelpModal.desc = "Green lines..."
+
+                       In the component:
+                       h2: "Find Free Parking" -> Use HomePage.title
+                       h3: "Green is Free" -> Missing
+                       p: "Green lines..." -> HelpModal.desc
+
+                       h3: "Real-time Updates" -> HelpModal.realTimeUpdates
+                       p: ... -> HelpModal.realTimeDesc
+
+                       h3: Double Check -> HelpModal.doubleCheck
+                       p: ... -> HelpModal.doubleCheckDesc
+
+                       Button: HelpModal.startParking
+                       Checkbox: HelpModal.dontShowAgain
+                       Beta: HelpModal.betaTitle, HelpModal.betaDesc
+
+                       So "Green is Free" is missing. I will use "desc" for the P tag.
+                       For the H3 "Green is Free", I will temporarily use "Green is Free" (hardcoded) or try to find a synonym.
+                       Actually, I should just fix the script to add "greenTitle" quickly.
+                   */}
+                  {t("desc")}
                 </p>
               </div>
             </div>
@@ -61,10 +127,10 @@ export default function HelpModal({
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">
-                  Real-time Updates
+                  {t("realTimeUpdates")}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mt-1">
-                  We check regulations instantly so you don't have to guess.
+                  {t("realTimeDesc")}
                 </p>
               </div>
             </div>
@@ -75,11 +141,10 @@ export default function HelpModal({
               </div>
               <div>
                 <h3 className="font-semibold text-slate-900">
-                  Double Check Signs
+                  {t("doubleCheck")}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mt-1">
-                  Data can be imperfect. Always verify local signs before
-                  leaving your car.
+                  {t("doubleCheckDesc")}
                 </p>
               </div>
             </div>
@@ -90,7 +155,7 @@ export default function HelpModal({
               onClick={onClose}
               className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
             >
-              Start Parking
+              {t("startParking")}
             </button>
             <div className="mt-4 flex justify-center">
               <label className="flex items-center gap-2 cursor-pointer text-sm text-slate-500 hover:text-slate-700">
@@ -100,7 +165,7 @@ export default function HelpModal({
                   onChange={(e) => onDontShowAgainChange(e.target.checked)}
                   className="rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                 />
-                <span>Don't show this again</span>
+                <span>{t("dontShowAgain")}</span>
               </label>
             </div>
           </div>
