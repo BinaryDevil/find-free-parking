@@ -499,7 +499,9 @@ export default function MainMap({
           });
         } else if (props.rate) {
           // Fallback if legacy or raw rate field still exists in prop mapping (it shouldn't generally but just in case)
-          rulesHtml += `<div style="margin-top:4px;color:#475569">Rate: ${props.rate}</div>`;
+          rulesHtml += `<div style="margin-top:4px;color:#475569">${t("rate", {
+            rate: props.rate,
+          })}</div>`;
         }
 
         // Calculate walking info if destination is set
@@ -512,9 +514,14 @@ export default function MainMap({
           );
           walkingHtml = `
             <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
+              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
+                "toDestination"
+              )}</div>
               <div style="font-size:13px;color:#475569;">
-                🚶 ${minutes} min walk (${distance}m)
+                🚶 ${t("walkEstimates", {
+                  minutes: minutes,
+                  distance: distance,
+                })}
               </div>
             </div>
           `;
@@ -525,7 +532,7 @@ export default function MainMap({
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
                <div style="font-weight:600;color:#0f172a">${
-                 props.type ?? "Parking"
+                 props.type ?? t("parkingLot")
                }</div>
                <div style="color:#475569">${
                  props.location_desc ?? props.city ?? ""
@@ -533,7 +540,10 @@ export default function MainMap({
                ${walkingHtml}
                ${
                  props.timeLimitMinutes
-                   ? `<div style="margin-top:4px;color:#1f2937">${props.timeLimitMinutes} min limit</div>`
+                   ? `<div style="margin-top:4px;color:#1f2937">${t(
+                       "timeLimitLabel",
+                       { minutes: props.timeLimitMinutes }
+                     )}</div>`
                    : ""
                }
                 ${rulesHtml}
@@ -544,23 +554,27 @@ export default function MainMap({
                 }
                 ${
                   props.z_status_override === "FREE"
-                    ? `<div style="margin-top:4px;color:#16a34a;font-weight:600;font-size:12px">✓ Verified Free (Community)</div>`
+                    ? `<div style="margin-top:4px;color:#16a34a;font-weight:600;font-size:12px">✓ ${t(
+                        "verifiedFreeCommunity"
+                      )}</div>`
                     : ""
                 }
                 ${
                   props.z_status_override === "PAID"
-                    ? `<div style="margin-top:4px;color:#eab308;font-weight:600;font-size:12px">⚠️ Reported as Paid (Community)</div>`
+                    ? `<div style="margin-top:4px;color:#eab308;font-weight:600;font-size:12px">⚠️ ${t(
+                        "reportedPaidCommunity"
+                      )}</div>`
                     : ""
                 }
                 <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-                  ⚠️ Check signs for rush hour restrictions
+                  ⚠️ ${t("checkRushHour")}
                 </div>
                 <a href="https://www.google.com/maps/dir/?api=1&destination=${
                   coords[1]
                 },${
               coords[0]
             }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-                  Get Directions
+                  ${t("getDirections")}
                 </a>
                 <button 
                   onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
@@ -568,7 +582,7 @@ export default function MainMap({
                   }', type: 'METER', status: '${filterTypeRef.current}' } }))"
                   style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
                 >
-                  Update Status
+                  ${t("updateStatus")}
                 </button>
              </div>`
           )
@@ -623,7 +637,7 @@ export default function MainMap({
 
         // Header with icon
         let headerIcon = "🅿️";
-        let headerText = props.name || "Parking Lot";
+        let headerText = props.name || t("parkingLot");
         let headerColor = "#0f172a";
 
         if (reportedFree) {
@@ -644,14 +658,14 @@ export default function MainMap({
 
         // Type and City - use friendly labels
         const friendlyType: Record<string, string> = {
-          FREE_UNLIMITED: "Free Parking",
-          FREE_LIMITED: "Free (Time Limited)",
-          EV_FREE: "Free EV Charging",
-          PAID: "Paid Parking",
-          PERMIT_ONLY: "Permit Only",
-          MIXED: "Mixed Rules",
+          FREE_UNLIMITED: t("freeParking"),
+          FREE_LIMITED: t("freeLimited"),
+          EV_FREE: t("evFree"),
+          PAID: t("paidParking"),
+          PERMIT_ONLY: t("permit"),
+          MIXED: t("mixed"),
         };
-        const typeLabel = friendlyType[zoneType] || "Parking Lot";
+        const typeLabel = friendlyType[zoneType] || t("parkingLot");
         contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${typeLabel} • ${
           props.city ?? ""
         }</div>`;
@@ -665,9 +679,14 @@ export default function MainMap({
           );
           contentHtml += `
             <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
+              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
+                "toDestination"
+              )}</div>
               <div style="font-size:13px;color:#475569;">
-                🚶 ${minutes} min walk (${distance}m)
+                🚶 ${t("walkEstimates", {
+                  minutes: minutes,
+                  distance: distance,
+                })}
               </div>
             </div>
           `;
@@ -675,20 +694,33 @@ export default function MainMap({
 
         // Time limit info
         if (props.timeLimitMinutes) {
-          contentHtml += `<div style="margin-top:8px;color:#1f2937;font-size:13px;">⏱ Time Limit: ${props.timeLimitMinutes} min</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#1f2937;font-size:13px;">⏱ ${t(
+            "timeLimitLabel",
+            { minutes: props.timeLimitMinutes }
+          )}</div>`;
         }
 
         // Status explanation
         if (reportedFree) {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ Verified Free (Community Reports)</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ ${t(
+            "verifiedFreeCommunity"
+          )}</div>`;
         } else if (reportedPaid) {
-          contentHtml += `<div style="margin-top:8px;color:#dc2626;font-weight:600;font-size:12px">⚠️ Reported as Paid/Restricted (Community)</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#dc2626;font-weight:600;font-size:12px">⚠️ ${t(
+            "reportedPaidCommunity"
+          )}</div>`;
         } else if (isFreeType) {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking.</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
+            "likelyFree"
+          )}</div>`;
         } else if (zoneType === "MIXED") {
-          contentHtml += `<div style="margin-top:8px;color:#eab308;font-size:13px;">Mixed rules - check signs for details.</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#eab308;font-size:13px;">${t(
+            "mixedRulesDetails"
+          )}</div>`;
         } else {
-          contentHtml += `<div style="margin-top:8px;color:#475569;font-size:13px;">May require payment or permit. Check signs.</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#475569;font-size:13px;">${t(
+            "mayRequirePayment"
+          )}</div>`;
         }
 
         // Notes
@@ -698,12 +730,16 @@ export default function MainMap({
 
         // Warning
         contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-          ⚠️ Verification required. Check local signs.
+          ⚠️ ${t("verificationRequired")}
         </div>`;
 
         // Directions Button
-        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${e.lngLat.lat},${e.lngLat.lng}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-          Get Directions
+        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${
+          e.lngLat.lat
+        },${
+          e.lngLat.lng
+        }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+          ${t("getDirections")}
         </a>`;
 
         // Update Status Button
@@ -713,7 +749,7 @@ export default function MainMap({
           }', type: 'ZONE', status: '${isFreeType ? "FREE" : "PAID"}' } }))"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
-          Update Status
+          ${t("updateStatus")}
         </button>`;
 
         contentHtml += `</div>`;
@@ -746,12 +782,12 @@ export default function MainMap({
 
         // Header
         contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
-          isFree ? "🅿️ Free Street Parking" : "💲 Paid / Restricted"
+          isFree ? `🅿️ ${t("freeStreetParking")}` : `💲 ${t("paidRestricted")}`
         }</div>`;
 
         // Street Use / Block info
         contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${
-          props.block_id ?? "Unknown Location"
+          props.block_id ?? t("unknownLocation")
         }</div>`;
 
         // Calculate walking info if destination is set
@@ -763,9 +799,14 @@ export default function MainMap({
           );
           contentHtml += `
             <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">To Destination:</div>
+              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
+                "toDestination"
+              )}</div>
               <div style="font-size:13px;color:#475569;">
-                🚶 ${minutes} min walk (${distance}m)
+                🚶 ${t("walkEstimates", {
+                  minutes: minutes,
+                  distance: distance,
+                })}
               </div>
             </div>
           `;
@@ -795,11 +836,13 @@ export default function MainMap({
           });
 
           if (activeRules.length > 0) {
-            contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Active Rates:</div>`;
+            contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">${t(
+              "activeRates"
+            )}</div>`;
             activeRules.forEach((rule) => {
               const rateDisplay = rule.rate
                 ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
-                : "Paid";
+                : t("paid");
               const days = Array.isArray(rule.days)
                 ? rule.days.join(", ")
                 : rule.days;
@@ -809,31 +852,45 @@ export default function MainMap({
             });
           } else {
             // Meters present but none active (Free)
-            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking (Outside Meter Hours).</div>`;
+            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
+              "likelyFreeOutsideMeter"
+            )}</div>`;
           }
         } else {
           if (isFree) {
-            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">Likely free parking (residential/unmetered).</div>`;
+            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
+              "likelyFreeStreet"
+            )}</div>`;
           } else {
-            contentHtml += `<div style="margin-top:8px;color:#ef4444;font-size:13px;">Restrictions may apply (e.g. No Parking, Arterial). Check signs.</div>`;
+            contentHtml += `<div style="margin-top:8px;color:#ef4444;font-size:13px;">${t(
+              "restrictionsApply"
+            )}</div>`;
           }
         }
 
-        // Warning
+        // Status explanation
         if (props.z_status_override === "FREE") {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ Verified Free (Community)</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ ${t(
+            "verifiedFreeCommunity"
+          )}</div>`;
         }
         if (props.z_status_override === "PAID") {
-          contentHtml += `<div style="margin-top:8px;color:#eab308;font-weight:600;font-size:12px">⚠️ Reported as Paid (Community)</div>`;
+          contentHtml += `<div style="margin-top:8px;color:#eab308;font-weight:600;font-size:12px">⚠️ ${t(
+            "reportedPaidCommunity"
+          )}</div>`;
         }
 
         contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-          ⚠️ Verification required. Check local signs.
+          ⚠️ ${t("verificationRequired")}
         </div>`;
 
         // Directions Button
-        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${e.lngLat.lat},${e.lngLat.lng}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-          Get Directions
+        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${
+          e.lngLat.lat
+        },${
+          e.lngLat.lng
+        }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+          ${t("getDirections")}
         </a>`;
 
         contentHtml += `<button 
@@ -842,7 +899,7 @@ export default function MainMap({
           }', type: 'STREET', status: '${isFree ? "FREE" : "PAID"}' } }))"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
-          Update Status
+          ${t("updateStatus")}
         </button>`;
 
         contentHtml += `</div>`;

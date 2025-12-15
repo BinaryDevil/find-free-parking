@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { X, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type ReportModalProps = {
   isOpen: boolean;
@@ -24,28 +25,29 @@ export default function ReportModal({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [selectedReasonOption, setSelectedReasonOption] = useState<string>("");
+  const t = useTranslations("ReportModal");
 
   const REASON_OPTIONS = {
     FREE: [
-      "Meter Removed",
-      "Sign Changed",
-      "After Hours Free",
-      "Sunday/Holiday",
-      "Other",
+      { key: "reasonMeterRemoved", label: t("reasonMeterRemoved") },
+      { key: "reasonSignChanged", label: t("reasonSignChanged") },
+      { key: "reasonAfterHoursFree", label: t("reasonAfterHoursFree") },
+      { key: "reasonSundayHoliday", label: t("reasonSundayHoliday") },
+      { key: "reasonOther", label: t("other") },
     ],
     PAID: [
-      "New Meter Installed",
-      "Pay Station Visible",
-      "Permit Only",
-      "Time Limit Exceeded",
-      "Other",
+      { key: "reasonNewMeter", label: t("reasonNewMeter") },
+      { key: "reasonPayStationVisible", label: t("reasonPayStationVisible") },
+      { key: "reasonPermitOnly", label: t("reasonPermitOnly") },
+      { key: "reasonTimeLimitExceeded", label: t("reasonTimeLimitExceeded") },
+      { key: "reasonOther", label: t("other") },
     ],
     NO_PARKING: [
-      "Construction",
-      "Sign Says No Stopping",
-      "Private Property",
-      "Driveway/Loading Zone",
-      "Other",
+      { key: "reasonConstruction", label: t("reasonConstruction") },
+      { key: "reasonNoStopping", label: t("reasonNoStopping") },
+      { key: "reasonPrivate", label: t("reasonPrivate") },
+      { key: "reasonDriveway", label: t("reasonDriveway") },
+      { key: "reasonOther", label: t("other") },
     ],
   };
 
@@ -78,7 +80,7 @@ export default function ReportModal({
     if (!targetId || !targetType) return;
 
     let finalReason = reason;
-    if (selectedReasonOption !== "Other") {
+    if (selectedReasonOption !== t("other")) {
       if (!selectedReasonOption) {
         // If user didn't select anything, maybe allow empty? or validation error?
         // "Simplify user input" -> likely optional based on user prompt "just let them check".
@@ -126,7 +128,7 @@ export default function ReportModal({
       });
 
       if (!res.ok) {
-        throw new Error("Failed to submit report");
+        throw new Error(t("errorGeneric"));
       }
 
       setSuccess(true);
@@ -134,7 +136,7 @@ export default function ReportModal({
         onClose();
       }, 2000);
     } catch (err: any) {
-      setError(err.message || "Something went wrong");
+      setError(err.message || t("errorGeneric"));
     } finally {
       setIsSubmitting(false);
     }
@@ -144,7 +146,7 @@ export default function ReportModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
       <div className="w-full max-w-md bg-white text-slate-900 rounded-xl shadow-xl overflow-hidden animate-in fade-in zoom-in duration-200">
         <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
-          <h2 className="font-semibold text-gray-900">Update Status</h2>
+          <h2 className="font-semibold text-gray-900">{t("title")}</h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -159,10 +161,10 @@ export default function ReportModal({
               <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                 <CheckCircle size={24} />
               </div>
-              <h3 className="text-lg font-medium text-gray-900">Thank you!</h3>
-              <p className="text-gray-500 mt-1">
-                Your report has been submitted for review.
-              </p>
+              <h3 className="text-lg font-medium text-gray-900">
+                {t("thankYouTitle")}
+              </h3>
+              <p className="text-gray-500 mt-1">{t("submittedDesc")}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -175,7 +177,7 @@ export default function ReportModal({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  What is the actual status?
+                  {t("actualStatus")}
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   {(["FREE", "PAID", "NO_PARKING"] as const).map((opt) => (
@@ -192,9 +194,11 @@ export default function ReportModal({
                         }
                       `}
                     >
-                      {opt === "NO_PARKING"
-                        ? "No Parking"
-                        : opt.charAt(0) + opt.slice(1).toLowerCase()}
+                      {opt === "FREE"
+                        ? t("statusFree")
+                        : opt === "PAID"
+                        ? t("statusPaid")
+                        : t("statusNoParking")}
                     </button>
                   ))}
                 </div>
@@ -202,34 +206,34 @@ export default function ReportModal({
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Reason
+                  {t("reasonLabel")}
                 </label>
                 <div className="space-y-2 mb-2">
                   {REASON_OPTIONS[status].map((opt) => (
-                    <div key={opt} className="flex items-center">
+                    <div key={opt.key} className="flex items-center">
                       <input
-                        id={`reason-${opt}`}
+                        id={`reason-${opt.key}`}
                         name="reason-option"
                         type="radio"
-                        checked={selectedReasonOption === opt}
-                        onChange={() => setSelectedReasonOption(opt)}
+                        checked={selectedReasonOption === opt.label}
+                        onChange={() => setSelectedReasonOption(opt.label)}
                         className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                       />
                       <label
-                        htmlFor={`reason-${opt}`}
+                        htmlFor={`reason-${opt.key}`}
                         className="ml-2 block text-sm text-gray-700"
                       >
-                        {opt}
+                        {opt.label}
                       </label>
                     </div>
                   ))}
                 </div>
 
-                {selectedReasonOption === "Other" && (
+                {selectedReasonOption === t("other") && (
                   <textarea
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
-                    placeholder="Please specify details..."
+                    placeholder={t("detailsPlaceholder")}
                     className="w-full mt-2 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 min-h-[80px] text-sm md:text-base p-2 border"
                     required
                   />
@@ -242,7 +246,7 @@ export default function ReportModal({
                   onClick={onClose}
                   className="flex-1 px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-300 hover:bg-gray-50"
                 >
-                  Cancel
+                  {t("cancel")}
                 </button>
                 <button
                   type="submit"
@@ -252,7 +256,7 @@ export default function ReportModal({
                   {isSubmitting && (
                     <Loader2 size={16} className="animate-spin" />
                   )}
-                  Submit Update
+                  {t("submit")}
                 </button>
               </div>
             </form>
