@@ -1066,21 +1066,53 @@ export default function Home() {
       const meterCount = meterFeatures.length;
 
       // --- Process Streets ---
-      // 1. Map street logic (calculate is_free)
+      // 1. Map street logic (calculate is_free and is_paid)
+      // 1. Map street logic (calculate is_free and is_paid)
       const processedStreets = streets.map((s: any) => {
         const meterInfos = s.meter_infos ?? [];
         const counts = s.report_counts ?? {};
         const reportedFree = (counts["FREE"] || 0) >= 3;
         const reportedPaid = (counts["PAID"] || 0) >= 3;
+        const streetName = (s.block_id || "").toUpperCase();
 
         let isFree = false;
-        const freeStreetTypes = ["Residential", "Unrestricted", "Time Limited"];
-        if (meterInfos.length === 0 && freeStreetTypes.includes(s.street_use)) {
-          isFree = true;
+        let isPaid = false;
+
+        // Blacklist specific keywords to prevent false positives (e.g. Bridges matching meters below them)
+        const isExcluded = ["BRIDGE", "VIADUCT", "TUNNEL", "HIGHWAY"].some(
+          (k) => streetName.includes(k)
+        );
+
+        if (!isExcluded) {
+          const freeStreetTypes = [
+            "Residential",
+            "Unrestricted",
+            "Time Limited",
+          ];
+
+          // Determine Paid Status: Has meters OR is explicitly marked Paid
+          if (meterInfos.length > 0 || s.street_use === "Paid") {
+            isPaid = true;
+          }
+
+          // Determine Free Status: No meters AND is a known free type
+          if (
+            meterInfos.length === 0 &&
+            freeStreetTypes.includes(s.street_use)
+          ) {
+            isFree = true;
+          }
         }
 
-        if (reportedPaid) isFree = false;
-        if (reportedFree) isFree = true;
+        // User Reports Override (Can override exclusions if community verifies)
+        if (reportedPaid) {
+          isFree = false;
+          isPaid = true;
+        }
+        if (reportedFree) {
+          isFree = true;
+          isPaid = false;
+        }
 
         let overrideStatus: "FREE" | "PAID" | undefined;
         if (reportedPaid) overrideStatus = "PAID";
@@ -1089,13 +1121,16 @@ export default function Home() {
         return {
           ...s,
           is_free: isFree,
+          is_paid: isPaid,
           z_status_override: overrideStatus,
         };
       });
 
       // 2. Filter streets
       const filteredStreets = processedStreets.filter((s: any) => {
-        return filterTypeRef.current === "FREE" ? s.is_free : !s.is_free;
+        if (filterTypeRef.current === "FREE") return s.is_free;
+        if (filterTypeRef.current === "PAID") return s.is_paid;
+        return false;
       });
 
       // 3. Map to GeoJSON features (Sanitize properties)
