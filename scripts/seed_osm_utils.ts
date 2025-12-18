@@ -7,24 +7,24 @@ const pool = getDbPool();
 async function fetchParkingLots(
   cityName: string,
   country: string = "Canada",
-  searchAreaName: string | null = null
+  searchAreaName: string | null = null,
+  queryName: string | null = null
 ) {
   // Build an area filter based on country
   let areaFilter: string;
   if (country === "United States") {
-    // Use admin_level=4 to get the state of Washington, not other entities
     const stateName = searchAreaName || "Washington";
     areaFilter = `area["name"="${stateName}"]["admin_level"="4"]->.state;`;
   } else {
-    // Canada - use Metro Vancouver Regional District
     const regionName = searchAreaName || "Metro Vancouver Regional District";
     areaFilter = `area["name"="${regionName}"]->.state;`;
   }
 
+  const nameToSearch = queryName || cityName;
   const query = `
       [out:json][timeout:60];
       ${areaFilter}
-      relation["name"~"${cityName}",i]["admin_level"="8"](area.state)->.cityRel;
+      relation["name"~"${nameToSearch}",i]["admin_level"="8"](area.state)->.cityRel;
       .cityRel map_to_area -> .searchArea;
       (
         way["amenity"="parking"](area.searchArea);
@@ -33,7 +33,6 @@ async function fetchParkingLots(
       out geom;
     `;
 
-  // Use a public Overpass instance
   const url = "https://overpass-api.de/api/interpreter";
   try {
     const response = await axios.post(url, query, {
@@ -119,7 +118,8 @@ function parseMaxStay(maxstay: string): number | null {
 export async function seedOsmParkingLots(
   cityName: string,
   country: string = "Canada",
-  searchAreaName: string | null = null
+  searchAreaName: string | null = null,
+  queryName: string | null = null
 ) {
   // Check if lots exist
   const existing = await pool.query(
@@ -132,7 +132,12 @@ export async function seedOsmParkingLots(
   }
 
   console.log(`[ParkingLots] Fetching data for ${cityName} from OSM...`);
-  const data = await fetchParkingLots(cityName, country, searchAreaName);
+  const data = await fetchParkingLots(
+    cityName,
+    country,
+    searchAreaName,
+    queryName
+  );
 
   if (!data || !data.elements) {
     console.log(`[ParkingLots] No data found for ${cityName}`);
@@ -201,7 +206,8 @@ export async function seedOsmParkingLots(
 export async function seedOsmCityCoverage(
   cityName: string,
   country: string = "Canada",
-  searchAreaName: string | null = null
+  searchAreaName: string | null = null,
+  queryName: string | null = null
 ) {
   console.log(`✅ Seeded coverage for ${cityName} (Polygon)`);
 
@@ -298,7 +304,8 @@ export async function seedOsmCityCoverage(
 export async function fetchOsmStreets(
   city: string,
   state: string,
-  country = "Canada"
+  country = "Canada",
+  queryName: string | null = null
 ) {
   // Query for residential, tertiary, secondary, primary, etc.
   // Use robust area search like fetchParkingLots
@@ -307,13 +314,15 @@ export async function fetchOsmStreets(
     const stateName = state === "WA" ? "Washington" : state;
     areaFilter = `area["name"="${stateName}"]["admin_level"="4"]->.state;`;
   } else {
-    areaFilter = `area["name"="Metro Vancouver Regional District"]->.state;`;
+    const regionName = state || "Metro Vancouver Regional District";
+    areaFilter = `area["name"="${regionName}"]->.state;`;
   }
 
+  const nameToSearch = queryName || city;
   const query = `
     [out:json][timeout:180];
     ${areaFilter}
-    relation["name"~"${city}",i]["admin_level"="8"](area.state)->.cityRel;
+    relation["name"~"${nameToSearch}",i]["admin_level"="8"](area.state)->.cityRel;
     .cityRel map_to_area -> .searchArea;
     (
       way["highway"~"^(primary|secondary|tertiary|residential|unclassified|living_street)$"](area.searchArea);
@@ -351,7 +360,8 @@ export async function fetchOsmStreets(
 export async function seedOsmStreets(
   city: string,
   state: string,
-  country = "United States"
+  country = "United States",
+  queryName: string | null = null
 ) {
   // Check if streets exist
   // We check via raw_data->>'city' because street_segments doesn't have a direct 'city' column
@@ -370,7 +380,7 @@ export async function seedOsmStreets(
   }
 
   // Try standard fetch
-  let streets = await fetchOsmStreets(city, state, country);
+  let streets = await fetchOsmStreets(city, state, country, queryName);
 
   // Fallback: Use DB Coverage Polygon
   if (!streets || streets.length === 0) {

@@ -14,6 +14,14 @@ import { seedRedmond } from "./seed_redmond";
 import { seedKirkland } from "./seed_kirkland";
 import { seedBellevue } from "./seed_bellevue";
 import { seedSeattle } from "./seed_seattle";
+import { seedMapleRidge } from "./seed_maple_ridge";
+import { seedCouncilBluffs } from "./seed_council_bluffs";
+import { seedAshburn } from "./seed_ashburn";
+import { seedBoardman } from "./seed_boardman";
+import { seedNewYork } from "./seed_new_york";
+import { seedAspen } from "./seed_aspen";
+import { seedWarsaw } from "./seed_warsaw";
+import { seedAmsterdam } from "./seed_amsterdam";
 
 import { getDbPool } from "./seed_utils";
 import { clearDatabase } from "./clear_db";
@@ -112,6 +120,17 @@ async function runAll() {
     await seedRedmond();
     await seedKirkland();
     await seedBellevue();
+
+    // 4. Analytics Top 10 Cities
+    console.log("Seeding Analytics Top Cities...");
+    await seedIfMissing("Maple Ridge", seedMapleRidge);
+    await seedIfMissing("Council Bluffs", seedCouncilBluffs);
+    await seedIfMissing("Ashburn", seedAshburn);
+    await seedIfMissing("Boardman", seedBoardman);
+    await seedIfMissing("New York", seedNewYork);
+    await seedIfMissing("Aspen", seedAspen);
+    await seedIfMissing("Warsaw", seedWarsaw);
+    await seedIfMissing("Amsterdam", seedAmsterdam);
 
     // 4. Note on zones
     const zonesCount = await pool.query("SELECT count(*) FROM parking_zones");

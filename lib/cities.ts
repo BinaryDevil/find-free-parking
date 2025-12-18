@@ -72,6 +72,54 @@ export const SUPPORTED_CITIES: CityInfo[] = [
     center: [-122.2015, 47.6101],
     zoom: 14,
   },
+  {
+    name: "Maple Ridge",
+    slug: "maple-ridge",
+    center: [-122.6, 49.2167],
+    zoom: 14,
+  },
+  {
+    name: "Council Bluffs",
+    slug: "council-bluffs",
+    center: [-95.8608, 41.2619],
+    zoom: 14,
+  },
+  {
+    name: "Ashburn",
+    slug: "ashburn",
+    center: [-77.4875, 39.0437],
+    zoom: 14,
+  },
+  {
+    name: "Boardman",
+    slug: "boardman",
+    center: [-119.7006, 45.8399],
+    zoom: 14,
+  },
+  {
+    name: "New York",
+    slug: "new-york",
+    center: [-74.006, 40.7143],
+    zoom: 12,
+  },
+  {
+    name: "Aspen",
+    slug: "aspen",
+    center: [-106.8175, 39.1911],
+    zoom: 14,
+  },
+  {
+    name: "Warsaw",
+    slug: "warsaw",
+    center: [21.0175, 52.237],
+    zoom: 12,
+  },
+  {
+    name: "Amsterdam",
+    slug: "amsterdam",
+    center: [4.8971, 52.378],
+    zoom: 13,
+  },
 ];
 
 export function getCityBySlug(slug: string): CityInfo | undefined {
