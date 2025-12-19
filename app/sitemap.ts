@@ -2,10 +2,6 @@ import { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { SUPPORTED_CITIES } from "@/lib/cities";
 
-// Generate a static sitemap and let the CDN cache it for a day
-export const dynamic = "force-static";
-export const revalidate = 60 * 60 * 24; // 24 hours
-
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
   "https://www.findfreeparking.info";
