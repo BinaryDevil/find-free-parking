@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 
-const siteUrl = "https://www.findfreeparking.info";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
+  "https://www.findfreeparking.info";
 
 export default function robots(): MetadataRoute.Robots {
   return {
