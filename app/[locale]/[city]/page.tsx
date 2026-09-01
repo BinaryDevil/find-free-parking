@@ -43,7 +43,6 @@ export default async function CityPage({ params }: Props) {
     <MainMap
       initialCenter={cityInfo.center}
       initialZoom={cityInfo.zoom}
-      cityName={cityInfo.name}
     />
   );
 }

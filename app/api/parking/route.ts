@@ -4,12 +4,20 @@ import { query } from "../../../lib/db";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const north = parseFloat(searchParams.get("north") || "0");
-    const south = parseFloat(searchParams.get("south") || "0");
-    const east = parseFloat(searchParams.get("east") || "0");
-    const west = parseFloat(searchParams.get("west") || "0");
+    const north = Number(searchParams.get("north"));
+    const south = Number(searchParams.get("south"));
+    const east = Number(searchParams.get("east"));
+    const west = Number(searchParams.get("west"));
 
-    if (!north || !south || !east || !west) {
+    if (
+      ![north, south, east, west].every(Number.isFinite) ||
+      south >= north ||
+      west >= east ||
+      north > 90 ||
+      south < -90 ||
+      east > 180 ||
+      west < -180
+    ) {
       return NextResponse.json({ error: "Missing bounds" }, { status: 400 });
     }
 

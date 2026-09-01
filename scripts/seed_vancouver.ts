@@ -2,7 +2,6 @@ import { getDbPool } from "./seed_utils";
 import {
   seedOsmParkingLots,
   seedOsmCityCoverage,
-  seedOsmStreets,
 } from "./seed_osm_utils";
 
 const pool = getDbPool();
@@ -84,7 +83,7 @@ async function seedDataset(
                 rowValues[2] = JSON.stringify(rawGeom);
               }
             }
-          } catch (e) {
+          } catch {
             // ignore parse error
           }
         }
@@ -113,7 +112,7 @@ async function seedDataset(
         values.push(...rowValues);
         placeholders.push(rowPlaceholders);
         inserted++;
-      } catch (e: any) {
+      } catch {
         // Skip individual errors
       }
     }

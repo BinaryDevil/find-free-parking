@@ -75,20 +75,6 @@ type SpotFeature = {
   };
 };
 
-type ZoneFeature = {
-  type: "Feature";
-  geometry: { type: "Polygon" | "MultiPolygon"; coordinates: any };
-  properties: {
-    id: string;
-    city: string;
-    name?: string | null;
-    type: string;
-    timeLimitMinutes?: number | null;
-    notes?: string | null;
-    metadata?: any;
-  };
-};
-
 type StreetFeature = {
   type: "Feature";
   geometry: { type: "LineString"; coordinates: [number, number][] };
@@ -107,13 +93,11 @@ type StreetFeature = {
 interface MainMapProps {
   initialCenter?: [number, number];
   initialZoom?: number;
-  cityName?: string;
 }
 
 export default function MainMap({
   initialCenter,
   initialZoom,
-  cityName,
 }: MainMapProps) {
   const t = useTranslations("HomePage");
   const mapRef = useRef<Map | null>(null);
@@ -209,6 +193,9 @@ export default function MainMap({
         handleReportEvent as any
       );
     };
+    // This installs one-time browser listeners. The location handler is
+    // deliberately invoked only on mount rather than on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleCloseHelp() {
@@ -481,7 +468,7 @@ export default function MainMap({
           } else if (Array.isArray(props.schedules)) {
             schedules = props.schedules;
           }
-        } catch (e) {
+        } catch {
           /* ignore */
         }
 
@@ -637,7 +624,7 @@ export default function MainMap({
 
         // Header with icon
         let headerIcon = "🅿️";
-        let headerText = props.name || t("parkingLot");
+        const headerText = props.name || t("parkingLot");
         let headerColor = "#0f172a";
 
         if (reportedFree) {
@@ -815,7 +802,7 @@ export default function MainMap({
         // Meter Infos
         if (meterInfos.length > 0) {
           const currentDateTime = new Date(parkingTimeRef.current);
-          let activeRules: any[] = [];
+          const activeRules: any[] = [];
 
           // Flatten and Deduplicate Rules
           const uniqueRules = new Set<string>();
@@ -843,9 +830,6 @@ export default function MainMap({
               const rateDisplay = rule.rate
                 ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
                 : t("paid");
-              const days = Array.isArray(rule.days)
-                ? rule.days.join(", ")
-                : rule.days;
               contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
                      ⏱ ${rule.start} - ${rule.end}: <b>${rateDisplay}</b>
                    </div>`;
@@ -979,6 +963,9 @@ export default function MainMap({
         clearTimeout(loadSpotsTimeoutRef.current);
       }
     };
+    // The map is imperative state and must be initialized exactly once per
+    // style; changing function identities here would recreate the map.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapStyle]);
 
   useEffect(() => {
@@ -988,7 +975,10 @@ export default function MainMap({
     if (mapRef.current) {
       void loadSpots(mapRef.current);
     }
-  }, [filterType, parkingTime]); // Add other dependencies if needed, but loadSpots uses map bounds so it's tricky.
+    // loadSpots reads current values through refs, while these are the only
+    // state changes that should trigger a data refresh.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterType, parkingTime]);
   // Actually, loadSpots gets bounds from main map. The 'moveend' event handles map moves.
   // We need to trigger loadSpots manually when filter/time changes.
 
@@ -1103,7 +1093,7 @@ export default function MainMap({
         if (typeof raw === "string") {
           try {
             raw = JSON.parse(raw);
-          } catch (e) {}
+          } catch {}
         }
 
         return {

@@ -44,7 +44,25 @@ export async function POST(request: Request) {
     let sql = "";
     let params: any[] = [];
 
-    if (latitude && longitude) {
+    const hasLocation = latitude !== undefined || longitude !== undefined;
+    const validLocation =
+      typeof latitude === "number" &&
+      typeof longitude === "number" &&
+      Number.isFinite(latitude) &&
+      Number.isFinite(longitude) &&
+      latitude >= -90 &&
+      latitude <= 90 &&
+      longitude >= -180 &&
+      longitude <= 180;
+
+    if (hasLocation && !validLocation) {
+      return NextResponse.json(
+        { error: "Latitude and longitude must be valid coordinates" },
+        { status: 400 }
+      );
+    }
+
+    if (validLocation) {
       sql = `
             INSERT INTO reports (
                 target_id, target_type, reported_status, reason, user_ip, user_location

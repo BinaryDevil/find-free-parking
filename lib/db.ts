@@ -1,12 +1,6 @@
-import { setDefaultResultOrder } from "dns";
 import { Pool } from "pg";
 
-// Allow self-signed certs (Supabase chain) and prefer IPv4.
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-setDefaultResultOrder("ipv4first");
-
 declare global {
-  // eslint-disable-next-line no-var
   var _parkingDbPool: Pool | undefined;
 }
 
@@ -27,7 +21,13 @@ const pool =
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    ssl: { rejectUnauthorized: false },
+    // Hosted Postgres providers commonly require TLS. Keep certificate
+    // validation enabled unless an operator explicitly opts out for a local
+    // development database with a self-signed certificate.
+    ssl:
+      process.env.POSTGRES_SSL_REJECT_UNAUTHORIZED === "false"
+        ? { rejectUnauthorized: false }
+        : { rejectUnauthorized: true },
   });
 
 if (process.env.NODE_ENV !== "production") {

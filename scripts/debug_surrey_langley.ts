@@ -6,9 +6,8 @@ async function testQuery(city: string, state: string, country: string) {
     country = "Canada";
   }
 
-  let areaFilter: string;
-  // Use Metro Vancouver for specific testing
-  areaFilter = `area["name"="Metro Vancouver Regional District"]->.state;`;
+  // Use Metro Vancouver for specific testing.
+  const areaFilter = `area["name"="Metro Vancouver Regional District"]->.state;`;
 
   const query = `
     [out:json][timeout:60];
