@@ -139,7 +139,10 @@ export async function GET(req: Request) {
       if (type === "FREE") {
         sql += " and type IN ('FREE_UNLIMITED', 'FREE_LIMITED', 'EV_FREE')";
       } else if (type === "PAID") {
-        sql += " and type IN ('PAID', 'MIXED', 'PERMIT_ONLY')";
+        // Permit-only and mixed-use lots are not reliable paid recommendations.
+        // They remain queryable by their explicit type, but are hidden from the
+        // high-confidence Paid mode until their individual rules are imported.
+        sql += " and type = 'PAID'";
       } else if (type) {
         sql += ` and type = $${++paramIndex}`;
         params.push(type);
@@ -194,7 +197,7 @@ export async function GET(req: Request) {
     if (type === "FREE") {
       sql += " and type IN ('FREE_UNLIMITED', 'FREE_LIMITED', 'EV_FREE')";
     } else if (type === "PAID") {
-      sql += " and type IN ('PAID', 'MIXED', 'PERMIT_ONLY')";
+      sql += " and type = 'PAID'";
     } else if (type) {
       sql += ` and type = $${++paramIndex}`;
       params.push(type);

@@ -17,6 +17,11 @@ import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import {
+  scoreMeterParking,
+  scoreStreetParking,
+  shouldDisplay,
+} from "@/lib/parking-confidence";
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
@@ -87,6 +92,8 @@ type StreetFeature = {
     report_counts?: string | Record<string, number>;
     z_status_override?: "FREE" | "PAID" | null;
     schedules?: string | any[];
+    free_confidence?: number;
+    paid_confidence?: number;
   };
 };
 
@@ -1075,15 +1082,14 @@ export default function MainMap({
           isActive = isScheduleActive(m.schedules, currentDateTime);
         }
 
-        if (filterTypeRef.current === "FREE") {
-          if (reportedPaid) return false;
-          if (reportedFree) return true;
-          return !isActive;
-        } else {
-          if (reportedFree) return false;
-          if (reportedPaid) return true;
-          return isActive;
-        }
+        const confidence = scoreMeterParking({
+          hasKnownMeterSchedule: Array.isArray(m.schedules) && m.schedules.length > 0,
+          isMeterActive: isActive,
+          reportCounts: counts,
+        });
+        m.free_confidence = confidence.free;
+        m.paid_confidence = confidence.paid;
+        return shouldDisplay(confidence, filterTypeRef.current);
       });
 
       // 2. Map valid meters to features (Sanitize properties)
@@ -1108,6 +1114,8 @@ export default function MainMap({
             report_counts: m.report_counts,
             schedules: m.schedules,
             z_status_override: m.z_status_override,
+            free_confidence: m.free_confidence,
+            paid_confidence: m.paid_confidence,
             notes: raw.payment_info, // Use payment info as notes/subtitle context
             location_desc: raw.on_street, // Capture street name if available
           }) as any,
@@ -1129,63 +1137,54 @@ export default function MainMap({
       const meterCount = meterFeatures.length;
 
       // --- Process Streets ---
-      // 1. Map street logic (calculate is_free and is_paid)
-      // 1. Map street logic (calculate is_free and is_paid)
+      // 1. Score streets with available evidence. Ambiguous streets are hidden
+      // from both modes instead of being guessed as free or paid.
       const processedStreets = streets.map((s: any) => {
-        const meterInfos = s.meter_infos ?? [];
+        let meterInfos: unknown[] = [];
+        if (Array.isArray(s.meter_infos)) {
+          meterInfos = s.meter_infos;
+        } else if (typeof s.meter_infos === "string") {
+          try {
+            const parsed = JSON.parse(s.meter_infos);
+            meterInfos = Array.isArray(parsed) ? parsed : [];
+          } catch {
+            meterInfos = [];
+          }
+        }
         const counts = s.report_counts ?? {};
         const reportedFree = (counts["FREE"] || 0) >= 3;
         const reportedPaid = (counts["PAID"] || 0) >= 3;
         const streetName = (s.block_id || "").toUpperCase();
-
-        let isFree = false;
-        let isPaid = false;
 
         // Blacklist specific keywords to prevent false positives (e.g. Bridges matching meters below them)
         const isExcluded = ["BRIDGE", "VIADUCT", "TUNNEL", "HIGHWAY"].some(
           (k) => streetName.includes(k)
         );
 
-        if (!isExcluded) {
-          const freeStreetTypes = [
-            "Residential",
-            "Unrestricted",
-            "Time Limited",
-          ];
-
-          // Determine Paid Status: Has meters OR is explicitly marked Paid
-          if (meterInfos.length > 0 || s.street_use === "Paid") {
-            isPaid = true;
-          }
-
-          // Determine Free Status: No meters AND is a known free type
-          if (
-            meterInfos.length === 0 &&
-            freeStreetTypes.includes(s.street_use)
-          ) {
-            isFree = true;
-          }
-        }
-
-        // User Reports Override (Can override exclusions if community verifies)
-        if (reportedPaid) {
-          isFree = false;
-          isPaid = true;
-        }
-        if (reportedFree) {
-          isFree = true;
-          isPaid = false;
-        }
-
-        let overrideStatus: "FREE" | "PAID" | undefined;
-        if (reportedPaid) overrideStatus = "PAID";
-        if (reportedFree) overrideStatus = "FREE";
+        const meterSchedules = meterInfos.flatMap((schedules: unknown) =>
+          Array.isArray(schedules) ? schedules : [],
+        );
+        const confidence = scoreStreetParking({
+          streetUse: s.street_use,
+          hasMeter: meterInfos.length > 0,
+          hasKnownMeterSchedule: meterSchedules.length > 0,
+          isMeterActive: isScheduleActive(meterSchedules, currentDateTime),
+          reportCounts: counts,
+          excluded: isExcluded,
+        });
 
         return {
           ...s,
-          is_free: isFree,
-          is_paid: isPaid,
-          z_status_override: overrideStatus,
+          meter_infos: meterInfos,
+          is_free: shouldDisplay(confidence, "FREE"),
+          is_paid: shouldDisplay(confidence, "PAID"),
+          free_confidence: confidence.free,
+          paid_confidence: confidence.paid,
+          z_status_override: reportedFree
+            ? "FREE"
+            : reportedPaid
+              ? "PAID"
+              : undefined,
         };
       });
 
@@ -1209,6 +1208,8 @@ export default function MainMap({
           meter_infos: s.meter_infos,
           report_counts: s.report_counts,
           schedules: s.schedules,
+          free_confidence: s.free_confidence,
+          paid_confidence: s.paid_confidence,
         }) as any,
       }));
 
