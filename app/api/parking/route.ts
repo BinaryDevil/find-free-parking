@@ -8,6 +8,7 @@ export async function GET(request: Request) {
     const south = Number(searchParams.get("south"));
     const east = Number(searchParams.get("east"));
     const west = Number(searchParams.get("west"));
+    const mode = searchParams.get("mode");
 
     if (
       ![north, south, east, west].every(Number.isFinite) ||
@@ -19,6 +20,36 @@ export async function GET(request: Request) {
       west < -180
     ) {
       return NextResponse.json({ error: "Missing bounds" }, { status: 400 });
+    }
+
+    if (mode !== null && mode !== "FREE" && mode !== "PAID") {
+      return NextResponse.json({ error: "Invalid parking mode" }, { status: 400 });
+    }
+
+    let streetModeFilter = "";
+    if (mode === "FREE") {
+      // Filter before the result cap so unrelated no-parking roads cannot hide
+      // the useful street candidates in a dense city such as Richmond.
+      streetModeFilter = `
+        AND lower(coalesce(s.street_use, '')) IN (
+          'residential', 'unrestricted', 'time limited'
+        )
+      `;
+    } else if (mode === "PAID") {
+      streetModeFilter = `
+        AND (
+          lower(coalesce(s.street_use, '')) = 'paid'
+          OR EXISTS (
+            SELECT 1
+            FROM parking_meters candidate_meter
+            WHERE ST_DWithin(
+              s.geom::geography,
+              candidate_meter.geom::geography,
+              15
+            )
+          )
+        )
+      `;
     }
 
     // 1. Get Meters
@@ -44,7 +75,8 @@ export async function GET(request: Request) {
              ) as meter_infos
       FROM street_segments s
       WHERE ST_Intersects(s.geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))
-      LIMIT 1000
+      ${streetModeFilter}
+      LIMIT 3000
     `;
 
     const [metersRes, streetsRes] = await Promise.all([
