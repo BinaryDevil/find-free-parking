@@ -1043,7 +1043,7 @@ export default function MainMap({
       south: bounds.getSouth().toString(),
       east: bounds.getEast().toString(),
       west: bounds.getWest().toString(),
-      mode: filterTypeRef.current,
+      // limit: "1000", // API has hardcoded limit
     });
 
     setStatus("loading");
