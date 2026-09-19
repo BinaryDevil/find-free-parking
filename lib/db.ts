@@ -4,34 +4,22 @@ declare global {
   var _parkingDbPool: Pool | undefined;
 }
 
-const rawConnectionString =
+const connectionString =
   process.env.POSTGRES_PRISMA_URL ??
   process.env.POSTGRES_URL ??
   process.env.DATABASE_URL;
 
-if (!rawConnectionString) {
+if (!connectionString) {
   throw new Error(
     "Missing DB connection string. Set POSTGRES_PRISMA_URL or POSTGRES_URL (Supabase pooled) or DATABASE_URL.",
   );
 }
 
-// `pg` lets SSL options embedded in a connection URL override the Pool's ssl
-// object. The existing hosted database uses a self-signed chain, so remove
-// those URL options and set the compatibility behavior in exactly one place.
-function normalizeConnectionString(connectionString: string) {
-  try {
-    const url = new URL(connectionString);
-    for (const key of ["sslmode", "sslrootcert", "sslcert", "sslkey"]) {
-      url.searchParams.delete(key);
-    }
-    return url.toString();
-  } catch {
-    // Let pg handle a non-URL connection format as it did before.
-    return connectionString;
-  }
-}
-
-const connectionString = normalizeConnectionString(rawConnectionString);
+// The existing hosted database presents a self-signed chain. Keep TLS enabled
+// but preserve the application's established compatibility behavior until a
+// trusted provider CA is configured. Set this to "true" to enforce CA checks.
+const rejectUnauthorized =
+  process.env.POSTGRES_SSL_REJECT_UNAUTHORIZED === "true";
 
 const pool =
   global._parkingDbPool ??
@@ -39,9 +27,7 @@ const pool =
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    // TLS stays enabled. Certificate verification cannot currently succeed
-    // against the configured provider's self-signed chain.
-    ssl: { rejectUnauthorized: false },
+    ssl: { rejectUnauthorized },
   });
 
 if (process.env.NODE_ENV !== "production") {

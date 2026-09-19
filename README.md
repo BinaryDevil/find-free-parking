@@ -26,16 +26,12 @@ Without a map key, local development uses OpenStreetMap raster tiles. Set `NEXT_
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `DATABASE_URL` | Yes | PostgreSQL/PostGIS connection string. `POSTGRES_URL` and `POSTGRES_PRISMA_URL` are also accepted. |
+| `POSTGRES_SSL_REJECT_UNAUTHORIZED` | No | Set to `true` to require a trusted database certificate. The current provider uses a self-signed chain, so TLS remains encrypted but validation is disabled by default for compatibility. |
 | `NEXT_PUBLIC_MAPTILER_KEY` | No | MapTiler client key; `NEXT_PUBLIC_MAPBOX_TOKEN` is retained for compatibility. |
 | `NEXT_PUBLIC_SITE_URL` | No | Public canonical URL for sitemap and robots. |
 | `NEXT_PUBLIC_GA_ID` | No | Google Analytics measurement ID. |
 
 Never commit `.env.local` or credentials.
-
-The configured hosted database has a self-signed certificate chain. The app
-keeps TLS enabled and handles that compatibility setting in `lib/db.ts`; avoid
-adding `sslmode` or other `ssl*` URL parameters to a production connection
-string because the `pg` driver may let them override the app configuration.
 
 ## Database and data imports
 
