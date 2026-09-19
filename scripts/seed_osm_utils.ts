@@ -33,8 +33,8 @@ async function fetchParkingLots(
       out geom;
     `;
 
+  const url = "https://overpass-api.de/api/interpreter";
   try {
-    const url = "https://overpass-api.de/api/interpreter";
     const response = await axios.post(url, query, {
       headers: { "Content-Type": "text/plain" },
     });
@@ -234,7 +234,7 @@ export async function seedOsmCityCoverage(
   const query = `
       [out:json][timeout:60];
       ${areaFilter}
-      relation["name"~"${queryName || cityName}",i]["admin_level"="8"](area.searchArea);
+      relation["name"~"${cityName}",i]["admin_level"="8"](area.searchArea);
       out geom;
     `;
 
@@ -330,6 +330,7 @@ export async function fetchOsmStreets(
     out geom;
   `;
 
+  const url = "https://overpass-api.de/api/interpreter";
   console.log(`Fetching OSM streets for ${city}...`);
 
   console.log(`[OSM] Fetching streets for ${city} in ${state}, ${country}...`);
@@ -433,6 +434,12 @@ export async function seedOsmStreets(
 
   try {
     let inserted = 0;
+
+    // Default attributes for generic streets
+    const defaultProps = {
+      street_use: "Unknown",
+      notes: "Imported from OSM (no parking data)",
+    };
 
     /**
      * Helper to map OSM Highway tags to Street Use

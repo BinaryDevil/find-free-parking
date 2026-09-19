@@ -69,6 +69,7 @@ export async function seedCoquitlam() {
             city: "Coquitlam",
           };
 
+          const isPoint = item.geometry.type === "Point";
           // Params: payStationId, type, geometryStr, rawData, schedules
           values.push(
             payStationId,

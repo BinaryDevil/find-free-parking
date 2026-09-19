@@ -1,3 +1,4 @@
+import { getDbPool } from "./seed_utils";
 import {
   seedOsmCityCoverage,
   seedOsmParkingLots,
@@ -5,6 +6,8 @@ import {
 } from "./seed_osm_utils";
 
 export async function seedBellevue() {
+  const pool = getDbPool();
+
   console.log("Seeding Bellevue, WA...");
 
   // 1. City Coverage (OSM)

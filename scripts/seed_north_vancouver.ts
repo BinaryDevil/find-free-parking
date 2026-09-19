@@ -4,6 +4,8 @@ import {
   seedOsmCityCoverage,
   seedOsmStreets,
 } from "./seed_osm_utils";
+import fs from "fs";
+import path from "path";
 
 const pool = getDbPool();
 
