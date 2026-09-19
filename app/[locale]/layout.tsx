@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "../globals.css";
@@ -87,7 +86,6 @@ export default async function LocaleLayout({
           {children}
           <JsonLd />
         </NextIntlClientProvider>
-        <Analytics />
       </body>
     </html>
   );
