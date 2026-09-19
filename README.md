@@ -37,7 +37,7 @@ Never commit `.env.local` or credentials.
 
 There is not yet a migration runner. Files in `sql/` are historical migrations, not independent schema snapshots. For a new database, apply them once in this order:
 
-`1.initial.sql`, `2.sample_data.sql`, `3.add_metadata.sql`, `4.parking_tables.sql`, `5.global_schema.sql`, `5.optimization_indices.sql`, `6.city_coverage.sql`, `7.seed_cities.sql`, `8.alter_reports.sql`, `9.aggregation_strategy.sql`, `10.drop_parking_spots.sql`, `11.zone_reports.sql`, `12.coverage_requests.sql`, `12.consolidate_requests.sql`, `13.fix_coquitlam_bounds.sql`, `14.drop_unused_tables.sql`, and `15.parking_evidence.sql`.
+`1.initial.sql`, `2.sample_data.sql`, `3.add_metadata.sql`, `4.parking_tables.sql`, `5.global_schema.sql`, `5.optimization_indices.sql`, `6.city_coverage.sql`, `7.seed_cities.sql`, `8.alter_reports.sql`, `9.aggregation_strategy.sql`, `10.drop_parking_spots.sql`, `11.zone_reports.sql`, `12.coverage_requests.sql`, `12.consolidate_requests.sql`, `13.fix_coquitlam_bounds.sql`, and `14.drop_unused_tables.sql`.
 
 Some files intentionally remove obsolete tables. Back up an existing database before applying any SQL, and do not rerun this sequence against a partially migrated database.
 
