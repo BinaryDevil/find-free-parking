@@ -26,7 +26,7 @@ Without a map key, local development uses OpenStreetMap raster tiles. Set `NEXT_
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `DATABASE_URL` | Yes | PostgreSQL/PostGIS connection string. `POSTGRES_URL` and `POSTGRES_PRISMA_URL` are also accepted. |
-| `POSTGRES_SSL_REJECT_UNAUTHORIZED` | No | Set to `true` to require a trusted database certificate. The current provider uses a self-signed chain, so TLS remains encrypted but validation is disabled by default for compatibility. |
+| `POSTGRES_SSL_REJECT_UNAUTHORIZED` | No | Set to `false` only for a trusted local/self-signed development database. Certificates are verified by default. |
 | `NEXT_PUBLIC_MAPTILER_KEY` | No | MapTiler client key; `NEXT_PUBLIC_MAPBOX_TOKEN` is retained for compatibility. |
 | `NEXT_PUBLIC_SITE_URL` | No | Public canonical URL for sitemap and robots. |
 | `NEXT_PUBLIC_GA_ID` | No | Google Analytics measurement ID. |

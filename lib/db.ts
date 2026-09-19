@@ -15,19 +15,19 @@ if (!connectionString) {
   );
 }
 
-// The existing hosted database presents a self-signed chain. Keep TLS enabled
-// but preserve the application's established compatibility behavior until a
-// trusted provider CA is configured. Set this to "true" to enforce CA checks.
-const rejectUnauthorized =
-  process.env.POSTGRES_SSL_REJECT_UNAUTHORIZED === "true";
-
 const pool =
   global._parkingDbPool ??
   new Pool({
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    ssl: { rejectUnauthorized },
+    // Hosted Postgres providers commonly require TLS. Keep certificate
+    // validation enabled unless an operator explicitly opts out for a local
+    // development database with a self-signed certificate.
+    ssl:
+      process.env.POSTGRES_SSL_REJECT_UNAUTHORIZED === "false"
+        ? { rejectUnauthorized: false }
+        : { rejectUnauthorized: true },
   });
 
 if (process.env.NODE_ENV !== "production") {
