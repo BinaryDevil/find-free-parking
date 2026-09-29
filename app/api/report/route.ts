@@ -1,6 +1,36 @@
+import { isIP } from "net";
 import { NextResponse } from "next/server";
 import { query } from "../../../lib/db";
-import { headers } from "next/headers";
+
+const MAX_REASON_LENGTH = 500;
+// Matches the window used by update_parking_report_counts() when it
+// aggregates reports (sql/11.zone_reports.sql).
+const REPORT_WINDOW = "90 days";
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+// reports.user_ip is an inet column, so it must hold a single valid address.
+// x-forwarded-for can be a comma-separated chain; the client is the first
+// entry.
+function getClientIp(headers: Headers): string | null {
+  const candidates = [
+    headers.get("x-real-ip"),
+    headers.get("x-forwarded-for")?.split(",")[0],
+  ];
+  for (const candidate of candidates) {
+    const ip = candidate?.trim();
+    if (ip && isIP(ip)) return ip;
+  }
+  return null;
+}
+
+function isValidCoordinate(value: unknown, limit: number): value is number {
+  return (
+    typeof value === "number" &&
+    Number.isFinite(value) &&
+    Math.abs(value) <= limit
+  );
+}
 
 export async function POST(request: Request) {
   try {
@@ -22,6 +52,13 @@ export async function POST(request: Request) {
       );
     }
 
+    if (typeof target_id !== "string" || !UUID_PATTERN.test(target_id)) {
+      return NextResponse.json(
+        { error: "Invalid target_id" },
+        { status: 400 }
+      );
+    }
+
     if (!["METER", "STREET", "ZONE"].includes(target_type)) {
       return NextResponse.json(
         { error: "Invalid target_type. Must be METER, STREET, or ZONE" },
@@ -37,14 +74,48 @@ export async function POST(request: Request) {
       );
     }
 
-    // Get IP
-    const headersList = await headers();
-    const ip = headersList.get("x-forwarded-for") || "127.0.0.1";
+    if (
+      reason !== undefined &&
+      reason !== null &&
+      (typeof reason !== "string" || reason.length > MAX_REASON_LENGTH)
+    ) {
+      return NextResponse.json(
+        {
+          error: `Invalid reason. Must be text of at most ${MAX_REASON_LENGTH} characters`,
+        },
+        { status: 400 }
+      );
+    }
+
+    const ip = getClientIp(request.headers);
+
+    // Three reports flip what the map shows, so one client must not be able
+    // to reach that threshold alone by submitting the same target repeatedly.
+    if (ip) {
+      const existing = await query(
+        `
+          SELECT 1 FROM reports
+          WHERE target_id = $1
+            AND target_type = $2
+            AND user_ip = $3
+            AND created_at > now() - interval '${REPORT_WINDOW}'
+          LIMIT 1
+        `,
+        [target_id, target_type, ip]
+      );
+      if (existing.rows.length > 0) {
+        return NextResponse.json({ success: true, duplicate: true });
+      }
+    }
+
+    // 0 is a valid latitude/longitude, so check type rather than truthiness.
+    const hasLocation =
+      isValidCoordinate(latitude, 90) && isValidCoordinate(longitude, 180);
 
     let sql = "";
-    let params: any[] = [];
+    let params: unknown[] = [];
 
-    if (latitude && longitude) {
+    if (hasLocation) {
       sql = `
             INSERT INTO reports (
                 target_id, target_type, reported_status, reason, user_ip, user_location
@@ -77,8 +148,12 @@ export async function POST(request: Request) {
     const res = await query(sql, params);
 
     return NextResponse.json({ success: true, id: res.rows[0].id });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Report API Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    // Do not expose database error details to clients.
+    return NextResponse.json(
+      { error: "Failed to submit report" },
+      { status: 500 }
+    );
   }
 }
