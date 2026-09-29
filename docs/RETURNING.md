@@ -9,8 +9,8 @@
 ## Local setup
 
 - Use pnpm and start the application with `pnpm dev`.
-- A database connection is required at startup. Configure one of `POSTGRES_PRISMA_URL`, `POSTGRES_URL`, or `DATABASE_URL` in a local environment file. Environment files are ignored and no sample file is currently tracked.
-- The database uses PostgreSQL with PostGIS. The SQL files in `sql/` are ordered historical setup/migration scripts; apply only the specific, understood script to a backup or non-production database first.
+- A database connection is required at startup. The database is hosted on Neon. Set `DATABASE_URL_POOLED` (Neon pooled, used by the app) and `DATABASE_URL` (Neon direct, used by scripts and migrations) in a local environment file. Environment files are ignored and no sample file is currently tracked.
+- The database uses PostgreSQL 17 with PostGIS on Neon (migrated from Supabase in September 2026). The SQL files in `sql/` are ordered historical setup/migration scripts; apply only the specific, understood script to a backup or non-production database first.
 
 ## Data and seeding
 

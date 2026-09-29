@@ -1,33 +1,28 @@
-import { setDefaultResultOrder } from "dns";
 import { Pool } from "pg";
-
-// Allow self-signed certs (Supabase chain) and prefer IPv4.
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-setDefaultResultOrder("ipv4first");
 
 declare global {
   // eslint-disable-next-line no-var
   var _parkingDbPool: Pool | undefined;
 }
 
+// App traffic goes through Neon's pooled endpoint (PgBouncer), which suits
+// serverless functions. DATABASE_URL (direct) is the fallback for local use.
 const connectionString =
-  process.env.POSTGRES_PRISMA_URL ??
-  process.env.POSTGRES_URL ??
-  process.env.DATABASE_URL;
+  process.env.DATABASE_URL_POOLED ?? process.env.DATABASE_URL;
 
 if (!connectionString) {
   throw new Error(
-    "Missing DB connection string. Set POSTGRES_PRISMA_URL or POSTGRES_URL (Supabase pooled) or DATABASE_URL.",
+    "Missing DB connection string. Set DATABASE_URL_POOLED (Neon pooled) or DATABASE_URL (Neon direct).",
   );
 }
 
+// TLS is configured by the connection string (sslmode=require).
 const pool =
   global._parkingDbPool ??
   new Pool({
     connectionString,
     max: 10,
     idleTimeoutMillis: 10_000,
-    ssl: { rejectUnauthorized: false },
   });
 
 if (process.env.NODE_ENV !== "production") {

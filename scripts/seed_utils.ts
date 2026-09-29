@@ -27,9 +27,6 @@ export function loadEnv() {
       });
     }
   });
-
-  // Bypass SSL for some setups
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 }
 
 // 2. Get DB Connection
@@ -37,10 +34,8 @@ export function getDbPool() {
   loadEnv();
 
   const connectionString =
-    process.env.POSTGRES_URL_NON_POOLING ||
-    process.env.POSTGRES_PRISMA_URL ||
-    process.env.POSTGRES_URL ||
-    process.env.DATABASE_URL;
+    // Scripts use the direct (non-pooled) Neon connection.
+    process.env.DATABASE_URL || process.env.DATABASE_URL_POOLED;
 
   if (!connectionString) {
     console.error("No connection string found!");
@@ -49,7 +44,6 @@ export function getDbPool() {
 
   const pool = new Pool({
     connectionString,
-    ssl: { rejectUnauthorized: false },
     max: 5,
     idleTimeoutMillis: 30000,
   });
