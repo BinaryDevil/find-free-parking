@@ -4,12 +4,18 @@ import { query } from "../../../lib/db";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const north = parseFloat(searchParams.get("north") || "0");
-    const south = parseFloat(searchParams.get("south") || "0");
-    const east = parseFloat(searchParams.get("east") || "0");
-    const west = parseFloat(searchParams.get("west") || "0");
+    const parseBound = (key: string) => {
+      const raw = searchParams.get(key);
+      return raw === null || raw.trim() === "" ? NaN : Number(raw);
+    };
+    const north = parseBound("north");
+    const south = parseBound("south");
+    const east = parseBound("east");
+    const west = parseBound("west");
 
-    if (!north || !south || !east || !west) {
+    // 0 is a valid coordinate (equator / prime meridian), so check for
+    // finiteness rather than truthiness.
+    if (![north, south, east, west].every(Number.isFinite)) {
       return NextResponse.json({ error: "Missing bounds" }, { status: 400 });
     }
 
@@ -48,8 +54,12 @@ export async function GET(request: Request) {
       meters: metersRes.rows,
       streets: streetsRes.rows,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("API Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    // Do not expose database error details to clients.
+    return NextResponse.json(
+      { error: "Failed to fetch parking data" },
+      { status: 500 }
+    );
   }
 }
