@@ -40,6 +40,26 @@ function formatInputDateValue(date: Date) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
+// Popups are built as HTML strings, so any value that comes from the database
+// (seeded from third-party open data) must be escaped before interpolation.
+function escapeHtml(value: unknown) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Inline handler for the "Update status" popup button. The detail object is
+// JSON-encoded and then HTML-escaped so it is safe inside a quoted attribute.
+function reportButtonOnClick(id: unknown, type: string, status: string) {
+  const detail = JSON.stringify({ id: String(id ?? ""), type, status });
+  return escapeHtml(
+    `window.dispatchEvent(new CustomEvent('open-report-modal', { detail: ${detail} }))`
+  );
+}
+
 function formatDisplayDate(value: string, isCustom: boolean) {
   if (!isCustom) return "now";
   const date = new Date(value);
@@ -493,14 +513,14 @@ export default function MainMap({
               ? `$${parseFloat(s.rate).toFixed(2)}/hr`
               : "Free";
             rulesHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                    📅 ${days}<br>
-                    ⏱ ${s.start} - ${s.end}: <b>${rateDisplay}</b>
+                    📅 ${escapeHtml(days)}<br>
+                    ⏱ ${escapeHtml(s.start)} - ${escapeHtml(s.end)}: <b>${escapeHtml(rateDisplay)}</b>
                 </div>`;
           });
         } else if (props.rate) {
           // Fallback if legacy or raw rate field still exists in prop mapping (it shouldn't generally but just in case)
           rulesHtml += `<div style="margin-top:4px;color:#475569">${t("rate", {
-            rate: props.rate,
+            rate: escapeHtml(props.rate),
           })}</div>`;
         }
 
@@ -531,12 +551,12 @@ export default function MainMap({
           .setLngLat(coords as [number, number])
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600;color:#0f172a">${
+               <div style="font-weight:600;color:#0f172a">${escapeHtml(
                  props.type ?? t("parkingLot")
-               }</div>
-               <div style="color:#475569">${
+               )}</div>
+               <div style="color:#475569">${escapeHtml(
                  props.location_desc ?? props.city ?? ""
-               }</div>
+               )}</div>
                ${walkingHtml}
                ${
                  props.timeLimitMinutes
@@ -549,7 +569,9 @@ export default function MainMap({
                 ${rulesHtml}
                 ${
                   props.notes
-                    ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>`
+                    ? `<div style="margin-top:4px;color:#4b5563">${escapeHtml(
+                        props.notes
+                      )}</div>`
                     : ""
                 }
                 ${
@@ -577,9 +599,11 @@ export default function MainMap({
                   ${t("getDirections")}
                 </a>
                 <button 
-                  onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
-                    props.id
-                  }', type: 'METER', status: '${filterTypeRef.current}' } }))"
+                  onclick="${reportButtonOnClick(
+                    props.id,
+                    "METER",
+                    filterTypeRef.current
+                  )}"
                   style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
                 >
                   ${t("updateStatus")}
@@ -654,7 +678,7 @@ export default function MainMap({
           headerColor = "#dc2626";
         }
 
-        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${headerText}</div>`;
+        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${escapeHtml(headerText)}</div>`;
 
         // Type and City - use friendly labels
         const friendlyType: Record<string, string> = {
@@ -666,9 +690,9 @@ export default function MainMap({
           MIXED: t("mixed"),
         };
         const typeLabel = friendlyType[zoneType] || t("parkingLot");
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${typeLabel} • ${
+        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(typeLabel)} • ${escapeHtml(
           props.city ?? ""
-        }</div>`;
+        )}</div>`;
 
         // Walking info if destination set
         const dest = destinationLocationRef.current;
@@ -725,7 +749,9 @@ export default function MainMap({
 
         // Notes
         if (props.notes) {
-          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${props.notes}</div>`;
+          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${escapeHtml(
+            props.notes
+          )}</div>`;
         }
 
         // Warning
@@ -744,9 +770,11 @@ export default function MainMap({
 
         // Update Status Button
         contentHtml += `<button 
-          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
-            props.id
-          }', type: 'ZONE', status: '${isFreeType ? "FREE" : "PAID"}' } }))"
+          onclick="${reportButtonOnClick(
+            props.id,
+            "ZONE",
+            isFreeType ? "FREE" : "PAID"
+          )}"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
           ${t("updateStatus")}
@@ -786,9 +814,9 @@ export default function MainMap({
         }</div>`;
 
         // Street Use / Block info
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${
+        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(
           props.block_id ?? t("unknownLocation")
-        }</div>`;
+        )}</div>`;
 
         // Calculate walking info if destination is set
         const dest = destinationLocationRef.current;
@@ -847,7 +875,9 @@ export default function MainMap({
                 ? rule.days.join(", ")
                 : rule.days;
               contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                     ⏱ ${rule.start} - ${rule.end}: <b>${rateDisplay}</b>
+                     ⏱ ${escapeHtml(rule.start)} - ${escapeHtml(
+                       rule.end
+                     )}: <b>${escapeHtml(rateDisplay)}</b>
                    </div>`;
             });
           } else {
@@ -894,9 +924,11 @@ export default function MainMap({
         </a>`;
 
         contentHtml += `<button 
-          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
-            props.id
-          }', type: 'STREET', status: '${isFree ? "FREE" : "PAID"}' } }))"
+          onclick="${reportButtonOnClick(
+            props.id,
+            "STREET",
+            isFree ? "FREE" : "PAID"
+          )}"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
           ${t("updateStatus")}
