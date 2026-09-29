@@ -186,13 +186,26 @@ export default function MainMap({
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
   const parkingTimeRef = useRef(parkingTime);
+  const isCustomTimeRef = useRef(isCustomTime);
   const loadSpotsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // Incremented on every loadSpots call so slower, older responses
+  // cannot overwrite the results of a newer request.
+  const loadSpotsRequestIdRef = useRef(0);
 
   useEffect(() => {
     filterTypeRef.current = filterType;
     parkingTimeRef.current = parkingTime;
+    isCustomTimeRef.current = isCustomTime;
     destinationLocationRef.current = destinationLocation;
-  }, [filterType, parkingTime, destinationLocation]);
+  }, [filterType, parkingTime, isCustomTime, destinationLocation]);
+
+  // When the user has not picked a time, "now" must mean the current time,
+  // not the time the page was first loaded.
+  function getEffectiveParkingTime() {
+    return isCustomTimeRef.current
+      ? new Date(parkingTimeRef.current)
+      : new Date();
+  }
 
   useEffect(() => {
     // Check local storage on mount
@@ -842,7 +855,7 @@ export default function MainMap({
 
         // Meter Infos
         if (meterInfos.length > 0) {
-          const currentDateTime = new Date(parkingTimeRef.current);
+          const currentDateTime = getEffectiveParkingTime();
           let activeRules: any[] = [];
 
           // Flatten and Deduplicate Rules
@@ -1063,6 +1076,11 @@ export default function MainMap({
       if (rule.start && rule.end) {
         const start = parseMinutes(rule.start);
         const end = parseMinutes(rule.end);
+        if (!Number.isFinite(start) || !Number.isFinite(end)) return false;
+        // Overnight ranges such as 18:00-02:00 wrap past midnight.
+        if (end <= start) {
+          return currentMinutes >= start || currentMinutes < end;
+        }
         return currentMinutes >= start && currentMinutes < end;
       }
       return false; // No time range? assume not active/free? Or active all day?
@@ -1081,6 +1099,9 @@ export default function MainMap({
       // limit: "1000", // API has hardcoded limit
     });
 
+    const requestId = ++loadSpotsRequestIdRef.current;
+    const isStale = () => requestId !== loadSpotsRequestIdRef.current;
+
     setStatus("loading");
     setError(null);
     try {
@@ -1088,13 +1109,14 @@ export default function MainMap({
       const res = await fetch(`/api/parking?${queryParams.toString()}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
+      if (isStale()) return;
 
       const meters = (data.meters ?? []) as SpotFeature[];
       const streets = (data.streets ?? []) as StreetFeature[];
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
-      const currentDateTime = new Date(parkingTimeRef.current);
+      const currentDateTime = getEffectiveParkingTime();
 
       // --- Process Meters ---
       // 1. Filter raw meters based on logic
@@ -1108,19 +1130,19 @@ export default function MainMap({
         if (reportedFree) m.z_status_override = "FREE";
 
         let isActive = false;
+        const hasSchedules =
+          Array.isArray(m.schedules) && m.schedules.length > 0;
         // Prioritize Schedules (New Schema)
-        if (
-          m.schedules &&
-          Array.isArray(m.schedules) &&
-          m.schedules.length > 0
-        ) {
+        if (hasSchedules) {
           isActive = isScheduleActive(m.schedules, currentDateTime);
         }
 
         if (filterTypeRef.current === "FREE") {
           if (reportedPaid) return false;
           if (reportedFree) return true;
-          return !isActive;
+          // A meter without schedule data is unknown, not free
+          // (docs/adr/0001-verified-rules-only.md).
+          return hasSchedules && !isActive;
         } else {
           if (reportedFree) return false;
           if (reportedPaid) return true;
@@ -1273,8 +1295,10 @@ export default function MainMap({
       const zonesRes = await fetch(
         `/api/parking/zones?bbox=${bboxParam}&type=${filterTypeRef.current}&limit=500`
       );
+      if (isStale()) return;
       if (zonesRes.ok) {
         const zonesData = await zonesRes.json();
+        if (isStale()) return;
         const zonesSource = map.getSource("zones") as
           | maplibregl.GeoJSONSource
           | undefined;
@@ -1301,6 +1325,7 @@ export default function MainMap({
 
       setStatus("idle");
     } catch (err) {
+      if (isStale()) return;
       console.error("Failed to load spots", err);
       setStatus("error");
       setError((err as Error).message);
