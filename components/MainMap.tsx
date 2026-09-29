@@ -40,6 +40,26 @@ function formatInputDateValue(date: Date) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
+// Popups are built as HTML strings, so any value that comes from the database
+// (seeded from third-party open data) must be escaped before interpolation.
+function escapeHtml(value: unknown) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// Inline handler for the "Update status" popup button. The detail object is
+// JSON-encoded and then HTML-escaped so it is safe inside a quoted attribute.
+function reportButtonOnClick(id: unknown, type: string, status: string) {
+  const detail = JSON.stringify({ id: String(id ?? ""), type, status });
+  return escapeHtml(
+    `window.dispatchEvent(new CustomEvent('open-report-modal', { detail: ${detail} }))`
+  );
+}
+
 function formatDisplayDate(value: string, isCustom: boolean) {
   if (!isCustom) return "now";
   const date = new Date(value);
@@ -166,13 +186,26 @@ export default function MainMap({
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
   const parkingTimeRef = useRef(parkingTime);
+  const isCustomTimeRef = useRef(isCustomTime);
   const loadSpotsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // Incremented on every loadSpots call so slower, older responses
+  // cannot overwrite the results of a newer request.
+  const loadSpotsRequestIdRef = useRef(0);
 
   useEffect(() => {
     filterTypeRef.current = filterType;
     parkingTimeRef.current = parkingTime;
+    isCustomTimeRef.current = isCustomTime;
     destinationLocationRef.current = destinationLocation;
-  }, [filterType, parkingTime, destinationLocation]);
+  }, [filterType, parkingTime, isCustomTime, destinationLocation]);
+
+  // When the user has not picked a time, "now" must mean the current time,
+  // not the time the page was first loaded.
+  function getEffectiveParkingTime() {
+    return isCustomTimeRef.current
+      ? new Date(parkingTimeRef.current)
+      : new Date();
+  }
 
   useEffect(() => {
     // Check local storage on mount
@@ -493,14 +526,14 @@ export default function MainMap({
               ? `$${parseFloat(s.rate).toFixed(2)}/hr`
               : "Free";
             rulesHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                    📅 ${days}<br>
-                    ⏱ ${s.start} - ${s.end}: <b>${rateDisplay}</b>
+                    📅 ${escapeHtml(days)}<br>
+                    ⏱ ${escapeHtml(s.start)} - ${escapeHtml(s.end)}: <b>${escapeHtml(rateDisplay)}</b>
                 </div>`;
           });
         } else if (props.rate) {
           // Fallback if legacy or raw rate field still exists in prop mapping (it shouldn't generally but just in case)
           rulesHtml += `<div style="margin-top:4px;color:#475569">${t("rate", {
-            rate: props.rate,
+            rate: escapeHtml(props.rate),
           })}</div>`;
         }
 
@@ -531,12 +564,12 @@ export default function MainMap({
           .setLngLat(coords as [number, number])
           .setHTML(
             `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600;color:#0f172a">${
+               <div style="font-weight:600;color:#0f172a">${escapeHtml(
                  props.type ?? t("parkingLot")
-               }</div>
-               <div style="color:#475569">${
+               )}</div>
+               <div style="color:#475569">${escapeHtml(
                  props.location_desc ?? props.city ?? ""
-               }</div>
+               )}</div>
                ${walkingHtml}
                ${
                  props.timeLimitMinutes
@@ -549,7 +582,9 @@ export default function MainMap({
                 ${rulesHtml}
                 ${
                   props.notes
-                    ? `<div style="margin-top:4px;color:#4b5563">${props.notes}</div>`
+                    ? `<div style="margin-top:4px;color:#4b5563">${escapeHtml(
+                        props.notes
+                      )}</div>`
                     : ""
                 }
                 ${
@@ -577,9 +612,11 @@ export default function MainMap({
                   ${t("getDirections")}
                 </a>
                 <button 
-                  onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
-                    props.id
-                  }', type: 'METER', status: '${filterTypeRef.current}' } }))"
+                  onclick="${reportButtonOnClick(
+                    props.id,
+                    "METER",
+                    filterTypeRef.current
+                  )}"
                   style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
                 >
                   ${t("updateStatus")}
@@ -654,7 +691,7 @@ export default function MainMap({
           headerColor = "#dc2626";
         }
 
-        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${headerText}</div>`;
+        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${escapeHtml(headerText)}</div>`;
 
         // Type and City - use friendly labels
         const friendlyType: Record<string, string> = {
@@ -666,9 +703,9 @@ export default function MainMap({
           MIXED: t("mixed"),
         };
         const typeLabel = friendlyType[zoneType] || t("parkingLot");
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${typeLabel} • ${
+        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(typeLabel)} • ${escapeHtml(
           props.city ?? ""
-        }</div>`;
+        )}</div>`;
 
         // Walking info if destination set
         const dest = destinationLocationRef.current;
@@ -725,7 +762,9 @@ export default function MainMap({
 
         // Notes
         if (props.notes) {
-          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${props.notes}</div>`;
+          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${escapeHtml(
+            props.notes
+          )}</div>`;
         }
 
         // Warning
@@ -744,9 +783,11 @@ export default function MainMap({
 
         // Update Status Button
         contentHtml += `<button 
-          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
-            props.id
-          }', type: 'ZONE', status: '${isFreeType ? "FREE" : "PAID"}' } }))"
+          onclick="${reportButtonOnClick(
+            props.id,
+            "ZONE",
+            isFreeType ? "FREE" : "PAID"
+          )}"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
           ${t("updateStatus")}
@@ -786,9 +827,9 @@ export default function MainMap({
         }</div>`;
 
         // Street Use / Block info
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${
+        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(
           props.block_id ?? t("unknownLocation")
-        }</div>`;
+        )}</div>`;
 
         // Calculate walking info if destination is set
         const dest = destinationLocationRef.current;
@@ -814,7 +855,7 @@ export default function MainMap({
 
         // Meter Infos
         if (meterInfos.length > 0) {
-          const currentDateTime = new Date(parkingTimeRef.current);
+          const currentDateTime = getEffectiveParkingTime();
           let activeRules: any[] = [];
 
           // Flatten and Deduplicate Rules
@@ -847,7 +888,9 @@ export default function MainMap({
                 ? rule.days.join(", ")
                 : rule.days;
               contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                     ⏱ ${rule.start} - ${rule.end}: <b>${rateDisplay}</b>
+                     ⏱ ${escapeHtml(rule.start)} - ${escapeHtml(
+                       rule.end
+                     )}: <b>${escapeHtml(rateDisplay)}</b>
                    </div>`;
             });
           } else {
@@ -894,9 +937,11 @@ export default function MainMap({
         </a>`;
 
         contentHtml += `<button 
-          onclick="window.dispatchEvent(new CustomEvent('open-report-modal', { detail: { id: '${
-            props.id
-          }', type: 'STREET', status: '${isFree ? "FREE" : "PAID"}' } }))"
+          onclick="${reportButtonOnClick(
+            props.id,
+            "STREET",
+            isFree ? "FREE" : "PAID"
+          )}"
           style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
         >
           ${t("updateStatus")}
@@ -1031,6 +1076,11 @@ export default function MainMap({
       if (rule.start && rule.end) {
         const start = parseMinutes(rule.start);
         const end = parseMinutes(rule.end);
+        if (!Number.isFinite(start) || !Number.isFinite(end)) return false;
+        // Overnight ranges such as 18:00-02:00 wrap past midnight.
+        if (end <= start) {
+          return currentMinutes >= start || currentMinutes < end;
+        }
         return currentMinutes >= start && currentMinutes < end;
       }
       return false; // No time range? assume not active/free? Or active all day?
@@ -1049,6 +1099,9 @@ export default function MainMap({
       // limit: "1000", // API has hardcoded limit
     });
 
+    const requestId = ++loadSpotsRequestIdRef.current;
+    const isStale = () => requestId !== loadSpotsRequestIdRef.current;
+
     setStatus("loading");
     setError(null);
     try {
@@ -1056,13 +1109,14 @@ export default function MainMap({
       const res = await fetch(`/api/parking?${queryParams.toString()}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
+      if (isStale()) return;
 
       const meters = (data.meters ?? []) as SpotFeature[];
       const streets = (data.streets ?? []) as StreetFeature[];
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
-      const currentDateTime = new Date(parkingTimeRef.current);
+      const currentDateTime = getEffectiveParkingTime();
 
       // --- Process Meters ---
       // 1. Filter raw meters based on logic
@@ -1076,19 +1130,19 @@ export default function MainMap({
         if (reportedFree) m.z_status_override = "FREE";
 
         let isActive = false;
+        const hasSchedules =
+          Array.isArray(m.schedules) && m.schedules.length > 0;
         // Prioritize Schedules (New Schema)
-        if (
-          m.schedules &&
-          Array.isArray(m.schedules) &&
-          m.schedules.length > 0
-        ) {
+        if (hasSchedules) {
           isActive = isScheduleActive(m.schedules, currentDateTime);
         }
 
         if (filterTypeRef.current === "FREE") {
           if (reportedPaid) return false;
           if (reportedFree) return true;
-          return !isActive;
+          // A meter without schedule data is unknown, not free
+          // (docs/adr/0001-verified-rules-only.md).
+          return hasSchedules && !isActive;
         } else {
           if (reportedFree) return false;
           if (reportedPaid) return true;
@@ -1241,8 +1295,10 @@ export default function MainMap({
       const zonesRes = await fetch(
         `/api/parking/zones?bbox=${bboxParam}&type=${filterTypeRef.current}&limit=500`
       );
+      if (isStale()) return;
       if (zonesRes.ok) {
         const zonesData = await zonesRes.json();
+        if (isStale()) return;
         const zonesSource = map.getSource("zones") as
           | maplibregl.GeoJSONSource
           | undefined;
@@ -1269,6 +1325,7 @@ export default function MainMap({
 
       setStatus("idle");
     } catch (err) {
+      if (isStale()) return;
       console.error("Failed to load spots", err);
       setStatus("error");
       setError((err as Error).message);
