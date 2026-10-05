@@ -1,31 +1,30 @@
 # Returning to Find Free Parking
 
-## Current baseline
-
-- The application code was returned to the state before the September 2026 changes.
-- The September-only `parking_evidence` migration is no longer in this repository. If it was previously applied, its three JSON columns remain in the database intentionally; they are additive, unused by this baseline, and preserve all data.
-- Do not run a rollback migration or a seed script merely to align the database with the checked-out code. The deployed application works with the extra columns present.
+Read [status](STATUS.md) and [unfinished work](../TODO.md) first. The current code includes post-rollback map/API fixes and Neon connection changes; do not assume it is still the old rollback baseline.
 
 ## Local setup
 
-- Use pnpm and start the application with `pnpm dev`.
-- A database connection is required at startup. The database is hosted on Neon. Set `DATABASE_URL_POOLED` (Neon pooled, used by the app) and `DATABASE_URL` (Neon direct, used by scripts and migrations) in a local environment file. Environment files are ignored and no sample file is currently tracked.
-- The database uses PostgreSQL 17 with PostGIS on Neon (migrated from Supabase in September 2026). The SQL files in `sql/` are ordered historical setup/migration scripts; apply only the specific, understood script to a backup or non-production database first.
+Use pnpm and the committed lockfile. Configure an ignored `.env.local`; no sample environment file is tracked.
 
-## Data and seeding
+| Variable | Purpose |
+| --- | --- |
+| `DATABASE_URL_POOLED` | Neon pooled endpoint preferred by app traffic |
+| `DATABASE_URL` | Direct endpoint preferred by script helpers; app fallback |
+| `NEXT_PUBLIC_MAPTILER_KEY` | Optional MapTiler style key |
+| `NEXT_PUBLIC_MAPBOX_TOKEN` | Legacy fallback key passed to the MapTiler style URL; inspect compatibility before relying on it |
+| `NEXT_PUBLIC_GA_ID` | Optional analytics configuration |
+| `NEXT_PUBLIC_SITE_URL` | Sitemap URL override; other metadata has a hardcoded site URL |
 
-- Parking data is stored in the database, not rebuilt automatically from the repository.
-- `scripts/seed_all.ts` and the city-specific seed scripts can add or change data. Review the target city and script behavior before running them against a shared or production database.
-- `scripts/clear_db.ts` and cleanup scripts are potentially destructive. Never run them against production without a verified backup and an explicit scope.
+Use PostgreSQL with PostGIS and a non-production database for behavior or data changes. Connection strings configure TLS; keep credentials out of docs, logs, and commits. Script helpers load environment variables independently of Next.js; inspect the selected script before use. Without a map style key, the map uses OpenStreetMap raster tiles. Search/reverse search uses Nominatim.
 
-## Product model
+## Validation
 
-- A Parking Rule describes whether parking is permitted and under what conditions. It is not evidence that a space is vacant.
-- A Free Parking Rule is free for the relevant time and vehicle context; a Driver Report is advisory and does not replace an authoritative rule.
-- The canonical domain terminology lives in `CONTEXT.md`; keep that file as a glossary. Record implementation and operational decisions in `docs/` instead.
+`pnpm lint` and `pnpm exec tsc --noEmit` are available checks; `pnpm build` checks the application build. There is no configured automated test command. Establish the baseline before code changes and report existing diagnostics separately. For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required.
 
-## Validation and deployment
+For map changes, verify the selected city/time, free and paid views, unknown data, reports, rapid viewport changes, and mobile controls. Record which environment and data were used.
 
-- The public site is `https://findfreeparking.info/`; pushes to `main` are expected to deploy there.
-- At the rollback baseline, `pnpm lint` fails on existing TypeScript/ESLint violations (primarily explicit `any` usages). Treat a clean lint run as separate maintenance work rather than assuming a new change caused every reported issue.
-- Before production changes: test locally with a non-production database, inspect the generated migration or seed scope, push a branch or `main` only after review, then confirm the public site and its parking API responses after deployment.
+## Database and release operations
+
+Follow [data operations](DATA.md) before seeding, migrations, cleanup, or database rollback. Extra evidence columns left by earlier work are not a reason to remove data.
+
+The recorded public URL is https://findfreeparking.info/. Pushes to `main` were historically expected to deploy; confirm the current integration rather than assuming a push proves deployment. After application releases, check the deployment revision, public map, and parking API responses. Source parity alone cannot prove behavioral parity: database rows, environment, current time, external services, and browser storage also affect results.

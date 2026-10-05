@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Find Free Parking
 
-## Getting Started
+A mobile-first map intended to help unfamiliar drivers find nearby places with verified rules permitting parking without payment, now or at a selected time. Paid parking is a secondary view. The service does not observe whether a space is vacant.
 
-First, run the development server:
+The current implementation does **not yet meet the verified-rules-only promise**. See [project status](docs/STATUS.md) for evidence and [unfinished work](TODO.md) for acceptance criteria.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+## Start here
+
+- [Project context and vocabulary](CONTEXT.md): intended promise and domain definitions.
+- [Status and current challenge](docs/STATUS.md): implemented behavior, gaps, and verification limits.
+- [Unfinished work](TODO.md): priorities and completion criteria.
+- [Returning and local setup](docs/RETURNING.md): environment, validation, and deployment checks.
+- [Data operations](docs/DATA.md): source review, seeding, and database safety.
+- [Verified-rules decision](docs/adr/0001-verified-rules-only.md): accepted product boundary.
+- [Agent instructions](AGENTS.md): development rules; `CLAUDE.md` links to the same file.
+
+## Local development
+
+Use pnpm with the committed lockfile:
+
+```sh
+pnpm install --frozen-lockfile
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Provide a local `.env.local` with a PostgreSQL/PostGIS connection before starting. See [setup details](docs/RETURNING.md). Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Code map
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Area | Location |
+| --- | --- |
+| Locale and city pages | `app/[locale]/` |
+| Map, classification, schedules, popups | `components/MainMap.tsx` |
+| Parking and report endpoints | `app/api/` |
+| Coverage checks and requests | `app/actions/` |
+| Database connection and city page registry | `lib/` |
+| Translation files and routing | `messages/`, `i18n/` |
+| Imports and database operations | `scripts/`, `sql/` |
+| Source datasets | `datasets/`, `sample_data/` |
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Stack: Next.js 16, React 19, TypeScript, MapLibre, next-intl, Tailwind CSS 4, and PostgreSQL/PostGIS via `pg`. Version and command details live in `package.json`.

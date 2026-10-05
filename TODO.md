@@ -1,18 +1,24 @@
-# Project TODO
+# Unfinished work
 
-## High Priority
+Status is based on the 2026-10-04 source review in [docs/STATUS.md](docs/STATUS.md). These are planning items, not authorization to change production data or implement everything at once.
 
-- [x] Stop showing "Restricted" streets as "PAID" on the map. we need to filter them out.
-- [x] Add multilingual support, support top 8 languages most used worldwide, With multi language support and cities coverage data, can we generate seperate URLS for each language/city? That would be good for SEO.
-- [x] Implement analytics and SEO best practices (Meta tags, sitemap, etc.)
+## Priority 1: Deliver the verified-rules promise
 
-## Backlog
+- [ ] Choose a first city and document authoritative sources, reuse terms, location precision, schedules, timezone, conditions, and freshness policy. **Done when:** a reviewed source inventory defines which rules the product can safely recommend and which remain unknown.
+- [ ] Define and enforce evidence eligibility across meters, streets, and zones. **Done when:** absent meters, generic road types, OSM tags, stale evidence, and unverified zone flags cannot independently produce a verified free recommendation; unknown cases remain explicit.
+- [ ] Make Driver Reports advisory Driver Warnings. **Done when:** report counts cannot promote a location to verified free or replace an authoritative rule, with a regression check for the three-report threshold.
+- [ ] Evaluate permission and payment rules in the location's timezone and selected vehicle/time context. **Done when:** tests cover missing/malformed schedules, overnight day boundaries, daylight-saving changes, permit/time-limit restrictions, and payment inactivity without permission evidence.
+- [ ] Align coverage and city-page claims with reviewed evidence. **Done when:** a city boundary, seed completion, or entry in `SUPPORTED_CITIES` alone cannot imply verified Coverage.
 
-## Completed
+## Priority 2: Validate operations and reliability
 
-- [x] When user is not in a coverage zone, add a button to the banner for user to request.
-- [x] Provide an automation implementation to run at certain time of everyday to seed the city if request count > certain amount.
-- [x] UI fix: now we have parking lots, the total results count on the page is incorrect (paid parking : x blocks y spots)
-- [x] Add a user report feature, when user selects a meter/street, they can mark it as valid(verifying the free/paid status) or invalid (reporting a false positive/negative). If a false positive/negative is reported, the user can provide a reason with checking from a list. For example, user clicked on a meter/street that is paid, there's a button called "report", which opens up and gives them three options(expand if you find necessary): Free/Paid/No-parking, radio-button style or selectable list(single select), default checked is the one that matches the current status of the meter/street. If user selects a diffrent Option(i.e Free for a paid zone, or paid for a free zone), They can additionally check a reason, we need to list common reasons, such as select free->check paid->reason(There is a meter)->submit; Or, select free-> check non-parking->reason(Requires permit)->submit. Record the user's IP address and location, and send it to the server. And set a few values (in the database or elsewhere) for a threshold of reports, after the threshold we don't display the meter/street as original status, but display a verified/corrected status. Such as Free -> Verified Free, Paid -> Reported as free, Free -> Reported as paid. But we still display all locations just add extra information from user base feedback.
-- [x] What about parking lots? do you have thoughts and plans to support parking lots? There should be free to park, free for a limited time and paid parking lots. Can we gather and support that information?
-- [x] Look into table parking_zones, is it not used. what is it designed for?
+- [ ] Review existing city data against the evidence policy without deleting preserved records by default. **Done when:** each reviewed dataset has source/freshness findings and an explicit remediation scope.
+- [ ] Review request-driven seeding before scheduling it. **Done when:** city names cannot become unsafe command input, seed scope is controlled, failures are observable, and activation requires evidence approval. Verify any external scheduler separately.
+- [ ] Establish targeted regression checks for classification, stale map requests, selected time, popup escaping, and report submission. **Done when:** the checks reproduce the relevant failure and pass with the intended behavior.
+- [ ] Establish current lint/typecheck baselines and address debt in separately scoped work. **Done when:** existing diagnostics are recorded and new changes can be assessed without conflating baseline failures.
+- [ ] Verify Neon schema/data migration and deployed environment against reviewed expectations. **Done when:** read-only checks confirm required tables, PostGIS, report aggregation, connectivity, and applicable database access controls; record the date and environment.
+- [ ] Verify production map/API behavior, translations, SEO, and analytics after relevant releases. **Done when:** dated observations distinguish implemented, deployed, and production-verified behavior.
+
+## Existing features, not proof of completion
+
+The old checklist marked localization, SEO/analytics, coverage requests, automatic seeding, lots, report overrides, restricted-street filtering, and result counts complete. Those features exist in source to varying degrees; [status](docs/STATUS.md) records their limits. In particular, report-based corrections and inferred coverage conflict with the accepted verified-rules decision. Revalidate result counts and restricted-street behavior when classification changes.
