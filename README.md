@@ -2,16 +2,14 @@
 
 A mobile-first map intended to help unfamiliar drivers find nearby places with verified rules permitting parking without payment, now or at a selected time. Paid parking is a secondary view. The service does not observe whether a space is vacant.
 
-The current implementation does **not yet meet the verified-rules-only promise**. See [project status](docs/STATUS.md) for evidence and [unfinished work](TODO.md) for acceptance criteria.
+The current implementation does **not yet meet the verified-rules-only promise**. The [verified-rules spec](https://github.com/BinaryDevil/find-free-parking/issues/2) records the verified gaps, and its sub-issues track the remaining work.
 
 ## Start here
 
 - [Project context and vocabulary](CONTEXT.md): intended promise and domain definitions.
-- [Status and current challenge](docs/STATUS.md): implemented behavior, gaps, and verification limits.
-- [Unfinished work](TODO.md): priorities and completion criteria.
+- [Verified-rules decision](docs/adr/0001-verified-rules-only.md): accepted product boundary.
 - [Returning and local setup](docs/RETURNING.md): environment, validation, and deployment checks.
 - [Data operations](docs/DATA.md): source review, seeding, and database safety.
-- [Verified-rules decision](docs/adr/0001-verified-rules-only.md): accepted product boundary.
 - [Agent instructions](AGENTS.md): development rules; `CLAUDE.md` links to the same file.
 
 ## Local development

@@ -6,7 +6,7 @@ Find Free Parking helps drivers who are unfamiliar with an area choose a nearby 
 
 The accepted direction is city-by-city recommendations backed by current authoritative rules, with precise location, schedule, and applicable vehicle conditions. Prefer trustworthy limited coverage over broad inferred coverage. Keep the map quick to understand on mobile, with clear costs, limits, and relevant warnings.
 
-This is the intended product model, not a claim that every current result satisfies it. [Status](docs/STATUS.md) records the implementation gap; [TODO](TODO.md) records unfinished work. [ADR-0001](docs/adr/0001-verified-rules-only.md) is the accepted decision.
+This is the intended product model, not a claim that every current result satisfies it. The [verified-rules spec](https://github.com/BinaryDevil/find-free-parking/issues/2) and its sub-issues record the implementation gap and unfinished work. [ADR-0001](docs/adr/0001-verified-rules-only.md) is the accepted decision.
 
 ## Language
 

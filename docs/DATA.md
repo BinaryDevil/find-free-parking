@@ -4,10 +4,9 @@ For seeding, schema changes, cleanup, or rollback, read this document and [ADR-0
 
 ## Evidence before expansion
 
-1. Identify authoritative city parking regulations, meters, signs, blockfaces, permits, and time limits. Record source URL, retrieval date, reuse terms, geometry precision, timezone, schedule semantics, and missing conditions.
-2. Separate geometry from rules. OSM streets/boundaries can provide context; absent fees/meters, road category, and a city polygon cannot establish free parking or Coverage. Driver Reports remain advisory.
-3. Review parser defaults and incomplete records. `parseSignText` and OSM helpers contain assumptions that must not silently become verified recommendations.
-4. Define a city's eligible rules and unknown cases before enabling the product promise. Registering a city page is separate from evidence approval.
+Which sources a city may be set up or seeded from is decided by the Evidence Source Policy in the verified-rules spec ([BinaryDevil/find-free-parking#2](https://github.com/BinaryDevil/find-free-parking/issues/2)), applied through the `cover-city` skill. Its output is a source inventory under `docs/sources/` (see `docs/sources/TEMPLATE.md`); seed only from sources approved there. Registering a city page is separate from evidence approval.
+
+When reusing existing import code, review parser defaults and incomplete records: `parseSignText` and the OSM helpers contain assumptions (default schedules, guessed rates, road-class mapping) that the policy does not accept as evidence.
 
 ## Safe execution
 

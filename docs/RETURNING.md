@@ -1,6 +1,6 @@
 # Returning to Find Free Parking
 
-Read [status](STATUS.md) and [unfinished work](../TODO.md) first. The current code includes post-rollback map/API fixes and Neon connection changes; do not assume it is still the old rollback baseline.
+Read the [verified-rules spec](https://github.com/BinaryDevil/find-free-parking/issues/2) and its open sub-issues first. The current code includes post-rollback map/API fixes and Neon connection changes; do not assume it is still the old rollback baseline.
 
 ## Local setup
 

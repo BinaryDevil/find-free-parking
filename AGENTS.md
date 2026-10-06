@@ -10,19 +10,19 @@ Help unfamiliar drivers find nearby places with Verified Free Parking Rules for 
 
 ## Context to read
 
-- Before product or classification work, read `CONTEXT.md`, `docs/STATUS.md`, `TODO.md`, and `docs/adr/0001-verified-rules-only.md`.
+- Before product or classification work, read `CONTEXT.md`, `docs/adr/0001-verified-rules-only.md`, and the verified-rules spec (https://github.com/BinaryDevil/find-free-parking/issues/2) with its open sub-issues.
 - Before local setup, validation, or release work, read `docs/RETURNING.md`.
-- Before seeding, schema changes, cleanup, or rollback, read `docs/DATA.md` and inspect the target script. Preserve database data; a code change does not authorize production data writes. Record schema changes in `sql/` before execution.
+- To add, seed, or expand a city, use the `cover-city` skill. Before seeding, schema changes, cleanup, or rollback, read `docs/DATA.md` and inspect the target script. Preserve database data; a code change does not authorize production data writes. Record schema changes in `sql/` before execution.
 - For UI text, use next-intl and update matching keys across the eight locales. Inspect `scripts/generate_locales.ts` before using it; keep its corresponding keys consistent and review the generated diff for unrelated rewrites.
 
 ## Working rules
 
 - Inspect current source, Git status, and relevant scripts before editing. Preserve unrelated user work and existing style.
-- Scope each implementation to the requested outcome. Update status/backlog when behavior or verification changes, keeping the glossary separate from operational history.
+- Scope each implementation to the requested outcome. Record status and backlog changes on the relevant GitHub issue, keeping the glossary separate from operational history.
 - Match validation to the change. For bug fixes, reproduce the failure and verify the public behavior. Record existing lint/typecheck failures separately; docs-only work needs link, consistency, symlink, and diff checks.
 - Distinguish source implementation, local validation, deployment, and production verification. A push or successful seed does not prove live correctness.
 - Keep credentials, database URLs, IP addresses, and precise driver locations out of committed context and routine logs. Preserve existing popup escaping, parameterized SQL, and report validation when changing those paths.
-- `AGENTS.md` is the instruction source of truth; `CLAUDE.md` must remain a relative symlink to it. Legacy `.agent/` docs point here or to task-specific guides.
+- `AGENTS.md` is the instruction source of truth; `CLAUDE.md` must remain a relative symlink to it.
 
 # Behavioral guidelines
 
@@ -89,3 +89,17 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live in GitHub Issues for BinaryDevil/find-free-parking, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default label vocabulary: needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: the glossary is the "Language" section of `CONTEXT.md`, and ADRs live in `docs/adr/`. See `docs/agents/domain.md`.
