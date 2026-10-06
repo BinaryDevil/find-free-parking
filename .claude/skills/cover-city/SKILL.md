@@ -9,7 +9,7 @@ The output is a reviewed **inventory** plus tickets. The inventory decides which
 
 ## 1. Load the policy
 
-Run `gh issue view 2` and read the **Evidence Source Policy** section (once it moves into the repo, the issue will point to its new home). Also read the Language section of `CONTEXT.md` and `docs/adr/`. The policy's evidence types (E1–E7, signals), acceptance criteria, coverage levels, and search order are the rules for every later step.
+Run `gh issue view 2` and read the **Evidence Source Policy** section (once it moves into the repo, the issue will point to its new home). Also read the Language section of `GLOSSARY.md` and `docs/adr/`. The policy's evidence types (E1–E7, signals), acceptance criteria, coverage levels, and search order are the rules for every later step.
 
 Done when: you can name what each evidence type may and may not establish.
 

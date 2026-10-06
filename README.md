@@ -6,7 +6,7 @@ The current implementation does **not yet meet the verified-rules-only promise**
 
 ## Start here
 
-- [Project context and vocabulary](CONTEXT.md): intended promise and domain definitions.
+- [Project context and vocabulary](GLOSSARY.md): intended promise and domain definitions.
 - [Verified-rules decision](docs/adr/0001-verified-rules-only.md): accepted product boundary.
 - [Returning and local setup](docs/RETURNING.md): environment, validation, and deployment checks.
 - [Data operations](docs/DATA.md): source review, seeding, and database safety.

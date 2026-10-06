@@ -10,7 +10,7 @@ Help unfamiliar drivers find nearby places with Verified Free Parking Rules for 
 
 ## Context to read
 
-- Before product or classification work, read `CONTEXT.md`, `docs/adr/0001-verified-rules-only.md`, and the verified-rules spec (https://github.com/BinaryDevil/find-free-parking/issues/2) with its open sub-issues.
+- Before product or classification work, read `GLOSSARY.md`, `docs/adr/0001-verified-rules-only.md`, and the verified-rules spec (https://github.com/BinaryDevil/find-free-parking/issues/2) with its open sub-issues.
 - Before local setup, validation, or release work, read `docs/RETURNING.md`.
 - To add, seed, or expand a city, use the `cover-city` skill. Before seeding, schema changes, cleanup, or rollback, read `docs/DATA.md` and inspect the target script. Preserve database data; a code change does not authorize production data writes. Record schema changes in `sql/` before execution.
 - For UI text, use next-intl and update matching keys across the eight locales. Inspect `scripts/generate_locales.ts` before using it; keep its corresponding keys consistent and review the generated diff for unrelated rewrites.
@@ -102,4 +102,8 @@ Default label vocabulary: needs-triage, needs-info, ready-for-agent, ready-for-h
 
 ### Domain docs
 
-Single-context: the glossary is the "Language" section of `CONTEXT.md`, and ADRs live in `docs/adr/`. See `docs/agents/domain.md`.
+Single-context: the glossary is the "Language" section of `GLOSSARY.md`, and ADRs live in `docs/adr/`. See `docs/agents/domain.md`.
+
+### Release gates
+
+Work ships in milestone releases R0–R5, each through one release PR into `main` that only a human merges. Pick tickets from the current milestone and follow `docs/agents/release-gates.md`.
