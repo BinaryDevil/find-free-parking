@@ -17,6 +17,16 @@ Use pnpm and the committed lockfile. Configure an ignored `.env.local`; no sampl
 
 Use PostgreSQL with PostGIS and a non-production database for behavior or data changes. Connection strings configure TLS; keep credentials out of docs, logs, and commits. Script helpers load environment variables independently of Next.js; inspect the selected script before use. Without a map style key, the map uses OpenStreetMap raster tiles. Search/reverse search uses Nominatim.
 
+## Database roles
+
+The prepared [role rollout](DB_ROLES.md) separates `app_rw` app traffic from
+the direct migration/owner connection. It is not yet evidence of applied roles
+or production credentials. The restricted app role reads map/coverage tables
+and inserts reports and city requests; a non-login trigger role updates report
+counts. Keep owner credentials in a separate operator environment, never in
+Vercel runtime or a pulled app env. Follow the rollout preflight and verification
+before switching either Preview or Production.
+
 ## Validation
 
 `pnpm lint` and `pnpm exec tsc --noEmit` are available checks; `pnpm build` checks the application build. There is no configured automated test command. Establish the baseline before code changes and report existing diagnostics separately. For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required.
