@@ -6,6 +6,8 @@ Coverage verdict: none (no source approved; Seattle remains not covered)
 Policy: [Evidence Source Policy in #2](https://github.com/BinaryDevil/find-free-parking/issues/2)
 Observed: 2026-10-09. Counts are live `returnCountOnly` query results, not counts imported or validated in our database. Edit times below are UTC service `editingInfo.lastEditDate`, not evidence that every rule was inspected that day.
 
+Inventory assessment: complete against #20’s remote-only inventory criteria; source approval and integration remain pending.
+
 This is the read-only inventory for [#20](https://github.com/BinaryDevil/find-free-parking/issues/20). It does not approve sources, load data, change the city registry, or establish deployment. No city contact or records request has been sent. The draft deliberately revises the spec's expectation of full Seattle Coverage: mixed curb uses, incomplete sign semantics, conflicting zone hours and unpaid temporary restrictions prevent that conclusion today.
 
 ## Evidence types
@@ -89,7 +91,7 @@ For every GIS layer, metadata: `GET <endpoint>?f=pjson`; count: `GET <endpoint>/
 - Records: 1,630 as of 2026-10-09; last edited 2026-10-09T13:35:15Z.
 - Fields used: `COMPKEY/UNITID` asset identifiers, `CURRENT_STATUS` service status (`INSVC` sampled), `ELMNTKEY/SEGKEY/SIDE/DISTANCE/WIDTH/UNITDESC` placement; `PAIDAREA/SUBAREA` area; `WKD/SAT/SUN_RATE1..3`, `*_START1..3/*_END1..3`, `START_TIME_*/END_TIME_*` rate windows as in Blockface; `PEAK_HOUR` restriction text. No complete no-parking/loading/visitor time-limit fields in this feed.
 - Reuse terms: shared City terms evidence; pending #24.
-- Spot check: table C, ten distinct stations/curbs; all weekday rate/start/end bands match Blockface where compared. This validates consistency of replicated schedules, not independent correctness of current charges or complete prohibition coverage.
+- Spot check: table C, ten distinct stations/curbs; all weekday rate/start/end bands match Blockface where compared. This validates consistency of replicated schedules. Table K additionally compares ten stations with SDOT’s independently published numeric rate table; prohibition coverage and exact schedule boundaries remain unresolved.
 - May establish: paid rates/hours when validated and placed precisely. **Rejected for standalone after-hours free under E2:** same feed lacks complete prohibitions and time limits (policy E2 limit), even with a null peak flag.
 - Unknown cases: inactive equipment; ambiguous minute endpoints; holidays/events; full curb extents and non-payment restrictions. Never free on nearby unmetered curbs.
 - Verdict: **pending** for paid-only use criteria 3/4/6/7; standalone free use rejected. Incorporate the payment join under #25 rather than seed separately.
@@ -202,7 +204,7 @@ The ten table-A places below include paid, permit and time-limited cases. Each n
 
 ### F. Rejected lot and unpaid-reservation samples
 
-Ten lot records were checked for usable operator/hours/rate evidence; all ten have null `HRS_MONFRI`, `RTE_1HR` and `OP_WEB`. No independent official operator rule could be established from those fields, so they remain unverified. This is a recorded failed/insufficient check, not ten passed E6 checks. Query by `BUSLIC_ID` to reproduce.
+Ten initial lot records were checked for usable operator/hours/rate evidence; all ten have null `HRS_MONFRI`, `RTE_1HR` and `OP_WEB`. No independent official operator rule could be established from those fields, so they remain unverified. This is a recorded failed/insufficient check, not ten passed E6 checks. Query by `BUSLIC_ID` to reproduce.
 
 | BUSLIC_ID | Named facility / address | Independent permission check |
 |---|---|---|
@@ -273,7 +275,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Polyline curb subsegments; BLOCK_ST/BLOCK_END and side delimit individual uses.
 - Fields used: `SPACEKEY` curb asset key, `ELMNTKEY/SEGKEY` joins, `BLOCK_ST/BLOCK_END/WIDTH_OFFSET/SPACELENGTH` placement; `SPACETYPE/SPACETYPEDESC/CATEGORY` use (paid, loading, no parking, etc.); `TIME_LIMIT` duration whose units need official definition; `CURRENT_STATUS` active state, `SPACE_NB` curb identifier, `PAIDAREA/SUBAREA` payment-area join. No full day/hour schedule fields.
 - May establish: Curb-use allocation supplement under #25, not standalone permission.
-- Unknown cases, spot check and verdict: **rejected as standalone E1: criterion 4 fails (no full schedule). Table E provides ten Blockface/sign location probes; full extents/schedules still need reconciliation under #25.**
+- Unknown cases, spot check and verdict: **rejected as standalone E1: criterion 4 fails (no full schedule). Tables E/H provide ten presence probes and ten actual space/sign comparisons; full extents/schedules still need reconciliation under #25.**
 
 ### Paid Area Curb Spaces
 
@@ -284,7 +286,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Polyline curb subsegments. Despite the name, count equals Curb Space Categories; do not assume every returned row is paid.
 - Fields used: Same `SPACEKEY/ELMNTKEY/SEGKEY`, `BLOCK_ST/BLOCK_END/SIDE`, `SPACETYPE/SPACETYPEDESC/TIME_LIMIT/CATEGORY/CURRENT_STATUS/SPACE_NB/PAIDAREA/SUBAREA` schema as Curb Space Categories; no independent payment schedule.
 - May establish: Exact paid-curb geometry candidate, after categorical filters and official joins.
-- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails; Table E provides ten location probes; independent schedules/extents still unverified. Potential supporting geometry for #25, not a separate free adapter.**
+- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails; Tables E/H provide ten presence probes and ten actual replicated space/sign comparisons; independent schedules/extents still unverified. Potential supporting geometry for #25, not a separate free adapter.**
 
 ### Curb Space Categories with Symbology (Active)
 
@@ -295,7 +297,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Polyline cartographic view.
 - Fields used: `ROWNBR/OBJECTID` view row IDs, `ELMNTKEY` block join, `BLOCK_ST/BLOCK_END/WIDTH_OFFSET/SPACELENGTH/SIDE` placement, `SPACETYPE/SPACETYPEDESC/TIME_LIMIT/CATEGORY/CURRENT_STATUS/SPACE_NB` uses. No SPACEKEY or complete schedule.
 - May establish: Display context, not a separate source approval.
-- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails; stable view-ID semantics and extent checks unconfirmed. Table E provides ten independent-location probes, not full rule checks. Metadata lastEditDate is newer than dataLastEditDate; do not confuse view refresh with rule edits.**
+- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails; stable view-ID semantics and extent checks unconfirmed. Table E provides presence probes; table J adds ten reduced-field record/sign comparisons, not complete rule validation. Metadata lastEditDate is newer than dataLastEditDate; do not confuse view refresh with rule edits.**
 
 ### Curb Space Reserve (Active)
 
@@ -306,7 +308,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Polyline reserve-use view.
 - Fields used: Same cartographic placement/use fields as symbology view; `ROWNBR` view row, `ELMNTKEY` block join, `TIME_LIMIT` requires units confirmation. No complete schedule.
 - May establish: Reserve-use context, not universal public permission.
-- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails; Table E provides ten independent-location probes. Old dataLastEditDate differs from current lastEditDate; requires freshness interpretation/re-review.**
+- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails; Table E provides presence probes; table J adds ten actual reduced-field record/sign comparisons. Old dataLastEditDate differs from current lastEditDate; requires freshness interpretation/re-review.**
 
 ### Peak Hour Parking Restrictions
 
@@ -317,7 +319,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Polyline, side and linear offset.
 - Fields used: `ELMNTKEY/SEGKEY/SIDE` curb join, `STPOINT/ENDPOINT/WID` placement; `PKHRCODE/PKHRDESC` restriction code/text, `CURRENT_STATUS` asset status. Example element 31454 PK-L, 7–9AM 4–6PM. Text supplies multiple times but no explicit weekday/holiday fields.
 - May establish: Restriction supplement only; cannot establish free.
-- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails without weekday/holiday semantics; table A peak checks expose envelope ambiguity but are supplemented by ten layer-location probes in table E. Resolve supporting joins in #25.**
+- Unknown cases, spot check and verdict: **rejected standalone: criterion 4 fails without weekday/holiday semantics; tables A/H reconcile expanded split-window text and record ten actual layer/sign comparisons, including missing or conflicting corroboration. Resolve supporting joins in #25.**
 
 ### Parking Categories
 
@@ -328,7 +330,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Whole blockface polyline, including approximate non-CSM geometry.
 - Fields used: Blockface-style `ELMNTKEY/UNITDESC/SIDE/CSM/PARKING_CATEGORY`, inventory counts, rate windows, `PEAK_HOUR/RPZ_ZONE/PARKING_TIME_LIMIT`; shares aggregate limitations.
 - May establish: Summary/display context.
-- Unknown cases, spot check and verdict: **rejected for independent source approval: mixed-curb category is insufficient under criteria 3/4; ten location probes in table E; same underlying dataset as parent Blockface, so agreement is not independent rule confirmation. Unrestricted category is not automatically verified free.**
+- Unknown cases, spot check and verdict: **rejected for independent source approval: mixed-curb category is insufficient under criteria 3/4; ten actual category/sign comparisons in table H and presence probes in E; same underlying dataset as parent Blockface, so agreement is not independent rule confirmation. Unrestricted category is not automatically verified free.**
 
 ### Parking Tiers
 
@@ -350,7 +352,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Bus/reserved curb polylines.
 - Fields used: `UNIQUEID/SPACEKEY/ELMNTKEY/SEGKEY/SIDE/BLOCK_ST/BLOCK_END` placement; `SPACETYPE/SPACETYPEDESC` use, `CURRENTSTATUSCD/STOPSTATUS` status; `STARTDAY/ENDDAY/STARTTIME1/ENDTIME1/STARTTIME2/ENDTIME2/PERIOD` schedule requiring documented codes, `ROUTES/STOPID` transit association. Sample UNIQUEID 93235 element 86061 BUSLAY, PERIOD=24, times null.
 - May establish: Bus-only restriction context, never public free.
-- Unknown cases, spot check and verdict: **rejected standalone public-parking source: no positive public permission; code semantics unverified; ten independent-location probes in table E do not establish active bus restrictions. Preserve as Unknown/restricted input if incorporated into #25.**
+- Unknown cases, spot check and verdict: **rejected standalone public-parking source: no positive public permission; code semantics unverified; ten actual layer/sign comparisons in H identify bus-only windows and unresolved mixed extents; table E presence probes alone do not establish active bus restrictions. Preserve as Unknown/restricted input if incorporated into #25.**
 
 ### Public Garages and Parking Lots
 
@@ -361,7 +363,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Geometry and precision: Facility point/address; entrance/footprint precision not guaranteed.
 - Fields used: `GlobalID/BUSLIC_ID/BUSLIC_LOCATION_ID` IDs; `DEA_FACILITY_NAME/DEA_FACILITY_ADDRESS/DEA_STALLS` facility/address/capacity, `HRS_MONFRI/HRS_SAT/HRS_SUN` hours; `RTE_1HR/RTE_2HR/RTE_3HR/RTE_ALLDAY` rate fields, `OP_NAME/OP_WEB/PAYMENT_TYPE` operator/payment, `OUTOFSERV/STATUS/DATETIME` status/update. Many nulls. `VACANT` is not a vacancy observation used by this service. Sample DIAMOND PARKING WX04, 4333 Fremont Ave N, 13 stalls, hours/rates/operator null.
 - May establish: Directory geometry only until official operator permission/rates/conditions verified.
-- Unknown cases, spot check and verdict: **rejected as E6 rule feed: criteria 3/4 incomplete; city directory is not the private operator permission. Table F records ten insufficient official operator checks; no permission established. Null price never means free.**
+- Unknown cases, spot check and verdict: **rejected as E6 rule feed: criteria 3/4 incomplete; city directory is not the private operator permission. Table F records ten initial insufficient checks; table I adds ten directory/operator address/product matches, without complete short-term permission. Null price never means free.**
 
 ### Parking Features
 
@@ -415,7 +417,7 @@ These sources were found during discovery and are retained so absence is not mis
 - Publisher / channel: transit agencies' own websites; [Metro locations](https://kingcounty.gov/en/dept/metro/rider-tools/parking-locations), [Metro Northgate project](https://kingcounty.gov/en/dept/metro/programs-and-projects/transit-oriented-communities/northgate), [Sound Transit Northgate garage](https://www.soundtransit.org/ride-with-us/parking/parking-locations/northgate-park-ride-northgate-station-garage), [Sound Transit parking rules](https://www.soundtransit.org/ride-with-us/parking) and [permits](https://www.soundtransit.org/ride-with-us/parking/parking-permits).
 - Format / fields: HTML tables/text, facility name/address, number of spaces, routes, hours and eligibility notes. Stable machine record IDs, lot footprints/entrances and per-rule change timestamps not established. Count and edit date: no queryable Seattle-only rule count or source edit date exposed; retrieved 2026-10-09 (retrieval is not freshness).
 - Geometry and precision: published address/garage level, not normalized footprint. Records mix Metro and Sound Transit operators; Metro's suspended permit program cannot be applied to Sound Transit reserved spaces.
-- Spot check: Metro Green Lake 6601 8th Ave NE (411 spaces) and Airport & Spokane (25) are listed; Northgate C has free transit-customer parking weekdays 6am–8pm on designated P2 spaces, independently corroborated by Metro's Northgate project page. Sound Transit Northgate garage publishes up-to-24-hour use and separate permits. These are four candidate places, **not ten independently checked E6 rules**; no additional qualifying Seattle ten-place sample established. No inference that every Northgate garage space is free.
+- Spot check: Metro Green Lake 6601 8th Ave NE (411 spaces) and Airport & Spokane (25) are listed; Northgate C’s published free window is conditional: orange P2 spaces prioritize transit arrivals 6am–10am Monday–Friday; arrivals after 10am and weekends can incur fees after three complimentary hours. The 6am–8pm summary alone is insufficient. Its project page corroborates location but does not settle every arrival-time condition. Sound Transit Northgate garage publishes up-to-24-hour use and separate permits. These are four candidate places, **not ten independently checked E6 rules**; no additional qualifying Seattle ten-place sample established. No inference that every Northgate garage space is free.
 - Reuse terms: public operator statements establish authority but not a reusable machine feed licence; pending explicit terms if an adapter is proposed. City open-data terms do not apply to these agencies.
 - May establish: lot permission only for the operator's specified spaces, eligible users, hours and limits; never street rules or vacancy.
 - Unknown cases: transit use eligibility, reserved stalls, different owners/garage levels, closures, exact entrance and current operator pricing.
@@ -509,7 +511,7 @@ Both source endpoints returned the same ten sampled space records; they are repl
 | 8745 / 4253537 | 9TH AVE W BETWEEN W GARFIELD ST AND W BLAINE ST, W | Unrestricted Parking | No signs returned; Unrestricted summary is not permission |
 | 41922 / 4253538 | S BAILEY ST BETWEEN FLORA AVE S AND ELLIS AVE S, S | No Parking Allowed | Anytime no-parking text corroborates category |
 
-Symbology/reserve wildcard record queries returned ArcGIS 400 invalid-parameter errors; a minimal `ELMNTKEY` projection succeeded. Metadata/count probes do not substitute for ten rule comparisons. These two views remain incomplete checks; no import-ready verdict follows from their record counts.
+Symbology/reserve wildcard and broad-field queries returned ArcGIS 400 invalid-parameter errors. A reduced `outFields=ELMNTKEY,SPACETYPE,CATEGORY` query succeeded for both; table J records ten actual locations from each view and compares fuller official sign text. This workaround supports limited sampled-field checks, not validation of the unavailable fields or an import-ready verdict.
 
 ### I. City lot directory ↔ current Diamond operator listings (10 address matches)
 
@@ -529,6 +531,62 @@ Compared ten city directory records with the operator’s [official location pag
 | 575058 | A1154 / 36335 | 400 Roy Street | $175.00 and $ 125.00 . |
 
 The city’s sampled hours/rate/operator-URL fields are null even where the operator lists a paid product. The directory cannot supply permission by itself. These are ten additional directory/operator comparisons, including three table-F facilities (WU13, WU46 and A617); the other seven table-F samples still lack recorded operator matches. Full short-term rules remain unverified.
+
+### J. Symbology/reserve remote record checks
+
+Queried each view for 200 records with `outFields=ELMNTKEY,SPACETYPE,CATEGORY`, selected the first ten distinct non-null block keys, and joined Blockface and all returned Parking Features layer 4 signs. The same asset exports limit independence. The symbology sample exactly matches the ten curb-category locations/results in H: 1214, 68929, 1006, 27274, 71289, 72321, 2785, 27430, 46457 and 27397. Its returned space types also agree. This is a replicated view, not ten new confirmations of rule correctness.
+
+The reserve sample includes five overlapping locations and five additional sides:
+
+| ELMNTKEY | Place / side | Reserve type | Expanded sign comparison |
+|---|---|---|---|
+| 1214 | 1ST AVE S BETWEEN YESLER WAY AND S WASHINGTON ST, E | PS | Same as H: payment and separate Sunday time-limit signs coexist; exact extent unresolved |
+| 68929 | 1ST AVE N BETWEEN MERCER ST AND ROY ST, W | PS | Same as H: event pricing and disabled-permit conditions coexist; exact extent unresolved |
+| 71289 | 22ND AVE NW BETWEEN NW 56TH ST AND NW 57TH ST, W | PS | Same as H: paid four-hour and loading/exclusion signs coexist; exact extent unresolved |
+| 2785 | 2ND AVE BETWEEN CEDAR ST AND CLAY ST, SW | PS-LAY | Same as H: payment and bus/permit-only windows require partition; exact extent unresolved |
+| 27430 | 3RD AVE W BETWEEN W REPUBLICAN ST AND W MERCER ST, E | TL-RPZ | Same as H: zone 13 daytime allowance and evening permit-only text; exact extent unresolved |
+| 1234 | 10TH AVE BETWEEN E PIKE ST AND E PINE ST, E | PS | SGN-169684: pay 08–22 except Sundays/holidays, two hours with no time limit after 17; back-in-angle signs also present; exact extent unresolved |
+| 25714 | 2ND AVE BETWEEN BELL ST AND BATTERY ST, NE | PS | SGN-205399: pay 08–20 except Sundays/holidays, four hours; commercial/passenger loading also present; exact extent unresolved |
+| 24046 | 1ST AVE BETWEEN WALL ST AND VINE ST, NE | PS | SGN-69477: pay 08–20 except Sundays/holidays, four hours; loading/no-stopping also present; exact extent unresolved |
+| 3081 | 20TH AVE NW BETWEEN NW MARKET ST AND NW 56TH ST, W | PS | SGN-69287: pay 08–20 Monday–Saturday, four hours; anytime no-parking also present; exact extent unresolved |
+| 70866 | 2ND AVE S BETWEEN S JACKSON ST AND S KING ST, E | PS | SGN-11009: pay 08–18 except Sundays/holidays, two hours; loading/angle-parking/variable prohibition also present; exact extent unresolved |
+
+Reserve includes payment, transit-sharing and RPZ uses; the word “Reserve” is not a permission type. Neither view has a complete schedule in the successful projection. Both remain rejected standalone sources; fields not successfully retrieved require adapter format investigation if used as supplements.
+
+### K. Pay-station rates ↔ SDOT published rates (10 stations)
+
+On 2026-10-09, matched station `PAIDAREA/SUBAREA` to the [current SDOT rate table](https://www.seattle.gov/transportation/projects-and-programs/programs/parking-program/paid-parking-information/street-parking-rates). All published numeric morning/afternoon/evening rates match. Three stations have null evening bands where the web table omits an evening price; omission is not proof of free permission. This checks rates against an official web publication, not merely Blockface’s replicated fields. It does not check exact time boundaries, weekend/holiday rates or competing prohibitions.
+
+| Station / ELMNTKEY | Published area | Morning / afternoon / evening ($ per hour) | Result |
+|---|---|---|---|
+| 529836 / 39293 | University District - Core | $1.00 / $5.50 / $3.00 | Numeric rates agree; curb permission unresolved |
+| 528138 / 68917 | Belltown - North | $1.00 / $1.50 / $1.50 | Numeric rates agree; curb permission unresolved |
+| 510292 / 53805 | Denny Triangle - North | $2.50 / $7.50 / $2.50 | Numeric rates agree; curb permission unresolved |
+| 504906 / 33741 | Uptown Triangle | $1.00 / $1.50 / not published | Numeric rates agree; curb permission unresolved |
+| 339352 / 31313 | South Lake Union - South | $1.00 / $5.00 / not published | Numeric rates agree; curb permission unresolved |
+| 591312 / 30698 | Commercial Core - Retail | $2.50 / $6.00 / $1.50 | Numeric rates agree; curb permission unresolved |
+| 668598 / 1821 | Pike-Pine | $1.00 / $5.00 / $8.00 | Numeric rates agree; curb permission unresolved |
+| 828938 / 6357 | Uptown | $1.00 / $1.50 / $1.50 | Numeric rates agree; curb permission unresolved |
+| 282389 / 31893 | Belltown - North | $1.00 / $1.50 / $1.50 | Numeric rates agree; curb permission unresolved |
+| 336536 / 33146 | South Lake Union - South | $1.00 / $5.00 / not published | Numeric rates agree; curb permission unresolved |
+
+### L. Public temporary-permit confirmation and remote limits
+
+The [Seattle Services Portal record SDOT-TNP-00-15066](https://services.seattle.gov/Portal/Cap/CapDetail.aspx?Module=SDOTTraffic&TabName=SDOTTraffic&capID1=22CAP&capID2=00000&capID3=00H5O&agencyCode=SEATTLE&IsToShowInspection=), read in the public browser on 2026-10-09, shows an issued paid-area temporary-no-parking licence, expiry 03/18/2027 and permit address 747 Broadway. It confirms issuance only: that address does not establish the sampled Minor/Marion curb allocation, and an expiry date does not independently establish the GIS start/end instants. No date conversion or active-at-selected-time conclusion is made. Direct HTTP returned 403; the browser exposed these public fields, but not the full applicable curb/daily schedule. No applicant information retrieved or retained in this inventory.
+
+[Official permit guidance](https://seattlegov.zendesk.com/hc/en-us/articles/360039695714-How-Do-I-Apply-for-a-Temporary-No-Parking-Paid-Area-Permit) separately requires the public notice attached to temporary signs. Permit status is not confirmation that signs were posted. Ten complete independent temporary-schedule/posting checks remain unavailable remotely; criterion 7 is pending, not waived. The E5 adapter must not infer unrestricted/free from an absent reservation, unknown allocation or incomplete time fields. This inventory does not change #2’s runtime stale-source caveat.
+
+## Remote-only inventory completion boundary
+
+The user authorized a remote-only completion route on 2026-10-09; on-site checks are unavailable. #20’s inventory acceptance now distinguishes candidate assessment from source approval: record all requested metadata and all available remote comparisons; for unavailable checks, state the failed/pending criterion, exact missing evidence and resulting Unknown/exclusion. Rejected context, signals and duplicate views do not need ten successful permission checks to be catalogued as rejected. No source is approved by this adjustment.
+
+- Core candidates: Blockface/signs and RPZ have 17/10 sampled sides/zones, with conflicts and extent gaps recorded; payment has ten published-rate comparisons; TNP has ten location joins and one public issuance check, but independent schedules/posting remain pending.
+- Supplemental candidates: ten actual records per curb/paid, peak, category, layover, symbology and reserve family are recorded (replicated views explicitly identified). Tiers have ten paid-location probes; full schedule applicability is pending.
+- E6: ten city/operator address/product matches plus operator-page checks are recorded; no complete reusable lot-rule feed approved. Current Northgate C terms supersede the earlier abbreviated free-window description.
+- Context/signals/E7: rejected at their stated policy boundaries, with search and metadata evidence; no fabricated permission checks.
+- Remaining approval work belongs to #24–#27: reuse applicability, sign-field/curb extent reconciliation, RPZ 14/22 conflicts and zone 25 field disagreement, event/holiday conditions, incomplete unpaid E5 geometry, and independent temporary schedule evidence. Source acceptance criterion 7 still requires ten independent locations with zero safety contradictions before approval.
+
+Inventory preparation can be complete while Coverage is none. #20 remains open until its reviewed documentation is integrated under the user’s merge workflow. #25 still depends on #11 and #20; adapter preparation is separate from approval to load/serve real source rules. No #2 policy or #24 production-approval gate changed.
 
 ## Unknown areas and gaps
 
