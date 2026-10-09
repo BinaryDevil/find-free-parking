@@ -20,3 +20,7 @@ When reusing existing import code, review parser defaults and incomplete records
 ## Request-driven imports
 
 `scripts/automate_seeding.ts` selects inactive requested cities with more than 10 requests and runs a matching script. No scheduler configuration is tracked here. Before enabling it, review command construction from city names, rerun behavior, error handling, and evidence approval. Demand is a prioritization signal, not permission to assert verified Coverage.
+
+## Query statistics
+
+See [query visibility](QUERY_STATS.md) for the #6 extension SQL, production approval, private diagnostics, and the review after a week of traffic.
