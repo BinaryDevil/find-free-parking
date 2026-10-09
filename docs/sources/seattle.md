@@ -586,7 +586,7 @@ The user authorized a remote-only completion route on 2026-10-09; on-site checks
 - Context/signals/E7: rejected at their stated policy boundaries, with search and metadata evidence; no fabricated permission checks.
 - Remaining approval work belongs to #24–#27: reuse applicability, sign-field/curb extent reconciliation, RPZ 14/22 conflicts and zone 25 field disagreement, event/holiday conditions, incomplete unpaid E5 geometry, and independent temporary schedule evidence. Source acceptance criterion 7 still requires ten independent locations with zero safety contradictions before approval.
 
-Inventory preparation can be complete while Coverage is none. #20 remains open until its reviewed documentation is integrated under the user’s merge workflow. #25 still depends on #11 and #20; adapter preparation is separate from approval to load/serve real source rules. No #2 policy or #24 production-approval gate changed.
+Inventory preparation can be complete while Coverage is none. The maintainer accepted inventory completion and authorized closing #20 on 2026-10-09, with remaining evidence gaps carried into #24–#27 as implementation progresses. Draft PR #36 remains unmerged; closure does not establish integration. #25’s remaining prerequisite is #11; adapter preparation is separate from approval to load/serve real source rules. No #2 policy or #24 production-approval gate changed.
 
 ## Unknown areas and gaps
 
@@ -602,7 +602,7 @@ Inventory preparation can be complete while Coverage is none. #20 remains open u
 
 ## Tickets
 
-- [#20 inventory](https://github.com/BinaryDevil/find-free-parking/issues/20): this draft; leave open through review/integration and accepted criteria.
+- [#20 inventory](https://github.com/BinaryDevil/find-free-parking/issues/20): completed inventory assessment accepted by the maintainer; draft PR #36 remains pending integration, and source approval is separate.
 - [#24 human approval/reuse](https://github.com/BinaryDevil/find-free-parking/issues/24): approve only after the above missing terms/checks/discrepancies are resolved; not waived by this document.
 - [#25 Blockface end to end](https://github.com/BinaryDevil/find-free-parking/issues/25): main E1 adapter and supporting curb allocation/sign/payment evidence; tables A/C provide public fixture keys. Source format joins and unparsed signs must remain fail-safe.
 - [#26 RPZ](https://github.com/BinaryDevil/find-free-parking/issues/26): table B contradictions and visitor/subarea cases; no blanket zone visitor limit.
