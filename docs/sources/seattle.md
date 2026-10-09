@@ -50,7 +50,7 @@ For every GIS layer, metadata: `GET <endpoint>?f=pjson`; count: `GET <endpoint>/
 - Records: 47,926 as of 2026-10-09; last edited 2026-10-09T13:53:13Z; published nightly refresh.
 - Fields used: `ELMNTKEY` blockface key, `SEGKEY` street segment, `UNITDESC` street/intersections, `SIDE` curb side; `DISTANCE/END_DISTANCE/BLOCKFACE_LENGTH/WIDTH` linear placement; `CSM` management flag. `PARKING_CATEGORY` summary; `PAID_SPACES/RPZ_SPACES/TL_SPACES/UNRESTRICTED/NOPARK/NOSTOP/BUS/LOAD_/ZONE` inventory quantities, not full spatial rules or binary whole-curb permission. `WKD/SAT/SUN_RATE1..3` dollars-per-hour rate bands, `*_START1..3/*_END1..3` numeric payment windows (observed 480–659, 660–1019, 1020–1199); documented minutes after midnight, with observed last-minute endpoints; exact inclusivity must be confirmed before conversion. `START_TIME_*/END_TIME_*` human-readable schedule bounds; `PARKING_TIME_LIMIT` documented minutes for paid areas. `PEAK_HOUR` text may contain multiple windows; `RPZ_ZONE/RPZ_AREA` permit-address eligibility zone/area references, `PAIDAREA/SUBAREA` payment area. Missing, zero and null have different contexts; zero rate bands do not establish permission.
 - Reuse terms: City GIS disclaimer plus portal-wide reuse statement above; pending #24 confirmation.
-- Spot check: table A contains 17 distinct block sides against the independent official Parking Signs inventory. Mixed restrictions and incomplete payment signs found; a peak-hour structured-sign envelope differs from Blockface split windows. No zero-contradiction approval claimed.
+- Spot check: table A contains 17 distinct block sides against the independent official Parking Signs inventory. Mixed restrictions and incomplete payment signs found; expanded sign text confirms the sampled split peak windows, despite misleading structured time envelopes. No zero-contradiction approval claimed.
 - May establish: E1 free/paid/restricted and limits only after exact curb extents, schedule semantics and competing rules are validated.
 - Unknown cases: CSM=N approximate geometry; mixed paid/loading/no-parking portions; ambiguous peak windows; null or unsupported schedules; holiday/event overrides; any unparsed applicable sign.
 - Verdict: **pending** criteria 3/4/6/7 (curb allocation, schedule reconciliation, reuse confirmation and safety checks). Whole-block free classification from the category is rejected.
@@ -65,7 +65,7 @@ For every GIS layer, metadata: `GET <endpoint>?f=pjson`; count: `GET <endpoint>/
 - Geometry and precision: layers 3/4 are zone polygons; layer 1 is resident-eligibility blockface lines; layer 0 signed-block lines currently empty. Polygons/eligibility lines do not prove actual sign coverage.
 - Fields used: polygon `RPZ_ZONE` zone number, `NAME`/`ZONE_NAME` name, `INEFFECT` natural-language enforcement schedule, `GLOBALID` export identifier, `LAST_EDITED_DATE` edit time; `RENEW/SUBSIDIES/WEBLINK` permit administration, not visitor limits. Eligibility layer `ELMNTKEY/RPZZONE/RPZAREA/RPZ_ZONE_AREA/INEFFECT` describes eligibility and schedule, not universal street permission. Permit fees `DECAL_*/GUESTPERMIT` are not parking hourly rates. Layer 3 A/B `INEFFECT=Husky Football Game Days` needs official event dates, not a weekly parser.
 - Reuse terms: shared City terms evidence; pending #24.
-- Spot check: table B checks ten distinct zone/block locations against official signs; zones 25 and 14 disagree on safety-relevant hours, zones 21/22 require subareas, 13 has separate evening permit-only signs, 35/32 lack structured sign hours.
+- Spot check: table B checks ten distinct zone/block locations against official signs; zone 14 still differs from sign text; zone 22 has a new text/structured-hours discrepancy. Zone 25 text agrees with the polygon but differs from structured sign hours; expanded text fills missing hours for 35/32. Zone 13 has separate evening permit-only signs.
 - May establish: E4 restrictions with published hours and corroborated visitor allowances on actually signed curbs. Never free outside a zone.
 - Unknown cases: polygon-only membership; unsigned blocks; empty layer 0; zone/subarea differences; evening permit-only periods; A/B game days; missing visitor duration. Do not apply a blanket two-hour visitor rule: signs include four-hour allowances and permit-only periods.
 - Verdict: **pending** criteria 4/6/7; observed contradictions prevent approval until reconciled with SDOT evidence and per-curb signs (#26/#24).
@@ -75,7 +75,7 @@ For every GIS layer, metadata: `GET <endpoint>?f=pjson`; count: `GET <endpoint>/
 - Publisher / channel: SDOT official GIS; endpoint [Parking_Signs](https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Signs/FeatureServer/0); [item](https://www.arcgis.com/home/item.html?id=de918034c876456cbf11e4b234985142).
 - Geometry and precision: point events along a block face in EPSG:2926; placement fields are needed to resolve extent and arrows, not just nearest street.
 - Records: 98,126 as of 2026-10-09; last edited 2026-10-09T13:17:34Z; published daily refresh.
-- Fields used: `COMPKEY/UNITID` asset keys, `ELMNTKEY/SEGKEY` blockface/segment join, `DISTANCE/WIDTH` placement, `UNITDESC/FACING` location/orientation, `SIGNTYPE/CATEGORY/CATEGORYDESCR` regulatory code/class; `STANDARDTEXT/CUSTOMTEXT/CUSTOM/FIELDNOTES` potential text, frequently null in sampled records. `STARTDAY/ENDDAY` numeric strings observed 1–5, 1–6, 1–7 (apparently weekday ranges; day mapping unconfirmed); `STARTTIME/ENDTIME` HHMM strings such as 700/1800/2359 and overnight 1800/0, **not Blockface's minute units**. Code suffixes and split-window sign codes require an official dictionary; a 600–1900 envelope cannot replace split rush hours.
+- Fields used: `COMPKEY/UNITID` asset keys, `ELMNTKEY/SEGKEY` blockface/segment join, `DISTANCE/WIDTH` placement, `UNITDESC/FACING` location/orientation, `SIGNTYPE/CATEGORY/CATEGORYDESCR` regulatory code/class; `STANDARDTEXT/CUSTOMTEXT/CUSTOM/FIELDNOTES` potential text, frequently null in sampled records. The [Parking Features sign view](https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer/4) exposes fuller `TEXT`; join the same `UNITID`, check status and reconcile it with structured fields. This is recorded sign text, not a photograph of the currently posted sign. `STARTDAY/ENDDAY` numeric strings observed 1–5, 1–6, 1–7 (apparently weekday ranges; day mapping unconfirmed); `STARTTIME/ENDTIME` HHMM strings such as 700/1800/2359 and overnight 1800/0, **not Blockface's minute units**. Code suffixes and split-window sign codes require an official dictionary; a 600–1900 envelope cannot replace split rush hours.
 - Reuse terms: shared City terms evidence; pending #24.
 - Spot check: table A cross-checks signs against Blockface categories/limits; table B checks RPZ signs against zone hours. The same underlying SDOT asset system limits independence: these are second official layers permitted by the policy, not field observations. No photographs or completeness audit performed.
 - May establish: E3 only when every applicable sign on a curb portion is parsed and assigned. Absence of signs is never free.
@@ -117,7 +117,7 @@ All checks below were performed against live official layers on 2026-10-09. Tabl
 | ELMNTKEY | Place / side | Blockface observation | Independent official sign observation | Result |
 |---|---|---|---|---|
 | 62009 | NE 42ND ST BETWEEN 11TH AVE NE AND 12TH AVE NE, N | Paid Parking; limit 240; peak null | 526933 R7-NP, 840238 R7-NPR, 840227 R8-PAY6, 840239 R8-PAY6 | Category/related restriction present; full sign extent pending |
-| 70725 | 2ND AVE BETWEEN YESLER WAY AND JAMES ST, SW | Paid Parking; limit 120; peak 6-9AM 3-7PM | 167673 R8-PAY6, 275128 R7-STAPBD, 275130 R7-STAPBD, 167672 R8-PAY6 | Split peak windows versus sign envelope 0600–1900; unresolved, Unknown |
+| 70725 | 2ND AVE BETWEEN YESLER WAY AND JAMES ST, SW | Paid Parking; limit 120; peak 6-9AM 3-7PM | 167673 R8-PAY6, 275128 R7-STAPBD, 275130 R7-STAPBD, 167672 R8-PAY6 | Expanded R7-STAPBD text confirms 06–09 and 15–19, excluding Saturdays/Sundays/holidays; structured 0600–1900 envelope must not be parsed as continuous |
 | 31497 | ALASKAN WAY BETWEEN BLANCHARD ST AND XW BELL ST, SW | Paid Parking; limit None; peak null | 164198 R8-PLZSTP, 83432 R8-PLZ, 164197 R8-PLZSTP, 606807 R8-PLZSTP | Paid summary not corroborated by sampled payment signs; unresolved, Unknown |
 | 88477 | S HUDSON ST BETWEEN 37TH AVE S AND RAINIER AVE S, N | Paid Parking; limit 120; peak null | 629002 R7-NPL, 698255 R8-DISABLX, 629004 R8-2HR, 629000 R8-2HRL | Paid summary not corroborated by sampled payment signs; unresolved, Unknown |
 | 14366 | E LYNN ST BETWEEN MINOR AVE E AND YALE AVE E, S | Restricted Parking Zone; limit 120; peak null | 125239 R8-2HZ8, 125237 R8-2HZ8, 682453 R7-NPR, 682472 R7-NPL | Category/related restriction present; full sign extent pending |
@@ -131,7 +131,7 @@ All checks below were performed against live official layers on 2026-10-09. Tabl
 | 125319 | 9TH AVE S BETWEEN DEAD END AND S JACKSON ST, E | No Parking Allowed; limit None; peak null | 508446 R7-NP | Category/related restriction present; full sign extent pending |
 | 8613 | 9TH AVE BETWEEN HOWELL ST AND STEWART ST, SW | No Parking Allowed; limit None; peak null | 727983 R8-CHRTR, 727979 R8-CHRTR, 338371 R7-STOPS, 727984 R8-CHRTR | Category/related restriction present; full sign extent pending |
 | 70726 | 2ND AVE BETWEEN YESLER WAY AND JAMES ST, NE | Paid Parking; limit 30; peak 6-9AM 3-7PM | 619352 R8-CLZSTX, 619353 R8-CLZSTX, 619348 R7-NP, 619349 R7-NP | Commercial/passenger loading coexists; do not classify whole side free |
-| 1034 | 1ST AVE BETWEEN BROAD ST AND EAGLE ST, NE | Paid Parking; limit 240; peak 6-9AM 3-7PM | 628899 R7-STAPBD, 628901 R7-STAPBD, 91036 R7-STOPS, 275355 R8-4PAYB8 | Split peak windows versus sign envelope 0600–1900; unresolved, Unknown |
+| 1034 | 1ST AVE BETWEEN BROAD ST AND EAGLE ST, NE | Paid Parking; limit 240; peak 6-9AM 3-7PM | 628899 R7-STAPBD, 628901 R7-STAPBD, 91036 R7-STOPS, 275355 R8-4PAYB8 | Expanded R7-STAPBD text confirms 06–09 and 15–19, excluding Saturdays/Sundays/holidays; structured 0600–1900 envelope must not be parsed as continuous |
 | 1033 | 1ST AVE BETWEEN BROAD ST AND EAGLE ST, SW | No Parking Allowed; limit None; peak 7-9AM | 850094 R8-PLZ, 850090 R8-PLZ | Category/related restriction present; full sign extent pending |
 
 ### B. RPZ zone hours ↔ Parking Signs (10 zones)
@@ -139,15 +139,15 @@ All checks below were performed against live official layers on 2026-10-09. Tabl
 | Zone | Place / side; ELMNTKEY | Polygon INEFFECT | Independent sign check | Result |
 |---|---|---|---|---|
 | 12 | EVERETT AVE E BETWEEN E BOSTON ST AND E LYNN ST, W; 10329 | Monday-Friday 7 AM to 6 PM | 705708 R8-2HZ12 700–1800; 705713 R8-2HZ12 700–1800 | Hours agree; 2-hour code requires dictionary |
-| 25 | WESTLAKE EAST RDWY AVE N BETWEEN HIGHLAND DR AND COMSTOCK ST, E; 81510 | Monday – Friday 9 AM to 4 PM | 585196 R8-BL7Z25 0800–1800; 585197 R8-BL7Z25 0800–1800 | Conflict 09–16 versus 08–18; Unknown |
+| 25 | WESTLAKE EAST RDWY AVE N BETWEEN HIGHLAND DR AND COMSTOCK ST, E; 81510 | Monday – Friday 9 AM to 4 PM | 585196 R8-BL7Z25 0800–1800; 585197 R8-BL7Z25 0800–1800 | Expanded R8-BL7Z25/R8-PBSZ25 text says pay 09–16 Monday–Friday, agreeing with polygon; structured 08–18 differs, unresolved field semantics |
 | 14 | 25TH AVE BETWEEN E SPRUCE ST AND E ALDER ST, W; 26613 | Monday-Friday 7 AM to 6 PM.  Every Day 6 PM to Midnight | 62249 R8-2HZ14 700–1600; 62245 R8-2HZ14 700–1600 | Conflict zone 07–18 plus evening versus sign 07–16; Unknown |
-| 35 | SW OREGON ST BETWEEN 44TH AVE SW AND GLENN WAY SW, S; 67758 | Monday-Saturday 7 AM - 6 PM | 760495 R8-2HZ35 None–None; 760492 R8-2HZ35 None–None | Sign structured hours null; insufficient check |
+| 35 | SW OREGON ST BETWEEN 44TH AVE SW AND GLENN WAY SW, S; 67758 | Monday-Saturday 7 AM - 6 PM | 760495 R8-2HZ35 None–None; 760492 R8-2HZ35 None–None | Expanded text confirms 2 hours 07–18 except Sundays/holidays; structured hours null |
 | 19 | 12TH AVE NE BETWEEN NE 71ST ST AND NE 72ND ST, W; 1625 | Monday-Friday 7 AM – 7 PM | 844350 R8-2HZ19 700–1900; 844352 R8-2HZ19 700–1900 | Hours agree; 2-hour code requires dictionary |
 | 13 | 2ND AVE W BETWEEN W MERCER ST AND W ROY ST, W; 48081 | Every Day, 7AM to Midnight | 848356 R7-RPZ13 1800–0; 848359 R7-RPZ13 1800–0 | Split 07–18 visitor and 18–00 permit-only signs; polygon summary alone insufficient |
 | 28 | 17TH AVE S BETWEEN BEACON AVE S AND S STEVENS ST, E; 47674 | Monday-Friday 7 AM – 6 PM | 504684 R8-4HZ28 700–1800; 504682 R8-4HZ28 700–1800 | 07–18 agrees; four-hour code, not two-hour default |
 | 21 | E OLIVE ST BETWEEN CRAWFORD PL AND SUMMIT AVE, S; 14638 | Check Signs.  In unpaid parking areas, Daily 7 AM – 10 PM or Monday-Saturday 7 AM – 6 PM.  In paid parking areas, RPZ hours match paid parking hours, Monday-Saturday 8 AM – 8 PM or 8 AM – 6 PM.  | 530442 R8-2HZ21A 700–1800; 530445 R8-2HZ21A 700–1800 | Sample 07–18 within published alternatives; select signed subset, not blanket hours |
-| 32 | E MERCER ST BETWEEN BELMONT AVE E AND BOYLSTON AVE E, S; 59878 | Monday - Saturday 7 AM - 8 PM | 694705 R8-2HZ32 None–None; 694704 R8-2HZ32 None–None | Sign structured hours null; insufficient check |
-| 22 | CARR PL N BETWEEN N 36TH ST AND N 37TH ST, W; 32401 | Monday – Friday 7 AM to 4 PM.  Area 2 Monday - Friday 8 AM to 5 PM | 617408 R8-2HZ22 700–1600; 617406 R8-2HZ22 700–1600 | Sample 07–16 agrees with main area; Area 2 differs |
+| 32 | E MERCER ST BETWEEN BELMONT AVE E AND BOYLSTON AVE E, S; 59878 | Monday - Saturday 7 AM - 8 PM | 694705 R8-2HZ32 None–None; 694704 R8-2HZ32 None–None | Expanded text confirms 2 hours 07–20 except Sundays/holidays; structured hours null |
+| 22 | CARR PL N BETWEEN N 36TH ST AND N 37TH ST, W; 32401 | Monday – Friday 7 AM to 4 PM.  Area 2 Monday - Friday 8 AM to 5 PM | 617408 R8-2HZ22 700–1600; 617406 R8-2HZ22 700–1600 | Expanded R8-2HZ22 text says 2 hours 07–18 Monday–Friday, contrary to structured 07–16 and main polygon; Unknown |
 
 ### C. Pay Stations ↔ Blockface (10 distinct sides)
 
@@ -443,11 +443,98 @@ These sources were found during discovery and are retained so absence is not mis
 - Spot check: no ten-place signal check; no signal can pass as rule evidence. They may support advisory warnings/Unknown after separately validating relevance/freshness, never any rule or Coverage.
 - Verdict: **rejected as Parking Rule evidence** for all signals under #2; no signal approval or adapter proposed here. Retrieval time and a daily label do not cure old statistics or establish enforcement on a sampled curb.
 
+### H. Supplemental source records checked against fuller sign text
+
+Unlike table E’s presence probes, these samples start with ten actual records from each named source, join their block side to Blockface and compare all returned Parking Features layer 4 sign text. These are separate official layers, not field observations. No sign-return result or category agreement establishes permission; extent, currency and source approval remain unresolved. Query the source by the printed `ELMNTKEY`, then compare sign `UNITID` and `TEXT`.
+
+#### Curb Space Categories / Paid Area Curb Spaces
+
+Both source endpoints returned the same ten sampled space records; they are replicated views, not independent corroboration.
+
+| ELMNTKEY / record key | Location / side | Source value | Sign comparison |
+|---|---|---|---|
+| 1214 / 79436 | 1ST AVE S BETWEEN YESLER WAY AND S WASHINGTON ST, E | PS | Paid signs confirm 2-hour maximum; separate Sunday 10–18 no-payment 2-hour rule exists |
+| 68929 / 18367 | 1ST AVE N BETWEEN MERCER ST AND ROY ST, W | PS | Payment/event and disabled-permit signs coexist; precise space allocation required |
+| 1006 / 4747 | 1ST AVE BETWEEN COLUMBIA ST AND MARION ST, NE | XW | Crosswalk type cannot confer permission; loading/payment/no-stopping signs coexist |
+| 27274 / 54937 | 3RD AVE BETWEEN PINE ST AND STEWART ST, NE | TAZ | No-stopping and bus signs support restricted use |
+| 71289 / 23152 | 22ND AVE NW BETWEEN NW 56TH ST AND NW 57TH ST, W | PS | Paid 4-hour signs coexist with loading and 30-foot exclusion |
+| 72321 / 28519 | 3RD AVE BETWEEN COLUMBIA ST AND MARION ST, SW | XW | Bus/no-stopping signs present; crosswalk is not parking |
+| 2785 / 14025 | 2ND AVE BETWEEN CEDAR ST AND CLAY ST, SW | PS-LAY | Paid and permit-only shuttle/Metro windows differ across signs; partition required |
+| 27430 / 87732 | 3RD AVE W BETWEEN W REPUBLICAN ST AND W MERCER ST, E | TL-RPZ | Zone 13 daytime 2-hour and evening permit-only text present |
+| 46457 / 25979 | 1ST AVE W BETWEEN W HARRISON ST AND W REPUBLICAN ST, W | CLR | Passenger loading/payment/event restrictions coexist; clear space is not permission |
+| 27397 / 1471 | 3RD AVE S BETWEEN S WASHINGTON ST AND S MAIN ST, W | CRBBLB | Bus signs present; curb bulb is not parking |
+
+#### Peak Hour Parking Restrictions
+
+| ELMNTKEY / record key | Location / side | Source value | Sign comparison |
+|---|---|---|---|
+| 31454 / 25238 | AIRPORT WAY S BETWEEN 13TH AVE S AND S HARDY ST, SW | 7-9AM 4-6PM | Only anytime prohibition text found; split hours not independently corroborated |
+| 60973 / 25239 | N 50TH ST BETWEEN MERIDIAN AVE N AND KEYSTONE WR PL N, N | 4-6PM | Sign confirms 16–18 except weekends/holidays |
+| 82129 / 25240 | E JOHN ST BETWEEN 14TH AVE E AND E JOHN SR ST, N | 7-9AM | Sign confirms 07–09 except weekends/holidays; anytime prohibition also present |
+| 64302 / 25241 | NW LEARY WAY BETWEEN LEARY WAY NW AND 11TH AVE NW, S | 7-9AM 4-6PM | Sign confirms both windows except weekends/holidays |
+| 8810 / 25242 | AIRPORT WAY S BETWEEN S HOMER ST AND S DORIS ST, SW | 7-9AM 4-6PM | No matching peak text found; time-limited/loading text insufficient |
+| 19201 / 25243 | NW 85TH ST BETWEEN 14TH AVE NW AND MARY AVE NW, N | 4-6PM | Sign confirms 16–18 except weekends/holidays |
+| 71725 / 25244 | 25TH AVE NE BETWEEN NE 68TH ST AND NE 70TH ST, W | 7-9AM | 07–09 text present; another custom text includes 16–18, extent unresolved |
+| 50737 / 25245 | 35TH AVE NE BETWEEN NE 91ST N ST AND NE 92ND S ST, W | 7-9AM | Sign confirms 07–09 except weekends/holidays |
+| 80881 / 25246 | STEWART ST BETWEEN 4TH AVE AND 5TH AVE, NW | 6-9AM 3-6PM | Sign confirms both windows except weekends/holidays; loading/payment periods coexist |
+| 2254 / 25247 | 15TH AVE W BETWEEN W ARMORY WAY AND W BOSTON ST, E | 3-7PM | 15–19 confirmed; another sign also prohibits 07–09, extent unresolved |
+
+#### Curbspace Transit Layover
+
+| ELMNTKEY / record key | Location / side | Source value | Sign comparison |
+|---|---|---|---|
+| 86061 / 93235 | NE RAVENNA WB BV BETWEEN NE 65TH ST AND NE 63RD ST, NE | BUSLAY | 24-hour Metro-only text present despite Unrestricted Blockface summary |
+| 56686 / 83339 | LENORA ST BETWEEN 5TH AVE AND 6TH AVE, SE | PS-LAY | Metro-only split windows vary between signs; partition required |
+| 10153 / 28657 | EASTLAKE AVE E BETWEEN THOMAS ST AND HARRISON ST, W | PS-LAY | Community Transit-only 14–18 Monday–Friday text present |
+| 77446 / 93933 | CALIFORNIA AVE SW BETWEEN SW MASSACHUSETTS ST AND SW HOLGATE ST, E | BUSLAY | Only arrow prohibition found; layover schedule uncorroborated |
+| 30789 / 94072 | 6TH AVE S BETWEEN S ROYAL BROUGHAM WAY AND S MASSACHUSETTS ST, W | BUSLAY | 24-hour Metro-only and police-only text coexist |
+| 80213 / 75254 | PINE ST BETWEEN 9TH AVE AND TERRY AVE, NW | BUSLAY | 24-hour Metro-only text present |
+| 13349 / 20558 | WALL ST BETWEEN 3RD AVE AND 4TH AVE, NW | PS-LAY | Metro-only 06–09 and 15–19 Monday–Friday text present |
+| 33990 / 12730 | LENORA ST BETWEEN 4TH AVE AND 5TH AVE, SE | PS-LAY | Metro-only split windows plus taxi/loading text; partition required |
+| 33005 / 75299 | EASTLAKE AVE E BETWEEN STEWART ST AND THOMAS ST, W | PS-LAY | Transit-only 14–19 Monday–Friday text present |
+| 81454 / 21211 | WARREN PL BETWEEN 1ST AVE AND DENNY WAY, E | PS-LAY | Metro-only 15–18 Monday–Friday text present |
+
+#### Parking Categories
+
+| ELMNTKEY / record key | Location / side | Source value | Sign comparison |
+|---|---|---|---|
+| 21277 / 4253529 | S OREGON ST BETWEEN POWELL PL S AND 11TH AVE S, N | Unrestricted Parking | No signs returned; Unrestricted summary is not permission |
+| 88082 / 4253530 | S FOUNTAIN ST BETWEEN 63RD AVE S AND RENTON AVE S, SE | Unrestricted Parking | 30-foot prohibition contradicts whole-side Unrestricted interpretation |
+| 55221 / 4253531 | DELRIDGE WAY SW BETWEEN SPOKANE TURN RD AND W SEATTLE BR WB OFF RP, NW | Unrestricted Parking | No signs returned; Unrestricted summary is not permission |
+| 64646 / 4253532 | S BYRON ST BETWEEN RAINIER AVE S AND WETMORE AVE S, SE | Restricted Parking Zone | Zone 16 2-hour 07–18 Monday–Friday text corroborates category |
+| 57442 / 4253533 | PASADENA PL NE BETWEEN NE 42ND ST AND DEAD END 2, E | Unrestricted Parking | No signs returned; Unrestricted summary is not permission |
+| 72229 / 4253534 | 29TH AVE E BETWEEN E THOMAS ST AND E HARRISON ST, W | Restricted Parking Zone | Zone 23 2-hour 07–19 except Sundays/holidays corroborates category |
+| 30218 / 4253535 | 5TH AVE S BETWEEN S AUSTIN ST AND S HOLDEN ST, E | Unrestricted Parking | No signs returned; Unrestricted summary is not permission |
+| 41918 / 4253536 | S AVON ST BETWEEN 51ST AVE S AND BEACON E AVE S, S | Unrestricted Parking | 30-foot prohibition contradicts whole-side Unrestricted interpretation |
+| 8745 / 4253537 | 9TH AVE W BETWEEN W GARFIELD ST AND W BLAINE ST, W | Unrestricted Parking | No signs returned; Unrestricted summary is not permission |
+| 41922 / 4253538 | S BAILEY ST BETWEEN FLORA AVE S AND ELLIS AVE S, S | No Parking Allowed | Anytime no-parking text corroborates category |
+
+Symbology/reserve wildcard record queries returned ArcGIS 400 invalid-parameter errors; a minimal `ELMNTKEY` projection succeeded. Metadata/count probes do not substitute for ten rule comparisons. These two views remain incomplete checks; no import-ready verdict follows from their record counts.
+
+### I. City lot directory ↔ current Diamond operator listings (10 address matches)
+
+Compared ten city directory records with the operator’s [official location page](https://www.diamondparking.com/find-parking/) and its publicly linked [location data](https://www.diamondparking.com/wp-content/plugins/diamond-parking/assets/data.json), retrieved 2026-10-09. The feed contains 1,614 operator locations across cities; these ten matches are Seattle addresses, not ten approved free-parking rules. Operator records expose location IDs, addresses, coordinates, payment information and some monthly prices; no complete hourly schedule, per-rule edit date or reusable feed licence established. Public monthly prices do not establish short-term rates or free periods; blank prices do not mean free. This is rejected as an import-ready E6 feed pending those missing criteria.
+
+| City BUSLIC_ID | Operator code / ID | Matched address | Operator monthly listing |
+|---|---|---|---|
+| 535675 | WU13 / 15397 | 4100 University Way NE | 50.00 Evenings and Weekends only |
+| 588668 | WU46 / 16121 | 4244 11th Ave NE | 300.00 |
+| 684294 | A617 / 15857 | 2003 WEST DRAVUS STREET | 60.00 |
+| 535686 | WU18 / 15600 | 936 N. 34th St. | Not supplied; no free inference |
+| 718894 | A672 / 15218 | 1135 NORTHWEST LEARY WAY | 50.00 |
+| 707480 | WX18 / 16033 | 3627 Stone Way N | Not supplied; no free inference |
+| 604022 | A1047 / 36624 | 910 8th Ave | Not supplied; no free inference |
+| 669059 | A370 / 15634 | 660 ELLIOTT AVENUE WEST | 65 |
+| 5483 | A1107 / 35884 | 100 W Roy St | Not supplied; no free inference |
+| 575058 | A1154 / 36335 | 400 Roy Street | $175.00 and $ 125.00 . |
+
+The city’s sampled hours/rate/operator-URL fields are null even where the operator lists a paid product. The directory cannot supply permission by itself. These are ten additional directory/operator comparisons, including three table-F facilities (WU13, WU46 and A617); the other seven table-F samples still lack recorded operator matches. Full short-term rules remain unverified.
+
 ## Unknown areas and gaps
 
 - **Entire Seattle remains outside approved Coverage.** Draft verdict none follows the policy's approved-only rule, not a finding that all parking is prohibited. No sources approved or synced by this inventory.
 - Non-CSM residential blockface geometry, mixed-use block sides and unsigned curbs: no free recommendation from category, zero meters or absent signs. Exact curb-space partition and statutory exclusions need reconciliation.
-- RPZ polygons alone, layer 0's zero rows, zones 25/14 discrepancies, zone 21/22 variants, zone 13 evening permit-only periods and A/B Husky dates: keep Unknown until precise signed rules are validated. Record-level zone IDs may change after nightly exports; zone number/subarea is semantic identity.
+- RPZ polygons alone, layer 0's zero rows, zone 14 polygon/sign disagreement, zones 25/22 structured/text discrepancies, zone 21 alternatives, zone 13 evening permit-only periods and A/B Husky dates: keep Unknown until precise signed rules are validated. Record-level zone IDs may change after nightly exports; zone number/subarea is semantic identity.
 - Temporary unpaid restrictions cover places absent from the paid-curb feed. Address points/custom schedules are not sufficient E5 extents. No “full Coverage” target is defensible until those are resolved or a precise excluded subset is approved. Active reservations need independent sign/schedule confirmation, actual/planned-time semantics and daily sync.
 - Pay-station schedules alone cannot permit free after hours; holidays, large-event charging, load zones and vehicle conditions must be checked. Table A already shows paid summaries with uncorroborated payment signs and mixed restrictions.
 - No complete E3 inventory claim or qualifying E7 default; no import-ready public lot evidence. Citywide boundaries and facility-directory entries confer no Coverage.
