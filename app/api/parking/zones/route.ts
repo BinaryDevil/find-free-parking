@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { query } from "@/lib/db";
+import { driverWarningsSql } from "@/lib/driver-warnings";
 
 export const runtime = "nodejs";
 
@@ -30,6 +31,7 @@ type ZoneRow = {
   updated_at: string;
   geom_geojson: string;
   metadata: any;
+  driver_warnings: unknown;
 };
 
 type Bbox = {
@@ -81,6 +83,7 @@ function mapRowToFeature(row: ZoneRow) {
       createdAt: row.created_at,
       updatedAt: row.updated_at,
       metadata: row.metadata ? JSON.stringify(row.metadata) : null,
+      driver_warnings: row.driver_warnings,
     },
   };
 }
@@ -131,6 +134,7 @@ export async function GET(req: Request) {
           created_at,
           updated_at,
           metadata,
+          ${driverWarningsSql('ZONE')},
           st_asgeojson(geom) as geom_geojson
         from public.parking_zones
         where geom && st_makeenvelope($1, $2, $3, $4, 4326)
@@ -183,6 +187,7 @@ export async function GET(req: Request) {
         created_at,
         updated_at,
         metadata,
+        ${driverWarningsSql('ZONE')},
         st_asgeojson(geom) as geom_geojson
       from public.parking_zones
       where st_intersects(

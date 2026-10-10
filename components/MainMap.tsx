@@ -7,14 +7,14 @@ import { Map, MapGeoJSONFeature } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
 import { submitCoverageRequest } from "@/app/actions/request-coverage";
 import { LocateFixed, Loader2, Search } from "lucide-react";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
 import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { isScheduleActive } from "@/lib/schedule";
+import { classifyParking, isVisibleInParkingView } from "@/lib/parking-classification";
 
 maplibregl.setWorkerUrl(
   new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href
@@ -64,6 +64,23 @@ function formatDisplayDate(value: string, isCustom: boolean) {
   });
 }
 
+type MeterRow = {
+  id: string;
+  geom: SpotFeature["geometry"];
+  pay_station_id?: string;
+  meter_head?: string;
+  schedules?: unknown;
+  driver_warnings?: unknown;
+  raw_data?: Record<string, string> | string;
+};
+type StreetRow = {
+  id: string;
+  geom: { type: "LineString"; coordinates: [number, number][] };
+  block_id: string;
+  street_use: string;
+  driver_warnings?: unknown;
+};
+
 type SpotFeature = {
   type: "Feature";
   geometry: { type: "Point"; coordinates: [number, number] };
@@ -83,7 +100,8 @@ type SpotFeature = {
     credit_card?: boolean;
     rate?: string;
     report_counts?: string | Record<string, number>;
-    z_status_override?: "FREE" | "PAID" | null; // Calculated status
+    classification?: string;
+    driver_warnings?: unknown;
     schedules?: string | any[]; // JSONB
   };
 };
@@ -99,6 +117,7 @@ type ZoneFeature = {
     timeLimitMinutes?: number | null;
     notes?: string | null;
     metadata?: any;
+    classification?: string;
   };
 };
 
@@ -110,9 +129,9 @@ type StreetFeature = {
     block_id: string;
     street_use: string;
     meter_infos?: string | any[];
-    is_free?: boolean; // Calculated on client
+    classification?: string;
+    driver_warnings?: unknown;
     report_counts?: string | Record<string, number>;
-    z_status_override?: "FREE" | "PAID" | null;
     schedules?: string | any[];
   };
 };
@@ -129,6 +148,8 @@ export default function MainMap({
   cityName,
 }: MainMapProps) {
   const t = useTranslations("HomePage");
+  const locale = useLocale();
+  const initialCenterRef = useRef(initialCenter);
   const mapRef = useRef<Map | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
@@ -137,6 +158,7 @@ export default function MainMap({
     meters: 0,
     streets: 0,
     zones: 0,
+    unknown: 0,
   });
   const [searchQuery, setSearchQuery] = useState("");
   const [isLocating, setIsLocating] = useState(false);
@@ -214,7 +236,7 @@ export default function MainMap({
     // Auto-locate on load without blocking UI
     // We do this silently (visualizePitch: false logic?) or just reuse handleUseMyLocation
     // But handleUseMyLocation sets 'isLocating' spinner. That is fine.
-    handleUseMyLocation(true);
+    if (!initialCenterRef.current) handleUseMyLocation(true);
 
     // Event listener for report modal
     const handleReportEvent = (e: CustomEvent) => {
@@ -291,6 +313,25 @@ export default function MainMap({
     content.append(walking);
   }
 
+  const appendDriverWarnings = useEffectEvent((content: HTMLElement, raw: unknown) => {
+    let warnings = raw;
+    if (typeof warnings === "string") {
+      try { warnings = JSON.parse(warnings); } catch { return; }
+    }
+    if (!Array.isArray(warnings)) return;
+    const statuses: Record<string, string> = {
+      FREE: t("free"), PAID: t("paid"), NO_PARKING: t("noParkingReported"),
+    };
+    for (const warning of warnings) {
+      if (!warning || typeof warning !== "object" || !statuses[warning.status]) continue;
+      const date = new Date(warning.latest_at);
+      if (!Number.isFinite(date.getTime())) continue;
+      content.append(popupElement("div", "margin-top:8px;color:#92400e;font-size:12px;",
+        t("driverWarning", { status: statuses[warning.status], count: warning.count,
+          date: date.toLocaleDateString(locale) })));
+    }
+  });
+
   function appendPopupControls(
     content: HTMLElement,
     coords: [number, number],
@@ -365,8 +406,8 @@ export default function MainMap({
       attributionControl: false,
     });
 
-    // Set padding to avoid UI overlapping popups (Search bar + Filters)
-    map.setPadding({ top: 180 });
+    // Leave room for the search, city Coverage label, filters and counts.
+    map.setPadding({ top: 260 });
 
     map.addControl(
       new maplibregl.NavigationControl({ visualizePitch: true }),
@@ -406,13 +447,11 @@ export default function MainMap({
         paint: {
           "fill-color": [
             "match",
-            ["get", "type"],
-            ["FREE_UNLIMITED", "FREE_LIMITED", "EV_FREE"],
+            ["get", "classification"],
+            "FREE",
             "#16a34a",
-            ["PAID", "MIXED"],
+            "PAID",
             "#ef4444",
-            ["PERMIT_ONLY"],
-            "#eab308",
             "#94a3b8", // Default gray
           ],
           "fill-opacity": 0.4,
@@ -425,13 +464,11 @@ export default function MainMap({
         paint: {
           "line-color": [
             "match",
-            ["get", "type"],
-            ["FREE_UNLIMITED", "FREE_LIMITED", "EV_FREE"],
+            ["get", "classification"],
+            "FREE",
             "#15803d",
-            ["PAID", "MIXED"],
+            "PAID",
             "#b91c1c",
-            ["PERMIT_ONLY"],
-            "#ca8a04",
             "#64748b",
           ],
           "line-width": 2,
@@ -469,12 +506,8 @@ export default function MainMap({
           "line-cap": "round",
         },
         paint: {
-          "line-color": [
-            "case",
-            ["==", ["get", "is_free"], true],
-            "#00A651", // High contrast accessible Green
-            "#DC2626", // High contrast Red
-          ],
+          "line-color": ["match", ["get", "classification"], "FREE", "#00A651", "PAID", "#DC2626", "#64748b"],
+          "line-dasharray": ["case", ["==", ["get", "classification"], "UNKNOWN"], ["literal", [2, 2]], ["literal", [1, 0]]],
           "line-width": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -525,7 +558,7 @@ export default function MainMap({
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-radius": 6,
-          "circle-color": "#16a34a",
+          "circle-color": ["match", ["get", "classification"], "FREE", "#16a34a", "PAID", "#DC2626", "#64748b"],
           "circle-stroke-color": "#fff",
           "circle-stroke-width": 1.5,
         },
@@ -560,7 +593,7 @@ export default function MainMap({
           popupElement(
             "div",
             "font-weight:600;color:#0f172a",
-            props.type ?? t("parkingLot")
+            props.classification === "PAID" ? t("paymentListed") : t("unknown")
           ),
           popupElement(
             "div",
@@ -602,7 +635,7 @@ export default function MainMap({
             const days = Array.isArray(s.days) ? s.days.join(", ") : s.days;
             const rateDisplay = s.rate
               ? `$${parseFloat(s.rate).toFixed(2)}/hr`
-              : "Free";
+              : t("unknown");
             const rule = popupElement(
               "div",
               "color:#4b5563;font-size:12px;margin-top:2px;"
@@ -635,29 +668,12 @@ export default function MainMap({
             popupElement("div", "margin-top:4px;color:#4b5563", props.notes)
           );
         }
-        if (props.z_status_override === "FREE") {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:4px;color:#16a34a;font-weight:600;font-size:12px",
-              `✓ ${t("verifiedFreeCommunity")}`
-            )
-          );
-        }
-        if (props.z_status_override === "PAID") {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:4px;color:#eab308;font-weight:600;font-size:12px",
-              `⚠️ ${t("reportedPaidCommunity")}`
-            )
-          );
-        }
+        appendDriverWarnings(content, props.driver_warnings);
         content.append(
           popupElement(
             "div",
             "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
-            `⚠️ ${t("checkRushHour")}`
+            t("unknownGuidance")
           )
         );
         appendPopupControls(
@@ -700,138 +716,24 @@ export default function MainMap({
         if (!feature) return;
 
         const props = feature.properties ?? {};
-        const zoneType = props.type as string;
-        const reportCounts = props.report_counts
-          ? typeof props.report_counts === "string"
-            ? JSON.parse(props.report_counts)
-            : props.report_counts
-          : {};
-        const reportedFree = (reportCounts["FREE"] || 0) >= 3;
-        const reportedPaid = (reportCounts["PAID"] || 0) >= 3;
-
-        // Determine display status
-        const isFreeType = [
-          "FREE_UNLIMITED",
-          "FREE_LIMITED",
-          "EV_FREE",
-        ].includes(zoneType);
-        const isPaidType = ["PAID", "MIXED", "PERMIT_ONLY"].includes(zoneType);
-
         const content = popupElement(
           "div",
           "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
         );
-        let headerIcon = "🅿️";
-        const headerText = props.name || t("parkingLot");
-        let headerColor = "#0f172a";
-        if (reportedFree) {
-          headerIcon = "✅";
-          headerColor = "#16a34a";
-        } else if (reportedPaid) {
-          headerIcon = "💲";
-          headerColor = "#dc2626";
-        } else if (isFreeType) {
-          headerColor = "#16a34a";
-        } else if (isPaidType) {
-          headerIcon = "💲";
-          headerColor = "#dc2626";
-        }
         content.append(
-          popupElement(
-            "div",
-            `font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}`,
-            `${headerIcon} ${headerText}`
-          )
-        );
-        const friendlyType: Record<string, string> = {
-          FREE_UNLIMITED: t("freeParking"),
-          FREE_LIMITED: t("freeLimited"),
-          EV_FREE: t("evFree"),
-          PAID: t("paidParking"),
-          PERMIT_ONLY: t("permit"),
-          MIXED: t("mixed"),
-        };
-        const typeLabel = friendlyType[zoneType] || t("parkingLot");
-        content.append(
-          popupElement(
-            "div",
-            "color:#475569;font-size:12px;margin-bottom:4px;",
-            `${typeLabel} • ${props.city ?? ""}`
-          )
+          popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", props.name || t("parkingLot")),
+          popupElement("div", "margin-top:4px;color:#64748b", t("unknown")),
+          popupElement("div", "margin-top:8px;color:#475569", t("unverifiedLot")),
+          popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
         );
         appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
-        if (props.timeLimitMinutes) {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#1f2937;font-size:13px;",
-              `⏱ ${t("timeLimitLabel", { minutes: props.timeLimitMinutes })}`
-            )
-          );
-        }
-        if (reportedFree) {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#16a34a;font-weight:600;font-size:12px",
-              `✅ ${t("verifiedFreeCommunity")}`
-            )
-          );
-        } else if (reportedPaid) {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#dc2626;font-weight:600;font-size:12px",
-              `⚠️ ${t("reportedPaidCommunity")}`
-            )
-          );
-        } else if (isFreeType) {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#16a34a;font-size:13px;",
-              t("likelyFree")
-            )
-          );
-        } else if (zoneType === "MIXED") {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#eab308;font-size:13px;",
-              t("mixedRulesDetails")
-            )
-          );
-        } else {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#475569;font-size:13px;",
-              t("mayRequirePayment")
-            )
-          );
-        }
-        if (props.notes) {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:4px;color:#4b5563;font-size:12px;",
-              props.notes
-            )
-          );
-        }
-        content.append(
-          popupElement(
-            "div",
-            "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
-            `⚠️ ${t("verificationRequired")}`
-          )
-        );
+        appendDriverWarnings(content, props.driver_warnings);
         appendPopupControls(
           content,
           [e.lngLat.lng, e.lngLat.lat],
           props.id,
           "ZONE",
-          isFreeType ? "FREE" : "PAID"
+          "PAID"
         );
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
@@ -845,147 +747,23 @@ export default function MainMap({
         if (!feature) return;
 
         const props = feature.properties ?? {};
-        const isFree = props.is_free;
-        let meterInfos: any[] = [];
-        try {
-          if (typeof props.meter_infos === "string") {
-            meterInfos = JSON.parse(props.meter_infos);
-          } else if (Array.isArray(props.meter_infos)) {
-            meterInfos = props.meter_infos;
-          }
-        } catch (e) {
-          console.error("Error parsing meter_infos", e);
-        }
-
         const content = popupElement(
           "div",
           "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
         );
         content.append(
-          popupElement(
-            "div",
-            "font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a",
-            isFree
-              ? `🅿️ ${t("freeStreetParking")}`
-              : `💲 ${t("paidRestricted")}`
-          ),
-          popupElement(
-            "div",
-            "color:#475569;font-size:12px;margin-bottom:4px;",
-            props.block_id ?? t("unknownLocation")
-          )
+          popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", t("unknown")),
+          popupElement("div", "color:#475569;font-size:12px", props.block_id ?? t("unknownLocation")),
+          popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
         );
         appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
-
-        // Meter Infos
-        if (meterInfos.length > 0) {
-          const currentDateTime = getEffectiveParkingTime();
-          let activeRules: any[] = [];
-
-          // Flatten and Deduplicate Rules
-          const uniqueRules = new Set<string>();
-          meterInfos.forEach((schedules: any) => {
-            if (Array.isArray(schedules)) {
-              schedules.forEach((rule) => {
-                const ruleStr = JSON.stringify(rule);
-                if (!uniqueRules.has(ruleStr)) {
-                  uniqueRules.add(ruleStr);
-                  // Check if active
-                  // We can reuse isScheduleActive for single rule array
-                  if (isScheduleActive([rule], currentDateTime)) {
-                    activeRules.push(rule);
-                  }
-                }
-              });
-            }
-          });
-
-          if (activeRules.length > 0) {
-            content.append(
-              popupElement(
-                "div",
-                "margin-top:8px;font-size:12px;color:#1f2937;font-weight:600",
-                t("activeRates")
-              )
-            );
-            activeRules.forEach((rule) => {
-              const rateDisplay = rule.rate
-                ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
-                : t("paid");
-              const days = Array.isArray(rule.days)
-                ? rule.days.join(", ")
-                : rule.days;
-              const row = popupElement(
-                "div",
-                "color:#4b5563;font-size:12px;margin-top:2px;"
-              );
-              row.append(
-                popupElement(
-                  "span",
-                  "",
-                  `⏱ ${rule.start ?? ""} - ${rule.end ?? ""}: `
-                ),
-                popupElement("b", "", rateDisplay)
-              );
-              content.append(row);
-            });
-          } else {
-            content.append(
-              popupElement(
-                "div",
-                "margin-top:8px;color:#16a34a;font-size:13px;",
-                t("likelyFreeOutsideMeter")
-              )
-            );
-          }
-        } else if (isFree) {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#16a34a;font-size:13px;",
-              t("likelyFreeStreet")
-            )
-          );
-        } else {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#ef4444;font-size:13px;",
-              t("restrictionsApply")
-            )
-          );
-        }
-        if (props.z_status_override === "FREE") {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#16a34a;font-weight:600;font-size:12px",
-              `✅ ${t("verifiedFreeCommunity")}`
-            )
-          );
-        }
-        if (props.z_status_override === "PAID") {
-          content.append(
-            popupElement(
-              "div",
-              "margin-top:8px;color:#eab308;font-weight:600;font-size:12px",
-              `⚠️ ${t("reportedPaidCommunity")}`
-            )
-          );
-        }
-        content.append(
-          popupElement(
-            "div",
-            "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
-            `⚠️ ${t("verificationRequired")}`
-          )
-        );
+        appendDriverWarnings(content, props.driver_warnings);
         appendPopupControls(
           content,
           [e.lngLat.lng, e.lngLat.lat],
           props.id,
           "STREET",
-          isFree ? "FREE" : "PAID"
+          "PAID"
         );
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
@@ -1113,8 +891,8 @@ export default function MainMap({
       const data = await res.json();
       if (isStale()) return;
 
-      const meters = (data.meters ?? []) as SpotFeature[];
-      const streets = (data.streets ?? []) as StreetFeature[];
+      const meters = (data.meters ?? []) as MeterRow[];
+      const streets = (data.streets ?? []) as StreetRow[];
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
@@ -1122,45 +900,20 @@ export default function MainMap({
 
       // --- Process Meters ---
       // 1. Filter raw meters based on logic
-      const filteredMeters = meters.filter((m: any) => {
-        const counts = m.report_counts ?? {};
-        const reportedFree = (counts["FREE"] || 0) >= 3;
-        const reportedPaid = (counts["PAID"] || 0) >= 3;
-
-        // Calculate status override for visual use later
-        if (reportedPaid) m.z_status_override = "PAID";
-        if (reportedFree) m.z_status_override = "FREE";
-
-        let isActive = false;
-        const hasSchedules =
-          Array.isArray(m.schedules) && m.schedules.length > 0;
-        // Prioritize Schedules (New Schema)
-        if (hasSchedules) {
-          isActive = isScheduleActive(m.schedules, currentDateTime);
-        }
-
-        if (filterTypeRef.current === "FREE") {
-          if (reportedPaid) return false;
-          if (reportedFree) return true;
-          // A meter without schedule data is unknown, not free
-          // (docs/adr/0001-verified-rules-only.md).
-          return hasSchedules && !isActive;
-        } else {
-          if (reportedFree) return false;
-          if (reportedPaid) return true;
-          return isActive;
-        }
-      });
+      const filteredMeters = meters.map((m) => ({
+        ...m,
+        classification: classifyParking("METER", m, currentDateTime),
+      })).filter((m) => isVisibleInParkingView(m.classification, filterTypeRef.current));
 
       // 2. Map valid meters to features (Sanitize properties)
-      const meterFeatures: SpotFeature[] = filteredMeters.map((m: any) => {
-        let raw = m.raw_data || {};
+      const meterFeatures: SpotFeature[] = filteredMeters.map((m) => {
+        let raw: Record<string, string> = {};
         // If raw_data came as string (unlikely with pg jsonb but possible in some adapters), parse it
-        if (typeof raw === "string") {
+        if (typeof m.raw_data === "string") {
           try {
-            raw = JSON.parse(raw);
-          } catch (e) {}
-        }
+            raw = JSON.parse(m.raw_data);
+          } catch { /* Unparsed source text cannot establish permission. */ }
+        } else raw = m.raw_data || {};
 
         return {
           type: "Feature",
@@ -1171,9 +924,9 @@ export default function MainMap({
             type: "Meter",
             pay_station_id: m.pay_station_id,
             meter_head: m.meter_head,
-            report_counts: m.report_counts,
+            driver_warnings: m.driver_warnings,
             schedules: m.schedules,
-            z_status_override: m.z_status_override,
+            classification: m.classification,
             notes: raw.payment_info, // Use payment info as notes/subtitle context
             location_desc: raw.on_street, // Capture street name if available
           }) as any,
@@ -1192,90 +945,24 @@ export default function MainMap({
           features: meterFeatures,
         });
       }
-      const meterCount = meterFeatures.length;
+      const meterCount = filteredMeters.filter((m) => m.classification === filterTypeRef.current).length;
+      let unknownCount = filteredMeters.filter((m) => m.classification === "UNKNOWN").length;
 
-      // --- Process Streets ---
-      // 1. Map street logic (calculate is_free and is_paid)
-      // 1. Map street logic (calculate is_free and is_paid)
-      const processedStreets = streets.map((s: any) => {
-        const meterInfos = s.meter_infos ?? [];
-        const counts = s.report_counts ?? {};
-        const reportedFree = (counts["FREE"] || 0) >= 3;
-        const reportedPaid = (counts["PAID"] || 0) >= 3;
-        const streetName = (s.block_id || "").toUpperCase();
-
-        let isFree = false;
-        let isPaid = false;
-
-        // Blacklist specific keywords to prevent false positives (e.g. Bridges matching meters below them)
-        const isExcluded = ["BRIDGE", "VIADUCT", "TUNNEL", "HIGHWAY"].some(
-          (k) => streetName.includes(k)
-        );
-
-        if (!isExcluded) {
-          const freeStreetTypes = [
-            "Residential",
-            "Unrestricted",
-            "Time Limited",
-          ];
-
-          // Determine Paid Status: Has meters OR is explicitly marked Paid
-          if (meterInfos.length > 0 || s.street_use === "Paid") {
-            isPaid = true;
-          }
-
-          // Determine Free Status: No meters AND is a known free type
-          if (
-            meterInfos.length === 0 &&
-            freeStreetTypes.includes(s.street_use)
-          ) {
-            isFree = true;
-          }
-        }
-
-        // User Reports Override (Can override exclusions if community verifies)
-        if (reportedPaid) {
-          isFree = false;
-          isPaid = true;
-        }
-        if (reportedFree) {
-          isFree = true;
-          isPaid = false;
-        }
-
-        let overrideStatus: "FREE" | "PAID" | undefined;
-        if (reportedPaid) overrideStatus = "PAID";
-        if (reportedFree) overrideStatus = "FREE";
-
-        return {
-          ...s,
-          is_free: isFree,
-          is_paid: isPaid,
-          z_status_override: overrideStatus,
-        };
-      });
-
-      // 2. Filter streets
-      const filteredStreets = processedStreets.filter((s: any) => {
-        if (filterTypeRef.current === "FREE") return s.is_free;
-        if (filterTypeRef.current === "PAID") return s.is_paid;
-        return false;
-      });
-
-      // 3. Map to GeoJSON features (Sanitize properties)
-      const streetFeatures: StreetFeature[] = filteredStreets.map((s: any) => ({
+      // Nearby meters and road categories do not establish a street rule.
+      const filteredStreets = streets.map((s) => ({
+        ...s,
+        classification: classifyParking("STREET", s, currentDateTime),
+      })).filter((s) => isVisibleInParkingView(s.classification, filterTypeRef.current));
+      const streetFeatures: StreetFeature[] = filteredStreets.map((s) => ({
         type: "Feature",
         geometry: s.geom,
         properties: sanitizeFeatureProperties({
           id: s.id,
           block_id: s.block_id,
           street_use: s.street_use,
-          is_free: s.is_free,
-          z_status_override: s.z_status_override,
-          meter_infos: s.meter_infos,
-          report_counts: s.report_counts,
-          schedules: s.schedules,
-        }) as any,
+          classification: s.classification,
+          driver_warnings: s.driver_warnings,
+        }) as StreetFeature["properties"],
       }));
 
       const streetSource = map.getSource("streets") as
@@ -1288,14 +975,15 @@ export default function MainMap({
           features: streetFeatures,
         });
       }
-      const streetCount = streetFeatures.length;
+      const streetCount = filteredStreets.filter((s) => s.classification === filterTypeRef.current).length;
+      unknownCount += filteredStreets.filter((s) => s.classification === "UNKNOWN").length;
 
       let zoneCount = 0;
 
       // 2. Fetch Parking Zones (Lots)
       const bboxParam = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
       const zonesRes = await fetch(
-        `/api/parking/zones?bbox=${bboxParam}&type=${filterTypeRef.current}&limit=500`
+        `/api/parking/zones?bbox=${bboxParam}&limit=200`
       );
       if (isStale()) return;
       if (zonesRes.ok) {
@@ -1306,16 +994,20 @@ export default function MainMap({
           | undefined;
         if (zonesSource) {
           const rawFeatures = zonesData.features ?? [];
-          const zoneFeatures = rawFeatures.map((f: any) => ({
+          const zoneFeatures = rawFeatures.map((f: ZoneFeature) => ({
             ...f,
-            properties: sanitizeFeatureProperties(f.properties),
+            properties: sanitizeFeatureProperties({
+              ...f.properties,
+              classification: classifyParking("ZONE", f.properties, currentDateTime),
+            }),
           }));
 
           zonesSource.setData({
             type: "FeatureCollection",
             features: zoneFeatures,
           });
-          zoneCount = zoneFeatures.length;
+          zoneCount = zoneFeatures.filter((f: ZoneFeature) => f.properties.classification === filterTypeRef.current).length;
+          unknownCount += zoneFeatures.filter((f: ZoneFeature) => f.properties.classification === "UNKNOWN").length;
         }
       }
 
@@ -1323,6 +1015,7 @@ export default function MainMap({
         meters: meterCount,
         streets: streetCount,
         zones: zoneCount,
+        unknown: unknownCount,
       });
 
       setStatus("idle");
@@ -1395,7 +1088,7 @@ export default function MainMap({
         // Check coverage
         if (!coverageDismissed) {
           try {
-            const result = await checkCoverage(coords[1], coords[0]);
+            const result = await checkCoverage();
             if (!result.isCovered) {
               setShowCoverageBanner(true);
             } else {
@@ -1523,6 +1216,7 @@ export default function MainMap({
               )}
             </button>
           </form>
+          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{t("cityNotCovered", { city: cityName })}</p> : null}
           <div className="mt-3 w-full">
             <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">
@@ -1596,6 +1290,7 @@ export default function MainMap({
                       .filter(Boolean)
                       .join(" · ") || t("noneFound")
                   }`}
+              {featureCounts.unknown > 0 ? ` · ${t("unknownCount", { count: featureCounts.unknown })}` : ""}
             </div>
           </div>
           {error ? (

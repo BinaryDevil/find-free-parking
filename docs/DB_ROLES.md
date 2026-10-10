@@ -36,6 +36,15 @@ The function has a fixed search path, qualified tables, no dynamic SQL, and no
 PUBLIC/app execute grant. PostgreSQL checks trigger execute permission at trigger
 creation; revoking it does not disable an existing trigger.
 
+The #18 dated-warning query additionally reads `reported_status`, grouped with
+the already-readable target and creation-date columns over 90 days. Prepared
+[17.driver_warning_read.sql](../sql/17.driver_warning_read.sql) grants SELECT on
+that single column; separate human approval is required for each environment.
+It does not grant access to reason, location or other report text, and does not
+remove the trigger (that remains #13). Without the grant, the new parking API
+queries fail under `app_rw`. Roll back only this added column grant, not the
+pre-existing duplicate-detection permissions.
+
 ## Human preflight (each isolated dev and production database)
 
 1. Confirm the target in the provider UI, database name, owner connection, backup
