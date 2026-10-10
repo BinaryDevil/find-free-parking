@@ -14,7 +14,7 @@ import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
 import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { classifyParking, isVisibleInParkingView } from "@/lib/parking-classification";
+import { classifyParking, isVisibleInParkingView, type ParkingClassification } from "@/lib/parking-classification";
 
 maplibregl.setWorkerUrl(
   new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href
@@ -100,7 +100,7 @@ type SpotFeature = {
     credit_card?: boolean;
     rate?: string;
     report_counts?: string | Record<string, number>;
-    classification?: string;
+    classification?: ParkingClassification;
     driver_warnings?: unknown;
     schedules?: string | any[]; // JSONB
   };
@@ -117,7 +117,7 @@ type ZoneFeature = {
     timeLimitMinutes?: number | null;
     notes?: string | null;
     metadata?: any;
-    classification?: string;
+    classification?: ParkingClassification;
   };
 };
 
@@ -129,7 +129,7 @@ type StreetFeature = {
     block_id: string;
     street_use: string;
     meter_infos?: string | any[];
-    classification?: string;
+    classification?: ParkingClassification;
     driver_warnings?: unknown;
     report_counts?: string | Record<string, number>;
     schedules?: string | any[];
