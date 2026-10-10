@@ -13,7 +13,7 @@
     "@types/uuid": "^11.0.0",
     "axios": "^1.13.2",
     "lucide-react": "^0.559.0",
-    "maplibre-gl": "^5.14.0",
+    "maplibre-gl": "^6.13.0",
     "next": "16.0.8",
     "next-intl": "^4.6.0",
     "pg": "^8.16.3",
