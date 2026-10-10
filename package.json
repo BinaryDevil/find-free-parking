@@ -6,8 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "check-requests": "npx tsx scripts/automate_seeding.ts"
+    "lint": "node scripts/check-diagnostics.mjs lint",
+    "check-requests": "npx tsx scripts/automate_seeding.ts",
+    "lint:raw": "eslint",
+    "typecheck": "node scripts/check-diagnostics.mjs typecheck",
+    "typecheck:raw": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@types/uuid": "^11.0.0",
@@ -32,5 +36,9 @@
     "eslint-config-next": "16.0.8",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.25.0",
+  "engines": {
+    "node": ">=24.11.1 <25"
   }
 }
