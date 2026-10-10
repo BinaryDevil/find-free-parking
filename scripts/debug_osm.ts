@@ -1,4 +1,4 @@
-import axios from "axios";
+import { requestOverpass } from "./overpass";
 
 async function run() {
   const city = "Coquitlam";
@@ -14,9 +14,7 @@ async function run() {
   console.log("Querying:\n", query);
 
   try {
-    const res = await axios.get("https://overpass-api.de/api/interpreter", {
-      params: { data: query },
-    });
+    const res = await requestOverpass(query);
     console.log("Result Count:", res.data.elements.length);
     if (res.data.elements.length > 0) {
       console.log(
@@ -34,9 +32,7 @@ async function run() {
             relation["name"~"${city}",i]["admin_level"="8"](area.state);
             out geom;
         `;
-      const res2 = await axios.get("https://overpass-api.de/api/interpreter", {
-        params: { data: query2 },
-      });
+      const res2 = await requestOverpass(query2);
       console.log("Result Count (BC):", res2.data.elements.length);
       if (res2.data.elements.length > 0) {
         console.log(

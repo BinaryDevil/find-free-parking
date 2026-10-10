@@ -7,30 +7,33 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check-requests": "npx tsx scripts/automate_seeding.ts"
+    "check-requests": "npx tsx scripts/automate_seeding.ts",
+    "test:overpass": "node --test tests/overpass.test.mjs"
   },
   "dependencies": {
-    "@types/uuid": "^11.0.0",
-    "axios": "^1.13.2",
     "lucide-react": "^0.559.0",
     "maplibre-gl": "^5.14.0",
-    "next": "16.0.8",
-    "next-intl": "^4.6.0",
-    "pg": "^8.16.3",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
-    "uuid": "^13.0.0"
+    "next": "16.4.0",
+    "next-intl": "^4.14.9",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/geojson": "^7946.0.16",
-    "@types/node": "^20",
+    "@types/node": "^24.19.2",
     "@types/pg": "^8.15.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.0.8",
-    "tailwindcss": "^4",
+    "eslint-config-next": "16.4.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5"
-  }
+  },
+  "engines": {
+    "node": "24.x",
+    "pnpm": "10.x"
+  },
+  "packageManager": "pnpm@10.25.0"
 }
