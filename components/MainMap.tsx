@@ -911,6 +911,9 @@ export default function MainMap({
               const rateDisplay = rule.rate
                 ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
                 : t("paid");
+              const days = Array.isArray(rule.days)
+                ? rule.days.join(", ")
+                : rule.days;
               const row = popupElement(
                 "div",
                 "color:#4b5563;font-size:12px;margin-top:2px;"
