@@ -4,7 +4,7 @@ For seeding, schema changes, cleanup, or rollback, read this document and [ADR-0
 
 ## Evidence before expansion
 
-Which sources a city may be set up or seeded from is decided by the Evidence Source Policy in the verified-rules spec ([BinaryDevil/find-free-parking#2](https://github.com/BinaryDevil/find-free-parking/issues/2)), applied through the `cover-city` skill. Its output is a source inventory under `docs/sources/` (see `docs/sources/TEMPLATE.md`); seed only from sources approved there. Registering a city page is separate from evidence approval.
+Which sources a city may be set up or seeded from is decided by [ADR-0002: Evidence Source Policy](adr/0002-evidence-source-policy.md), applied through the `cover-city` skill. Its output is a source inventory under `docs/sources/` (see [the inventory template](sources/TEMPLATE.md)); seed only from sources approved there. Registering a city page is separate from evidence approval.
 
 When reusing existing import code, review parser defaults and incomplete records: `parseSignText` and the OSM helpers contain assumptions (default schedules, guessed rates, road-class mapping) that the policy does not accept as evidence.
 

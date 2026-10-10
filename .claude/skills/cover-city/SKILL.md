@@ -9,7 +9,7 @@ The output is a reviewed **inventory** plus tickets. The inventory decides which
 
 ## 1. Load the policy
 
-Run `gh issue view 2` and read the **Evidence Source Policy** section (once it moves into the repo, the issue will point to its new home). Also read the Language section of `GLOSSARY.md` and `docs/adr/`. The policy's evidence types (E1–E7, signals), acceptance criteria, coverage levels, and search order are the rules for every later step.
+Read [ADR-0002: Evidence Source Policy](../../../docs/adr/0002-evidence-source-policy.md), the Language section of `GLOSSARY.md`, and [ADR-0001](../../../docs/adr/0001-verified-rules-only.md). Apply ADR-0002 to every later step.
 
 Done when: you can name what each evidence type may and may not establish.
 
@@ -27,8 +27,8 @@ Done when: every evidence type E1–E7 has candidate sources or "none found" wit
 
 For each candidate, record its fields, record count, last edit date, geometry, and a sample record. Then apply the policy's acceptance criteria one by one.
 
-- **Spot check**: choose at least 10 places covering permit, metered, time-limited, and no-parking cases. Test each against an independent official signal: a point-in-polygon query on a second official layer, a sign inventory match, the city's own web page, or citation data near the block.
-- **Reuse terms**: find the licence on the portal or the service's item page. A service that isn't in the portal catalogue gets verdict `pending` until permission is recorded.
+- **Spot check**: record the locations, independent official comparisons, and safety contradictions required by ADR-0002 acceptance criterion 7.
+- **Reuse terms**: record the terms required by ADR-0002 acceptance criterion 6 from the portal or the service's item page. A service that isn't in the portal catalogue gets verdict `pending` until permission is recorded.
 - Anything the source leaves ambiguous becomes an explicit Unknown case.
 
 Done when: every candidate has a verdict (approved / rejected with the failed criterion / pending with what is missing).
@@ -53,4 +53,4 @@ Done when: every approved or pending source has an adapter issue, and the invent
 
 ## 6. Report
 
-Tell the user the coverage verdict, the approved, pending and rejected sources, the Unknown areas, and the issue links. Point out any policy gap the city exposed (a source type the policy doesn't cover) so the policy can be amended in #2.
+Tell the user the coverage verdict, the approved, pending and rejected sources, the Unknown areas, and the issue links. Point out any policy gap the city exposed (a source type the policy doesn't cover) so a policy amendment can be proposed for ADR-0002.

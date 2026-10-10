@@ -3,7 +3,7 @@
 Status: draft | approved by <name> on <YYYY-MM-DD>
 Timezone: <IANA zone, e.g. America/Los_Angeles>
 Coverage verdict: full | partial (<declared subset>) | none
-Policy: Evidence Source Policy in the verified-rules spec (BinaryDevil/find-free-parking#2)
+Policy: [ADR-0002: Evidence Source Policy](../adr/0002-evidence-source-policy.md)
 
 ## Evidence types
 
