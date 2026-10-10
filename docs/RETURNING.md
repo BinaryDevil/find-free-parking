@@ -29,7 +29,7 @@ before switching either Preview or Production.
 
 ## Validation
 
-`pnpm lint` and `pnpm exec tsc --noEmit` are available checks; `pnpm build` checks the application build. There is no configured automated test command. Establish the baseline before code changes and report existing diagnostics separately. For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required.
+`pnpm lint` and `pnpm exec tsc --noEmit` are available checks; `pnpm build` checks the application build. `pnpm test:overpass` runs the focused script HTTP tests against a local fixture server without database writes; there is no full application test suite yet. Establish the baseline before code changes and report existing diagnostics separately. For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required.
 
 For map changes, verify the selected city/time, free and paid views, unknown data, reports, rapid viewport changes, and mobile controls. Record which environment and data were used.
 
