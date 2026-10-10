@@ -4,7 +4,7 @@ Read the [verified-rules spec](https://github.com/BinaryDevil/find-free-parking/
 
 ## Local setup
 
-Use pnpm and the committed lockfile. Configure an ignored `.env.local`; no sample environment file is tracked.
+Use Node.js 24.11.1 (24.x) and pnpm 10.25.0, pinned in `package.json`, with the committed lockfile (`pnpm install --frozen-lockfile`). Configure an ignored `.env.local`; no sample environment file is tracked.
 
 | Variable | Purpose |
 | --- | --- |
@@ -29,7 +29,15 @@ before switching either Preview or Production.
 
 ## Validation
 
-`pnpm lint` and `pnpm exec tsc --noEmit` are available checks; `pnpm build` checks the application build. There is no configured automated test command. Establish the baseline before code changes and report existing diagnostics separately. For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required.
+`pnpm lint`, `pnpm typecheck`, and `pnpm test` run the same checks as GitHub Actions on every push and pull request. `pnpm build` checks the application build separately. Tests need no environment variables or database. Node's built-in test runner and native TypeScript stripping avoid adding a test dependency; tests live in `tests/*.test.mjs` and can import small TypeScript modules directly. Run a single file with `node --test tests/schedule.test.mjs`. This runner does not typecheck; the separate typecheck gate does.
+
+The existing diagnostic debt is recorded in [the lint baseline](../config/diagnostics-lint.json) and [the typecheck baseline](../config/diagnostics-typecheck.json). At `0a0cded` (#8 integrated, #7 still open), raw lint had 76 errors and 20 warnings; typecheck had zero diagnostics. Extracting the schedule helper removes two `any` errors, leaving 74 errors and 20 warnings. The gates compare each file, rule/code, complete message and source text, with an allowance per identical occurrence. Line-number shifts are allowed, but new files, changed diagnostics and extra occurrences fail, including warnings. Fatal lint/configuration errors fail immediately. `pnpm lint:raw` and `pnpm typecheck:raw` expose the underlying tools without allowances.
+
+When fixing debt, remove the resolved entries in the same PR. Only deliberately refresh a baseline with `node scripts/check-diagnostics.mjs lint --record` (or `typecheck --record`), then review every changed entry against the previous base; never refresh to make a new failure pass. #7's open dependency PR also edits package/lockfile/this document: reconcile its versions and regenerate only justified diagnostic changes after integration. This ticket adds no dependency upgrades or lockfile changes.
+
+The schedule tests characterize the current browser-local helper used by the map, including overnight ranges and weekday matching. They are a seed for #11, not evidence of the future server evaluator or verified parking rules. Current behavior checks the selected day's name even after midnight (a Monday-only 18:00–02:00 rule is inactive Tuesday at 01:00), and equal endpoints act as all-day. City timezones, DST, overnight day ownership and classification remain #11 work.
+
+For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required. `CLAUDE.md` must remain Git mode `120000` pointing to relative `AGENTS.md`. In the Windows #19 worktree, `core.symlinks=false` produced a plain pointer file; keep the Git symlink unchanged and verify the actual link on a symlink-capable checkout.
 
 For map changes, verify the selected city/time, free and paid views, unknown data, reports, rapid viewport changes, and mobile controls. Record which environment and data were used.
 
