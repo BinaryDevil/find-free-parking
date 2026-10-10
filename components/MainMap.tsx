@@ -2,11 +2,8 @@
 
 import "maplibre-gl/dist/maplibre-gl.css";
 
-import maplibregl, {
-  Map,
-  MapGeoJSONFeature,
-  StyleSpecification,
-} from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
+import { Map, MapGeoJSONFeature } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
 import { submitCoverageRequest } from "@/app/actions/request-coverage";
 import { LocateFixed, Loader2, Search } from "lucide-react";
@@ -17,6 +14,10 @@ import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+
+maplibregl.setWorkerUrl(
+  new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href
+);
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
@@ -40,24 +41,15 @@ function formatInputDateValue(date: Date) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-// Popups are built as HTML strings, so any value that comes from the database
-// (seeded from third-party open data) must be escaped before interpolation.
-function escapeHtml(value: unknown) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-// Inline handler for the "Update status" popup button. The detail object is
-// JSON-encoded and then HTML-escaped so it is safe inside a quoted attribute.
-function reportButtonOnClick(id: unknown, type: string, status: string) {
-  const detail = JSON.stringify({ id: String(id ?? ""), type, status });
-  return escapeHtml(
-    `window.dispatchEvent(new CustomEvent('open-report-modal', { detail: ${detail} }))`
-  );
+function popupElement<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  style: string,
+  text?: unknown
+) {
+  const element = document.createElement(tag);
+  element.style.cssText = style;
+  if (text !== undefined) element.textContent = String(text ?? "");
+  return element;
 }
 
 function formatDisplayDate(value: string, isCustom: boolean) {
@@ -275,6 +267,60 @@ export default function MainMap({
     };
   }
 
+  function appendWalkingInfo(content: HTMLElement, coords: [number, number]) {
+    const dest = destinationLocationRef.current;
+    if (!dest) return;
+    const { distance, minutes } = getWalkingEstimates(coords, dest);
+    const walking = popupElement(
+      "div",
+      "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;"
+    );
+    walking.append(
+      popupElement(
+        "div",
+        "font-weight:600;font-size:13px;color:#0f172a;",
+        t("toDestination")
+      ),
+      popupElement(
+        "div",
+        "font-size:13px;color:#475569;",
+        `🚶 ${t("walkEstimates", { minutes, distance })}`
+      )
+    );
+    content.append(walking);
+  }
+
+  function appendPopupControls(
+    content: HTMLElement,
+    coords: [number, number],
+    id: unknown,
+    type: "METER" | "ZONE" | "STREET",
+    status: "FREE" | "PAID"
+  ) {
+    const directions = popupElement(
+      "a",
+      "display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;",
+      t("getDirections")
+    );
+    directions.href = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
+    directions.target = "_blank";
+    directions.rel = "noopener noreferrer";
+    const report = popupElement(
+      "button",
+      "display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;",
+      t("updateStatus")
+    );
+    report.type = "button";
+    report.addEventListener("click", () => {
+      window.dispatchEvent(
+        new CustomEvent("open-report-modal", {
+          detail: { id: String(id ?? ""), type, status },
+        })
+      );
+    });
+    content.append(directions, report);
+  }
+
   const mapStyle = useMemo(() => {
     const key =
       process.env.NEXT_PUBLIC_MAPTILER_KEY ??
@@ -284,7 +330,7 @@ export default function MainMap({
       return `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`;
     }
     // Fallback raster OSM tiles for local dev without a key.
-    const fallbackStyle: StyleSpecification = {
+    const fallbackStyle: ReturnType<Map["getStyle"]> = {
       version: 8,
       sources: {
         osm: {
@@ -505,8 +551,34 @@ export default function MainMap({
         if (!coords) return;
         const props = feature.properties ?? {};
 
+        const content = popupElement(
+          "div",
+          "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
+        );
+        content.append(
+          popupElement(
+            "div",
+            "font-weight:600;color:#0f172a",
+            props.type ?? t("parkingLot")
+          ),
+          popupElement(
+            "div",
+            "color:#475569",
+            props.location_desc ?? props.city ?? ""
+          )
+        );
+        appendWalkingInfo(content, coords as [number, number]);
+        if (props.timeLimitMinutes) {
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#1f2937",
+              t("timeLimitLabel", { minutes: props.timeLimitMinutes })
+            )
+          );
+        }
+
         // Parse schedules if generic data
-        let rulesHtml = "";
         let schedules = [];
         try {
           if (typeof props.schedules === "string") {
@@ -517,112 +589,86 @@ export default function MainMap({
         } catch (e) {
           /* ignore */
         }
-
         if (schedules.length > 0) {
-          rulesHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;font-size:12px;color:#1f2937;font-weight:600",
+              "Rates:"
+            )
+          );
           schedules.forEach((s: any) => {
             const days = Array.isArray(s.days) ? s.days.join(", ") : s.days;
             const rateDisplay = s.rate
               ? `$${parseFloat(s.rate).toFixed(2)}/hr`
               : "Free";
-            rulesHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                    📅 ${escapeHtml(days)}<br>
-                    ⏱ ${escapeHtml(s.start)} - ${escapeHtml(s.end)}: <b>${escapeHtml(rateDisplay)}</b>
-                </div>`;
+            const rule = popupElement(
+              "div",
+              "color:#4b5563;font-size:12px;margin-top:2px;"
+            );
+            const day = popupElement("span", "", `📅 ${days ?? ""}`);
+            const hours = popupElement(
+              "span",
+              "",
+              `⏱ ${s.start ?? ""} - ${s.end ?? ""}: `
+            );
+            rule.append(
+              day,
+              document.createElement("br"),
+              hours,
+              popupElement("b", "", rateDisplay)
+            );
+            content.append(rule);
           });
         } else if (props.rate) {
-          // Fallback if legacy or raw rate field still exists in prop mapping (it shouldn't generally but just in case)
-          rulesHtml += `<div style="margin-top:4px;color:#475569">${t("rate", {
-            rate: escapeHtml(props.rate),
-          })}</div>`;
-        }
-
-        // Calculate walking info if destination is set
-        let walkingHtml = "";
-        const dest = destinationLocationRef.current;
-        if (dest) {
-          const { distance, minutes } = getWalkingEstimates(
-            coords as [number, number],
-            dest
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#475569",
+              t("rate", { rate: props.rate })
+            )
           );
-          walkingHtml = `
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
-                "toDestination"
-              )}</div>
-              <div style="font-size:13px;color:#475569;">
-                🚶 ${t("walkEstimates", {
-                  minutes: minutes,
-                  distance: distance,
-                })}
-              </div>
-            </div>
-          `;
         }
-
+        if (props.notes) {
+          content.append(
+            popupElement("div", "margin-top:4px;color:#4b5563", props.notes)
+          );
+        }
+        if (props.z_status_override === "FREE") {
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#16a34a;font-weight:600;font-size:12px",
+              `✓ ${t("verifiedFreeCommunity")}`
+            )
+          );
+        }
+        if (props.z_status_override === "PAID") {
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#eab308;font-weight:600;font-size:12px",
+              `⚠️ ${t("reportedPaidCommunity")}`
+            )
+          );
+        }
+        content.append(
+          popupElement(
+            "div",
+            "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
+            `⚠️ ${t("checkRushHour")}`
+          )
+        );
+        appendPopupControls(
+          content,
+          coords as [number, number],
+          props.id,
+          "METER",
+          filterTypeRef.current
+        );
         new maplibregl.Popup()
           .setLngLat(coords as [number, number])
-          .setHTML(
-            `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600;color:#0f172a">${escapeHtml(
-                 props.type ?? t("parkingLot")
-               )}</div>
-               <div style="color:#475569">${escapeHtml(
-                 props.location_desc ?? props.city ?? ""
-               )}</div>
-               ${walkingHtml}
-               ${
-                 props.timeLimitMinutes
-                   ? `<div style="margin-top:4px;color:#1f2937">${t(
-                       "timeLimitLabel",
-                       { minutes: props.timeLimitMinutes }
-                     )}</div>`
-                   : ""
-               }
-                ${rulesHtml}
-                ${
-                  props.notes
-                    ? `<div style="margin-top:4px;color:#4b5563">${escapeHtml(
-                        props.notes
-                      )}</div>`
-                    : ""
-                }
-                ${
-                  props.z_status_override === "FREE"
-                    ? `<div style="margin-top:4px;color:#16a34a;font-weight:600;font-size:12px">✓ ${t(
-                        "verifiedFreeCommunity"
-                      )}</div>`
-                    : ""
-                }
-                ${
-                  props.z_status_override === "PAID"
-                    ? `<div style="margin-top:4px;color:#eab308;font-weight:600;font-size:12px">⚠️ ${t(
-                        "reportedPaidCommunity"
-                      )}</div>`
-                    : ""
-                }
-                <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-                  ⚠️ ${t("checkRushHour")}
-                </div>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=${
-                  coords[1]
-                },${
-              coords[0]
-            }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-                  ${t("getDirections")}
-                </a>
-                <button 
-                  onclick="${reportButtonOnClick(
-                    props.id,
-                    "METER",
-                    filterTypeRef.current
-                  )}"
-                  style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
-                >
-                  ${t("updateStatus")}
-                </button>
-             </div>`
-          )
+          .setDOMContent(content)
           .addTo(map);
       });
 
@@ -670,13 +716,13 @@ export default function MainMap({
         ].includes(zoneType);
         const isPaidType = ["PAID", "MIXED", "PERMIT_ONLY"].includes(zoneType);
 
-        let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
-
-        // Header with icon
+        const content = popupElement(
+          "div",
+          "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
+        );
         let headerIcon = "🅿️";
-        let headerText = props.name || t("parkingLot");
+        const headerText = props.name || t("parkingLot");
         let headerColor = "#0f172a";
-
         if (reportedFree) {
           headerIcon = "✅";
           headerColor = "#16a34a";
@@ -684,16 +730,18 @@ export default function MainMap({
           headerIcon = "💲";
           headerColor = "#dc2626";
         } else if (isFreeType) {
-          headerIcon = "🅿️";
           headerColor = "#16a34a";
         } else if (isPaidType) {
           headerIcon = "💲";
           headerColor = "#dc2626";
         }
-
-        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${escapeHtml(headerText)}</div>`;
-
-        // Type and City - use friendly labels
+        content.append(
+          popupElement(
+            "div",
+            `font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}`,
+            `${headerIcon} ${headerText}`
+          )
+        );
         const friendlyType: Record<string, string> = {
           FREE_UNLIMITED: t("freeParking"),
           FREE_LIMITED: t("freeLimited"),
@@ -703,101 +751,90 @@ export default function MainMap({
           MIXED: t("mixed"),
         };
         const typeLabel = friendlyType[zoneType] || t("parkingLot");
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(typeLabel)} • ${escapeHtml(
-          props.city ?? ""
-        )}</div>`;
-
-        // Walking info if destination set
-        const dest = destinationLocationRef.current;
-        if (dest) {
-          const { distance, minutes } = getWalkingEstimates(
-            [e.lngLat.lng, e.lngLat.lat],
-            dest
-          );
-          contentHtml += `
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
-                "toDestination"
-              )}</div>
-              <div style="font-size:13px;color:#475569;">
-                🚶 ${t("walkEstimates", {
-                  minutes: minutes,
-                  distance: distance,
-                })}
-              </div>
-            </div>
-          `;
-        }
-
-        // Time limit info
+        content.append(
+          popupElement(
+            "div",
+            "color:#475569;font-size:12px;margin-bottom:4px;",
+            `${typeLabel} • ${props.city ?? ""}`
+          )
+        );
+        appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
         if (props.timeLimitMinutes) {
-          contentHtml += `<div style="margin-top:8px;color:#1f2937;font-size:13px;">⏱ ${t(
-            "timeLimitLabel",
-            { minutes: props.timeLimitMinutes }
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#1f2937;font-size:13px;",
+              `⏱ ${t("timeLimitLabel", { minutes: props.timeLimitMinutes })}`
+            )
+          );
         }
-
-        // Status explanation
         if (reportedFree) {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ ${t(
-            "verifiedFreeCommunity"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#16a34a;font-weight:600;font-size:12px",
+              `✅ ${t("verifiedFreeCommunity")}`
+            )
+          );
         } else if (reportedPaid) {
-          contentHtml += `<div style="margin-top:8px;color:#dc2626;font-weight:600;font-size:12px">⚠️ ${t(
-            "reportedPaidCommunity"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#dc2626;font-weight:600;font-size:12px",
+              `⚠️ ${t("reportedPaidCommunity")}`
+            )
+          );
         } else if (isFreeType) {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
-            "likelyFree"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#16a34a;font-size:13px;",
+              t("likelyFree")
+            )
+          );
         } else if (zoneType === "MIXED") {
-          contentHtml += `<div style="margin-top:8px;color:#eab308;font-size:13px;">${t(
-            "mixedRulesDetails"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#eab308;font-size:13px;",
+              t("mixedRulesDetails")
+            )
+          );
         } else {
-          contentHtml += `<div style="margin-top:8px;color:#475569;font-size:13px;">${t(
-            "mayRequirePayment"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#475569;font-size:13px;",
+              t("mayRequirePayment")
+            )
+          );
         }
-
-        // Notes
         if (props.notes) {
-          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${escapeHtml(
-            props.notes
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#4b5563;font-size:12px;",
+              props.notes
+            )
+          );
         }
-
-        // Warning
-        contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-          ⚠️ ${t("verificationRequired")}
-        </div>`;
-
-        // Directions Button
-        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${
-          e.lngLat.lat
-        },${
-          e.lngLat.lng
-        }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-          ${t("getDirections")}
-        </a>`;
-
-        // Update Status Button
-        contentHtml += `<button 
-          onclick="${reportButtonOnClick(
-            props.id,
-            "ZONE",
-            isFreeType ? "FREE" : "PAID"
-          )}"
-          style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
-        >
-          ${t("updateStatus")}
-        </button>`;
-
-        contentHtml += `</div>`;
-
+        content.append(
+          popupElement(
+            "div",
+            "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
+            `⚠️ ${t("verificationRequired")}`
+          )
+        );
+        appendPopupControls(
+          content,
+          [e.lngLat.lng, e.lngLat.lat],
+          props.id,
+          "ZONE",
+          isFreeType ? "FREE" : "PAID"
+        );
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(contentHtml)
+          .setDOMContent(content)
           .addTo(map);
       });
 
@@ -819,39 +856,25 @@ export default function MainMap({
           console.error("Error parsing meter_infos", e);
         }
 
-        let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
-
-        // Header
-        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
-          isFree ? `🅿️ ${t("freeStreetParking")}` : `💲 ${t("paidRestricted")}`
-        }</div>`;
-
-        // Street Use / Block info
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(
-          props.block_id ?? t("unknownLocation")
-        )}</div>`;
-
-        // Calculate walking info if destination is set
-        const dest = destinationLocationRef.current;
-        if (dest) {
-          const { distance, minutes } = getWalkingEstimates(
-            [e.lngLat.lng, e.lngLat.lat],
-            dest
-          );
-          contentHtml += `
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
-                "toDestination"
-              )}</div>
-              <div style="font-size:13px;color:#475569;">
-                🚶 ${t("walkEstimates", {
-                  minutes: minutes,
-                  distance: distance,
-                })}
-              </div>
-            </div>
-          `;
-        }
+        const content = popupElement(
+          "div",
+          "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
+        );
+        content.append(
+          popupElement(
+            "div",
+            "font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a",
+            isFree
+              ? `🅿️ ${t("freeStreetParking")}`
+              : `💲 ${t("paidRestricted")}`
+          ),
+          popupElement(
+            "div",
+            "color:#475569;font-size:12px;margin-bottom:4px;",
+            props.block_id ?? t("unknownLocation")
+          )
+        );
+        appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
 
         // Meter Infos
         if (meterInfos.length > 0) {
@@ -877,81 +900,92 @@ export default function MainMap({
           });
 
           if (activeRules.length > 0) {
-            contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">${t(
-              "activeRates"
-            )}</div>`;
+            content.append(
+              popupElement(
+                "div",
+                "margin-top:8px;font-size:12px;color:#1f2937;font-weight:600",
+                t("activeRates")
+              )
+            );
             activeRules.forEach((rule) => {
               const rateDisplay = rule.rate
                 ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
                 : t("paid");
-              const days = Array.isArray(rule.days)
-                ? rule.days.join(", ")
-                : rule.days;
-              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                     ⏱ ${escapeHtml(rule.start)} - ${escapeHtml(
-                       rule.end
-                     )}: <b>${escapeHtml(rateDisplay)}</b>
-                   </div>`;
+              const row = popupElement(
+                "div",
+                "color:#4b5563;font-size:12px;margin-top:2px;"
+              );
+              row.append(
+                popupElement(
+                  "span",
+                  "",
+                  `⏱ ${rule.start ?? ""} - ${rule.end ?? ""}: `
+                ),
+                popupElement("b", "", rateDisplay)
+              );
+              content.append(row);
             });
           } else {
-            // Meters present but none active (Free)
-            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
-              "likelyFreeOutsideMeter"
-            )}</div>`;
+            content.append(
+              popupElement(
+                "div",
+                "margin-top:8px;color:#16a34a;font-size:13px;",
+                t("likelyFreeOutsideMeter")
+              )
+            );
           }
+        } else if (isFree) {
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#16a34a;font-size:13px;",
+              t("likelyFreeStreet")
+            )
+          );
         } else {
-          if (isFree) {
-            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
-              "likelyFreeStreet"
-            )}</div>`;
-          } else {
-            contentHtml += `<div style="margin-top:8px;color:#ef4444;font-size:13px;">${t(
-              "restrictionsApply"
-            )}</div>`;
-          }
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#ef4444;font-size:13px;",
+              t("restrictionsApply")
+            )
+          );
         }
-
-        // Status explanation
         if (props.z_status_override === "FREE") {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ ${t(
-            "verifiedFreeCommunity"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#16a34a;font-weight:600;font-size:12px",
+              `✅ ${t("verifiedFreeCommunity")}`
+            )
+          );
         }
         if (props.z_status_override === "PAID") {
-          contentHtml += `<div style="margin-top:8px;color:#eab308;font-weight:600;font-size:12px">⚠️ ${t(
-            "reportedPaidCommunity"
-          )}</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;color:#eab308;font-weight:600;font-size:12px",
+              `⚠️ ${t("reportedPaidCommunity")}`
+            )
+          );
         }
-
-        contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-          ⚠️ ${t("verificationRequired")}
-        </div>`;
-
-        // Directions Button
-        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${
-          e.lngLat.lat
-        },${
-          e.lngLat.lng
-        }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-          ${t("getDirections")}
-        </a>`;
-
-        contentHtml += `<button 
-          onclick="${reportButtonOnClick(
-            props.id,
-            "STREET",
-            isFree ? "FREE" : "PAID"
-          )}"
-          style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
-        >
-          ${t("updateStatus")}
-        </button>`;
-
-        contentHtml += `</div>`;
-
+        content.append(
+          popupElement(
+            "div",
+            "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
+            `⚠️ ${t("verificationRequired")}`
+          )
+        );
+        appendPopupControls(
+          content,
+          [e.lngLat.lng, e.lngLat.lat],
+          props.id,
+          "STREET",
+          isFree ? "FREE" : "PAID"
+        );
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(contentHtml)
+          .setDOMContent(content)
           .addTo(map);
       });
 
