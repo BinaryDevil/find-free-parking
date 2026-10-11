@@ -13,13 +13,15 @@ When reusing existing import code, review parser defaults and incomplete records
 - Inspect `scripts/seed_utils.ts` and the chosen script to confirm connection selection and which rows it inserts, updates, deletes, or skips. The app prefers pooled connections; script helpers prefer direct connections.
 - Parking data persists in PostgreSQL/PostGIS; it is not automatically rebuilt from repository files. Review imports against a backup or non-production database first. Do not assume all seed scripts are idempotent.
 - Record schema changes in a reviewed `sql/N.description.sql` file before execution. Existing SQL numbering has collisions; inspect files and actual schema rather than blindly executing the folder in filename order.
-- Seeding, `pnpm check-requests`, cleanup scripts, `clear_db.ts`, and `migrate-to-neon.sh` can change data or infrastructure. Confirm the target, explicit scope, backup, and verification plan before shared/production writes.
+- Seeding, cleanup scripts, `clear_db.ts`, and `migrate-to-neon.sh` can change data or infrastructure. Confirm the target, explicit scope, backup, and verification plan before shared/production writes.
 - Preserve existing rows and previously applied additive evidence columns unless the user explicitly authorizes a data change. Code rollback does not require database rollback.
 - Verify affected row counts, spatial placement, schedules, evidence eligibility, and API behavior after an authorized import. A successful script or row count alone does not prove accurate rules.
 
 ## Request-driven imports
 
-`scripts/automate_seeding.ts` selects inactive requested cities with more than 10 requests and runs a matching script. No scheduler configuration is tracked here. Before enabling it, review command construction from city names, rerun behavior, error handling, and evidence approval. Demand is a prioritization signal, not permission to assert verified Coverage.
+`pnpm check-requests` runs `scripts/automate_seeding.ts` to group city requests case-insensitively and open `Cover city: <City>` GitHub issues when the count is more than 10. Issues carry `needs-triage`, the aggregate request count, and instructions to use the `cover-city` skill under ADR-0002. An exact, case-insensitive matching open issue in this repository is skipped (pull requests do not count). Legacy `covered_cities` and page registry entries do not suppress evidence-review requests or establish Coverage.
+
+Use `pnpm check-requests --dry-run` to print complete proposed issues without creating them. Both modes only read the database; normal mode writes GitHub issues and requires an authenticated `gh` CLI with repository access. City names are untrusted data transported as JSON, never shell commands. No seed script is selected or executed, and no scheduler configuration is tracked here. Review the target database and use an isolated dev environment for validation. Demand prioritizes evidence discovery; source approval and any later database writes remain separate human decisions.
 
 ## Query statistics
 
