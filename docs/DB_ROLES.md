@@ -4,7 +4,7 @@ This is a prepared change, not an applied migration or a production verification
 The grant map comes from the queries at `origin/dev` revision
 `f3db697fcb22b852b8b67b5a6c187b4ad0dce9d0` and tracked SQL. No live schema
 was inspected. Compare each target database before executing
-[15.app_rw.sql](../sql/15.app_rw.sql); never run the historical SQL folder in order.
+[15.app_rw.sql](../sql/archived/15.app_rw.sql); never run the historical SQL folder in order.
 
 ## Role model and query permissions
 
@@ -38,7 +38,7 @@ creation; revoking it does not disable an existing trigger.
 
 The #18 dated-warning query additionally reads `reported_status`, grouped with
 the already-readable target and creation-date columns over 90 days. Prepared
-[17.driver_warning_read.sql](../sql/17.driver_warning_read.sql) grants SELECT on
+[17.driver_warning_read.sql](../sql/archived/17.driver_warning_read.sql) grants SELECT on
 that single column; separate human approval is required for each environment.
 It does not grant access to reason, location or other report text, and does not
 remove the trigger (that remains #13). Without the grant, the new parking API
@@ -56,7 +56,7 @@ pre-existing duplicate-detection permissions.
    and enum type USAGE/function EXECUTE permissions are available. Check RLS as
    `app_rw` after migration; do not disable policies to make tests pass.
 3. Compare `pg_get_functiondef` for `public.update_parking_report_counts()` to
-   [11.zone_reports.sql](../sql/11.zone_reports.sql). Confirm one enabled AFTER
+   [11.zone_reports.sql](../sql/archived/11.zone_reports.sql). Confirm one enabled AFTER
    INSERT row trigger on reports and inspect every other trigger/default for
    extra permissions or privileged side effects. Stop and revise if live schema
    differs, including additional application queries on the deployed revision.
@@ -97,12 +97,12 @@ SELECT schemaname, tablename, policyname, roles, cmd FROM pg_policies;
 
 ## Apply and verify with human approval
 
-1. On an isolated dev database first, execute only `sql/15.app_rw.sql` through
+1. On an isolated dev database first, execute only `sql/archived/15.app_rw.sql` through
    the direct migration connection with stop-on-error enabled. Set an `app_rw`
    password privately via the provider or interactive `psql` `\password app_rw`;
    the SQL creates a login with no password. Never put a password in shell history.
 2. Connect as the actual `app_rw` login and run
-   [15.app_rw.verify.sql](../sql/15.app_rw.verify.sql). All assertions must pass.
+   [15.app_rw.verify.sql](../sql/archived/15.app_rw.verify.sql). All assertions must pass.
    Check catalogs against the preflight record: no app ownership/membership;
    function owner only `app_report_counts`; no remaining shared privilege paths.
 3. Use an ignored local env with the dev `app_rw` pooled URL and, if needed, dev

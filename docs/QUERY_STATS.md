@@ -6,7 +6,7 @@
 
 1. Confirm the Neon project is `find-free-parking`, the database is `find-free-parking-db`, and the selected branch is the intended target. Use the database owner through a direct connection; do not change application credentials or grant `pg_read_all_stats` to `app_rw`.
 2. Check `pg_extension` for `pg_stat_statements`, `SHOW shared_preload_libraries`, and `SHOW pg_stat_statements.track`. If installed already, verify it rather than reinstalling it. If not preloaded or tracking is disabled, stop and review configuration before proceeding.
-3. Validate [the SQL](../sql/16.pg_stat_statements.sql) on an isolated nonproduction Neon branch. For production, record explicit approval on #6 and confirm a current restore point before executing the same file. No application rows are modified.
+3. Validate [the SQL](../sql/archived/16.pg_stat_statements.sql) on an isolated nonproduction Neon branch. For production, record explicit approval on #6 and confirm a current restore point before executing the same file. No application rows are modified.
 4. Verify the extension version, then run a harmless read twice (`SELECT count(*) FROM public.covered_cities;`). Run `neon inspect db outliers` and `neon inspect db calls` with explicit project, branch, and database selectors. The Neon MCP `inspect_database` checks of the same names are equivalent. Success means the checks return data; it does not establish representative production traffic.
 
 ## Review after a week of traffic
