@@ -39,10 +39,12 @@ comments or ordinary logs. The checks match endpoint/database but cannot prove
 the branch's purpose: verify its branch ID/name in Neon before every operation.
 App credentials must remain separate; no migration runs during build/deployment.
 
-All committed migrations are immutable, including ones not applied yet. CI checks
-against the PR base or previous push without database credentials. Locally run
-`pnpm db:check-files origin/dev`. Commit and review each migration before any
-approved execution; correct errors with a new timestamped migration. Use only
+All integrated migrations are immutable, including ones not applied yet. CI checks
+against the PR base, previous push on dev/main, or dev for feature pushes, without
+database credentials. Unmerged migrations can be corrected during disposable
+validation. Locally run
+`pnpm db:check-files origin/dev`. Integrate and review each migration before any
+shared-database execution; correct integrated migrations with a new timestamped migration. Use only
 SQL files, no down section for the baseline. No down/reset command is provided.
 
 ### Fresh baseline verification

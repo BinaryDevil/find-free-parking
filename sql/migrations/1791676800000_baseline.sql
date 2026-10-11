@@ -197,25 +197,7 @@ $$;
 
 
 REVOKE ALL ON FUNCTION public.update_parking_report_counts() FROM PUBLIC;
--- Transfer the definer function without retaining membership/schema CREATE.
-DO $$
-DECLARE
-  had_set boolean := pg_has_role(current_user, 'app_report_counts', 'SET');
-  had_create boolean := has_schema_privilege('app_report_counts', 'public', 'CREATE');
-BEGIN
-  IF NOT had_create THEN GRANT CREATE ON SCHEMA public TO app_report_counts; END IF;
-  IF NOT had_set THEN
-    IF EXISTS (SELECT FROM pg_auth_members WHERE roleid = 'app_report_counts'::regrole
-      AND member = current_user::regrole AND grantor = current_user::regrole) THEN
-      RAISE EXCEPTION 'Review existing self-granted membership before baseline replay';
-    END IF;
-    EXECUTE format('GRANT app_report_counts TO %I WITH SET TRUE GRANTED BY %I', current_user, current_user);
-  END IF;
-  ALTER FUNCTION public.update_parking_report_counts() OWNER TO app_report_counts;
-  IF NOT had_create THEN REVOKE CREATE ON SCHEMA public FROM app_report_counts; END IF;
-  IF NOT had_set THEN EXECUTE format('REVOKE app_report_counts FROM %I GRANTED BY %I', current_user, current_user); END IF;
-END;
-$$;
+
 
 SET default_tablespace = '';
 
@@ -495,6 +477,26 @@ CREATE TRIGGER set_timestamp_parking_zones BEFORE UPDATE ON public.parking_zones
 --
 
 CREATE TRIGGER trg_update_report_counts AFTER INSERT ON public.reports FOR EACH ROW EXECUTE FUNCTION public.update_parking_report_counts();
+
+-- Transfer the definer function without retaining membership/schema CREATE.
+DO $$
+DECLARE
+  had_set boolean := pg_has_role(current_user, 'app_report_counts', 'SET');
+  had_create boolean := has_schema_privilege('app_report_counts', 'public', 'CREATE');
+BEGIN
+  IF NOT had_create THEN GRANT CREATE ON SCHEMA public TO app_report_counts; END IF;
+  IF NOT had_set THEN
+    IF EXISTS (SELECT FROM pg_auth_members WHERE roleid = 'app_report_counts'::regrole
+      AND member = current_user::regrole AND grantor = current_user::regrole) THEN
+      RAISE EXCEPTION 'Review existing self-granted membership before baseline replay';
+    END IF;
+    EXECUTE format('GRANT app_report_counts TO %I WITH SET TRUE GRANTED BY %I', current_user, current_user);
+  END IF;
+  ALTER FUNCTION public.update_parking_report_counts() OWNER TO app_report_counts;
+  IF NOT had_create THEN REVOKE CREATE ON SCHEMA public FROM app_report_counts; END IF;
+  IF NOT had_set THEN EXECUTE format('REVOKE app_report_counts FROM %I GRANTED BY %I', current_user, current_user); END IF;
+END;
+$$;
 
 
 --

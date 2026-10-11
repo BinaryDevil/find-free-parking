@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
 
-// Every migration committed to the comparison base is sealed, even if an
+// Every migration integrated into the comparison base is sealed, even if an
 // environment has not applied it yet. This needs no database secrets in CI.
 try {
   const base = process.argv[2];

@@ -25,10 +25,11 @@ application-schema migrations. Inspect them separately using DB_ROLES.md.
 Extension versions come from Neon; comparison must check versions as well as
 schema. PostGIS extension-owned objects are installed by CREATE EXTENSION.
 
-CI seals every migration in the PR base or previous push, a stronger rule than
-sealing only applied files. It compares Git bytes, detects deletion/rename, and
-needs no production secret. Commit migrations before any approved application;
-fixes are new migrations. Migration execution is manual and never part of build
+CI seals every migration in the PR base, or previous push on dev/main; feature
+pushes compare against dev. It detects deletion/rename and needs no production
+secret. Unmerged migrations may be corrected during disposable validation.
+Integrate reviewed migrations before applying them to shared databases;
+subsequent fixes are new migrations. Migration execution is manual, never part of build
 or deployment. Existing databases must adopt the baseline through reviewed fake
 marking, never by replaying it. No down/reset interface is offered: redeploy older
 code against additive schema, and review any data repair separately.
