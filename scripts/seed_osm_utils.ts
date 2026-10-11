@@ -1,5 +1,5 @@
 import { getDbPool } from "./seed_utils";
-import axios from "axios";
+import { requestOverpass } from "./overpass";
 
 const pool = getDbPool();
 
@@ -33,11 +33,8 @@ async function fetchParkingLots(
       out geom;
     `;
 
-  const url = "https://overpass-api.de/api/interpreter";
   try {
-    const response = await axios.post(url, query, {
-      headers: { "Content-Type": "text/plain" },
-    });
+    const response = await requestOverpass(query, "POST");
     return response.data;
   } catch (error: any) {
     console.error(`[${cityName}] Overpass query failed:`, error.message);
@@ -239,10 +236,7 @@ export async function seedOsmCityCoverage(
     `;
 
   try {
-    const url = "https://overpass-api.de/api/interpreter";
-    const response = await axios.post(url, query, {
-      headers: { "Content-Type": "text/plain" },
-    });
+    const response = await requestOverpass(query, "POST");
     const data = response.data;
 
     if (!data || !data.elements || data.elements.length === 0) {
@@ -330,19 +324,13 @@ export async function fetchOsmStreets(
     out geom;
   `;
 
-  const url = "https://overpass-api.de/api/interpreter";
   console.log(`Fetching OSM streets for ${city}...`);
 
   console.log(`[OSM] Fetching streets for ${city} in ${state}, ${country}...`);
   console.log(`[OSM Query]:\n${query}`);
 
   try {
-    const response = await axios.get(
-      "https://overpass-api.de/api/interpreter",
-      {
-        params: { data: query },
-      }
-    );
+    const response = await requestOverpass(query);
     console.log(
       `[OSM] Streets Response Status: ${response.status}. Elements: ${response.data?.elements?.length}`
     );
@@ -522,12 +510,7 @@ async function fetchOsmStreetsByPoly(polyStr: string) {
 
   console.log(`[OSM] Fetching streets by Polygon...`);
   try {
-    const response = await axios.get(
-      "https://overpass-api.de/api/interpreter",
-      {
-        params: { data: query },
-      }
-    );
+    const response = await requestOverpass(query);
     const elements = response.data.elements || [];
     return elements.filter((e: any) => e.type === "way");
   } catch (err: any) {

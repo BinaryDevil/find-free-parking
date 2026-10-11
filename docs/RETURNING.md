@@ -33,7 +33,16 @@ before switching either Preview or Production.
 
 The existing diagnostic debt is recorded in [the lint baseline](../config/diagnostics-lint.json) and [the typecheck baseline](../config/diagnostics-typecheck.json). At `0a0cded` (#8 integrated, #7 still open), raw lint had 76 errors and 20 warnings; typecheck had zero diagnostics. Extracting the schedule helper removes two `any` errors, leaving 74 errors and 20 warnings. The gates compare each file, rule/code, complete message and source text, with an allowance per identical occurrence. Line-number shifts are allowed, but new files, changed diagnostics and extra occurrences fail, including warnings. Fatal lint/configuration errors fail immediately. `pnpm lint:raw` and `pnpm typecheck:raw` expose the underlying tools without allowances.
 
-When fixing debt, remove the resolved entries in the same PR. Only deliberately refresh a baseline with `node scripts/check-diagnostics.mjs lint --record` (or `typecheck --record`), then review every changed entry against the previous base; never refresh to make a new failure pass. #7's open dependency PR also edits package/lockfile/this document: reconcile its versions and regenerate only justified diagnostic changes after integration. This ticket adds no dependency upgrades or lockfile changes.
+When fixing debt, remove the resolved entries in the same PR. Only deliberately refresh a baseline with `node scripts/check-diagnostics.mjs lint --record` (or `typecheck --record`), then review every changed entry against the previous base; never refresh to make an unrelated new failure pass.
+
+PR #40's conflict resolution combines #7's Next 16.4.0/React 19.3.0 upgrades and fetch transport with `dev` at `10086ab` (MapLibre 6.13.0, fail-safe map, request automation and diagnostic CI). `pnpm test` includes the four HTTP fixture tests; `pnpm test:overpass` runs them alone without database writes. The exact lint baseline at that `dev` revision has 78 entries. The combined baseline has 80 entries (65 errors, 15 warnings), with only these changes:
+
+- Add `react-hooks/set-state-in-effect` at unchanged `MainMap` help-dialog initialization (`setIsHelpOpen(true)`), newly diagnosed by eslint-config-next 16.4.0.
+- Add the same rule at unchanged `ReportModal` default-status initialization (`setStatus(defaultStatus)`).
+- Add the same rule at unchanged `ReportModal` reason reset (`setSelectedReasonOption("")`).
+- Remove the unused Overpass `url` warning eliminated by #7's fetch migration.
+
+The gate still compares individual diagnostics and fails on any additional failure; no rules are disabled. Typecheck remains at zero diagnostics. The combined production dependency audit has two residual advisories: high `braces` 3.0.3 through next-intl / @parcel/watcher / micromatch (no patched version reported), and low `@babel/core` 7.28.5 through Next / styled-jsx (patch >=7.29.6 available). There are no advisories in Next, axios, uuid or MapLibre. Audit evidence is local and time-specific; run it again before release.
 
 The schedule tests characterize the current browser-local helper used by the map, including overnight ranges and weekday matching. They are a seed for #11, not evidence of the future server evaluator or verified parking rules. Current behavior checks the selected day's name even after midnight (a Monday-only 18:00–02:00 rule is inactive Tuesday at 01:00), and equal endpoints act as all-day. City timezones, DST, overnight day ownership and classification remain #11 work.
 

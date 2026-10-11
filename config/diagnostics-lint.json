@@ -120,10 +120,28 @@
     "source": "}) as any,"
   },
   {
+    "file": "components/MainMap.tsx",
+    "code": "2:react-hooks/set-state-in-effect",
+    "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n./components/MainMap.tsx:229:7\n  227 |     const seen = localStorage.getItem(\"find-free-parking-help-seen\");\n  228 |     if (seen !== \"true\") {\n> 229 |       setIsHelpOpen(true);\n      |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  230 |     }\n  231 |     const coverageSeen = sessionStorage.getItem(\"coverage-banner-dismissed\");\n  232 |     if (coverageSeen === \"true\") {",
+    "source": "setIsHelpOpen(true);"
+  },
+  {
     "file": "components/ReportModal.tsx",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
     "source": "} catch (err: any) {"
+  },
+  {
+    "file": "components/ReportModal.tsx",
+    "code": "2:react-hooks/set-state-in-effect",
+    "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n./components/ReportModal.tsx:58:9\n  56 |     if (isOpen) {\n  57 |       if (defaultStatus) {\n> 58 |         setStatus(defaultStatus);\n     |         ^^^^^^^^^ Avoid calling setState() directly within an effect\n  59 |       } else {\n  60 |         setStatus(\"FREE\");\n  61 |       }",
+    "source": "setStatus(defaultStatus);"
+  },
+  {
+    "file": "components/ReportModal.tsx",
+    "code": "2:react-hooks/set-state-in-effect",
+    "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n./components/ReportModal.tsx:72:5\n  70 |   // When status changes, reset reason selection\n  71 |   useEffect(() => {\n> 72 |     setSelectedReasonOption(\"\");\n     |     ^^^^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  73 |     setReason(\"\");\n  74 |   }, [status]);\n  75 |",
+    "source": "setSelectedReasonOption(\"\");"
   },
   {
     "file": "i18n/request.ts",
@@ -262,12 +280,6 @@
     "code": "1:@typescript-eslint/no-unused-vars",
     "message": "'queryName' is assigned a value but never used.",
     "source": "queryName: string | null = null"
-  },
-  {
-    "file": "scripts/seed_osm_utils.ts",
-    "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'url' is assigned a value but never used.",
-    "source": "const url = \"https://overpass-api.de/api/interpreter\";"
   },
   {
     "file": "scripts/seed_osm_utils.ts",

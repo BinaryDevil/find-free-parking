@@ -1,4 +1,4 @@
-import axios from "axios";
+import { requestOverpass } from "./overpass";
 
 async function testQuery(city: string, state: string, country: string) {
   // Logic from seed_osm_utils.ts
@@ -23,13 +23,7 @@ async function testQuery(city: string, state: string, country: string) {
 
   console.log(`Testing: ${city} in ${country} (Filter: Metro Vancouver)...`);
   try {
-    const res = await axios.post(
-      "https://overpass-api.de/api/interpreter",
-      query,
-      {
-        headers: { "Content-Type": "text/plain" },
-      }
-    );
+    const res = await requestOverpass(query, "POST");
     // Output should contain "Element count: X"
     console.log("Result:", res.data);
   } catch (e: any) {
