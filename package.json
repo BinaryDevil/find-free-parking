@@ -6,13 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "node scripts/check-diagnostics.mjs lint",
     "check-requests": "npx tsx scripts/automate_seeding.ts",
-    "test:overpass": "node --test tests/overpass.test.mjs"
+    "test:overpass": "node --test tests/overpass.test.mjs",
+    "lint:raw": "eslint",
+    "typecheck": "node scripts/check-diagnostics.mjs typecheck",
+    "typecheck:raw": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.559.0",
-    "maplibre-gl": "^5.14.0",
+    "maplibre-gl": "^6.13.0",
     "next": "16.4.0",
     "next-intl": "^4.14.9",
     "pg": "^8.23.1",
@@ -32,7 +36,7 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": "24.x",
+    "node": ">=24.11.1 <25",
     "pnpm": "10.x"
   },
   "packageManager": "pnpm@10.25.0"

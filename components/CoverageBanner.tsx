@@ -1,4 +1,5 @@
 import { MapPinOff, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type CoverageBannerProps = {
   isVisible: boolean;
@@ -11,6 +12,7 @@ export default function CoverageBanner({
   onDismiss,
   onRequest,
 }: CoverageBannerProps) {
+  const t = useTranslations("HomePage");
   if (!isVisible) return null;
 
   return (
@@ -18,17 +20,16 @@ export default function CoverageBanner({
       <div className="bg-slate-900/95 backdrop-blur text-white p-4 rounded-lg shadow-lg border border-slate-700 flex items-start gap-3">
         <MapPinOff className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
         <div className="flex-1">
-          <h3 className="font-semibold text-sm">Region Not Supported</h3>
+          <h3 className="font-semibold text-sm">{t("regionNotSupported")}</h3>
           <p className="text-xs text-slate-300 mt-1 mb-2">
-            It looks like you are outside our current coverage area. Map data
-            may be incomplete or missing here.
+            {t("regionNotSupportedDesc")}
           </p>
           {onRequest ? (
             <button
               onClick={onRequest}
               className="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-md font-medium transition-colors"
             >
-              Request Coverage
+              {t("requestCity")}
             </button>
           ) : null}
         </div>

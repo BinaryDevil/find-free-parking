@@ -1,0 +1,482 @@
+[
+  {
+    "file": "app/[locale]/layout.tsx",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'Metadata' is defined but never used.",
+    "source": "import type { Metadata } from \"next\";"
+  },
+  {
+    "file": "app/api/parking/zones/route.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "metadata: any;"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'e' is defined but never used.",
+    "source": "} catch (e) {"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "1:react-hooks/exhaustive-deps",
+    "message": "React Hook useEffect has a missing dependency: 'handleUseMyLocation'. Either include it or remove the dependency array.",
+    "source": "}, []);"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "1:react-hooks/exhaustive-deps",
+    "message": "React Hook useEffect has a missing dependency: 'loadSpots'. Either include it or remove the dependency array.",
+    "source": "}, [filterType, parkingTime]); // Add other dependencies if needed, but loadSpots uses map bounds so it's tricky."
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "1:react-hooks/exhaustive-deps",
+    "message": "React Hook useEffect has missing dependencies: 'appendPopupControls', 'appendWalkingInfo', 'initialCenter', 'initialZoom', 'loadSpots', and 't'. Either include them or remove the dependency array.",
+    "source": "}, [mapStyle]);"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "\"open-report-modal\" as any,"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "\"open-report-modal\" as any,"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const clean: Record<string, any> = {};"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const sanitizeFeatureProperties = (props: Record<string, any>) => {"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "geometry: { type: \"Polygon\" | \"MultiPolygon\"; coordinates: any };"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "handleReportEvent as any"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "handleReportEvent as any"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "metadata?: any;"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "metadata?: any;"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "meter_infos?: string | any[];"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "schedules.forEach((s: any) => {"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "schedules?: string | any[]; // JSONB"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "schedules?: string | any[];"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "}) as any,"
+  },
+  {
+    "file": "components/MainMap.tsx",
+    "code": "2:react-hooks/set-state-in-effect",
+    "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n./components/MainMap.tsx:229:7\n  227 |     const seen = localStorage.getItem(\"find-free-parking-help-seen\");\n  228 |     if (seen !== \"true\") {\n> 229 |       setIsHelpOpen(true);\n      |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  230 |     }\n  231 |     const coverageSeen = sessionStorage.getItem(\"coverage-banner-dismissed\");\n  232 |     if (coverageSeen === \"true\") {",
+    "source": "setIsHelpOpen(true);"
+  },
+  {
+    "file": "components/ReportModal.tsx",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (err: any) {"
+  },
+  {
+    "file": "components/ReportModal.tsx",
+    "code": "2:react-hooks/set-state-in-effect",
+    "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n./components/ReportModal.tsx:58:9\n  56 |     if (isOpen) {\n  57 |       if (defaultStatus) {\n> 58 |         setStatus(defaultStatus);\n     |         ^^^^^^^^^ Avoid calling setState() directly within an effect\n  59 |       } else {\n  60 |         setStatus(\"FREE\");\n  61 |       }",
+    "source": "setStatus(defaultStatus);"
+  },
+  {
+    "file": "components/ReportModal.tsx",
+    "code": "2:react-hooks/set-state-in-effect",
+    "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n./components/ReportModal.tsx:72:5\n  70 |   // When status changes, reset reason selection\n  71 |   useEffect(() => {\n> 72 |     setSelectedReasonOption(\"\");\n     |     ^^^^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  73 |     setReason(\"\");\n  74 |   }, [status]);\n  75 |",
+    "source": "setSelectedReasonOption(\"\");"
+  },
+  {
+    "file": "i18n/request.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "if (!locale || !routing.locales.includes(locale as any)) {"
+  },
+  {
+    "file": "lib/db.ts",
+    "code": "1:eslint-directive",
+    "message": "Unused eslint-disable directive (no problems were reported from 'no-var').",
+    "source": "// eslint-disable-next-line no-var"
+  },
+  {
+    "file": "scripts/debug_osm.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/debug_surrey_langley.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/debug_surrey_langley.ts",
+    "code": "2:prefer-const",
+    "message": "'areaFilter' is never reassigned. Use 'const' instead.",
+    "source": "areaFilter = `area[\"name\"=\"Metro Vancouver Regional District\"]->.state;`;"
+  },
+  {
+    "file": "scripts/generate_locales.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const translations: Record<string, any> = {"
+  },
+  {
+    "file": "scripts/seed_amsterdam.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_ashburn.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_aspen.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_bellevue.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'pool' is assigned a value but never used.",
+    "source": "const pool = getDbPool();"
+  },
+  {
+    "file": "scripts/seed_boardman.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_coquitlam.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'isPoint' is assigned a value but never used.",
+    "source": "const isPoint = item.geometry.type === \"Point\";"
+  },
+  {
+    "file": "scripts/seed_coquitlam.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_coquitlam.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "return (await res.json()) as any; // FeatureCollection"
+  },
+  {
+    "file": "scripts/seed_council_bluffs.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_kirkland.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_kirkland.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_maple_ridge.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_new_york.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_north_vancouver.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'fs' is defined but never used.",
+    "source": "import fs from \"fs\";"
+  },
+  {
+    "file": "scripts/seed_north_vancouver.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'path' is defined but never used.",
+    "source": "import path from \"path\";"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'defaultProps' is assigned a value but never used.",
+    "source": "const defaultProps = {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'queryName' is assigned a value but never used.",
+    "source": "queryName: string | null = null"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": ".map((p: any) => `${p.lon} ${p.lat}`)"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "coordinates = el.geometry.map((pt: any) => `${pt.lon} ${pt.lat}`);"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "function mapOsmToZoneType(tags: any): string | null {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "let coordinates: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "return elements.filter((e: any) => e.type === \"way\");"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "return elements.filter((e: any) => e.type === \"way\");"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (err: any) {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (err: any) {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (err: any) {"
+  },
+  {
+    "file": "scripts/seed_osm_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (error: any) {"
+  },
+  {
+    "file": "scripts/seed_redmond.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const data = (await res.json()) as any;"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const parseTime = (val: any) => {"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const schedules: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "return (await res.json()) as any;"
+  },
+  {
+    "file": "scripts/seed_seattle.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_utils.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "export function normalizeTime(val: any): string | null {"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'e' is defined but never used.",
+    "source": "} catch (e) {"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'e' is defined but never used.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "1:@typescript-eslint/no-unused-vars",
+    "message": "'seedOsmStreets' is defined but never used.",
+    "source": "seedOsmStreets,"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const rule: any = {"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "const values: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "data = (await res.json()) as any[];"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "let data: any[] = [];"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "mapper: (item: any) => any[] | null"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "mapper: (item: any) => any[] | null"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_vancouver.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  },
+  {
+    "file": "scripts/seed_warsaw.ts",
+    "code": "2:@typescript-eslint/no-explicit-any",
+    "message": "Unexpected any. Specify a different type.",
+    "source": "} catch (e: any) {"
+  }
+]

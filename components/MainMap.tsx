@@ -2,21 +2,23 @@
 
 import "maplibre-gl/dist/maplibre-gl.css";
 
-import maplibregl, {
-  Map,
-  MapGeoJSONFeature,
-  StyleSpecification,
-} from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
+import { Map, MapGeoJSONFeature } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
 import { submitCoverageRequest } from "@/app/actions/request-coverage";
 import { LocateFixed, Loader2, Search } from "lucide-react";
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
 import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { classifyParking, isVisibleInParkingView, type ParkingClassification } from "@/lib/parking-classification";
+
+maplibregl.setWorkerUrl(
+  new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href
+);
 
 const DEFAULT_CENTER: [number, number] = [-123.1207, 49.2827]; // Vancouver
 const DEFAULT_ZOOM = 15;
@@ -40,24 +42,15 @@ function formatInputDateValue(date: Date) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-// Popups are built as HTML strings, so any value that comes from the database
-// (seeded from third-party open data) must be escaped before interpolation.
-function escapeHtml(value: unknown) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-// Inline handler for the "Update status" popup button. The detail object is
-// JSON-encoded and then HTML-escaped so it is safe inside a quoted attribute.
-function reportButtonOnClick(id: unknown, type: string, status: string) {
-  const detail = JSON.stringify({ id: String(id ?? ""), type, status });
-  return escapeHtml(
-    `window.dispatchEvent(new CustomEvent('open-report-modal', { detail: ${detail} }))`
-  );
+function popupElement<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  style: string,
+  text?: unknown
+) {
+  const element = document.createElement(tag);
+  element.style.cssText = style;
+  if (text !== undefined) element.textContent = String(text ?? "");
+  return element;
 }
 
 function formatDisplayDate(value: string, isCustom: boolean) {
@@ -70,6 +63,23 @@ function formatDisplayDate(value: string, isCustom: boolean) {
     minute: "2-digit",
   });
 }
+
+type MeterRow = {
+  id: string;
+  geom: SpotFeature["geometry"];
+  pay_station_id?: string;
+  meter_head?: string;
+  schedules?: unknown;
+  driver_warnings?: unknown;
+  raw_data?: Record<string, string> | string;
+};
+type StreetRow = {
+  id: string;
+  geom: { type: "LineString"; coordinates: [number, number][] };
+  block_id: string;
+  street_use: string;
+  driver_warnings?: unknown;
+};
 
 type SpotFeature = {
   type: "Feature";
@@ -90,7 +100,8 @@ type SpotFeature = {
     credit_card?: boolean;
     rate?: string;
     report_counts?: string | Record<string, number>;
-    z_status_override?: "FREE" | "PAID" | null; // Calculated status
+    classification?: ParkingClassification;
+    driver_warnings?: unknown;
     schedules?: string | any[]; // JSONB
   };
 };
@@ -106,6 +117,7 @@ type ZoneFeature = {
     timeLimitMinutes?: number | null;
     notes?: string | null;
     metadata?: any;
+    classification?: ParkingClassification;
   };
 };
 
@@ -117,9 +129,9 @@ type StreetFeature = {
     block_id: string;
     street_use: string;
     meter_infos?: string | any[];
-    is_free?: boolean; // Calculated on client
+    classification?: ParkingClassification;
+    driver_warnings?: unknown;
     report_counts?: string | Record<string, number>;
-    z_status_override?: "FREE" | "PAID" | null;
     schedules?: string | any[];
   };
 };
@@ -136,6 +148,8 @@ export default function MainMap({
   cityName,
 }: MainMapProps) {
   const t = useTranslations("HomePage");
+  const locale = useLocale();
+  const initialCenterRef = useRef(initialCenter);
   const mapRef = useRef<Map | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
@@ -144,6 +158,7 @@ export default function MainMap({
     meters: 0,
     streets: 0,
     zones: 0,
+    unknown: 0,
   });
   const [searchQuery, setSearchQuery] = useState("");
   const [isLocating, setIsLocating] = useState(false);
@@ -221,7 +236,7 @@ export default function MainMap({
     // Auto-locate on load without blocking UI
     // We do this silently (visualizePitch: false logic?) or just reuse handleUseMyLocation
     // But handleUseMyLocation sets 'isLocating' spinner. That is fine.
-    handleUseMyLocation(true);
+    if (!initialCenterRef.current) handleUseMyLocation(true);
 
     // Event listener for report modal
     const handleReportEvent = (e: CustomEvent) => {
@@ -275,6 +290,79 @@ export default function MainMap({
     };
   }
 
+  function appendWalkingInfo(content: HTMLElement, coords: [number, number]) {
+    const dest = destinationLocationRef.current;
+    if (!dest) return;
+    const { distance, minutes } = getWalkingEstimates(coords, dest);
+    const walking = popupElement(
+      "div",
+      "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;"
+    );
+    walking.append(
+      popupElement(
+        "div",
+        "font-weight:600;font-size:13px;color:#0f172a;",
+        t("toDestination")
+      ),
+      popupElement(
+        "div",
+        "font-size:13px;color:#475569;",
+        `🚶 ${t("walkEstimates", { minutes, distance })}`
+      )
+    );
+    content.append(walking);
+  }
+
+  const appendDriverWarnings = useEffectEvent((content: HTMLElement, raw: unknown) => {
+    let warnings = raw;
+    if (typeof warnings === "string") {
+      try { warnings = JSON.parse(warnings); } catch { return; }
+    }
+    if (!Array.isArray(warnings)) return;
+    const statuses: Record<string, string> = {
+      FREE: t("free"), PAID: t("paid"), NO_PARKING: t("noParkingReported"),
+    };
+    for (const warning of warnings) {
+      if (!warning || typeof warning !== "object" || !statuses[warning.status]) continue;
+      const date = new Date(warning.latest_at);
+      if (!Number.isFinite(date.getTime())) continue;
+      content.append(popupElement("div", "margin-top:8px;color:#92400e;font-size:12px;",
+        t("driverWarning", { status: statuses[warning.status], count: warning.count,
+          date: date.toLocaleDateString(locale) })));
+    }
+  });
+
+  function appendPopupControls(
+    content: HTMLElement,
+    coords: [number, number],
+    id: unknown,
+    type: "METER" | "ZONE" | "STREET",
+    status: "FREE" | "PAID"
+  ) {
+    const directions = popupElement(
+      "a",
+      "display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;",
+      t("getDirections")
+    );
+    directions.href = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
+    directions.target = "_blank";
+    directions.rel = "noopener noreferrer";
+    const report = popupElement(
+      "button",
+      "display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;",
+      t("updateStatus")
+    );
+    report.type = "button";
+    report.addEventListener("click", () => {
+      window.dispatchEvent(
+        new CustomEvent("open-report-modal", {
+          detail: { id: String(id ?? ""), type, status },
+        })
+      );
+    });
+    content.append(directions, report);
+  }
+
   const mapStyle = useMemo(() => {
     const key =
       process.env.NEXT_PUBLIC_MAPTILER_KEY ??
@@ -284,7 +372,7 @@ export default function MainMap({
       return `https://api.maptiler.com/maps/streets-v2/style.json?key=${key}`;
     }
     // Fallback raster OSM tiles for local dev without a key.
-    const fallbackStyle: StyleSpecification = {
+    const fallbackStyle: ReturnType<Map["getStyle"]> = {
       version: 8,
       sources: {
         osm: {
@@ -318,8 +406,8 @@ export default function MainMap({
       attributionControl: false,
     });
 
-    // Set padding to avoid UI overlapping popups (Search bar + Filters)
-    map.setPadding({ top: 180 });
+    // Leave room for the search, city Coverage label, filters and counts.
+    map.setPadding({ top: 260 });
 
     map.addControl(
       new maplibregl.NavigationControl({ visualizePitch: true }),
@@ -359,13 +447,11 @@ export default function MainMap({
         paint: {
           "fill-color": [
             "match",
-            ["get", "type"],
-            ["FREE_UNLIMITED", "FREE_LIMITED", "EV_FREE"],
+            ["get", "classification"],
+            "FREE",
             "#16a34a",
-            ["PAID", "MIXED"],
+            "PAID",
             "#ef4444",
-            ["PERMIT_ONLY"],
-            "#eab308",
             "#94a3b8", // Default gray
           ],
           "fill-opacity": 0.4,
@@ -378,13 +464,11 @@ export default function MainMap({
         paint: {
           "line-color": [
             "match",
-            ["get", "type"],
-            ["FREE_UNLIMITED", "FREE_LIMITED", "EV_FREE"],
+            ["get", "classification"],
+            "FREE",
             "#15803d",
-            ["PAID", "MIXED"],
+            "PAID",
             "#b91c1c",
-            ["PERMIT_ONLY"],
-            "#ca8a04",
             "#64748b",
           ],
           "line-width": 2,
@@ -422,12 +506,8 @@ export default function MainMap({
           "line-cap": "round",
         },
         paint: {
-          "line-color": [
-            "case",
-            ["==", ["get", "is_free"], true],
-            "#00A651", // High contrast accessible Green
-            "#DC2626", // High contrast Red
-          ],
+          "line-color": ["match", ["get", "classification"], "FREE", "#00A651", "PAID", "#DC2626", "#64748b"],
+          "line-dasharray": ["case", ["==", ["get", "classification"], "UNKNOWN"], ["literal", [2, 2]], ["literal", [1, 0]]],
           "line-width": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -478,7 +558,7 @@ export default function MainMap({
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-radius": 6,
-          "circle-color": "#16a34a",
+          "circle-color": ["match", ["get", "classification"], "FREE", "#16a34a", "PAID", "#DC2626", "#64748b"],
           "circle-stroke-color": "#fff",
           "circle-stroke-width": 1.5,
         },
@@ -505,8 +585,34 @@ export default function MainMap({
         if (!coords) return;
         const props = feature.properties ?? {};
 
+        const content = popupElement(
+          "div",
+          "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
+        );
+        content.append(
+          popupElement(
+            "div",
+            "font-weight:600;color:#0f172a",
+            props.classification === "PAID" ? t("paymentListed") : t("unknown")
+          ),
+          popupElement(
+            "div",
+            "color:#475569",
+            props.location_desc ?? props.city ?? ""
+          )
+        );
+        appendWalkingInfo(content, coords as [number, number]);
+        if (props.timeLimitMinutes) {
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#1f2937",
+              t("timeLimitLabel", { minutes: props.timeLimitMinutes })
+            )
+          );
+        }
+
         // Parse schedules if generic data
-        let rulesHtml = "";
         let schedules = [];
         try {
           if (typeof props.schedules === "string") {
@@ -517,112 +623,69 @@ export default function MainMap({
         } catch (e) {
           /* ignore */
         }
-
         if (schedules.length > 0) {
-          rulesHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">Rates:</div>`;
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:8px;font-size:12px;color:#1f2937;font-weight:600",
+              "Rates:"
+            )
+          );
           schedules.forEach((s: any) => {
             const days = Array.isArray(s.days) ? s.days.join(", ") : s.days;
             const rateDisplay = s.rate
               ? `$${parseFloat(s.rate).toFixed(2)}/hr`
-              : "Free";
-            rulesHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                    📅 ${escapeHtml(days)}<br>
-                    ⏱ ${escapeHtml(s.start)} - ${escapeHtml(s.end)}: <b>${escapeHtml(rateDisplay)}</b>
-                </div>`;
+              : t("unknown");
+            const rule = popupElement(
+              "div",
+              "color:#4b5563;font-size:12px;margin-top:2px;"
+            );
+            const day = popupElement("span", "", `📅 ${days ?? ""}`);
+            const hours = popupElement(
+              "span",
+              "",
+              `⏱ ${s.start ?? ""} - ${s.end ?? ""}: `
+            );
+            rule.append(
+              day,
+              document.createElement("br"),
+              hours,
+              popupElement("b", "", rateDisplay)
+            );
+            content.append(rule);
           });
         } else if (props.rate) {
-          // Fallback if legacy or raw rate field still exists in prop mapping (it shouldn't generally but just in case)
-          rulesHtml += `<div style="margin-top:4px;color:#475569">${t("rate", {
-            rate: escapeHtml(props.rate),
-          })}</div>`;
-        }
-
-        // Calculate walking info if destination is set
-        let walkingHtml = "";
-        const dest = destinationLocationRef.current;
-        if (dest) {
-          const { distance, minutes } = getWalkingEstimates(
-            coords as [number, number],
-            dest
+          content.append(
+            popupElement(
+              "div",
+              "margin-top:4px;color:#475569",
+              t("rate", { rate: props.rate })
+            )
           );
-          walkingHtml = `
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
-                "toDestination"
-              )}</div>
-              <div style="font-size:13px;color:#475569;">
-                🚶 ${t("walkEstimates", {
-                  minutes: minutes,
-                  distance: distance,
-                })}
-              </div>
-            </div>
-          `;
         }
-
+        if (props.notes) {
+          content.append(
+            popupElement("div", "margin-top:4px;color:#4b5563", props.notes)
+          );
+        }
+        appendDriverWarnings(content, props.driver_warnings);
+        content.append(
+          popupElement(
+            "div",
+            "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
+            t("unknownGuidance")
+          )
+        );
+        appendPopupControls(
+          content,
+          coords as [number, number],
+          props.id,
+          "METER",
+          filterTypeRef.current
+        );
         new maplibregl.Popup()
           .setLngLat(coords as [number, number])
-          .setHTML(
-            `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">
-               <div style="font-weight:600;color:#0f172a">${escapeHtml(
-                 props.type ?? t("parkingLot")
-               )}</div>
-               <div style="color:#475569">${escapeHtml(
-                 props.location_desc ?? props.city ?? ""
-               )}</div>
-               ${walkingHtml}
-               ${
-                 props.timeLimitMinutes
-                   ? `<div style="margin-top:4px;color:#1f2937">${t(
-                       "timeLimitLabel",
-                       { minutes: props.timeLimitMinutes }
-                     )}</div>`
-                   : ""
-               }
-                ${rulesHtml}
-                ${
-                  props.notes
-                    ? `<div style="margin-top:4px;color:#4b5563">${escapeHtml(
-                        props.notes
-                      )}</div>`
-                    : ""
-                }
-                ${
-                  props.z_status_override === "FREE"
-                    ? `<div style="margin-top:4px;color:#16a34a;font-weight:600;font-size:12px">✓ ${t(
-                        "verifiedFreeCommunity"
-                      )}</div>`
-                    : ""
-                }
-                ${
-                  props.z_status_override === "PAID"
-                    ? `<div style="margin-top:4px;color:#eab308;font-weight:600;font-size:12px">⚠️ ${t(
-                        "reportedPaidCommunity"
-                      )}</div>`
-                    : ""
-                }
-                <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-                  ⚠️ ${t("checkRushHour")}
-                </div>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=${
-                  coords[1]
-                },${
-              coords[0]
-            }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-                  ${t("getDirections")}
-                </a>
-                <button 
-                  onclick="${reportButtonOnClick(
-                    props.id,
-                    "METER",
-                    filterTypeRef.current
-                  )}"
-                  style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
-                >
-                  ${t("updateStatus")}
-                </button>
-             </div>`
-          )
+          .setDOMContent(content)
           .addTo(map);
       });
 
@@ -653,151 +716,28 @@ export default function MainMap({
         if (!feature) return;
 
         const props = feature.properties ?? {};
-        const zoneType = props.type as string;
-        const reportCounts = props.report_counts
-          ? typeof props.report_counts === "string"
-            ? JSON.parse(props.report_counts)
-            : props.report_counts
-          : {};
-        const reportedFree = (reportCounts["FREE"] || 0) >= 3;
-        const reportedPaid = (reportCounts["PAID"] || 0) >= 3;
-
-        // Determine display status
-        const isFreeType = [
-          "FREE_UNLIMITED",
-          "FREE_LIMITED",
-          "EV_FREE",
-        ].includes(zoneType);
-        const isPaidType = ["PAID", "MIXED", "PERMIT_ONLY"].includes(zoneType);
-
-        let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
-
-        // Header with icon
-        let headerIcon = "🅿️";
-        let headerText = props.name || t("parkingLot");
-        let headerColor = "#0f172a";
-
-        if (reportedFree) {
-          headerIcon = "✅";
-          headerColor = "#16a34a";
-        } else if (reportedPaid) {
-          headerIcon = "💲";
-          headerColor = "#dc2626";
-        } else if (isFreeType) {
-          headerIcon = "🅿️";
-          headerColor = "#16a34a";
-        } else if (isPaidType) {
-          headerIcon = "💲";
-          headerColor = "#dc2626";
-        }
-
-        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:${headerColor}">${headerIcon} ${escapeHtml(headerText)}</div>`;
-
-        // Type and City - use friendly labels
-        const friendlyType: Record<string, string> = {
-          FREE_UNLIMITED: t("freeParking"),
-          FREE_LIMITED: t("freeLimited"),
-          EV_FREE: t("evFree"),
-          PAID: t("paidParking"),
-          PERMIT_ONLY: t("permit"),
-          MIXED: t("mixed"),
-        };
-        const typeLabel = friendlyType[zoneType] || t("parkingLot");
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(typeLabel)} • ${escapeHtml(
-          props.city ?? ""
-        )}</div>`;
-
-        // Walking info if destination set
-        const dest = destinationLocationRef.current;
-        if (dest) {
-          const { distance, minutes } = getWalkingEstimates(
-            [e.lngLat.lng, e.lngLat.lat],
-            dest
-          );
-          contentHtml += `
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
-                "toDestination"
-              )}</div>
-              <div style="font-size:13px;color:#475569;">
-                🚶 ${t("walkEstimates", {
-                  minutes: minutes,
-                  distance: distance,
-                })}
-              </div>
-            </div>
-          `;
-        }
-
-        // Time limit info
-        if (props.timeLimitMinutes) {
-          contentHtml += `<div style="margin-top:8px;color:#1f2937;font-size:13px;">⏱ ${t(
-            "timeLimitLabel",
-            { minutes: props.timeLimitMinutes }
-          )}</div>`;
-        }
-
-        // Status explanation
-        if (reportedFree) {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ ${t(
-            "verifiedFreeCommunity"
-          )}</div>`;
-        } else if (reportedPaid) {
-          contentHtml += `<div style="margin-top:8px;color:#dc2626;font-weight:600;font-size:12px">⚠️ ${t(
-            "reportedPaidCommunity"
-          )}</div>`;
-        } else if (isFreeType) {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
-            "likelyFree"
-          )}</div>`;
-        } else if (zoneType === "MIXED") {
-          contentHtml += `<div style="margin-top:8px;color:#eab308;font-size:13px;">${t(
-            "mixedRulesDetails"
-          )}</div>`;
-        } else {
-          contentHtml += `<div style="margin-top:8px;color:#475569;font-size:13px;">${t(
-            "mayRequirePayment"
-          )}</div>`;
-        }
-
-        // Notes
-        if (props.notes) {
-          contentHtml += `<div style="margin-top:4px;color:#4b5563;font-size:12px;">${escapeHtml(
-            props.notes
-          )}</div>`;
-        }
-
-        // Warning
-        contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-          ⚠️ ${t("verificationRequired")}
-        </div>`;
-
-        // Directions Button
-        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${
-          e.lngLat.lat
-        },${
-          e.lngLat.lng
-        }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-          ${t("getDirections")}
-        </a>`;
-
-        // Update Status Button
-        contentHtml += `<button 
-          onclick="${reportButtonOnClick(
-            props.id,
-            "ZONE",
-            isFreeType ? "FREE" : "PAID"
-          )}"
-          style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
-        >
-          ${t("updateStatus")}
-        </button>`;
-
-        contentHtml += `</div>`;
-
+        const content = popupElement(
+          "div",
+          "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
+        );
+        content.append(
+          popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", props.name || t("parkingLot")),
+          popupElement("div", "margin-top:4px;color:#64748b", t("unknown")),
+          popupElement("div", "margin-top:8px;color:#475569", t("unverifiedLot")),
+          popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
+        );
+        appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
+        appendDriverWarnings(content, props.driver_warnings);
+        appendPopupControls(
+          content,
+          [e.lngLat.lng, e.lngLat.lat],
+          props.id,
+          "ZONE",
+          "PAID"
+        );
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(contentHtml)
+          .setDOMContent(content)
           .addTo(map);
       });
 
@@ -807,151 +747,27 @@ export default function MainMap({
         if (!feature) return;
 
         const props = feature.properties ?? {};
-        const isFree = props.is_free;
-        let meterInfos: any[] = [];
-        try {
-          if (typeof props.meter_infos === "string") {
-            meterInfos = JSON.parse(props.meter_infos);
-          } else if (Array.isArray(props.meter_infos)) {
-            meterInfos = props.meter_infos;
-          }
-        } catch (e) {
-          console.error("Error parsing meter_infos", e);
-        }
-
-        let contentHtml = `<div style="font-family:system-ui,sans-serif;font-size:14px;line-height:1.4">`;
-
-        // Header
-        contentHtml += `<div style="font-weight:600;font-size:15px;margin-bottom:4px;color:#0f172a">${
-          isFree ? `🅿️ ${t("freeStreetParking")}` : `💲 ${t("paidRestricted")}`
-        }</div>`;
-
-        // Street Use / Block info
-        contentHtml += `<div style="color:#475569;font-size:12px;margin-bottom:4px;">${escapeHtml(
-          props.block_id ?? t("unknownLocation")
-        )}</div>`;
-
-        // Calculate walking info if destination is set
-        const dest = destinationLocationRef.current;
-        if (dest) {
-          const { distance, minutes } = getWalkingEstimates(
-            [e.lngLat.lng, e.lngLat.lat],
-            dest
-          );
-          contentHtml += `
-            <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;">
-              <div style="font-weight:600;font-size:13px;color:#0f172a;">${t(
-                "toDestination"
-              )}</div>
-              <div style="font-size:13px;color:#475569;">
-                🚶 ${t("walkEstimates", {
-                  minutes: minutes,
-                  distance: distance,
-                })}
-              </div>
-            </div>
-          `;
-        }
-
-        // Meter Infos
-        if (meterInfos.length > 0) {
-          const currentDateTime = getEffectiveParkingTime();
-          let activeRules: any[] = [];
-
-          // Flatten and Deduplicate Rules
-          const uniqueRules = new Set<string>();
-          meterInfos.forEach((schedules: any) => {
-            if (Array.isArray(schedules)) {
-              schedules.forEach((rule) => {
-                const ruleStr = JSON.stringify(rule);
-                if (!uniqueRules.has(ruleStr)) {
-                  uniqueRules.add(ruleStr);
-                  // Check if active
-                  // We can reuse isScheduleActive for single rule array
-                  if (isScheduleActive([rule], currentDateTime)) {
-                    activeRules.push(rule);
-                  }
-                }
-              });
-            }
-          });
-
-          if (activeRules.length > 0) {
-            contentHtml += `<div style="margin-top:8px;font-size:12px;color:#1f2937;font-weight:600">${t(
-              "activeRates"
-            )}</div>`;
-            activeRules.forEach((rule) => {
-              const rateDisplay = rule.rate
-                ? `$${parseFloat(rule.rate).toFixed(2)}/hr`
-                : t("paid");
-              const days = Array.isArray(rule.days)
-                ? rule.days.join(", ")
-                : rule.days;
-              contentHtml += `<div style="color:#4b5563;font-size:12px;margin-top:2px;">
-                     ⏱ ${escapeHtml(rule.start)} - ${escapeHtml(
-                       rule.end
-                     )}: <b>${escapeHtml(rateDisplay)}</b>
-                   </div>`;
-            });
-          } else {
-            // Meters present but none active (Free)
-            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
-              "likelyFreeOutsideMeter"
-            )}</div>`;
-          }
-        } else {
-          if (isFree) {
-            contentHtml += `<div style="margin-top:8px;color:#16a34a;font-size:13px;">${t(
-              "likelyFreeStreet"
-            )}</div>`;
-          } else {
-            contentHtml += `<div style="margin-top:8px;color:#ef4444;font-size:13px;">${t(
-              "restrictionsApply"
-            )}</div>`;
-          }
-        }
-
-        // Status explanation
-        if (props.z_status_override === "FREE") {
-          contentHtml += `<div style="margin-top:8px;color:#16a34a;font-weight:600;font-size:12px">✅ ${t(
-            "verifiedFreeCommunity"
-          )}</div>`;
-        }
-        if (props.z_status_override === "PAID") {
-          contentHtml += `<div style="margin-top:8px;color:#eab308;font-weight:600;font-size:12px">⚠️ ${t(
-            "reportedPaidCommunity"
-          )}</div>`;
-        }
-
-        contentHtml += `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;">
-          ⚠️ ${t("verificationRequired")}
-        </div>`;
-
-        // Directions Button
-        contentHtml += `<a href="https://www.google.com/maps/dir/?api=1&destination=${
-          e.lngLat.lat
-        },${
-          e.lngLat.lng
-        }" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;background:#2563eb;color:#fff;text-align:center;padding:8px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-          ${t("getDirections")}
-        </a>`;
-
-        contentHtml += `<button 
-          onclick="${reportButtonOnClick(
-            props.id,
-            "STREET",
-            isFree ? "FREE" : "PAID"
-          )}"
-          style="display:block;width:100%;margin-top:8px;background:#f1f5f9;color:#475569;text-align:center;padding:8px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;"
-        >
-          ${t("updateStatus")}
-        </button>`;
-
-        contentHtml += `</div>`;
-
+        const content = popupElement(
+          "div",
+          "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
+        );
+        content.append(
+          popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", t("unknown")),
+          popupElement("div", "color:#475569;font-size:12px", props.block_id ?? t("unknownLocation")),
+          popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
+        );
+        appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
+        appendDriverWarnings(content, props.driver_warnings);
+        appendPopupControls(
+          content,
+          [e.lngLat.lng, e.lngLat.lat],
+          props.id,
+          "STREET",
+          "PAID"
+        );
         new maplibregl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(contentHtml)
+          .setDOMContent(content)
           .addTo(map);
       });
 
@@ -1052,42 +868,6 @@ export default function MainMap({
     return clean;
   };
 
-  // Helper to check schedules (Global Schema)
-  const isScheduleActive = (schedules: any[], now: Date): boolean => {
-    if (!Array.isArray(schedules) || schedules.length === 0) return false;
-
-    // Map JS day (0=Sun) to Schedule day strings
-    const dayMap = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const currentDay = dayMap[now.getDay()];
-    // HH:MM
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-    const parseMinutes = (timeStr: string) => {
-      const [h, m] = timeStr.split(":").map(Number);
-      return h * 60 + m;
-    };
-
-    // Check if ANY rule matches
-    return schedules.some((rule: any) => {
-      // 1. Day Check
-      if (rule.days && !rule.days.includes(currentDay)) return false;
-
-      // 2. Time Check
-      if (rule.start && rule.end) {
-        const start = parseMinutes(rule.start);
-        const end = parseMinutes(rule.end);
-        if (!Number.isFinite(start) || !Number.isFinite(end)) return false;
-        // Overnight ranges such as 18:00-02:00 wrap past midnight.
-        if (end <= start) {
-          return currentMinutes >= start || currentMinutes < end;
-        }
-        return currentMinutes >= start && currentMinutes < end;
-      }
-      return false; // No time range? assume not active/free? Or active all day?
-      // Safest to assume inactive if malformed.
-    });
-  };
-
   async function loadSpots(map: Map) {
     const bounds = map.getBounds();
     // Using simple query params for API
@@ -1111,8 +891,8 @@ export default function MainMap({
       const data = await res.json();
       if (isStale()) return;
 
-      const meters = (data.meters ?? []) as SpotFeature[];
-      const streets = (data.streets ?? []) as StreetFeature[];
+      const meters = (data.meters ?? []) as MeterRow[];
+      const streets = (data.streets ?? []) as StreetRow[];
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
@@ -1120,45 +900,20 @@ export default function MainMap({
 
       // --- Process Meters ---
       // 1. Filter raw meters based on logic
-      const filteredMeters = meters.filter((m: any) => {
-        const counts = m.report_counts ?? {};
-        const reportedFree = (counts["FREE"] || 0) >= 3;
-        const reportedPaid = (counts["PAID"] || 0) >= 3;
-
-        // Calculate status override for visual use later
-        if (reportedPaid) m.z_status_override = "PAID";
-        if (reportedFree) m.z_status_override = "FREE";
-
-        let isActive = false;
-        const hasSchedules =
-          Array.isArray(m.schedules) && m.schedules.length > 0;
-        // Prioritize Schedules (New Schema)
-        if (hasSchedules) {
-          isActive = isScheduleActive(m.schedules, currentDateTime);
-        }
-
-        if (filterTypeRef.current === "FREE") {
-          if (reportedPaid) return false;
-          if (reportedFree) return true;
-          // A meter without schedule data is unknown, not free
-          // (docs/adr/0001-verified-rules-only.md).
-          return hasSchedules && !isActive;
-        } else {
-          if (reportedFree) return false;
-          if (reportedPaid) return true;
-          return isActive;
-        }
-      });
+      const filteredMeters = meters.map((m) => ({
+        ...m,
+        classification: classifyParking("METER", m, currentDateTime),
+      })).filter((m) => isVisibleInParkingView(m.classification, filterTypeRef.current));
 
       // 2. Map valid meters to features (Sanitize properties)
-      const meterFeatures: SpotFeature[] = filteredMeters.map((m: any) => {
-        let raw = m.raw_data || {};
+      const meterFeatures: SpotFeature[] = filteredMeters.map((m) => {
+        let raw: Record<string, string> = {};
         // If raw_data came as string (unlikely with pg jsonb but possible in some adapters), parse it
-        if (typeof raw === "string") {
+        if (typeof m.raw_data === "string") {
           try {
-            raw = JSON.parse(raw);
-          } catch (e) {}
-        }
+            raw = JSON.parse(m.raw_data);
+          } catch { /* Unparsed source text cannot establish permission. */ }
+        } else raw = m.raw_data || {};
 
         return {
           type: "Feature",
@@ -1169,9 +924,9 @@ export default function MainMap({
             type: "Meter",
             pay_station_id: m.pay_station_id,
             meter_head: m.meter_head,
-            report_counts: m.report_counts,
+            driver_warnings: m.driver_warnings,
             schedules: m.schedules,
-            z_status_override: m.z_status_override,
+            classification: m.classification,
             notes: raw.payment_info, // Use payment info as notes/subtitle context
             location_desc: raw.on_street, // Capture street name if available
           }) as any,
@@ -1190,90 +945,24 @@ export default function MainMap({
           features: meterFeatures,
         });
       }
-      const meterCount = meterFeatures.length;
+      const meterCount = filteredMeters.filter((m) => m.classification === filterTypeRef.current).length;
+      let unknownCount = filteredMeters.filter((m) => m.classification === "UNKNOWN").length;
 
-      // --- Process Streets ---
-      // 1. Map street logic (calculate is_free and is_paid)
-      // 1. Map street logic (calculate is_free and is_paid)
-      const processedStreets = streets.map((s: any) => {
-        const meterInfos = s.meter_infos ?? [];
-        const counts = s.report_counts ?? {};
-        const reportedFree = (counts["FREE"] || 0) >= 3;
-        const reportedPaid = (counts["PAID"] || 0) >= 3;
-        const streetName = (s.block_id || "").toUpperCase();
-
-        let isFree = false;
-        let isPaid = false;
-
-        // Blacklist specific keywords to prevent false positives (e.g. Bridges matching meters below them)
-        const isExcluded = ["BRIDGE", "VIADUCT", "TUNNEL", "HIGHWAY"].some(
-          (k) => streetName.includes(k)
-        );
-
-        if (!isExcluded) {
-          const freeStreetTypes = [
-            "Residential",
-            "Unrestricted",
-            "Time Limited",
-          ];
-
-          // Determine Paid Status: Has meters OR is explicitly marked Paid
-          if (meterInfos.length > 0 || s.street_use === "Paid") {
-            isPaid = true;
-          }
-
-          // Determine Free Status: No meters AND is a known free type
-          if (
-            meterInfos.length === 0 &&
-            freeStreetTypes.includes(s.street_use)
-          ) {
-            isFree = true;
-          }
-        }
-
-        // User Reports Override (Can override exclusions if community verifies)
-        if (reportedPaid) {
-          isFree = false;
-          isPaid = true;
-        }
-        if (reportedFree) {
-          isFree = true;
-          isPaid = false;
-        }
-
-        let overrideStatus: "FREE" | "PAID" | undefined;
-        if (reportedPaid) overrideStatus = "PAID";
-        if (reportedFree) overrideStatus = "FREE";
-
-        return {
-          ...s,
-          is_free: isFree,
-          is_paid: isPaid,
-          z_status_override: overrideStatus,
-        };
-      });
-
-      // 2. Filter streets
-      const filteredStreets = processedStreets.filter((s: any) => {
-        if (filterTypeRef.current === "FREE") return s.is_free;
-        if (filterTypeRef.current === "PAID") return s.is_paid;
-        return false;
-      });
-
-      // 3. Map to GeoJSON features (Sanitize properties)
-      const streetFeatures: StreetFeature[] = filteredStreets.map((s: any) => ({
+      // Nearby meters and road categories do not establish a street rule.
+      const filteredStreets = streets.map((s) => ({
+        ...s,
+        classification: classifyParking("STREET", s, currentDateTime),
+      })).filter((s) => isVisibleInParkingView(s.classification, filterTypeRef.current));
+      const streetFeatures: StreetFeature[] = filteredStreets.map((s) => ({
         type: "Feature",
         geometry: s.geom,
         properties: sanitizeFeatureProperties({
           id: s.id,
           block_id: s.block_id,
           street_use: s.street_use,
-          is_free: s.is_free,
-          z_status_override: s.z_status_override,
-          meter_infos: s.meter_infos,
-          report_counts: s.report_counts,
-          schedules: s.schedules,
-        }) as any,
+          classification: s.classification,
+          driver_warnings: s.driver_warnings,
+        }) as StreetFeature["properties"],
       }));
 
       const streetSource = map.getSource("streets") as
@@ -1286,14 +975,15 @@ export default function MainMap({
           features: streetFeatures,
         });
       }
-      const streetCount = streetFeatures.length;
+      const streetCount = filteredStreets.filter((s) => s.classification === filterTypeRef.current).length;
+      unknownCount += filteredStreets.filter((s) => s.classification === "UNKNOWN").length;
 
       let zoneCount = 0;
 
       // 2. Fetch Parking Zones (Lots)
       const bboxParam = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
       const zonesRes = await fetch(
-        `/api/parking/zones?bbox=${bboxParam}&type=${filterTypeRef.current}&limit=500`
+        `/api/parking/zones?bbox=${bboxParam}&limit=200`
       );
       if (isStale()) return;
       if (zonesRes.ok) {
@@ -1304,16 +994,20 @@ export default function MainMap({
           | undefined;
         if (zonesSource) {
           const rawFeatures = zonesData.features ?? [];
-          const zoneFeatures = rawFeatures.map((f: any) => ({
+          const zoneFeatures = rawFeatures.map((f: ZoneFeature) => ({
             ...f,
-            properties: sanitizeFeatureProperties(f.properties),
+            properties: sanitizeFeatureProperties({
+              ...f.properties,
+              classification: classifyParking("ZONE", f.properties, currentDateTime),
+            }),
           }));
 
           zonesSource.setData({
             type: "FeatureCollection",
             features: zoneFeatures,
           });
-          zoneCount = zoneFeatures.length;
+          zoneCount = zoneFeatures.filter((f: ZoneFeature) => f.properties.classification === filterTypeRef.current).length;
+          unknownCount += zoneFeatures.filter((f: ZoneFeature) => f.properties.classification === "UNKNOWN").length;
         }
       }
 
@@ -1321,6 +1015,7 @@ export default function MainMap({
         meters: meterCount,
         streets: streetCount,
         zones: zoneCount,
+        unknown: unknownCount,
       });
 
       setStatus("idle");
@@ -1393,7 +1088,7 @@ export default function MainMap({
         // Check coverage
         if (!coverageDismissed) {
           try {
-            const result = await checkCoverage(coords[1], coords[0]);
+            const result = await checkCoverage();
             if (!result.isCovered) {
               setShowCoverageBanner(true);
             } else {
@@ -1521,6 +1216,7 @@ export default function MainMap({
               )}
             </button>
           </form>
+          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{t("cityNotCovered", { city: cityName })}</p> : null}
           <div className="mt-3 w-full">
             <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">
@@ -1594,6 +1290,7 @@ export default function MainMap({
                       .filter(Boolean)
                       .join(" · ") || t("noneFound")
                   }`}
+              {featureCounts.unknown > 0 ? ` · ${t("unknownCount", { count: featureCounts.unknown })}` : ""}
             </div>
           </div>
           {error ? (
