@@ -41,6 +41,21 @@ For docs-only edits, verify local links, consistency, the symlink, and the diff;
 
 For map changes, verify the selected city/time, free and paid views, unknown data, reports, rapid viewport changes, and mobile controls. Record which environment and data were used.
 
+The #18 interim map shows legacy street/lot geometry and meters outside listed
+payment hours as Unknown. No current legacy row establishes Verified Free
+permission. Active, well-formed positive-rate meter schedules are listed payment
+information only, still evaluated with the existing browser-local helper; they
+do not establish permission or current rates. Unknown context stays visible in
+both views and is counted separately. All city pages say not covered until
+approved Evidence Sources and computed Coverage arrive in #12.
+
+Dated Driver Warnings require one additional app-role column permission; see
+[17.driver_warning_read.sql](../sql/17.driver_warning_read.sql). It is prepared,
+not applied by this code change. Obtain separate human approval and apply it to
+each target environment before serving these endpoints; without it the warning
+queries fail. It grants only `reported_status` SELECT, retaining existing report
+validation and private-field restrictions. No schema objects or rows change.
+
 ## Database and release operations
 
 Follow [data operations](DATA.md) before seeding, migrations, cleanup, or database rollback. Extra evidence columns left by earlier work are not a reason to remove data.

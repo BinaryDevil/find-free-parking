@@ -14,32 +14,8 @@
   {
     "file": "components/MainMap.tsx",
     "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'ZoneFeature' is defined but never used.",
-    "source": "type ZoneFeature = {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'cityName' is defined but never used.",
-    "source": "cityName,"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'days' is assigned a value but never used.",
-    "source": "const days = Array.isArray(rule.days)"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "1:@typescript-eslint/no-unused-vars",
     "message": "'e' is defined but never used.",
     "source": "} catch (e) {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'e' is defined but never used.",
-    "source": "} catch (e) {}"
   },
   {
     "file": "components/MainMap.tsx",
@@ -81,43 +57,7 @@
     "file": "components/MainMap.tsx",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
-    "source": "const filteredMeters = meters.filter((m: any) => {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "const filteredStreets = processedStreets.filter((s: any) => {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "const meterFeatures: SpotFeature[] = filteredMeters.map((m: any) => {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "const processedStreets = streets.map((s: any) => {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
     "source": "const sanitizeFeatureProperties = (props: Record<string, any>) => {"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "const streetFeatures: StreetFeature[] = filteredStreets.map((s: any) => ({"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "const zoneFeatures = rawFeatures.map((f: any) => ({"
   },
   {
     "file": "components/MainMap.tsx",
@@ -141,18 +81,6 @@
     "file": "components/MainMap.tsx",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
-    "source": "let activeRules: any[] = [];"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "let meterInfos: any[] = [];"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
     "source": "metadata?: any;"
   },
   {
@@ -160,12 +88,6 @@
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
     "source": "metadata?: any;"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "meterInfos.forEach((schedules: any) => {"
   },
   {
     "file": "components/MainMap.tsx",
@@ -196,18 +118,6 @@
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
     "source": "}) as any,"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "}) as any,"
-  },
-  {
-    "file": "components/MainMap.tsx",
-    "code": "2:prefer-const",
-    "message": "'activeRules' is never reassigned. Use 'const' instead.",
-    "source": "let activeRules: any[] = [];"
   },
   {
     "file": "components/ReportModal.tsx",

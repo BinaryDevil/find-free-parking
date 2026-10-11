@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { query } from "../../../lib/db";
+import { driverWarningsSql } from "@/lib/driver-warnings";
 
 export async function GET(request: Request) {
   try {
@@ -21,7 +22,7 @@ export async function GET(request: Request) {
 
     // 1. Get Meters
     const metersQuery = `
-      SELECT id, pay_station_id, meter_head, report_counts,
+      SELECT id, pay_station_id, meter_head, ${driverWarningsSql('METER')},
              schedules, raw_data,
              ST_AsGeoJSON(geom)::json as geom
       FROM parking_meters
@@ -29,17 +30,10 @@ export async function GET(request: Request) {
       LIMIT 1000
     `;
 
-    // 2. Get Streets with "has_meter" flag
-    // We check if any meter is within 15 meters of the street line.
-    // This implies PAIED parking is present on that block face.
+    // Streets are context geometry; nearby meters do not establish curb rules.
     const streetsQuery = `
-      SELECT s.id, s.block_id, s.street_use, s.report_counts,
-             ST_AsGeoJSON(s.geom)::json as geom,
-             (
-                SELECT jsonb_agg(m.schedules)
-                FROM parking_meters m
-                WHERE ST_DWithin(s.geom::geography, m.geom::geography, 15)
-             ) as meter_infos
+      SELECT s.id, s.block_id, s.street_use, ${driverWarningsSql('STREET')},
+             ST_AsGeoJSON(s.geom)::json as geom
       FROM street_segments s
       WHERE ST_Intersects(s.geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))
       LIMIT 1000
