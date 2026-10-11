@@ -138,12 +138,6 @@
     "source": "// eslint-disable-next-line no-var"
   },
   {
-    "file": "scripts/automate_seeding.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "} catch (err: any) {"
-  },
-  {
     "file": "scripts/debug_osm.ts",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
