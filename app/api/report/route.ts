@@ -4,7 +4,7 @@ import { query } from "../../../lib/db";
 
 const MAX_REASON_LENGTH = 500;
 // Matches the window used by update_parking_report_counts() when it
-// aggregates reports (sql/11.zone_reports.sql).
+// aggregates reports (sql/archived/11.zone_reports.sql).
 const REPORT_WINDOW = "90 days";
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
