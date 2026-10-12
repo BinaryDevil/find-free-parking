@@ -1,6 +1,7 @@
 import { getDbPool } from "./seed_utils";
 import { requestOverpass } from "./overpass";
 import { importLegacyPlaces, sourceRecordId } from "./evidence-import";
+import { mapOsmToZoneType } from "./osm-lot-type";
 
 const pool = getDbPool();
 
@@ -41,56 +42,6 @@ async function fetchParkingLots(
     console.error(`[${cityName}] Overpass query failed:`, error.message);
     return null;
   }
-}
-
-function mapOsmToZoneType(tags: any): string | null {
-  // Logic to determine type - BE CONSERVATIVE
-  // Only mark as FREE if explicitly tagged as such
-  const access = tags.access;
-  const fee = tags.fee;
-  const parking = tags.parking; // e.g. "surface", "multi-storey", "underground"
-
-  // Filter out private/restricted access entirely
-  if (
-    access === "private" ||
-    access === "customers" ||
-    access === "no" ||
-    access === "employees" ||
-    access === "residents" ||
-    access === "permissive" // Often means "allowed but not public"
-  ) {
-    return null; // Skip entirely - don't display
-  }
-
-  // Explicit fee=yes means PAID
-  if (fee === "yes") {
-    return "PAID";
-  }
-
-  // Only FREE if EXPLICITLY tagged as fee=no AND access is public/yes/unset
-  if (fee === "no") {
-    if (tags.maxstay) {
-      return "FREE_LIMITED";
-    }
-    return "FREE_UNLIMITED";
-  }
-
-  // If no fee tag, check if it's a public facility (park, etc.)
-  // Common OSM patterns for free public parking
-  if (
-    access === "yes" ||
-    access === "public" ||
-    tags.operator === "City of Vancouver" ||
-    tags.operator === "City of Surrey" ||
-    parking === "park_and_ride"
-  ) {
-    // Likely public, but still not confirmed free - mark as MIXED
-    return "MIXED";
-  }
-
-  // DEFAULT: If we don't know, assume PAID (conservative)
-  // This prevents false positives for "FREE" parking
-  return "PAID";
 }
 
 function parseMaxStay(maxstay: string): number | null {

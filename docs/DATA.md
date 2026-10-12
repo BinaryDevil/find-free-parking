@@ -29,6 +29,9 @@ See [query visibility](QUERY_STATS.md) for the #6 extension SQL, production appr
 
 ## Migrations
 
+For #14's IP conversion, safe enum/extension migration and separately enabled
+private-field retention scheduler, see [PII retention](PII_RETENTION.md).
+
 For #10's additive Evidence Sources, legacy backfill, import identities and
 separately gated production procedure, see [Evidence provenance](EVIDENCE_PROVENANCE.md).
 

@@ -285,12 +285,6 @@
     "file": "scripts/seed_osm_utils.ts",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
-    "source": "function mapOsmToZoneType(tags: any): string | null {"
-  },
-  {
-    "file": "scripts/seed_osm_utils.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
     "source": "return elements.filter((e: any) => e.type === \"way\");"
   },
   {
