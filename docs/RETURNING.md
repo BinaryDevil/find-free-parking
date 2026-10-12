@@ -59,7 +59,7 @@ both views and is counted separately. All city pages say not covered until
 approved Evidence Sources and computed Coverage arrive in #12.
 
 Dated Driver Warnings require one additional app-role column permission; see
-[17.driver_warning_read.sql](../sql/17.driver_warning_read.sql). It is prepared,
+[17.driver_warning_read.sql](../sql/archived/17.driver_warning_read.sql). It is prepared,
 not applied by this code change. Obtain separate human approval and apply it to
 each target environment before serving these endpoints; without it the warning
 queries fail. It grants only `reported_status` SELECT, retaining existing report

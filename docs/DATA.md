@@ -12,7 +12,7 @@ When reusing existing import code, review parser defaults and incomplete records
 
 - Inspect `scripts/seed_utils.ts` and the chosen script to confirm connection selection and which rows it inserts, updates, deletes, or skips. The app prefers pooled connections; script helpers prefer direct connections.
 - Parking data persists in PostgreSQL/PostGIS; it is not automatically rebuilt from repository files. Review imports against a backup or non-production database first. Do not assume all seed scripts are idempotent.
-- Record schema changes in a reviewed `sql/N.description.sql` file before execution. Existing SQL numbering has collisions; inspect files and actual schema rather than blindly executing the folder in filename order.
+- Record schema changes in a reviewed `sql/migrations/<13-digit-timestamp>_<description>.sql` file before execution. Historical files are [archived](../sql/archived/README.md); never execute that directory in filename order.
 - Seeding, cleanup scripts, `clear_db.ts`, and `migrate-to-neon.sh` can change data or infrastructure. Confirm the target, explicit scope, backup, and verification plan before shared/production writes.
 - Preserve existing rows and previously applied additive evidence columns unless the user explicitly authorizes a data change. Code rollback does not require database rollback.
 - Verify affected row counts, spatial placement, schedules, evidence eligibility, and API behavior after an authorized import. A successful script or row count alone does not prove accurate rules.
@@ -26,3 +26,128 @@ Use `pnpm check-requests --dry-run` to print complete proposed issues without cr
 ## Query statistics
 
 See [query visibility](QUERY_STATS.md) for the #6 extension SQL, production approval, private diagnostics, and the review after a week of traffic.
+
+## Migrations
+
+[ADR-0003](adr/0003-sql-migrations.md) adopts `node-pg-migrate` 9.0.0, raw SQL,
+and `migration_meta.pgmigrations`. Commands never load app `.env.local` implicitly
+and never fall back to pooled credentials. Privately set `MIGRATION_DATABASE_URL`
+to the **direct owner** URL from the explicitly selected Neon branch, plus
+`MIGRATION_EXPECTED_HOST` and `MIGRATION_EXPECTED_DATABASE` from that branch's
+provider record. Do not put values in tracked files, command arguments, issue
+comments or ordinary logs. The checks match endpoint/database but cannot prove
+the branch's purpose: verify its branch ID/name in Neon before every operation.
+App credentials must remain separate; no migration runs during build/deployment.
+
+All integrated migrations are immutable, including ones not applied yet. CI checks
+against the PR base, previous push on dev/main, or dev for feature pushes, without
+database credentials. Unmerged migrations can be corrected during disposable
+validation. Locally run
+`pnpm db:check-files origin/dev`. Integrate and review each migration before any
+shared-database execution; correct integrated migrations with a new timestamped migration. Use only
+SQL files, no down section for the baseline. No down/reset command is provided.
+
+### Fresh baseline verification
+
+1. Create a disposable Neon branch explicitly named for migration validation,
+   using a current production parent. Existing `dev` and production must retain
+   all data. A copied or schema-only branch already has the schema and does not
+   prove replay: create a **new empty database**, or recreate only the copied
+   database on this disposable branch after verifying its branch endpoint.
+   For exact provider-ACL parity, retain the copied `public` schema and provider
+   default ACLs, and remove only the reviewed copied application tables, enums,
+   functions and installed extensions before replay. This destructive preparation
+   requires explicit approval naming the disposable branch; it is never a shared
+   database cleanup. Rebuild every application object through migrations.
+   Never clear tables or reset a shared database. If branch capacity is exhausted,
+   obtain an explicitly disposable target; do not delete unrelated branches.
+2. Use the same project database owner (`find-free-parking-db_owner`) and the
+   PostgreSQL/extension versions found in production. Neon supplies provider roles
+   and default ACLs. The baseline creates app roles only if missing, without
+   passwords; existing role attributes/passwords are preserved. Database-level
+   CONNECT/TEMP/CREATE ACLs remain a separate [role rollout](DB_ROLES.md).
+3. Confirm the direct endpoint and empty database, then run `pnpm db:migrate`.
+   Run it again: history must contain exactly one baseline and the second run
+   must leave schema/history unchanged. For the automated replay test, provision
+   the empty database named `migration_baseline_test` and privately set
+   `MIGRATION_TEST_DATABASE_URL`; run `node --test tests/migration-replay.test.mjs`.
+   The regular suite skips this integration test without that variable. It refuses
+   existing application tables or a nonempty ledger. A failed migration can leave
+   an empty history table because the tool prepares history before its migration
+   transaction. Check extension versions/namespaces using
+   `pg_extension`, function owner/search path/definer security, three evidence
+   defaults and NOT NULL, all constraints/indexes/triggers and grants.
+4. Capture schema-only dumps of production **read-only** and the fresh target
+   using the same PostgreSQL 17 `pg_dump`, including ownership/ACLs, with
+   `--schema-only --exclude-schema=migration_meta`. Pass credentials via private
+   environment variables, never URL arguments. Use `PGOPTIONS=-c
+   default_transaction_read_only=on` for production. Store dumps outside tracked
+   context. Run `node scripts/compare-schema.mjs <production-dump> <fresh-dump>`.
+   Only dump session tokens/version comments are normalized. Defaults, ACLs,
+   owners and function bodies are not discarded. Compare extension versions
+   separately (pg_dump does not pin them). New Neon databases can have different
+   provider `cloud_admin` default ACLs: the current fresh database grants fewer
+   privileges to `neon_superuser` than production's older `GRANT ALL`. Do not
+   broaden them to force a match. Record the strict diff, then optionally use
+   `--application` to exclude only the two public-schema cloud_admin default ACL
+   sections. That result establishes application-schema parity, not full database
+   parity; keep full-parity acceptance pending explicit human review of this
+   provider difference. Application default ACLs remain compared.
+5. Run Neon schema diff for the same database on fresh and production branches.
+   Expected differences are `migration_meta` (history) and any explicitly recorded
+   provider default ACL difference above. Review the complete diff; do not wave
+   away application-schema differences. Record dated evidence
+   on #9, retaining private dumps. Delete only the disposable validation resource
+   after evidence is recorded and cleanup is authorized.
+
+Validation for #9: the approved isolated branch
+`validation/issue-9-migration-baseline` was cleared of copied application objects
+and rebuilt solely through migrations. Repeat execution preserved the single
+baseline history entry. Strict PostgreSQL 17.11 schema-only dumps match production
+with only `migration_meta` excluded, retaining all provider/application ACLs and
+ownership. Neon schema diff confirms only the migration history schema/table/
+sequence/default/primary key are added; extension versions/namespaces match.
+No provider ACL exception was needed on this branch. Production ledger adoption
+still requires the separate human approval below.
+
+### Adopting the baseline on an existing database — approval pending
+
+**Never run the baseline DDL on production or existing dev.** Baseline ledger
+marking is a database write and requires explicit human approval per environment.
+Ticket #9 remains incomplete until production marking and verification are done.
+
+1. Review the PR/commit, fresh replay and schema-diff evidence. Reinspect the target
+   live schema read-only immediately before adoption; compare to the validated
+   baseline. Stop for drift. In the 2026-10-10 inspection, dev lacked production's
+   `pg_stat_statements` and had the additional #18 `reports.reported_status` SELECT
+   grant. These differences need separately reviewed reconciliation/recording;
+   do not silently replay archived SQL or claim dev equals production.
+2. Verify target branch/database/direct owner, empty migration ledger (or that
+   this exact baseline is already recorded), and restricted role/database ACLs.
+   Take a provider snapshot/retained restore point and record its identity/time
+   privately. Confirm the restore procedure and retention; an old branch name
+   alone is not proof of a current backup. Record explicit human approval on #9
+   for **ledger-only marking**, naming the reviewed commit and target.
+3. Privately set the three migration connection/identity variables above. Set
+   `MIGRATION_BASELINE_APPROVED=1791676800000_baseline`, then run
+   `pnpm db:baseline`. This pins fake marking to the baseline only (count 1); it
+   creates the history schema/table and row without executing baseline SQL or
+   later migrations. Unset the approval variable afterwards. No password, seed,
+   cleanup, schema repair or release is authorized by this procedure.
+4. Verify one `migration_meta.pgmigrations` baseline row and compare fresh
+   read-only before/after schema dumps excluding `migration_meta`: no differences.
+   Record that data was not touched and roles/grants did not change. Record
+   production adoption separately from source implementation, local validation,
+   integration, deployment and public production behavior.
+
+### Later additive changes and production releases
+
+Create a Neon test branch from production → adopt the baseline there only after
+comparison → apply the reviewed new migrations over its direct owner connection
+with `pnpm db:migrate` → verify schema diff, backward compatibility and relevant
+behavior → take a current production snapshot → obtain explicit human production
+approval → apply pending migrations to production → verify schema/history and
+old-code compatibility → human merges the release PR. Follow
+[release gates](agents/release-gates.md); a ticket PR into `dev` is not a release.
+Keep previous deployments usable against additive schema. A code rollback does
+not authorize schema rollback, ledger deletion or restoration over user data.
