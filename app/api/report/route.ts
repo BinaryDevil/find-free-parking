@@ -1,4 +1,4 @@
-import { isIP } from "net";
+import { getClientIp } from "../../../lib/client-ip";
 import { NextResponse } from "next/server";
 import { query } from "../../../lib/db";
 
@@ -8,21 +8,6 @@ const MAX_REASON_LENGTH = 500;
 const REPORT_WINDOW = "90 days";
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-
-// reports.user_ip is an inet column, so it must hold a single valid address.
-// x-forwarded-for can be a comma-separated chain; the client is the first
-// entry.
-function getClientIp(headers: Headers): string | null {
-  const candidates = [
-    headers.get("x-real-ip"),
-    headers.get("x-forwarded-for")?.split(",")[0],
-  ];
-  for (const candidate of candidates) {
-    const ip = candidate?.trim();
-    if (ip && isIP(ip)) return ip;
-  }
-  return null;
-}
 
 function isValidCoordinate(value: unknown, limit: number): value is number {
   return (

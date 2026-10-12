@@ -1,6 +1,7 @@
 "use server";
 
 import { query } from "@/lib/db";
+import { getClientIp } from "@/lib/client-ip";
 import { headers } from "next/headers";
 
 export async function submitCoverageRequest(data: {
@@ -12,7 +13,7 @@ export async function submitCoverageRequest(data: {
 }) {
   try {
     const headersList = await headers();
-    const ip = headersList.get("x-forwarded-for") || "unknown";
+    const ip = getClientIp(headersList);
 
     await query(
       `INSERT INTO city_requests (city_name, state, country, location, user_ip)

@@ -1,0 +1,35 @@
+name: PII retention
+
+on:
+  schedule:
+    - cron: '17 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pii-retention
+  cancel-in-progress: false
+
+jobs:
+  retention:
+    # Environment configuration is a separate, target-specific operator action.
+    if: vars.PII_RETENTION_ENABLED == 'true'
+    environment: pii-retention
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.1'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Clear expired private fields
+        run: node scripts/retain-pii.mjs
+        env:
+          RETENTION_APPROVED: ${{ vars.RETENTION_APPROVED }}
+          RETENTION_DATABASE_URL: ${{ secrets.RETENTION_DATABASE_URL }}
+          RETENTION_EXPECTED_HOST: ${{ secrets.RETENTION_EXPECTED_HOST }}
+          RETENTION_EXPECTED_DATABASE: ${{ secrets.RETENTION_EXPECTED_DATABASE }}
