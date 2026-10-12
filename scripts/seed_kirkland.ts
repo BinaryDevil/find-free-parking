@@ -6,6 +6,7 @@ import {
 import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 import fs from "fs";
 import path from "path";
+import { importLegacyBatch, sourceRecordId } from "./evidence-import";
 
 const pool = getDbPool();
 
@@ -40,8 +41,7 @@ async function seedKirklandStreets() {
   for (let i = 0; i < data.features.length; i += CHUNK_SIZE) {
     const chunk = data.features.slice(i, i + CHUNK_SIZE);
     const values: any[] = [];
-    const placeholders: string[] = [];
-    let paramIndex = 1;
+    const recordIds: string[] = [];
 
     for (const item of chunk) {
       if (!item.geometry || item.geometry.type !== "LineString") continue;
@@ -95,18 +95,12 @@ async function seedKirklandStreets() {
         JSON.stringify([]) // No schedules
       );
 
-      placeholders.push(
-        `(gen_random_uuid(), $${paramIndex++}, $${paramIndex++}, ST_GeomFromGeoJSON($${paramIndex++}), $${paramIndex++}, $${paramIndex++})`
-      );
+      recordIds.push(sourceRecordId(p.GlobalID));
       inserted++;
     }
 
-    if (placeholders.length > 0) {
-      const query = `
-        INSERT INTO street_segments (id, block_id, street_use, geom, raw_data, schedules)
-        VALUES ${placeholders.join(", ")}
-      `;
-      await pool.query(query, values);
+    if (recordIds.length > 0) {
+      await importLegacyBatch(pool, "KIRKLAND_STREETS", "street_segments", values, recordIds);
       console.log(
         `[Kirkland] Inserted streets batch ${
           Math.floor(i / CHUNK_SIZE) + 1
@@ -143,8 +137,7 @@ async function seedKirklandMeters() {
 
   let inserted = 0;
   const values: any[] = [];
-  const placeholders: string[] = [];
-  let paramIndex = 1;
+  const recordIds: string[] = [];
 
   for (const item of data.features) {
     const p = item.properties;
@@ -178,19 +171,12 @@ async function seedKirklandMeters() {
       JSON.stringify([]) // Empty schedules
     );
 
-    placeholders.push(
-      `(gen_random_uuid(), $${paramIndex++}, $${paramIndex++}, ST_GeomFromGeoJSON($${paramIndex++}), $${paramIndex++}, $${paramIndex++})`
-    );
+    recordIds.push(sourceRecordId(p.ASSET_ID));
     inserted++;
   }
 
-  if (placeholders.length > 0) {
-    const query = `
-      INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
-      VALUES ${placeholders.join(", ")}
-      ON CONFLICT DO NOTHING
-    `;
-    await pool.query(query, values);
+  if (recordIds.length > 0) {
+    await importLegacyBatch(pool, "KIRKLAND_SIGNS", "parking_meters", values, recordIds);
   }
 
   return inserted;

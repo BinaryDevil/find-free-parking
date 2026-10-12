@@ -1,4 +1,5 @@
 import { getDbPool } from "./seed_utils";
+import { importLegacyBatch, sourceRecordId } from "./evidence-import";
 import {
   seedOsmParkingLots,
   seedOsmCityCoverage,
@@ -34,11 +35,7 @@ export async function seedCoquitlam() {
   console.log("Starting Coquitlam Seeding...");
   try {
     // Coquitlam "On Street Pay Parking"
-    const checkMeters = await pool.query(
-      "SELECT 1 FROM parking_meters WHERE raw_data->>'city' = 'Coquitlam' LIMIT 1"
-    );
-
-    if (checkMeters.rowCount === 0) {
+    {
       const data = await getCoquitlamData();
       console.log(`[Coquitlam] Fetched ${data.features.length} records.`);
 
@@ -48,8 +45,7 @@ export async function seedCoquitlam() {
       for (let i = 0; i < data.features.length; i += CHUNK_SIZE) {
         const chunk = data.features.slice(i, i + CHUNK_SIZE);
         const values: any[] = [];
-        const placeholders: string[] = [];
-        let paramIndex = 1;
+        const recordIds: string[] = [];
 
         for (const item of chunk) {
           if (!item.geometry) continue;
@@ -79,28 +75,12 @@ export async function seedCoquitlam() {
             JSON.stringify([]) // Empty schedules for now
           );
 
-          const pi = () => `$${paramIndex++}`;
-          const p1 = pi(); // payStationId
-          const p2 = pi(); // type
-          const p3 = pi(); // geom
-          const p4 = pi(); // raw_data
-          const p5 = pi(); // schedules
-
-          // If it's a point, use it. If polygon (rare for meters?), centroid.
-          const geomExpr = `ST_Centroid(ST_GeomFromGeoJSON(${p3}))`;
-
-          placeholders.push(
-            `(gen_random_uuid(), ${p1}, ${p2}, ${geomExpr}, ${p4}, ${p5})`
-          );
+          recordIds.push(sourceRecordId(item.id ?? p.OBJECTID));
           inserted++;
         }
 
-        if (placeholders.length > 0) {
-          const query = `
-                    INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
-                    VALUES ${placeholders.join(", ")}
-                `;
-          await pool.query(query, values);
+        if (recordIds.length > 0) {
+          await importLegacyBatch(pool, "COQUITLAM_METERS", "parking_meters", values, recordIds);
           console.log(
             `[Coquitlam] Inserted batch ${i / CHUNK_SIZE + 1} (${inserted} / ${
               data.features.length
@@ -109,8 +89,6 @@ export async function seedCoquitlam() {
         }
       }
       console.log(`[Coquitlam] Meters Inserted: ${inserted}.`);
-    } else {
-      console.log("[Coquitlam] Meters already exist. Skipping meter insert.");
     }
 
     // Parking Lots (OSM)

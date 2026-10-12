@@ -29,6 +29,9 @@ See [query visibility](QUERY_STATS.md) for the #6 extension SQL, production appr
 
 ## Migrations
 
+For #10's additive Evidence Sources, legacy backfill, import identities and
+separately gated production procedure, see [Evidence provenance](EVIDENCE_PROVENANCE.md).
+
 [ADR-0003](adr/0003-sql-migrations.md) adopts `node-pg-migrate` 9.0.0, raw SQL,
 and `migration_meta.pgmigrations`. Commands never load app `.env.local` implicitly
 and never fall back to pooled credentials. Privately set `MIGRATION_DATABASE_URL`
@@ -49,6 +52,15 @@ SQL files, no down section for the baseline. No down/reset command is provided.
 
 ### Fresh baseline verification
 
+`pnpm db:migrate` replays **all** pending migrations, not only the baseline.
+The exact baseline-only parity evidence below was captured for #9 before later
+migrations existed. With #10 integrated but not yet applied to production, a
+fresh replay intentionally includes the reviewed Evidence Source/provenance
+additions described in [EVIDENCE_PROVENANCE.md](EVIDENCE_PROVENANCE.md). Retain
+and review those schema differences; do not ignore them or claim full parity
+with a production database still at the baseline. Final R2 production parity
+requires separately approved application of the pending additive migrations.
+
 1. Create a disposable Neon branch explicitly named for migration validation,
    using a current production parent. Existing `dev` and production must retain
    all data. A copied or schema-only branch already has the schema and does not
@@ -67,8 +79,9 @@ SQL files, no down section for the baseline. No down/reset command is provided.
    passwords; existing role attributes/passwords are preserved. Database-level
    CONNECT/TEMP/CREATE ACLs remain a separate [role rollout](DB_ROLES.md).
 3. Confirm the direct endpoint and empty database, then run `pnpm db:migrate`.
-   Run it again: history must contain exactly one baseline and the second run
-   must leave schema/history unchanged. For the automated replay test, provision
+   Run it again: history must contain exactly one baseline plus each pending
+   forward migration once, and the second run must leave schema/history
+   unchanged. For the automated replay test, provision
    the empty database named `migration_baseline_test` and privately set
    `MIGRATION_TEST_DATABASE_URL`; run `node --test tests/migration-replay.test.mjs`.
    The regular suite skips this integration test without that variable. It refuses
@@ -83,7 +96,9 @@ SQL files, no down section for the baseline. No down/reset command is provided.
    environment variables, never URL arguments. Use `PGOPTIONS=-c
    default_transaction_read_only=on` for production. Store dumps outside tracked
    context. Run `node scripts/compare-schema.mjs <production-dump> <fresh-dump>`.
-   Only dump session tokens/version comments are normalized. Defaults, ACLs,
+   Before pending production application, the comparison must report exactly
+   the reviewed additive migrations as well as any provider difference below;
+   it must not report a full match. Only dump session tokens/version comments are normalized. Defaults, ACLs,
    owners and function bodies are not discarded. Compare extension versions
    separately (pg_dump does not pin them). New Neon databases can have different
    provider `cloud_admin` default ACLs: the current fresh database grants fewer
@@ -94,13 +109,14 @@ SQL files, no down section for the baseline. No down/reset command is provided.
    parity; keep full-parity acceptance pending explicit human review of this
    provider difference. Application default ACLs remain compared.
 5. Run Neon schema diff for the same database on fresh and production branches.
-   Expected differences are `migration_meta` (history) and any explicitly recorded
-   provider default ACL difference above. Review the complete diff; do not wave
+   Expected differences are `migration_meta` (history), the exact reviewed
+   additive objects not yet applied to production (currently #10), and any
+   explicitly recorded provider default ACL difference above. Review the complete diff; do not wave
    away application-schema differences. Record dated evidence
    on #9, retaining private dumps. Delete only the disposable validation resource
    after evidence is recorded and cleanup is authorized.
 
-Validation for #9: the approved isolated branch
+Historical baseline-only validation for #9 (before #10): the approved isolated branch
 `validation/issue-9-migration-baseline` was cleared of copied application objects
 and rebuilt solely through migrations. Repeat execution preserved the single
 baseline history entry. Strict PostgreSQL 17.11 schema-only dumps match production
