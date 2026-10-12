@@ -59,7 +59,14 @@ The job logs aggregate changed-row counts or a generic failure only.
    new empty `schema_hygiene_test` (optional numeric suffix), direct
    `HYGIENE_TEST_DATABASE_URL`, and independently confirmed
    `HYGIENE_TEST_EXPECTED_HOST`. It never loads `.env.local`.
-3. Obtain explicit approval naming the environment, commit, snapshot and
+3. Deploy and verify the validated report/coverage writers in the target
+   environment **before** converting `city_requests.user_ip` to inet. They work
+   with the existing text column; the old raw-header/`unknown` coverage writer
+   does not work with inet. For production, first ship a separately approved
+   application release containing the writer change with this migration still
+   pending. Do not follow the usual migration-before-release order for this
+   type conversion. Confirm every active deployment/rollback candidate uses the
+   validated writer, then obtain explicit approval naming the environment, commit, snapshot and
    migration scope before shared/production writes. Apply with the guarded
    migration command; verify history, row counts, enum/extension dependencies,
    UUID defaults, preserved grants/provenance and old-code compatibility.
@@ -88,5 +95,7 @@ The job logs aggregate changed-row counts or a generic failure only.
    push, merge, workflow definition or passing test proves that retention runs.
 
 Production migration, scheduled execution and live acceptance remain separate
-human gates. Rollback means disabling the job/redeploying prior app code, not
+human gates. After the inet conversion, an application rollback must retain the
+validated coverage writer; the old raw-header writer is incompatible. Rollback
+means disabling the job/redeploying compatible prior app code, not
 restoring expired private values or undoing the schema over live user data.
