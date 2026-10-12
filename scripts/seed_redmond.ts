@@ -1,4 +1,5 @@
 import { getDbPool, getDefaultSegmentAttributes } from "./seed_utils";
+import { importLegacyBatch, sourceRecordId } from "./evidence-import";
 
 import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 import fs from "fs";
@@ -37,8 +38,7 @@ async function seedRedmondStreets() {
   for (let i = 0; i < data.features.length; i += CHUNK_SIZE) {
     const chunk = data.features.slice(i, i + CHUNK_SIZE);
     const values: any[] = [];
-    const placeholders: string[] = [];
-    let paramIndex = 1;
+    const recordIds: string[] = [];
 
     for (const item of chunk) {
       if (!item.geometry || item.geometry.type !== "LineString") continue;
@@ -89,18 +89,12 @@ async function seedRedmondStreets() {
         JSON.stringify([]) // No schedules - just geometry
       );
 
-      placeholders.push(
-        `(gen_random_uuid(), $${paramIndex++}, $${paramIndex++}, ST_GeomFromGeoJSON($${paramIndex++}), $${paramIndex++}, $${paramIndex++})`
-      );
+      recordIds.push(sourceRecordId(p.AssetID));
       inserted++;
     }
 
-    if (placeholders.length > 0) {
-      const query = `
-        INSERT INTO street_segments (id, block_id, street_use, geom, raw_data, schedules)
-        VALUES ${placeholders.join(", ")}
-      `;
-      await pool.query(query, values);
+    if (recordIds.length > 0) {
+      await importLegacyBatch(pool, "REDMOND_STREETS", "street_segments", values, recordIds);
       console.log(
         `[Redmond] Inserted streets batch ${
           Math.floor(i / CHUNK_SIZE) + 1

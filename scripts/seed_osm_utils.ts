@@ -1,5 +1,6 @@
 import { getDbPool } from "./seed_utils";
 import { requestOverpass } from "./overpass";
+import { importLegacyPlaces, sourceRecordId } from "./evidence-import";
 
 const pool = getDbPool();
 
@@ -118,16 +119,6 @@ export async function seedOsmParkingLots(
   searchAreaName: string | null = null,
   queryName: string | null = null
 ) {
-  // Check if lots exist
-  const existing = await pool.query(
-    "SELECT 1 FROM parking_zones WHERE city = $1 LIMIT 1",
-    [cityName]
-  );
-  if ((existing.rowCount || 0) > 0) {
-    console.log(`[ParkingLots] Lots already exist for ${cityName}. Skipping.`);
-    return;
-  }
-
   console.log(`[ParkingLots] Fetching data for ${cityName} from OSM...`);
   const data = await fetchParkingLots(
     cityName,
@@ -158,15 +149,15 @@ export async function seedOsmParkingLots(
     const name = tags.name || `${cityName} Parking Lot`;
     const timeLimit = parseMaxStay(tags.maxstay);
 
-    // Build Geometry string (WKT)
-    let coordinates: any[] = [];
+    let coordinates: number[][] = [];
 
     if (el.type === "way" && el.geometry) {
-      coordinates = el.geometry.map((pt: any) => `${pt.lon} ${pt.lat}`);
+      coordinates = el.geometry.map((pt: { lon: number; lat: number }) => [pt.lon, pt.lat]);
       // Ensure closed loop for Polygon
       if (
         coordinates.length > 0 &&
-        coordinates[0] !== coordinates[coordinates.length - 1]
+        (coordinates[0][0] !== coordinates[coordinates.length - 1][0] ||
+          coordinates[0][1] !== coordinates[coordinates.length - 1][1])
       ) {
         coordinates.push(coordinates[0]);
       }
@@ -176,22 +167,16 @@ export async function seedOsmParkingLots(
 
     if (coordinates.length < 4) continue; // Not a valid polygon
 
-    const wkt = `POLYGON((${coordinates.join(", ")}))`;
-
     try {
-      await pool.query(
-        `
-                INSERT INTO parking_zones (
-                    id, city, name, type, geom, time_limit_minutes, source, verified, metadata
-                ) VALUES (
-                    gen_random_uuid(), $1, $2, $3, ST_GeomFromText($4, 4326), $5, 'OSM', false, $6
-                )
-             `,
-        [cityName, name, zoneType, wkt, timeLimit, JSON.stringify(tags)]
-      );
+      await importLegacyPlaces(pool, "OSM_LOTS", "parking_zones", [{
+        sourceRecordId: `${el.type}/${sourceRecordId(el.id)}`,
+        city: cityName, name, type: zoneType,
+        geom: { type: "Polygon", coordinates: [coordinates] },
+        timeLimitMinutes: timeLimit, source: "OSM", metadata: tags,
+      }]);
       inserted++;
-    } catch (e: any) {
-      console.error(`[ParkingLots] Insert failed: ${e.message}`);
+    } catch {
+      throw new Error("OSM lot import failed; inspect privately");
     }
   }
   console.log(`[ParkingLots] ${cityName}: Inserted ${inserted} lots.`);
@@ -351,17 +336,6 @@ export async function seedOsmStreets(
   country = "United States",
   queryName: string | null = null
 ) {
-  // Check if streets exist
-  // We check via raw_data->>'city' because street_segments doesn't have a direct 'city' column
-  const existing = await pool.query(
-    "SELECT 1 FROM street_segments WHERE raw_data->>'city' = $1 LIMIT 1",
-    [city]
-  );
-  if ((existing.rowCount || 0) > 0) {
-    console.log(`[Streets] Streets already exist for ${city}. Skipping.`);
-    return;
-  }
-
   // Auto-detect Canada for BC
   if (state === "BC" && country === "United States") {
     country = "Canada";
@@ -447,21 +421,18 @@ export async function seedOsmStreets(
       // The 'out geom' query returns .geometry field on ways
       if (!way.geometry || way.geometry.length < 2) continue;
 
-      const coords = way.geometry
-        .map((p: any) => `${p.lon} ${p.lat}`)
-        .join(",");
-      const linestring = `LINESTRING(${coords})`;
+      const coords = way.geometry.map((p: { lon: number; lat: number }) => [p.lon, p.lat]);
 
       // Name
       const streetName = way.tags?.name || "Unnamed Street";
 
-      const rawData = JSON.stringify({
+      const rawData = {
         ...way.tags,
         source: "OSM",
         city,
         state,
         streetName,
-      });
+      };
 
       // Schema: id, block_id, street_use, geom, raw_data, schedules, side_of_street?
       // Based on seed_kirkland.ts: id, block_id, street_use, geom, raw_data, schedules
@@ -474,22 +445,11 @@ export async function seedOsmStreets(
       // I will assume NO side_of_street column if seed_kirkland.ts doesn't use it.
       // Wait, seed_osm_utils.ts previously tried to insert it (Step 769).
 
-      await pool.query(
-        `
-            INSERT INTO street_segments (
-                id, block_id, street_use, geom, raw_data, schedules
-            ) VALUES (
-                gen_random_uuid(), $1, $2, ST_GeomFromText($3, 4326), $4, $5
-            )
-        `,
-        [
-          `OSM-${way.id}`, // block_id
-          getOsmStreetUse(way.tags?.highway || ""), // street_use
-          linestring, // geom
-          rawData,
-          JSON.stringify([]), // schedules
-        ]
-      );
+      await importLegacyPlaces(pool, "OSM_STREETS", "street_segments", [{
+        sourceRecordId: `way/${sourceRecordId(way.id)}`,
+        blockId: `OSM-${way.id}`, streetUse: getOsmStreetUse(way.tags?.highway || ""),
+        geom: { type: "LineString", coordinates: coords }, rawData, schedules: [],
+      }]);
 
       inserted++;
     }

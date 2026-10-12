@@ -29,6 +29,9 @@ See [query visibility](QUERY_STATS.md) for the #6 extension SQL, production appr
 
 ## Migrations
 
+For #10's additive Evidence Sources, legacy backfill, import identities and
+separately gated production procedure, see [Evidence provenance](EVIDENCE_PROVENANCE.md).
+
 [ADR-0003](adr/0003-sql-migrations.md) adopts `node-pg-migrate` 9.0.0, raw SQL,
 and `migration_meta.pgmigrations`. Commands never load app `.env.local` implicitly
 and never fall back to pooled credentials. Privately set `MIGRATION_DATABASE_URL`

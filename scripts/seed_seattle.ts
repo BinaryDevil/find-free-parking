@@ -1,4 +1,5 @@
 import { getDbPool } from "./seed_utils";
+import { importLegacyBatch, sourceRecordId } from "./evidence-import";
 import { seedOsmParkingLots, seedOsmCityCoverage } from "./seed_osm_utils";
 
 const pool = getDbPool();
@@ -41,8 +42,7 @@ export async function seedSeattle() {
     for (let i = 0; i < data.features.length; i += CHUNK_SIZE) {
       const chunk = data.features.slice(i, i + CHUNK_SIZE);
       const values: any[] = [];
-      const placeholders: string[] = [];
-      let paramIndex = 1;
+      const recordIds: string[] = [];
 
       for (const item of chunk) {
         if (!item.geometry || item.geometry.type !== "Point") continue;
@@ -105,26 +105,12 @@ export async function seedSeattle() {
           JSON.stringify(schedules)
         );
 
-        const pi = () => `$${paramIndex++}`;
-        const p1 = pi(); // pay_station_id
-        const p2 = pi(); // meter_head
-        // skipping time_in_effect, credit_card (dropped)
-        const p3 = pi(); // geom
-        const p4 = pi(); // raw_data
-        const p5 = pi(); // schedules
-
-        placeholders.push(
-          `(gen_random_uuid(), ${p1}, ${p2}, ST_GeomFromGeoJSON(${p3}), ${p4}, ${p5})`
-        );
+        recordIds.push(sourceRecordId(item.id ?? p.OBJECTID));
         inserted++;
       }
 
-      if (placeholders.length > 0) {
-        const query = `
-                INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
-                VALUES ${placeholders.join(", ")}
-             `;
-        await pool.query(query, values);
+      if (recordIds.length > 0) {
+        await importLegacyBatch(pool, "SEATTLE_METERS", "parking_meters", values, recordIds);
         console.log(
           `[Seattle] Inserted batch ${i / CHUNK_SIZE + 1} (${inserted})`
         );
@@ -164,8 +150,7 @@ async function seedSeattleStreets() {
     for (let i = 0; i < data.features.length; i += CHUNK_SIZE) {
       const chunk = data.features.slice(i, i + CHUNK_SIZE);
       const values: any[] = [];
-      const placeholders: string[] = [];
-      let paramIndex = 1;
+      const recordIds: string[] = [];
 
       for (const item of chunk) {
         if (!item.geometry || item.geometry.type !== "LineString") continue;
@@ -204,22 +189,16 @@ async function seedSeattleStreets() {
           blockId,
           streetUse,
           JSON.stringify(item.geometry),
-          JSON.stringify(p),
+          JSON.stringify({ ...p, city: "Seattle" }),
           JSON.stringify([]) // schedules
         );
 
-        placeholders.push(
-          `(gen_random_uuid(), $${paramIndex++}, $${paramIndex++}, ST_GeomFromGeoJSON($${paramIndex++}), $${paramIndex++}, $${paramIndex++})`
-        );
+        recordIds.push(sourceRecordId(item.id ?? p.OBJECTID));
         inserted++;
       }
 
-      if (placeholders.length > 0) {
-        const query = `
-                    INSERT INTO street_segments (id, block_id, street_use, geom, raw_data, schedules)
-                    VALUES ${placeholders.join(", ")}
-                 `;
-        await pool.query(query, values);
+      if (recordIds.length > 0) {
+        await importLegacyBatch(pool, "SEATTLE_STREETS", "street_segments", values, recordIds);
         console.log(
           `[Seattle] Inserted streets batch ${i / CHUNK_SIZE + 1} (${inserted})`
         );

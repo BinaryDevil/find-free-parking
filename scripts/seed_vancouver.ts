@@ -1,4 +1,5 @@
 import { getDbPool } from "./seed_utils";
+import { importLegacyBatch, sourceRecordId, geometryRecordId } from "./evidence-import";
 import {
   seedOsmParkingLots,
   seedOsmCityCoverage,
@@ -9,30 +10,11 @@ const pool = getDbPool();
 
 async function seedDataset(
   datasetName: string,
-  tableName: string,
+  tableName: "parking_meters" | "street_segments",
   mapper: (item: any) => any[] | null
 ) {
   const fs = await import("fs");
   const path = await import("path");
-
-  // IDEMPOTENCY CHECK
-  if (tableName === "parking_meters") {
-    const check = await pool.query(
-      "SELECT 1 FROM parking_meters WHERE raw_data->>'city' = 'Vancouver' LIMIT 1"
-    );
-    if ((check.rowCount || 0) > 0) {
-      console.log("[Vancouver] Meters already exist. Skipping.");
-      return;
-    }
-  } else if (tableName === "street_segments") {
-    const check = await pool.query(
-      "SELECT 1 FROM street_segments WHERE raw_data->>'hblock' IS NOT NULL LIMIT 1"
-    );
-    if ((check.rowCount || 0) > 0) {
-      console.log("[Vancouver] Streets already exist. Skipping.");
-      return;
-    }
-  }
 
   let data: any[] = [];
   const localFile = path.resolve(
@@ -65,79 +47,28 @@ async function seedDataset(
   for (let i = 0; i < data.length; i += CHUNK_SIZE) {
     const chunk = data.slice(i, i + CHUNK_SIZE);
     const values: any[] = [];
-    const placeholders: string[] = [];
-    let paramIndex = 1;
+    const recordIds: string[] = [];
 
     for (const item of chunk) {
-      try {
-        const rowValues = mapper(item);
-        if (!rowValues) continue;
-
-        // Handle MultiLineString for streets
-        if (tableName === "street_segments") {
-          try {
-            const rawGeom = JSON.parse(rowValues[2]);
-            if (rawGeom.type === "MultiLineString") {
-              if (rawGeom.coordinates && rawGeom.coordinates.length > 0) {
-                rawGeom.type = "LineString";
-                rawGeom.coordinates = rawGeom.coordinates[0];
-                rowValues[2] = JSON.stringify(rawGeom);
-              }
-            }
-          } catch (e) {
-            // ignore parse error
-          }
-        }
-
-        let rowPlaceholders = "";
-        const s = paramIndex;
-        paramIndex += 5;
-
-        // Use explicit casts to avoid type errors
-        if (tableName === "parking_meters") {
-          // id, pay_station_id, meter_head, geom, raw_data, schedules
-          rowPlaceholders = `(gen_random_uuid(), $${s}::text, $${
-            s + 1
-          }::text, ST_GeomFromGeoJSON($${s + 2}::json), $${s + 3}::jsonb, $${
-            s + 4
-          }::jsonb)`;
-        } else if (tableName === "street_segments") {
-          // id, block_id, street_use, geom, raw_data, schedules
-          rowPlaceholders = `(gen_random_uuid(), $${s}::text, $${
-            s + 1
-          }::text, ST_GeomFromGeoJSON($${s + 2}::json), $${s + 3}::jsonb, $${
-            s + 4
-          }::jsonb)`;
-        }
-
-        values.push(...rowValues);
-        placeholders.push(rowPlaceholders);
-        inserted++;
-      } catch (e: any) {
-        // Skip individual errors
+      const rowValues = mapper(item);
+      if (!rowValues) continue;
+      const geometry = JSON.parse(rowValues[2]);
+      recordIds.push(tableName === "parking_meters"
+        ? sourceRecordId(item.meterid)
+        : geometryRecordId(item.hblock, geometry));
+      // Preserve the existing first-line projection of MultiLineString exports.
+      if (tableName === "street_segments" && geometry.type === "MultiLineString") {
+        geometry.type = "LineString";
+        geometry.coordinates = geometry.coordinates[0];
+        rowValues[2] = JSON.stringify(geometry);
       }
+      values.push(...rowValues);
+      inserted++;
     }
 
-    if (placeholders.length > 0) {
-      const query = `
-        INSERT INTO ${tableName} 
-        ${
-          tableName === "parking_meters"
-            ? "(id, pay_station_id, meter_head, geom, raw_data, schedules)"
-            : "(id, block_id, street_use, geom, raw_data, schedules)"
-        }
-        VALUES ${placeholders.join(", ")}
-      `;
-      try {
-        await pool.query(query, values);
-        console.log(
-          `[Vancouver] Inserted batch ${i / CHUNK_SIZE + 1} (${inserted} / ${
-            data.length
-          })`
-        );
-      } catch (e: any) {
-        console.error(`[Vancouver] Batch Insert Failed: ${e.message}`);
-      }
+    if (recordIds.length > 0) {
+      await importLegacyBatch(pool, tableName === "parking_meters" ? "VANCOUVER_METERS" : "VANCOUVER_STREETS", tableName, values, recordIds);
+      console.log(`[Vancouver] Imported batch ${i / CHUNK_SIZE + 1} (${inserted} / ${data.length})`);
     }
   }
 

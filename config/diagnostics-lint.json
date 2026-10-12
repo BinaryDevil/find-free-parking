@@ -285,30 +285,12 @@
     "file": "scripts/seed_osm_utils.ts",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
-    "source": ".map((p: any) => `${p.lon} ${p.lat}`)"
-  },
-  {
-    "file": "scripts/seed_osm_utils.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "coordinates = el.geometry.map((pt: any) => `${pt.lon} ${pt.lat}`);"
-  },
-  {
-    "file": "scripts/seed_osm_utils.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
     "source": "function mapOsmToZoneType(tags: any): string | null {"
   },
   {
     "file": "scripts/seed_osm_utils.ts",
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
-    "source": "let coordinates: any[] = [];"
-  },
-  {
-    "file": "scripts/seed_osm_utils.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
     "source": "return elements.filter((e: any) => e.type === \"way\");"
   },
   {
@@ -316,12 +298,6 @@
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
     "source": "return elements.filter((e: any) => e.type === \"way\");"
-  },
-  {
-    "file": "scripts/seed_osm_utils.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "} catch (e: any) {"
   },
   {
     "file": "scripts/seed_osm_utils.ts",
@@ -410,18 +386,6 @@
   {
     "file": "scripts/seed_vancouver.ts",
     "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'e' is defined but never used.",
-    "source": "} catch (e) {"
-  },
-  {
-    "file": "scripts/seed_vancouver.ts",
-    "code": "1:@typescript-eslint/no-unused-vars",
-    "message": "'e' is defined but never used.",
-    "source": "} catch (e: any) {"
-  },
-  {
-    "file": "scripts/seed_vancouver.ts",
-    "code": "1:@typescript-eslint/no-unused-vars",
     "message": "'seedOsmStreets' is defined but never used.",
     "source": "seedOsmStreets,"
   },
@@ -460,18 +424,6 @@
     "code": "2:@typescript-eslint/no-explicit-any",
     "message": "Unexpected any. Specify a different type.",
     "source": "mapper: (item: any) => any[] | null"
-  },
-  {
-    "file": "scripts/seed_vancouver.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "} catch (e: any) {"
-  },
-  {
-    "file": "scripts/seed_vancouver.ts",
-    "code": "2:@typescript-eslint/no-explicit-any",
-    "message": "Unexpected any. Specify a different type.",
-    "source": "} catch (e: any) {"
   },
   {
     "file": "scripts/seed_warsaw.ts",

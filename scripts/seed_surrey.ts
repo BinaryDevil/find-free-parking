@@ -2,6 +2,7 @@ import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { getDbPool } from "./seed_utils";
+import { importLegacyBatch, geometryRecordId } from "./evidence-import";
 import {
   seedOsmParkingLots,
   seedOsmCityCoverage,
@@ -13,12 +14,7 @@ const pool = getDbPool();
 export async function seedSurrey() {
   console.log("Starting Surrey Seeding...");
 
-  // Check if meters exist
-  const checkMeters = await pool.query(
-    "SELECT 1 FROM parking_meters WHERE raw_data->>'city' = 'Surrey' LIMIT 1"
-  );
-
-  if (checkMeters.rowCount === 0) {
+  {
     const extractDir = path.resolve(
       process.cwd(),
       "datasets/Canada/BC/Surrey/surrey_data"
@@ -72,38 +68,23 @@ export async function seedSurrey() {
         };
 
         try {
-          await pool.query(
-            `
-                        INSERT INTO parking_meters (id, pay_station_id, meter_head, geom, raw_data, schedules)
-                        VALUES (
-                            gen_random_uuid(), 
-                            $1, 
-                            $2, 
-                            ST_Transform(ST_SetSRID(ST_MakePoint($3, $4), 26910), 4326), 
-                            $5,
-                            $6
-                        )
-                    `,
-            [
-              payStationId,
-              type,
-              coords[0],
-              coords[1],
-              JSON.stringify(normalizedProps),
-              JSON.stringify([]), // Empty schedules for now
-            ]
+          const projected = await pool.query(
+            "SELECT ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_MakePoint($1, $2), 26910), 4326)) AS geom",
+            [coords[0], coords[1]],
           );
+          await importLegacyBatch(pool, "SURREY_METERS", "parking_meters", [
+            payStationId, type, projected.rows[0].geom,
+            JSON.stringify(normalizedProps), JSON.stringify([]),
+          ], [geometryRecordId("pay-parking-stations", geom)]);
           inserted++;
-        } catch (e) {
-          console.error(`[Surrey] Insert failed for ${payStationId}:`, e);
+        } catch {
+          throw new Error("Surrey import failed; inspect privately");
         }
       }
       console.log(`[Surrey] Meters Inserted: ${inserted}.`);
     } else {
       console.log("[Surrey] JSON file not found despite download attempt.");
     }
-  } else {
-    console.log("[Surrey] Meters already exist. Skipping meter insert.");
   }
 
   // Seed lots from OSM
