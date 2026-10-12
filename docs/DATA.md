@@ -54,6 +54,11 @@ SQL files, no down section for the baseline. No down/reset command is provided.
    all data. A copied or schema-only branch already has the schema and does not
    prove replay: create a **new empty database**, or recreate only the copied
    database on this disposable branch after verifying its branch endpoint.
+   For exact provider-ACL parity, retain the copied `public` schema and provider
+   default ACLs, and remove only the reviewed copied application tables, enums,
+   functions and installed extensions before replay. This destructive preparation
+   requires explicit approval naming the disposable branch; it is never a shared
+   database cleanup. Rebuild every application object through migrations.
    Never clear tables or reset a shared database. If branch capacity is exhausted,
    obtain an explicitly disposable target; do not delete unrelated branches.
 2. Use the same project database owner (`find-free-parking-db_owner`) and the
@@ -94,6 +99,16 @@ SQL files, no down section for the baseline. No down/reset command is provided.
    away application-schema differences. Record dated evidence
    on #9, retaining private dumps. Delete only the disposable validation resource
    after evidence is recorded and cleanup is authorized.
+
+Validation for #9: the approved isolated branch
+`validation/issue-9-migration-baseline` was cleared of copied application objects
+and rebuilt solely through migrations. Repeat execution preserved the single
+baseline history entry. Strict PostgreSQL 17.11 schema-only dumps match production
+with only `migration_meta` excluded, retaining all provider/application ACLs and
+ownership. Neon schema diff confirms only the migration history schema/table/
+sequence/default/primary key are added; extension versions/namespaces match.
+No provider ACL exception was needed on this branch. Production ledger adoption
+still requires the separate human approval below.
 
 ### Adopting the baseline on an existing database — approval pending
 
