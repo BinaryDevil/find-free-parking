@@ -17,6 +17,10 @@ When reusing existing import code, review parser defaults and incomplete records
 - Preserve existing rows and previously applied additive evidence columns unless the user explicitly authorizes a data change. Code rollback does not require database rollback.
 - Verify affected row counts, spatial placement, schedules, evidence eligibility, and API behavior after an authorized import. A successful script or row count alone does not prove accurate rules.
 
+For #16's proposed duplicate resolution, legacy read retirement, aggregate
+reconciliation, archival and separate execution approvals, see
+[Legacy retirement](LEGACY_RETIREMENT.md). This is preparation, not cleanup approval.
+
 ## Request-driven imports
 
 `pnpm check-requests` runs `scripts/automate_seeding.ts` to group city requests case-insensitively and open `Cover city: <City>` GitHub issues when the count is more than 10. Issues carry `needs-triage`, the aggregate request count, and instructions to use the `cover-city` skill under ADR-0002. An exact, case-insensitive matching open issue in this repository is skipped (pull requests do not count). Legacy `covered_cities` and page registry entries do not suppress evidence-review requests or establish Coverage.
