@@ -118,6 +118,21 @@ Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates 
 - E7 [parking guidance](https://www.cnv.org/Streets-Transportation/Parking/Parking-Rules-and-Regulations) and Bylaw 6234 above: maximum 72 hours, additional unsigned exclusions. **Rejected as qualifying E7 permission default**; web/PDF guidance lacks precise rule geometry/stable record IDs and signs are not the only exceptions. No Verified Free from unsigned streets.
 - [Street-use permit guidance](https://www.cnv.org/streets-transportation/street-use-permits) is an E5 discovery lead, **rejected as an active restriction feed**: no dated precise reservation records, IDs or daily sync endpoint. Freshness/geometry/schedule/reuse checks remain for any future feed.
 
+### Secondary candidate assessment limits
+
+All secondary sources above remain unapproved. No independent ten-place checks were performed for these sources; their discovery/sample inspection is not criterion-7 validation. Reuse remains pending for GIS views and any page-derived dataset, including rejected candidates. No source edit date/cadence was established for the secondary views.
+
+| Candidate | Public sample / field meaning | May establish after approval | Unknown cases / current assessment |
+|---|---|---|---|
+| Curb topic views | 2882 ACCESSIBLE, 2 HR, 9AM-6PM; restriction is text, not parsed schedule | E1 rules for exact filtered curbs | Same-origin alternate representation, filters/changes/exemptions unresolved; pending. |
+| Pay Parking Zones | OBJECTID 3, Pay_Parking_Zone=70517; payment zone identifier, not rate/permit entitlement. GIS_EDIT_DATE null in all seven records | E4 paid zone constraints with documented applicability | No currentness/rate/curb rights established; pending. |
+| Pay Parking Off Street | OBJECTID 1 above; PAY_PARKING=Yes is payment indication, RESTRICTION=n/a is not permission | E6 lot rules only with operator conditions and entrance/footprint | Public use, hours, rates, currentness and precision unresolved; rejected import-ready feed. |
+| Accessible parking | OBJECTID 1, 300 E Esplanade, PAY_PARKING=No, TIME_LIMIT=No time limit, NUMBER_SPOTS=1 | Specialized E1/E6 conditions only with precise applicable context | No ordinary-driver permission; absent schedule/currentness, entrance/curb scope unresolved; rejected general-driver source. |
+| ResidentExemptParking lines | OBJECTID 2, ZONE_=902, SPECIFIC=east side, TYPE=RE; legacy zone/side/category labels | Reconciled signed curb conditions | Code semantics/currentness and legacy-to-current program mapping unresolved; rejected canonical source. |
+| ResidentExemptParking polygons | OBJECTID 5, MAPZONE=105, Existing, DESCRIPTION=Time-Limited Resident Exempt: 2 HR 9AM-6PM MON-FRI, TYPE=RE; legacy eligibility-area descriptor | E4 supported restrictions only with signed curb assignment | Not blanket permit-only; no independent confirmation or edit signal, program mapping unresolved; rejected canonical source. |
+| Bylaw/default guidance | Named Bylaw 6234 and unsigned-parking guidance above; no machine record count/edit date or location sample applicable | General constraints; qualifying E7 only if its policy conditions could be met | Unsigned exclusions mean signs-only condition fails; rejected E7 permission default. |
+| Street-use guidance | Named permit application page; no active reservation count/edit date/sample available | Discovery channel only; future E5 records may override | Active geometry/schedule/IDs absent; rejected active feed. |
+
 ## Ten independent official-layer location probes
 
 Queried rules and signs separately, full pagination, then selected distinct public block labels covering all required classes. For each rule, compared the nearest sign point on the **same BLOCK_STREET** to its polyline, using local planar distance (longitude × 73,000 metres, latitude × 111,000 metres); candidates within 25 m. These ten nearest points lie on the line to rounding precision. This does **not** establish side/direction, sign completeness, or independent origin of the City's datasets. Exact record selectors are reproducible from endpoints above. Blank is unknown, not all-day.
