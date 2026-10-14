@@ -50,6 +50,6 @@ Commercial data (INRIX, Parkopedia, Arrive and the like) is not an Evidence Sour
 5. Transit agencies for park-and-rides.
 6. The city's municipal code or bylaws for default rules.
 7. Citation datasets, used only as signals.
-8. If a type is still missing: a data request or public-records request to the city.
+8. If a type is still missing: record the searched locations and the evidence gap. Do not contact officials, governments or service providers; [ADR-0004](0004-no-external-outreach.md) supersedes the former data-request fallback.
 
 The repo provides read-only discovery tooling (ArcGIS Online plus Socrata search, and a GIS-server crawl) and a `cover-city` agent skill that applies this policy and produces a per-city source inventory.
