@@ -68,6 +68,11 @@ validation and private-field restrictions. No schema objects or rows change.
 
 ## Database and release operations
 
+For the separately disabled approved-adapter runner, direct import credentials,
+daily/hourly schedule proposal, durable drift/failure history and synthetic
+integration validation, see [Evidence Source sync](SOURCE_SYNC.md). No real
+source or production scheduler is enabled by that implementation.
+
 Follow [data operations](DATA.md) before seeding, migrations, cleanup, or database rollback. Extra evidence columns left by earlier work are not a reason to remove data.
 
 The recorded public URL is https://findfreeparking.info/. Pushes to `main` were historically expected to deploy; confirm the current integration rather than assuming a push proves deployment. After application releases, check the deployment revision, public map, and parking API responses. Source parity alone cannot prove behavioral parity: database rows, environment, current time, external services, and browser storage also affect results.
