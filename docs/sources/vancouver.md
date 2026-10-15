@@ -35,6 +35,8 @@ This read-only inventory implements the research scope of [#21](https://github.c
 
 ## Reuse terms and reproducible method
 
+2026-10-13 follow-up: see the [#24 terms evidence and approval matrix](approval-seattle-vancouver.md). It records exact published scope leads and unresolved permissions; all verdicts below and draft status remain unchanged.
+
 Portal datasets explicitly identify [Open Government Licence – Vancouver v1.0](https://opendata.vancouver.ca/pages/licence/). The page’s embedded content was read through a standard HTTP reader because the web reader showed only its shell. It permits commercial reuse/adaptation subject to attribution, excludes personal information/third-party rights/official marks, and grants no City endorsement. Suggested attribution: City of Vancouver; link the licence and identify transformations. The portal licence **does not automatically apply to unlisted GIS services**.
 
 The hosted permit item [8295da8234aa459e88f152f762548585](https://www.arcgis.com/home/item.html?id=8295da8234aa459e88f152f762548585), owned by `City_of_Vancouver`, records `licenseInfo="CC BY"` on this date. This is a published licence lead, not “no licence found”. It lacks a version/link and clear applicability details; the `cover-city` rule for an unlisted service and #24 require a recorded, confirmed permission basis before approval. **Permit reuse remains pending**. Do not send a permission request without separate human authorization. The meter/motorcycle/accessibility/carshare items also say CC BY without a version; Road Ahead’s item has no `licenseInfo`.

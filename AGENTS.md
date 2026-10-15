@@ -10,6 +10,8 @@ Help unfamiliar drivers find nearby places with Verified Free Parking Rules for 
 
 ## Context to read
 
+- Source discovery must follow [ADR-0004: No external outreach](docs/adr/0004-no-external-outreach.md). Use available evidence; do not send or prepare requests to officials, governments or service providers, or ask for authorization to do so.
+
 - Before product or classification work, read `GLOSSARY.md`, `docs/adr/0001-verified-rules-only.md`, and the verified-rules spec (https://github.com/BinaryDevil/find-free-parking/issues/2) with its open sub-issues.
 - Before local setup, validation, or release work, read `docs/RETURNING.md`.
 - To add, seed, or expand a city, read [ADR-0002: Evidence Source Policy](docs/adr/0002-evidence-source-policy.md) and use the `cover-city` skill. Before seeding, schema changes, cleanup, or rollback, read `docs/DATA.md` and inspect the target script. Preserve database data; a code change does not authorize production data writes. Record schema changes in `sql/` before execution.

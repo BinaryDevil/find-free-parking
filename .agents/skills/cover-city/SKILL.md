@@ -9,11 +9,13 @@ The output is a reviewed **inventory** plus tickets. The inventory decides which
 
 ## 1. Load the policy
 
-Run `gh issue view 2` and read the **Evidence Source Policy** section (once it moves into the repo, the issue will point to its new home). Also read the Language section of `GLOSSARY.md` and `docs/adr/`. The policy's evidence types (E1–E7, signals), acceptance criteria, coverage levels, and search order are the rules for every later step.
+Read [ADR-0002: Evidence Source Policy](../../../docs/adr/0002-evidence-source-policy.md), the Language section of `GLOSSARY.md`, and [ADR-0001](../../../docs/adr/0001-verified-rules-only.md). Apply ADR-0002 to every later step.
 
 Done when: you can name what each evidence type may and may not establish.
 
 ## 2. Discover
+
+Follow [ADR-0004](../../../docs/adr/0004-no-external-outreach.md): use available public evidence and read-only retrieval only. Do not contact officials, governments or service providers, prepare outreach, or request authorization to send it. Missing evidence limits Coverage; it does not relax source acceptance.
 
 Search every place in the policy's search order. The tooling:
 
@@ -27,8 +29,8 @@ Done when: every evidence type E1–E7 has candidate sources or "none found" wit
 
 For each candidate, record its fields, record count, last edit date, geometry, and a sample record. Then apply the policy's acceptance criteria one by one.
 
-- **Spot check**: choose at least 10 places covering permit, metered, time-limited, and no-parking cases. Test each against an independent official signal: a point-in-polygon query on a second official layer, a sign inventory match, the city's own web page, or citation data near the block.
-- **Reuse terms**: find the licence on the portal or the service's item page. A service that isn't in the portal catalogue gets verdict `pending` until permission is recorded.
+- **Spot check**: record the locations, independent official comparisons, and safety contradictions required by ADR-0002 acceptance criterion 7.
+- **Reuse terms**: record the terms required by ADR-0002 acceptance criterion 6 from the portal or the service's item page. A service that isn't in the portal catalogue gets verdict `pending` until permission is recorded.
 - Anything the source leaves ambiguous becomes an explicit Unknown case.
 
 Done when: every candidate has a verdict (approved / rejected with the failed criterion / pending with what is missing).
@@ -45,7 +47,7 @@ Using `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`:
 
 - One adapter issue per approved or pending source: endpoint, fields and their meanings, format checks, the Parking Rules it produces, the Unknown cases, and the spot-check places as test fixtures. Label it `ready-for-agent`. Reference #2, and add `Blocked by: #2` while the evaluator and Evidence Source schema from #2 are unbuilt.
 - One coverage-approval issue: link the inventory, list the pending licences and verdicts to confirm, and the city page and registry change it unlocks. Label it `ready-for-human`.
-- One data-request issue per missing evidence type that blocks the target coverage level, naming the city department or records channel to contact. Label it `ready-for-human`.
+- Record missing evidence types and their Coverage limits in the inventory. Do not file data-request or outreach issues; ADR-0004 prohibits external requests.
 
 Link every issue back into the inventory's Tickets section.
 
@@ -53,4 +55,4 @@ Done when: every approved or pending source has an adapter issue, and the invent
 
 ## 6. Report
 
-Tell the user the coverage verdict, the approved, pending and rejected sources, the Unknown areas, and the issue links. Point out any policy gap the city exposed (a source type the policy doesn't cover) so the policy can be amended in #2.
+Tell the user the coverage verdict, the approved, pending and rejected sources, the Unknown areas, and the issue links. Point out any policy gap the city exposed (a source type the policy doesn't cover) so a policy amendment can be proposed for ADR-0002.
