@@ -55,6 +55,8 @@
     "paymentListed": "列有收费信息",
     "unknownCount": "未知：{count}",
     "cityNotCovered": "{city}：未覆盖"
+    "cityFullCoverage": "{city}：完整覆盖",
+    "cityPartialCoverage": "{city}：部分覆盖 — {subset}",
   },
   "ReportModal": {
     "title": "更新状态",

@@ -7,7 +7,7 @@ import { classifiedPlaces } from '../lib/classified-places.ts';
 import { classifiedMapFeatures } from '../components/parking-map/data.ts';
 
 test('no approved Coverage leaves the new model dark without requiring its tables', async () => {
-  const ids = await approvedParkingPlaceIds();
+  const ids = await approvedParkingPlaceIds(async () => ({ rows: [{ ready: false }] }), [-1,-1,1,1]);
   const features = await classifiedPlaces(() => { throw new Error('New tables must not be read'); }, ids, [-1,-1,1,1], parseParkingSelection(new URLSearchParams()), new Date());
   assert.deepEqual(features, []);
 });

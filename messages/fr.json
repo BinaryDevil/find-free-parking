@@ -55,6 +55,8 @@
     "paymentListed": "Paiement indiqué",
     "unknownCount": "Inconnu : {count}",
     "cityNotCovered": "{city} : non couverte"
+    "cityFullCoverage": "{city} : couverture complète",
+    "cityPartialCoverage": "{city} : couverture partielle — {subset}",
   },
   "ReportModal": {
     "title": "Mettre à jour",

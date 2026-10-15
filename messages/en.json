@@ -55,6 +55,8 @@
     "paymentListed": "Payment listed",
     "unknownCount": "Unknown: {count}",
     "cityNotCovered": "{city}: not covered"
+    "cityFullCoverage": "{city}: full coverage",
+    "cityPartialCoverage": "{city}: partial coverage — {subset}",
   },
   "ReportModal": {
     "title": "Update Status",

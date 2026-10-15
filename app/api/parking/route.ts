@@ -5,6 +5,7 @@ import { parseParkingSelection } from "@/lib/parking-selection";
 import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
 import { approvedParkingPlaceIds } from "@/lib/approved-parking-coverage";
 import { classifiedPlaces } from "@/lib/classified-places";
+import { coverageAt } from "@/lib/coverage";
 
 export async function GET(request: Request) {
   try {
@@ -48,17 +49,19 @@ export async function GET(request: Request) {
       LIMIT 1000
     `;
 
-    const [metersRes, streetsRes, places] = await Promise.all([
+    const bounds = [west, south, east, north];
+    const [metersRes, streetsRes, places, coverage] = await Promise.all([
       query(metersQuery, [west, south, east, north]),
       query(streetsQuery, [west, south, east, north]),
-      approvedParkingPlaceIds().then(ids => classifiedPlaces(query, ids, [west, south, east, north], selection, now)),
+      approvedParkingPlaceIds(query, bounds, now).then(ids => classifiedPlaces(query, ids, bounds, selection, now)),
+      coverageAt(query, bounds, now),
     ]);
 
     return NextResponse.json({
       meters: metersRes.rows.map(row => ({ ...row, ...legacyParkingEvaluation('METER', row, selection) })),
       streets: streetsRes.rows.map(row => ({ ...row, ...legacyParkingEvaluation('STREET', row, selection) })),
       places,
-      coverage: { level: 'none' },
+      coverage,
     });
   } catch (error) {
     console.error("API Error:", error);

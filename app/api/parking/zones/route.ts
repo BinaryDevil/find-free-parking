@@ -4,6 +4,7 @@ import { query } from "@/lib/db";
 import { driverWarningsSql } from "@/lib/driver-warnings";
 import { parseParkingSelection, type ParkingSelection } from "@/lib/parking-selection";
 import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
+import { coverageAt } from "@/lib/coverage";
 
 export const runtime = "nodejs";
 
@@ -172,7 +173,7 @@ export async function GET(req: Request) {
         bbox: { minLat, minLng, maxLat, maxLng },
         count: features.length,
         features,
-        coverage: { level: 'none' },
+        coverage: await coverageAt(query, [minLng, minLat, maxLng, maxLat]),
       });
     }
 
@@ -232,7 +233,7 @@ export async function GET(req: Request) {
       point: { lat, lng },
       count: features.length,
       features,
-      coverage: { level: 'none' },
+      coverage: await coverageAt(query, [lng!, lat!, lng!, lat!]),
     });
   } catch (error) {
     console.error("Error fetching parking zones", error);

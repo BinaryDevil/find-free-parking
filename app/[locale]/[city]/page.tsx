@@ -10,10 +10,13 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const { locale, city } = await params;
-  const cityInfo = getCityBySlug(city);
+  const cityInfo = await getCityBySlug(city);
   if (!cityInfo) return {};
 
   const t = await getTranslations({ locale, namespace: "HomePage" });
+  const coverageText = cityInfo.level === 'none' ? t('cityNotCovered', { city: cityInfo.name }) :
+    cityInfo.level === 'full' ? t('cityFullCoverage', { city: cityInfo.name }) :
+    t('cityPartialCoverage', { city: cityInfo.name, subset: cityInfo.declaredSubset ?? '' });
 
   const alternates: Record<string, string> = {};
   routing.locales.forEach((l) => {
@@ -21,8 +24,9 @@ export async function generateMetadata({ params }: Props) {
   });
 
   return {
-    title: `${t("title")} - ${t("cityNotCovered", { city: cityInfo.name })}`,
-    description: `${t("cityNotCovered", { city: cityInfo.name })}. ${t("metaDescription")}`,
+    title: `${t("title")} - ${coverageText}`,
+    description: `${coverageText}. ${t("metaDescription")}`,
+    robots: { index: cityInfo.level !== 'none' },
     keywords: `${cityInfo.name} parking, ${t("metaKeywords")}`,
     alternates: {
       canonical: `/${locale}/${city}`,
@@ -32,18 +36,23 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function CityPage({ params }: Props) {
-  const { city } = await params;
-  const cityInfo = getCityBySlug(city);
+  const { city, locale } = await params;
+  const cityInfo = await getCityBySlug(city);
 
   if (!cityInfo) {
     notFound();
   }
+  const t = await getTranslations({ locale, namespace: "HomePage" });
+  const coverageText = cityInfo.level === 'none' ? t('cityNotCovered', { city: cityInfo.name }) :
+    cityInfo.level === 'full' ? t('cityFullCoverage', { city: cityInfo.name }) :
+    t('cityPartialCoverage', { city: cityInfo.name, subset: cityInfo.declaredSubset ?? '' });
 
   return (
     <MainMap
       initialCenter={cityInfo.center}
-      initialZoom={cityInfo.zoom}
+      initialZoom={14}
       cityName={cityInfo.name}
+      cityCoverageText={coverageText}
     />
   );
 }

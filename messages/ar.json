@@ -55,6 +55,8 @@
     "paymentListed": "الدفع مذكور",
     "unknownCount": "غير معروف: {count}",
     "cityNotCovered": "{city}: غير مشمولة بالتغطية"
+    "cityFullCoverage": "{city}: تغطية كاملة",
+    "cityPartialCoverage": "{city}: تغطية جزئية — {subset}",
   },
   "ReportModal": {
     "title": "تحديث الحالة",
