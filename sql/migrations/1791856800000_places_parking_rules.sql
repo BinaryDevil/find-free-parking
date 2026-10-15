@@ -25,9 +25,9 @@ CREATE TABLE public.parking_rules (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     place_id uuid NOT NULL REFERENCES public.places(id),
     kind text NOT NULL CHECK (kind IN ('no_stopping','tow_away','no_parking','loading','temporary_no_parking','permit_only','paid','free')),
-    days smallint[] NOT NULL CHECK (cardinality(days) > 0 AND days <@ ARRAY[0,1,2,3,4,5,6]::smallint[] AND array_position(days, NULL) IS NULL),
-    start_minute smallint NOT NULL CHECK (start_minute >= 0 AND start_minute < 1440),
-    end_minute smallint NOT NULL CHECK (end_minute >= 0 AND end_minute <= 1440),
+    days smallint[] CHECK (cardinality(days) > 0 AND days <@ ARRAY[0,1,2,3,4,5,6]::smallint[] AND array_position(days, NULL) IS NULL),
+    start_minute smallint CHECK (start_minute >= 0 AND start_minute < 1440),
+    end_minute smallint CHECK (end_minute >= 0 AND end_minute <= 1440),
     time_limit_minutes integer CHECK (time_limit_minutes > 0),
     rate numeric CHECK (rate > 0),
     vehicle_type text CHECK (vehicle_type IN ('car','motorcycle','commercial','ev')),
@@ -45,7 +45,8 @@ CREATE TABLE public.parking_rules (
     raw_data jsonb NOT NULL DEFAULT '{}'::jsonb,
     UNIQUE (place_id, source_id, source_record_id),
     CHECK (start_minute <> end_minute),
-    CHECK (kind <> 'paid' OR rate IS NOT NULL),
+    CHECK (NOT parsed OR (days IS NOT NULL AND start_minute IS NOT NULL AND end_minute IS NOT NULL)),
+    CHECK (NOT parsed OR kind <> 'paid' OR rate IS NOT NULL),
     CHECK (valid_from IS NULL OR valid_until IS NULL OR valid_from < valid_until),
     CHECK (visitor_allowance_minutes IS NULL OR kind = 'permit_only')
 );

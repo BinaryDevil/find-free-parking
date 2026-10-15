@@ -16,7 +16,7 @@ export interface LegacyParkingData {
 
 // Legacy rows cannot prove complete, current permission to park for free.
 // PAID only means payment is listed, not that parking is permitted or rates are current.
-// The city-timezone evidence evaluator belongs to #11.
+// Verified evidence uses parking-rules.ts, never this legacy display helper.
 export function classifyParking(
   kind: 'METER' | 'STREET' | 'ZONE',
   data: LegacyParkingData,
