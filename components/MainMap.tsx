@@ -14,7 +14,11 @@ import HelpModal from "@/components/HelpModal";
 import CoverageBanner from "@/components/CoverageBanner";
 import { useLocale, useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { classifyParking, isVisibleInParkingView, type ParkingClassification } from "@/lib/parking-classification";
+import { isVisibleInParkingView, type ParkingClassification } from "@/lib/parking-classification";
+
+import { addParkingLayers } from "./parking-map/layers";
+import { popupElement, parkingLabelKey } from "./parking-map/popup";
+import { parkingSelectionParams, classifiedMapFeatures } from "./parking-map/data";
 
 maplibregl.setWorkerUrl(
   new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href
@@ -42,17 +46,6 @@ function formatInputDateValue(date: Date) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-function popupElement<K extends keyof HTMLElementTagNameMap>(
-  tag: K,
-  style: string,
-  text?: unknown
-) {
-  const element = document.createElement(tag);
-  element.style.cssText = style;
-  if (text !== undefined) element.textContent = String(text ?? "");
-  return element;
-}
-
 function formatDisplayDate(value: string, isCustom: boolean) {
   if (!isCustom) return "now";
   const date = new Date(value);
@@ -65,6 +58,7 @@ function formatDisplayDate(value: string, isCustom: boolean) {
 }
 
 type MeterRow = {
+  classification: ParkingClassification;
   id: string;
   geom: SpotFeature["geometry"];
   pay_station_id?: string;
@@ -74,6 +68,7 @@ type MeterRow = {
   raw_data?: Record<string, string> | string;
 };
 type StreetRow = {
+  classification: ParkingClassification;
   id: string;
   geom: { type: "LineString"; coordinates: [number, number][] };
   block_id: string;
@@ -440,140 +435,7 @@ export default function MainMap({
         promoteId: "id",
       });
 
-      map.addLayer({
-        id: "zones-fill",
-        type: "fill",
-        source: "zones",
-        paint: {
-          "fill-color": [
-            "match",
-            ["get", "classification"],
-            "FREE",
-            "#16a34a",
-            "PAID",
-            "#ef4444",
-            "#94a3b8", // Default gray
-          ],
-          "fill-opacity": 0.4,
-        },
-      });
-      map.addLayer({
-        id: "zones-line",
-        type: "line",
-        source: "zones",
-        paint: {
-          "line-color": [
-            "match",
-            ["get", "classification"],
-            "FREE",
-            "#15803d",
-            "PAID",
-            "#b91c1c",
-            "#64748b",
-          ],
-          "line-width": 2,
-        },
-      });
-
-      // Streets Outline Layer (Background for contrast)
-      map.addLayer({
-        id: "streets-line-outline",
-        type: "line",
-        source: "streets",
-        layout: {
-          "line-join": "round",
-          "line-cap": "round",
-        },
-        paint: {
-          "line-color": "#ffffff",
-          "line-width": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            8, // Outline width when hovered
-            6, // Normal outline width (4px line + 1px border)
-          ],
-          "line-opacity": 1,
-        },
-      });
-
-      // Streets Layer (Main)
-      map.addLayer({
-        id: "streets-line",
-        type: "line",
-        source: "streets",
-        layout: {
-          "line-join": "round",
-          "line-cap": "round",
-        },
-        paint: {
-          "line-color": ["match", ["get", "classification"], "FREE", "#00A651", "PAID", "#DC2626", "#64748b"],
-          "line-dasharray": ["case", ["==", ["get", "classification"], "UNKNOWN"], ["literal", [2, 2]], ["literal", [1, 0]]],
-          "line-width": [
-            "case",
-            ["boolean", ["feature-state", "hover"], false],
-            6, // Width when hovered
-            4, // Normal width
-          ],
-          "line-opacity": 1.0,
-        },
-      });
-
-      map.addLayer({
-        id: "spots-clusters",
-        type: "circle",
-        source: "spots",
-        filter: ["has", "point_count"],
-        paint: {
-          "circle-radius": [
-            "interpolate",
-            ["linear"],
-            ["get", "point_count"],
-            10,
-            14,
-            200,
-            24,
-          ],
-          "circle-color": "#2563eb",
-          "circle-opacity": 0.9,
-        },
-      });
-
-      map.addLayer({
-        id: "spots-cluster-count",
-        type: "symbol",
-        source: "spots",
-        filter: ["has", "point_count"],
-        layout: {
-          "text-field": "{point_count_abbreviated}",
-          "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-          "text-size": 12,
-        },
-        paint: { "text-color": "#fff" },
-      });
-
-      map.addLayer({
-        id: "spots-unclustered",
-        type: "circle",
-        source: "spots",
-        filter: ["!", ["has", "point_count"]],
-        paint: {
-          "circle-radius": 6,
-          "circle-color": ["match", ["get", "classification"], "FREE", "#16a34a", "PAID", "#DC2626", "#64748b"],
-          "circle-stroke-color": "#fff",
-          "circle-stroke-width": 1.5,
-        },
-      });
-      map.addLayer({
-        id: "user-location",
-        type: "circle",
-        source: "user-location",
-        paint: {
-          "circle-radius": 7,
-          "circle-color": "#2563eb",
-          "circle-stroke-color": "#fff",
-          "circle-stroke-width": 2,
-        },
-      });
+      addParkingLayers(map);
 
       map.on("click", "spots-unclustered", (e) => {
         const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
@@ -593,7 +455,7 @@ export default function MainMap({
           popupElement(
             "div",
             "font-weight:600;color:#0f172a",
-            props.classification === "PAID" ? t("paymentListed") : t("unknown")
+            t(parkingLabelKey(props))
           ),
           popupElement(
             "div",
@@ -722,8 +584,8 @@ export default function MainMap({
         );
         content.append(
           popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", props.name || t("parkingLot")),
-          popupElement("div", "margin-top:4px;color:#64748b", t("unknown")),
-          popupElement("div", "margin-top:8px;color:#475569", t("unverifiedLot")),
+          popupElement("div", "margin-top:4px;color:#64748b", t(parkingLabelKey(props))),
+          ...(!props.kind ? [popupElement("div", "margin-top:8px;color:#475569", t("unverifiedLot"))] : []),
           popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
         );
         appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
@@ -752,7 +614,7 @@ export default function MainMap({
           "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
         );
         content.append(
-          popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", t("unknown")),
+          popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", t(parkingLabelKey(props))),
           popupElement("div", "color:#475569;font-size:12px", props.block_id ?? t("unknownLocation")),
           popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
         );
@@ -879,6 +741,8 @@ export default function MainMap({
       // limit: "1000", // API has hardcoded limit
     });
 
+    const selectionParams = parkingSelectionParams(getEffectiveParkingTime());
+    selectionParams.forEach((value, key) => queryParams.set(key, value));
     const requestId = ++loadSpotsRequestIdRef.current;
     const isStale = () => requestId !== loadSpotsRequestIdRef.current;
 
@@ -896,14 +760,11 @@ export default function MainMap({
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
-      const currentDateTime = getEffectiveParkingTime();
+      const classifiedFeatures = classifiedMapFeatures(data.places ?? [], filterTypeRef.current);
 
       // --- Process Meters ---
       // 1. Filter raw meters based on logic
-      const filteredMeters = meters.map((m) => ({
-        ...m,
-        classification: classifyParking("METER", m, currentDateTime),
-      })).filter((m) => isVisibleInParkingView(m.classification, filterTypeRef.current));
+      const filteredMeters = meters.filter((m) => isVisibleInParkingView(m.classification, filterTypeRef.current));
 
       // 2. Map valid meters to features (Sanitize properties)
       const meterFeatures: SpotFeature[] = filteredMeters.map((m) => {
@@ -942,17 +803,14 @@ export default function MainMap({
       if (source) {
         source.setData({
           type: "FeatureCollection",
-          features: meterFeatures,
+          features: [...meterFeatures, ...classifiedFeatures.points],
         });
       }
       const meterCount = filteredMeters.filter((m) => m.classification === filterTypeRef.current).length;
       let unknownCount = filteredMeters.filter((m) => m.classification === "UNKNOWN").length;
 
       // Nearby meters and road categories do not establish a street rule.
-      const filteredStreets = streets.map((s) => ({
-        ...s,
-        classification: classifyParking("STREET", s, currentDateTime),
-      })).filter((s) => isVisibleInParkingView(s.classification, filterTypeRef.current));
+      const filteredStreets = streets.filter((s) => isVisibleInParkingView(s.classification, filterTypeRef.current));
       const streetFeatures: StreetFeature[] = filteredStreets.map((s) => ({
         type: "Feature",
         geometry: s.geom,
@@ -972,7 +830,7 @@ export default function MainMap({
       if (streetSource) {
         streetSource.setData({
           type: "FeatureCollection",
-          features: streetFeatures,
+          features: [...streetFeatures, ...classifiedFeatures.lines],
         });
       }
       const streetCount = filteredStreets.filter((s) => s.classification === filterTypeRef.current).length;
@@ -983,7 +841,7 @@ export default function MainMap({
       // 2. Fetch Parking Zones (Lots)
       const bboxParam = `${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()}`;
       const zonesRes = await fetch(
-        `/api/parking/zones?bbox=${bboxParam}&limit=200`
+        `/api/parking/zones?bbox=${bboxParam}&limit=200&${selectionParams}`
       );
       if (isStale()) return;
       if (zonesRes.ok) {
@@ -998,13 +856,12 @@ export default function MainMap({
             ...f,
             properties: sanitizeFeatureProperties({
               ...f.properties,
-              classification: classifyParking("ZONE", f.properties, currentDateTime),
             }),
           }));
 
           zonesSource.setData({
             type: "FeatureCollection",
-            features: zoneFeatures,
+            features: [...zoneFeatures, ...classifiedFeatures.polygons],
           });
           zoneCount = zoneFeatures.filter((f: ZoneFeature) => f.properties.classification === filterTypeRef.current).length;
           unknownCount += zoneFeatures.filter((f: ZoneFeature) => f.properties.classification === "UNKNOWN").length;
@@ -1012,10 +869,10 @@ export default function MainMap({
       }
 
       setFeatureCounts({
-        meters: meterCount,
-        streets: streetCount,
-        zones: zoneCount,
-        unknown: unknownCount,
+        meters: meterCount + classifiedFeatures.pointCount,
+        streets: streetCount + classifiedFeatures.lineCount,
+        zones: zoneCount + classifiedFeatures.polygonCount,
+        unknown: unknownCount + classifiedFeatures.unknownCount,
       });
 
       setStatus("idle");

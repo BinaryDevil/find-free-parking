@@ -1,10 +1,19 @@
 import { NextResponse } from "next/server";
 import { query } from "../../../lib/db";
 import { driverWarningsSql } from "@/lib/driver-warnings";
+import { parseParkingSelection } from "@/lib/parking-selection";
+import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
+import { approvedParkingPlaceIds } from "@/lib/approved-parking-coverage";
+import { classifiedPlaces } from "@/lib/classified-places";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
+    const now = new Date();
+    let selection;
+    try { selection = parseParkingSelection(searchParams, now); } catch {
+      return NextResponse.json({ error: "Invalid parking selection" }, { status: 400 });
+    }
     const parseBound = (key: string) => {
       const raw = searchParams.get(key);
       return raw === null || raw.trim() === "" ? NaN : Number(raw);
@@ -39,14 +48,17 @@ export async function GET(request: Request) {
       LIMIT 1000
     `;
 
-    const [metersRes, streetsRes] = await Promise.all([
+    const [metersRes, streetsRes, places] = await Promise.all([
       query(metersQuery, [west, south, east, north]),
       query(streetsQuery, [west, south, east, north]),
+      approvedParkingPlaceIds().then(ids => classifiedPlaces(query, ids, [west, south, east, north], selection, now)),
     ]);
 
     return NextResponse.json({
-      meters: metersRes.rows,
-      streets: streetsRes.rows,
+      meters: metersRes.rows.map(row => ({ ...row, ...legacyParkingEvaluation('METER', row, selection) })),
+      streets: streetsRes.rows.map(row => ({ ...row, ...legacyParkingEvaluation('STREET', row, selection) })),
+      places,
+      coverage: { level: 'none' },
     });
   } catch (error) {
     console.error("API Error:", error);
