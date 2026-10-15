@@ -59,12 +59,13 @@ do not establish permission or current rates. Unknown context stays visible in
 both views and is counted separately. All city pages say not covered until
 approved Evidence Sources and computed Coverage arrive in #12.
 
-Dated Driver Warnings require one additional app-role column permission; see
-[17.driver_warning_read.sql](../sql/archived/17.driver_warning_read.sql). It is prepared,
-not applied by this code change. Obtain separate human approval and apply it to
-each target environment before serving these endpoints; without it the warning
-queries fail. It grants only `reported_status` SELECT, retaining existing report
-validation and private-field restrictions. No schema objects or rows change.
+Dated Driver Warnings now read the aggregate `driver_warnings` view; apply the
+additive reader migration to an approved environment before serving these
+endpoints. It grants aggregate SELECT rather than report-field access. The old
+archived column grant is not required by this reader. Follow the separate
+[Driver Warning rollout](DRIVER_WARNINGS.md) before retiring the legacy trigger
+or columns; current `main` still needs them. This code change applies nothing
+to shared or production databases.
 
 ## Database and release operations
 
