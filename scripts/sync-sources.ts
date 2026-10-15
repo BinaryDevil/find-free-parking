@@ -37,8 +37,8 @@ export async function reportSyncFailure(github: Github, result: SyncResult) {
 
 /** The command checks every approved source, including ones missing an adapter.
  * Missing adapters fail closed instead of allowing old successful data to linger. */
-export async function runScheduledSyncs(pool: Pool, adapters: SourceAdapter[], github: Github): Promise<SyncResult[]> {
-  const deadline = performance.now() + 18 * 60 * 1000;
+export async function runScheduledSyncs(pool: Pool, adapters: SourceAdapter[], github: Github, now: () => number = () => performance.now()): Promise<SyncResult[]> {
+  const deadline = now() + 18 * 60 * 1000;
   const sources = await pool.query(`SELECT e.id,e.source_key,e.area,e.evidence_type,
       sync.id AS sync_id,sync.status AS sync_status,
       (sync.id IS NULL OR sync.status <> 'succeeded' OR e.evidence_type = 'E5' OR
@@ -66,7 +66,7 @@ export async function runScheduledSyncs(pool: Pool, adapters: SourceAdapter[], g
   for (const source of sources.rows) {
     // Bound work below the workflow deadline. Oldest-attempt ordering ensures
     // unfinished batches rotate to untouched sources on the next invocation.
-    if (performance.now() >= deadline) break;
+    if (now() >= deadline) break;
     if (!source.due) continue;
     const adapter = adapters.find(a => a.sourceKey === source.source_key && a.area === source.area);
     const result = await syncSource(pool, source as SyncSource, adapter);

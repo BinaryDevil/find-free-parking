@@ -138,9 +138,8 @@ test('complete syncs are idempotent and failures immediately invalidate approved
     const order = [];
     const quickAdapters = [...extraAdapters,temporaryAdapter].map(a => ({ ...a, async fetchSnapshot() { order.push(a.sourceKey); return { complete:true, sourceEditedAt:null, places:[] }; } }));
     let clockCalls = 0;
-    const budgetClock = mock.method(performance, 'now', () => clockCalls++ < 2 ? 0 : 19 * 60 * 1000);
-    try { assert.equal((await runScheduledSyncs(pool, quickAdapters, github)).length, 1); }
-    finally { budgetClock.mock.restore(); }
+    const budgetClock = () => clockCalls++ < 2 ? 0 : 19 * 60 * 1000;
+    assert.equal((await runScheduledSyncs(pool, quickAdapters, github, budgetClock)).length, 1);
     const firstAttempt = order[0];
     order.length = 0;
     const remaining = await runScheduledSyncs(pool, quickAdapters, github);
