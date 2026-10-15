@@ -2,6 +2,8 @@ import { routing } from "@/i18n/routing";
 import { query } from "@/lib/db";
 import { coverageAreas } from "@/lib/coverage";
 
+export const dynamic = 'force-dynamic';
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
   "https://www.findfreeparking.info";

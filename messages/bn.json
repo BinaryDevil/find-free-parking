@@ -54,9 +54,9 @@
     "noParkingReported": "পার্কিং নিষিদ্ধ",
     "paymentListed": "ফি উল্লেখ আছে",
     "unknownCount": "অজানা: {count}",
-    "cityNotCovered": "{city}: কভারেজ নেই"
+    "cityNotCovered": "{city}: কভারেজ নেই",
     "cityFullCoverage": "{city}: পূর্ণ কভারেজ",
-    "cityPartialCoverage": "{city}: আংশিক কভারেজ — {subset}",
+    "cityPartialCoverage": "{city}: আংশিক কভারেজ — {subset}"
   },
   "ReportModal": {
     "title": "স্থিতি আপডেট করুন",

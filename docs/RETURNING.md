@@ -56,8 +56,7 @@ permission. Active, well-formed positive-rate meter schedules are listed payment
 information only, evaluated on the server with the viewer's timezone and legacy
 schedule semantics; they
 do not establish permission or current rates. Unknown context stays visible in
-both views and is counted separately. All city pages say not covered until
-approved Evidence Sources and computed Coverage arrive in #12.
+both views and is counted separately. City pages use [computed Coverage](COVERAGE.md); without approved current sources they say not covered.
 
 Dated Driver Warnings require one additional app-role column permission; see
 [17.driver_warning_read.sql](../sql/archived/17.driver_warning_read.sql). It is prepared,
