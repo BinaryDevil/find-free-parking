@@ -38,31 +38,40 @@ export async function reportSyncFailure(github: Github, result: SyncResult) {
 /** The command checks every approved source, including ones missing an adapter.
  * Missing adapters fail closed instead of allowing old successful data to linger. */
 export async function runScheduledSyncs(pool: Pool, adapters: SourceAdapter[], github: Github): Promise<SyncResult[]> {
+  const deadline = performance.now() + 18 * 60 * 1000;
   const sources = await pool.query(`SELECT e.id,e.source_key,e.area,e.evidence_type,
       sync.id AS sync_id,sync.status AS sync_status,
       (sync.id IS NULL OR sync.status <> 'succeeded' OR e.evidence_type = 'E5' OR
         sync.started_at <= clock_timestamp()-interval '23 hours') AS due
     FROM public.evidence_sources e LEFT JOIN LATERAL (
       SELECT id,status,started_at FROM public.source_syncs WHERE source_id=e.id ORDER BY started_at DESC,id DESC LIMIT 1
-    ) sync ON true WHERE e.approval_state='approved' AND e.evidence_type IN ('E1','E2','E3','E4','E5','E6') ORDER BY e.id`);
+    ) sync ON true WHERE e.approval_state='approved' AND e.evidence_type IN ('E1','E2','E3','E4','E5','E6')
+    ORDER BY sync.started_at ASC NULLS FIRST,e.id`);
   const results: SyncResult[] = [];
   let alertFailed = false;
+  // Persisted delivery state survives GitHub outages and subsequent successful
+  // imports. One issue per source; retries update its body rather than commenting.
+  async function deliverAlerts() {
+    const failures = await pool.query(`SELECT source_id,array_agg(id ORDER BY started_at DESC,id DESC) AS ids FROM public.source_syncs
+      WHERE status='failed' AND alert_reported_at IS NULL GROUP BY source_id ORDER BY source_id`);
+    for (const failure of failures.rows) {
+      try {
+        await reportSyncFailure(github, { sourceId: failure.source_id, syncId: failure.ids[0], status: 'failed' });
+        await pool.query(`UPDATE public.source_syncs SET alert_reported_at=clock_timestamp()
+          WHERE id=ANY($1::uuid[]) AND status='failed' AND alert_reported_at IS NULL`, [failure.ids]);
+      } catch { alertFailed = true; }
+    }
+  }
+  await deliverAlerts();
   for (const source of sources.rows) {
+    // Bound work below the workflow deadline. Oldest-attempt ordering ensures
+    // unfinished batches rotate to untouched sources on the next invocation.
+    if (performance.now() >= deadline) break;
     if (!source.due) continue;
     const adapter = adapters.find(a => a.sourceKey === source.source_key && a.area === source.area);
     const result = await syncSource(pool, source as SyncSource, adapter);
     results.push(result);
-  }
-  // Persisted delivery state survives GitHub outages and subsequent successful
-  // imports. One issue per source; retries update its body rather than commenting.
-  const failures = await pool.query(`SELECT source_id,array_agg(id ORDER BY started_at DESC,id DESC) AS ids FROM public.source_syncs
-    WHERE status='failed' AND alert_reported_at IS NULL GROUP BY source_id ORDER BY source_id`);
-  for (const failure of failures.rows) {
-    try {
-      await reportSyncFailure(github, { sourceId: failure.source_id, syncId: failure.ids[0], status: 'failed' });
-      await pool.query(`UPDATE public.source_syncs SET alert_reported_at=clock_timestamp()
-        WHERE id=ANY($1::uuid[]) AND status='failed' AND alert_reported_at IS NULL`, [failure.ids]);
-    } catch { alertFailed = true; }
+    await deliverAlerts();
   }
   if (alertFailed) throw new Error('Sync failure alert delivery failed; retry required');
   return results;

@@ -1,4 +1,4 @@
-import test from 'node:test';
+import test, { mock } from 'node:test';
 import assert from 'node:assert/strict';
 import { Pool } from 'pg';
 import { runner } from 'node-pg-migrate';
@@ -120,5 +120,31 @@ test('complete syncs are idempotent and failures immediately invalidate approved
     assert.equal(pending.length, 1);
     assert.equal((await runScheduledSyncs(pool, [temporaryAdapter], github))[0].status, 'succeeded');
     assert.equal((await client.query('SELECT alert_reported_at IS NOT NULL AS delivered FROM public.source_syncs WHERE id=$1', [pending[0].id])).rows[0].delivered, true);
+    // External clock/timer boundaries keep slow-source and batch-budget checks fast.
+    const extraAdapters = [];
+    for (let n = 0; n < 3; n++) {
+      await client.query(`INSERT INTO public.evidence_sources(source_key,area,evidence_type,approval_state,approved_by,approved_at,publisher,endpoint,licence,reuse_terms,inventory_doc_path,freshness_limit)
+        SELECT $2,area,'E5',approval_state,approved_by,approved_at,publisher,endpoint,licence,reuse_terms,inventory_doc_path,freshness_limit FROM public.evidence_sources WHERE id=$1`, [source.id,`slow-${n}`]);
+      extraAdapters.push({ ...temporaryAdapter, sourceKey: `slow-${n}`, async fetchSnapshot() { return new Promise(() => {}); } });
+    }
+    const timeout = AbortSignal.timeout.bind(AbortSignal);
+    const timerMock = mock.method(AbortSignal, 'timeout', () => timeout(5));
+    try {
+      const progressed = await runScheduledSyncs(pool, [...extraAdapters,temporaryAdapter], github);
+      assert.equal(progressed.filter(r => r.status === 'failed').length, 3);
+      assert.equal(progressed.filter(r => r.status === 'succeeded').length, 1);
+      assert.equal((await client.query("SELECT count(*)::int AS n FROM public.source_syncs WHERE status='failed' AND alert_reported_at IS NULL")).rows[0].n, 0);
+    } finally { timerMock.mock.restore(); }
+    const order = [];
+    const quickAdapters = [...extraAdapters,temporaryAdapter].map(a => ({ ...a, async fetchSnapshot() { order.push(a.sourceKey); return { complete:true, sourceEditedAt:null, places:[] }; } }));
+    let clockCalls = 0;
+    const budgetClock = mock.method(performance, 'now', () => clockCalls++ < 2 ? 0 : 19 * 60 * 1000);
+    try { assert.equal((await runScheduledSyncs(pool, quickAdapters, github)).length, 1); }
+    finally { budgetClock.mock.restore(); }
+    const firstAttempt = order[0];
+    order.length = 0;
+    const remaining = await runScheduledSyncs(pool, quickAdapters, github);
+    assert.equal(remaining.length, 4);
+    assert.notEqual(order[0], firstAttempt, 'oldest untouched source progresses before the previously attempted source');
   } finally { client.release(); await pool.end(); }
 });

@@ -148,7 +148,7 @@ export async function syncSource(pool: Pool, source: SyncSource, adapter?: Sourc
       error='Source sync interrupted; inspect privately',drift_report='{"applied":false}'::jsonb WHERE source_id=$1 AND status='running'`, [source.id]);
     syncId = (await client.query("INSERT INTO public.source_syncs(source_id,started_at) VALUES ($1,clock_timestamp()) RETURNING id", [source.id])).rows[0].id;
     if (!adapter || adapter.sourceKey !== current.source_key || adapter.area !== current.area || adapter.evidenceType !== current.evidence_type) throw new Error('Missing or mismatched adapter');
-    const signal = AbortSignal.timeout(10 * 60 * 1000);
+    const signal = AbortSignal.timeout(90 * 1000);
     const snapshot = validateSnapshot(await Promise.race([
       adapter.fetchSnapshot(signal),
       new Promise<never>((_, reject) => signal.addEventListener('abort', () => reject(new Error('Adapter timeout')), { once: true })),

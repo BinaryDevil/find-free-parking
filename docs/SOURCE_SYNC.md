@@ -17,6 +17,8 @@ finishes pagination, checks publisher counts/truncation/error responses, and
 returns a **complete** dataset, never a viewport, page or delta. It must honor
 the abort signal and strip private fields before returning. Metadata drift must
 throw; missing fields/rates/schedules must never get guessed defaults.
+Each adapter has a 90-second fetch/parse deadline. Complete snapshots exceeding
+that budget need an independently reviewed ingestion approach; never truncate.
 
 The result has `complete: true`, `sourceEditedAt` (ISO instant with explicit
 offset, or `null` when genuinely unknown), and `places`. Each place has a stable
@@ -79,7 +81,13 @@ not external outreach.
 E5 sources run on every invocation; other rules become due after 23 hours so the
 half-hour scheduler normally refreshes them daily despite small timing shifts.
 Failed/unfinished sources retry on the next invocation. GitHub schedules run from
-the default branch and can be delayed by GitHub; dev-only integration does not
+the default branch and can be delayed by GitHub. Sources are attempted oldest
+first within an 18-minute batch budget (below the 25-minute workflow limit), and
+pending failure alerts are delivered before imports and after each attempt.
+Slow batches rotate to untouched sources on the next invocation. Monitor queue
+capacity before adding sources; if a complete queue cannot meet the required
+cadence, increase reviewed execution capacity before approving more sources.
+Dev-only integration does not
 activate this scheduler or guarantee a maximum wall-clock delay. Runtime
 freshness limits continue to fail closed independently of scheduler delivery.
 
