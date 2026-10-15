@@ -32,6 +32,9 @@ and overnight ranges belong to the starting weekday. All-day means 0–1440;
 equal endpoints are ambiguous. DST repeated hours and offset transitions are
 evaluated as absolute instants. Next-change search covers the next weekly
 cycle plus one day and includes freshness expiry and reservation boundaries.
+E6 official-lot evidence is accepted only for a `lot` place, never a street;
+when visitor parking requires payment the paid decision cites the payment
+source and retrieval date.
 
 `/api/parking` and `/api/parking/zones` accept `at` (ISO instant with offset),
 `stayMinutes` (0–10080) and `vehicleType`. Legacy fields remain compatible,

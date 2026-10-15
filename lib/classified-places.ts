@@ -1,5 +1,5 @@
 import type { Feature, Geometry } from 'geojson';
-import { evaluateParkingRules, type ParkingRule } from './parking-rules.ts';
+import { evaluateParkingRules, type ParkingRule, type PlaceKind } from './parking-rules.ts';
 import type { ParkingSelection } from './parking-selection.ts';
 
 export type ParkingQuery = (sql: string, params: unknown[]) => Promise<{ rows: Record<string, unknown>[] }>;
@@ -34,7 +34,7 @@ export async function classifiedPlaces(query: ParkingQuery, placeIds: string[], 
     type: 'Feature', geometry: row.geometry as Geometry,
     properties: { id: row.id, kind: row.kind, city: row.city, name: row.name,
       evaluation: evaluateParkingRules({ rules: row.rules as ParkingRule[], instant: selection.instant, now,
-        timeZone: String(row.timezone), context: selection.context }),
+        timeZone: String(row.timezone), placeKind: row.kind as PlaceKind, context: selection.context }),
     },
   }));
 }

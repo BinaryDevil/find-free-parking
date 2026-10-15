@@ -2,6 +2,7 @@ import { ruleClock } from './rule-clock.ts';
 
 export type RuleKind = 'no_stopping' | 'tow_away' | 'no_parking' | 'loading' | 'temporary_no_parking' | 'permit_only' | 'paid' | 'free';
 export type RuleClassification = 'VERIFIED_FREE' | 'PAID' | 'RESTRICTED' | 'UNKNOWN';
+export type PlaceKind = 'curb' | 'zone' | 'meter' | 'lot';
 
 export interface RuleSource {
   id: string;
@@ -92,6 +93,7 @@ export function evaluateParkingRules(input: {
   instant: Date;
   now: Date;
   timeZone: string;
+  placeKind?: PlaceKind;
   context: ParkingContext;
   driverWarnings?: unknown[];
 }): RuleEvaluation {
@@ -107,6 +109,7 @@ export function evaluateParkingRules(input: {
   try { clock = ruleClock(input.timeZone); } catch { return unknown('invalid_timezone'); }
   if (input.rules.some(rule => !validRule(rule))) return unknown('unparsed_rule');
   if (input.rules.some(rule => (rule.kind === 'free' && ['E4','E5'].includes(rule.source.evidenceType)) ||
+    (rule.source.evidenceType === 'E6' && input.placeKind !== 'lot') ||
     (rule.source.evidenceType === 'E5' && rule.kind !== 'temporary_no_parking'))) return unknown('unsupported_evidence');
   if (input.rules.some(rule => rule.kind === 'free' && ['E2','E3'].includes(rule.source.evidenceType) && rule.permissionComplete !== true)) return unknown('incomplete_permission');
   if (input.rules.some(rule => rule.source.approvalState !== 'approved' ||
@@ -137,11 +140,12 @@ export function evaluateParkingRules(input: {
     } else if (limit != null && stay > limit) {
       classification = 'RESTRICTED'; explanation = 'stay_exceeds_limit';
     }
+    const decisionRule = classification === 'PAID' ? active.find(rule => rule.kind === 'paid') ?? winner : winner;
     return {
       classification, explanation, timeLimitMinutes: limit,
-      rate: classification === 'PAID' ? active.find(rule => rule.kind === 'paid')?.rate ?? null : null,
-      nextChange: null, activeRules: active.map(rule => rule.id), source: winner.source,
-      asOf: winner.fetchedAt, driverWarnings: input.driverWarnings ?? [],
+      rate: classification === 'PAID' ? decisionRule.rate ?? null : null,
+      nextChange: null, activeRules: active.map(rule => rule.id), source: decisionRule.source,
+      asOf: decisionRule.fetchedAt, driverWarnings: input.driverWarnings ?? [],
     };
   };
   const end = start + Math.max(8 * 1440, stay) * 60000;

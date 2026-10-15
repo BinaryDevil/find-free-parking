@@ -102,3 +102,22 @@ test('evidence capabilities cannot turn zones or temporary restrictions into fre
     assert.equal(evaluate([rule('free', { source: { ...source, evidenceType }, permissionComplete: true })]).classification, 'VERIFIED_FREE');
   }
 });
+
+test('official lot evidence cannot establish curb rules', () => {
+  const rules = [rule('free', { source: { ...source, evidenceType: 'E6' } })];
+  const input = { rules, instant: now, now, timeZone: 'America/Vancouver', context: {} };
+  assert.equal(evaluateParkingRules({ ...input, placeKind: 'curb' }).classification, 'UNKNOWN');
+  assert.equal(evaluateParkingRules({ ...input, placeKind: 'lot' }).classification, 'VERIFIED_FREE');
+});
+
+test('visitor payment cites the payment source and retrieval date', () => {
+  const paymentSource = { ...source, id: 'payment-fixture', name: 'Official payment fixture' };
+  const result = evaluate([
+    rule('permit_only', { visitorAllowanceMinutes: 120 }),
+    rule('paid', { rate: 3, source: paymentSource, fetchedAt: '2026-10-12T13:00:00Z' }),
+  ], now, { stayMinutes: 60 });
+  assert.equal(result.classification, 'PAID');
+  assert.equal(result.source.id, 'payment-fixture');
+  assert.equal(result.asOf, '2026-10-12T13:00:00Z');
+  assert.equal(result.rate, 3);
+});
