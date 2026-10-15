@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 import { query } from "@/lib/db";
 import { driverWarningsSql } from "@/lib/driver-warnings";
+import { parseParkingSelection, type ParkingSelection } from "@/lib/parking-selection";
+import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
 
 export const runtime = "nodejs";
 
@@ -62,7 +64,7 @@ function parseBBox(raw: string | null): Bbox | null {
   return { minLat, minLng, maxLat, maxLng };
 }
 
-function mapRowToFeature(row: ZoneRow) {
+function mapRowToFeature(row: ZoneRow, selection: ParkingSelection) {
   return {
     type: "Feature",
     geometry: JSON.parse(row.geom_geojson),
@@ -84,6 +86,7 @@ function mapRowToFeature(row: ZoneRow) {
       updatedAt: row.updated_at,
       metadata: row.metadata ? JSON.stringify(row.metadata) : null,
       driver_warnings: row.driver_warnings,
+      ...legacyParkingEvaluation('ZONE', row, selection),
     },
   };
 }
@@ -91,6 +94,10 @@ function mapRowToFeature(row: ZoneRow) {
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const { searchParams } = url;
+  let selection;
+  try { selection = parseParkingSelection(searchParams); } catch {
+    return badRequest("Invalid parking selection");
+  }
 
   const bbox = parseBBox(searchParams.get("bbox"));
   const lat = parseNumber(searchParams.get("lat"));
@@ -158,13 +165,14 @@ export async function GET(req: Request) {
       params.push(limit);
 
       const { rows } = await query(sql, params);
-      const features = rows.map(mapRowToFeature);
+      const features = rows.map(row => mapRowToFeature(row, selection));
 
       return NextResponse.json({
         mode: "bbox",
         bbox: { minLat, minLng, maxLat, maxLng },
         count: features.length,
         features,
+        coverage: { level: 'none' },
       });
     }
 
@@ -217,13 +225,14 @@ export async function GET(req: Request) {
     params.push(limit);
 
     const { rows } = await query(sql, params);
-    const features = rows.map(mapRowToFeature);
+    const features = rows.map(row => mapRowToFeature(row, selection));
 
     return NextResponse.json({
       mode: "point",
       point: { lat, lng },
       count: features.length,
       features,
+      coverage: { level: 'none' },
     });
   } catch (error) {
     console.error("Error fetching parking zones", error);

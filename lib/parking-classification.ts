@@ -1,4 +1,5 @@
 import { isScheduleActive } from './schedule.ts';
+import { ruleClock } from './rule-clock.ts';
 
 export type ParkingClassification = 'FREE' | 'PAID' | 'UNKNOWN';
 
@@ -15,11 +16,12 @@ export interface LegacyParkingData {
 
 // Legacy rows cannot prove complete, current permission to park for free.
 // PAID only means payment is listed, not that parking is permitted or rates are current.
-// The city-timezone evidence evaluator belongs to #11.
+// Verified evidence uses parking-rules.ts, never this legacy display helper.
 export function classifyParking(
   kind: 'METER' | 'STREET' | 'ZONE',
   data: LegacyParkingData,
   time: Date,
+  timeZone?: string,
 ): ParkingClassification {
   if (kind === 'METER' && Array.isArray(data.schedules)) {
     const paidRules = data.schedules.filter((rule) =>
@@ -33,7 +35,16 @@ export function classifyParking(
       (typeof rule.rate === 'number' || typeof rule.rate === 'string') &&
       Number.isFinite(Number(rule.rate)) && Number(rule.rate) > 0
     );
-    if (isScheduleActive(paidRules, time)) return 'PAID';
+    if (timeZone) {
+      const { day, minute } = ruleClock(timeZone).read(time.getTime());
+      const dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][day];
+      if (paidRules.some(rule => {
+        const [sh, sm] = rule.start.split(':').map(Number);
+        const [eh, em] = rule.end.split(':').map(Number);
+        const start = sh * 60 + sm, end = eh * 60 + em;
+        return rule.days.includes(dayName) && (end <= start ? minute >= start || minute < end : minute >= start && minute < end);
+      })) return 'PAID';
+    } else if (isScheduleActive(paidRules, time)) return 'PAID';
   }
   return 'UNKNOWN';
 }

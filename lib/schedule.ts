@@ -4,7 +4,7 @@ export interface Schedule {
   end?: string;
 }
 
-// Existing browser-local schedule behavior; the city-timezone evaluator belongs to #11.
+// Legacy schedule semantics retained for interim listed-payment information.
 export const isScheduleActive = (schedules: Schedule[], now: Date): boolean => {
   if (!Array.isArray(schedules) || schedules.length === 0) return false;
 
