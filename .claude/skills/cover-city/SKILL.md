@@ -15,6 +15,8 @@ Done when: you can name what each evidence type may and may not establish.
 
 ## 2. Discover
 
+Follow [ADR-0004](../../../docs/adr/0004-no-external-outreach.md): use available public evidence and read-only retrieval only. Do not contact officials, governments or service providers, prepare outreach, or request authorization to send it. Missing evidence limits Coverage; it does not relax source acceptance.
+
 Search every place in the policy's search order. The tooling:
 
 - `npx tsx scripts/discover_city_sources.ts "<city>" ["<region or alternate name>"]` searches ArcGIS Online and the Socrata catalog and probes parking-like layers.
@@ -45,7 +47,7 @@ Using `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`:
 
 - One adapter issue per approved or pending source: endpoint, fields and their meanings, format checks, the Parking Rules it produces, the Unknown cases, and the spot-check places as test fixtures. Label it `ready-for-agent`. Reference #2, and add `Blocked by: #2` while the evaluator and Evidence Source schema from #2 are unbuilt.
 - One coverage-approval issue: link the inventory, list the pending licences and verdicts to confirm, and the city page and registry change it unlocks. Label it `ready-for-human`.
-- One data-request issue per missing evidence type that blocks the target coverage level, naming the city department or records channel to contact. Label it `ready-for-human`.
+- Record missing evidence types and their Coverage limits in the inventory. Do not file data-request or outreach issues; ADR-0004 prohibits external requests.
 
 Link every issue back into the inventory's Tickets section.
 

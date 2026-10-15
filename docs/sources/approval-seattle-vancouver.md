@@ -1,5 +1,7 @@
 # Seattle and Vancouver source approval preparation
 
+> Outreach sections are historical and superseded by [ADR-0004](../adr/0004-no-external-outreach.md). No requests may be sent or prepared; authorization steps below no longer apply. Source evidence gaps remain unresolved.
+
 Prepared for [#24](https://github.com/BinaryDevil/find-free-parking/issues/24), checked 2026-10-13 (America/Vancouver). **Decision status: pending human review.** This is a terms assessment and decision artifact, not an approval or permission grant. Both inventories remain draft, Coverage remains none, and no Evidence Source state was changed or database inspected/written. No external request was sent.
 
 Read with [Seattle inventory](seattle.md), [Vancouver inventory](vancouver.md), [ADR-0002](../adr/0002-evidence-source-policy.md), and [Evidence provenance](../EVIDENCE_PROVENANCE.md). Their existing spot checks are dated observations, not freshly repeated safety validation. #20 is closed; #21 remains open although its inventory PR #38 is integrated into dev. This preparation does not close either #21 or #24.

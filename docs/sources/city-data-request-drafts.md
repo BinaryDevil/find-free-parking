@@ -1,5 +1,7 @@
 # City data request drafts
 
+> Outreach sections are historical and superseded by [ADR-0004](../adr/0004-no-external-outreach.md). No requests may be sent or prepared; authorization steps below no longer apply. Source evidence gaps remain unresolved.
+
 Prepared 2026-10-14 for [#51](https://github.com/BinaryDevil/find-free-parking/issues/51), [#56](https://github.com/BinaryDevil/find-free-parking/issues/56) and [#57](https://github.com/BinaryDevil/find-free-parking/issues/57). **Unsent; awaiting authorization to contact each city.** No response, permission, source approval or Coverage is established. Both inventories remain draft with Coverage none.
 
 These payloads request public infrastructure records and documentation only. No attachments or applicant, permit-holder, vehicle-registration, contact or private-address data are requested. Sender identity/reply details should be supplied through the sending account or records portal, not committed here. Do not incur fees without separate approval.
