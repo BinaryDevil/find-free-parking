@@ -125,3 +125,12 @@ test('feed count mismatches and duplicate identities cannot authorize missing-re
     await assert.rejects(() => createVancouverMeterAdapter(options, request).fetchSnapshot(signal), /Incomplete|Duplicate/);
   }
 });
+test('review evidence survives the sync boundary alongside the exact raw record', async () => {
+  const row = ordinary();
+  const reviewed = { [row.meter_id]: { rawRecord: row, evidence: 'synthetic-positive-permission', afterHours: { days: [0,1,2,3,4,5,6], timeLimitMinutes: 120 } } };
+  const request = async url => ({ ok: true, json: async () => url.includes('/records?') ? { total_count: 1, results: [row] } : { metas: { default: { records_count: 1, modified: '2026-10-12T13:31:51Z' } } } });
+  const snapshot = await createVancouverMeterAdapter({ ...options, reviewed }, request).fetchSnapshot(new AbortController().signal);
+  const free = snapshot.places[0].rules.find(rule => rule.kind === 'free');
+  assert.equal(free.rawData.semanticEvidence, 'synthetic-positive-permission');
+  assert.deepEqual(free.rawData.record, row);
+});

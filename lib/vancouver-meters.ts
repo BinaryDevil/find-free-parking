@@ -142,7 +142,8 @@ export function adaptVancouverMeters(rows: unknown, options: VancouverMeterOptio
         startMinute: 1320, endMinute: 540, timeLimitMinutes: reviewed.afterHours.timeLimitMinutes,
         vehicleType, permissionComplete: true });
     }
-    return { sourceRecordId: id, geom, raw, rules, served: raw.service_status !== 'Removed' };
+    return { sourceRecordId: id, geom, raw, rules, semanticEvidence: reviewed?.evidence ?? null,
+      served: raw.service_status !== 'Removed' };
   });
   return { records };
 }
@@ -187,7 +188,8 @@ export function createVancouverMeterAdapter(options: VancouverMeterOptions, requ
           sourceRecordId: record.sourceRecordId, kind: 'meter' as const, city: 'Vancouver',
           timezone: 'America/Vancouver', geom: record.geom, rawData: record.raw, sourceEditedAt: before.editedAt,
           rules: record.rules.map(rule => ({ ...rule, sourceRecordId: rule.id,
-            permissionComplete: rule.permissionComplete === true, rawData: record.raw })),
+            permissionComplete: rule.permissionComplete === true,
+            rawData: { record: record.raw, semanticEvidence: record.semanticEvidence } })),
         })),
       };
     },
