@@ -53,7 +53,8 @@ For map changes, verify the selected city/time, free and paid views, unknown dat
 The #18 interim map shows legacy street/lot geometry and meters outside listed
 payment hours as Unknown. No current legacy row establishes Verified Free
 permission. Active, well-formed positive-rate meter schedules are listed payment
-information only, still evaluated with the existing browser-local helper; they
+information only, evaluated on the server with the viewer's timezone and legacy
+schedule semantics; they
 do not establish permission or current rates. Unknown context stays visible in
 both views and is counted separately. All city pages say not covered until
 approved Evidence Sources and computed Coverage arrive in #12.
