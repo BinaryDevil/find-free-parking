@@ -117,3 +117,11 @@ test('multi-page snapshots fail on HTTP errors, count drift, duplicates and edit
   };
   await assert.rejects(() => createVancouverMeterAdapter(options, drift).fetchSnapshot(signal), /changed during retrieval/);
 });
+test('feed count mismatches and duplicate identities cannot authorize missing-record retirement', async () => {
+  const metadata = { metas: { default: { records_count: 2, modified: '2026-10-12T13:31:51Z' } } };
+  const signal = new AbortController().signal;
+  for (const page of [{ total_count: 3, results: [ordinary()] }, { total_count: 2, results: [ordinary(), ordinary()] }]) {
+    const request = async url => ({ ok: true, json: async () => url.includes('/records?') ? page : metadata });
+    await assert.rejects(() => createVancouverMeterAdapter(options, request).fetchSnapshot(signal), /Incomplete|Duplicate/);
+  }
+});
