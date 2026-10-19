@@ -1,5 +1,7 @@
 # Evidence Source sync runner (#15)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 This is source implementation, not source approval, scheduler activation or
 production verification. The registry in [source-adapters.ts](../scripts/source-adapters.ts)
 is empty. No real source is loaded by this change.
@@ -9,7 +11,7 @@ is empty. No real source is loaded by this change.
 [source-sync.ts](../scripts/source-sync.ts) exports `SourceAdapter`,
 `SourceSnapshot`, `SyncPlace`, `SyncRule`, `validateSnapshot` and `syncSource`.
 An adapter identifies `sourceKey`, `area`, and `evidenceType` (E1–E6). These must
-match an independently human-approved `evidence_sources` row. Registration
+match an independently approved (ADR-0005 two-agent review) `evidence_sources` row. Registration
 alone cannot approve a source. Signal and E7 sources cannot create typed rules.
 
 `fetchSnapshot(signal)` validates the publisher's metadata and required fields,

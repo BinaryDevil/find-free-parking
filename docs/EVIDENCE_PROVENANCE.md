@@ -1,10 +1,12 @@
 # Evidence Sources and import provenance (#10)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 The forward migration `1791849600000_evidence_provenance` adds Evidence Sources,
 sync history and provenance to `parking_meters`, `street_segments` and
 `parking_zones`. It does not compute Coverage, approve sources, evaluate rules,
 or change what drivers see. See [ADR-0002](adr/0002-evidence-source-policy.md)
-and [data operations](DATA.md) for the human approval and execution gates.
+and [data operations](DATA.md) for the approval (ADR-0005) and execution gates.
 
 ## Legacy backfill
 
@@ -32,7 +34,7 @@ Evidence Sources and syncs but cannot approve sources or write sync history.
 ## Imports
 
 `scripts/evidence-import.ts` exports `importPlaces(pool, input)`. Input specifies
-an existing human-approved `sourceId`, one of the three place tables, and
+an existing approved `sourceId` (ADR-0005), one of the three place tables, and
 normalized records with stable `sourceRecordId` and GeoJSON geometry. Optional
 source and record edit timestamps must come from the publisher. Retrieval time
 is recorded by the importer. Missing edit dates remain NULL.

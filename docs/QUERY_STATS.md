@@ -1,5 +1,7 @@
 # Query visibility
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 [Issue #6](https://github.com/BinaryDevil/find-free-parking/issues/6) requires production approval, extension installation, and a review after a week of traffic. This runbook prepares those operations; merging it does not install the extension.
 
 ## Enable and verify

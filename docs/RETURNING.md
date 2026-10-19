@@ -68,6 +68,8 @@ to shared or production databases.
 
 ## Database and release operations
 
+Releases, approvals and post-release checks follow [ADR-0005](adr/0005-agent-verified-gates.md) and [release gates](agents/release-gates.md). Agents verify their own work, and a human merges each release PR from `dev` into `main`.
+
 For the separately disabled approved-adapter runner, direct import credentials,
 daily/hourly schedule proposal, durable drift/failure history and synthetic
 integration validation, see [Evidence Source sync](SOURCE_SYNC.md). No real

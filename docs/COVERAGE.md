@@ -1,10 +1,12 @@
 # Computed Coverage
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 `lib/coverage.ts` is the shared runtime resolver for the coverage action, parking
 APIs, city pages, metadata, sitemap and JSON-LD. `coverage_areas` contains the
 area definitions; `coverage_area_sources` links every Evidence Source required
-for each declared promise. A link is not approval. Only the separate human
-Evidence Source approval process can approve a source.
+for each declared promise. A link is not approval. Only the two-agent Evidence Source review in
+[ADR-0005](adr/0005-agent-verified-gates.md) can approve a source.
 
 The stored `level` is the reviewed maximum promise, not a live assertion.
 The resolver recomputes the returned level and `computedAt` on every read from
