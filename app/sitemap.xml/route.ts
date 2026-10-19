@@ -1,5 +1,8 @@
 import { routing } from "@/i18n/routing";
-import { SUPPORTED_CITIES } from "@/lib/cities";
+import { query } from "@/lib/db";
+import { coverageAreas } from "@/lib/coverage";
+
+export const dynamic = 'force-dynamic';
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ??
@@ -9,7 +12,7 @@ const lastModified = new Date().toISOString().split("T")[0]; // YYYY-MM-DD for s
 
 const baseHeaders = {
   "Content-Type": "application/xml; charset=utf-8",
-  "Cache-Control": "public, max-age=0, s-maxage=86400, must-revalidate",
+  "Cache-Control": "no-store",
 };
 
 function buildUrl(
@@ -29,11 +32,12 @@ function buildUrl(
 
 export async function GET() {
   const urls: string[] = [];
+  const cities = (await coverageAreas(query)).filter(area => area.level !== 'none');
 
   for (const locale of routing.locales) {
     urls.push(buildUrl(`${siteUrl}/${locale}`, "daily", 1));
 
-    for (const city of SUPPORTED_CITIES) {
+    for (const city of cities) {
       urls.push(buildUrl(`${siteUrl}/${locale}/${city.slug}`, "weekly", 0.8));
     }
   }

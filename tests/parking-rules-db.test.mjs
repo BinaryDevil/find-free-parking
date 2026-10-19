@@ -37,7 +37,7 @@ test('isolated replay and parking APIs preserve legacy context and classify appr
       assert.deepEqual((await client.query(`SELECT * FROM public.${table} WHERE id=$1`, [row.id])).rows[0], row, 'Every legacy column is preserved');
     }
     const history = (await client.query('SELECT name,run_on FROM migration_meta.pgmigrations ORDER BY id')).rows;
-    assert.equal(history.length, 5);
+    assert.equal(history.length, 7);
     await migrate();
     await client.query('SET search_path = public, pg_catalog');
     assert.deepEqual((await client.query('SELECT name,run_on FROM migration_meta.pgmigrations ORDER BY id')).rows, history);
@@ -78,7 +78,7 @@ test('isolated replay and parking APIs preserve legacy context and classify appr
     assert.equal(data.meters[0].classification, 'PAID');
     assert.equal(data.streets[0].classification, 'UNKNOWN');
     assert.deepEqual(data.places, []);
-    assert.deepEqual(data.coverage, { level:'none' });
+    assert.deepEqual(data.coverage, { level:'none', areas:[] });
     const lots = await zonesGET(new Request('http://localhost/api/parking/zones?bbox=-1,-1,1,1'));
     assert.equal(lots.status, 200);
     assert.equal((await lots.json()).features[0].properties.evaluation.classification, 'UNKNOWN');

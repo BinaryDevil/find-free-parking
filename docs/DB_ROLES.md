@@ -24,7 +24,7 @@ does not fix current classification policy.
 | `app/api/health/route.ts` | CONNECT, `SELECT 1` |
 | `app/api/parking/route.ts` | SELECT parking_meters and street_segments |
 | `app/api/parking/zones/route.ts` | SELECT parking_zones |
-| `app/actions/coverage.ts` | SELECT covered_cities |
+| `app/actions/coverage.ts` / city publication | SELECT coverage_areas, coverage_area_sources, evidence_sources, source_syncs |
 | `app/api/report/route.ts` | SELECT reports(id, target_id, target_type, user_ip, created_at); INSERT the six submitted columns |
 | `app/actions/request-coverage.ts` | INSERT city_requests(city_name, state, country, location, user_ip) |
 

@@ -21,6 +21,9 @@ import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import JsonLd from "@/components/JsonLd";
 
+// Coverage metadata must expire with the evidence, rather than an HTML cache.
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params,
 }: {

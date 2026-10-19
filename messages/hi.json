@@ -54,7 +54,9 @@
     "noParkingReported": "पार्किंग निषिद्ध",
     "paymentListed": "शुल्क की जानकारी दर्ज",
     "unknownCount": "अज्ञात: {count}",
-    "cityNotCovered": "{city}: कवरेज नहीं"
+    "cityNotCovered": "{city}: कवरेज नहीं",
+    "cityFullCoverage": "{city}: पूर्ण कवरेज",
+    "cityPartialCoverage": "{city}: आंशिक कवरेज — {subset}"
   },
   "ReportModal": {
     "title": "स्थिति अपडेट करें",

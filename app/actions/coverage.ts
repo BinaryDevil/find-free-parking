@@ -1,9 +1,14 @@
 "use server";
 
-export type CoverageResult = { isCovered: boolean };
+import { query } from '../../lib/db';
+import { coverageAt } from '../../lib/coverage';
 
-export async function checkCoverage(): Promise<CoverageResult> {
-  // No approved runtime Evidence Sources exist yet. City polygons and legacy
-  // parking rows cannot establish Coverage. Computed Coverage belongs to #12.
-  return { isCovered: false };
+export type CoverageResult = { isCovered: boolean; level: 'full' | 'partial' | 'none' };
+
+export async function checkCoverage(lng: number, lat: number): Promise<CoverageResult> {
+  if (!Number.isFinite(lng) || !Number.isFinite(lat) || Math.abs(lng) > 180 || Math.abs(lat) > 90) {
+    return { isCovered: false, level: 'none' };
+  }
+  const result = await coverageAt(query, [lng, lat, lng, lat]);
+  return { isCovered: result.areas.length > 0, level: result.areas.some(area => area.level === 'full') ? 'full' : result.level };
 }
