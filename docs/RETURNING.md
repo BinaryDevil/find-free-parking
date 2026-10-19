@@ -66,6 +66,11 @@ archived column grant is not required by this reader. Follow the separate
 or columns; current `main` still needs them. This code change applies nothing
 to shared or production databases.
 
+For guarded retained legacy archival, API exclusion and the explicit reverse
+command, see [Legacy retirement](LEGACY_RETIREMENT.md). The additive migration
+does not retire rows by itself. Synthetic rehearsal establishes no real Coverage;
+production retirement stays an R4 release action.
+
 ## Database and release operations
 
 Releases, approvals and post-release checks follow [ADR-0005](adr/0005-agent-verified-gates.md) and [release gates](agents/release-gates.md). Agents verify their own work, and a human merges each release PR from `dev` into `main`.

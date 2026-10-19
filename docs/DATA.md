@@ -19,9 +19,9 @@ When reusing existing import code, review parser defaults and incomplete records
 - Preserve existing rows and previously applied additive evidence columns unless the user explicitly authorizes a data change. Code rollback does not require database rollback.
 - Verify affected row counts, spatial placement, schedules, evidence eligibility, and API behavior after an authorized import. A successful script or row count alone does not prove accurate rules.
 
-For #16's proposed duplicate resolution, legacy read retirement, aggregate
-reconciliation, archival and separate execution approvals, see
-[Legacy retirement](LEGACY_RETIREMENT.md). This is preparation, not cleanup approval.
+For #16's guarded retained archive, serving retirement, aggregate reconciliation
+and reverse command, see [Legacy retirement](LEGACY_RETIREMENT.md). Production
+execution requires the exact actions in a human-merged release PR.
 
 ## Request-driven imports
 

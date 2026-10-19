@@ -1,196 +1,131 @@
-# Duplicate rows and legacy retirement decision (#16)
+# Legacy serving retirement (#16)
 
-> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+[Ticket #16](https://github.com/BinaryDevil/find-free-parking/issues/16) selects
+approved-source re-import into `places` / `parking_rules`, followed by retained
+legacy archival. Never deduplicate in place or delete historical rows. This
+runbook and its scripts authorize no production writes: list the exact actions
+in the R4 release PR under [ADR-0005](adr/0005-agent-verified-gates.md).
 
-Prepared 2026-10-13 for [#16](https://github.com/BinaryDevil/find-free-parking/issues/16).
-**Status: approach chosen in #16 (approved-source re-import, then archive legacy reads; no deletes). Execution happens only as release-PR *Production actions* under ADR-0005.**
-This preparation changes documentation only. Ticket PRs target `dev` under the
-user's current all-milestones development authorization and require user approval
-for merge. Production remains separately gated by [release gates](agents/release-gates.md).
+## Archive and reader contract
 
-## Recommendation and alternatives
+The additive [migration](../sql/migrations/1792368000000_legacy_retirement.sql)
+creates `legacy_retirements` and `legacy_retirement_members`. These record an
+immutable cohort of table names, UUIDs and SHA-256 row hashes. Original rows stay
+in `parking_meters`, `street_segments` and `parking_zones`, preserving UUIDs,
+Driver Reports, indexes, ACLs and compatibility with the previous deployment.
+No expiry or later deletion is authorized. Report private fields remain subject
+to [PII retention](PII_RETENTION.md); this manifest copies no report payload.
 
-Choose **approved-source re-import, reconcile, then retire legacy reads**, retaining
-historical rows. Do not deduplicate legacy rows in place as the default first step.
-This follows [#2](https://github.com/BinaryDevil/find-free-parking/issues/2)'s
-requirement to preserve existing rows and keep OSM as context, with
-[ADR-0001](adr/0001-verified-rules-only.md) and
-[ADR-0002](adr/0002-evidence-source-policy.md).
+Current parking readers omit active archive members before their row limits,
+including both bounding-box and point zone reads. Old deployments ignore the
+manifest and can still read the retained tables. Without the additive migration,
+readers preserve the existing legacy context behavior. Source failure, expired
+freshness or changed Coverage never implicitly re-enable retired rows; approved
+rules independently degrade through the existing fail-closed Coverage gate.
 
-| Approach | Benefit | Cost / unresolved risk |
-| --- | --- | --- |
-| Re-import approved sources, reconcile, switch reads | Current publisher identity and evidence; repeat imports add no duplicate identities; old rows retained for audit and code rollback | Needs approved sources, adapters, place/rule contract and explicit read switch; re-import alone leaves old rows visible today |
-| Deduplicate legacy rows in place first | Could relieve row-limit pressure earlier | Cannot establish current permission or provenance; geometry/old ID matching can merge distinct curbs; reports reference old UUIDs; still needs later re-import and separately approved data writes |
+Retirement includes every legacy geometry intersecting the selected computed
+Coverage (the exact subset for partial Coverage). A crossing geometry is hidden
+in full, including its outside portion, to prevent duplicate context inside the
+replacement area. Legacy rows wholly outside the subset remain context. This
+operation does not claim Coverage outside the approved subset.
 
-The issue's phrase “new provenance-keyed tables” needs qualification: integrated
-[#10](https://github.com/BinaryDevil/find-free-parking/issues/10) adds provenance
-columns and unique identities to the **existing three place tables**, plus
-`evidence_sources` and `source_syncs`. It does not replace place tables.
-See [Evidence provenance](EVIDENCE_PROVENANCE.md) and
-[the migration](../sql/migrations/1791849600000_evidence_provenance.sql).
-Legacy UUID-based identities deliberately preserve historical duplicates.
-[The importer](../scripts/evidence-import.ts) updates only the matching
-`(source_id, source_record_id)` within one table; approved-source rows will not
-replace rejected legacy identities automatically. No obsolete records are removed.
-Do not drop or archive entire mixed tables containing both cohorts.
+## Preflight and plan
 
-## Verified source state and limits of this preparation
+1. Follow [DATA](DATA.md) and [release gates](agents/release-gates.md). Verify the
+   target branch, direct endpoint, database and owner against provider metadata.
+   Shared dev cannot retire existing rows; fixtures belong only in an agent-owned
+   disposable target. Prefer an unused suitable target; production-parent
+   compatibility and snapshot requirements still apply.
+2. Integrate provenance, places/rules, Coverage and source-sync migrations and
+   the named approved adapters. No real source is approved by #16. Reconcile
+   publisher identities `(source_id, source_record_id)`, complete source fetches,
+   accepted/quarantined/excluded records, active places and rules. Geometry,
+   labels and legacy IDs alone are never permission or merge keys. Historical
+   duplicate estimates (48,518 in the 2026-10-06 review) are not current counts.
+3. Take a fresh retained snapshot before writes and verify its restore path in a
+   separate isolated target. Record its provider identity, time and retention
+   privately, with an aggregate verification reference on the release PR.
+4. Prepare a private JSON plan using the exported `RetirementInput` contract in
+   [the operator command](../scripts/legacy-retirement.ts). Set `action` to
+   `retire`, a fresh UUID `retirementId`, release action `approvalRef`, retained
+   `snapshotRef`, `expectedDatabase`, exact `coverageIds`, source reconciliation
+   checks, and per-table expected counts and hashes. Obtain cohort aggregates
+   using `inspectRetirement(pool, coverageIds)` in a read-only consistent snapshot.
+   Review these independently of the write command. Keep plans outside tracked
+   context: they contain operational identifiers.
+5. Privately set `RETIREMENT_DATABASE_URL` to the selected direct owner URL,
+   `RETIREMENT_EXPECTED_HOST` and `RETIREMENT_EXPECTED_DATABASE` from verified
+   provider metadata, and `RETIREMENT_ACTION_APPROVED=retire:<retirementId>`.
+   The command never loads `.env.local`, never accepts pooled fallback and never
+   puts owner credentials into runtime. Run:
 
-Repository inspected at `dev` commit `b7c641943583ba640fabc0121e2452d8dd1b8333`.
-The [parking endpoint](../app/api/parking/route.ts) reads legacy-compatible meter
-and street tables without provenance filtering, with **separate 1,000-row limits**.
-The [zone endpoint](../app/api/parking/zones/route.ts) reads the same zone table,
-with a maximum 200-row limit, in both bounding-box and point modes. Neither
-endpoint establishes that legacy rows are absent from responses. This PR changes
-neither endpoint. #11 is ongoing elsewhere; its unmerged implementation is not
-assumed here. The eventual place/rule schema and read contract must be reconciled
-with its integrated result before preparing executable cutover SQL.
+   ```sh
+   node scripts/legacy-retirement.ts /absolute/private/retirement-plan.json
+   ```
 
-The 2026-10-06 issue reports 40,224 street, 5,227 meter and 3,067 zone duplicate
-rows (48,518 total). These are historical estimates with no duplicate definition
-recorded in the issue; they are **not fresh counts or a deletion budget**. The
-#10 comment's copied-branch totals are also dated validation evidence, not current
-production inventory. No live database, source feed or backup was inspected in
-this preparation, so no current duplicate count or snapshot is claimed.
+The command currently accepts complete one-place-per-record source snapshots
+with zero quarantined or excluded records. It reconciles the latest stored drift
+counts, active places and active rules, and requires current parsed replacement
+rules. Rules-only sources and adapters that expand or exclude publisher records
+need a richer persisted reconciliation contract before this command can retire
+their subset; it refuses them. The command verifies target owner/database,
+current approved Coverage and exact cohort counts/hashes inside one transaction.
+It locks the affected tables against concurrent mutation, with a five-second
+lock timeout and thirty-second statement timeout. Stop on any drift or guard
+failure; do not adjust expected values merely to force execution. Success emits
+aggregate counts/hashes only. Unset the approval variable afterwards.
 
-[Seattle](sources/seattle.md) and [Vancouver](sources/vancouver.md) remain draft
-inventories. [#24 approval preparation](sources/approval-seattle-vancouver.md)
-records unresolved reuse and safety criteria; integration of that document is
-not approval. No adapters, Coverage or production acceptance are established
-by this proposal. #4 being closed does not prove a fresh pre-write restore point.
-#10 source integration does not prove its migration is applied in any target.
+## Verification and reverse
 
-## Identity, conflict and evidence rules for the execution plan
+Compare archive membership counts and hashes to the preflight cohort and verify
+that original legacy rows are byte-identical under the PostgreSQL `to_jsonb(row)`
+representation. Check all parking readers, including zone point mode, at the
+approved subset and its boundary; confirm outside context still works. Compare
+served approved identities/counts against the latest complete source syncs,
+accounting for viewport limits without treating a capped response as a full
+inventory. Repeat-import identity preservation is covered by the provenance
+and source-sync tests; retirement does not merge identities or remap reports.
 
-- An import identity is the source UUID plus publisher record ID **per table**.
-  Use documented stable asset IDs, curb side/extent and rule components in the
-  future normalized contract. A single curb may legitimately have multiple
-  signs, payment periods, restrictions and sources; do not collapse those into
-  one rule or equate equipment with a parking place.
-- Same identity and identical normalized record in one batch: collapse it.
-  Conflicting payloads for the same identity in a batch: stop and investigate;
-  no arbitrary first/last/newest winner. The current importer compares complete
-  JSON serialization, so adapters must produce deterministic normalized records.
-  An update across batches can be legitimate but must appear in the drift report.
-- Equal geometry, labels, old `block_id` or `pay_station_id` alone are candidate
-  matches, never approved merge keys. Coincident signs, opposite curb sides and
-  overlapping zone/temporary rules may be different entities. Differing safety
-  fields, schedules, vehicle conditions, extents or authority remain unresolved
-  and must not produce Verified Free Parking Rules.
-- Legacy `source_record_id = legacy:<table>:<uuid>` is historical row identity,
-  not publisher identity. Do not relabel those rows as approved evidence. Preserve
-  raw records, schedules, geometry, UUIDs and unknown timestamps. Signal-only
-  data cannot establish permission or Coverage; `updated_at` is not freshness.
-- Geometry-based identities allowed by policy need explicit adapter handling for
-  geometry edits: a new digest creates a new identity and does not retire the
-  old row. Removed publisher IDs require a complete successful source fetch and
-  reviewed reconciliation (#15), never absence from a truncated page or failure.
-- Preserve original Driver Reports and `(target_type, target_id)` references.
-  Existing reports and warning queries are UUID-based. Do not sum cached
-  `report_counts`, silently retarget reports to new places, or use reports as
-  verification. If a reviewed correspondence is needed, propose an explicit
-  mapping with ambiguous matches excluded, preserve original targets and verify
-  dated warning counts/retention with #13. This PR supplies no mapping or migration.
+To reverse, take a new snapshot and prepare an explicitly approved plan with
+`action: "reverse"`, the original retirement UUID and original cohort counts /
+hashes, plus the new approval/snapshot references. Set
+`RETIREMENT_ACTION_APPROVED=reverse:<retirementId>` and run the same command.
+It verifies archive membership and original row hashes before setting
+`reversed_at`; historical rows and the archive remain retained. Reversal does
+not require current Coverage, so stale sources cannot prevent restoring context.
+A changed retained row stops reversal for investigation. Multiple active archive
+manifests can overlap; every active manifest containing a row must be reversed
+before it serves again. Confirm APIs re-enable legacy context with the existing
+fail-safe classification; reversal never restores an inferred free rule.
 
-## Count report and isolated rehearsal required before writes
+For application rollback, redeploy the previous compatible revision against the
+additive schema. It can re-expose legacy duplicates; record that limitation.
+Never restore a whole old snapshot over newer reports or requests. Recover to
+a separate branch and prepare any selective data recovery independently.
 
-Prepare a target-specific report in one consistent **read-only** transaction,
-using bounded statement/lock timeouts and an explicitly verified branch/database.
-Do not use `seed_utils` environment loading to choose an inspection target.
-Keep row-level exports, source IDs, geometry and private backup details local;
-publish aggregate counts and definitions only. No inspection SQL is supplied here:
-first reconcile the integrated #11 schema and select the target explicitly.
+## R4 release actions and checks
 
-Report per table and stored city/unknown area:
+Copy the following into the R4 release PR, naming the reviewed commit, exact
+source/area subset, private plan reference and current snapshot:
 
-1. Total rows, rejected legacy cohort, approved/pending/rejected source cohorts,
-   missing identities, and duplicate provenance groups. If #10 is unapplied,
-   report this explicitly and use the pre-provenance schema; do not apply it to
-   make inspection possible. Do not attribute missing city metadata by ID prefix.
-2. Candidate repeated publisher IDs and exact geometry/payload groups, with
-   **separate** group counts and excess rows (`sum(group_size - 1)`). Define the
-   compared fields, null treatment, geometry comparison and ignored timestamps.
-   Report geometry-only groups separately from exact rule-payload groups; neither
-   is a removal authorization. Count conflicting schedules/conditions separately.
-3. Reports per original target and unmatched targets, using aggregates only.
-   Take private deterministic hashes of all original place columns and permitted
-   report fields for later invariant checks; never publish row material or PII.
-4. Fresh complete source record totals and unique stable IDs, pagination completion,
-   fetch/edit dates, parse failures, exclusions with reasons, and one-to-many rule
-   expansion. Reconcile accepted + quarantined + excluded **source records** to
-   the fetched total. Place/rule counts need not equal publisher record counts.
-5. Intended read cohorts and old/new response counts for reviewed representative
-   bounds, both zone modes, city/type filters and edge cases above each API cap.
-   Count before limiting; deduplication after `LIMIT` cannot recover omitted places.
-   Overlapping evidence must not duplicate a rendered place or erase its rules.
+1. Apply `sql/migrations/1792368000000_legacy_retirement.sql` after its prerequisite
+   evidence/model/Coverage/sync migrations. Verify ACLs and old production code
+   compatibility. Rollback: retain additive tables and redeploy previous code.
+2. After approved-source load and complete reconciliation, take the fresh
+   pre-retirement snapshot, run the reviewed retirement plan and verify its exact
+   aggregate output. Rollback: the separately listed reverse plan above, with
+   fresh snapshot and original hashes; investigate drift before reversal.
 
-After source and isolated-load approval, use a new disposable Neon branch and
-synthetic fixtures/approved scoped copies under [DATA](DATA.md)'s branch-first
-procedure. Preserve shared dev and production. Test exact duplicates, conflicting
-IDs, opposite sides, coincident signs, geometry edits, missing IDs/city, stale and
-unparsed sources, truncated fetches, overlapping temporary/permit/payment rules,
-and reports on historical UUIDs. Import the same validated batch twice: second
-run adds zero identities and preserves UUIDs/reports; changed records are updated
-and removed records are only proposed. Confirm original legacy hashes/counts
-remain unchanged and archive restore is possible. Record tests actually run;
-this document's checklist is not isolated execution evidence.
+After the human merges R4, record these release checks with dated evidence:
 
-## Staged authorization, backup and rollback
+- Snapshot existed before the first production step and restore was rehearsed.
+- Served identities/counts match each approved source's latest complete
+  `source_syncs` reconciliation, with no duplicate places.
+- No archived legacy rows serve inside approved Coverage; archive membership
+  counts equal the pre-release cohort counts and retained legacy hashes match.
+- Desktop/mobile map and both parking APIs pass; no real source approval or
+  Coverage claim is inferred from synthetic test fixtures.
 
-1. **Approach decision:** human selects the recommendation or in-place alternative
-   on #16, naming this reviewed commit. This authorizes planning only. If choosing
-   in-place dedupe, prepare a separate exact cohort/survivor/report-mapping plan;
-   do not treat the historical 48,518 as the affected scope.
-2. **Evidence and implementation:** resolve named #24 source approvals and remaining
-   inventory criteria; integrate and validate #10/#11/#12/#13/#15 and relevant
-   adapters (#25–#29/#37) as applicable to the selected subset. No blanket all-city
-   import; no assumption of full Seattle Coverage. Prepare required forward SQL
-   under `sql/migrations/` before execution, keeping integrated migrations immutable.
-3. **Isolated load/rehearsal:** obtain explicit scope naming disposable branch,
-   database, sources, reviewed adapter/migration commits and permitted operations.
-   Verify endpoint/database privately against provider metadata and baseline ledger.
-   Create fresh retained snapshot/restore point, verify retention and rehearse restore
-   into a separate isolated resource. Record resource/time privately, no credentials.
-4. **Shared import and read cutover:** separate approval per named environment,
-   source/row cohort, artifact commit, expected counts, backup, maintenance window,
-   lock/runtime impact, stop thresholds and rollback owner. Preview uses dev data;
-   production requires its own current snapshot and explicit approval. Import adds
-   approved rows while preserving legacy rows. Switch all relevant readers only
-   after reconciliation, warning mapping and safety regressions pass. Preserve
-   explicitly reviewed context geometry as Unknown outside Coverage; prevent
-   duplicate legacy renderings inside the replacement subset. Verify no retired
-   cohort is served there, without claiming all context geometry must disappear.
-5. **Archive before any removal:** prefer retained, access-restricted legacy rows
-   excluded from active reads. Record a cohort manifest, schema/ACL/trigger versions,
-   hashes/counts, retention/expiry and tested restore path. If later moving rows to
-   an archive, prepare separate SQL and report-target compatibility checks; no
-   table rename/drop by default. Include private report data only under its existing
-   retention policy ([PII retention](PII_RETENTION.md)); retirement does not authorize
-   extending PII retention. Archive placement/permissions are separately reviewed.
-6. **Optional deletion:** only after observed cutover, verified archive/restore and
-   explicit exact-row authorization with a new pre-write snapshot. This is a later
-   operation, not implied by approach approval or PR merge. Do not run historical
-   `clear_db.ts`, `cleanup_*.ts`, master seed cleanup or database reset commands.
-
-Stop on target/schema drift, missing approval/backup, source incompleteness,
-identity conflicts, unexpected counts/hash changes, report loss, or any unsafe
-classification. Roll back reads/application to the last validated fail-safe
-revision against the retained additive schema. That rollback can re-expose legacy
-context/duplicates and must be recorded; it must never restore inferred free
-classification. Do not restore a whole old snapshot over new Driver Reports or
-requests: inspect/recover to a separate branch, then prepare an approved selective
-recovery. Code rollback is not permission to remove provenance/history.
-
-## Review record and acceptance
-
-Record on #16: chosen approach, approver/date and commit; named source subset;
-current aggregate report and definitions; dependency integration versus target
-application; exact environment and permitted operations; current backup/restore
-evidence; isolated repeat-import and read-cutover results; archive retention;
-then dated live checks after the separately approved release.
-
-Preparation is complete when this decision is reviewable and doc checks pass.
-#16 stays `ready-for-human` and open: its done criterion requires production
-serving no duplicate places and approved legacy archival/removal. Approving this
-PR into dev or the recommended approach does not meet that criterion and does
-not authorize source approval, shared writes, deletion, deployment or release.
+#16 closes only after its implementation, isolated production-parent rehearsal,
+independent review, CI and current-branch merge criteria pass into `dev`.
+Production execution and these release checks remain explicitly pending R4.
