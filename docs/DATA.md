@@ -168,9 +168,10 @@ Ticket #9 remains incomplete until production marking and verification are done.
 Create a Neon test branch from production → adopt the baseline there only after
 comparison → apply the reviewed new migrations over its direct owner connection
 with `pnpm db:migrate` → verify schema diff, backward compatibility and relevant
-behavior → take a current production snapshot → obtain explicit human production
-approval → apply pending migrations to production → verify schema/history and
-old-code compatibility → human merges the release PR. Follow
+behavior → list the migrations under the release PR's *Production actions* →
+human merges the release PR → take a production snapshot → apply the listed
+migrations → verify schema/history and old-code compatibility. The release code
+must fail closed until its migrations are applied. Follow
 [release gates](agents/release-gates.md); a ticket PR into `dev` is not a release.
 Keep previous deployments usable against additive schema. A code rollback does
 not authorize schema rollback, ledger deletion or restoration over user data.

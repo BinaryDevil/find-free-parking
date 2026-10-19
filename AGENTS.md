@@ -14,7 +14,7 @@ Help unfamiliar drivers find nearby places with Verified Free Parking Rules for 
 
 - Before product or classification work, read `GLOSSARY.md`, `docs/adr/0001-verified-rules-only.md`, and the verified-rules spec (https://github.com/BinaryDevil/find-free-parking/issues/2) with its open sub-issues.
 - Before local setup, validation, or release work, read `docs/RETURNING.md`.
-- To add, seed, or expand a city, read [ADR-0002: Evidence Source Policy](docs/adr/0002-evidence-source-policy.md) and use the `cover-city` skill. Before seeding, schema changes, cleanup, or rollback, read `docs/DATA.md` and inspect the target script. Preserve database data; a code change does not authorize production data writes. Record schema changes in `sql/` before execution.
+- To add, seed, or expand a city, read [ADR-0002: Evidence Source Policy](docs/adr/0002-evidence-source-policy.md) and use the `cover-city` skill. Before seeding, schema changes, cleanup, or rollback, read `docs/DATA.md` and inspect the target script. Preserve database data; a code change does not authorize production data writes. Only a merged release PR authorizes the production actions it lists ([ADR-0005](docs/adr/0005-agent-verified-gates.md)). Record schema changes in `sql/` before execution.
 - For UI text, use next-intl and update matching keys across the eight locales. Inspect `scripts/generate_locales.ts` before using it; keep its corresponding keys consistent and review the generated diff for unrelated rewrites.
 
 ## Working rules
@@ -108,4 +108,4 @@ Single-context: the glossary is the "Language" section of `GLOSSARY.md`, and ADR
 
 ### Release gates
 
-Work ships in milestone releases R0–R5, each through one release PR into `main` that only a human merges. Pick tickets from the current milestone and follow `docs/agents/release-gates.md`.
+Work ships in milestone releases R0–R5 through release PRs from `dev` into `main` that only a human merges. Agents verify their own work, merge ticket PRs into `dev` after an independent review agent passes them, and approve sources by two-agent review ([ADR-0005](docs/adr/0005-agent-verified-gates.md)). Pick tickets from the current milestone and follow `docs/agents/release-gates.md`.
