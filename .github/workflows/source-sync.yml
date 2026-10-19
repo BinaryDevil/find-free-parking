@@ -1,0 +1,39 @@
+name: Evidence Source sync
+
+on:
+  schedule:
+    # E5 every half hour; other rules become due daily in the runner.
+    - cron: '17,47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: evidence-source-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    # Activation and credentials require separate target-specific operator review.
+    if: vars.SOURCE_SYNC_ENABLED == 'true'
+    environment: evidence-source-sync
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.1'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Sync approved Evidence Sources
+        run: node scripts/sync-sources.ts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_SYNC_APPROVED: ${{ vars.SOURCE_SYNC_APPROVED }}
+          SOURCE_SYNC_DATABASE_URL: ${{ secrets.SOURCE_SYNC_DATABASE_URL }}
+          SOURCE_SYNC_EXPECTED_HOST: ${{ secrets.SOURCE_SYNC_EXPECTED_HOST }}
+          SOURCE_SYNC_EXPECTED_DATABASE: ${{ secrets.SOURCE_SYNC_EXPECTED_DATABASE }}

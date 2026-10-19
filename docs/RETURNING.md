@@ -44,7 +44,7 @@ PR #40's conflict resolution combines #7's Next 16.4.0/React 19.3.0 upgrades and
 
 The gate still compares individual diagnostics and fails on any additional failure; no rules are disabled. Typecheck remains at zero diagnostics. The combined production dependency audit has two residual advisories: high `braces` 3.0.3 through next-intl / @parcel/watcher / micromatch (no patched version reported), and low `@babel/core` 7.28.5 through Next / styled-jsx (patch >=7.29.6 available). There are no advisories in Next, axios, uuid or MapLibre. Audit evidence is local and time-specific; run it again before release.
 
-The legacy schedule tests characterize the interim listed-payment helper, including selected-weekday overnight matching and equal endpoints. The map now consumes server classifications. The separate [server Parking Rule evaluator](PARKING_RULES.md) uses city timezones, DST transitions, starting-weekday overnight ownership and explicit all-day schedules. Its Coverage seam remains closed pending #12; it does not establish live verified rules.
+The legacy schedule tests characterize the interim listed-payment helper, including selected-weekday overnight matching and equal endpoints. The map now consumes server classifications. The separate [server Parking Rule evaluator](PARKING_RULES.md) uses city timezones, DST transitions, starting-weekday overnight ownership and explicit all-day schedules. Its Coverage seam now uses the [computed Coverage resolver](COVERAGE.md); this implementation approves no real sources and does not establish live verified rules.
 
 For docs-only edits, verify local links, consistency, the symlink, and the diff; application builds are not required. `CLAUDE.md` must remain Git mode `120000` pointing to relative `AGENTS.md`. In the Windows #19 worktree, `core.symlinks=false` produced a plain pointer file; keep the Git symlink unchanged and verify the actual link on a symlink-capable checkout.
 
@@ -56,17 +56,22 @@ permission. Active, well-formed positive-rate meter schedules are listed payment
 information only, evaluated on the server with the viewer's timezone and legacy
 schedule semantics; they
 do not establish permission or current rates. Unknown context stays visible in
-both views and is counted separately. All city pages say not covered until
-approved Evidence Sources and computed Coverage arrive in #12.
+both views and is counted separately. City pages use [computed Coverage](COVERAGE.md); without approved current sources they say not covered.
 
-Dated Driver Warnings require one additional app-role column permission; see
-[17.driver_warning_read.sql](../sql/archived/17.driver_warning_read.sql). It is prepared,
-not applied by this code change. Obtain separate human approval and apply it to
-each target environment before serving these endpoints; without it the warning
-queries fail. It grants only `reported_status` SELECT, retaining existing report
-validation and private-field restrictions. No schema objects or rows change.
+Dated Driver Warnings now read the aggregate `driver_warnings` view; apply the
+additive reader migration to an approved environment before serving these
+endpoints. It grants aggregate SELECT rather than report-field access. The old
+archived column grant is not required by this reader. Follow the separate
+[Driver Warning rollout](DRIVER_WARNINGS.md) before retiring the legacy trigger
+or columns; current `main` still needs them. This code change applies nothing
+to shared or production databases.
 
 ## Database and release operations
+
+For the separately disabled approved-adapter runner, direct import credentials,
+daily/hourly schedule proposal, durable drift/failure history and synthetic
+integration validation, see [Evidence Source sync](SOURCE_SYNC.md). No real
+source or production scheduler is enabled by that implementation.
 
 Follow [data operations](DATA.md) before seeding, migrations, cleanup, or database rollback. Extra evidence columns left by earlier work are not a reason to remove data.
 

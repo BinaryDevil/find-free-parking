@@ -3,8 +3,7 @@ import { NextResponse } from "next/server";
 import { query } from "../../../lib/db";
 
 const MAX_REASON_LENGTH = 500;
-// Matches the window used by update_parking_report_counts() when it
-// aggregates reports (sql/archived/11.zone_reports.sql).
+// Matches the advisory Driver Warning window.
 const REPORT_WINDOW = "90 days";
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -74,8 +73,7 @@ export async function POST(request: Request) {
 
     const ip = getClientIp(request.headers);
 
-    // Three reports flip what the map shows, so one client must not be able
-    // to reach that threshold alone by submitting the same target repeatedly.
+    // Limit repeated reports from one client within the warning window.
     if (ip) {
       const existing = await query(
         `

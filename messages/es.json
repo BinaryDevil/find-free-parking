@@ -54,7 +54,9 @@
     "noParkingReported": "Prohibido estacionar",
     "paymentListed": "Pago indicado",
     "unknownCount": "Desconocido: {count}",
-    "cityNotCovered": "{city}: sin cobertura"
+    "cityNotCovered": "{city}: sin cobertura",
+    "cityFullCoverage": "{city}: cobertura completa",
+    "cityPartialCoverage": "{city}: cobertura parcial — {subset}"
   },
   "ReportModal": {
     "title": "Actualizar Estado",

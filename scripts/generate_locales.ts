@@ -4,6 +4,8 @@ import path from "path";
 const keys = {
   HomePage: {
     cityNotCovered: "{city}: not covered",
+    cityFullCoverage: "{city}: full coverage",
+    cityPartialCoverage: "{city}: partial coverage — {subset}",
     unknownCount: "Unknown: {count}",
     paymentListed: "Payment listed",
     noParkingReported: "No parking",

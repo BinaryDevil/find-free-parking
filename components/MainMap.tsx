@@ -135,12 +135,14 @@ interface MainMapProps {
   initialCenter?: [number, number];
   initialZoom?: number;
   cityName?: string;
+  cityCoverageText?: string;
 }
 
 export default function MainMap({
   initialCenter,
   initialZoom,
   cityName,
+  cityCoverageText,
 }: MainMapProps) {
   const t = useTranslations("HomePage");
   const locale = useLocale();
@@ -542,7 +544,7 @@ export default function MainMap({
           content,
           coords as [number, number],
           props.id,
-          "METER",
+          props.kind === "lot" || props.kind === "zone" ? "ZONE" : "METER",
           filterTypeRef.current
         );
         new maplibregl.Popup()
@@ -945,7 +947,7 @@ export default function MainMap({
         // Check coverage
         if (!coverageDismissed) {
           try {
-            const result = await checkCoverage();
+            const result = await checkCoverage(coords[0], coords[1]);
             if (!result.isCovered) {
               setShowCoverageBanner(true);
             } else {
@@ -1073,7 +1075,7 @@ export default function MainMap({
               )}
             </button>
           </form>
-          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{t("cityNotCovered", { city: cityName })}</p> : null}
+          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{cityCoverageText ?? t("cityNotCovered", { city: cityName })}</p> : null}
           <div className="mt-3 w-full">
             <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">

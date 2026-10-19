@@ -24,7 +24,7 @@ does not fix current classification policy.
 | `app/api/health/route.ts` | CONNECT, `SELECT 1` |
 | `app/api/parking/route.ts` | SELECT parking_meters and street_segments |
 | `app/api/parking/zones/route.ts` | SELECT parking_zones |
-| `app/actions/coverage.ts` | SELECT covered_cities |
+| `app/actions/coverage.ts` / city publication | SELECT coverage_areas, coverage_area_sources, evidence_sources, source_syncs |
 | `app/api/report/route.ts` | SELECT reports(id, target_id, target_type, user_ip, created_at); INSERT the six submitted columns |
 | `app/actions/request-coverage.ts` | INSERT city_requests(city_name, state, country, location, user_ip) |
 
@@ -36,14 +36,15 @@ The function has a fixed search path, qualified tables, no dynamic SQL, and no
 PUBLIC/app execute grant. PostgreSQL checks trigger execute permission at trigger
 creation; revoking it does not disable an existing trigger.
 
-The #18 dated-warning query additionally reads `reported_status`, grouped with
-the already-readable target and creation-date columns over 90 days. Prepared
-[17.driver_warning_read.sql](../sql/archived/17.driver_warning_read.sql) grants SELECT on
-that single column; separate human approval is required for each environment.
-It does not grant access to reason, location or other report text, and does not
-remove the trigger (that remains #13). Without the grant, the new parking API
-queries fail under `app_rw`. Roll back only this added column grant, not the
-pre-existing duplicate-detection permissions.
+The #13 warning reader uses aggregate SELECT on `public.driver_warnings`,
+granted by its additive migration. Apply it to an approved environment before
+deploying the reader. The earlier #18
+[column grant](../sql/archived/17.driver_warning_read.sql) is not required by
+this reader; it exposes no private fields. Existing duplicate-detection column
+permissions remain. The [Driver Warning rollout](DRIVER_WARNINGS.md) separately
+gates retirement of the trigger/function and its UPDATE grants, then obsolete
+count columns, after all relevant active/rollback readers are retired. The role
+model above describes the legacy writer until that stage is applied.
 
 ## Human preflight (each isolated dev and production database)
 
