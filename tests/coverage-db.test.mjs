@@ -88,6 +88,14 @@ test('computed Coverage controls public APIs, publication and exact place member
     const data = await response.json();
     assert.deepEqual(data.places.map(f => f.properties.id), [inside]);
     assert.equal(data.coverage.areas[0].level, 'partial');
+    const unlinkedRules = await source('E3');
+    const unlinkedRule = (await query(`INSERT INTO public.parking_rules(place_id,kind,days,start_minute,end_minute,source_id,source_record_id,fetched_at,parsed,permission_complete)
+      VALUES ($1,'free',ARRAY[0,1,2,3,4,5,6],0,1440,$2,'unreviewed-free',now()-interval '1 minute',true,true) RETURNING id`, [inside,unlinkedRules])).rows[0].id;
+    const unreviewed = await (await GET(new Request('http://localhost/api/parking?west=0&south=0&east=10&north=10'))).json();
+    assert.deepEqual(unreviewed.places, [], 'An unlinked rule source must close the entire place gate, even with linked geometry');
+    await query("UPDATE public.parking_rules SET kind='no_parking' WHERE id=$1",[unlinkedRule]);
+    assert.deepEqual(await approvedParkingPlaceIds(query,bounds), [], 'Unreviewed restrictions must not be discarded to reopen free permission');
+    await query('DELETE FROM public.parking_rules WHERE id=$1',[unlinkedRule]); // Own synthetic fixture only.
     const xml = await (await sitemap()).text();
     assert.match(xml,/\/en\/fixture/);
     assert.doesNotMatch(xml,/\/vancouver/);

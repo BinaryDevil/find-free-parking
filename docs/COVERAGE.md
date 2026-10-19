@@ -10,8 +10,9 @@ The stored `level` is the reviewed maximum promise, not a live assertion.
 The resolver recomputes the returned level and `computedAt` on every read from
 current approvals and each source's latest sync (including running or failed
 syncs). It never serves the stored level or optional `computed_at` as current
-Coverage. The policy's seven-day / one-day limits cap source freshness even when
-a source has a longer configured limit. A failed, pending, stale or signal-only
+Coverage. The policy's seven-day limit caps E1–E4/E6, and the one-day limit caps
+E5, even with longer configured limits; E7 uses its configured freshness limit.
+A failed, pending, stale or signal-only
 required source closes the entire promise rather than silently changing its
 declared subset. Source syncs and approvals cannot be written by the app role.
 
@@ -24,7 +25,9 @@ explicitly reviewed partial subset, never to the whole city polygon.
 
 `approvedParkingPlaceIds` opens the #11 evaluator only for a place whose whole
 geometry is covered by the computed full area or exact partial subset, whose
-source is linked to that area, and whose timezone matches. `ST_Intersects` alone
+geometry and rule sources are all linked to that area, and whose timezone matches.
+An unlinked rule closes the whole place gate; dropping it could hide a restriction.
+`ST_Intersects` alone
 is insufficient for membership. Applicable rules must still pass the evaluator;
 Coverage does not establish free permission or vacancy. The legacy #18 Unknown
 context remains available outside that gate. Viewport responses are labelled

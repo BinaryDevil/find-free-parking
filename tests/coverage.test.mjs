@@ -33,3 +33,14 @@ test('Full Coverage needs citywide regulations, meters, permits and daily tempor
   assert.equal(computeCoverage(area(['E3','E7','E2','E4','E5'].map(type => source(type)), { completeSigns: true }), now).level, 'full');
   assert.equal(computeCoverage(area(['E1','E4','E5'].map(type => source(type)), { metersInRules: true }), now).level, 'full');
 });
+
+test('E7 follows its configured freshness while E1–E4 and E6 remain capped at seven days', () => {
+  const sources = ['E3','E7','E2','E4','E5'].map(type => source(type,
+    type === 'E7' ? { lastSyncAt: '2026-10-01T12:00:00Z', freshnessMinutes: 43200 } : {}));
+  assert.equal(computeCoverage(area(sources, { completeSigns: true }), now).level, 'full');
+  assert.equal(computeCoverage(area(sources.map(s => s.evidenceType === 'E7' ?
+    { ...s, lastSyncAt: '2026-09-13T12:00:00Z' } : s), { completeSigns: true }), now).level, 'none');
+  for (const type of ['E1','E2','E3','E4','E6']) {
+    assert.equal(computeCoverage(area([source(type, { lastSyncAt: '2026-10-01T12:00:00Z', freshnessMinutes: 43200 })]), now).level, 'none');
+  }
+});

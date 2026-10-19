@@ -29,7 +29,8 @@ export interface CoverageArea {
 export function computeCoverage(area: CoverageArea, now: Date) {
   const current = area.sources.filter(source => {
     const age = now.getTime() - Date.parse(source.lastSyncAt ?? '');
-    const policyMinutes = source.evidenceType === 'E5' ? 1440 : 10080;
+    const policyMinutes = source.evidenceType === 'E5' ? 1440 :
+      source.evidenceType === 'E7' ? source.freshnessMinutes : 10080;
     return /^E[1-7]$/.test(source.evidenceType) && source.approvalState === 'approved' &&
       source.formatValid && Number.isFinite(age) && age >= 0 &&
       age <= Math.min(source.freshnessMinutes, policyMinutes) * 60000;
