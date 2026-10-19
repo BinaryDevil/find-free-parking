@@ -5,6 +5,7 @@ import { driverWarningsSql } from "@/lib/driver-warnings";
 import { parseParkingSelection, type ParkingSelection } from "@/lib/parking-selection";
 import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
 import { coverageAt } from "@/lib/coverage";
+import { legacyServingSql } from "@/lib/legacy-serving";
 
 export const runtime = "nodejs";
 
@@ -121,6 +122,7 @@ export async function GET(req: Request) {
   }
 
   try {
+    const serving = await legacyServingSql(query, 'parking_zones');
     if (bbox) {
       const { minLat, minLng, maxLat, maxLng } = bbox;
       const params: unknown[] = [minLng, minLat, maxLng, maxLat];
@@ -146,6 +148,7 @@ export async function GET(req: Request) {
           st_asgeojson(geom) as geom_geojson
         from public.parking_zones
         where geom && st_makeenvelope($1, $2, $3, $4, 4326)
+          ${serving}
       `;
 
       if (type === "FREE") {
@@ -203,6 +206,7 @@ export async function GET(req: Request) {
         geom,
         st_setsrid(st_makepoint($1, $2), 4326)
       )
+      ${serving}
     `;
 
     if (type === "FREE") {
