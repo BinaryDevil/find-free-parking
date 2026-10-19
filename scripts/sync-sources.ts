@@ -1,11 +1,11 @@
 import { Pool } from 'pg';
+import { reportFailure } from './github-alert.ts';
 import { pathToFileURL } from 'node:url';
 import { runGithub } from './coverage_requests.ts';
 import { sourceAdapters } from './source-adapters.ts';
 import { syncSource, type SourceAdapter, type SyncResult, type SyncSource } from './source-sync.ts';
 
 type Github = (args: string[], input?: string) => Promise<string>;
-const repository = 'BinaryDevil/find-free-parking';
 
 export function syncConnection(env: NodeJS.ProcessEnv): URL {
   if (env.SOURCE_SYNC_APPROVED !== 'sync-approved-sources') throw new Error('Source sync is disabled');
@@ -23,16 +23,11 @@ export function syncConnection(env: NodeJS.ProcessEnv): URL {
  * payloads, SQL, upstream error messages, connection details or driver data. */
 export async function reportSyncFailure(github: Github, result: SyncResult) {
   const marker = `<!-- source-sync:${result.sourceId} -->`;
-  const pages: { number: number; body?: string; pull_request?: unknown }[][] = JSON.parse(await github([
-    'api', `repos/${repository}/issues?state=open&per_page=100`, '--paginate', '--slurp',
-  ]));
-  const existing = pages.flat().find(issue => !issue.pull_request && issue.body?.includes(marker));
-  const body = [marker, 'Part of #15. Automated Evidence Source sync failure.',
+  const body = ['Part of #15. Automated Evidence Source sync failure.',
     `Source ID: ${result.sourceId}. Latest sync ID: ${result.syncId ?? 'unavailable'}.`,
     'Rules from a failed or unfinished source sync remain Unknown. Inspect the private source_syncs record and adapter configuration. Retry only against the approved target; source approval, production writes and deployment remain separate decisions.',
   ].join('\n\n');
-  await github(['api', `repos/${repository}/issues${existing ? `/${existing.number}` : ''}`, '--method', existing ? 'PATCH' : 'POST', '--input', '-'],
-    JSON.stringify(existing ? { body } : { title: `Evidence Source sync failed: ${result.sourceId}`, body, labels: ['needs-triage'] }));
+  await reportFailure(github, marker, `Evidence Source sync failed: ${result.sourceId}`, body);
 }
 
 /** The command checks every approved source, including ones missing an adapter.

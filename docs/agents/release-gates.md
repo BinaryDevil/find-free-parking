@@ -46,6 +46,9 @@ Keep the release PR current with `dev` until merge.
 - [ ] Rollback stated: redeploy the previous production deployment; for migrations, why the old code works against the new schema.
 - [ ] The independent review agent has reviewed the release diff and the production actions list with zero open findings.
 
+For the automated migration plan, exact PR action syntax, credential skip behavior
+and recovery, see [production release automation](../PRODUCTION_RELEASE.md).
+
 ## After merge (agent)
 
 1. Take a Neon snapshot branch of production.

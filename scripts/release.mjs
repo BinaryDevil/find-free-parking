@@ -1,0 +1,181 @@
+import { pathToFileURL } from 'node:url';
+import { reportFailure } from './github-alert.ts';
+
+const repository = 'BinaryDevil/find-free-parking';
+const migrationPattern = /^\d{13}_[a-z0-9_]+\.sql$/;
+
+export function authorizeRelease(prs, sha) {
+  const matches = prs.filter(pr => pr.merged && pr.merge_commit_sha === sha && pr.merged_by?.type === 'User' &&
+    pr.base?.ref === 'main' && pr.head?.ref === 'dev' &&
+    pr.base.repo?.full_name === repository && pr.head.repo?.full_name === repository);
+  if (matches.length !== 1) throw new Error('No unique human-merged dev release');
+  const pr = matches[0];
+  const actions = pr.body?.match(/^## Production actions\s*\n([\s\S]*?)(?=^## |$(?![\s\S]))/m)?.[1];
+  if (!actions) throw new Error('Missing Production actions');
+  const migrations = [...actions.matchAll(/^- Migration: `sql\/migrations\/(\d{13}_[a-z0-9_]+\.sql)`\s*$/gm)].map(m => m[1]);
+  if (migrations.length && /^No automated migrations\.$/m.test(actions)) throw new Error('Contradictory migration list');
+  if (!migrations.length && !/^No automated migrations\.$/m.test(actions)) throw new Error('List exact migrations or explicitly none');
+  if (new Set(migrations).size !== migrations.length) throw new Error('Duplicate migrations');
+  return { number: pr.number, migrations: migrations.sort() };
+}
+
+export async function releaseForCommit(github, sha) {
+  const summaries = JSON.parse(await github(['api', `repos/${repository}/commits/${sha}/pulls`, '--paginate', '--slurp'])).flat();
+  const prs = await Promise.all(summaries.map(pr => github(['api', `repos/${repository}/pulls/${pr.number}`]).then(JSON.parse)));
+  if (!prs.some(pr => pr.merged && pr.merge_commit_sha === sha && pr.base?.ref === 'main' && pr.head?.ref === 'dev')) return null;
+  return authorizeRelease(prs, sha);
+}
+
+export async function runRelease(release, config, { github, database, snapshot, migrate, smoke }) {
+  const results = [];
+  const comment = async () => github(['api', `repos/${repository}/issues/${release.number}/comments`, '--method', 'POST', '--input', '-'],
+    JSON.stringify({ body: `Production release ${config.sha}\n\n${results.join('\n')}` }));
+  try {
+    if (config.files.some(f => !migrationPattern.test(f)) || !Array.isArray(config.plan) || config.plan.some(f => !migrationPattern.test(f)) ||
+        JSON.stringify([...config.plan].sort()) !== JSON.stringify(release.migrations)) throw new Error('Plan differs from merged release');
+    const ledger = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
+    const applied = ledger.rows[0]?.ledger ? (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`) : [];
+    if (applied.some(f => !config.files.includes(f))) throw new Error('Unknown migration history');
+    const pending = config.files.filter(f => !applied.includes(f));
+    if (pending.some(f => !release.migrations.includes(f))) throw new Error('Pending migration not authorized');
+    // Existing production must adopt the baseline separately; never replay its DDL.
+    if (pending.includes('1791676800000_baseline.sql')) throw new Error('Baseline adoption required');
+    results.push('Authorization and pending migration checks passed.');
+    const branch = await snapshot();
+    results.push(`Snapshot retained: ${branch}.`);
+    await migrate();
+    const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
+    if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
+    results.push(`Migrations verified: ${pending.length} applied; ${pending.length ? 'additive rollback uses previous deployment' : 'no-op'}.`);
+    await smoke();
+    results.push('Health and Seattle/Vancouver parking API smoke checks passed.');
+    await comment();
+    return { snapshot: branch, applied: pending };
+  } catch {
+    results.push('FAILED. Inspect the private workflow configuration and target; no data restore is authorized.');
+    // Try both channels independently so a comment outage does not suppress alerts.
+    const notifications = await Promise.allSettled([
+      comment(),
+      reportFailure(github, `<!-- production-release:${config.sha} -->`, `Production release failed: ${config.sha.slice(0, 12)}`,
+        `Release PR #${release.number}. Run: https://github.com/${repository}/actions/runs/${config.runId || ''}\n\n${results.join('\n')}\n\nInspect privately. Restore the previous deployment if needed; restoring data over user data requires a human. Retry the same workflow only after resolving the failure.`),
+    ]);
+    if (notifications.some(r => r.status === 'rejected')) throw new Error('Release failed; notification delivery incomplete');
+    throw new Error('Release failed; results reported');
+  }
+}
+
+export async function snapshotProduction(neon, { sha, project, parent }) {
+  const path = `projects/${project}/branches`;
+  const name = `snapshot/${sha}`;
+  let cursor;
+  let branch;
+  do {
+    const page = await neon(`${path}?limit=100${cursor ? `&cursor=${encodeURIComponent(cursor)}` : ''}`);
+    branch = page.branches.find(b => b.name === name);
+    cursor = page.pagination?.cursor;
+  } while (!branch && cursor);
+  if (!branch) branch = (await neon(path, { branch: { name, parent_id: parent } })).branch;
+  if (!/^br-[a-z0-9-]+$/.test(branch?.id) || branch.parent_id !== parent || branch.name !== name) throw new Error('Snapshot identity mismatch');
+  for (let attempt = 0; attempt < 60; attempt++) {
+    branch = (await neon(`${path}/${branch.id}`)).branch;
+    if (branch.current_state === 'ready' && branch.parent_id === parent) return branch.id;
+    if (branch.current_state === 'broken') break;
+    await new Promise(resolve => setTimeout(resolve, 2000));
+  }
+  throw new Error('Snapshot not ready');
+}
+
+export async function smokeProduction(fetcher = fetch, origin = 'https://findfreeparking.info') {
+  const paths = ['/api/health'];
+  for (const bbox of ['47.60,-122.35,47.62,-122.32', '49.27,-123.14,49.29,-123.10']) {
+    const [south, west, north, east] = bbox.split(',');
+    paths.push(`/api/parking?north=${north}&south=${south}&east=${east}&west=${west}`);
+    paths.push(`/api/parking/zones?bbox=${bbox}`);
+  }
+  for (const path of paths) {
+    const response = await fetcher(`${origin}${path}`, { signal: AbortSignal.timeout(20000), redirect: 'error', cache: 'no-store' });
+    if (!response.ok) throw new Error('Smoke HTTP failure');
+    const data = await response.json();
+    const valid = path === '/api/health' ? data.ok === true && data.db === 'up'
+      : path.startsWith('/api/parking?') ? ['meters', 'streets', 'places'].every(key => Array.isArray(data[key])) && !!data.coverage
+      : data.type === 'FeatureCollection' && Array.isArray(data.features);
+    if (!valid) throw new Error('Smoke response failure');
+  }
+}
+
+async function main() {
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const { Client } = await import('pg');
+  const execute = promisify(execFile);
+  const github = async (args, input) => new Promise((resolve, reject) => {
+    const child = execFile('gh', args, { maxBuffer: 4 * 1024 * 1024 }, (error, stdout) => error ? reject(new Error('GitHub request failed')) : resolve(stdout));
+    child.stdin.end(input);
+  });
+  const sha = process.env.GITHUB_SHA;
+  if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main' ||
+      process.env.GITHUB_REPOSITORY !== repository || !/^[a-f0-9]{40}$/.test(sha || '')) throw new Error('Not a production push');
+  // Direct main pushes and non-release merges have no side effects.
+  let release;
+  try { release = await releaseForCommit(github, sha); } catch {
+    await reportFailure(github, `<!-- production-release:${sha} -->`, `Production release failed: ${sha.slice(0, 12)}`,
+      'Release authorization could not be verified. No production actions ran. Inspect the workflow configuration and merged release PR privately.');
+    throw new Error('Release authorization failed');
+  }
+  if (!release) { console.log('Skipped: no authorized human release.'); return; }
+  const current = JSON.parse(await github(['api', `repos/${repository}/git/ref/heads/main`]));
+  if (current.object.sha !== sha) { console.log('Skipped: a newer main revision exists.'); return; }
+  const project = 'misty-breeze-47060812';
+  const parent = 'br-rough-base-aryz0z5a';
+  const neon = async (path, body) => {
+    const response = await fetch(`https://console.neon.tech/api/v2/${path}`, {
+      method: body ? 'POST' : 'GET', signal: AbortSignal.timeout(30000), redirect: 'error',
+      headers: { Authorization: `Bearer ${process.env.NEON_API_KEY}`, 'Content-Type': 'application/json' },
+      ...(body ? { body: JSON.stringify(body) } : {}),
+    });
+    if (!response.ok) throw new Error('Neon request failed');
+    return response.json();
+  };
+  let client;
+  const database = { query: async sql => {
+    if (!client) {
+      const url = new URL(process.env.PRODUCTION_MIGRATION_DATABASE_URL || '');
+      const endpoints = (await neon(`projects/${project}/endpoints`)).endpoints;
+      const endpoint = endpoints.find(e => e.branch_id === parent && e.type === 'read_write' && e.host === url.hostname);
+      const databases = (await neon(`projects/${project}/branches/${parent}/databases`)).databases;
+      const databaseName = decodeURIComponent(url.pathname.slice(1));
+      if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname.includes('-pooler') || !endpoint ||
+          !databases.some(d => d.name === databaseName && d.owner_name === decodeURIComponent(url.username)) ||
+          decodeURIComponent(url.username) !== 'find-free-parking-db_owner') throw new Error('Production identity mismatch');
+      client = new Client({ connectionString: url.toString(), connectionTimeoutMillis: 15000,
+        options: '-c statement_timeout=120000 -c lock_timeout=15000' });
+      await client.connect();
+      const identity = (await client.query('SELECT current_database() AS database,current_user AS role')).rows[0];
+      if (identity.database !== databaseName || identity.role !== 'find-free-parking-db_owner') throw new Error('Database identity mismatch');
+      process.env.MIGRATION_DATABASE_URL = url.toString();
+      process.env.MIGRATION_EXPECTED_HOST = url.hostname;
+      process.env.MIGRATION_EXPECTED_DATABASE = databaseName;
+    }
+    return client.query(sql);
+  } };
+  try {
+    await runRelease(release, { sha, runId: process.env.GITHUB_RUN_ID,
+      files: readdirSync('sql/migrations').sort(), plan: (() => { try { return JSON.parse(readFileSync('.github/production-migrations.json', 'utf8')); } catch { return null; } })() }, {
+      github, database,
+      snapshot: () => snapshotProduction(neon, { sha, project, parent }),
+      migrate: () => execute('pnpm', ['db:migrate'], { env: process.env, timeout: 10 * 60 * 1000 }),
+      smoke: async () => {
+        // Vercel deployment runs independently of this workflow. Allow it to settle.
+        for (let attempt = 0; ; attempt++) {
+          try { await smokeProduction(); return; } catch { if (attempt === 19) throw new Error('Smoke checks failed'); }
+          await new Promise(resolve => setTimeout(resolve, 15000));
+        }
+      },
+    });
+  } finally { await client?.end(); }
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  try { await main(); } catch { console.error('Release failed. Inspect configuration privately; raw errors are suppressed.'); process.exitCode = 1; }
+}
