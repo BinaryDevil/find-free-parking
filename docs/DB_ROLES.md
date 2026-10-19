@@ -1,5 +1,7 @@
 # Database role rollout (#5)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 This is a prepared change, not an applied migration or a production verification.
 The grant map comes from the queries at `origin/dev` revision
 `f3db697fcb22b852b8b67b5a6c187b4ad0dce9d0` and tracked SQL. No live schema

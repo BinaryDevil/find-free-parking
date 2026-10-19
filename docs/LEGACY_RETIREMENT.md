@@ -1,7 +1,9 @@
 # Duplicate rows and legacy retirement decision (#16)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 Prepared 2026-10-13 for [#16](https://github.com/BinaryDevil/find-free-parking/issues/16).
-**Status: proposed approach; no cleanup, source approval or execution authorized.**
+**Status: approach chosen in #16 (approved-source re-import, then archive legacy reads; no deletes). Execution happens only as release-PR *Production actions* under ADR-0005.**
 This preparation changes documentation only. Ticket PRs target `dev` under the
 user's current all-milestones development authorization and require user approval
 for merge. Production remains separately gated by [release gates](agents/release-gates.md).

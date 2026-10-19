@@ -1,5 +1,7 @@
 # Driver Warnings (#13)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 `public.driver_warnings` groups reports by target type, target ID and reported
 status, with a count and latest report date. Only FREE, PAID and NO_PARKING
 reports newer than 90 days are included. This is a regular view: expiry is

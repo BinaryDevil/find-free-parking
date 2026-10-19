@@ -1,5 +1,7 @@
 # City of North Vancouver: approval evidence and clarification request
 
+> **Approvals:** this preparation predates [ADR-0005](../adr/0005-agent-verified-gates.md). The decisions it frames for a human are now made by independent two-agent review, using published reuse terms only.
+
 > Outreach sections are historical and superseded by [ADR-0004](../adr/0004-no-external-outreach.md). No requests may be sent or prepared; authorization steps below no longer apply. Source evidence gaps remain unresolved.
 
 Observed: 2026-10-14. Scope: [#50](https://github.com/BinaryDevil/find-free-parking/issues/50), supplementing the [inventory](north-vancouver.md) under [ADR-0002](../adr/0002-evidence-source-policy.md). Coverage remains none. Owner progression approval is already recorded on #50; no repeated discretionary owner approval is needed once factual prerequisites pass. This document does not grant City permission or approve a source.

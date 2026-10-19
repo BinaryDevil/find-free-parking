@@ -56,6 +56,21 @@ The inventory line reads `approved by agent review on <date> (author <PR>, revie
 - When post-release verification fails, an agent may restore the previous production deployment. Restoring data from a snapshot over user data needs a human.
 - Agents write to production only through a merged release PR's listed actions.
 
+## Shared dev and disposable databases
+
+- **Shared dev database:** after a migration merges into `dev`, an agent takes a Neon snapshot branch of dev and applies the migration, so previews reflect `dev`. It may also run syncs of sources approved under this ADR against dev. It never deletes or rewrites existing rows, and never writes test fixtures there.
+- **Disposable databases:** agents may create, clear and delete Neon branches named `validation/...` and local Docker databases that they created for a test. They never touch other branches.
+
+## Reading older runbooks
+
+Runbooks under `docs/` written before this ADR ask for "separate human approval", "explicit approval naming the target" or an approval recorded on a ticket. Read those requirements as follows:
+
+- **Production step:** the step is listed under a merged release PR's *Production actions*. The approval variables a script requires (for example `*_APPROVED=...`) are set by whoever runs that listed action.
+- **Shared dev step:** allowed under the section above. Record the target, snapshot and result on the ticket.
+- **Disposable step:** allowed under the section above.
+
+Their preflight, snapshot, verification and stop-on-drift steps still apply unchanged; agents perform them.
+
 ## Consequences
 
 - Human work per release drops to reviewing and merging one PR.

@@ -1,5 +1,7 @@
 # Server Parking Rules (#11)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 `1791856800000_places_parking_rules.sql` creates empty `places` and
 `parking_rules` tables. Geometry and place provenance are separate from typed
 rules and their provenance. It does not backfill, update, delete, or retire

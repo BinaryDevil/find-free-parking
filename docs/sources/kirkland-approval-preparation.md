@@ -1,5 +1,7 @@
 # Kirkland source approval: remaining evidence
 
+> **Approvals:** this preparation predates [ADR-0005](../adr/0005-agent-verified-gates.md). The decisions it frames for a human are now made by independent two-agent review, using published reuse terms only.
+
 > Outreach sections are historical and superseded by [ADR-0004](../adr/0004-no-external-outreach.md). No requests may be sent or prepared; authorization steps below no longer apply. Source evidence gaps remain unresolved.
 
 Status: preparation only; sources pending; Coverage none.

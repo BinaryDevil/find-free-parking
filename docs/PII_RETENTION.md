@@ -1,5 +1,7 @@
 # Schema hygiene and private-field retention (#14)
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 The report and coverage request writers use `lib/client-ip.ts`: prefer one valid
 `x-real-ip`, otherwise the first `x-forwarded-for` address, otherwise NULL. This
 validates syntax, not identity. Only trusted proxy header replacement establishes

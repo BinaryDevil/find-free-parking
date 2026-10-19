@@ -1,5 +1,7 @@
 # Seattle and Vancouver source approval preparation
 
+> **Approvals:** this preparation predates [ADR-0005](../adr/0005-agent-verified-gates.md). The decisions it frames for a human are now made by independent two-agent review, using published reuse terms only.
+
 > Outreach sections are historical and superseded by [ADR-0004](../adr/0004-no-external-outreach.md). No requests may be sent or prepared; authorization steps below no longer apply. Source evidence gaps remain unresolved.
 
 Prepared for [#24](https://github.com/BinaryDevil/find-free-parking/issues/24), checked 2026-10-13 (America/Vancouver). **Decision status: pending human review.** This is a terms assessment and decision artifact, not an approval or permission grant. Both inventories remain draft, Coverage remains none, and no Evidence Source state was changed or database inspected/written. No external request was sent.

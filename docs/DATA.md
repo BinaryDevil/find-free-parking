@@ -1,5 +1,7 @@
 # Data and database operations
 
+> **Approvals:** this runbook predates [ADR-0005](adr/0005-agent-verified-gates.md). Where it asks for human or separate approval, follow ADR-0005's *Reading older runbooks* section; its other steps are unchanged.
+
 For seeding, schema changes, cleanup, or rollback, read this document and [ADR-0001](adr/0001-verified-rules-only.md). Existing imports are historical implementation examples, not approved evidence policies.
 
 ## Evidence before expansion
@@ -133,10 +135,10 @@ sequence/default/primary key are added; extension versions/namespaces match.
 No provider ACL exception was needed on this branch. Production ledger adoption
 still requires the separate human approval below.
 
-### Adopting the baseline on an existing database — approval pending
+### Adopting the baseline on an existing database
 
 **Never run the baseline DDL on production or existing dev.** Baseline ledger
-marking is a database write and requires explicit human approval per environment.
+marking is a database write: for production it is a release-PR *Production action*; for dev it follows ADR-0005's shared-dev rule.
 Ticket #9 remains incomplete until production marking and verification are done.
 
 1. Review the PR/commit, fresh replay and schema-diff evidence. Reinspect the target
@@ -149,8 +151,8 @@ Ticket #9 remains incomplete until production marking and verification are done.
    this exact baseline is already recorded), and restricted role/database ACLs.
    Take a provider snapshot/retained restore point and record its identity/time
    privately. Confirm the restore procedure and retention; an old branch name
-   alone is not proof of a current backup. Record explicit human approval on #9
-   for **ledger-only marking**, naming the reviewed commit and target.
+   alone is not proof of a current backup. Record on #9 the release PR (production) or ticket (dev)
+   authorizing **ledger-only marking**, naming the reviewed commit and target.
 3. Privately set the three migration connection/identity variables above. Set
    `MIGRATION_BASELINE_APPROVED=1791676800000_baseline`, then run
    `pnpm db:baseline`. This pins fake marking to the baseline only (count 1); it
