@@ -39,7 +39,7 @@ async function cohort(client: PoolClient, coverageIds: string[]) {
     // Suppress the entire context geometry if any part overlaps replacement Coverage.
     // Historical tables are context only, including provenance-tagged old imports.
     const result = await client.query(`SELECT '${table}' AS place_table, p.id::text AS place_id,
-      encode(extensions.digest(to_jsonb(p)::text, 'sha256'), 'hex') AS row_sha256
+      encode(sha256(convert_to(to_jsonb(p)::text, 'UTF8')), 'hex') AS row_sha256
       FROM public.${table} p WHERE EXISTS (SELECT 1 FROM public.coverage_areas a
         WHERE a.id = ANY($1::uuid[]) AND ST_Intersects(p.geom,
           CASE WHEN a.id = ANY($2::uuid[]) THEN a.geom ELSE a.subset_geom END))
@@ -154,7 +154,7 @@ export async function runLegacyRetirement(pool: Pool, input: RetirementInput) {
       for (const table of retirementTables) {
         const result = await client.query(`SELECT count(*)::int AS count FROM public.${table} p
           JOIN public.legacy_retirement_members m ON m.place_id = p.id AND m.place_table = $2
-          WHERE m.retirement_id = $1 AND m.row_sha256 = encode(extensions.digest(to_jsonb(p)::text, 'sha256'),'hex')`, [input.retirementId,table]);
+          WHERE m.retirement_id = $1 AND m.row_sha256 = encode(sha256(convert_to(to_jsonb(p)::text, 'UTF8')),'hex')`, [input.retirementId,table]);
         if (result.rows[0].count !== members.filter(row => row.place_table === table).length) throw new Error('Retained legacy rows changed');
       }
     }

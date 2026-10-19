@@ -41,7 +41,7 @@ test('disposable archival preserves historical bytes and public readers, fails c
     await q(`INSERT INTO street_segments(source_id,source_record_id,geom) SELECT $1,gen_random_uuid()::text,g FROM (VALUES (ST_GeomFromText('LINESTRING(1.1 1.1,1.9 1.9)',4326)),(ST_GeomFromText('LINESTRING(1.5 1.5,3 3)',4326)),(ST_GeomFromText('LINESTRING(3 3,4 4)',4326))) AS x(g)`,[source]);
     await q(`INSERT INTO parking_zones(source_id,source_record_id,city,type,geom) SELECT $1,gen_random_uuid()::text,'Fixture','FREE_UNLIMITED',ST_MakeEnvelope(1.1,1.1,1.9,1.9,4326) FROM generate_series(1,201)`,[source]);
     await q(`INSERT INTO parking_zones(source_id,source_record_id,city,type,geom) VALUES ($1,gen_random_uuid()::text,'Fixture','FREE_UNLIMITED',ST_MakeEnvelope(3,3,4,4,4326))`,[source]);
-    const rows = async () => Object.fromEntries(await Promise.all(retirementTables.map(async table => [table,(await q(`SELECT id,to_jsonb(p)::text AS bytes FROM ${table} p ORDER BY id`)).rows])));
+    const rows = async () => { const output={}; for(const table of retirementTables) output[table]=(await q(`SELECT id,to_jsonb(p)::text AS bytes FROM ${table} p ORDER BY id`)).rows; return output; };
     let before = await rows();
     const reportTarget = before.parking_meters[0].id;
     await q(`INSERT INTO reports(target_type,target_id,reported_status) VALUES ('METER',$1,'BROKEN')`,[reportTarget]);
@@ -65,6 +65,7 @@ test('disposable archival preserves historical bytes and public readers, fails c
     assert.deepEqual(retirementTables.map(t=>expected[t].count),[1001,2,201]);
     const input={action:'retire',retirementId:randomUUID(),approvalRef:'disposable fixture test only',snapshotRef:process.env.LEGACY_RETIREMENT_TEST_SNAPSHOT || 'fixture retained pre-write restore point',expectedDatabase:'legacy_retirement_test',coverageIds:[area],expected,sourceChecks:[{sourceId:source,syncId:sync,fetched:1,accepted:1,quarantined:0,excluded:0}]};
     await assert.rejects(runLegacyRetirement(pool,{...input,snapshotRef:''}),/snapshot/);
+    await assert.rejects(runLegacyRetirement(pool,{...input,approvalRef:''}),/approval/);
     await assert.rejects(runLegacyRetirement(pool,{...input,expectedDatabase:'production'}),/identity/);
     await assert.rejects(runLegacyRetirement(pool,{...input,sourceChecks:[]}),/reconciliation/);
     await assert.rejects(runLegacyRetirement(pool,{...input,sourceChecks:[{...input.sourceChecks[0],fetched:2}]}),/totals/);
@@ -72,6 +73,22 @@ test('disposable archival preserves historical bytes and public readers, fails c
     await q("UPDATE evidence_sources SET approval_state='pending' WHERE id=$1",[source]);
     await assert.rejects(runLegacyRetirement(pool,input),/approved and current/);
     await q("UPDATE evidence_sources SET approval_state='approved' WHERE id=$1",[source]);
+    await q("UPDATE parking_rules SET parsed=false WHERE place_id=$1",[place]);
+    await assert.rejects(runLegacyRetirement(pool,input),/replacement places/);
+    await q("UPDATE parking_rules SET parsed=true WHERE place_id=$1",[place]);
+    await q('UPDATE places SET removed_at=now() WHERE id=$1',[place]);
+    await assert.rejects(runLegacyRetirement(pool,input),/replacement places/);
+    await q('UPDATE places SET removed_at=NULL WHERE id=$1',[place]);
+    await q("UPDATE source_syncs SET started_at=now()-interval '10 days',finished_at=now()-interval '9 days' WHERE id=$1",[sync]);
+    await assert.rejects(runLegacyRetirement(pool,input),/approved and current/);
+    await q("UPDATE source_syncs SET started_at=now()-interval '2 minutes',finished_at=now()-interval '1 minute' WHERE id=$1",[sync]);
+    await q("UPDATE places SET timezone='America/New_York' WHERE id=$1",[place]);
+    await assert.rejects(runLegacyRetirement(pool,input),/replacement places/);
+    await q("UPDATE places SET timezone='America/Vancouver' WHERE id=$1",[place]);
+    await q("UPDATE source_syncs SET records_added=2 WHERE id=$1",[sync]);
+    await assert.rejects(runLegacyRetirement(pool,input),/sync|count/);
+    await q("UPDATE source_syncs SET records_added=1 WHERE id=$1",[sync]);
+    assert.equal((await q('SELECT count(*)::int AS n FROM legacy_retirements')).rows[0].n,0,'All failed retirements roll back atomically');
     await runLegacyRetirement(pool,input);
     assert.deepEqual(await rows(),before,'Archive must retain every historical column byte-identically');
     assert.deepEqual((await q('SELECT to_jsonb(r)::text AS bytes FROM reports r ORDER BY id')).rows,reportsBefore);
@@ -83,9 +100,16 @@ test('disposable archival preserves historical bytes and public readers, fails c
     assert.equal((await zoneRead('lat=1.5&lng=1.5&limit=200')).features.length,0,'Point mode excludes retired zones');
     // The previous deployment can keep reading historical columns after additive retirement.
     assert.equal((await q('SELECT id,pay_station_id,meter_head,schedules,raw_data,ST_AsGeoJSON(geom) FROM parking_meters')).rowCount,1002);
+    await q("UPDATE source_syncs SET started_at=now()-interval '10 days',finished_at=now()-interval '9 days' WHERE id=$1",[sync]);
+    assert.equal((await parkingRead()).meters.length,1,'Staleness never reopens retired historical rows');
+    assert.deepEqual((await parkingRead()).places,[]);
     await q("UPDATE evidence_sources SET approval_state='pending' WHERE id=$1",[source]);
     assert.equal((await parkingRead()).meters.length,1,'A failed freshness/approval gate never reopens archived context');
     assert.deepEqual((await parkingRead()).places,[]);
+    const retainedFixture=(await q("SELECT id,raw_data FROM parking_meters WHERE raw_data @> '{\"fixture\":true}'::jsonb LIMIT 1")).rows[0];
+    await q("UPDATE parking_meters SET raw_data='{\"changed\":true}'::jsonb WHERE id=$1",[retainedFixture.id]);
+    await assert.rejects(runLegacyRetirement(pool,{...input,action:'reverse',coverageIds:[],sourceChecks:[]}),/Retained legacy rows changed/);
+    await q('UPDATE parking_meters SET raw_data=$2::jsonb WHERE id=$1',[retainedFixture.id,JSON.stringify(retainedFixture.raw_data)]);
     await runLegacyRetirement(pool,{...input,action:'reverse',coverageIds:[],sourceChecks:[]});
     assert.deepEqual(await rows(),before);
     const reversed = await parkingRead();

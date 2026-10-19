@@ -103,6 +103,28 @@ additive schema. It can re-expose legacy duplicates; record that limitation.
 Never restore a whole old snapshot over newer reports or requests. Recover to
 a separate branch and prepare any selective data recovery independently.
 
+## Disposable validation
+
+For the automated empty-database integration test, select an unused agent-owned
+PostGIS target and create a fresh empty database named `legacy_retirement_test`.
+Privately set `LEGACY_RETIREMENT_TEST_DATABASE_URL`,
+`LEGACY_RETIREMENT_TEST_EXPECTED_HOST` and
+`LEGACY_RETIREMENT_TEST_SNAPSHOT` to its verified direct target and retained
+pre-write restore reference. Run:
+
+```sh
+node --test tests/legacy-retirement-db.test.mjs
+```
+
+It refuses a nonempty database, replays all migrations, uses only synthetic
+approved-source fixtures, and checks all API modes, pre-limit filtering,
+retained rows/reports, refusal paths and reverse behavior. Ordinary `pnpm test`
+skips this integration test without the dedicated connection variable.
+Separately rehearse on a fresh production-parent branch, hash all copied
+historical rows before/after retirement and reversal, and execute the actual
+current production handlers against the additive schema with the archive active.
+The empty-database test alone does not satisfy that compatibility criterion.
+
 ## R4 release actions and checks
 
 Copy the following into the R4 release PR, naming the reviewed commit, exact
