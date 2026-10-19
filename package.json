@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "node scripts/check-diagnostics.mjs lint",
     "check-requests": "npx tsx scripts/automate_seeding.ts",
+    "sync-sources": "node scripts/sync-sources.ts",
     "test:overpass": "node --test tests/overpass.test.mjs",
     "lint:raw": "eslint",
     "typecheck": "node scripts/check-diagnostics.mjs typecheck",

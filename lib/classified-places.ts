@@ -23,13 +23,13 @@ export async function classifiedPlaces(query: ParkingQuery, placeIds: string[], 
           'lastSyncAt', sync.finished_at, 'formatValid', COALESCE(sync.status = 'succeeded' AND sync.format_check_passed, false))
       ) ORDER BY r.id) FILTER (WHERE r.id IS NOT NULL), '[]'::jsonb) AS rules
     FROM public.places p
-    LEFT JOIN public.parking_rules r ON r.place_id = p.id
+    LEFT JOIN public.parking_rules r ON r.place_id = p.id AND r.removed_at IS NULL
     LEFT JOIN public.evidence_sources e ON e.id = r.source_id
     LEFT JOIN LATERAL (
       SELECT finished_at, status, format_check_passed FROM public.source_syncs
       WHERE source_id = e.id ORDER BY started_at DESC, id DESC LIMIT 1
     ) sync ON true
-    WHERE p.id = ANY($5::uuid[]) AND ST_Intersects(p.geom, ST_MakeEnvelope($1,$2,$3,$4,4326))
+    WHERE p.removed_at IS NULL AND p.id = ANY($5::uuid[]) AND ST_Intersects(p.geom, ST_MakeEnvelope($1,$2,$3,$4,4326))
     GROUP BY p.id LIMIT 1000
   `, [...bounds, placeIds]);
   return rows.map(row => ({
