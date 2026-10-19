@@ -25,7 +25,7 @@ test('an empty disposable database replays the baseline once with live-schema ev
     const first = run();
     assert.equal(first.status, 0, first.stderr);
     const history = await client.query('SELECT name, run_on FROM migration_meta.pgmigrations ORDER BY id');
-    assert.deepEqual(history.rows.map(row => row.name), ['1791676800000_baseline', '1791849600000_evidence_provenance', '1791853200000_schema_hygiene', '1791856800000_places_parking_rules']);
+    assert.deepEqual(history.rows.map(row => row.name), ['1791676800000_baseline', '1791849600000_evidence_provenance', '1791853200000_schema_hygiene', '1791856800000_places_parking_rules', '1792021300000_driver_warnings']);
     const columns = await client.query("SELECT table_name, column_default, is_nullable FROM information_schema.columns WHERE table_schema='public' AND column_name='parking_evidence' ORDER BY table_name");
     assert.deepEqual(columns.rows, ['parking_meters', 'parking_zones', 'street_segments'].map(table_name => ({ table_name, column_default: "'{}'::jsonb", is_nullable: 'NO' })));
     const second = run();

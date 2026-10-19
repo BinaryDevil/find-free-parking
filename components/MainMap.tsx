@@ -542,7 +542,7 @@ export default function MainMap({
           content,
           coords as [number, number],
           props.id,
-          "METER",
+          props.kind === "lot" || props.kind === "zone" ? "ZONE" : "METER",
           filterTypeRef.current
         );
         new maplibregl.Popup()
