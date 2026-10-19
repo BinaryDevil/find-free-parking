@@ -70,7 +70,7 @@ test('Blockface snapshot upserts preserve identities and public APIs keep unappr
     assert.equal(result.status, 200);
     const data = await result.json();
     assert.deepEqual(data.places, []);
-    assert.deepEqual(data.coverage, { level:'none' });
+    assert.deepEqual(data.coverage, { level:'none', areas:[] });
   } finally {
     hooks?.deregister();
     client.release();
