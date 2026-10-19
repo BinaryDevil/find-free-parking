@@ -1,0 +1,309 @@
+{
+  "id": 1,
+  "name": "Blockface",
+  "geometryType": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "editingInfo": {
+    "lastEditDate": 1791986056822,
+    "schemaLastEditDate": 1791986056822,
+    "dataLastEditDate": 1791986056822
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID"
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "DISTANCE",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "BLOCKFACE_LENGTH",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "END_DISTANCE",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WIDTH",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "UNITID",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "UNITID2",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "UNITDESC",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "BLOCK_ID",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "BLOCK_NBR",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "CSM",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "PARKING_CATEGORY",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "TOTAL_SPACES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "PAID_SPACES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "CARPOOL_SPACES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "RPZ_SPACES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "TL_SPACES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "BUS",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "NOPARK",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "NOSTOP",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "TOTAL_NOPARK",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "LOAD_",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "ZONE",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "TOTAL_ZONES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "PARKING_SPACES",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "UNRESTRICTED",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "TIER",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WKD_RATE1",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "WKD_START1",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WKD_END1",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WKD_RATE2",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "WKD_START2",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WKD_END2",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WKD_RATE3",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "WKD_START3",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "WKD_END3",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SAT_RATE1",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SAT_START1",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SAT_END1",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SAT_RATE2",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SAT_START2",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SAT_END2",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SAT_RATE3",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SAT_START3",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SAT_END3",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SUN_RATE1",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SUN_START1",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SUN_END1",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SUN_RATE2",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SUN_START2",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SUN_END2",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SUN_RATE3",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SUN_START3",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "SUN_END3",
+      "type": "esriFieldTypeInteger"
+    },
+    {
+      "name": "PEAK_HOUR",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "RPZ_ZONE",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "RPZ_AREA",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "PAIDAREA",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "PARKING_TIME_LIMIT",
+      "type": "esriFieldTypeDouble"
+    },
+    {
+      "name": "SUBAREA",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "START_TIME_WKD",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "END_TIME_WKD",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "START_TIME_SAT",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "END_TIME_SAT",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "START_TIME_SUN",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "END_TIME_SUN",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "PRIMARYDISTRICTCD",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "SECONDARYDISTRICTCD",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "OVERRIDEYN",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "OVERRIDECOMMENT",
+      "type": "esriFieldTypeString"
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble"
+    }
+  ]
+}
