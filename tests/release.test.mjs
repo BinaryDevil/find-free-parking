@@ -74,3 +74,13 @@ test('snapshot failure prevents migration and does not leak the provider error',
   assert.equal(migrated, false);
   assert.ok(!reports.join('').includes('secret-provider-payload'));
 });
+
+import { releaseForCommit } from '../scripts/release.mjs';
+test('commit-associated PR summaries are hydrated before checking the human merger', async () => {
+  const github = async args => {
+    if (args[1].includes('/commits/')) return JSON.stringify([[{ number: 80, merged_at: '2026-10-19T00:00:00Z', merge_commit_sha: sha }]]);
+    assert.equal(args[1], 'repos/BinaryDevil/find-free-parking/pulls/80');
+    return JSON.stringify(pr);
+  };
+  assert.deepEqual(await releaseForCommit(github, sha), { number: 80, migrations: [file] });
+});

@@ -19,6 +19,13 @@ export function authorizeRelease(prs, sha) {
   return { number: pr.number, migrations: migrations.sort() };
 }
 
+export async function releaseForCommit(github, sha) {
+  const summaries = JSON.parse(await github(['api', `repos/${repository}/commits/${sha}/pulls`, '--paginate', '--slurp'])).flat();
+  const prs = await Promise.all(summaries.map(pr => github(['api', `repos/${repository}/pulls/${pr.number}`]).then(JSON.parse)));
+  if (!prs.some(pr => pr.merged && pr.merge_commit_sha === sha && pr.base?.ref === 'main' && pr.head?.ref === 'dev')) return null;
+  return authorizeRelease(prs, sha);
+}
+
 export async function runRelease(release, config, { github, database, snapshot, migrate, smoke }) {
   const results = [];
   const comment = async () => github(['api', `repos/${repository}/issues/${release.number}/comments`, '--method', 'POST', '--input', '-'],
@@ -109,10 +116,14 @@ async function main() {
   const sha = process.env.GITHUB_SHA;
   if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main' ||
       process.env.GITHUB_REPOSITORY !== repository || !/^[a-f0-9]{40}$/.test(sha || '')) throw new Error('Not a production push');
-  const prs = JSON.parse(await github(['api', `repos/${repository}/commits/${sha}/pulls`, '--paginate', '--slurp'])).flat();
   // Direct main pushes and non-release merges have no side effects.
   let release;
-  try { release = authorizeRelease(prs, sha); } catch { console.log('Skipped: no authorized human release.'); return; }
+  try { release = await releaseForCommit(github, sha); } catch {
+    await reportFailure(github, `<!-- production-release:${sha} -->`, `Production release failed: ${sha.slice(0, 12)}`,
+      'Release authorization could not be verified. No production actions ran. Inspect the workflow configuration and merged release PR privately.');
+    throw new Error('Release authorization failed');
+  }
+  if (!release) { console.log('Skipped: no authorized human release.'); return; }
   const current = JSON.parse(await github(['api', `repos/${repository}/git/ref/heads/main`]));
   if (current.object.sha !== sha) { console.log('Skipped: a newer main revision exists.'); return; }
   const project = 'misty-breeze-47060812';
