@@ -5,7 +5,7 @@ description: Set up Coverage for a new city, or expand an existing one, under th
 
 # Cover a city
 
-The output is a reviewed **inventory** plus tickets. The inventory decides which sources a city's setup and seeding may use; adapters and seeding come later, through the tickets, after a human approves the inventory. Every step here is read-only against city servers, the database, and the city page registry.
+The output is a reviewed **inventory** plus tickets. The inventory decides which sources a city's setup and seeding may use; adapters and seeding come later, through the tickets, after an independent reviewer agent confirms the inventory ([ADR-0005](../../../docs/adr/0005-agent-verified-gates.md)). Every step here is read-only against city servers, the database, and the city page registry.
 
 ## 1. Load the policy
 
@@ -30,14 +30,14 @@ Done when: every evidence type E1–E7 has candidate sources or "none found" wit
 For each candidate, record its fields, record count, last edit date, geometry, and a sample record. Then apply the policy's acceptance criteria one by one.
 
 - **Spot check**: record the locations, independent official comparisons, and safety contradictions required by ADR-0002 acceptance criterion 7.
-- **Reuse terms**: record the terms required by ADR-0002 acceptance criterion 6 from the portal or the service's item page. A service that isn't in the portal catalogue gets verdict `pending` until permission is recorded.
+- **Reuse terms**: record the terms required by ADR-0002 acceptance criterion 6 from the portal or the service's item page. Only a published licence or published terms covering the exact item count; without them the verdict is `rejected (criterion 6)`, not pending, since ADR-0004 rules out asking.
 - Anything the source leaves ambiguous becomes an explicit Unknown case.
 
 Done when: every candidate has a verdict (approved / rejected with the failed criterion / pending with what is missing).
 
 ## 4. Write the inventory
 
-Copy `docs/sources/TEMPLATE.md` to `docs/sources/<city-slug>.md` and fill every field. Set the coverage verdict from the policy's coverage levels using approved sources only; a partial verdict names its subset precisely enough to be shown on the city page. Status stays `draft`, since approval is a human decision.
+Copy `docs/sources/TEMPLATE.md` to `docs/sources/<city-slug>.md` and fill every field. Set the coverage verdict from the policy's coverage levels using approved sources only; a partial verdict names its subset precisely enough to be shown on the city page. Status stays `draft` until the review in step 5 confirms it.
 
 Done when: every row in the template is filled, and each Unknown area says why.
 
@@ -46,7 +46,7 @@ Done when: every row in the template is filled, and each Unknown area says why.
 Using `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`:
 
 - One adapter issue per approved or pending source: endpoint, fields and their meanings, format checks, the Parking Rules it produces, the Unknown cases, and the spot-check places as test fixtures. Label it `ready-for-agent`. Reference #2, and add `Blocked by: #2` while the evaluator and Evidence Source schema from #2 are unbuilt.
-- One coverage-approval issue: link the inventory, list the pending licences and verdicts to confirm, and the city page and registry change it unlocks. Label it `ready-for-human`.
+- One source-review issue for an independent reviewer agent: link the inventory, list each verdict to re-check against all seven criteria, and the Coverage change it unlocks. Label it `ready-for-agent`. The reviewer must not be the agent that wrote the inventory.
 - Record missing evidence types and their Coverage limits in the inventory. Do not file data-request or outreach issues; ADR-0004 prohibits external requests.
 
 Link every issue back into the inventory's Tickets section.

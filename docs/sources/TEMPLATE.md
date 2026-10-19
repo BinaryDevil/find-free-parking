@@ -1,6 +1,6 @@
 # <City>, <Region>: source inventory
 
-Status: draft | approved by <name> on <YYYY-MM-DD>
+Status: draft | approved by agent review on <YYYY-MM-DD> (author <PR>, reviewer <PR or comment>)
 Timezone: <IANA zone, e.g. America/Los_Angeles>
 Coverage verdict: full | partial (<declared subset>) | none
 Policy: [ADR-0002: Evidence Source Policy](../adr/0002-evidence-source-policy.md)
@@ -32,7 +32,7 @@ Repeat this block for each candidate source, including rejected ones.
 - Geometry and precision:
 - Records: <count> as of <YYYY-MM-DD>; last edited <YYYY-MM-DD>
 - Fields used: <field → meaning, including day/time/limit semantics>
-- Reuse terms: <licence or written permission; link>
+- Reuse terms: <published licence or terms covering this item; link>
 - Spot check: <10+ sample places, the independent official signal used for each, contradictions found>
 - May establish: <per the policy table>
 - Unknown cases: <records or conditions that stay UNKNOWN>
