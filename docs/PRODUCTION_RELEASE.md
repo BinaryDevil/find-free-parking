@@ -35,7 +35,7 @@ runs only migrations and read-only smoke checks. Any manual prerequisite must
 finish before the workflow is rerun; it never marks the baseline automatically.
 
 The committed plan prevents a later PR-body edit from expanding authorization.
-Every pending file must be listed in both places. Unexpected migration history,
+For a nonempty plan, every pending file must be listed in both places. Unexpected migration history,
 unlisted pending migrations or a missing baseline ledger stop the run before
 snapshot creation or migration. Applied files can remain in the plan on a rerun;
 the migration ledger makes the rerun a no-op.
@@ -68,17 +68,35 @@ old raw-header writer a compatible rollback. Those release blockers require
 separate resolution. The report/coverage writer must be deployed before inet
 conversion, and every active or rollback deployment must use that writer; see
 [PII retention rollout](PII_RETENTION.md#target-specific-rollout-not-enabled-by-a-deployment).
-An application-only first release still requires the separately tracked empty-plan
-runner correction (#89); this gate does not claim that path works.
+For the staged writer rollout, prepare two separately human-merged release PRs:
 
-After snapshot readiness, it repeats deployment/runtime verification and checks
-that main still equals the authorized SHA immediately before invoking migrations.
+1. Ship the validated writer with committed `[]` and `No automated migrations.`.
+   The code-only run verifies the production target, retains its snapshot, checks
+   the exact deployed release revision and current main after snapshot readiness,
+   and runs the health/parking smoke checks. It performs no baseline adoption,
+   migration invocation or migration-history writes. Pending files, an absent
+   ledger or ledger contents do not block this stage; migration-only history,
+   baseline and pending-file checks do not apply.
+2. Verify the writer in production and confirm every active deployment and every
+   eligible rollback candidate uses the compatible validated writer. Only then
+   prepare a later release PR listing the exact conversion actions and its
+   verification/rollback evidence. Its human merge authorizes only those listed
+   actions; it does not extend the first release's authorization.
+
+This support does not resolve the non-additive migration-policy conflict tracked
+in #91 or make either release ready. Resolve that policy and independently verify
+production-derived schema, historical values and rollback compatibility before
+listing a conversion action. Never rewrite or fake-mark immutable migrations.
+
+After snapshot readiness, every release verifies deployment/runtime and checks
+that main still equals the authorized SHA. A nonempty plan repeats its earlier
+verification immediately before invoking migrations.
 These are point-in-time checks, not an atomic lock on external deployment changes.
 
 The runner then creates a no-compute `snapshot/<merge-sha>` child branch, waits for
 it to be ready and verifies its parent. Reruns retain that same restore point.
-Snapshots are retained for recovery, not deleted automatically. It then runs
-`pnpm db:migrate`, verifies the ledger and smoke-checks `/api/health` plus
+Snapshots are retained for recovery, not deleted automatically. For nonempty
+plans it then runs `pnpm db:migrate` and verifies the ledger. Every release smoke-checks `/api/health` plus
 `/api/parking` and `/api/parking/zones` for Seattle and Vancouver. Smoke checks
 retry transient API failures after the revision gate. They validate HTTP/JSON
 contracts; they do not prove browser behavior, vacancy,
@@ -106,7 +124,8 @@ with `pnpm test`. For live migration validation, provision a fresh empty
 database named `release_workflow_test` in an agent-owned local PostGIS container
 or unused Neon validation branch. Privately set `RELEASE_TEST_DATABASE_URL`,
 then run `node --test tests/release-db.test.mjs`. It refuses existing tables,
-replays the baseline, applies the approved forward migrations through the real
+proves code-only releases leave an absent ledger and existing history/data
+unchanged despite pending files, replays the baseline, applies the approved forward migrations through the real
 migration command, checks unchanged history on rerun and exercises redacted,
 deduplicated failure reports. Its GitHub and snapshot boundaries are fixtures;
 record provider snapshot and live alert-delivery evidence separately. Follow

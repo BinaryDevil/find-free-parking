@@ -16,11 +16,27 @@ test('disposable release applies approved forward migrations, reruns without cha
   await database.connect();
   try {
     assert.deepEqual((await database.query("SELECT tablename FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema')")).rows, [], 'Fresh empty database required');
-    await runner({ dbClient: database, dir: 'sql/migrations', direction: 'up', count: 1, migrationsSchema: 'migration_meta', createMigrationsSchema: true, migrationsTable: 'pgmigrations', log() {}, logger: { debug() {}, info() {}, warn() {}, error() {} } });
     const files = readdirSync('sql/migrations').sort();
+    let codeOnlyMigrations = 0;
+    const codeOnly = async () => runRelease({ number: 80, migrations: [] }, { sha: 'c'.repeat(40), files, plan: [] }, {
+      database, github: async () => '[]', readiness: async () => {},
+      snapshot: async () => 'br-local-code-only', smoke: async () => {},
+      migrate: async () => { codeOnlyMigrations++; assert.fail('Code-only release must never migrate'); },
+    });
+    assert.deepEqual((await codeOnly()).applied, []);
+    assert.equal((await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger")).rows[0].ledger, null);
+    assert.deepEqual((await database.query("SELECT tablename FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema')")).rows, []);
+    await runner({ dbClient: database, dir: 'sql/migrations', direction: 'up', count: 1, migrationsSchema: 'migration_meta', createMigrationsSchema: true, migrationsTable: 'pgmigrations', log() {}, logger: { debug() {}, info() {}, warn() {}, error() {} } });
     const plan = files.filter(f => !f.endsWith('_baseline.sql'));
     const history = async () => (await database.query('SELECT name, run_on FROM migration_meta.pgmigrations ORDER BY id')).rows;
     const before = await history();
+    await database.query("INSERT INTO public.city_requests (city_name, user_ip) VALUES ('Code-only sentinel', 'unknown')");
+    const requestBefore = (await database.query('SELECT * FROM public.city_requests')).rows;
+    assert.deepEqual((await codeOnly()).applied, []);
+    assert.deepEqual(await history(), before);
+    assert.deepEqual((await database.query('SELECT * FROM public.city_requests')).rows, requestBefore);
+    assert.equal(codeOnlyMigrations, 0);
+
     let restorePoint;
     const issues = [];
     const comments = [];

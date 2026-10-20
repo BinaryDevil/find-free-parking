@@ -34,25 +34,32 @@ export async function runRelease(release, config, { github, database, readiness,
     if (config.files.some(f => !migrationPattern.test(f)) || !Array.isArray(config.plan) || config.plan.some(f => !migrationPattern.test(f)) ||
         JSON.stringify([...config.plan].sort()) !== JSON.stringify(release.migrations)) throw new Error('Plan differs from merged release');
     const ledger = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
-    const applied = ledger.rows[0]?.ledger ? (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`) : [];
-    if (applied.some(f => !config.files.includes(f))) throw new Error('Unknown migration history');
-    const pending = config.files.filter(f => !applied.includes(f));
-    if (pending.some(f => !release.migrations.includes(f))) throw new Error('Pending migration not authorized');
-    // Existing production must adopt the baseline separately; never replay its DDL.
-    if (pending.includes('1791676800000_baseline.sql')) throw new Error('Baseline adoption required');
-    results.push('Authorization and pending migration checks passed.');
+    let pending = [];
     if (release.migrations.length) {
+      const applied = ledger.rows[0]?.ledger ? (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`) : [];
+      if (applied.some(f => !config.files.includes(f))) throw new Error('Unknown migration history');
+      pending = config.files.filter(f => !applied.includes(f));
+      if (pending.some(f => !release.migrations.includes(f))) throw new Error('Pending migration not authorized');
+      // Existing production must adopt the baseline separately; never replay its DDL.
+      if (pending.includes('1791676800000_baseline.sql')) throw new Error('Baseline adoption required');
+      results.push('Authorization and pending migration checks passed.');
       await readiness();
       results.push('Exact release deployment and public production revision verified before migrations.');
+    } else {
+      results.push('Code-only release authorized; no baseline adoption, migrations or migration-history writes.');
     }
     const branch = await snapshot();
     results.push(`Snapshot retained: ${branch}.`);
     // Snapshot readiness can wait; do not reuse deployment proof from before it.
-    if (release.migrations.length) await readiness();
-    await migrate();
-    const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
-    if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
-    results.push(`Migrations verified: ${pending.length} applied; ${pending.length ? 'additive rollback uses previous deployment' : 'no-op'}.`);
+    await readiness();
+    if (release.migrations.length) {
+      await migrate();
+      const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
+      if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
+      results.push(`Migrations verified: ${pending.length} applied; ${pending.length ? 'additive rollback uses previous deployment' : 'no-op'}.`);
+    } else {
+      results.push('Exact code-only release deployment and public production revision verified.');
+    }
     await smoke();
     results.push('Health and Seattle/Vancouver parking API smoke checks passed.');
     await comment();
