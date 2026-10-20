@@ -23,7 +23,7 @@ test('unlisted pending migrations fail before a snapshot or write and report a r
     migrate: async () => { throw new Error('migration must not run'); },
     smoke: async () => {},
   };
-  await assert.rejects(runRelease({ number: 80, migrations: [] }, { sha, files: [file], plan: [] }, deps));
+  await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, files: [file, '1791853200000_schema_hygiene.sql'], plan: [file] }, deps));
   assert.ok(reports.some(r => r.input?.includes('Production release failed')));
 });
 
@@ -170,4 +170,60 @@ test('main moving while the public runtime is checked invalidates write readines
     currentMain = 'b'.repeat(40);
     return { ok: true, json: async () => ({ revision: sha, environment: 'production' }) };
   }));
+});
+
+
+test('code-only release preserves target, snapshot and runtime gates while leaving pending migrations alone', async () => {
+  for (const ledger of [null, 'present']) {
+    const events = [];
+    let migrationCalls = 0;
+    const release = authorizeRelease([{ ...pr, body: '## Production actions\nNo automated migrations.' }], sha);
+    const result = await runRelease(release, { sha, files: ['1791676800000_baseline.sql', file], plan: [] }, {
+      github: async () => '[]',
+      database: { query: async sql => { assert.ok(sql.includes('to_regclass')); events.push('target'); return { rows: [{ ledger }] }; } },
+      readiness: async () => { events.push('readiness'); },
+      snapshot: async () => { events.push('snapshot'); return 'br-code-only'; },
+      migrate: async () => { migrationCalls++; },
+      smoke: async () => { events.push('smoke'); },
+    });
+    assert.deepEqual(result, { snapshot: 'br-code-only', applied: [] });
+    assert.equal(migrationCalls, 0);
+    assert.deepEqual(events, ['target', 'snapshot', 'readiness', 'smoke']);
+  }
+});
+
+
+test('code-only runtime or target failures remain redacted and cannot complete the release', async () => {
+  for (const failure of ['target', 'readiness', 'smoke']) {
+    const reports = [];
+    const deps = {
+      github: async (args, body) => { if (body) reports.push(body); return '[]'; },
+      database: { query: async () => { if (failure === 'target') throw new Error('secret-target'); return { rows: [{ ledger: null }] }; } },
+      snapshot: async () => 'br-test',
+      readiness: async () => { if (failure === 'readiness') throw new Error('secret-revision'); },
+      smoke: async () => { if (failure === 'smoke') throw new Error('secret-smoke'); },
+      migrate: async () => assert.fail('Code-only migration forbidden'),
+    };
+    await assert.rejects(runRelease({ number: 80, migrations: [] }, { sha, files: [file], plan: [] }, deps));
+    assert.ok(reports.some(body => body.includes('Production release failed')));
+    assert.ok(!reports.join('').includes('secret-'));
+  }
+});
+
+test('nonempty migration plans retain baseline and unknown-history rejection', async () => {
+  for (const fixture of [
+    { files: ['1791676800000_baseline.sql', file], plan: ['1791676800000_baseline.sql', file], ledger: null, history: [] },
+    { files: [file], plan: [file], ledger: 'present', history: [{ name: '1791676800000_unknown' }] },
+  ]) {
+    let snapshots = 0;
+    let migrations = 0;
+    await assert.rejects(runRelease({ number: 80, migrations: fixture.plan }, { sha, files: fixture.files, plan: fixture.plan }, {
+      github: async () => '[]',
+      database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: fixture.ledger }] : fixture.history }) },
+      readiness: async () => {}, snapshot: async () => { snapshots++; },
+      migrate: async () => { migrations++; }, smoke: async () => {},
+    }));
+    assert.equal(snapshots, 0);
+    assert.equal(migrations, 0);
+  }
 });
