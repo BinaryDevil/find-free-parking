@@ -58,9 +58,16 @@ schedule semantics; they
 do not establish permission or current rates. Unknown context stays visible in
 both views and is counted separately. City pages use [computed Coverage](COVERAGE.md); without approved current sources they say not covered.
 
-Dated Driver Warnings now read the aggregate `driver_warnings` view; apply the
-additive reader migration to an approved environment before serving these
-endpoints. It grants aggregate SELECT rather than report-field access. The old
+Dated Driver Warnings read the aggregate `driver_warnings` view when present.
+Before that additive reader migration is applied, parking endpoints return empty
+warning aggregates: advisory evidence is unavailable, not evidence that no
+warnings exist or that parking is permitted. Legacy rows keep their existing
+Unknown or listed-payment classification and missing Coverage stays none.
+Readiness is checked on each request; errors other than the absent view still
+fail the request. This compatibility path reads no private reports, changes no
+database rows or migration history, and requires no adoption migration.
+Apply the additive reader migration to an approved environment to enable dated
+warnings. It grants aggregate SELECT rather than report-field access. The old
 archived column grant is not required by this reader. Follow the separate
 [Driver Warning rollout](DRIVER_WARNINGS.md) before retiring the legacy trigger
 or columns; current `main` still needs them. This code change applies nothing

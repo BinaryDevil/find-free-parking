@@ -1,7 +1,7 @@
 import type { Feature, Geometry } from 'geojson';
 import { evaluateParkingRules, type ParkingRule, type PlaceKind } from './parking-rules.ts';
 import type { ParkingSelection } from './parking-selection.ts';
-import { driverWarningsSql } from './driver-warnings.ts';
+import { driverWarningsReady, driverWarningsSql } from './driver-warnings.ts';
 
 export type ParkingQuery = (sql: string, params: unknown[]) => Promise<{ rows: Record<string, unknown>[] }>;
 
@@ -9,9 +9,10 @@ export type ParkingQuery = (sql: string, params: unknown[]) => Promise<{ rows: R
 // gate does not query new tables, keeping pre-migration deployments compatible.
 export async function classifiedPlaces(query: ParkingQuery, placeIds: string[], bounds: number[], selection: ParkingSelection, now: Date): Promise<Feature[]> {
   if (!placeIds.length) return [];
+  const warningsReady = await driverWarningsReady(query);
   const { rows } = await query(`
     SELECT p.id, p.kind, p.city, p.name, p.timezone, ST_AsGeoJSON(p.geom)::json AS geometry,
-      ${driverWarningsSql('PLACE')},
+      ${driverWarningsSql('PLACE', warningsReady)},
       COALESCE(jsonb_agg(jsonb_build_object(
         'id', r.id, 'kind', r.kind, 'days', r.days, 'startMinute', r.start_minute, 'endMinute', r.end_minute,
         'timeLimitMinutes', r.time_limit_minutes, 'rate', r.rate, 'vehicleType', r.vehicle_type,

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { query } from "../../../lib/db";
-import { driverWarningsSql } from "@/lib/driver-warnings";
+import { driverWarningsReady, driverWarningsSql } from "@/lib/driver-warnings";
 import { parseParkingSelection } from "@/lib/parking-selection";
 import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
 import { approvedParkingPlaceIds } from "@/lib/approved-parking-coverage";
@@ -31,6 +31,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "Missing bounds" }, { status: 400 });
     }
 
+    const warningsReady = await driverWarningsReady(query);
     const [meterServing, streetServing] = await Promise.all([
       legacyServingSql(query, 'parking_meters'),
       legacyServingSql(query, 'street_segments', 's'),
@@ -38,7 +39,7 @@ export async function GET(request: Request) {
 
     // 1. Get Meters
     const metersQuery = `
-      SELECT id, pay_station_id, meter_head, ${driverWarningsSql('METER')},
+      SELECT id, pay_station_id, meter_head, ${driverWarningsSql('METER', warningsReady)},
              schedules, raw_data,
              ST_AsGeoJSON(geom)::json as geom
       FROM parking_meters
@@ -49,7 +50,7 @@ export async function GET(request: Request) {
 
     // Streets are context geometry; nearby meters do not establish curb rules.
     const streetsQuery = `
-      SELECT s.id, s.block_id, s.street_use, ${driverWarningsSql('STREET')},
+      SELECT s.id, s.block_id, s.street_use, ${driverWarningsSql('STREET', warningsReady)},
              ST_AsGeoJSON(s.geom)::json as geom
       FROM street_segments s
       WHERE ST_Intersects(s.geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))

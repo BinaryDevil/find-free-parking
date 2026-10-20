@@ -1,5 +1,17 @@
+import type { ParkingQuery } from './classified-places.ts';
+
+// Readiness is checked per request: a later additive rollout becomes visible
+// without caching absence. Permission and query errors still fail normally.
+export async function driverWarningsReady(query: ParkingQuery) {
+  const { rows } = await query("SELECT to_regclass('public.driver_warnings') IS NOT NULL AS ready", []);
+  return rows[0]?.ready === true;
+}
+
 // Only fixed table identifiers are accepted; request values stay in SQL parameters.
-export function driverWarningsSql(target: 'METER' | 'STREET' | 'ZONE' | 'PLACE') {
+export function driverWarningsSql(target: 'METER' | 'STREET' | 'ZONE' | 'PLACE', ready = true) {
+  // No aggregate evidence is available before rollout. Never read private
+  // reports or treat legacy undated counts as a substitute.
+  if (!ready) return "'[]'::jsonb AS driver_warnings";
   const table = { METER: 'parking_meters', STREET: 's', ZONE: 'parking_zones', PLACE: 'p' }[target];
   // Rule-backed places use the same report target kinds as their map controls.
   const targetType = target === 'PLACE'
