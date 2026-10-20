@@ -126,3 +126,16 @@ test('ELMNTKEY survives export row renumbering and unreviewed added columns are 
   assert.deepEqual(after.rules.map(r => r.sourceRecordId), before.rules.map(r => r.sourceRecordId));
   assert.equal(after.rawData.NEW_UNREVIEWED_FIELD, undefined);
 });
+
+test('reader confirms an empty ID snapshot against the published count before accepting removals', async () => {
+  const requestWithCount = count => async url => {
+    const params = new URL(url).searchParams;
+    return Response.json(params.has('returnIdsOnly') ? { objectIds:[] } : params.has('returnCountOnly') ? { count } : layer);
+  };
+  for (const count of [28, undefined, -1, 0.5]) {
+    await assert.rejects(fetchSeattleBlockface(AbortSignal.timeout(10000), requestWithCount(count)), /Blockface format/);
+  }
+  const snapshot = await fetchSeattleBlockface(AbortSignal.timeout(10000), requestWithCount(0));
+  assert.equal(snapshot.complete, true);
+  assert.deepEqual(snapshot.places, []);
+});

@@ -13,7 +13,11 @@ The [Seattle inventory](sources/seattle.md) and #24 approval gate remain unchang
 The [#15 sync runner](https://github.com/BinaryDevil/find-free-parking/issues/15)
 owns source matching/approval, transactions, upserts, retrieval timestamps,
 failed-format history, drift and tombstones. Register this adapter in its registry
-when that runner is integrated; registration is code wiring, not source approval.
+only after its approval matching also binds the approved endpoint to the adapter's
+actual endpoint. The integrated runner currently checks source key, area and
+evidence type but not endpoint ([#86](https://github.com/BinaryDevil/find-free-parking/issues/86));
+this adapter remains unregistered. Registration
+is code wiring, not source approval.
 No second importer, scheduler, schema or seed command is added here.
 
 Each place uses `ELMNTKEY` as `sourceRecordId`, `kind=curb`, `city=Seattle`,
@@ -27,7 +31,10 @@ The reader validates field names/types, values, geometry and edit metadata befor
 returning output. It requests the complete object ID list, reads pages of 200,
 checks exact membership, rejects transfer limits/errors, and rechecks metadata
 after retrieval. A dropped/renamed field, duplicate asset key, missing row or
-changed export fails the entire run. Cancellation is passed to every request.
+changed export fails the entire run. An empty ID list must also agree with a
+separate published count of zero before the snapshot can remove all previous
+places. A genuinely empty, stable export remains a valid complete snapshot.
+Cancellation is passed to every request.
 `adaptSeattleBlockface(layer, geojson)` is the pure recorded-fixture seam; it
 does not claim that a fixture subset is a complete production snapshot.
 
@@ -76,3 +83,14 @@ through `classifiedPlaces`, checks failed format validation preserves places,
 and invokes the actual parking GET handler to confirm `places=[]` and Coverage
 none. It creates no real approved source or Coverage record. Real-source
 classifications and map acceptance stay open; no runtime gate is bypassed.
+
+## Current-runner replay (2026-10-19)
+
+Fresh local PostGIS replay against `dev` at `8b9fb52` passes the existing opt-in
+integration test: 28 recorded candidates upsert twice with stable identities,
+remain Unknown through classification, preserve rows after invalid format, and
+return no public places or Coverage through the actual parking API. The test
+uses a synthetic approved source only. It does not satisfy real-source API/map
+acceptance. Exact curb extent, payment end-minute convention, peak applicability
+and RPZ exceptions remain unresolved; #24 remains pending. No source approval,
+shared-data sync, registry activation or production action occurred.

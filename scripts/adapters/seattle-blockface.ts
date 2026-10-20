@@ -130,6 +130,10 @@ export async function fetchSeattleBlockface(signal: AbortSignal, request: typeof
   const sourceEditedAt = validateBlockfaceLayer(layer);
   const ids = await read('/query', { where:'1=1', returnIdsOnly:'true', f:'json' });
   if (!Array.isArray(ids.objectIds) || ids.objectIds.some(id => !Number.isSafeInteger(id)) || new Set(ids.objectIds).size !== ids.objectIds.length) throw new Error('Blockface format: invalid object ID list');
+  if (ids.objectIds.length === 0) {
+    const count = await read('/query', { where:'1=1', returnCountOnly:'true', f:'json' });
+    if (count.count !== 0) throw new Error('Blockface format: unconfirmed empty snapshot');
+  }
   const features: unknown[] = [];
   for (let offset = 0; offset < ids.objectIds.length; offset += 200) {
     const pageIds: number[] = ids.objectIds.slice(offset, offset + 200);
