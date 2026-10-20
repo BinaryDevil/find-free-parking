@@ -41,6 +41,25 @@ test('duplicate detection is case-insensitive, paginated, exact, and excludes pu
   assert.deepEqual(f.created.map(i => i.title), ['Cover city: York']);
 });
 
+test('generated issues require public evidence, two-agent source review and the human release gate', async () => {
+  const f = fixture([{ display_name: 'Seattle', count: 11 }]);
+  await checkCoverageRequests(f.deps);
+  const body = f.created[0].body;
+  assert.match(body, /docs\/adr\/0002-evidence-source-policy\.md/);
+  assert.match(body, /docs\/adr\/0004-no-external-outreach\.md/);
+  assert.match(body, /docs\/adr\/0005-agent-verified-gates\.md/);
+  assert.match(body, /public evidence only/i);
+  assert.match(body, /public availability is sufficient.*licence.*not.*gate/i);
+  assert.match(body, /all other evidence criteria.*missing evidence.*pending or excluded/i);
+  assert.doesNotMatch(body, /missing evidence or reuse terms/i);
+  assert.match(body, /two-agent.*source review/i);
+  assert.match(body, /human-merged release PR.*Production actions/);
+  assert.match(body, /do not establish Coverage/);
+  assert.match(body, /authorizes no seeding or database writes/);
+  assert.doesNotMatch(body, /data-request tickets|Human inventory approval/i);
+  assert.match(body, /Do not prepare or send outreach/i);
+});
+
 test('dry-run prints complete proposed issues without GitHub or database writes', async () => {
   const f = fixture([{ display_name: 'New City', count: 11 }]);
   await checkCoverageRequests(f.deps, true);
