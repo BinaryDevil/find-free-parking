@@ -113,9 +113,13 @@ test('computed Coverage controls public APIs, publication and exact place member
     assert.equal((await getCityBySlug('fixture')).level,'none','Signals cannot contribute Coverage');
     await query('DELETE FROM public.coverage_area_sources WHERE area_id=$1 AND source_id=$2',[areaId,signal]); // Own synthetic fixture only.
     await query(`UPDATE public.evidence_sources SET approval_state='pending' WHERE id=$1`,[e1]);
+    assert.equal((await getCityBySlug('fixture')).level,'none','City navigation cannot elevate pending evidence');
     assert.deepEqual(await approvedParkingPlaceIds(query,bounds), []);
     assert.doesNotMatch(await (await sitemap()).text(),/\/fixture/);
     await query(`UPDATE public.evidence_sources SET approval_state='approved' WHERE id=$1`,[e1]);
+    await query(`UPDATE public.source_syncs SET started_at=now()-interval '9 days', finished_at=now()-interval '8 days' WHERE source_id=$1`,[e1]);
+    assert.equal((await getCityBySlug('fixture')).level,'none','City navigation cannot elevate stale evidence');
+    await query(`UPDATE public.source_syncs SET started_at=now()-interval '2 minutes', finished_at=now()-interval '1 minute' WHERE source_id=$1`,[e1]);
     await query(`INSERT INTO public.source_syncs(source_id,started_at,finished_at,status,format_check_passed) VALUES ($1,now(),now(),'failed',false)`,[e1]);
     assert.equal((await coverageAreas(query)).find(a=>a.id===areaId).level,'none');
     assert.deepEqual(await approvedParkingPlaceIds(query,bounds), []);

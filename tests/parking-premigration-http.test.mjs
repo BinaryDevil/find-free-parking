@@ -6,7 +6,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { Client } from 'pg';
 
 const connectionString = process.env.PARKING_COMPAT_TEST_DATABASE_URL;
-test('public parking APIs preserve baseline rows and fail closed before the warning migration', { skip: !connectionString, timeout: 180000 }, async () => {
+test('public parking APIs and city navigation preserve the pre-migration trust boundary', { skip: !connectionString, timeout: 180000 }, async () => {
   const url = new URL(connectionString);
   assert.equal(url.hostname, '127.0.0.1', 'Only agent-owned local disposable PostGIS');
   assert.match(url.pathname, /^\/parking_compat_test(?:_\d+)?$/);
@@ -46,6 +46,17 @@ test('public parking APIs preserve baseline rows and fail closed before the warn
       await delay(500);
     }
     assert.ok(ready, 'Local Next health endpoint must become ready');
+    for (const [path, label] of [
+      ['/en/vancouver', 'Vancouver: not covered'],
+      ['/fr/seattle', 'Seattle : non couverte'],
+    ]) {
+      const response = await fetch(base + path);
+      assert.equal(response.status, 200, path);
+      const html = await response.text();
+      assert.ok(html.includes(label), path);
+      assert.match(html, /name="robots" content="noindex"/);
+    }
+    assert.equal((await fetch(base + '/en/not-a-known-city')).status, 404);
     const selected = '&at=2026-10-12T17:00:00Z&legacyTimeZone=America%2FVancouver';
     const paths = ['/api/parking?north=1&south=-1&east=1&west=-1', '/api/parking/zones?bbox=-1,-1,1,1', '/api/parking/zones?lat=0&lng=0'];
     const read = async (path) => {
