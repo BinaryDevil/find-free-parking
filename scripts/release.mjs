@@ -47,6 +47,8 @@ export async function runRelease(release, config, { github, database, readiness,
     }
     const branch = await snapshot();
     results.push(`Snapshot retained: ${branch}.`);
+    // Snapshot readiness can wait; do not reuse deployment proof from before it.
+    if (release.migrations.length) await readiness();
     await migrate();
     const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
     if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
@@ -81,6 +83,9 @@ export async function verifyProductionRevision(github, sha, fetcher = fetch) {
   if (!response.ok) throw new Error('Production revision unavailable');
   const runtime = await response.json();
   if (runtime.revision !== sha || runtime.environment !== 'production') throw new Error('Production revision mismatch');
+  // Check after the HTTP boundary too, immediately before returning write readiness.
+  const current = JSON.parse(await github(['api', `repos/${repository}/git/ref/heads/main`]));
+  if (current.object?.sha !== sha) throw new Error('Release is no longer current main');
 }
 
 export async function snapshotProduction(neon, { sha, project, parent }) {

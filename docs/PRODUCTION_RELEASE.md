@@ -71,6 +71,10 @@ conversion, and every active or rollback deployment must use that writer; see
 An application-only first release still requires the separately tracked empty-plan
 runner correction (#89); this gate does not claim that path works.
 
+After snapshot readiness, it repeats deployment/runtime verification and checks
+that main still equals the authorized SHA immediately before invoking migrations.
+These are point-in-time checks, not an atomic lock on external deployment changes.
+
 The runner then creates a no-compute `snapshot/<merge-sha>` child branch, waits for
 it to be ready and verifies its parent. Reruns retain that same restore point.
 Snapshots are retained for recovery, not deleted automatically. It then runs

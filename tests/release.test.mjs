@@ -89,6 +89,7 @@ import { verifyProductionRevision } from '../scripts/release.mjs';
 test('migration waits for matching ready deployment and public production revision', async () => {
   const events = [];
   const github = async (args) => {
+    if (args[1].includes('/git/ref/')) { events.push('main'); return JSON.stringify({ object: { sha } }); }
     events.push('deployment');
     assert.equal(args[1], `repos/BinaryDevil/find-free-parking/commits/${sha}/status`);
     return JSON.stringify({ sha, statuses: [{ context: 'Vercel', state: 'success' }] });
@@ -108,7 +109,7 @@ test('migration waits for matching ready deployment and public production revisi
     snapshot: async () => { events.push('snapshot'); return 'br-test'; },
     migrate: async () => { events.push('migrate'); applied = true; }, smoke: async () => {},
   });
-  assert.deepEqual(events, ['deployment', 'runtime', 'snapshot', 'migrate']);
+  assert.deepEqual(events, ['deployment', 'runtime', 'main', 'snapshot', 'deployment', 'runtime', 'main', 'migrate']);
 });
 
 test('absent, pending, failed and stale readiness evidence blocks every migration write', async () => {
@@ -143,4 +144,30 @@ test('absent, pending, failed and stale readiness evidence blocks every migratio
     assert.ok(reports.some(body => body.includes('Production release failed')));
     assert.ok(!reports.join('').includes('secret-runtime-error'));
   }
+});
+
+test('revision drift during snapshot readiness prevents migration and reports a redacted failure', async () => {
+  const reports = [];
+  let liveRevision = sha;
+  let migrated = false;
+  const github = async args => JSON.stringify(args[1].includes('/git/ref/') ? { object: { sha: liveRevision } } : { sha, statuses: [{ context: 'Vercel', state: 'success' }] });
+  await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+    github: async (args, body) => { if (body) reports.push(body); return '[]'; },
+    database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : [] }) },
+    readiness: () => verifyProductionRevision(github, sha, async () => ({ ok: true, json: async () => ({ revision: liveRevision, environment: 'production' }) })),
+    snapshot: async () => { liveRevision = 'b'.repeat(40); return 'br-test'; },
+    migrate: async () => { migrated = true; }, smoke: async () => {},
+  }));
+  assert.equal(migrated, false);
+  assert.ok(reports.some(body => body.includes('Production release failed')));
+});
+
+test('main moving while the public runtime is checked invalidates write readiness', async () => {
+  let currentMain = sha;
+  await assert.rejects(verifyProductionRevision(async args => JSON.stringify(
+    args[1].includes('/git/ref/') ? { object: { sha: currentMain } } : { sha, statuses: [{ context: 'Vercel', state: 'success' }] }
+  ), sha, async () => {
+    currentMain = 'b'.repeat(40);
+    return { ok: true, json: async () => ({ revision: sha, environment: 'production' }) };
+  }));
 });
