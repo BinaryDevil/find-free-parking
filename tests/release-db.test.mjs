@@ -34,7 +34,7 @@ test('disposable release applies approved forward migrations, reruns without cha
     };
     const config = { sha: 'c'.repeat(40), files, plan };
     const release = { number: 80, migrations: plan };
-    const deps = { database, github,
+    const deps = { database, github, readiness: async () => {},
       snapshot: async () => { restorePoint ??= await history(); return 'br-local-snapshot'; },
       migrate: () => execute('pnpm', ['db:migrate'], { env: { ...process.env, MIGRATION_DATABASE_URL: connectionString, MIGRATION_EXPECTED_HOST: url.hostname, MIGRATION_EXPECTED_DATABASE: 'release_workflow_test' } }),
       smoke: async () => {},
