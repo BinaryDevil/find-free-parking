@@ -21,7 +21,7 @@ test('fresh PostGIS imports E4 candidates idempotently and named West End probes
       VALUES ('vancouver-permit-zones','Vancouver','E4','approved','synthetic test',now(),'Synthetic fixture','https://example.invalid','fixture','fixture','fixture',interval '7 days') RETURNING *`)).rows[0];
     const layer = JSON.parse(readFileSync(new URL('./fixtures/vancouver-permit/layer.json',import.meta.url)));
     const records = JSON.parse(readFileSync(new URL('./fixtures/vancouver-permit/records.geojson',import.meta.url)));
-    const adapter = {...vancouverPermitAdapter,async fetchSnapshot(){return {complete:true,...adaptVancouverPermitZones(layer,records)};}};
+    const adapter = {...vancouverPermitAdapter,endpoint:source.endpoint,async fetchSnapshot(){return {complete:true,...adaptVancouverPermitZones(layer,records)};}};
     assert.equal((await syncSource(pool,source,adapter)).status,'succeeded');
     assert.equal((await syncSource(pool,source,adapter)).drift.unchanged,records.features.length);
     const ids = (await client.query('SELECT id FROM public.places')).rows.map(r=>r.id);

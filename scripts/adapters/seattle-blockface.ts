@@ -120,7 +120,7 @@ export async function fetchSeattleBlockface(signal: AbortSignal, request: typeof
   const read = async (suffix: string, params: Record<string, string>) => {
     const url = new URL(`${SEATTLE_BLOCKFACE_ENDPOINT}${suffix}`);
     url.search = new URLSearchParams(params).toString();
-    const response = await request(url, { signal });
+    const response = await request(url, { signal, redirect: 'error' });
     if (!response.ok) throw new Error('Blockface retrieval failed');
     const data = object(await response.json());
     if (data.error || data.exceededTransferLimit) throw new Error('Blockface format: incomplete service response');
@@ -155,6 +155,7 @@ export async function fetchSeattleBlockface(signal: AbortSignal, request: typeof
 /** Structural SourceAdapter contract from #15; registration does not approve
  * the real source. The runner must independently enforce human approval. */
 export const seattleBlockfaceAdapter = {
+  endpoint: SEATTLE_BLOCKFACE_ENDPOINT,
   sourceKey:'seattle-blockface', area:'Seattle', evidenceType:'E1' as const,
   fetchSnapshot: (signal: AbortSignal) => fetchSeattleBlockface(signal),
 };

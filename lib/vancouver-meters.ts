@@ -149,16 +149,17 @@ export function adaptVancouverMeters(rows: unknown, options: VancouverMeterOptio
 }
 
 export const VANCOUVER_METERS_ENDPOINT = 'https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters';
-type Request = (url: string, init: { signal: AbortSignal }) => Promise<{ ok: boolean; json(): Promise<unknown> }>;
+type Request = (url: string, init: { signal: AbortSignal; redirect: 'error' }) => Promise<{ ok: boolean; json(): Promise<unknown> }>;
 
 /** Structurally matches #15 SourceAdapter. No database writes or source approval.
  * The runner owns atomic replacement, missing-record retirement and history. */
 export function createVancouverMeterAdapter(options: VancouverMeterOptions, request: Request = fetch) {
   return {
+    endpoint: VANCOUVER_METERS_ENDPOINT,
     sourceKey: 'vancouver-parking-meters', area: 'Vancouver', evidenceType: 'E2' as const,
     async fetchSnapshot(signal: AbortSignal) {
       const get = async (url: string) => {
-        const response = await request(url, { signal });
+        const response = await request(url, { signal, redirect: 'error' });
         if (!response.ok) throw new Error('Vancouver meter retrieval failed');
         return response.json();
       };

@@ -29,6 +29,8 @@ export type SyncRule = Omit<ParkingRule, 'id' | 'source' | 'fetchedAt' | 'days' 
   rawData: unknown;
 };
 export interface SourceAdapter {
+  /** Exact approved layer/dataset endpoint used by every retrieval request. */
+  endpoint: string;
   sourceKey: string;
   area: string;
   evidenceType: 'E1' | 'E2' | 'E3' | 'E4' | 'E5' | 'E6';
@@ -147,7 +149,8 @@ export async function syncSource(pool: Pool, source: SyncSource, adapter?: Sourc
     await client.query(`UPDATE public.source_syncs SET status='failed',finished_at=clock_timestamp(),format_check_passed=false,
       error='Source sync interrupted; inspect privately',drift_report='{"applied":false}'::jsonb WHERE source_id=$1 AND status='running'`, [source.id]);
     syncId = (await client.query("INSERT INTO public.source_syncs(source_id,started_at) VALUES ($1,clock_timestamp()) RETURNING id", [source.id])).rows[0].id;
-    if (!adapter || adapter.sourceKey !== current.source_key || adapter.area !== current.area || adapter.evidenceType !== current.evidence_type) throw new Error('Missing or mismatched adapter');
+    if (!adapter || adapter.sourceKey !== current.source_key || adapter.area !== current.area || adapter.evidenceType !== current.evidence_type ||
+      !text(adapter.endpoint) || adapter.endpoint !== current.endpoint) throw new Error('Missing or mismatched adapter');
     const signal = AbortSignal.timeout(90 * 1000);
     const snapshot = validateSnapshot(await Promise.race([
       adapter.fetchSnapshot(signal),

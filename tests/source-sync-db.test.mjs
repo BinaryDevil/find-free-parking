@@ -23,7 +23,7 @@ test('complete syncs are idempotent and failures immediately invalidate approved
     const source = (await client.query(`INSERT INTO public.evidence_sources (source_key,area,evidence_type,approval_state,approved_by,approved_at,publisher,endpoint,licence,reuse_terms,inventory_doc_path,freshness_limit)
       VALUES ('synthetic-sync','Fixture','E1','approved','test',now(),'Official fixture','https://example.invalid','fixture','fixture','fixture',interval '7 days') RETURNING *`)).rows[0];
     let snapshot = fixtureSnapshot();
-    const adapter = { sourceKey: 'synthetic-sync', area: 'Fixture', evidenceType: 'E1', async fetchSnapshot() { return snapshot; } };
+    const adapter = { endpoint: 'https://example.invalid', sourceKey: 'synthetic-sync', area: 'Fixture', evidenceType: 'E1', async fetchSnapshot() { return snapshot; } };
     const run = () => syncSource(pool, source, adapter);
     const first = await run();
     assert.equal(first.status, 'succeeded');
@@ -35,6 +35,26 @@ test('complete syncs are idempotent and failures immediately invalidate approved
     assert.deepEqual((await run()).drift, { added: [], changed: [], removed: [], unchanged: 1, rules: { added: 0, updated: 1, removed: 0 } });
     assert.equal((await client.query('SELECT id FROM public.places WHERE source_id=$1', [source.id])).rows[0].id, placeId);
     assert.equal((await client.query('SELECT count(*)::int AS n FROM public.parking_rules')).rows[0].n, 1);
+    // Approval for one exact item never authorizes retrieval from another.
+    const retainedPlaces = (await client.query('SELECT * FROM public.places WHERE source_id=$1', [source.id])).rows;
+    const retainedRules = (await client.query('SELECT * FROM public.parking_rules WHERE source_id=$1', [source.id])).rows;
+    let mismatchFetches = 0;
+    const mismatched = { ...adapter, endpoint: 'https://example.invalid/another-item', async fetchSnapshot() { mismatchFetches++; return snapshot; } };
+    const mismatch = await syncSource(pool, source, mismatched);
+    assert.equal(mismatch.status, 'failed');
+    assert.equal(mismatchFetches, 0, 'reject before upstream retrieval');
+    const failure = (await client.query('SELECT * FROM public.source_syncs WHERE id=$1', [mismatch.syncId])).rows[0];
+    assert.equal(failure.error, 'Source sync failed; inspect privately');
+    assert.equal(failure.format_check_passed, false);
+    assert.deepEqual(failure.drift_report, { applied: false });
+    assert.deepEqual((await client.query('SELECT * FROM public.places WHERE source_id=$1', [source.id])).rows, retainedPlaces);
+    assert.deepEqual((await client.query('SELECT * FROM public.parking_rules WHERE source_id=$1', [source.id])).rows, retainedRules);
+    assert.equal((await features())[0].properties.evaluation.classification, 'UNKNOWN');
+    for (const endpoint of [undefined, '', 'https://example.invalid/', 'https://EXAMPLE.invalid', 'https://example.invalid?f=json']) {
+      assert.equal((await syncSource(pool, source, { ...mismatched, endpoint })).status, 'failed', 'no inferred endpoint equivalence');
+    }
+    assert.equal(mismatchFetches, 0);
+    assert.equal((await run()).status, 'succeeded', 'exact matching endpoint restores successful sync');
     snapshot.places[0].rules[0].timeLimitMinutes = 120;
     assert.deepEqual((await run()).drift.changed, ['curb-a']);
     snapshot = { complete: false, places: [] };
@@ -102,6 +122,10 @@ test('complete syncs are idempotent and failures immediately invalidate approved
     await run();
     await client.query("UPDATE public.evidence_sources SET approval_state='pending' WHERE id=$1", [source.id]);
     assert.equal((await run()).status, 'skipped');
+    const historyBeforePending = (await client.query('SELECT count(*)::int AS n FROM public.source_syncs')).rows[0].n;
+    assert.equal((await syncSource(pool, source, mismatched)).status, 'skipped');
+    assert.equal(mismatchFetches, 0);
+    assert.equal((await client.query('SELECT count(*)::int AS n FROM public.source_syncs')).rows[0].n, historyBeforePending);
     assert.deepEqual(await runScheduledSyncs(pool, [adapter], github), []);
     assert.equal((await features())[0].properties.evaluation.classification, 'UNKNOWN');
     // A temporary-restriction source is due on every half-hour invocation.
