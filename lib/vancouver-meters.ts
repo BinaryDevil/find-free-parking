@@ -166,7 +166,7 @@ export function createVancouverMeterAdapter(options: VancouverMeterOptions, requ
         const value = await get(VANCOUVER_METERS_ENDPOINT) as { metas?: { default?: { modified?: unknown; records_count?: unknown } } };
         const meta = value?.metas?.default;
         if (typeof meta?.modified !== 'string' || !Number.isFinite(Date.parse(meta.modified)) ||
-          !Number.isInteger(meta.records_count) || Number(meta.records_count) <= 0 || Number(meta.records_count) > 10000) {
+          !Number.isInteger(meta.records_count) || Number(meta.records_count) < 0 || Number(meta.records_count) > 10000) {
           throw new Error('Invalid Vancouver meter metadata');
         }
         return { editedAt: meta.modified, count: Number(meta.records_count) };
@@ -181,7 +181,7 @@ export function createVancouverMeterAdapter(options: VancouverMeterOptions, requ
       }
       const after = await metadata();
       if (!isDeepStrictEqual(before, after)) throw new Error('Vancouver meter feed changed during retrieval');
-      const { records } = adaptVancouverMeters(rows, { ...options, sourceEditedAt: before.editedAt });
+      const records = rows.length === 0 ? [] : adaptVancouverMeters(rows, { ...options, sourceEditedAt: before.editedAt }).records;
       return {
         complete: true as const, sourceEditedAt: before.editedAt,
         places: records.filter(record => record.served).map(record => ({
