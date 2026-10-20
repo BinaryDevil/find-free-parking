@@ -28,18 +28,64 @@ test('unlisted pending migrations fail before a snapshot or write and report a r
 });
 
 import { smokeProduction, snapshotProduction } from '../scripts/release.mjs';
-test('smoke checks require JSON health and feature collections for both cities', async () => {
+function smokeBody(url) {
+  const request = new URL(url);
+  if (request.pathname === '/api/health') return { ok: true, db: 'up' };
+  if (request.pathname === '/api/parking') return { meters: [], streets: [], places: [], coverage: { level: 'none', areas: [] } };
+  const [minLat, minLng, maxLat, maxLng] = request.searchParams.get('bbox').split(',').map(Number);
+  return { mode: 'bbox', bbox: { minLat, minLng, maxLat, maxLng }, count: 0, features: [], coverage: { level: 'none', areas: [] } };
+}
+test('smoke checks require JSON health and public bbox zone envelopes for both cities', async () => {
   const paths = [];
-  await smokeProduction(async url => {
-    paths.push(new URL(url));
-    return { ok: true, json: async () => url.includes('/api/health') ? { ok: true, db: 'up' } : new URL(url).pathname === '/api/parking' ? { meters: [], streets: [], places: [], coverage: {} } : { type: 'FeatureCollection', features: [] } };
+  await smokeProduction(async (url, options) => {
+    const request = new URL(url);
+    paths.push(request);
+    assert.equal(options.redirect, 'error');
+    assert.equal(options.cache, 'no-store');
+    assert.ok(options.signal instanceof AbortSignal);
+    return { ok: true, json: async () => smokeBody(url) };
   });
-  assert.equal(paths.length, 5);
+  assert.deepEqual(paths.map(path => path.pathname + path.search), [
+    '/api/health',
+    '/api/parking?north=47.62&south=47.60&east=-122.32&west=-122.35',
+    '/api/parking/zones?bbox=47.60,-122.35,47.62,-122.32',
+    '/api/parking?north=49.29&south=49.27&east=-123.10&west=-123.14',
+    '/api/parking/zones?bbox=49.27,-123.14,49.29,-123.10',
+  ]);
+  assert.ok(paths.every(path => path.origin === 'https://findfreeparking.info'));
   for (const p of paths.filter(p => p.pathname === '/api/parking')) {
     for (const key of ['north', 'south', 'east', 'west']) assert.ok(p.searchParams.has(key));
   }
   assert.equal(paths.filter(p => p.pathname === '/api/parking/zones').length, 2);
   await assert.rejects(smokeProduction(async () => ({ ok: true, json: async () => ({ ok: false }) })));
+});
+test('smoke rejects malformed bbox envelopes and HTTP or JSON failures', async () => {
+  for (const change of [
+    () => ({ type: 'FeatureCollection', features: [] }),
+    body => ({ ...body, error: 'Failed to fetch parking zones', mode: undefined }),
+    body => ({ ...body, mode: 'point' }),
+    body => ({ ...body, features: {} }),
+    body => ({ ...body, count: undefined }),
+    body => ({ ...body, count: 0.5 }),
+    body => ({ ...body, count: 1 }),
+    body => ({ ...body, bbox: null }),
+    body => ({ ...body, bbox: { ...body.bbox, minLat: '47.6' } }),
+    body => ({ ...body, bbox: { ...body.bbox, maxLng: Infinity } }),
+    body => ({ ...body, bbox: { ...body.bbox, minLng: 0 } }),
+    body => ({ ...body, coverage: null }),
+    body => ({ ...body, coverage: { level: 'unknown', areas: [] } }),
+    body => ({ ...body, coverage: { level: 'none' } }),
+  ]) {
+    await assert.rejects(smokeProduction(async url => ({ ok: true, json: async () =>
+      new URL(url).pathname === '/api/parking/zones' ? change(smokeBody(url)) : smokeBody(url) })));
+  }
+  for (let failedRequest = 0; failedRequest < 5; failedRequest++) {
+    let request = 0;
+    await assert.rejects(smokeProduction(async url => ({ ok: request++ !== failedRequest, json: async () => smokeBody(url) })), /Smoke HTTP failure/);
+  }
+  await assert.rejects(smokeProduction(async () => ({ ok: true, json: async () => { throw new SyntaxError('Invalid JSON'); } })), /Invalid JSON/);
+  await assert.rejects(smokeProduction(async url => ({ ok: true, json: async () =>
+    new URL(url).pathname === '/api/parking' ? { meters: [], streets: [], coverage: {} } : smokeBody(url) })), /Smoke response failure/);
 });
 test('snapshot has the explicit production parent, no compute, and reruns reuse the restore point', async () => {
   let branches = [];
