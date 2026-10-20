@@ -32,7 +32,7 @@ test('Blockface snapshot upserts preserve identities and public APIs keep unappr
     await client.query('SET search_path=public,pg_catalog');
     const source = (await client.query(`INSERT INTO public.evidence_sources(source_key,area,evidence_type,approval_state,approved_by,approved_at,publisher,endpoint,licence,reuse_terms,inventory_doc_path,freshness_limit)
       VALUES ('synthetic-blockface-25','Fixture','E1','approved','test',now(),'Synthetic Blockface','https://example.invalid','fixture','fixture','fixture',interval '7 days') RETURNING *`)).rows[0];
-    const adapter = { ...seattleBlockfaceAdapter, sourceKey:source.source_key, area:source.area, fetchSnapshot:async () => snapshot };
+    const adapter = { ...seattleBlockfaceAdapter, endpoint: source.endpoint, sourceKey:source.source_key, area:source.area, fetchSnapshot:async () => snapshot };
     const first = await syncSource(pool, source, adapter);
     assert.equal(first.status, 'succeeded');
     assert.equal(first.drift.added.length, 28);

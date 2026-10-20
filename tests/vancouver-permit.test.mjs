@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { adaptVancouverPermitZones, fetchVancouverPermitZones } from '../scripts/adapters/vancouver-permit.ts';
+import { adaptVancouverPermitZones, fetchVancouverPermitZones, vancouverPermitAdapter } from '../scripts/adapters/vancouver-permit.ts';
 import { evaluateParkingRules } from '../lib/parking-rules.ts';
 const layer = JSON.parse(readFileSync(new URL('./fixtures/vancouver-permit/layer.json', import.meta.url)));
 const records = JSON.parse(readFileSync(new URL('./fixtures/vancouver-permit/records.geojson', import.meta.url)));
@@ -45,6 +45,8 @@ test('full snapshot validates ID membership, truncation, metadata changes and ab
   const signal = new AbortController().signal;
   const run = async queue => fetchVancouverPermitZones(signal, async (_url,options) => {
     assert.equal(options.signal,signal);
+    assert.equal(options.redirect,'error');
+    assert.ok([vancouverPermitAdapter.endpoint,`${vancouverPermitAdapter.endpoint}/query`].includes(`${_url.origin}${_url.pathname}`));
     return {ok:true,json:async () => queue.shift()};
   });
   assert.equal((await run([layer,{objectIds:ids},records,layer])).places.length,ids.length);
