@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { query } from "@/lib/db";
-import { driverWarningsSql } from "@/lib/driver-warnings";
+import { driverWarningsReady, driverWarningsSql } from "@/lib/driver-warnings";
 import { parseParkingSelection, type ParkingSelection } from "@/lib/parking-selection";
 import { legacyParkingEvaluation } from "@/lib/legacy-parking-evaluation";
 import { coverageAt } from "@/lib/coverage";
@@ -122,6 +122,7 @@ export async function GET(req: Request) {
   }
 
   try {
+    const warningsReady = await driverWarningsReady(query);
     const serving = await legacyServingSql(query, 'parking_zones');
     if (bbox) {
       const { minLat, minLng, maxLat, maxLng } = bbox;
@@ -144,7 +145,7 @@ export async function GET(req: Request) {
           created_at,
           updated_at,
           metadata,
-          ${driverWarningsSql('ZONE')},
+          ${driverWarningsSql('ZONE', warningsReady)},
           st_asgeojson(geom) as geom_geojson
         from public.parking_zones
         where geom && st_makeenvelope($1, $2, $3, $4, 4326)
@@ -199,7 +200,7 @@ export async function GET(req: Request) {
         created_at,
         updated_at,
         metadata,
-        ${driverWarningsSql('ZONE')},
+        ${driverWarningsSql('ZONE', warningsReady)},
         st_asgeojson(geom) as geom_geojson
       from public.parking_zones
       where st_intersects(
