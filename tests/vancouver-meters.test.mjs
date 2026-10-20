@@ -134,3 +134,30 @@ test('review evidence survives the sync boundary alongside the exact raw record'
   assert.equal(free.rawData.semanticEvidence, 'synthetic-positive-permission');
   assert.deepEqual(free.rawData.record, row);
 });
+
+test('a stable official empty feed is a complete snapshot that can retire the final meter', async () => {
+  const metadata = { metas: { default: { records_count: 0, modified: '2026-10-12T13:31:51Z' } } };
+  const calls = [];
+  const request = async url => { calls.push(url); return { ok: true, json: async () => metadata }; };
+  const snapshot = await createVancouverMeterAdapter(options, request).fetchSnapshot(new AbortController().signal);
+  assert.deepEqual(snapshot, { complete: true, sourceEditedAt: '2026-10-12T13:31:51Z', places: [] });
+  assert.equal(calls.length, 2, 'both metadata reads must confirm the empty feed');
+  let reads = 0;
+  const changing = async () => ({ ok: true, json: async () => ({ metas: { default: {
+    records_count: reads++ === 0 ? 0 : 1, modified: '2026-10-12T13:31:51Z',
+  } } }) });
+  await assert.rejects(() => createVancouverMeterAdapter(options, changing).fetchSnapshot(new AbortController().signal), /changed during retrieval/);
+});
+
+test('recorded City restrictions remain Unknown without complete rush semantics, including loading and overnight taxi', () => {
+  for (const [id, instant] of [
+    ['512404', '2026-10-12T15:00:00Z'], // 08:00 rush: no documented days
+    ['512404', '2026-10-12T17:00:00Z'], // 10:00 loading: other applicable rules incomplete
+    ['600528', '2026-10-13T06:00:00Z'], // 23:00 taxi, beyond payment hours
+    ['301837', '2026-10-12T17:00:00Z'], // out of service
+  ]) {
+    const row = restrictions.find(row => row.meter_id === id);
+    assert.ok(row);
+    assert.equal(at(adaptVancouverMeters([row], options).records[0].rules, instant).classification, 'UNKNOWN', id);
+  }
+});

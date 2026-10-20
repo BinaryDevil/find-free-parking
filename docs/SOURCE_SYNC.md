@@ -125,3 +125,28 @@ no external fetch or real GitHub issue writes. It verifies public classification
 repeat imports, drift, tombstones/reappearance, rollback, overlap, pending sources
 and failure alerts. Provision a new empty database for each replay; never clear a
 shared database to rerun it.
+
+## Vancouver meter adapter verification
+
+`node --test tests/vancouver-meters.test.mjs` checks the recorded portal format,
+recorded ambiguity and explicitly synthetic reviewed-permission cases. A stable
+metadata count of zero is a complete empty snapshot only when the edit timestamp
+and count agree on both metadata reads. It lets the runner retire the final meter
+without deleting its history; a failed or changing retrieval never does.
+
+`node --test tests/vancouver-meters-db.test.mjs` additionally exercises the actual
+adapter, sync runner and classified-place reader against a **fresh empty local
+PostGIS database**. Set `METER_TEST_DATABASE_URL` privately to that task-owned
+localhost database, named `vancouver_meter_test_28` (an optional numeric suffix is
+allowed). Supply the `find-free-parking-db_owner` role required by the migrations
+in the disposable cluster before running. The test refuses pre-existing tables;
+run serially in a Node container sharing the database clock under ADR-0005.
+It is skipped without configuration. Its approval row, identities and reviewed
+permissions are synthetic; passing it approves no City source or curb rule.
+
+The test verifies rates/limits and rush/after-hours classifications, idempotency,
+explicit Removed and missing-record retirement with retained history, format
+failure becoming Unknown, and final-meter retirement. Real meter rush days,
+precise curb assignment, override semantics, after-hours permission and source
+approval remain evidence gates on #28/#24. This does not register or activate
+an adapter or authorize shared/production writes.
