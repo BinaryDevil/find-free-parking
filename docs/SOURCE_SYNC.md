@@ -10,9 +10,26 @@ is empty. No real source is loaded by this change.
 
 [source-sync.ts](../scripts/source-sync.ts) exports `SourceAdapter`,
 `SourceSnapshot`, `SyncPlace`, `SyncRule`, `validateSnapshot` and `syncSource`.
-An adapter identifies `sourceKey`, `area`, and `evidenceType` (E1–E6). These must
+An adapter identifies `sourceKey`, `area`, `evidenceType` (E1–E6), and the
+`endpoint` actually used for retrieval. These must
 match an independently approved (ADR-0005 two-agent review) `evidence_sources` row. Registration
 alone cannot approve a source. Signal and E7 sources cannot create typed rules.
+
+Endpoint equivalence is exact string equality with the approved row: no URL
+normalization, case folding, trailing-slash removal, query stripping, service/layer
+substitution or redirect equivalence. Missing or mismatched endpoints fail before
+retrieval, recording the existing safe failure history and retaining places/rules.
+Pending sources still skip. The post-fetch approval/metadata recheck remains required.
+
+Each concrete adapter declares the same endpoint constant used to construct all
+of its requests. The endpoint names the exact ArcGIS layer or Vancouver dataset;
+its existing metadata, `/query` or `/records` requests and pagination parameters
+read that same item, never a sibling layer/dataset or publisher-supplied URL.
+Every publisher request uses `redirect: 'error'`: redirects require separate
+endpoint review rather than implicitly inheriting approval. This is a contract
+for reviewed adapter code, not isolation of arbitrary untrusted JavaScript.
+Synthetic adapters must declare their synthetic endpoint too; the registry stays
+empty and this contract grants no source approval.
 
 `fetchSnapshot(signal)` validates the publisher's metadata and required fields,
 finishes pagination, checks publisher counts/truncation/error responses, and

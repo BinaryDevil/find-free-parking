@@ -101,7 +101,11 @@ test('motorcycle-only paid rules respect the vehicle, missing limits are not unl
 test('multi-page snapshots fail on HTTP errors, count drift, duplicates and edit drift', async () => {
   const rows = Array.from({ length: 101 }, (_, i) => ({ ...ordinary(), meter_id: `synthetic-${i}` }));
   const metadata = { metas: { default: { records_count: 101, modified: '2026-10-12T13:31:51Z' } } };
-  const request = async url => {
+  const request = async (url, init) => {
+    assert.equal(init?.redirect, 'error');
+    const endpoint = createVancouverMeterAdapter(options).endpoint;
+    const target = new URL(url);
+    assert.ok([endpoint, `${endpoint}/records`].includes(`${target.origin}${target.pathname}`));
     const offset = Number(new URL(url).searchParams.get('offset'));
     return { ok: true, json: async () => url.includes('/records?') ? { total_count: 101, results: rows.slice(offset, offset + 100) } : metadata };
   };
@@ -109,8 +113,8 @@ test('multi-page snapshots fail on HTTP errors, count drift, duplicates and edit
   assert.equal((await createVancouverMeterAdapter(options, request).fetchSnapshot(signal)).places.length, 101);
   await assert.rejects(() => createVancouverMeterAdapter(options, async () => ({ ok: false })).fetchSnapshot(signal), /retrieval failed/);
   let reads = 0;
-  const drift = async url => {
-    const result = await request(url);
+  const drift = async (url, init) => {
+    const result = await request(url, init);
     if (url.includes('/records?')) return result;
     reads++;
     return { ok: true, json: async () => reads === 1 ? metadata : { metas: { default: { records_count: 101, modified: '2026-10-13T13:31:51Z' } } } };

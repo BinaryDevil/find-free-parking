@@ -60,7 +60,7 @@ export async function fetchVancouverPermitZones(signal: AbortSignal, request: ty
   const read = async (suffix: string, params: Record<string,string>) => {
     const url = new URL(`${VANCOUVER_PERMIT_ENDPOINT}${suffix}`);
     url.search = new URLSearchParams(params).toString();
-    const response = await request(url,{signal});
+    const response = await request(url,{signal,redirect:'error'});
     if (!response.ok) throw new Error('Permit retrieval failed');
     const data = object(await response.json());
     if (data.error || data.exceededTransferLimit) throw new Error('Permit format: incomplete response');
@@ -86,6 +86,7 @@ export async function fetchVancouverPermitZones(signal: AbortSignal, request: ty
 
 // Deliberately unregistered: no real source approval or Coverage is established.
 export const vancouverPermitAdapter: SourceAdapter = {
+  endpoint:VANCOUVER_PERMIT_ENDPOINT,
   sourceKey:'vancouver-permit-zones',area:'Vancouver',evidenceType:'E4',
   fetchSnapshot:signal => fetchVancouverPermitZones(signal),
 };

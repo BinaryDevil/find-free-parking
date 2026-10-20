@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { adaptSeattleBlockface, fetchSeattleBlockface } from '../scripts/adapters/seattle-blockface.ts';
+import { adaptSeattleBlockface, fetchSeattleBlockface, seattleBlockfaceAdapter } from '../scripts/adapters/seattle-blockface.ts';
 import { evaluateParkingRules } from '../lib/parking-rules.ts';
 
 const layer = JSON.parse(readFileSync(new URL('./fixtures/seattle-blockface/layer.json', import.meta.url)));
@@ -84,7 +84,9 @@ test('Sunday and zero/missing payment bands never become free permission', () =>
 test('reader obtains all ID pages, validates complete membership and refuses truncated responses', async () => {
   const queue = [layer, { objectIds: records.features.map(f => f.properties.OBJECTID) }, records, layer];
   const urls = [];
-  const snapshot = await fetchSeattleBlockface(AbortSignal.timeout(10000), async url => {
+  const snapshot = await fetchSeattleBlockface(AbortSignal.timeout(10000), async (url, init) => {
+    assert.equal(init.redirect, 'error');
+    assert.ok([seattleBlockfaceAdapter.endpoint, `${seattleBlockfaceAdapter.endpoint}/query`].includes(`${url.origin}${url.pathname}`));
     urls.push(new URL(url));
     return Response.json(queue.shift());
   });
