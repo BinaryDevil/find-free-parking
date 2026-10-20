@@ -27,7 +27,7 @@ test('computed Coverage controls public APIs, publication and exact place member
     await migrate();
     await query('SET search_path = public, pg_catalog');
     const history = (await query('SELECT name,run_on FROM migration_meta.pgmigrations ORDER BY id')).rows;
-    assert.equal(history.length, 7);
+    assert.equal(history.length, 8);
     await migrate();
     await query('SET search_path = public, pg_catalog');
     assert.deepEqual((await query('SELECT name,run_on FROM migration_meta.pgmigrations ORDER BY id')).rows, history);

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { Pool } from 'pg';
 import { runner } from 'node-pg-migrate';
-import { createVancouverMeterAdapter } from '../lib/vancouver-meters.ts';
+import { createVancouverMeterAdapter, VANCOUVER_METERS_ENDPOINT } from '../lib/vancouver-meters.ts';
 import { syncSource } from '../scripts/source-sync.ts';
 import { classifiedPlaces } from '../lib/classified-places.ts';
 
@@ -22,7 +22,7 @@ test('meter snapshots reach classified reads and retire absent/Removed meters wi
     const source = (await client.query(`INSERT INTO public.evidence_sources
       (source_key,area,evidence_type,approval_state,approved_by,approved_at,publisher,endpoint,licence,reuse_terms,inventory_doc_path,freshness_limit)
       VALUES ('vancouver-parking-meters','Vancouver','E2','approved','synthetic test only',now(),'Synthetic City fixture',
-      'https://example.invalid/meters','fixture','fixture','fixture',interval '7 days') RETURNING *`)).rows[0];
+      $1,'fixture','fixture','fixture',interval '7 days') RETURNING *`, [VANCOUVER_METERS_ENDPOINT])).rows[0];
     const recorded = JSON.parse(readFileSync(new URL('./fixtures/vancouver/live-records.json', import.meta.url))).results[0];
     // Only the input format is recorded. Identities and reviewed permissions here
     // are synthetic contracts, never evidence for approving an actual City meter.
