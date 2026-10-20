@@ -156,9 +156,9 @@ async function seedKirklandMeters() {
     // Construct Normalized Props
     const normalizedProps = {
       ...p,
-      t_mf_9a_6p: limit || "2hr", // Fallback
-      r_mf_9a_6p: rate || "$1.00/hr",
-      schedule_summary: schedule || "Mon-Sat 9am-6pm",
+      t_mf_9a_6p: limit,
+      r_mf_9a_6p: rate,
+      schedule_summary: schedule,
       meter_head: "Pay Station Sign",
       city: "Kirkland",
     };
