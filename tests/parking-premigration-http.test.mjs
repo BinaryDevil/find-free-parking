@@ -13,6 +13,7 @@ test('public parking APIs preserve baseline rows and fail closed before the warn
   const client = new Client({ connectionString });
   await client.connect();
   let server;
+  let serverExit;
   try {
     assert.deepEqual((await client.query("SELECT tablename FROM pg_tables WHERE schemaname NOT IN ('pg_catalog','information_schema')")).rows, [], 'Fresh empty database required');
     await client.query(readFileSync('sql/migrations/1791676800000_baseline.sql', 'utf8'));
@@ -35,6 +36,8 @@ test('public parking APIs preserve baseline rows and fail closed before the warn
     server = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'dev', '--webpack', '--hostname', '127.0.0.1', '--port', port], {
       env: { ...process.env, DATABASE_URL: connectionString, DATABASE_URL_POOLED: connectionString, NEXT_TELEMETRY_DISABLED: '1' }, stdio: 'ignore',
     });
+    // Register immediately so cleanup also observes an exit during startup.
+    serverExit = new Promise(resolve => server.once('exit', resolve));
     const base = `http://127.0.0.1:${port}`;
     let ready = false;
     for (let i = 0; i < 120; i++) {
@@ -82,7 +85,7 @@ test('public parking APIs preserve baseline rows and fail closed before the warn
     await client.query('ALTER VIEW public.driver_warnings RENAME COLUMN count TO unavailable_count');
     for (const path of paths) assert.equal((await fetch(base + path + selected)).status, 500);
   } finally {
-    if (server) { server.kill('SIGTERM'); await new Promise(resolve => server.once('exit', resolve)); }
+    if (server) { server.kill('SIGTERM'); await serverExit; }
     await client.end();
   }
 });
