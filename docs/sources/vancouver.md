@@ -1,6 +1,7 @@
 # Vancouver, British Columbia: source inventory
 
 Status: inventory complete; source approval pending
+Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
 Timezone: America/Vancouver
 Coverage verdict: none (no approved source; Vancouver remains not covered)
 Draft partial target: **validated, in-service City meter locations and their precisely assigned metered curb portions, plus independently confirmed signed Resident Parking Only / Resident Permit Parking curb restrictions within RPO, RPP and VRPP polygons**. This excludes whole unmetered blocks, polygon interiors without confirmed curb rules, lots, and specialized spaces without matching vehicle context. See the approval conditions below.
