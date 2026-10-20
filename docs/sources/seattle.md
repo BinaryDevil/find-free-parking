@@ -1,6 +1,7 @@
 # Seattle, Washington: source inventory
 
 Status: draft
+Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
 Timezone: America/Los_Angeles
 Coverage verdict: none (no source approved; Seattle remains not covered)
 Policy: [Evidence Source Policy in #2](https://github.com/BinaryDevil/find-free-parking/issues/2)
