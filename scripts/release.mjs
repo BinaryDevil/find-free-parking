@@ -26,7 +26,7 @@ export async function releaseForCommit(github, sha) {
   return authorizeRelease(prs, sha);
 }
 
-export async function runRelease(release, config, { github, database, snapshot, migrate, smoke }) {
+export async function runRelease(release, config, { github, database, readiness, snapshot, migrate, smoke }) {
   const results = [];
   const comment = async () => github(['api', `repos/${repository}/issues/${release.number}/comments`, '--method', 'POST', '--input', '-'],
     JSON.stringify({ body: `Production release ${config.sha}\n\n${results.join('\n')}` }));
@@ -41,8 +41,14 @@ export async function runRelease(release, config, { github, database, snapshot, 
     // Existing production must adopt the baseline separately; never replay its DDL.
     if (pending.includes('1791676800000_baseline.sql')) throw new Error('Baseline adoption required');
     results.push('Authorization and pending migration checks passed.');
+    if (release.migrations.length) {
+      await readiness();
+      results.push('Exact release deployment and public production revision verified before migrations.');
+    }
     const branch = await snapshot();
     results.push(`Snapshot retained: ${branch}.`);
+    // Snapshot readiness can wait; do not reuse deployment proof from before it.
+    if (release.migrations.length) await readiness();
     await migrate();
     const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
     if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
@@ -62,6 +68,24 @@ export async function runRelease(release, config, { github, database, snapshot, 
     if (notifications.some(r => r.status === 'rejected')) throw new Error('Release failed; notification delivery incomplete');
     throw new Error('Release failed; results reported');
   }
+}
+
+// The public runtime proof is independent of database/schema readiness.
+export async function verifyProductionRevision(github, sha, fetcher = fetch) {
+  const deployment = JSON.parse(await github(['api', `repos/${repository}/commits/${sha}/status`]));
+  const statuses = deployment.statuses?.filter(status => status.context === 'Vercel');
+  if (deployment.sha !== sha || statuses?.length !== 1 || statuses[0].state !== 'success') {
+    throw new Error('Release deployment not ready');
+  }
+  const response = await fetcher('https://findfreeparking.info/api/revision', {
+    signal: AbortSignal.timeout(20000), redirect: 'error', cache: 'no-store',
+  });
+  if (!response.ok) throw new Error('Production revision unavailable');
+  const runtime = await response.json();
+  if (runtime.revision !== sha || runtime.environment !== 'production') throw new Error('Production revision mismatch');
+  // Check after the HTTP boundary too, immediately before returning write readiness.
+  const current = JSON.parse(await github(['api', `repos/${repository}/git/ref/heads/main`]));
+  if (current.object?.sha !== sha) throw new Error('Release is no longer current main');
 }
 
 export async function snapshotProduction(neon, { sha, project, parent }) {
@@ -163,10 +187,11 @@ async function main() {
     await runRelease(release, { sha, runId: process.env.GITHUB_RUN_ID,
       files: readdirSync('sql/migrations').sort(), plan: (() => { try { return JSON.parse(readFileSync('.github/production-migrations.json', 'utf8')); } catch { return null; } })() }, {
       github, database,
+      readiness: () => verifyProductionRevision(github, sha),
       snapshot: () => snapshotProduction(neon, { sha, project, parent }),
       migrate: () => execute('pnpm', ['db:migrate'], { env: process.env, timeout: 10 * 60 * 1000 }),
       smoke: async () => {
-        // Vercel deployment runs independently of this workflow. Allow it to settle.
+        // Retry transient API failures only after deployment revision verification.
         for (let attempt = 0; ; attempt++) {
           try { await smokeProduction(); return; } catch { if (attempt === 19) throw new Error('Smoke checks failed'); }
           await new Promise(resolve => setTimeout(resolve, 15000));

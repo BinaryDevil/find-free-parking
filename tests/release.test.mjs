@@ -84,3 +84,90 @@ test('commit-associated PR summaries are hydrated before checking the human merg
   };
   assert.deepEqual(await releaseForCommit(github, sha), { number: 80, migrations: [file] });
 });
+
+import { verifyProductionRevision } from '../scripts/release.mjs';
+test('migration waits for matching ready deployment and public production revision', async () => {
+  const events = [];
+  const github = async (args) => {
+    if (args[1].includes('/git/ref/')) { events.push('main'); return JSON.stringify({ object: { sha } }); }
+    events.push('deployment');
+    assert.equal(args[1], `repos/BinaryDevil/find-free-parking/commits/${sha}/status`);
+    return JSON.stringify({ sha, statuses: [{ context: 'Vercel', state: 'success' }] });
+  };
+  const fetcher = async (url, options) => {
+    events.push('runtime');
+    assert.equal(url, 'https://findfreeparking.info/api/revision');
+    assert.equal(options.redirect, 'error');
+    assert.equal(options.cache, 'no-store');
+    return { ok: true, json: async () => ({ revision: sha, environment: 'production' }) };
+  };
+  let applied = false;
+  await runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+    github: async () => '[]',
+    database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : applied ? [{ name: file.slice(0, -4) }] : [] }) },
+    readiness: () => verifyProductionRevision(github, sha, fetcher),
+    snapshot: async () => { events.push('snapshot'); return 'br-test'; },
+    migrate: async () => { events.push('migrate'); applied = true; }, smoke: async () => {},
+  });
+  assert.deepEqual(events, ['deployment', 'runtime', 'main', 'snapshot', 'deployment', 'runtime', 'main', 'migrate']);
+});
+
+test('absent, pending, failed and stale readiness evidence blocks every migration write', async () => {
+  const goodStatus = { sha, statuses: [{ context: 'Vercel', state: 'success' }] };
+  const goodRuntime = { revision: sha, environment: 'production' };
+  const cases = [
+    { status: { sha, statuses: [] } },
+    { status: { sha, statuses: [{ context: 'Vercel', state: 'pending' }] } },
+    { status: { sha, statuses: [{ context: 'Vercel', state: 'failure' }] } },
+    { status: { ...goodStatus, sha: 'b'.repeat(40) } },
+    { runtime: { ...goodRuntime, revision: 'b'.repeat(40) } },
+    { runtime: { environment: 'production' } },
+    { runtime: { ...goodRuntime, environment: 'preview' } },
+    { httpOK: false },
+    { unavailable: true },
+    { missingVerifier: true },
+  ];
+  for (const fixture of cases) {
+    const reports = [];
+    let writes = 0;
+    const readiness = () => verifyProductionRevision(async () => JSON.stringify(fixture.status ?? goodStatus), sha, async () => {
+      if (fixture.unavailable) throw new Error('secret-runtime-error');
+      return { ok: fixture.httpOK ?? true, json: async () => fixture.runtime ?? goodRuntime };
+    });
+    await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+      github: async (args, body) => { if (body) reports.push(body); return '[]'; },
+      database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : [] }) },
+      ...(fixture.missingVerifier ? {} : { readiness }),
+      snapshot: async () => { writes++; return 'br-test'; }, migrate: async () => { writes++; }, smoke: async () => {},
+    }));
+    assert.equal(writes, 0, JSON.stringify(fixture));
+    assert.ok(reports.some(body => body.includes('Production release failed')));
+    assert.ok(!reports.join('').includes('secret-runtime-error'));
+  }
+});
+
+test('revision drift during snapshot readiness prevents migration and reports a redacted failure', async () => {
+  const reports = [];
+  let liveRevision = sha;
+  let migrated = false;
+  const github = async args => JSON.stringify(args[1].includes('/git/ref/') ? { object: { sha: liveRevision } } : { sha, statuses: [{ context: 'Vercel', state: 'success' }] });
+  await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+    github: async (args, body) => { if (body) reports.push(body); return '[]'; },
+    database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : [] }) },
+    readiness: () => verifyProductionRevision(github, sha, async () => ({ ok: true, json: async () => ({ revision: liveRevision, environment: 'production' }) })),
+    snapshot: async () => { liveRevision = 'b'.repeat(40); return 'br-test'; },
+    migrate: async () => { migrated = true; }, smoke: async () => {},
+  }));
+  assert.equal(migrated, false);
+  assert.ok(reports.some(body => body.includes('Production release failed')));
+});
+
+test('main moving while the public runtime is checked invalidates write readiness', async () => {
+  let currentMain = sha;
+  await assert.rejects(verifyProductionRevision(async args => JSON.stringify(
+    args[1].includes('/git/ref/') ? { object: { sha: currentMain } } : { sha, statuses: [{ context: 'Vercel', state: 'success' }] }
+  ), sha, async () => {
+    currentMain = 'b'.repeat(40);
+    return { ok: true, json: async () => ({ revision: sha, environment: 'production' }) };
+  }));
+});

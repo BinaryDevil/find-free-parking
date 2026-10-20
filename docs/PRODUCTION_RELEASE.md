@@ -49,13 +49,39 @@ command receives its expected host and database from that verified connection.
 Changing targets requires a reviewed code change; there is no workflow input
 that redirects production writes.
 
-The runner creates a no-compute `snapshot/<merge-sha>` child branch, waits for
+For every nonempty committed migration plan (including safe retries), the runner
+first requires a successful `Vercel` GitHub commit status for the exact
+human-merged release SHA and reads `https://findfreeparking.info/api/revision`
+without caching or redirects. That public runtime must report the same SHA and
+`production` environment from Vercel's deployment metadata. The endpoint is
+independent of database health so the release code can identify itself before
+schema changes. No additional token is needed. Vercel system environment
+variables must be available to the runtime; absent metadata fails closed.
+Pending, failed, absent or stale evidence stops before snapshot creation and
+migration execution and uses the existing redacted failure report. The gate
+does not wait or infer readiness from elapsed time: rerun the authorized workflow
+after deployment is ready. A healthy endpoint alone never proves a revision.
+
+This gate establishes ordering only. It does not make the immutable non-additive
+schema-hygiene migration satisfy ADR-0005, adopt a missing baseline, or make the
+old raw-header writer a compatible rollback. Those release blockers require
+separate resolution. The report/coverage writer must be deployed before inet
+conversion, and every active or rollback deployment must use that writer; see
+[PII retention rollout](PII_RETENTION.md#target-specific-rollout-not-enabled-by-a-deployment).
+An application-only first release still requires the separately tracked empty-plan
+runner correction (#89); this gate does not claim that path works.
+
+After snapshot readiness, it repeats deployment/runtime verification and checks
+that main still equals the authorized SHA immediately before invoking migrations.
+These are point-in-time checks, not an atomic lock on external deployment changes.
+
+The runner then creates a no-compute `snapshot/<merge-sha>` child branch, waits for
 it to be ready and verifies its parent. Reruns retain that same restore point.
 Snapshots are retained for recovery, not deleted automatically. It then runs
 `pnpm db:migrate`, verifies the ledger and smoke-checks `/api/health` plus
 `/api/parking` and `/api/parking/zones` for Seattle and Vancouver. Smoke checks
-retry while the independent deployment settles. They validate HTTP/JSON
-contracts; they do not prove deployment revision, browser behavior, vacancy,
+retry transient API failures after the revision gate. They validate HTTP/JSON
+contracts; they do not prove browser behavior, vacancy,
 source approval or every release check.
 
 Results go to the release PR. Failures also create or update one `needs-triage`
