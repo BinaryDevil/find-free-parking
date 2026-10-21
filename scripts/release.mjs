@@ -127,9 +127,12 @@ export async function smokeProduction(fetcher = fetch, origin = 'https://findfre
     const response = await fetcher(`${origin}${path}`, { signal: AbortSignal.timeout(20000), redirect: 'error', cache: 'no-store' });
     if (!response.ok) throw new Error('Smoke HTTP failure');
     const data = await response.json();
+    const bounds = new URL(`${origin}${path}`).searchParams.get('bbox')?.split(',').map(Number);
     const valid = path === '/api/health' ? data.ok === true && data.db === 'up'
       : path.startsWith('/api/parking?') ? ['meters', 'streets', 'places'].every(key => Array.isArray(data[key])) && !!data.coverage
-      : data.type === 'FeatureCollection' && Array.isArray(data.features);
+      : data.mode === 'bbox' && Array.isArray(data.features) && Number.isInteger(data.count) && data.count === data.features.length &&
+        ['minLat', 'minLng', 'maxLat', 'maxLng'].every((key, index) => Number.isFinite(data.bbox?.[key]) && data.bbox[key] === bounds[index]) &&
+        ['none', 'partial', 'full'].includes(data.coverage?.level) && Array.isArray(data.coverage.areas);
     if (!valid) throw new Error('Smoke response failure');
   }
 }

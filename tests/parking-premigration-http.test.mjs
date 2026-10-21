@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
 import { Client } from 'pg';
+import { smokeProduction } from '../scripts/release.mjs';
 
 const connectionString = process.env.PARKING_COMPAT_TEST_DATABASE_URL;
 test('public parking APIs and city navigation preserve the pre-migration trust boundary', { skip: !connectionString, timeout: 180000 }, async () => {
@@ -46,6 +47,7 @@ test('public parking APIs and city navigation preserve the pre-migration trust b
       await delay(500);
     }
     assert.ok(ready, 'Local Next health endpoint must become ready');
+    await smokeProduction(fetch, base);
     for (const [path, label] of [
       ['/en/vancouver', 'Vancouver: not covered'],
       ['/fr/seattle', 'Seattle : non couverte'],
