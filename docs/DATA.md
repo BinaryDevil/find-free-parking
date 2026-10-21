@@ -39,6 +39,12 @@ See [query visibility](QUERY_STATS.md) for the #6 extension SQL, production appr
 
 ## Migrations
 
+### Accepted preservation contract; execution not implemented
+
+The owner-approved [ADR-0003 amendment](adr/0003-sql-migrations.md#preservation-lineage-amendment--accepted-2026-10-21) permits an explicitly adopted preservation-v1 lineage while keeping sealed legacy SQL and history intact. The [implementation design](plans/schema91-preservation-design.md) defines immutable manifest/hash/order checks, separate history, and initial empty or exact-baseline-only adoption. Matching ledger names alone do not establish schema compatibility; unknown history, partial objects or drift stop adoption.
+
+The commands and replay procedures below still describe the implemented legacy runner. Policy acceptance adds no executable preservation command and authorizes no target adoption. Implement and independently verify the shared resolver, adoption safeguards and additive foundation before shared use. Snapshot and exact schema/history comparison precede authorized adoption writes; production adoption metadata writes and migrations must be listed separately under a human-merged release PR. Code-only releases continue to write neither. Retention execution, source approval, sync and legacy retirement remain separately gated.
+
 For #14's IP conversion, safe enum/extension migration and separately enabled
 private-field retention scheduler, see [PII retention](PII_RETENTION.md).
 
