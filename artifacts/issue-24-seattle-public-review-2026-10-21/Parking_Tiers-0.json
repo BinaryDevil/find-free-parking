@@ -1,0 +1,357 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:12.433851+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Tiers/FeatureServer/0",
+  "name": "Parking Tiers",
+  "geometry": "esriGeometryPolygon",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 37
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588997738,
+    "schemaLastEditDate": 1792588997738,
+    "dataLastEditDate": 1792588997738
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAIDAREA",
+      "type": "esriFieldTypeString",
+      "alias": "PAIDAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 20,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUBAREA",
+      "type": "esriFieldTypeString",
+      "alias": "SUBAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 15,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TIER",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "TIER",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SHORTRATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "SHORTRATE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LONGRATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "LONGRATE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "START_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "START_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "END_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "END_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SE_ANNO_CAD_DATA",
+      "type": "esriFieldTypeBlob",
+      "alias": "SE_ANNO_CAD_DATA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MORNING_RATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "MORNING_RATE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MORNING_START",
+      "type": "esriFieldTypeString",
+      "alias": "MORNING_START",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MORNING_END",
+      "type": "esriFieldTypeString",
+      "alias": "MORNING_END",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAY_RATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "DAY_RATE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAY_START",
+      "type": "esriFieldTypeString",
+      "alias": "DAY_START",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAY_END",
+      "type": "esriFieldTypeString",
+      "alias": "DAY_END",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EVENING_RATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "EVENING_RATE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EVENING_START",
+      "type": "esriFieldTypeString",
+      "alias": "EVENING_START",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EVENING_END",
+      "type": "esriFieldTypeString",
+      "alias": "EVENING_END",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Area",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Area",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "4159ee278747484ab456576198b54263",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792589000000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Tiers/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PAIDAREA",
+        "type": "esriFieldTypeString",
+        "alias": "PAIDAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SUBAREA",
+        "type": "esriFieldTypeString",
+        "alias": "SUBAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 15,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 3701,
+          "PAIDAREA": "Westlake Ave N",
+          "SUBAREA": "South"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3702,
+          "PAIDAREA": "Belltown",
+          "SUBAREA": "South"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3703,
+          "PAIDAREA": "Lake Union Park",
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3704,
+          "PAIDAREA": "Cherry Hill",
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3705,
+          "PAIDAREA": "Belltown",
+          "SUBAREA": "North"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3706,
+          "PAIDAREA": "15th Avenue E",
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3707,
+          "PAIDAREA": "Commercial Core",
+          "SUBAREA": "Financial"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3708,
+          "PAIDAREA": "Denny Triangle",
+          "SUBAREA": "South"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3709,
+          "PAIDAREA": "12th Avenue",
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3710,
+          "PAIDAREA": "Ballard",
+          "SUBAREA": "Core"
+        }
+      }
+    ]
+  }
+}

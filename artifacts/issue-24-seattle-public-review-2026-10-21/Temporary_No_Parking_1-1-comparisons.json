@@ -1,0 +1,2999 @@
+{
+  "source_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Temporary_No_Parking_1/FeatureServer/1",
+  "keys": [
+    81478,
+    33142,
+    58498,
+    59122,
+    59121,
+    83222,
+    24445,
+    69302,
+    69301,
+    24446
+  ],
+  "selection": "first ten distinct non-null curb keys from at most 2000 safe projected records; not a representative passing safety sample",
+  "source_records": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "MODIFIED_DATE_TIME": 1790714712000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45533",
+        "CURBSPACE_NUMBER": "OW-15-18",
+        "ELEMENT_KEY": "81478",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1788274800000,
+        "END_DATE_TIME": 1794009600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-16",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "MODIFIED_DATE_TIME": 1791945757000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45371",
+        "CURBSPACE_NUMBER": "13-02-07",
+        "ELEMENT_KEY": "58498",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787756400000,
+        "END_DATE_TIME": 1794614400000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-01",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-08",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-09",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-10",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-19",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-32",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "MODIFIED_DATE_TIME": 1792190089000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45171",
+        "CURBSPACE_NUMBER": "N35-07-33",
+        "ELEMENT_KEY": "83222",
+        "NOPARKING_SIGN_TYPE": "YELLOW: 7am-6pm Mon-Sat",
+        "START_DATE_TIME": 1786719600000,
+        "END_DATE_TIME": 1792162800000,
+        "ACTUAL_START_TIME": 1786568040000,
+        "ACTUAL_END_TIME": 1792190040000,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 11,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-43",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 12,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-22",
+        "ELEMENT_KEY": "69302",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 13,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-35",
+        "ELEMENT_KEY": "69301",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-38",
+        "ELEMENT_KEY": "69302",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 15,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-14",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 301,
+        "MODIFIED_DATE_TIME": 1790714712000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45533",
+        "CURBSPACE_NUMBER": "OW-15-14T",
+        "ELEMENT_KEY": "81478",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1788274800000,
+        "END_DATE_TIME": 1794009600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 302,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-02",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 303,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-04",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 304,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-20",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 305,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-22",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 306,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-30",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 307,
+        "MODIFIED_DATE_TIME": 1792190089000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45171",
+        "CURBSPACE_NUMBER": "N35-07-31",
+        "ELEMENT_KEY": "83222",
+        "NOPARKING_SIGN_TYPE": "YELLOW: 7am-6pm Mon-Sat",
+        "START_DATE_TIME": 1786719600000,
+        "END_DATE_TIME": 1792162800000,
+        "ACTUAL_START_TIME": 1786568040000,
+        "ACTUAL_END_TIME": 1792190040000,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 308,
+        "MODIFIED_DATE_TIME": 1792190089000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45171",
+        "CURBSPACE_NUMBER": "N35-07-35",
+        "ELEMENT_KEY": "83222",
+        "NOPARKING_SIGN_TYPE": "YELLOW: 7am-6pm Mon-Sat",
+        "START_DATE_TIME": 1786719600000,
+        "END_DATE_TIME": 1792162800000,
+        "ACTUAL_START_TIME": 1786568040000,
+        "ACTUAL_END_TIME": 1792190040000,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 310,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-28",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 311,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-00",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 312,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-06",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 313,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-13",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 314,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-19",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 578,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-06",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 579,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-04",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 580,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-06",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 581,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-23",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 583,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-23",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 584,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-29",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 585,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-31",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 586,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-34",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 587,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-35",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 588,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-39",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 589,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-40",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 590,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-07",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 866,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-08",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 867,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-24",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 868,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-28",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 869,
+        "MODIFIED_DATE_TIME": 1791945757000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45371",
+        "CURBSPACE_NUMBER": "13-02-09",
+        "ELEMENT_KEY": "58498",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787756400000,
+        "END_DATE_TIME": 1794614400000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 870,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-07",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 871,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-17",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 872,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-18",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 873,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-24",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 874,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-34",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 878,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-26",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 879,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-32",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 880,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-41",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 881,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-34",
+        "ELEMENT_KEY": "69302",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 882,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-05",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 883,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-08",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 884,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-15",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1157,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-10",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1158,
+        "MODIFIED_DATE_TIME": 1791945757000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45371",
+        "CURBSPACE_NUMBER": "13-02-05",
+        "ELEMENT_KEY": "58498",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787756400000,
+        "END_DATE_TIME": 1794614400000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1159,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-02",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1160,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-16",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1161,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-25",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1162,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-26",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1167,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-24",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1169,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-42",
+        "ELEMENT_KEY": "69302",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1170,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-03",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1171,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-04",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1172,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-09",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1173,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-10",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1174,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-17",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1175,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-20",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1417,
+        "MODIFIED_DATE_TIME": 1790714712000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45533",
+        "CURBSPACE_NUMBER": "OW-15-20",
+        "ELEMENT_KEY": "81478",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1788274800000,
+        "END_DATE_TIME": 1794009600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1419,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-12",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1420,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-14",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1421,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-30",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1423,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-05",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1424,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-13",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1425,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-15",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1429,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-21",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1430,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-30",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1431,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-37",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1432,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-38",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1433,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-45",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1434,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-30",
+        "ELEMENT_KEY": "69302",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1435,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-31",
+        "ELEMENT_KEY": "69301",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1720,
+        "MODIFIED_DATE_TIME": 1790714712000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45533",
+        "CURBSPACE_NUMBER": "OW-15-12T",
+        "ELEMENT_KEY": "81478",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1788274800000,
+        "END_DATE_TIME": 1794009600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1723,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-00",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1724,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-20",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1725,
+        "MODIFIED_DATE_TIME": 1787856246000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+        "CURBSPACE_NUMBER": "NFV-01-22",
+        "ELEMENT_KEY": "33142",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787842800000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1726,
+        "MODIFIED_DATE_TIME": 1791945757000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45371",
+        "CURBSPACE_NUMBER": "13-02-13T",
+        "ELEMENT_KEY": "58498",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787756400000,
+        "END_DATE_TIME": 1794614400000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1727,
+        "MODIFIED_DATE_TIME": 1791945757000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45371",
+        "CURBSPACE_NUMBER": "13-02-17T",
+        "ELEMENT_KEY": "58498",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787756400000,
+        "END_DATE_TIME": 1794614400000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1730,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-12",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1731,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-14",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1732,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-21",
+        "ELEMENT_KEY": "59122",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1733,
+        "MODIFIED_DATE_TIME": 1787154784000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+        "CURBSPACE_NUMBER": "EBL-01-28",
+        "ELEMENT_KEY": "59121",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1787238000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1734,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-27",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1735,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-36",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1736,
+        "MODIFIED_DATE_TIME": 1786390189000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45131",
+        "CURBSPACE_NUMBER": "NE11-41-41",
+        "ELEMENT_KEY": "69301",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786374000000,
+        "END_DATE_TIME": 1798761600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1737,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-01",
+        "ELEMENT_KEY": "24445",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1738,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-02",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1739,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-12",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1740,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-16",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1741,
+        "MODIFIED_DATE_TIME": 1786344835000,
+        "TNP_RECORD_ID": "SDOT-TNP-00-45116",
+        "CURBSPACE_NUMBER": "NE11-42-18",
+        "ELEMENT_KEY": "24446",
+        "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+        "START_DATE_TIME": 1786201200000,
+        "END_DATE_TIME": 1796169600000,
+        "ACTUAL_START_TIME": null,
+        "ACTUAL_END_TIME": null,
+        "RECORD_STATUS": "Issued"
+      }
+    }
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITDESC": "11TH AVE NE BETWEEN NE 42ND ST AND NE 43RD ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITDESC": "E BLAINE ST BETWEEN FAIRVIEW AVE E AND EASTLAKE AVE E",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1.5,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69302,
+          "UNITDESC": "11TH AVE NE BETWEEN EASTLAKE AVE NE AND NE 42ND ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITDESC": "11TH AVE NE BETWEEN NE 42ND ST AND NE 43RD ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITDESC": "FAIRVIEW AVE N BETWEEN DENNY WAY AND JOHN ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": "4-6PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITDESC": "E BLAINE ST BETWEEN FAIRVIEW AVE E AND EASTLAKE AVE E",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1.5,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITDESC": "WESTERN AVE BETWEEN PIKE ST AND PINE ST",
+          "SIDE": "NE",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 58498,
+          "UNITDESC": "UNIVERSITY ST BETWEEN 2ND AVE AND 3RD AVE",
+          "SIDE": "SE",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 2.5,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITDESC": "11TH AVE NE BETWEEN EASTLAKE AVE NE AND NE 42ND ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITDESC": "N 35TH ST BETWEEN FREMONT AVE N AND TROLL AVE N",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Time Limited Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": "27",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-110688",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 204
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-138708",
+          "SIGNTYPE": "R8-CLZ8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M CLZ 7A-8P EXC SUN-HOL, USE PS EXC WITH PERMIT, TAZ",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239488",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 215
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239485",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 32
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-171651",
+          "SIGNTYPE": "R8-2HRSUN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITID": "SGN-166000",
+          "SIGNTYPE": "R8-DISABLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[WHEELCHAIR] STATE DISABLED PARKING PERMIT REQUIRED, 4 H LIMIT, TAZ\n\r",
+          "DISTANCE": 577
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127007",
+          "SIGNTYPE": "R7-STP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 289
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITID": "SGN-80395",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 90
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-253987",
+          "SIGNTYPE": "R8-CLZ8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE COMMERCIAL OR PERMIT VEHICLE\n\rLOAD ONLY 7AM-8PM EXCEPT SUN-HOL\n\rUSE PAYSTATION EXCEPT WITH PERMIT\n\rPhone (206) 684-5103 for Information\n\rTOW-AWAY ZONE PHONE (206) 684-5444",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-224538",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 330
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-239398",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 237
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-259577",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 57
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-259578",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 57
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-259579",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 136
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 58498,
+          "UNITID": "SGN-115575",
+          "SIGNTYPE": "R8-CLZ8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M CLZ 7A-8P EXC SUN-HOL, USE PS EXC WITH PERMIT, TAZ",
+          "DISTANCE": 246
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 58498,
+          "UNITID": "SGN-187901",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 86
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127004",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 129
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-71743",
+          "SIGNTYPE": "R8-1HR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "1 H PARKING 7AM-6PM EXC SUN-HOL",
+          "DISTANCE": 378
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-224537",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 355
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127009",
+          "SIGNTYPE": "R8-2PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 2 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 334
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-171650",
+          "SIGNTYPE": "R8-2HRSUN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "DISTANCE": 144
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69302,
+          "UNITID": "SGN-239445",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 222
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITID": "SGN-233814",
+          "SIGNTYPE": "R8-LULD8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE\n\rLOAD AND UNLOAD ONLY\n\r7AM-8PM EXCEPT SUN-HOL\n\r[CAR BEING TOWED]\n\rPHONE 684-5444\n\r",
+          "DISTANCE": 456
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-45611",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 193
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127018",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 383
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-138395",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 231
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-171652",
+          "SIGNTYPE": "R8-2HRSUN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "DISTANCE": 246
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-224539",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 303
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-222851",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 285
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-231847",
+          "SIGNTYPE": "R8-L45B",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[45 L DOWN ARROW]",
+          "DISTANCE": 285
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239400",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 337
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69302,
+          "UNITID": "SGN-239442",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 60
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-259588",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 205
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-259583",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 355
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-171655",
+          "SIGNTYPE": "R8-2HRSUN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "DISTANCE": 204
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239491",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 237
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127005",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 279
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-138703",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 144
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69302,
+          "UNITID": "SGN-239447",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 287
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITID": "SGN-27767",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 40
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITID": "SGN-22353",
+          "SIGNTYPE": "R8-LULD8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE\n\rLOAD AND UNLOAD ONLY\n\r7AM-8PM EXCEPT SUN-HOL\n\r[CAR BEING TOWED]\n\rPHONE 684-5444\n\r",
+          "DISTANCE": 406
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITID": "SGN-239395",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS\n\rTOW-AWAY ZONE Phone 684-5444",
+          "DISTANCE": 287
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239486",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 117
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-171656",
+          "SIGNTYPE": "R8-2HRSUN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "DISTANCE": 204
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-222855",
+          "SIGNTYPE": "R8-CLZ8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE COMMERCIAL OR PERMIT VEHICLE\n\rLOAD ONLY 7AM-8PM EXCEPT SUN-HOL\n\rUSE PAYSTATION EXCEPT WITH PERMIT\n\rPhone (206) 684-5103 for Information\n\rTOW-AWAY ZONE PHONE (206) 684-5444",
+          "DISTANCE": 395
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-68032",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 338
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITID": "SGN-80734",
+          "SIGNTYPE": "R8-2HR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR PARKING 7AM-6PM EXC SUN-HOL",
+          "DISTANCE": 443
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127012",
+          "SIGNTYPE": "R7-STP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 334
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-239402",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 489
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITID": "SGN-239392",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 125
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-250297",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-259586",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 140
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-250298",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 395
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-259584",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 62
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69302,
+          "UNITID": "SGN-138394",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 287
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69302,
+          "UNITID": "SGN-239446",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 287
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITID": "SGN-239394",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 166
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-71739",
+          "SIGNTYPE": "R8-EXMPTD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "D EXEMPT LICENSED VEHICLES ONLY",
+          "DISTANCE": 285
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-222852",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 307
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127019",
+          "SIGNTYPE": "R7-STP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 383
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127003",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 74
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127006",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 279
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81478,
+          "UNITID": "SGN-171658",
+          "SIGNTYPE": "R8-2HRSUN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "DISTANCE": 264
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239492",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 334
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-253904",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 336
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITID": "SGN-239397",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 287
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 83222,
+          "UNITID": "SGN-80735",
+          "SIGNTYPE": "R8-2HR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 HOUR PARKING 7AM-6PM EXC SUN-HOL",
+          "DISTANCE": 551
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 58498,
+          "UNITID": "SGN-58909",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 110
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-212871",
+          "SIGNTYPE": "R8-PLZSTP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ, NO STOPS 4-6P EXC SAT-SUN-HOL",
+          "DISTANCE": 323
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-29425",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 509
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-71746",
+          "SIGNTYPE": "R7-WI30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "DISTANCE": 408
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-224540",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 285
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-231900",
+          "SIGNTYPE": "R8-LULD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M LOAD & UNLOAD ONLY 7A-6P EXC SUN-HOL, TAZ",
+          "DISTANCE": 390
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239494",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 463
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-259590",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 330
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59122,
+          "UNITID": "SGN-259585",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 62
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-27777",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "DGST: R404 (0040) - TXT: *CHG LN 8: 8 22,71 72,305     ",
+          "DISTANCE": 133
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59121,
+          "UNITID": "SGN-71738",
+          "SIGNTYPE": "R8-EXMPTD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "D EXEMPT LICENSED VEHICLES ONLY",
+          "DISTANCE": 185
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-172172",
+          "SIGNTYPE": "R8-PLZSTP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ, NO STOPS 4-6P EXC SAT-SUN-HOL",
+          "DISTANCE": 298
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24445,
+          "UNITID": "SGN-239495",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 463
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24446,
+          "UNITID": "SGN-239401",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 489
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-45420",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES)",
+          "DISTANCE": 114
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33142,
+          "UNITID": "SGN-127011",
+          "SIGNTYPE": "R7-STP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444\n\r",
+          "DISTANCE": 334
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 58498,
+          "UNITID": "SGN-58907",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 246
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 58498,
+          "UNITID": "SGN-252991",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 246
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69301,
+          "UNITID": "SGN-239396",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 287
+        }
+      }
+    ]
+  }
+}

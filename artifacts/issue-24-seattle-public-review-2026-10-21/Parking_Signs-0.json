@@ -1,0 +1,653 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:09.054183+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Signs/FeatureServer/0",
+  "name": "Parking Signs",
+  "geometry": "esriGeometryPoint",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 98124
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588515365,
+    "schemaLastEditDate": 1792588515365,
+    "dataLastEditDate": 1792588515365
+  },
+  "description": "Includes signs installed and maintained by the Seattle Department of Transportation within the public right of way. The inventory is maintained in SDOT\u2019s Infor/Hansen Asset Management System, and displayed in GIS as point events along a block face.",
+  "copyrightText": "SDOT Resource Management Division, Information Systems GIS Group",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "COMPKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "COMPKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "COMPTYPE",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "COMPTYPE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeDouble",
+      "alias": "SEGKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DISTANCE",
+      "type": "esriFieldTypeDouble",
+      "alias": "DISTANCE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WIDTH",
+      "type": "esriFieldTypeDouble",
+      "alias": "WIDTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITID",
+      "type": "esriFieldTypeString",
+      "alias": "UNITID",
+      "sqlType": "sqlTypeOther",
+      "length": 20,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITTYPE",
+      "type": "esriFieldTypeString",
+      "alias": "UNITTYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIGNTYPE",
+      "type": "esriFieldTypeString",
+      "alias": "SIGNTYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STANDARDTEXT",
+      "type": "esriFieldTypeString",
+      "alias": "STANDARDTEXT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORYDESCR",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORYDESCR",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITDESC",
+      "type": "esriFieldTypeString",
+      "alias": "UNITDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FACING",
+      "type": "esriFieldTypeString",
+      "alias": "FACING",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUPPORT",
+      "type": "esriFieldTypeString",
+      "alias": "SUPPORT",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUPPORTDESCR",
+      "type": "esriFieldTypeString",
+      "alias": "SUPPORTDESCR",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "COLOR1",
+      "type": "esriFieldTypeString",
+      "alias": "COLOR1",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIGNSZ",
+      "type": "esriFieldTypeString",
+      "alias": "SIGNSZ",
+      "sqlType": "sqlTypeOther",
+      "length": 15,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "REFLECTIVEYN",
+      "type": "esriFieldTypeString",
+      "alias": "REFLECTIVEYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FIELDNOTES",
+      "type": "esriFieldTypeString",
+      "alias": "FIELDNOTES",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CUSTOM",
+      "type": "esriFieldTypeString",
+      "alias": "CUSTOM",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CUSTOMTEXT",
+      "type": "esriFieldTypeString",
+      "alias": "CUSTOMTEXT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STARTDAY",
+      "type": "esriFieldTypeString",
+      "alias": "STARTDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ENDDAY",
+      "type": "esriFieldTypeString",
+      "alias": "ENDDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STARTTIME",
+      "type": "esriFieldTypeString",
+      "alias": "STARTTIME",
+      "sqlType": "sqlTypeOther",
+      "length": 4,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ENDTIME",
+      "type": "esriFieldTypeString",
+      "alias": "ENDTIME",
+      "sqlType": "sqlTypeOther",
+      "length": 4,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SE_ANNO_CAD_DATA",
+      "type": "esriFieldTypeBlob",
+      "alias": "SE_ANNO_CAD_DATA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "de918034c876456cbf11e4b234985142",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792588526000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Signs/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "COMPKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "COMPKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STANDARDTEXT",
+        "type": "esriFieldTypeString",
+        "alias": "STANDARDTEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CUSTOMTEXT",
+        "type": "esriFieldTypeString",
+        "alias": "CUSTOMTEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTDAY",
+        "type": "esriFieldTypeString",
+        "alias": "STARTDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDDAY",
+        "type": "esriFieldTypeString",
+        "alias": "ENDDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTTIME",
+        "type": "esriFieldTypeString",
+        "alias": "STARTTIME",
+        "sqlType": "sqlTypeOther",
+        "length": 4,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDTIME",
+        "type": "esriFieldTypeString",
+        "alias": "ENDTIME",
+        "sqlType": "sqlTypeOther",
+        "length": 4,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 94914789,
+          "COMPKEY": 878568,
+          "ELMNTKEY": 2778,
+          "DISTANCE": 139,
+          "UNITID": "SGN-253122",
+          "SIGNTYPE": "I6-200A",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PS",
+          "UNITDESC": "2ND AVE 0070 BLOCK NE SIDE ( 119) 119 FT NW/O CHERRY ST (I6-200A PBP 95712)                                                                                                                                                                                    ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914790,
+          "COMPKEY": 49160,
+          "ELMNTKEY": 43985,
+          "DISTANCE": 252,
+          "UNITID": "SGN-1513",
+          "SIGNTYPE": "R7-WI30",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "SW 102ND ST 0380 BLOCK N SIDE ( 239) 0 FT E/O 39TH AVE SW (R7-WI30 C/R1)                                                                                                                                                                                       ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914791,
+          "COMPKEY": 49626,
+          "ELMNTKEY": 21998,
+          "DISTANCE": 13,
+          "UNITID": "SGN-1623",
+          "SIGNTYPE": "R7-WI30",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "SW ALASKA ST 0240 BLOCK S SIDE (   0) 0 FT W/O DELRIDGE WAY SW (R7-WI30 C/R1)                                                                                                                                                                                  ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914792,
+          "COMPKEY": 47804,
+          "ELMNTKEY": 66377,
+          "DISTANCE": 13,
+          "UNITID": "SGN-1282",
+          "SIGNTYPE": "R7-NP",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "S SPOKANE NR ST 0002 BLOCK N SIDE (   0) 0 FT E/O EAST MARGINAL WAY S (R7-NP )                                                                                                                                                                                 ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914793,
+          "COMPKEY": 49666,
+          "ELMNTKEY": 24150,
+          "DISTANCE": 653,
+          "UNITID": "SGN-2097",
+          "SIGNTYPE": "R7-NP",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "1ST AVE NW 0430 BLOCK E SIDE ( 640) 30 FT S/O N 45TH ST (R7-NP W/R160N)                                                                                                                                                                                        ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914794,
+          "COMPKEY": 55261,
+          "ELMNTKEY": 91430,
+          "DISTANCE": 233,
+          "UNITID": "SGN-5582",
+          "SIGNTYPE": "R7-NP",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "W EWING S ST 0030 BLOCK S SIDE ( 220) 220 FT W/O 3RD S AVE W (R7-NP S RDWY)                                                                                                                                                                                    ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914795,
+          "COMPKEY": 54425,
+          "ELMNTKEY": 23322,
+          "DISTANCE": 362,
+          "UNITID": "SGN-7506",
+          "SIGNTYPE": "R7-NP",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "W BERTONA ST 0470 BLOCK S SIDE ( 349) 151 FT E/O DEAD END 2 (R7-NP )                                                                                                                                                                                           ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914796,
+          "COMPKEY": 51639,
+          "ELMNTKEY": 44673,
+          "DISTANCE": 155,
+          "UNITID": "SGN-4863",
+          "SIGNTYPE": "R7-NP",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "SW GRAHAM ST 0440 BLOCK N SIDE ( 125) 125 FT W/O 44TH AVE SW (R7-NP E-AL)                                                                                                                                                                                      ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914797,
+          "COMPKEY": 54207,
+          "ELMNTKEY": 23265,
+          "DISTANCE": 285,
+          "UNITID": "SGN-5064",
+          "SIGNTYPE": "R8-2HZ11",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PRZ",
+          "UNITDESC": "W BARRETT ST 0030 BLOCK N SIDE ( 272) 20 FT E/O 4TH AVE W (R8-2HZ11 )                                                                                                                                                                                          ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 94914798,
+          "COMPKEY": 54658,
+          "ELMNTKEY": 23374,
+          "DISTANCE": 759,
+          "UNITID": "SGN-8153",
+          "SIGNTYPE": "R7-NP",
+          "STANDARDTEXT": null,
+          "CATEGORY": "PNP",
+          "UNITDESC": "W COMMODORE WAY 0310 BLOCK NE SIDE ( 729) 25 FT SE/O 33RD AVE W (R7-NP 25'W/0 RP)                                                                                                                                                                              ",
+          "CUSTOMTEXT": null,
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      }
+    ]
+  }
+}

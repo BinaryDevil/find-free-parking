@@ -1,0 +1,377 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:10.856480+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer/4",
+  "name": "Parking Signs",
+  "geometry": "esriGeometryPoint",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 97679
+  },
+  "editingInfo": {
+    "lastEditDate": 1792578443470,
+    "schemaLastEditDate": 1792578443470,
+    "dataLastEditDate": 1792578443470
+  },
+  "description": "<DIV STYLE=\"text-align:Left;\"><DIV><P><SPAN><SPAN>feature class that includes the attributes from HANSEN_RPT.MVW_GIS_SIGNS</SPAN></SPAN></P></DIV></DIV>",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DISTANCE",
+      "type": "esriFieldTypeDouble",
+      "alias": "DISTANCE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITID",
+      "type": "esriFieldTypeString",
+      "alias": "UNITID",
+      "sqlType": "sqlTypeOther",
+      "length": 20,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIGNTYPE",
+      "type": "esriFieldTypeString",
+      "alias": "SIGNTYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORYDESCR",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORYDESCR",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITDESC",
+      "type": "esriFieldTypeString",
+      "alias": "UNITDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FACING",
+      "type": "esriFieldTypeString",
+      "alias": "FACING",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURRENT_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "CURRENT_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TEXT",
+      "type": "esriFieldTypeString",
+      "alias": "TEXT",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "c599cc4b87bd411787ab88cd4e99fbda",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792578449000,
+    "licenseInfo": "",
+    "accessInformation": "SDOT, City of Seattle",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 62296208,
+          "ELMNTKEY": 89550,
+          "DISTANCE": 287,
+          "UNITID": "SGN-2664",
+          "SIGNTYPE": "R7-WI30",
+          "CATEGORY": "PNP",
+          "UNITDESC": "S WASHINGTON ST 0300 BLOCK S SIDE ( 274) 0 FT W/O 31ST AVE S (R7-WI30 C/R1)                                                                                                                                                                                    ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CIRCLE SLASH P] WITHIN 30 FEET"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296209,
+          "ELMNTKEY": 21878,
+          "DISTANCE": 30,
+          "UNITID": "SGN-1503",
+          "SIGNTYPE": "R7-WI30",
+          "CATEGORY": "PNP",
+          "UNITDESC": "SW 100TH ST 0430 BLOCK S SIDE (   0) 0 FT W/O CALIFORNIA AVE SW (R7-WI30 C/W67F)                                                                                                                                                                               ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING WITHIN 30 FEET"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296210,
+          "ELMNTKEY": 66402,
+          "DISTANCE": 192,
+          "UNITID": "SGN-687",
+          "SIGNTYPE": "R8-ANGLE",
+          "CATEGORY": "PINST",
+          "UNITDESC": "S STACY ST 0060 BLOCK S SIDE ( 179) 179 FT E/O 6TH AVE S (R8-ANGLE DEC)                                                                                                                                                                                        ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "ANGLE PARKING ONLY"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296211,
+          "ELMNTKEY": 45426,
+          "DISTANCE": 135,
+          "UNITID": "SGN-5545",
+          "SIGNTYPE": "R8-LUL",
+          "CATEGORY": "PLU",
+          "UNITDESC": "W ARMOUR ST 0140 BLOCK S SIDE ( 122) 30 FT E/O 15TH AVE W (R8-LUL SUPL)                                                                                                                                                                                        ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE LOAD AND UNLOAD ONLY TOW-AWAY ZONE PHONE 684-5444"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296212,
+          "ELMNTKEY": 31649,
+          "DISTANCE": 33,
+          "UNITID": "SGN-141076",
+          "SIGNTYPE": "R8-2HZ22",
+          "CATEGORY": "PRZ",
+          "UNITDESC": "ASHWORTH AVE N 0385 BLOCK W SIDE (  20) 20 FT N/O N 39TH S ST (R8-2HZ22 W/R7-NPL)                                                                                                                                                                              ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 22 PERMIT"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296213,
+          "ELMNTKEY": 66778,
+          "DISTANCE": 198,
+          "UNITID": "SGN-2137",
+          "SIGNTYPE": "R7-BUSR",
+          "CATEGORY": "PBZ",
+          "UNITDESC": "SW ALASKA ST 0410 BLOCK S SIDE ( 185) 115 FT E/O 42ND AVE SW (R7-BUSR 135'DF/AS)                                                                                                                                                                               ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "DGST: R404 (0375) - TXT: *CHG LN 8: 22 23 37,54 55     "
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296214,
+          "ELMNTKEY": 55646,
+          "DISTANCE": 212,
+          "UNITID": "SGN-45392",
+          "SIGNTYPE": "R7-NP",
+          "CATEGORY": "PNP",
+          "UNITDESC": "FAIRVIEW AVE N 0060 BLOCK E SIDE ( 130) 0 FT S/O ROY ST (R7-NP )                                                                                                                                                                                               ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296215,
+          "ELMNTKEY": 69482,
+          "DISTANCE": 673,
+          "UNITID": "SGN-37350",
+          "SIGNTYPE": "R7-NP",
+          "CATEGORY": "PNP",
+          "UNITDESC": "12TH AVE E 0090 BLOCK E SIDE ( 660) 10 FT S/O E PROSPECT ST (R7-NP )                                                                                                                                                                                           ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296216,
+          "ELMNTKEY": 21554,
+          "DISTANCE": 39,
+          "UNITID": "SGN-1072",
+          "SIGNTYPE": "R7-NP",
+          "CATEGORY": "PNP",
+          "UNITDESC": "S SPOKANE ST 0177 BLOCK S SIDE (  26) 26 FT E/O BEACON AVE S (R7-NP )                                                                                                                                                                                          ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 62296217,
+          "ELMNTKEY": 66322,
+          "DISTANCE": 695,
+          "UNITID": "SGN-958",
+          "SIGNTYPE": "R7-E",
+          "CATEGORY": "PINST",
+          "UNITDESC": "S SNOQUALMIE ST 0170 BLOCK S SIDE ( 682) 227 FT W/O S ALASKA ST (R7-E C/R120S)                                                                                                                                                                                 ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "EAST OF HERE"
+        }
+      }
+    ]
+  }
+}

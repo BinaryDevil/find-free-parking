@@ -1,0 +1,61 @@
+{
+  "url": "https://data.seattle.gov/resource/q2e4-e7e5.json",
+  "count": [
+    {
+      "count": "73770121"
+    }
+  ],
+  "name": "2026 Paid Parking Occupancy",
+  "rowsUpdatedAt": 1775581032,
+  "licenseId": "PUBLIC_DOMAIN",
+  "columns": [
+    {
+      "fieldName": "occupancydatetime",
+      "dataTypeName": "calendar_date"
+    },
+    {
+      "fieldName": "paidoccupancy",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "blockfacename",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "sideofstreet",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "sourceelementkey",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "parkingtimelimitcategory",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "parkingspacecount",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "paidparkingarea",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "paidparkingsubarea",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "paidparkingrate",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "parkingcategory",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "location",
+      "dataTypeName": "point"
+    }
+  ]
+}

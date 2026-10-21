@@ -1,0 +1,736 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:12.428380+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curbspace_Transit_Layover/FeatureServer/0",
+  "name": "Curbspace Transit Layover",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 282
+  },
+  "editingInfo": {
+    "lastEditDate": 1792587249980,
+    "schemaLastEditDate": 1792587249980,
+    "dataLastEditDate": 1792587249980
+  },
+  "description": "Displays curbspace transit layover data maintained by Seattle Department of Transportation.&nbsp;Refresh: Daily&nbsp;Contact: Transit and Mobility team&nbsp;Update:12/4/2025 BKB: Symbology updated via Layer file from Transit and Mobility team",
+  "copyrightText": "City of Seattle, Seattle Department of Transportation",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKID",
+      "type": "esriFieldTypeString",
+      "alias": "BLOCKID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNIQUEID",
+      "type": "esriFieldTypeInteger",
+      "alias": "UNIQUEID",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_ST",
+      "type": "esriFieldTypeInteger",
+      "alias": "BLOCK_ST",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_END",
+      "type": "esriFieldTypeInteger",
+      "alias": "BLOCK_END\n",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WIDTH_OFFSET",
+      "type": "esriFieldTypeInteger",
+      "alias": "WIDTH_OFFSET",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACELENGTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "SPACELENGTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACETYPE",
+      "type": "esriFieldTypeString",
+      "alias": "SPACETYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACETYPEDESC",
+      "type": "esriFieldTypeString",
+      "alias": "SPACETYPEDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACE_NB",
+      "type": "esriFieldTypeString",
+      "alias": "SPACE_NB",
+      "sqlType": "sqlTypeOther",
+      "length": 11,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeDouble",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACEKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "SPACEKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "SEGKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "SIDE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURRENTSTATUSCD",
+      "type": "esriFieldTypeString",
+      "alias": "CURRENTSTATUSCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURRENTSTATUSDT",
+      "type": "esriFieldTypeDate",
+      "alias": "CURRENTSTATUSDT",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "ADDBY",
+      "type": "esriFieldTypeString",
+      "alias": "ADDBY",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ADDDTTM",
+      "type": "esriFieldTypeDate",
+      "alias": "ADDDTTM",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "MODBY",
+      "type": "esriFieldTypeString",
+      "alias": "MODBY",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MODDTTM",
+      "type": "esriFieldTypeDate",
+      "alias": "MODDTTM",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "EXPBY",
+      "type": "esriFieldTypeString",
+      "alias": "EXPBY",
+      "sqlType": "sqlTypeOther",
+      "length": 12,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EXPDATE",
+      "type": "esriFieldTypeDate",
+      "alias": "EXPDATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "STOPSTATUS",
+      "type": "esriFieldTypeString",
+      "alias": "STOPSTATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STOPTYPE",
+      "type": "esriFieldTypeString",
+      "alias": "STOPTYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STOPID",
+      "type": "esriFieldTypeString",
+      "alias": "STOPID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NUMBUSES",
+      "type": "esriFieldTypeInteger",
+      "alias": "NUMBUSES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PARKTYPE",
+      "type": "esriFieldTypeString",
+      "alias": "PARKTYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STARTDAY",
+      "type": "esriFieldTypeString",
+      "alias": "STARTDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ENDDAY",
+      "type": "esriFieldTypeString",
+      "alias": "ENDDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STARTTIME1",
+      "type": "esriFieldTypeDate",
+      "alias": "STARTTIME1",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "ENDTIME1",
+      "type": "esriFieldTypeDate",
+      "alias": "ENDTIME1",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "STARTTIME2",
+      "type": "esriFieldTypeDate",
+      "alias": "STARTTIME2",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "ENDTIME2",
+      "type": "esriFieldTypeDate",
+      "alias": "ENDTIME2",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "PERIOD",
+      "type": "esriFieldTypeString",
+      "alias": "PERIOD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "AGREEMENTYN",
+      "type": "esriFieldTypeString",
+      "alias": "AGREEMENTYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ROUTES",
+      "type": "esriFieldTypeString",
+      "alias": "ROUTES",
+      "sqlType": "sqlTypeOther",
+      "length": 25,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LASTSTOPID",
+      "type": "esriFieldTypeString",
+      "alias": "LASTSTOPID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TROLLEYYN",
+      "type": "esriFieldTypeString",
+      "alias": "TROLLEYYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ACTIVEDT",
+      "type": "esriFieldTypeDate",
+      "alias": "ACTIVEDT",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "COMMENTS",
+      "type": "esriFieldTypeString",
+      "alias": "COMMENTS",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PRIMARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "PRIMARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SECONDARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "SECONDARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDEYN",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDEYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDECOMMENT",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDECOMMENT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SE_ANNO_CAD_DATA",
+      "type": "esriFieldTypeBlob",
+      "alias": "SE_ANNO_CAD_DATA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "e3ade4fddd5a4cb38ae0a068b14be2fd",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792587266000,
+    "licenseInfo": "The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curbspace_Transit_Layover/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SPACETYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SPACETYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeDouble",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTDAY",
+        "type": "esriFieldTypeString",
+        "alias": "STARTDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDDAY",
+        "type": "esriFieldTypeString",
+        "alias": "ENDDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 1,
+          "SPACETYPE": "PS-LAY",
+          "CATEGORY": "PAID",
+          "ELMNTKEY": 31893,
+          "SIDE": "NW",
+          "STARTDAY": " ",
+          "ENDDAY": " "
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 2,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 30093,
+          "SIDE": "W",
+          "STARTDAY": " ",
+          "ENDDAY": " "
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 1281,
+          "SIDE": "W",
+          "STARTDAY": " ",
+          "ENDDAY": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4,
+          "SPACETYPE": "PS-LAY",
+          "CATEGORY": "PAID",
+          "ELMNTKEY": 56690,
+          "SIDE": "SE",
+          "STARTDAY": " ",
+          "ENDDAY": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 5,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 8265,
+          "SIDE": "W",
+          "STARTDAY": "2",
+          "ENDDAY": "6"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 6,
+          "SPACETYPE": "PS-LAY",
+          "CATEGORY": "PAID",
+          "ELMNTKEY": 54953,
+          "SIDE": "NW",
+          "STARTDAY": " ",
+          "ENDDAY": " "
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 7,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 73409,
+          "SIDE": "W",
+          "STARTDAY": " ",
+          "ENDDAY": " "
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 8,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 76402,
+          "SIDE": "NE",
+          "STARTDAY": " ",
+          "ENDDAY": " "
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 9,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 32490,
+          "SIDE": "SE",
+          "STARTDAY": " ",
+          "ENDDAY": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 10,
+          "SPACETYPE": "BUSLAY",
+          "CATEGORY": "BUS",
+          "ELMNTKEY": 47025,
+          "SIDE": "W",
+          "STARTDAY": " ",
+          "ENDDAY": " "
+        }
+      }
+    ]
+  }
+}
