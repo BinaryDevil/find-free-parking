@@ -1,0 +1,3524 @@
+{
+  "DisabilityParking": {
+    "name": "DisabilityParking",
+    "geometryType": "esriGeometryPoint",
+    "objectIdField": "OBJECTID",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CADKEY",
+        "type": "esriFieldTypeString",
+        "alias": "CAD Key",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LAT",
+        "type": "esriFieldTypeString",
+        "alias": "Latitude",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LONG",
+        "type": "esriFieldTypeString",
+        "alias": "Longitude",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STNAME",
+        "type": "esriFieldTypeString",
+        "alias": "Street Name",
+        "sqlType": "sqlTypeOther",
+        "length": 75,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BLOCK",
+        "type": "esriFieldTypeString",
+        "alias": "Block",
+        "sqlType": "sqlTypeOther",
+        "length": 35,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "Side",
+        "sqlType": "sqlTypeOther",
+        "length": 35,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "Type",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SPACES",
+        "type": "esriFieldTypeString",
+        "alias": "Spaces",
+        "sqlType": "sqlTypeOther",
+        "length": 35,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NOTES",
+        "type": "esriFieldTypeString",
+        "alias": "Notes",
+        "sqlType": "sqlTypeOther",
+        "length": 75,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "IMAGEFILE",
+        "type": "esriFieldTypeString",
+        "alias": "Image File",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "URL",
+        "type": "esriFieldTypeString",
+        "alias": "Url",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOCATION",
+        "type": "esriFieldTypeString",
+        "alias": "Location",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DESCRIPTION",
+        "type": "esriFieldTypeString",
+        "alias": "Description",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "REGULATION",
+        "type": "esriFieldTypeString",
+        "alias": "Regulation",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792402057959,
+      "schemaLastEditDate": 1792402054607,
+      "dataLastEditDate": 1792402057959
+    },
+    "serviceItemId": "3046c5fb3fc14ae08b8e8f6f350a2536",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 484606.2163078746,
+      "ymin": 5449859.231802351,
+      "xmax": 498286.33586572524,
+      "ymax": 5459885.236497243,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/DisabilityParking/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 163
+    },
+    "item": {
+      "id": "3046c5fb3fc14ae08b8e8f6f350a2536",
+      "owner": "City_of_Vancouver",
+      "title": "Disability Parking",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/DisabilityParking/FeatureServer",
+      "licenseInfo": "CC BY",
+      "accessInformation": "City of Vancouver",
+      "modified": 1787949403000,
+      "access": "public"
+    }
+  },
+  "ResidentialParkingPermitZones": {
+    "name": "ResidentialParkingPermitZones",
+    "geometryType": "esriGeometryPolygon",
+    "objectIdField": "OBJECTID",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "MAPID",
+        "type": "esriFieldTypeString",
+        "alias": "Map ID",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "Type",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DESCRIPTION",
+        "type": "esriFieldTypeString",
+        "alias": "Description",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NAME",
+        "type": "esriFieldTypeString",
+        "alias": "Name",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "URL",
+        "type": "esriFieldTypeString",
+        "alias": "Url",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PHONE",
+        "type": "esriFieldTypeString",
+        "alias": "Phone",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "EXPIRY_DATE",
+        "type": "esriFieldTypeString",
+        "alias": "Expiry Date",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HOUSEHOLD_LIMIT",
+        "type": "esriFieldTypeString",
+        "alias": "Household Limit",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ANNUAL_PERMIT_FEE",
+        "type": "esriFieldTypeString",
+        "alias": "Annual Permit Fee",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792141931693,
+      "schemaLastEditDate": 1792141926168,
+      "dataLastEditDate": 1792141931693
+    },
+    "serviceItemId": "8295da8234aa459e88f152f762548585",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 484337.34529999946,
+      "ymin": 5450122.810399537,
+      "xmax": 498292.1931,
+      "ymax": 5460199.420999541,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/ResidentialParkingPermitZones/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 535
+    },
+    "item": {
+      "id": "8295da8234aa459e88f152f762548585",
+      "owner": "City_of_Vancouver",
+      "title": "Resident Parking Fees and Zones",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/ResidentialParkingPermitZones/FeatureServer",
+      "licenseInfo": "CC BY",
+      "accessInformation": "City of Vancouver",
+      "modified": 1787949414000,
+      "access": "public"
+    }
+  },
+  "COVCarShareParking": {
+    "name": "COVCarShareParking",
+    "geometryType": "esriGeometryPoint",
+    "objectIdField": "OBJECTID",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CADKEY",
+        "type": "esriFieldTypeString",
+        "alias": "CAD Key",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LAT",
+        "type": "esriFieldTypeDouble",
+        "alias": "Latitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BLOCK",
+        "type": "esriFieldTypeString",
+        "alias": "Block",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "Side",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "COVParkingSide",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Parking Sides",
+          "codedValues": [
+            {
+              "name": "East Side",
+              "code": "East Side"
+            },
+            {
+              "name": "North Side",
+              "code": "North Side"
+            },
+            {
+              "name": "South Side",
+              "code": "South Side"
+            },
+            {
+              "name": "West Side",
+              "code": "West Side"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "COMPANY",
+        "type": "esriFieldTypeString",
+        "alias": "Company",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "COVCspCompany",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Car Share Companies",
+          "codedValues": [
+            {
+              "name": "car2go",
+              "code": "car2go"
+            },
+            {
+              "name": "Evo",
+              "code": "Evo"
+            },
+            {
+              "name": "Modo",
+              "code": "Modo"
+            },
+            {
+              "name": "Various",
+              "code": "Various"
+            },
+            {
+              "name": "Zip Car",
+              "code": "Zip Car"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "Zone",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "COVCspZone",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Car Share Zones",
+          "codedValues": [
+            {
+              "name": "Downtown SEFC",
+              "code": "Downtown SEFC"
+            },
+            {
+              "name": "Merered",
+              "code": "Merered"
+            },
+            {
+              "name": "Metered",
+              "code": "Metered"
+            },
+            {
+              "name": "Metro Core",
+              "code": "Metro Core"
+            },
+            {
+              "name": "Outside Metro Core",
+              "code": "Outside Metro Core"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SPACES",
+        "type": "esriFieldTypeDouble",
+        "alias": "Spaces",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOCATION",
+        "type": "esriFieldTypeString",
+        "alias": "Location",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "IMAGEFILE",
+        "type": "esriFieldTypeString",
+        "alias": "Image File",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "URL",
+        "type": "esriFieldTypeString",
+        "alias": "Url",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LONG",
+        "type": "esriFieldTypeDouble",
+        "alias": "Longitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STNAME",
+        "type": "esriFieldTypeString",
+        "alias": "Street Name",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792137787084,
+      "schemaLastEditDate": 1792137785523,
+      "dataLastEditDate": 1792137787084
+    },
+    "serviceItemId": "546bade02ac1418a87ac6930e82a99bc",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 486533.4454693311,
+      "ymin": -5854662.266568158,
+      "xmax": 2473903.3459259267,
+      "ymax": 5460018.074899902,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/COVCarShareParking/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 99
+    },
+    "item": {
+      "id": "546bade02ac1418a87ac6930e82a99bc",
+      "owner": "City_of_Vancouver",
+      "title": "Car Share Parking",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/COVCarShareParking/FeatureServer",
+      "licenseInfo": "CC BY",
+      "accessInformation": "City of Vancouver",
+      "modified": 1787949441000,
+      "access": "public"
+    }
+  },
+  "RoadAheadHistoricFilmPermits_3820d": {
+    "name": "Road Ahead Historic Film Permits",
+    "geometryType": "esriGeometryPolygon",
+    "objectIdField": "objectid",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeOID",
+        "alias": "Object Id",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "jobid",
+        "type": "esriFieldTypeInteger",
+        "alias": "Job Id",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "permitnumber",
+        "type": "esriFieldTypeString",
+        "alias": "Permit Number",
+        "sqlType": "sqlTypeOther",
+        "length": 40,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "statusdescription",
+        "type": "esriFieldTypeString",
+        "alias": "Status Description",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "permitpurpose",
+        "type": "esriFieldTypeString",
+        "alias": "Permit Purpose",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "trafficimpact",
+        "type": "esriFieldTypeString",
+        "alias": "Traffic Impact",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "giskey",
+        "type": "esriFieldTypeString",
+        "alias": "GIS Key",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "parceltype",
+        "type": "esriFieldTypeString",
+        "alias": "Parcel Type",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "sourcesystem",
+        "type": "esriFieldTypeString",
+        "alias": "Source System",
+        "sqlType": "sqlTypeOther",
+        "length": 7,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "posseobjectid",
+        "type": "esriFieldTypeInteger",
+        "alias": "Posse Object Id",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "enddate",
+        "type": "esriFieldTypeDate",
+        "alias": "End Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "startdate",
+        "type": "esriFieldTypeDate",
+        "alias": "Start Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "completeddate",
+        "type": "esriFieldTypeDate",
+        "alias": "Completed Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "issuedate",
+        "type": "esriFieldTypeDate",
+        "alias": "Issue Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792579131129,
+      "schemaLastEditDate": 1792579124054,
+      "dataLastEditDate": 1792579131129
+    },
+    "serviceItemId": "2a658bdcade644fca3f852d1a3614d52",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 483650.0220963983,
+      "ymin": 5450299.329999538,
+      "xmax": 498279.34099956194,
+      "ymax": 5460090.1229995405,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/RoadAheadHistoricFilmPermits_3820d/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 478
+    },
+    "item": {
+      "id": "2a658bdcade644fca3f852d1a3614d52",
+      "owner": "City_of_Vancouver",
+      "title": "Road Ahead Historic Film Permits",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/RoadAheadHistoricFilmPermits_3820d/FeatureServer",
+      "licenseInfo": null,
+      "accessInformation": null,
+      "modified": 1790202612000,
+      "access": "public"
+    }
+  },
+  "paMeter": {
+    "name": "paMeter",
+    "geometryType": "esriGeometryPoint",
+    "objectIdField": "OBJECTID",
+    "globalIdField": "GlobalID",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "METER_ID",
+        "type": "esriFieldTypeString",
+        "alias": "Meter ID",
+        "sqlType": "sqlTypeOther",
+        "length": 7,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FID_METER",
+        "type": "esriFieldTypeInteger",
+        "alias": "Feature ID",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FID_POST",
+        "type": "esriFieldTypeInteger",
+        "alias": "Post Feature ID",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FID_ZONE",
+        "type": "esriFieldTypeInteger",
+        "alias": "Parking Zone Feature ID",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "MOBILE_PAYMENT_NUMBER",
+        "type": "esriFieldTypeString",
+        "alias": "Mobile Payment Number",
+        "sqlType": "sqlTypeOther",
+        "length": 5,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "VEHICLE_TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "Vehicle Type",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "METER_HEAD",
+        "type": "esriFieldTypeString",
+        "alias": "Meter Head",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DIRECTION",
+        "type": "esriFieldTypeString",
+        "alias": "Direction",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "METER_MANUFACTURER",
+        "type": "esriFieldTypeString",
+        "alias": "Meter Manufacturer",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "METER_MECHANISM",
+        "type": "esriFieldTypeString",
+        "alias": "Meter Mechanism",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SERVICE_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "Service Status",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CREDIT_CARD",
+        "type": "esriFieldTypeString",
+        "alias": "Credit Card",
+        "sqlType": "sqlTypeOther",
+        "length": 5,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SECTOR",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "Sector",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RATE_CODE_9A_6P",
+        "type": "esriFieldTypeString",
+        "alias": "Rate Code 9AM-6PM",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": "A"
+      },
+      {
+        "name": "RATE_9A_6P",
+        "type": "esriFieldTypeString",
+        "alias": "Rate 9AM-6PM",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TIME_LIMIT_9A_6P",
+        "type": "esriFieldTypeString",
+        "alias": "Time Limit 9AM-6PM",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RATE_CODE_6P_10P",
+        "type": "esriFieldTypeString",
+        "alias": "Rate Code 6PM-10PM",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": "A"
+      },
+      {
+        "name": "RATE_6P_10P",
+        "type": "esriFieldTypeString",
+        "alias": "Rate 6PM-10PM",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TIME_LIMIT_6P_10P",
+        "type": "esriFieldTypeString",
+        "alias": "Time Limit 6PM-10PM",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TIME_LIMIT_WEEKEND_9A_6P",
+        "type": "esriFieldTypeString",
+        "alias": "Weekend Time Limit 9AM-6PM",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TIME_LIMIT_WEEKEND_6P_10P",
+        "type": "esriFieldTypeString",
+        "alias": "Weekend Time Limit 6PM-10PM",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FLAT_RATE",
+        "type": "esriFieldTypeString",
+        "alias": "Flat Rate",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "AM_RUSH_HOURS",
+        "type": "esriFieldTypeString",
+        "alias": "AM Rush Hours",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PM_RUSH_HOURS",
+        "type": "esriFieldTypeString",
+        "alias": "PM Rush Hours",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_1_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition 1 Zone",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_1_TIME",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition 1 Time",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_1_DAYS",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition 1 Days",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_2_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition 2 Zone",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_2_TIME",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition 2 Time",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_2_DAYS",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition 2 Days",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TIME_LIMIT_OVERRIDE",
+        "type": "esriFieldTypeString",
+        "alias": "Time Limit Override",
+        "sqlType": "sqlTypeOther",
+        "length": 5,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PROHIBITION_OVERRIDE",
+        "type": "esriFieldTypeString",
+        "alias": "Prohibition Override",
+        "sqlType": "sqlTypeOther",
+        "length": 5,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792575226539,
+      "schemaLastEditDate": 1792575199131,
+      "dataLastEditDate": 1792575226539
+    },
+    "serviceItemId": "26ebe8ae6af1418e82a303b66f1a1c60",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 484407.08311185776,
+      "ymin": 5450872.22918209,
+      "xmax": 497622.659452454,
+      "ymax": 5460055.438700647,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 3523
+    },
+    "item": {
+      "id": "26ebe8ae6af1418e82a303b66f1a1c60",
+      "owner": "City_of_Vancouver",
+      "title": "Parking Meter",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer",
+      "licenseInfo": "CC BY",
+      "accessInformation": "City of Vancouver",
+      "modified": 1787949408000,
+      "access": "public"
+    }
+  },
+  "COVMotorcycleParkingNonMetered": {
+    "name": "COVMotorcycleParkingNonMetered",
+    "geometryType": "esriGeometryPoint",
+    "objectIdField": "OBJECTID",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "MAPID",
+        "type": "esriFieldTypeString",
+        "alias": "Map ID",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOCATION",
+        "type": "esriFieldTypeString",
+        "alias": "Location",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LAT",
+        "type": "esriFieldTypeDouble",
+        "alias": "Latitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TIMELIMIT",
+        "type": "esriFieldTypeString",
+        "alias": "Time Limit",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RUSHREG",
+        "type": "esriFieldTypeString",
+        "alias": "Rush Reg",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BLOCK",
+        "type": "esriFieldTypeString",
+        "alias": "Block",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NOTES",
+        "type": "esriFieldTypeString",
+        "alias": "Notes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LONG",
+        "type": "esriFieldTypeDouble",
+        "alias": "Longitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NEARESTINT",
+        "type": "esriFieldTypeString",
+        "alias": "Nearest Intersection",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STREET",
+        "type": "esriFieldTypeString",
+        "alias": "Street",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792402494477,
+      "schemaLastEditDate": 1792402493519,
+      "dataLastEditDate": 1792402494477
+    },
+    "serviceItemId": "78ab0a723cd948748afa746cf91a9aff",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 484996.3934000711,
+      "ymin": 5450902.854781478,
+      "xmax": 498185.2747637054,
+      "ymax": 5459804.552295631,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/COVMotorcycleParkingNonMetered/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 86
+    },
+    "item": {
+      "id": "78ab0a723cd948748afa746cf91a9aff",
+      "owner": "City_of_Vancouver",
+      "title": "Motorcycle Parking (Non-Metered)",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/COVMotorcycleParkingNonMetered/FeatureServer",
+      "licenseInfo": "CC BY",
+      "accessInformation": "City of Vancouver",
+      "modified": 1787949657000,
+      "access": "public"
+    }
+  },
+  "Road_Ahead_View": {
+    "name": "Road Ahead",
+    "geometryType": "esriGeometryPolygon",
+    "objectIdField": "objectid",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeOID",
+        "alias": "Object Id",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "eventstatus",
+        "type": "esriFieldTypeString",
+        "alias": "Event Status",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "eventtype",
+        "type": "esriFieldTypeString",
+        "alias": "Event Type",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "externalagency",
+        "type": "esriFieldTypeString",
+        "alias": "External Agency",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "locationdescription",
+        "type": "esriFieldTypeString",
+        "alias": "Location Description",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "organization",
+        "type": "esriFieldTypeString",
+        "alias": "Organization",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "projectstatus",
+        "type": "esriFieldTypeString",
+        "alias": "Project Status",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "publisheddescription",
+        "type": "esriFieldTypeString",
+        "alias": "Published Description",
+        "sqlType": "sqlTypeOther",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "scheduledescription",
+        "type": "esriFieldTypeString",
+        "alias": "Schedule Description",
+        "sqlType": "sqlTypeOther",
+        "length": 1024,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "schedulestartdate",
+        "type": "esriFieldTypeDate",
+        "alias": "Schedule Start Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "scheduleenddate",
+        "type": "esriFieldTypeDate",
+        "alias": "Schedule End Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "securitylevel",
+        "type": "esriFieldTypeString",
+        "alias": "Security Level",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "title",
+        "type": "esriFieldTypeString",
+        "alias": "Title",
+        "sqlType": "sqlTypeOther",
+        "length": 2000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "trafficimpact",
+        "type": "esriFieldTypeString",
+        "alias": "Traffic Impact",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "publishedurl",
+        "type": "esriFieldTypeString",
+        "alias": "Published Url",
+        "sqlType": "sqlTypeOther",
+        "length": 2000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "today",
+        "type": "esriFieldTypeString",
+        "alias": "Today",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "tomorrow",
+        "type": "esriFieldTypeString",
+        "alias": "Tomorrow",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "weekend",
+        "type": "esriFieldTypeString",
+        "alias": "Weekend",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "nextsevendays",
+        "type": "esriFieldTypeString",
+        "alias": "Next Seven Days",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "filteredclosures",
+        "type": "esriFieldTypeString",
+        "alias": "Filtered Closures",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "closuretype",
+        "type": "esriFieldTypeString",
+        "alias": "Closure Type",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "planitid",
+        "type": "esriFieldTypeString",
+        "alias": "Planit Id",
+        "sqlType": "sqlTypeOther",
+        "length": 36,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "scheduleserialized",
+        "type": "esriFieldTypeString",
+        "alias": "Schedule Serialized",
+        "sqlType": "sqlTypeOther",
+        "length": 2147483647,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "publisheddate",
+        "type": "esriFieldTypeDate",
+        "alias": "Published Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "updateddate",
+        "type": "esriFieldTypeDate",
+        "alias": "Updated Date",
+        "sqlType": "sqlTypeOther",
+        "length": 29,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "citycontacts",
+        "type": "esriFieldTypeString",
+        "alias": "City Contacts",
+        "sqlType": "sqlTypeOther",
+        "length": 2000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "applicantcontacts",
+        "type": "esriFieldTypeString",
+        "alias": "Applicant Contacts",
+        "sqlType": "sqlTypeOther",
+        "length": 2000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1792617575643,
+      "schemaLastEditDate": 1790136938967,
+      "dataLastEditDate": 1792617575643
+    },
+    "serviceItemId": "2e046092989d4a849c9afa44b6b5ecdc",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": 483705.16899999976,
+      "ymin": 5449090.386711762,
+      "xmax": 498444.7339484667,
+      "ymax": 5460209.525356037,
+      "spatialReference": {
+        "wkid": 26910,
+        "latestWkid": 26910
+      }
+    },
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/Road_Ahead_View/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 750
+    },
+    "item": {
+      "id": "2e046092989d4a849c9afa44b6b5ecdc",
+      "owner": "City_of_Vancouver",
+      "title": "Road Ahead View",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/Road_Ahead_View/FeatureServer",
+      "licenseInfo": null,
+      "accessInformation": null,
+      "modified": 1790135661000,
+      "access": "public"
+    }
+  },
+  "motorcycle-parking": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/motorcycle-parking",
+    "retrieved": "2026-10-21T21:22:16.684658+00:00",
+    "count": 224,
+    "modified": "2026-10-19T13:31:20+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "street",
+        "description": null,
+        "annotations": {},
+        "label": "Street",
+        "type": "text"
+      },
+      {
+        "name": "block",
+        "description": null,
+        "annotations": {},
+        "label": "Block",
+        "type": "int"
+      },
+      {
+        "name": "local_area",
+        "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+        "annotations": {},
+        "label": "Local Area",
+        "type": "text"
+      },
+      {
+        "name": "rush_hour_regulation",
+        "description": "Rush Hour Regulation",
+        "annotations": {},
+        "label": "Rush Hour Regulation",
+        "type": "text"
+      },
+      {
+        "name": "time_limit",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit",
+        "type": "text"
+      },
+      {
+        "name": "service_status",
+        "description": null,
+        "annotations": {},
+        "label": "Service Status",
+        "type": "text"
+      },
+      {
+        "name": "meter_id",
+        "description": "Unique identifier generated by system",
+        "annotations": {},
+        "label": "Meter ID",
+        "type": "text"
+      },
+      {
+        "name": "credit_card",
+        "description": "Credit Card Enabled",
+        "annotations": {},
+        "label": "Credit Card",
+        "type": "text"
+      },
+      {
+        "name": "mobile_payment_number",
+        "description": null,
+        "annotations": {},
+        "label": "Mobile Payment Number",
+        "type": "int"
+      },
+      {
+        "name": "sector",
+        "description": null,
+        "annotations": {},
+        "label": "Sector",
+        "type": "int"
+      },
+      {
+        "name": "direction",
+        "description": null,
+        "annotations": {},
+        "label": "Direction",
+        "type": "text"
+      },
+      {
+        "name": "meter_head",
+        "description": "Meter Head Type",
+        "annotations": {},
+        "label": "Meter Head",
+        "type": "text"
+      },
+      {
+        "name": "rate_9am_6pm",
+        "description": "Rate 9AM - 6PM",
+        "annotations": {},
+        "label": "Rate 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "rate_code_9am_6pm",
+        "description": "Rate Code 9AM - 6PM",
+        "annotations": {},
+        "label": "Rate Code 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "rate_6pm_10pm",
+        "description": "Rate 6PM - 10PM",
+        "annotations": {},
+        "label": "Rate 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "rate_code_6pm_10pm",
+        "description": "Rate Code 6PM - 10PM",
+        "annotations": {},
+        "label": "Rate Code 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "flat_rate",
+        "description": null,
+        "annotations": {},
+        "label": "Flat Rate",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_9am_6pm",
+        "description": "Time Limit Mon-Fri 9AM to 6PM",
+        "annotations": {},
+        "label": "Time Limit 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_6pm_10pm",
+        "description": "Time Limit Mon-Fri 6PM to 10PM",
+        "annotations": {},
+        "label": "Time Limit 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_weekend_9am_6pm",
+        "description": "Time Limit Weekend 9AM - 6PM",
+        "annotations": {},
+        "label": "Time Limit Weekend 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_weekend_6pm_10pm",
+        "description": "Time Limit Weekend 6PM - 10PM",
+        "annotations": {},
+        "label": "Time Limit Weekend 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_override",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit Override",
+        "type": "text"
+      },
+      {
+        "name": "am_rush_hours",
+        "description": null,
+        "annotations": {},
+        "label": "AM Rush Hours",
+        "type": "text"
+      },
+      {
+        "name": "pm_rush_hours",
+        "description": null,
+        "annotations": {},
+        "label": "PM Rush Hours",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_1_days",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 1 Days",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_1_time",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 1 Time",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_1_zone",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 1 Zone",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_2_days",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 2 Days",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_2_time",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 2 Time",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_2_zone",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 2 Zone",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_override",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition Override",
+        "type": "text"
+      },
+      {
+        "name": "feature_id",
+        "description": null,
+        "annotations": {},
+        "label": "Feature ID",
+        "type": "int"
+      },
+      {
+        "name": "post_feature_id",
+        "description": null,
+        "annotations": {},
+        "label": "Post Feature ID",
+        "type": "int"
+      },
+      {
+        "name": "meter_mechanism",
+        "description": null,
+        "annotations": {},
+        "label": "Meter Mechanism",
+        "type": "text"
+      },
+      {
+        "name": "meter_manufacturer",
+        "description": null,
+        "annotations": {},
+        "label": "Meter Manufacturer",
+        "type": "text"
+      },
+      {
+        "name": "parking_zone_feature_id",
+        "description": null,
+        "annotations": {},
+        "label": "Parking Zone Feature ID",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>This data shows the approximate locations of on-street parking for motorcycles.  </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database.  The extract on this web site is updated weekly.  </p></div> <h3>Data accuracy</h3><div><p>The locations shown are approximate; some icons may show as being in a parcel but the actual location of the motorcycle parking is on the street.</p></div> ",
+    "geometry": [
+      "Point"
+    ]
+  },
+  "road-ahead-current-road-closures": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/road-ahead-current-road-closures",
+    "retrieved": "2026-10-21T21:22:16.799622+00:00",
+    "count": 23,
+    "modified": "2026-09-17T13:31:44+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "project",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "PROJECT",
+        "type": "text"
+      },
+      {
+        "name": "street",
+        "description": null,
+        "annotations": {},
+        "label": "STREET",
+        "type": "text"
+      },
+      {
+        "name": "location",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "LOCATION",
+        "type": "text"
+      },
+      {
+        "name": "comp_date",
+        "description": null,
+        "annotations": {
+          "facet": true,
+          "timerangeFilter": true
+        },
+        "label": "COMP_DATE",
+        "type": "date"
+      },
+      {
+        "name": "url_link",
+        "description": null,
+        "annotations": {},
+        "label": "URL_LINK",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>This dataset is one of three that provides information on construction activity and projects that may affect the flow of traffic in the City.  This dataset describes current road closures. The others are for projects currently under construction,\u00a0and upcoming projects. All will affect the flow of traffic. </p><h3>Additional data access options\u00a0</h3><p>Road Ahead data are also available as\u00a0a data feed, updated hourly from 7am to 7pm Monday to Friday:</p><div><ul><li>Atom feed <a href=\"https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml\">https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml</a></li><li>GeoRSS feed <a href=\"https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml\">https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml</a></li></ul></div></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database. The extract on this web site is updated daily with the exception of the Atom feeds which are updated hourly from 7am to 7pm Monday to Friday.</p></div> <h3>Data accuracy</h3><div><p>Locations are tied to street segments and may not show the exact location of the work being, or to be, done.</p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://vancouver.ca/streets-transportation/roadwork.aspx\">Road construction and improvements</a></li><li><a href=\"http://vancouver.ca/streets-transportation/traffic-control-for-road-construction.aspx\">Traffic control for road construction</a></li></ul></div>",
+    "geometry": [
+      "LineString",
+      "MultiLineString"
+    ]
+  },
+  "disability-parking": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/disability-parking",
+    "retrieved": "2026-10-21T21:22:16.799817+00:00",
+    "count": 163,
+    "modified": "2026-08-24T13:30:39+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "object_id",
+        "description": null,
+        "annotations": {},
+        "label": "Object ID",
+        "type": "int"
+      },
+      {
+        "name": "location",
+        "description": null,
+        "annotations": {},
+        "label": "Location",
+        "type": "text"
+      },
+      {
+        "name": "geo_local_area",
+        "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas). For more details, see the Local area boundary data set.",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Geo Local Area",
+        "type": "text"
+      },
+      {
+        "name": "street_name",
+        "description": null,
+        "annotations": {},
+        "label": "Street Name",
+        "type": "text"
+      },
+      {
+        "name": "block",
+        "description": null,
+        "annotations": {},
+        "label": "Block",
+        "type": "int"
+      },
+      {
+        "name": "type",
+        "description": null,
+        "annotations": {},
+        "label": "Type",
+        "type": "text"
+      },
+      {
+        "name": "description",
+        "description": null,
+        "annotations": {
+          "facet": true
+        },
+        "label": "Description",
+        "type": "text"
+      },
+      {
+        "name": "spaces",
+        "description": null,
+        "annotations": {},
+        "label": "Spaces",
+        "type": "int"
+      },
+      {
+        "name": "side",
+        "description": null,
+        "annotations": {},
+        "label": "Side",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of parking location",
+        "annotations": {},
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><div>\n</div><div><p>Designated accessibility parking zones and accessibility meter spaces are located in commercial districts and high-density residential areas throughout Vancouver, with new spaces being added every year. In deciding where to install accessibility zones, we look for spaces or metered spaces that are easier for people with accessibility issues to access. Any vehicle displaying a permit for people with accessibility issues (a SPARC placard or recognized equivalent) may use them. Accessibility zones are identified with signs displaying the universal disability symbol and disability meters are identified with blue meter heads as well as signs.</p></div></div> <h3>Data currency</h3><div><div>\n<p>The extract for this dataset is updated weekly.  There may be no change in data content from one week to the next because there is no change in source data.  Priorities and resources will also determine how fast a change in reality is reflected in the database.</p></div></div> <h3>Data accuracy</h3><div><div><p>This data has not been created with survey accuracy.</p></div></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://vancouver.ca/streets-transportation/accessible-parking-rules.aspx\">Accessible parking</a></li></ul></div>",
+    "geometry": [
+      "Point"
+    ]
+  },
+  "road-ahead-projects-under-construction": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/road-ahead-projects-under-construction",
+    "retrieved": "2026-10-21T21:22:16.800002+00:00",
+    "count": 68,
+    "modified": "2026-09-17T13:31:46+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "geom",
+        "description": "Spatial representation of feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "project",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "PROJECT",
+        "type": "text"
+      },
+      {
+        "name": "street",
+        "description": null,
+        "annotations": {},
+        "label": "STREET",
+        "type": "text"
+      },
+      {
+        "name": "location",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "LOCATION",
+        "type": "text"
+      },
+      {
+        "name": "comp_date",
+        "description": null,
+        "annotations": {
+          "facet": true,
+          "facetsort": "-alphanum",
+          "timerangeFilter": true
+        },
+        "label": "COMP_DATE",
+        "type": "date"
+      },
+      {
+        "name": "url_link",
+        "description": null,
+        "annotations": {},
+        "label": "URL_LINK",
+        "type": "text"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>This dataset is one of three that provides information on construction activity and projects that may affect the flow of traffic in the City. This dataset describes projects currently under\u00a0construction. The others are for current road closures, and upcoming projects. All will affect the flow of traffic.</p><h3>Additional data access options</h3><p>Road Ahead data are also available as a data feed, updated hourly from 7am to 7pm Monday to Friday:</p><ul><li>Atom feed \n            <a href=\"https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml\">https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml</a></li><li>GeoRSS feed \n            <a href=\"https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml\">https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml</a></li></ul></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database. The extract on this web site is updated daily with the exception of the Atom feeds which are updated hourly from 7am to 7pm Monday to Friday.</p></div> <h3>Data accuracy</h3><div><p>Locations are tied to street segments and may not show the exact location of the work being, or to be, done.</p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://vancouver.ca/streets-transportation/roadwork.aspx\">Road construction and improvements</a></li><li><a href=\"http://vancouver.ca/streets-transportation/traffic-control-for-road-construction.aspx\">Traffic control for road construction</a></li></ul></div>",
+    "geometry": [
+      "GeometryCollection",
+      "LineString",
+      "MultiLineString"
+    ]
+  },
+  "parking-meters": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters",
+    "retrieved": "2026-10-21T21:22:16.800194+00:00",
+    "count": 3523,
+    "modified": "2026-10-19T13:31:55+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "object_id",
+        "description": null,
+        "annotations": {},
+        "label": "Object ID",
+        "type": "text"
+      },
+      {
+        "name": "meter_id",
+        "description": "Unique identifier generated by system",
+        "annotations": {},
+        "label": "Meter ID",
+        "type": "text"
+      },
+      {
+        "name": "service_status",
+        "description": null,
+        "annotations": {},
+        "label": "Service Status",
+        "type": "text"
+      },
+      {
+        "name": "meter_head",
+        "description": "Meter Head Type",
+        "annotations": {},
+        "label": "Meter Head",
+        "type": "text"
+      },
+      {
+        "name": "credit_card",
+        "description": "Credit Card Enabled",
+        "annotations": {},
+        "label": "Credit Card",
+        "type": "text"
+      },
+      {
+        "name": "mobile_payment_number",
+        "description": null,
+        "annotations": {},
+        "label": "Mobile Payment Number",
+        "type": "int"
+      },
+      {
+        "name": "local_area",
+        "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+        "annotations": {},
+        "label": "Local Area",
+        "type": "text"
+      },
+      {
+        "name": "sector",
+        "description": null,
+        "annotations": {},
+        "label": "Sector",
+        "type": "int"
+      },
+      {
+        "name": "direction",
+        "description": null,
+        "annotations": {},
+        "label": "Direction",
+        "type": "text"
+      },
+      {
+        "name": "rate_9am_6pm",
+        "description": "Rate 9AM - 6PM",
+        "annotations": {},
+        "label": "Rate 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "rate_6pm_10pm",
+        "description": "Rate 6PM - 10PM",
+        "annotations": {},
+        "label": "Rate 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "flat_rate",
+        "description": null,
+        "annotations": {},
+        "label": "Flat Rate",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_9am_6pm",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_6pm_10pm",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_weekend_9am_6pm",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit Weekend 9AM - 6PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_weekend_6pm_10pm",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit Weekend 6PM - 10PM",
+        "type": "text"
+      },
+      {
+        "name": "time_limit_override",
+        "description": null,
+        "annotations": {},
+        "label": "Time Limit Override",
+        "type": "text"
+      },
+      {
+        "name": "am_rush_hours",
+        "description": null,
+        "annotations": {},
+        "label": "AM Rush Hours",
+        "type": "text"
+      },
+      {
+        "name": "pm_rush_hours",
+        "description": null,
+        "annotations": {},
+        "label": "PM Rush Hours",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_1_days",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 1 Days",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_1_time",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 1 Time",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_1_zone",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 1 Zone",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_2_days",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 2 Days",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_2_time",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 2 Time",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_2_zone",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition 2 Zone",
+        "type": "text"
+      },
+      {
+        "name": "prohibition_override",
+        "description": null,
+        "annotations": {},
+        "label": "Prohibition Override",
+        "type": "text"
+      },
+      {
+        "name": "vehicle_type",
+        "description": null,
+        "annotations": {},
+        "label": "Vehicle Type",
+        "type": "text"
+      },
+      {
+        "name": "feature_id",
+        "description": null,
+        "annotations": {},
+        "label": "Feature ID",
+        "type": "int"
+      },
+      {
+        "name": "post_feature_id",
+        "description": null,
+        "annotations": {},
+        "label": "Post Feature ID",
+        "type": "int"
+      },
+      {
+        "name": "meter_mechanism",
+        "description": null,
+        "annotations": {},
+        "label": "Meter Mechanism",
+        "type": "text"
+      },
+      {
+        "name": "meter_manufacturer",
+        "description": null,
+        "annotations": {},
+        "label": "Meter Manufacturer",
+        "type": "text"
+      },
+      {
+        "name": "parking_zone_feature_id",
+        "description": null,
+        "annotations": {},
+        "label": "Parking Zone Feature ID",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of meter location",
+        "annotations": {},
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>This dataset contains information on the rates and time limits for parking meters in the City.  Information is shown at the block level rather than for the individual meter.</p></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database.  The extract on this web site is updated weekly.  </p></div> <h3>Data accuracy</h3><div><p>Locations are shown for entire block faces however that does not mean that there are parking meters along the entire block face.</p></div> ",
+    "geometry": [
+      "Point"
+    ]
+  },
+  "ubc-meter": {
+    "name": "Parking_Meters",
+    "geometryType": "esriGeometryPoint",
+    "objectIdField": "FID",
+    "globalIdField": "",
+    "fields": [
+      {
+        "name": "FID",
+        "type": "esriFieldTypeOID",
+        "actualType": "int",
+        "alias": "FID",
+        "sqlType": "sqlTypeInteger",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "meterhead",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "meterhead",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "r_mf_9a_6p",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "r_mf_9a_6p",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "r_mf_6p_10",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "r_mf_6p_10",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "r_sa_9a_6p",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "r_sa_9a_6p",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "r_sa_6p_10",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "r_sa_6p_10",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "r_su_9a_6p",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "r_su_9a_6p",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "r_su_6p_10",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "r_su_6p_10",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "rate_misc",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "rate_misc",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "timeineffe",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "timeineffe",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "t_mf_9a_6p",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "t_mf_9a_6p",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "t_mf_6p_10",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "t_mf_6p_10",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "t_sa_9a_6p",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "t_sa_9a_6p",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "t_sa_6p_10",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "t_sa_6p_10",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "t_su_9a_6p",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "t_su_9a_6p",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "t_su_6p_10",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "t_su_6p_10",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "time_misc",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "time_misc",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "creditcard",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "creditcard",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "pay_phone",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "pay_phone",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "geo_local_",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "geo_local_",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "meterid",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "meterid",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "editingInfo": {
+      "lastEditDate": 1649638325681,
+      "schemaLastEditDate": 1649638325681,
+      "dataLastEditDate": 1649638325681
+    },
+    "serviceItemId": "549dcd4044fb4c8f80fa0b06ac652852",
+    "copyrightText": "",
+    "description": "",
+    "extent": {
+      "xmin": -13715875.299409114,
+      "ymin": 6310688.102652779,
+      "xmax": -13695932.53867116,
+      "ymax": 6324774.202263745,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "url": "https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/Parking_Meters/FeatureServer/0?f=pjson",
+    "count_response": {
+      "count": 7946
+    },
+    "item": {
+      "id": "549dcd4044fb4c8f80fa0b06ac652852",
+      "owner": "cruhland_UBC",
+      "title": "Parking Meters",
+      "url": "https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/Parking_Meters/FeatureServer",
+      "licenseInfo": null,
+      "accessInformation": null,
+      "modified": 1649638347000,
+      "access": "public"
+    }
+  },
+  "olympic-transportation-plan-parking-restrictions": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/olympic-transportation-plan-parking-restrictions",
+    "retrieved": "2026-10-21T21:22:19.658188+00:00",
+    "count": 25,
+    "modified": "2016-06-26T09:30:08+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "bi_id",
+        "description": "Key field added during import to data warehouse",
+        "annotations": {},
+        "label": "BI_ID",
+        "type": "int"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "in_effect",
+        "description": null,
+        "annotations": {},
+        "label": "IN_EFFECT",
+        "type": "text"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>This dataset contains the\u00a0parking restriction\u00a0areas as part of the 2010 Olympic Transportation Plan.</p><p>\u200bThe Olympic Transportation Plan areas are only in effect for the Olympic period\u2014specific dates vary from area to area.</p></div> <h3>Data accuracy</h3><div><p>\u200bTransportation Plan components follow streets or other areas so they are approximate.</p></div> ",
+    "geometry": [
+      "LineString"
+    ]
+  },
+  "road-ahead-upcoming-projects": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/road-ahead-upcoming-projects",
+    "retrieved": "2026-10-21T21:22:20.854778+00:00",
+    "count": 199,
+    "modified": "2026-09-17T13:31:48+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "project",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "PROJECT",
+        "type": "text"
+      },
+      {
+        "name": "street",
+        "description": null,
+        "annotations": {},
+        "label": "STREET",
+        "type": "text"
+      },
+      {
+        "name": "location",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "LOCATION",
+        "type": "text"
+      },
+      {
+        "name": "comp_date",
+        "description": null,
+        "annotations": {
+          "facet": true,
+          "timerangeFilter": true
+        },
+        "label": "COMP_DATE",
+        "type": "date"
+      },
+      {
+        "name": "url_link",
+        "description": null,
+        "annotations": {},
+        "label": "URL_LINK",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>This dataset is one of three that provides information on construction activity and projects that may affect the flow of traffic in the City. This dataset describes upcoming projects. The others are for projects currently under construction, and current road closures. All will affect the flow of traffic. </p><h3>Additional data access options</h3>\n<p>Road Ahead data are also available as a data feed, updated hourly from 7am to 7pm Monday to Friday:</p><ul><li>Atom feed <a href=\"https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml\">https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml</a></li><li>GeoRSS feed <a href=\"https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml\">https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml</a></li></ul></div> <h3>Data currency</h3><div><p>This data in City systems is updated in the normal course of business, however priorities and resources determine how fast a change in reality is reflected in the database. The extract on this web site is updated daily with the exception of the Atom feeds which are updated hourly from 7am to 7pm Monday to Friday.</p></div> <h3>Data accuracy</h3><div><p>Locations are tied to street segments and may not show the exact location of the work being, or to be, done.</p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://vancouver.ca/streets-transportation/roadwork.aspx\">Road construction and improvements</a></li><li><a href=\"http://vancouver.ca/streets-transportation/traffic-control-for-road-construction.aspx\">Traffic control for road construction</a></li></ul></div>",
+    "geometry": [
+      "GeometryCollection",
+      "LineString",
+      "MultiLineString",
+      "Point"
+    ]
+  },
+  "parking-tickets-2020-2025": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2020-2025",
+    "retrieved": "2026-10-21T21:22:21.370009+00:00",
+    "count": 2472917,
+    "modified": "2026-06-01T23:08:21+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "block",
+        "description": "Block level of the street where the infraction occurred.",
+        "annotations": {},
+        "label": "Block",
+        "type": "int"
+      },
+      {
+        "name": "street",
+        "description": "Name of the street where the infraction occurred",
+        "annotations": {},
+        "label": "Street",
+        "type": "text"
+      },
+      {
+        "name": "entrydate",
+        "description": "Date the infraction occurred",
+        "annotations": {},
+        "label": "EntryDate",
+        "type": "date"
+      },
+      {
+        "name": "bylaw",
+        "description": "Specific parking bylaw which the parking ticket was issued under",
+        "annotations": {},
+        "label": "Bylaw",
+        "type": "int"
+      },
+      {
+        "name": "section",
+        "description": "Specific section of the bylaw which the infraction pertains",
+        "annotations": {},
+        "label": "Section",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "description": "Status of the parking ticket.\nCA = One time courtesy cancellation (no longer exists), IS = Issued, RA = Cancelled due to Paid by Phone, VA = Void, VR = Void request, VS = Auto-void, WR = Warning",
+        "annotations": {},
+        "label": "Status",
+        "type": "text"
+      },
+      {
+        "name": "infractiontext",
+        "description": "Description of the infraction",
+        "annotations": {},
+        "label": "InfractionText",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "description": "Year the infraction occurred",
+        "annotations": {},
+        "label": "Year",
+        "type": "text"
+      },
+      {
+        "name": "bi_id",
+        "description": "Key field added during import to data warehouse",
+        "annotations": {},
+        "label": "BI_ID",
+        "type": "int"
+      }
+    ],
+    "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, from 2020 to 2025. </p><p>Due to platform limitation, records from other years need to split into multiple datasets. See \n      <a href=\"https://opendata.vancouver.ca/explore/?disjunctive.features&amp;disjunctive.theme&amp;disjunctive.keyword&amp;disjunctive.data-owner&amp;disjunctive.data-team&amp;sort=modified&amp;q=parking+tickets\">other parking tickets datasets</a> for data starting from 2010.</p><p>\n<strong>Notes:</strong>\u00a0</p><div><ul><li>This dataset also includes water tickets that are issued by the branch</li><li>This dataset does not include parking tickets issued by Vancouver Police Department</li><li>Ticket issued location information was aggregated to 100-block unit level.\u200b</li><li>Testing in production may result in test record</li><li>Effective April 30, 2018, data files starting from year 2011 have been updated to reflect change in new software platform.\u200b\u200b</li></ul></div></div> <h3>Data currency</h3><div><p>The data for past years is static</p></div> <h3>Data accuracy</h3><div><p>\u200bData is based on infraction occurred date and does not show current status of a parking ticket or changes after the ticket is originally issued.</p></div> <h3>Websites for further information</h3><div><ul><li>\n<a href=\"http://app.vancouver.ca/bylaw_net/ConsolidatedReport.aspx?bylawid=2952&amp;txtSearch=2952\">Parking ByLaws</a></li><li>\n<a href=\"http://vancouver.ca/streets-transportation/tickets-towing-and-regulations.aspx\">Tickets and towing</a></li>\n</ul></div>",
+    "geometry": null
+  },
+  "parking-tickets": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets",
+    "retrieved": "2026-10-21T21:22:21.414310+00:00",
+    "count": 357691,
+    "modified": "2026-10-15T13:54:50+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "block",
+        "description": "Block level of the street where the infraction occurred.",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Block",
+        "type": "int"
+      },
+      {
+        "name": "street",
+        "description": "Name of the street where the infraction occurred",
+        "annotations": {
+          "sortable": true
+        },
+        "label": "Street",
+        "type": "text"
+      },
+      {
+        "name": "entrydate",
+        "description": "Date the infraction occurred",
+        "annotations": {
+          "facet": true
+        },
+        "label": "EntryDate",
+        "type": "date"
+      },
+      {
+        "name": "bylaw",
+        "description": "Specific parking bylaw which the parking ticket was issued under",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Bylaw",
+        "type": "int"
+      },
+      {
+        "name": "section",
+        "description": "Specific section of the bylaw which the infraction pertains",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Section",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "description": "Status of the parking ticket.\nCA = One time courtesy cancellation (no longer exists), IS = Issued, RA = Cancelled due to Paid by Phone, VA = Void, VR = Void request, VS = Auto-void, WR = Warning",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Status",
+        "type": "text"
+      },
+      {
+        "name": "infractiontext",
+        "description": "Description of the infraction",
+        "annotations": {
+          "facet": true
+        },
+        "label": "InfractionText",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "description": "Year the infraction occurred",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Year",
+        "type": "text"
+      },
+      {
+        "name": "bi_id",
+        "description": "Key field added during import to data warehouse",
+        "annotations": {},
+        "label": "BI_ID",
+        "type": "int"
+      }
+    ],
+    "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, starting from 2020. </p><p>Due to platform limitation, records from previous years need to split into multiple datasets. See \n      <a href=\"https://opendata.vancouver.ca/explore/?disjunctive.features&amp;disjunctive.theme&amp;disjunctive.keyword&amp;disjunctive.data-owner&amp;disjunctive.data-team&amp;sort=modified&amp;q=parking+tickets\">other parking tickets datasets</a> for data starting from 2010.</p><p>\n<strong>Notes:</strong>\u00a0</p><div><ul><li>This dataset also includes water tickets that are issued by the branch</li><li>This dataset does not include parking tickets issued by Vancouver Police Department</li><li>Ticket issued location information was aggregated to 100-block unit level.\u200b</li><li>Testing in production may result in test record</li><li>Effective April 30, 2018, data files starting from year 2011 have been updated to reflect change in new software platform.\u200b\u200b</li></ul></div></div> <h3>Data currency</h3><div><p>\u200bThe extract on this website is updated quarterly.</p></div> <h3>Data accuracy</h3><div><p>\u200bData is based on infraction occurred date and does not show current status of a parking ticket or changes after the ticket is originally issued.</p></div> <h3>Websites for further information</h3><div><ul><li>\n<a href=\"http://app.vancouver.ca/bylaw_net/ConsolidatedReport.aspx?bylawid=2952&amp;txtSearch=2952\">Parking ByLaws</a></li><li>\n<a href=\"http://vancouver.ca/streets-transportation/tickets-towing-and-regulations.aspx\">Tickets and towing</a></li>\n</ul></div>",
+    "geometry": null
+  },
+  "parking-tickets-2014-2016": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2014-2016",
+    "retrieved": "2026-10-21T21:22:21.606325+00:00",
+    "count": 1169233,
+    "modified": "2019-08-06T14:25:17+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "block",
+        "description": "Block level of the street where the infraction occurred.",
+        "annotations": {},
+        "label": "Block",
+        "type": "text"
+      },
+      {
+        "name": "street",
+        "description": "Name of the street where the infraction occurred",
+        "annotations": {},
+        "label": "Street",
+        "type": "text"
+      },
+      {
+        "name": "entrydate",
+        "description": "Date the infraction occurred",
+        "annotations": {
+          "facet": true
+        },
+        "label": "EntryDate",
+        "type": "date"
+      },
+      {
+        "name": "bylaw",
+        "description": "Specific parking bylaw which the parking ticket was issued under",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Bylaw",
+        "type": "int"
+      },
+      {
+        "name": "section",
+        "description": "Specific section of the bylaw which the infraction pertains",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Section",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "description": "Status of the parking ticket.\nCA = One time courtesy cancellation (no longer exists), IS = Issued, RA = Cancelled due to Paid by Phone, VA = Void, VR = Void request, VS = Auto-void, WR = Warning",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Status",
+        "type": "text"
+      },
+      {
+        "name": "infractiontext",
+        "description": "Description of the infraction",
+        "annotations": {
+          "facet": true
+        },
+        "label": "InfractionText",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "description": "Year the infraction occurred",
+        "annotations": {},
+        "label": "Year",
+        "type": "text"
+      },
+      {
+        "name": "bi_id",
+        "description": "Key field added during import to data warehouse",
+        "annotations": {},
+        "label": "BI_ID",
+        "type": "int"
+      }
+    ],
+    "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, from year 2014 to 2016</p><p>Due to platform limitation, records from other years need to split into multiple datasets. See        <a href=\"https://opendata.vancouver.ca/explore/?disjunctive.features&amp;disjunctive.theme&amp;disjunctive.keyword&amp;disjunctive.data-owner&amp;disjunctive.data-team&amp;sort=modified&amp;q=parking+tickets\"><span style=\"text-decoration:underline;\"><font color=\"#0066cc\">other parking tickets datasets</font></span></a> for data starting from 2010.</p><p><strong>Notes:</strong> </p><ul><li>This dataset also includes water tickets that are issued by the branch starting in 2015</li><li>This dataset does not include parking tickets issued by Vancouver Police Department</li><li>Ticket issued location information was aggregated to 100-block unit level.\u200b</li><li>Testing in production may result in test record</li><li>Effective April 30, 2018, data files starting from year 2011 have been updated to reflect change in new software platform.\u200b\u200b</li></ul></div> <h3>Data currency</h3><div><p>The data for past years is static.<br></p></div> <h3>Data accuracy</h3><div><p>Data is based on infraction occurred date and does not show current status of a parking ticket or changes after the ticket is originally issued.</p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://app.vancouver.ca/bylaw_net/ConsolidatedReport.aspx?bylawid=2952&amp;txtSearch=2952\">Parking ByLaws</a></li><li><a href=\"http://vancouver.ca/streets-transportation/tickets-towing-and-regulations.aspx\">Tickets and towing</a></li></ul></div>",
+    "geometry": null
+  },
+  "parking-tickets-2017-2019": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2017-2019",
+    "retrieved": "2026-10-21T21:22:21.668310+00:00",
+    "count": 1318735,
+    "modified": "2025-07-15T13:12:21+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "block",
+        "description": "Block level of the street where the infraction occurred.",
+        "annotations": {},
+        "label": "Block",
+        "type": "int"
+      },
+      {
+        "name": "street",
+        "description": "Name of the street where the infraction occurred",
+        "annotations": {},
+        "label": "Street",
+        "type": "text"
+      },
+      {
+        "name": "entrydate",
+        "description": "Date the infraction occurred",
+        "annotations": {
+          "facet": true
+        },
+        "label": "EntryDate",
+        "type": "date"
+      },
+      {
+        "name": "bylaw",
+        "description": "Specific parking bylaw which the parking ticket was issued under",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Bylaw",
+        "type": "int"
+      },
+      {
+        "name": "section",
+        "description": "Specific section of the bylaw which the infraction pertains",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Section",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "description": "Status of the parking ticket.\nCA = One time courtesy cancellation (no longer exists), IS = Issued, RA = Cancelled due to Paid by Phone, VA = Void, VR = Void request, VS = Auto-void, WR = Warning",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Status",
+        "type": "text"
+      },
+      {
+        "name": "infractiontext",
+        "description": "Description of the infraction",
+        "annotations": {
+          "facet": true
+        },
+        "label": "InfractionText",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "description": "Year the infraction occurred",
+        "annotations": {},
+        "label": "Year",
+        "type": "text"
+      }
+    ],
+    "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch, from 2017 to 2019. </p><p>Due to platform limitation, records from other years need to split into multiple datasets. See \n      <a href=\"https://opendata.vancouver.ca/explore/?disjunctive.features&amp;disjunctive.theme&amp;disjunctive.keyword&amp;disjunctive.data-owner&amp;disjunctive.data-team&amp;sort=modified&amp;q=parking+tickets\">other parking tickets datasets</a> for data starting from 2010.</p><p>\n<strong>Notes:</strong>\u00a0</p><div><ul><li>This dataset also includes water tickets that are issued by the branch</li><li>This dataset does not include parking tickets issued by Vancouver Police Department</li><li>Ticket issued location information was aggregated to 100-block unit level.\u200b</li><li>Testing in production may result in test record</li><li>Effective April 30, 2018, data files starting from year 2011 have been updated to reflect change in new software platform.\u200b\u200b</li></ul></div></div> <h3>Data currency</h3><div><p>The data for past years is static</p></div> <h3>Data accuracy</h3><div><p>Data is based on infraction occurred date and does not show current status of a parking ticket or changes after the ticket is originally issued.</p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://app.vancouver.ca/bylaw_net/ConsolidatedReport.aspx?bylawid=2952&amp;txtSearch=2952\">Parking ByLaws</a></li><li><a href=\"http://vancouver.ca/streets-transportation/tickets-towing-and-regulations.aspx\">Tickets and towing</a><br><br></li></ul></div>",
+    "geometry": null
+  },
+  "parking-tickets-2010-2013": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2010-2013",
+    "retrieved": "2026-10-21T21:22:22.041920+00:00",
+    "count": 1091149,
+    "modified": "2019-08-07T18:17:45+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "block",
+        "description": "Block level of the street where the infraction occurred.",
+        "annotations": {},
+        "label": "Block",
+        "type": "int"
+      },
+      {
+        "name": "street",
+        "description": "Name of the street where the infraction occurred",
+        "annotations": {},
+        "label": "Street",
+        "type": "text"
+      },
+      {
+        "name": "entrydate",
+        "description": "Date the infraction occurred",
+        "annotations": {
+          "facet": true
+        },
+        "label": "EntryDate",
+        "type": "date"
+      },
+      {
+        "name": "bylaw",
+        "description": "Specific parking bylaw which the parking ticket was issued under",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Bylaw",
+        "type": "int"
+      },
+      {
+        "name": "section",
+        "description": "Specific section of the bylaw which the infraction pertains",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Section",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "description": "Status of the parking ticket.\nCA = One time courtesy cancellation (no longer exists), IS = Issued, RA = Cancelled due to Paid by Phone, VA = Void, VR = Void request, VS = Auto-void, WR = Warning",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Status",
+        "type": "text"
+      },
+      {
+        "name": "infractiontext",
+        "description": "Description of the infraction",
+        "annotations": {
+          "facet": true
+        },
+        "label": "InfractionText",
+        "type": "text"
+      },
+      {
+        "name": "year",
+        "description": "Year the infraction occurred",
+        "annotations": {},
+        "label": "Year",
+        "type": "text"
+      },
+      {
+        "name": "bi_id",
+        "description": "Key field added during import to data warehouse",
+        "annotations": {},
+        "label": "BI_ID",
+        "type": "int"
+      }
+    ],
+    "description": "<div><p>The City of Vancouver regulates parking to balance the needs of residents, commuters, and visitors. This dataset includes parking ticket records data available from Parking Operations and Enforcement branch from 2010 to 2013.</p><p>Due to platform limitation, records from other years need to split into multiple datasets. See        <a href=\"https://opendata.vancouver.ca/explore/?disjunctive.features&amp;disjunctive.theme&amp;disjunctive.keyword&amp;disjunctive.data-owner&amp;disjunctive.data-team&amp;sort=modified&amp;q=parking+tickets\"><span style=\"text-decoration:underline;\"><font color=\"#0066cc\">other parking tickets datasets</font></span></a> for data starting from 2010.<br></p><p>\n<strong>Notes:</strong> </p><ul><li>This dataset does not include parking tickets issued by Vancouver Police Department</li><li>Ticket issued location information was aggregated to 100-block unit level.\u200b</li><li>Testing in production may result in test record</li><li>Effective April 30, 2018, data files starting from year 2011 have been updated to reflect change in new software platform.\u200b\u200b</li></ul><h3>Data access<br></h3><p>\u200bYear 2010 data was extracted\u00a0from a legacy\u00a0software platform\u00a0and its\u00a0format\u00a0is not\u00a0compatible with our new platform. This link provides access to the file from our legacy site:<br></p><div><ul><li>\u200b<a class=\"file-csv\" href=\"https://webtransfer.vancouver.ca/opendata/csv/2010Parking_tickets.csv\">2010 Parking tickets (CSV)</a></li></ul>\u200b<span style='color:#262626;font-family:\"century gothic\", \"segoe ui semilight\", \"segoe ui\", segoe, tahoma, helvetica, arial, sans-serif;font-size:1.15em;'>\u200b\u200b\u200bDatas</span><span style='color:#262626;font-family:\"century gothic\", \"segoe ui semilight\", \"segoe ui\", segoe, tahoma, helvetica, arial, sans-serif;font-size:1.15em;'>et schema (Attributes) for Year 2010</span></div><ul><li>\u200b\n            <strong>Hundred_Block:</strong> Block level of the street where the infraction occurred.  For example: 1 Main Street means 100 Main Street.</li><li>\n<strong>Street:</strong> Name of the street where the infraction occurred</li><li>\n<strong>Date:</strong> Date the infraction occurred in month/day/year format</li><li>\n<strong>Bylaw:</strong> Specific parking bylaw which the parking ticket was issued under</li><li>\n<strong>Section:</strong> Specific section of the bylaw which the infraction pertains</li><li>\n<strong>Status:</strong> Status of the parking ticket             </li><ul><li>I = Issued</li><li>W = Warning<br></li><li>V = Void<br></li><li>\u200bR = Cancelled due to Paid by Phone\u200b</li></ul><li>\n<strong>Description:</strong> Short description of the infraction\u200b<br>\u200b<br></li></ul></div> <h3>Note</h3><div><p>Effective April 30, 2018, data files starting from year 2011 have been updated to reflect change in new software platform.\u200b<br></p></div> <h3>Data currency</h3><div><p>The data for past years is static.<br></p></div> <h3>Data accuracy</h3><div><p>Data is based on infraction occurred date and does not show current status of a parking ticket or changes after the ticket is originally issued </p></div> <h3>Websites for further information</h3><div><ul><li><a href=\"http://app.vancouver.ca/bylaw_net/ConsolidatedReport.aspx?bylawid=2952&amp;txtSearch=2952\">Parking ByLaws</a></li><li><a href=\"http://vancouver.ca/streets-transportation/tickets-towing-and-regulations.aspx\">Tickets and towing</a></li></ul></div>",
+    "geometry": null
+  },
+  "property-addresses": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/property-addresses",
+    "retrieved": "2026-10-21T21:22:29.670256+00:00",
+    "count": 99741,
+    "modified": "2026-10-19T13:35:07+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "civic_number",
+        "description": null,
+        "annotations": {},
+        "label": "CIVIC_NUMBER",
+        "type": "text"
+      },
+      {
+        "name": "std_street",
+        "description": null,
+        "annotations": {},
+        "label": "STD_STREET",
+        "type": "text"
+      },
+      {
+        "name": "p_parcel_id",
+        "description": null,
+        "annotations": {},
+        "label": "P_PARCEL_ID",
+        "type": "text"
+      },
+      {
+        "name": "pcoord",
+        "description": null,
+        "annotations": {},
+        "label": "PCOORD",
+        "type": "text"
+      },
+      {
+        "name": "site_id",
+        "description": null,
+        "annotations": {},
+        "label": "SITE_ID",
+        "type": "text"
+      },
+      {
+        "name": "note",
+        "description": null,
+        "annotations": {},
+        "label": "NOTE",
+        "type": "text"
+      },
+      {
+        "name": "geo_local_area",
+        "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).  For more details, see the Local area boundary data set.",
+        "annotations": {
+          "facet": true,
+          "facetsort": "-count"
+        },
+        "label": "Geo Local Area",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>The property addresses dataset contains addresses       used for parcel polygon display. <span class=\"boldText\">Please note</span>: these addresses are the primary addresses displayed in VanMap and do not represent a complete set of all addresses.  Some addresses are duplicated because they appear more than once on VanMap.</p><p>For other related property datasets, such as property parcel polygons and property cadastral boundaries, you may wish to <a href=\"https://opendata.vancouver.ca/explore/?search=property&amp;searchIn=title%2cdescription%2cidentifier\" title=\"filter datasets on the property keyword. \">filter datasets on the <em>property </em>keyword. </a></p></div> <h3>Data currency</h3><div><p>This data in City systems is updated frequently  in the normal course of business, however priorities and resources determine  how fast a change in reality is reflected in the database.\u00a0 The extract on this website is updated  weekly.</p></div> <h3>Data accuracy</h3><div><p>Much of the City's land base is created using survey  accuracy however some features are not as precise.</p></div> ",
+    "geometry": [
+      "Point"
+    ]
+  },
+  "street-intersections": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/street-intersections",
+    "retrieved": "2026-10-21T21:22:34.820756+00:00",
+    "count": 6125,
+    "modified": "2026-07-27T13:35:47+00:00",
+    "license": "Open Government Licence - Vancouver",
+    "license_url": "https://opendata.vancouver.ca/pages/licence/",
+    "fields": [
+      {
+        "name": "at_street",
+        "description": null,
+        "annotations": {
+          "sortable": true
+        },
+        "label": "AT_STREET",
+        "type": "text"
+      },
+      {
+        "name": "on_street",
+        "description": null,
+        "annotations": {
+          "facetsort": "-count",
+          "sortable": true
+        },
+        "label": "ON_STREET",
+        "type": "text"
+      },
+      {
+        "name": "xstreet",
+        "description": null,
+        "annotations": {},
+        "label": "XSTREET",
+        "type": "text"
+      },
+      {
+        "name": "geom",
+        "description": "Spatial representation of Street Intersection feature",
+        "annotations": {
+          "facetsort": "-count"
+        },
+        "label": "Geom",
+        "type": "geo_shape"
+      },
+      {
+        "name": "geo_local_area",
+        "description": "The local area where the feature is found, derived from the feature's coordinates or address in the source system. The City has 22 local areas (also known as local planning areas).\nFor more details, see the Local area boundary data set.",
+        "annotations": {
+          "facet": true
+        },
+        "label": "Geo Local Area",
+        "type": "text"
+      },
+      {
+        "name": "geo_point_2d",
+        "description": null,
+        "annotations": {},
+        "label": "geo_point_2d",
+        "type": "geo_point_2d"
+      }
+    ],
+    "description": "<div><p>The street intersections dataset is one of several that describe city streets. The others are:</p><div><ul><li>Lanes</li><li>Non-City streets</li><li>One way streets</li><li>Public streets</li><li>Right-of-way widths</li></ul></div><p>          Street  centerline and names are included.\u00a0 The  street centerline network includes linear street objects that reflect the  approximate center of the dedicated street right-of-way. Street names are  typically displayed for each segment of the street centerline network. The  linear network is broken at the intersection of two or more City streets or  alleyways. </p></div> <h3>Data currency</h3><div><p>This data in City systems is updated frequently  in the normal course of business, however priorities and resources determine  how fast a change in reality is reflected in the database.\u00a0 The extract on this website is updated  weekly.</p></div> <h3>Data accuracy</h3><div><p>Some of the City's data is created using survey accuracy however some features are not as precise.</p></div> ",
+    "geometry": [
+      "Point"
+    ]
+  }
+}

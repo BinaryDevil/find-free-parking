@@ -1,0 +1,226 @@
+{
+  "count": 750,
+  "exceededTransferLimit": false,
+  "samples": [
+    {
+      "attributes": {
+        "planitid": "b522f6b4-468b-4acc-938a-db17f4518a47",
+        "objectid": 91,
+        "eventstatus": "Approved",
+        "projectstatus": "Construction Planning",
+        "eventtype": "Sidewalk Construction",
+        "trafficimpact": "Parking Lane Closure",
+        "closuretype": "Future closure",
+        "title": "Green Infrastructure Bioretention Rehabilitation ",
+        "locationdescription": "Nanaimo Street, E41st to E37th Avenues. ",
+        "publisheddescription": "Rehabilitating existing GRI assets as well as the installation of 3 new assets. The work will take place on Nanaimo Street at the following intersections: E41st, E40th, E39, E38 & E37th Aves. The majority of the work will take place within the parking lanes. Minor parking impacts will be anticipated. *Exact Dates TBD. ",
+        "publishedurl": null,
+        "schedulestartdate": 1784530800000,
+        "scheduleenddate": 1788246000000,
+        "scheduledescription": "Jul 20, 2026 - Aug 31, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2026-07-20T07:00:00Z\",\"End\":\"2026-08-31T07:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2026-07-20T07:00:00Z\",\"LatestDate\":\"2026-09-01T06:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1776189342549,
+        "publisheddate": 1776150000000,
+        "today": "N"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "a6b21e28-4880-4bda-81ba-221647916beb",
+        "objectid": 94,
+        "eventstatus": "Active",
+        "projectstatus": "Under Construction",
+        "eventtype": "Roadwork - Sewer",
+        "trafficimpact": "Parking Lane Closure",
+        "closuretype": "Future closure",
+        "title": "Terminal Ave Sewer Interim Repairs",
+        "locationdescription": "Main and Terminal",
+        "publisheddescription": null,
+        "publishedurl": "https://vancouver.ca/streets-transportation/terminal-avenue-sewer-repairs.aspx",
+        "schedulestartdate": 1740816000000,
+        "scheduleenddate": 1785654000000,
+        "scheduledescription": "Mar 1, 2025 - Aug 1, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2025-03-01T08:00:00Z\",\"End\":\"2026-08-01T07:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2025-03-01T08:00:00Z\",\"LatestDate\":\"2026-08-02T06:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1779325272485,
+        "publisheddate": 1719298800000,
+        "today": "N"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "6bcedcfb-9212-4166-9be9-7ccbb55404b4",
+        "objectid": 109,
+        "eventstatus": "Approved",
+        "projectstatus": "Design",
+        "eventtype": "Roadwork - Water",
+        "trafficimpact": "Reduced Lanes",
+        "closuretype": "Future closure",
+        "title": "W 49th Ave. - Water Service Transfers",
+        "locationdescription": "W 49th Avenue between Columbia St. and Cambie St.\r\n",
+        "publisheddescription": "Water service and main transfers on W 49th Ave. between Columbia St. and Cambie St. Water main on north side of W 49th Ave. is being abandoned and so approx. 13 services and one main need to be transferred to the existing main on the south side of W 49th Ave. (within the sidewalk). \r\n\r\nThe work is tentatively planned to take place in late 2026 but may be pushed to an early 2027 start pending operational needs and development schedules. Schedule included in Planit is a window for construction, the construction duration is expected to be less than 2 months. \r\n\r\ninetnion is to complete this work in 2 halves requiring a crossover of traffic on both sides of W 49th Ave. ",
+        "publishedurl": null,
+        "schedulestartdate": 1792998000000,
+        "scheduleenddate": 1803888000000,
+        "scheduledescription": "Oct 26, 2026 - Feb 28, 2027",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2026-10-26T07:00:00Z\",\"End\":\"2027-02-28T08:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2026-10-26T07:00:00Z\",\"LatestDate\":\"2027-03-01T07:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1786561287300,
+        "publisheddate": 1786518000000,
+        "today": "N"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "e34992b4-0e20-4bf7-8db3-c011cff9de10",
+        "objectid": 117,
+        "eventstatus": "Active",
+        "projectstatus": "Under Construction",
+        "eventtype": "Roadwork - Streets",
+        "trafficimpact": "Parking Lane Closure",
+        "closuretype": "Future closure",
+        "title": "St George Rainway Project",
+        "locationdescription": "St George St from E Broadway to E.8th Ave",
+        "publisheddescription": null,
+        "publishedurl": "https://vancouver.ca/streets-transportation/st-george-rainway.aspx",
+        "schedulestartdate": 1680073200000,
+        "scheduleenddate": 1790838000000,
+        "scheduledescription": "Mar 29, 2023 - Sep 30, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2023-03-29T07:00:00Z\",\"End\":\"2026-09-30T07:00:00Z\",\"IsAllDay\":true,\"Comment\":\"\"}],\"Type\":\"interval\",\"EarliestDate\":\"2023-03-29T07:00:00Z\",\"LatestDate\":\"2026-10-01T06:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1786051930182,
+        "publisheddate": 1676275200000,
+        "today": "N"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "57f0264d-2adf-42a4-9e22-9c8b087d246f",
+        "objectid": 118,
+        "eventstatus": "Approved",
+        "projectstatus": "Construction Planning",
+        "eventtype": "Roadwork - Sewer",
+        "trafficimpact": "Full Closure",
+        "closuretype": "Full road closure",
+        "title": "Nanaimo East Kamloops Sewer Upgrades (NEKSU)",
+        "locationdescription": "Nanaimo East Kamloops Sewer Upgrades is scheduled to begin with pre-work investigations December 2025, with major sewer work construction to begin in January 2026. \r\n\r\nContact: [redacted contact] or 311",
+        "publisheddescription": null,
+        "publishedurl": "https://vancouver.ca/streets-transportation/nanaimo-east-kamloops-sewer-upgrades.aspx",
+        "schedulestartdate": 1764601200000,
+        "scheduleenddate": 1798765200000,
+        "scheduledescription": "Dec 1, 2025 - Dec 31, 2026; Weekdays; 7:00 AM - 5:00 PM",
+        "scheduleserialized": "{\"RecurringSchedules\":[{\"StartDate\":\"2025-12-01T08:00:00Z\",\"EndDate\":\"2027-01-01T07:59:59.999Z\",\"DailyStartTime\":\"07:00:00\",\"DailyEndTime\":\"17:00:00\",\"Days\":[1,2,3,4,5]}],\"Exceptions\":[],\"Type\":\"recurring\",\"EarliestDate\":\"2025-12-01T15:00:00Z\",\"LatestDate\":\"2027-01-01T00:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1767645717717,
+        "publisheddate": 1762761600000,
+        "today": "Y"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "7a199adc-5919-465f-85b9-a454c728ae41",
+        "objectid": 120,
+        "eventstatus": "Approved",
+        "projectstatus": "Construction Planning",
+        "eventtype": "System Improvement",
+        "trafficimpact": "Reduced Lanes",
+        "closuretype": "Travel or parking lane closure",
+        "title": "Placeholder - Georgia/Dunsmuir Viaduct Lighting Masts Replacement",
+        "locationdescription": "Georgia/Dunsmuir Via Duct",
+        "publisheddescription": "Remove the existing 6 high mast poles and replace with new poles and luminaires",
+        "publishedurl": null,
+        "schedulestartdate": 1790578800000,
+        "scheduleenddate": 1796112000000,
+        "scheduledescription": "Sep 28, 2026 - Nov 30, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2026-09-28T07:00:00Z\",\"End\":\"2026-11-30T08:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2026-09-28T07:00:00Z\",\"LatestDate\":\"2026-12-01T07:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1784754596824,
+        "publisheddate": 1780383600000,
+        "today": "Y"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "f72258a1-0e4d-4c7d-86b5-f70649199f50",
+        "objectid": 121,
+        "eventstatus": "Approved",
+        "projectstatus": "Construction Planning",
+        "eventtype": "Sidewalk Construction",
+        "trafficimpact": "Reduced Lanes",
+        "closuretype": "Travel or parking lane closure",
+        "title": "Cambie Bridge Seismic Upgrade - Electrical Scope of work",
+        "locationdescription": "Under the bridge at 0 Block Nelson Street, heading toward Marina Side Crescent. Road crossings are located at Marina Side Crescent, 1000 Block Pacific Boulevard South, and 0 Block Nelson Street.\r\n",
+        "publisheddescription": "To support the Cambie Bridge seismic upgrade and meet the additional power requirements for Cooper Park, the electrical design includes the replacement and upgrade of two kiosks.\r\n\r\nAll excavation and road crossings will be completed by a contractor engaged by the City of Vancouver (COV). In addition, BC Hydro will engage its own contractor to carry out excavation and road crossings required to supply power to the kiosks.\r\n\r\nThis work is being coordinated with the Cambie Bridge PDB team; however, it is being delivered independently by the Electrical Design team.\r\n",
+        "publishedurl": null,
+        "schedulestartdate": 1785740400000,
+        "scheduleenddate": 1793430000000,
+        "scheduledescription": "Aug 3, 2026 - Oct 30, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2026-08-03T07:00:00Z\",\"End\":\"2026-10-30T07:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2026-08-03T07:00:00Z\",\"LatestDate\":\"2026-10-31T06:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1771538058749,
+        "publisheddate": 1771488000000,
+        "today": "Y"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "9f5e15ce-f10f-4965-9231-efed6174d208",
+        "objectid": 129,
+        "eventstatus": "Active",
+        "projectstatus": "Under Construction",
+        "eventtype": "System Improvement",
+        "trafficimpact": "Reduced Lanes",
+        "closuretype": "Travel or parking lane closure",
+        "title": "W 49th Ave. and Alberta St. Upgrades - Phase 1",
+        "locationdescription": "Phase 1:\r\n- W 50th Ave. from Quebec to Ontario\r\n- Ontario St. from 50th Ave. to 49th Ave. \r\n- W 49th Ave. from Sophia St. to Cambie St.\r\n(Phase 2 will continue North on Alberta St. in 2027 - see separate entry)\r\n\r\n",
+        "publisheddescription": "Sewer Upgrades, water upgrades, and street rehabilitation. \r\nEnd date extended to end of 2026 to account for pushing paving work to after World Cup window. Paving schedule TBC.\r\n\r\n",
+        "publishedurl": null,
+        "schedulestartdate": 1743490800000,
+        "scheduleenddate": 1797408000000,
+        "scheduledescription": "Apr 1, 2025 - Dec 15, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2025-04-01T07:00:00Z\",\"End\":\"2026-12-15T08:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2025-04-01T07:00:00Z\",\"LatestDate\":\"2026-12-16T07:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1780336617724,
+        "publisheddate": 1744268400000,
+        "today": "Y"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "a73bb5fd-ded3-43ce-8cc7-7b023ee1fc3a",
+        "objectid": 137,
+        "eventstatus": "Active",
+        "projectstatus": "Under Construction",
+        "eventtype": null,
+        "trafficimpact": "Alternating Traffic",
+        "closuretype": "Future closure",
+        "title": "Davie Street Upgrades",
+        "locationdescription": null,
+        "publisheddescription": "Davie St is restricted to westbound buses only between Thurlow St. to Jervis St. No other vehicles permitted.\r\nEastbound access maintained for general traffic with single lane alternating traffic",
+        "publishedurl": null,
+        "schedulestartdate": 1790146800000,
+        "scheduleenddate": 1790406000000,
+        "scheduledescription": "Sep 23, 2026 - Sep 25, 2026",
+        "scheduleserialized": "{\"Intervals\":[{\"Start\":\"2026-09-23T07:00:00Z\",\"End\":\"2026-09-25T07:00:00Z\",\"IsAllDay\":true,\"Comment\":null}],\"Type\":\"interval\",\"EarliestDate\":\"2026-09-23T07:00:00Z\",\"LatestDate\":\"2026-09-26T06:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1790115824518,
+        "publisheddate": 1790060400000,
+        "today": "N"
+      }
+    },
+    {
+      "attributes": {
+        "planitid": "fbd85804-d2a3-43e8-a8d1-a440d6e4c21c",
+        "objectid": 1060,
+        "eventstatus": "Approved",
+        "projectstatus": null,
+        "eventtype": "Roadwork - Utilities",
+        "trafficimpact": "Parking Lane Closure",
+        "closuretype": "Travel or parking lane closure",
+        "title": "BC Hydro - Utility Maintenance on 400 Block Drake St",
+        "locationdescription": "North side of 400 Block Drake St from Homer St to Lane West of Homer St.",
+        "publisheddescription": "Traffic Impacts:\r\nParking lane closure.",
+        "publishedurl": null,
+        "schedulestartdate": 1792641600000,
+        "scheduleenddate": 1792756800000,
+        "scheduledescription": "Oct 21, 2026 - Oct 22, 2026; W - Th; 9:00 PM - 5:00 AM",
+        "scheduleserialized": "{\"RecurringSchedules\":[{\"StartDate\":\"2026-10-21T07:00:00Z\",\"EndDate\":\"2026-10-23T06:59:59.999Z\",\"DailyStartTime\":\"21:00:00\",\"DailyEndTime\":\"05:00:00\",\"Days\":[3,4]}],\"Exceptions\":[],\"Type\":\"recurring\",\"EarliestDate\":\"2026-10-22T04:00:00Z\",\"LatestDate\":\"2026-10-23T11:59:59.9999999Z\",\"CalculatedPeriods\":[]}",
+        "updateddate": 1791565359306,
+        "publisheddate": 1790665200000,
+        "today": "Y"
+      }
+    }
+  ]
+}
