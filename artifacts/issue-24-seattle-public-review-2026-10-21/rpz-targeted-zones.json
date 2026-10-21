@@ -1,0 +1,1931 @@
+{
+  "polygons": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "GLOBALID",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ Zone:",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "INEFFECT",
+        "type": "esriFieldTypeString",
+        "alias": "In Effect:",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NAME",
+        "type": "esriFieldTypeString",
+        "alias": "Zone Name",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "RPZ_ZONE": "12",
+          "INEFFECT": "Monday-Friday 7 AM to 6 PM",
+          "NAME": "North Capitol Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "25",
+          "INEFFECT": "Monday \u2013 Friday 9 AM to 4 PM",
+          "NAME": "Westlake East"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "14",
+          "INEFFECT": "Monday-Friday 7 AM to 6 PM.  Every Day 6 PM to Midnight",
+          "NAME": "Central District"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "35",
+          "INEFFECT": "Monday-Saturday 7 AM - 6 PM",
+          "NAME": "West Seattle Junction"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "19",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 7 PM",
+          "NAME": "Roosevelt"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "13",
+          "INEFFECT": "Every Day, 7AM to Midnight",
+          "NAME": "Lower Queen Anne"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "28",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "Beacon Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "21",
+          "INEFFECT": "Check Signs.  In unpaid parking areas, Daily 7 AM \u2013 10 PM or Monday-Saturday 7 AM \u2013 6 PM.  In paid parking areas, RPZ hours match paid parking hours, Monday-Saturday 8 AM \u2013 8 PM or 8 AM \u2013 6 PM. ",
+          "NAME": "Pike/Pine"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "32",
+          "INEFFECT": "Monday - Saturday 7 AM - 8 PM",
+          "NAME": "West Capitol Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "22",
+          "INEFFECT": "Monday \u2013 Friday 7 AM to 4 PM.  Area 2 Monday - Friday 8 AM to 5 PM",
+          "NAME": "Wallingford West"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "27",
+          "INEFFECT": "Monday \u2013 Saturday 8 AM to Midnight (2-hr parking allowed for non-permitted vehicles 8am-8pm; No parking except by permit from 8pm to midnight)",
+          "NAME": "Fremont"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "8",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "Eastlake"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "1",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "Montlake"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "4",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "Capitol Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "16",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "Mount Baker"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "20",
+          "INEFFECT": "Monday-Saturday 7 AM \u2013 7 PM",
+          "NAME": "Ravenna/Bryant"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "34",
+          "INEFFECT": "Monday - Friday 7 AM - 6 PM",
+          "NAME": "East Wallingford"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "18",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 9 PM",
+          "NAME": "Licton Springs"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "6",
+          "INEFFECT": "Monday-Friday 7 AM to 8 PM",
+          "NAME": "University Park"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "15",
+          "INEFFECT": "Every Day Noon to 6 AM",
+          "NAME": "Belmont/Harvard"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "9",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "Magnolia"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "30",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "Othello"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "31",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "Rainier Beach"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "3",
+          "INEFFECT": "Every Day 2 AM to 5 AM",
+          "NAME": "Fauntleroy"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "29",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "Columbia City"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "23",
+          "INEFFECT": "Monday - Saturday 7 AM to 7 PM",
+          "NAME": "Madison Valley"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "7",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "First Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "17",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "North Beacon Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "2",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "Squire Park/Cherry Hill"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "24",
+          "INEFFECT": "Every Day 8 AM to 6 PM",
+          "NAME": "Cascade"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "11",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM",
+          "NAME": "North Queen Anne"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "26",
+          "INEFFECT": "Monday \u2013 Saturday 7 AM to 7 PM",
+          "NAME": "Upper Queen Anne"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "10",
+          "INEFFECT": "AREA 1 Monday-Saturday 7 AM to 6 PM.  AREA 2 Every Day 6 PM to Midnight",
+          "NAME": "University District West"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "33",
+          "INEFFECT": "Monday \u2013 Friday 7 AM to 6 PM ",
+          "NAME": "Lincoln HS"
+        }
+      },
+      {
+        "attributes": {
+          "RPZ_ZONE": "36",
+          "INEFFECT": "Monday-Friday 7 AM to 6 PM",
+          "NAME": "Judkins Park"
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTDAY",
+        "type": "esriFieldTypeString",
+        "alias": "STARTDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDDAY",
+        "type": "esriFieldTypeString",
+        "alias": "ENDDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTTIME",
+        "type": "esriFieldTypeString",
+        "alias": "STARTTIME",
+        "sqlType": "sqlTypeOther",
+        "length": 4,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDTIME",
+        "type": "esriFieldTypeString",
+        "alias": "ENDTIME",
+        "sqlType": "sqlTypeOther",
+        "length": 4,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-205275",
+          "SIGNTYPE": "R8-PBSZ25",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-213628",
+          "SIGNTYPE": "R8-2HZ32",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168375",
+          "SIGNTYPE": "R8-BL7Z25",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "0800",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241974",
+          "SIGNTYPE": "R8-2HZ19",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1900"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-254454",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244069",
+          "SIGNTYPE": "R8-RG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244071",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244067",
+          "SIGNTYPE": "R7-R",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-238323",
+          "SIGNTYPE": "R8-DISABLE",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244074",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-131670",
+          "SIGNTYPE": "R8-4HZ28",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14569",
+          "SIGNTYPE": "R8-2HZ14",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-210996",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186921",
+          "SIGNTYPE": "R8-2HZ22",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244066",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218367",
+          "SIGNTYPE": "R8-2HZ12",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-46640",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228528",
+          "SIGNTYPE": "R8-LG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185356",
+          "SIGNTYPE": "R8-LBW",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-246174",
+          "SIGNTYPE": "R7-TAZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228527",
+          "SIGNTYPE": "R8-2HZ35",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186919",
+          "SIGNTYPE": "R8-2HZ22",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168376",
+          "SIGNTYPE": "R8-BL7Z25",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "0800",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-110506",
+          "SIGNTYPE": "R8-DISABLE",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-76575",
+          "SIGNTYPE": "R8-LUL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244070",
+          "SIGNTYPE": "R7-STOPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14238",
+          "SIGNTYPE": "R7-STOPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-138641",
+          "SIGNTYPE": "R8-2HZ21A",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-5763",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-110508",
+          "SIGNTYPE": "R8-DISABLE",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218366",
+          "SIGNTYPE": "R8-2HZ12",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241973",
+          "SIGNTYPE": "R8-2HZ19",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1900"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-138640",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-110507",
+          "SIGNTYPE": "R8-DISABLE",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-205273",
+          "SIGNTYPE": "R8-PBSZ25",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228529",
+          "SIGNTYPE": "R8-2HZ35",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-254406",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-213629",
+          "SIGNTYPE": "R8-2HZ32",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14507",
+          "SIGNTYPE": "R8-SG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-246173",
+          "SIGNTYPE": "R7-TAZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-138639",
+          "SIGNTYPE": "R8-2HZ21A",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185352",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186918",
+          "SIGNTYPE": "R8-2HZ22",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-43116",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218364",
+          "SIGNTYPE": "R8-2HZ12",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244072",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-99865",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218363",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218365",
+          "SIGNTYPE": "R8-LG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-76633",
+          "SIGNTYPE": "R7-STOPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241975",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228530",
+          "SIGNTYPE": "R8-RG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168379",
+          "SIGNTYPE": "R8-BL7Z25",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "0800",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-134555",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-5762",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-5764",
+          "SIGNTYPE": "R7-E",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185358",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14506",
+          "SIGNTYPE": "R8-2HZ14",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-131671",
+          "SIGNTYPE": "R8-4HZ28",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244064",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-76577",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241976",
+          "SIGNTYPE": "R8-2HZ19",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1900"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-103638",
+          "SIGNTYPE": "R7-NPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-246172",
+          "SIGNTYPE": "R7-TAZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168378",
+          "SIGNTYPE": "R8-BL7Z25",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "0800",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244068",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244065",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186920",
+          "SIGNTYPE": "R8-2HZ22",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185353",
+          "SIGNTYPE": "R8-BUSLAY",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185354",
+          "SIGNTYPE": "R8-BUSLAY",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185355",
+          "SIGNTYPE": "R8-BUSLAY",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-238563",
+          "SIGNTYPE": "R8-DISABLE",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168377",
+          "SIGNTYPE": "R8-BL7Z25",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "0800",
+          "ENDTIME": "1800"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-103639",
+          "SIGNTYPE": "R7-NPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14236",
+          "SIGNTYPE": "R8-2HZ14",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1600"
+        }
+      }
+    ]
+  },
+  "fuller_text": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185358",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-134555",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "NO PARKING ANYTIME [RT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186919",
+          "SIGNTYPE": "R8-2HZ22",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 22 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-238563",
+          "SIGNTYPE": "R8-DISABLE",
+          "TEXT": "[DISABLED PERSON] STATE DISABLED PARKING PERMIT REQUIRED, TAZ",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241973",
+          "SIGNTYPE": "R8-2HZ19",
+          "TEXT": "2 H [CIRCLE P] 7A-7P MON-FRI, EXC BY ZN 19 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185354",
+          "SIGNTYPE": "R8-BUSLAY",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185355",
+          "SIGNTYPE": "R8-BUSLAY",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-254454",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241976",
+          "SIGNTYPE": "R8-2HZ19",
+          "TEXT": "2 H [CIRCLE P] 7A-7P MON-FRI, EXC BY ZN 19 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-43116",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218367",
+          "SIGNTYPE": "R8-2HZ12",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 12 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244066",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186921",
+          "SIGNTYPE": "R8-2HZ22",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 22 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-103638",
+          "SIGNTYPE": "R7-NPS",
+          "TEXT": "NO PARKING SOUTH OF HERE",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241975",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-76633",
+          "SIGNTYPE": "R7-STOPS",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185352",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-5763",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANYTIME",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241974",
+          "SIGNTYPE": "R8-2HZ19",
+          "TEXT": "2 H [CIRCLE P] 7A-7P MON-FRI, EXC BY ZN 19 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-213628",
+          "SIGNTYPE": "R8-2HZ32",
+          "TEXT": "2 H [CIRCLE P] 7A-8P EXC SUN-HOL, EXC BY ZN 32 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-110506",
+          "SIGNTYPE": "R8-DISABLE",
+          "TEXT": "[DISABLED PERSON] STATE DISABLED PARKING PERMIT REQUIRED TOW-AWAY ZONE PHONE 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168377",
+          "SIGNTYPE": "R8-BL7Z25",
+          "TEXT": "[CIRCLE P] ALL DAY PAY 9A-4P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244072",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 4 Hours Max",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244067",
+          "SIGNTYPE": "R7-R",
+          "TEXT": "[RIGHT FACING ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244074",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218365",
+          "SIGNTYPE": "R8-LG",
+          "TEXT": "[LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14238",
+          "SIGNTYPE": "R7-STOPS",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-131671",
+          "SIGNTYPE": "R8-4HZ28",
+          "TEXT": "4 H [Circle P] 7A-6P MON-FRI, EXC BY ZN 28 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168375",
+          "SIGNTYPE": "R8-BL7Z25",
+          "TEXT": "[CIRCLE P] ALL DAY PAY 9A-4P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-5762",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANYTIME",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244071",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185356",
+          "SIGNTYPE": "R8-LBW",
+          "TEXT": "[LEFT ARROW] ",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244065",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-205275",
+          "SIGNTYPE": "R8-PBSZ25",
+          "TEXT": "[CIRCLE P] PAY BY SPACE PARKING\n\rPAY 9A-4P M-F ZN 25",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-46640",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "[CIRCLE SLASH P] WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-205273",
+          "SIGNTYPE": "R8-PBSZ25",
+          "TEXT": "[CIRCLE P] PAY BY SPACE PARKING\n\rPAY 9A-4P M-F ZN 25",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-246173",
+          "SIGNTYPE": "R7-TAZ",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14506",
+          "SIGNTYPE": "R8-2HZ14",
+          "TEXT": "2 H [CIRCLE P] 7A-4P MON - FRI, EXC BY ZN 14 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14507",
+          "SIGNTYPE": "R8-SG",
+          "TEXT": "SOUTH OF HERE",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14569",
+          "SIGNTYPE": "R8-2HZ14",
+          "TEXT": "2 H [CIRCLE P] 7A-4P MON - FRI, EXC BY ZN 14 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-131670",
+          "SIGNTYPE": "R8-4HZ28",
+          "TEXT": "4 H [Circle P] 7A-6P MON-FRI, EXC BY ZN 28 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-213629",
+          "SIGNTYPE": "R8-2HZ32",
+          "TEXT": "2 H [CIRCLE P] 7A-8P EXC SUN-HOL, EXC BY ZN 32 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228527",
+          "SIGNTYPE": "R8-2HZ35",
+          "TEXT": "2 HOUR, PARKING SYMBOL, 7AM-6PM, EXCEPT SUN-HOL, EXCEPT BY ZONE 35 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-238323",
+          "SIGNTYPE": "R8-DISABLE",
+          "TEXT": "[DISABLED PERSON] STATE DISABLED PARKING PERMIT REQUIRED, TAZ",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244069",
+          "SIGNTYPE": "R8-RG",
+          "TEXT": "[RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-185353",
+          "SIGNTYPE": "R8-BUSLAY",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228528",
+          "SIGNTYPE": "R8-LG",
+          "TEXT": "[LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-138641",
+          "SIGNTYPE": "R8-2HZ21A",
+          "TEXT": "2 H [CIRCLE P] 7A-6P EXC SUN-HOL, EXC BY ZN 21 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228529",
+          "SIGNTYPE": "R8-2HZ35",
+          "TEXT": "2 HOUR, PARKING SYMBOL, 7AM-6PM, EXCEPT SUN-HOL, EXCEPT BY ZONE 35 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-76575",
+          "SIGNTYPE": "R8-LUL",
+          "TEXT": "30 MINUTE LOAD AND UNLOAD ONLY TOW-AWAY ZONE PHONE 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-99865",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168376",
+          "SIGNTYPE": "R8-BL7Z25",
+          "TEXT": "[CIRCLE P] ALL DAY PAY 9A-4P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168379",
+          "SIGNTYPE": "R8-BL7Z25",
+          "TEXT": "[CIRCLE P] ALL DAY PAY 9A-4P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218364",
+          "SIGNTYPE": "R8-2HZ12",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 12 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218363",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-246172",
+          "SIGNTYPE": "R7-TAZ",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-5764",
+          "SIGNTYPE": "R7-E",
+          "TEXT": "EAST OF HERE",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26613,
+          "UNITID": "SGN-14236",
+          "SIGNTYPE": "R8-2HZ14",
+          "TEXT": "2 H [CIRCLE P] 7A-4P MON - FRI, EXC BY ZN 14 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-110507",
+          "SIGNTYPE": "R8-DISABLE",
+          "TEXT": "[DISABLED PERSON] STATE DISABLED PARKING PERMIT REQUIRED TOW-AWAY ZONE PHONE 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-138640",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-246174",
+          "SIGNTYPE": "R7-TAZ",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-210996",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-110508",
+          "SIGNTYPE": "R8-DISABLE",
+          "TEXT": "[DISABLED PERSON] STATE DISABLED PARKING PERMIT REQUIRED TOW-AWAY ZONE PHONE 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-254406",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244064",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 81510,
+          "UNITID": "SGN-168378",
+          "SIGNTYPE": "R8-BL7Z25",
+          "TEXT": "[CIRCLE P] ALL DAY PAY 9A-4P",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 67758,
+          "UNITID": "SGN-228530",
+          "SIGNTYPE": "R8-RG",
+          "TEXT": "[RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 10329,
+          "UNITID": "SGN-218366",
+          "SIGNTYPE": "R8-2HZ12",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 12 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47674,
+          "UNITID": "SGN-103639",
+          "SIGNTYPE": "R7-NPS",
+          "TEXT": "NO PARKING SOUTH OF HERE",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186920",
+          "SIGNTYPE": "R8-2HZ22",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 22 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244070",
+          "SIGNTYPE": "R7-STOPS",
+          "TEXT": "NO STOPS\r\rTOW-AWAY ZONE Phone 684-5444",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 59878,
+          "UNITID": "SGN-76577",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32401,
+          "UNITID": "SGN-186918",
+          "SIGNTYPE": "R8-2HZ22",
+          "TEXT": "2 H [CIRCLE P] 7A-6P MON-FRI, EXC BY ZN 22 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 48081,
+          "UNITID": "SGN-244068",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14638,
+          "UNITID": "SGN-138639",
+          "SIGNTYPE": "R8-2HZ21A",
+          "TEXT": "2 H [CIRCLE P] 7A-6P EXC SUN-HOL, EXC BY ZN 21 PERMIT",
+          "CURRENT_STATUS": "INSVC"
+        }
+      }
+    ]
+  }
+}

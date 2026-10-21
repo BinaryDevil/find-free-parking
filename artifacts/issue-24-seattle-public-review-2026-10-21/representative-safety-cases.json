@@ -1,0 +1,4068 @@
+{
+  "keys": [
+    62009,
+    70725,
+    31497,
+    88477,
+    14366,
+    33434,
+    14362,
+    1625,
+    8281,
+    29021,
+    88082,
+    41918,
+    41922,
+    1214,
+    68929,
+    71289,
+    2785,
+    27430,
+    46457,
+    27397
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CSM",
+        "type": "esriFieldTypeString",
+        "alias": "CSM",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeInteger",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "END_DISTANCE",
+        "type": "esriFieldTypeInteger",
+        "alias": "END_DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BLOCKFACE_LENGTH",
+        "type": "esriFieldTypeInteger",
+        "alias": "BLOCKFACE_LENGTH",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "UNITDESC": "7TH AVE NE BETWEEN NE 117TH ST AND DEAD END 3",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Time Limited Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 435,
+          "BLOCKFACE_LENGTH": 422
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITDESC": "3RD AVE W BETWEEN W REPUBLICAN ST AND W MERCER ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 20,
+          "END_DISTANCE": 455,
+          "BLOCKFACE_LENGTH": 435
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITDESC": "1ST AVE W BETWEEN W HARRISON ST AND W REPUBLICAN ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 19,
+          "END_DISTANCE": 412,
+          "BLOCKFACE_LENGTH": 393
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "UNITDESC": "ALASKAN WAY BETWEEN BLANCHARD ST AND XW BELL ST",
+          "SIDE": "SW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 0,
+          "END_DISTANCE": 409,
+          "BLOCKFACE_LENGTH": 409
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITDESC": "GREENWOOD AVE N BETWEEN N 36TH ST AND N 39TH ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 599,
+          "BLOCKFACE_LENGTH": 586
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITDESC": "1ST AVE N BETWEEN MERCER ST AND ROY ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 26,
+          "END_DISTANCE": 299,
+          "BLOCKFACE_LENGTH": 273
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88082,
+          "UNITDESC": "S FOUNTAIN ST BETWEEN 63RD AVE S AND RENTON AVE S",
+          "SIDE": "SE",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 390,
+          "BLOCKFACE_LENGTH": 377
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITDESC": "12TH AVE NE BETWEEN NE 71ST ST AND NE 72ND ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 23,
+          "END_DISTANCE": 229,
+          "BLOCKFACE_LENGTH": 206
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "UNITDESC": "3RD AVE S BETWEEN S WASHINGTON ST AND S MAIN ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 20,
+          "END_DISTANCE": 311,
+          "BLOCKFACE_LENGTH": 291
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITDESC": "22ND AVE NW BETWEEN NW 56TH ST AND NW 57TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 20,
+          "END_DISTANCE": 260,
+          "BLOCKFACE_LENGTH": 240
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "UNITDESC": "S BAILEY ST BETWEEN FLORA AVE S AND ELLIS AVE S",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 30,
+          "END_DISTANCE": 283,
+          "BLOCKFACE_LENGTH": 253
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITDESC": "NE 42ND ST BETWEEN 11TH AVE NE AND 12TH AVE NE",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 20,
+          "END_DISTANCE": 274,
+          "BLOCKFACE_LENGTH": 254
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "UNITDESC": "2ND AVE BETWEEN YESLER WAY AND JAMES ST",
+          "SIDE": "SW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": "6-9AM 3-7PM",
+          "CSM": "Y",
+          "DISTANCE": 47,
+          "END_DISTANCE": 252,
+          "BLOCKFACE_LENGTH": 206
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITDESC": "1ST AVE S BETWEEN YESLER WAY AND S WASHINGTON ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 21,
+          "END_DISTANCE": 291,
+          "BLOCKFACE_LENGTH": 270
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITDESC": "S HUDSON ST BETWEEN 37TH AVE S AND RAINIER AVE S",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 13,
+          "END_DISTANCE": 360,
+          "BLOCKFACE_LENGTH": 347
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "UNITDESC": "4TH AVE NE BETWEEN NE 115TH ST AND NE 117TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Time Limited Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 649,
+          "BLOCKFACE_LENGTH": 636
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITDESC": "E LYNN ST BETWEEN FAIRVIEW AVE E AND MINOR AVE E",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 239,
+          "BLOCKFACE_LENGTH": 226
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITDESC": "2ND AVE BETWEEN CEDAR ST AND CLAY ST",
+          "SIDE": "SW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "CSM": "Y",
+          "DISTANCE": 14,
+          "END_DISTANCE": 274,
+          "BLOCKFACE_LENGTH": 260
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41918,
+          "UNITDESC": "S AVON ST BETWEEN 51ST AVE S AND BEACON E AVE S",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 438,
+          "BLOCKFACE_LENGTH": 425
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "UNITDESC": "E LYNN ST BETWEEN MINOR AVE E AND YALE AVE E",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "CSM": "N",
+          "DISTANCE": 13,
+          "END_DISTANCE": 295,
+          "BLOCKFACE_LENGTH": 282
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "COMPKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "COMPKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTDAY",
+        "type": "esriFieldTypeString",
+        "alias": "STARTDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDDAY",
+        "type": "esriFieldTypeString",
+        "alias": "ENDDAY",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STARTTIME",
+        "type": "esriFieldTypeString",
+        "alias": "STARTTIME",
+        "sqlType": "sqlTypeOther",
+        "length": 4,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ENDTIME",
+        "type": "esriFieldTypeString",
+        "alias": "ENDTIME",
+        "sqlType": "sqlTypeOther",
+        "length": 4,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CUSTOMTEXT",
+        "type": "esriFieldTypeString",
+        "alias": "CUSTOMTEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "STANDARDTEXT",
+        "type": "esriFieldTypeString",
+        "alias": "STANDARDTEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "COMPKEY": 855795,
+          "UNITID": "SGN-246683",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 50,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641720,
+          "UNITID": "SGN-201076",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "1900",
+          "DISTANCE": 177,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "COMPKEY": 840238,
+          "UNITID": "SGN-239466",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 211,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 629002,
+          "UNITID": "SGN-193894",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 33,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "COMPKEY": 844352,
+          "UNITID": "SGN-241974",
+          "SIGNTYPE": "R8-2HZ19",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1900",
+          "DISTANCE": 123,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "COMPKEY": 682467,
+          "UNITID": "SGN-211253",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 219,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 641571,
+          "UNITID": "SGN-201004",
+          "SIGNTYPE": "R8-LUL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 165,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 698256,
+          "UNITID": "SGN-215464",
+          "SIGNTYPE": "R8-2HRL",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 275,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841756,
+          "UNITID": "SGN-240480",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 435,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "COMPKEY": 855804,
+          "UNITID": "SGN-246690",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 219,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "COMPKEY": 666289,
+          "UNITID": "SGN-207032",
+          "SIGNTYPE": "R8-PAY8",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 67,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 629000,
+          "UNITID": "SGN-193892",
+          "SIGNTYPE": "R8-2HRL",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 128,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488062,
+          "UNITID": "SGN-128566",
+          "SIGNTYPE": "R8-2HZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "2000",
+          "DISTANCE": 248,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488082,
+          "UNITID": "SGN-128577",
+          "SIGNTYPE": "R7-RPZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "2000",
+          "ENDTIME": "2359",
+          "DISTANCE": 554,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488076,
+          "UNITID": "SGN-128574",
+          "SIGNTYPE": "R7-RPZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "2000",
+          "ENDTIME": "2359",
+          "DISTANCE": 389,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "COMPKEY": 275130,
+          "UNITID": "SGN-98332",
+          "SIGNTYPE": "R7-STAPBD",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "600",
+          "ENDTIME": "1900",
+          "DISTANCE": 207.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "COMPKEY": 80012,
+          "UNITID": "SGN-32426",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 378,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760385,
+          "UNITID": "SGN-228467",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 256,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760383,
+          "UNITID": "SGN-228465",
+          "SIGNTYPE": "R7-STAPBD",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "600",
+          "ENDTIME": "1900",
+          "DISTANCE": 195,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "COMPKEY": 526933,
+          "UNITID": "SGN-137084",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 249,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "COMPKEY": 60433,
+          "UNITID": "SGN-12504",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 20,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 487569,
+          "UNITID": "SGN-128265",
+          "SIGNTYPE": "R8-2HRR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 88,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "COMPKEY": 666292,
+          "UNITID": "SGN-207035",
+          "SIGNTYPE": "R8-LUL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 124,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 65114,
+          "UNITID": "SGN-15322",
+          "SIGNTYPE": "R7-STOPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 209,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488061,
+          "UNITID": "SGN-128565",
+          "SIGNTYPE": "R7-RPZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "2000",
+          "ENDTIME": "2359",
+          "DISTANCE": 248,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849474,
+          "UNITID": "SGN-244742",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 257,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "COMPKEY": 855800,
+          "UNITID": "SGN-246687",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 165,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760388,
+          "UNITID": "SGN-228470",
+          "SIGNTYPE": "R8-PAY6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 256,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760386,
+          "UNITID": "SGN-228468",
+          "SIGNTYPE": "R7-L",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 256,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 697630,
+          "UNITID": "SGN-215093",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 229,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "COMPKEY": 666295,
+          "UNITID": "SGN-207038",
+          "SIGNTYPE": "R8-PAY8",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 233,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 669911,
+          "UNITID": "SGN-208711",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 50,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641726,
+          "UNITID": "SGN-201077",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "1900",
+          "DISTANCE": 200,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 487570,
+          "UNITID": "SGN-128266",
+          "SIGNTYPE": "R8-SG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 88,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "COMPKEY": 125239,
+          "UNITID": "SGN-73693",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 205,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 98898,
+          "UNITID": "SGN-48295",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 599,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "COMPKEY": 80009,
+          "UNITID": "SGN-32423",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 139,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "COMPKEY": 72046,
+          "UNITID": "SGN-23060",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 462,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641718,
+          "UNITID": "SGN-201075",
+          "SIGNTYPE": "R8-RBW",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 154,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 855810,
+          "UNITID": "SGN-246695",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "1900",
+          "DISTANCE": 249,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760374,
+          "UNITID": "SGN-228457",
+          "SIGNTYPE": "R8-2PAYB6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 117,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641728,
+          "UNITID": "SGN-201078",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "1900",
+          "DISTANCE": 224,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641716,
+          "UNITID": "SGN-201074",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "1900",
+          "DISTANCE": 154,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841751,
+          "UNITID": "SGN-240476",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0",
+          "DISTANCE": 285,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849467,
+          "UNITID": "SGN-244737",
+          "SIGNTYPE": "R7-SPACE",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 172,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849473,
+          "UNITID": "SGN-244741",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 257,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849468,
+          "UNITID": "SGN-244738",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 208,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "COMPKEY": 844350,
+          "UNITID": "SGN-241973",
+          "SIGNTYPE": "R8-2HZ19",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1900",
+          "DISTANCE": 23,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "COMPKEY": 757066,
+          "UNITID": "SGN-226536",
+          "SIGNTYPE": "R7-BUS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 31.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "COMPKEY": 666293,
+          "UNITID": "SGN-207036",
+          "SIGNTYPE": "R8-PAY4B8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "0800",
+          "ENDTIME": "2000",
+          "DISTANCE": 155,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488077,
+          "UNITID": "SGN-128575",
+          "SIGNTYPE": "R8-2HZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "2000",
+          "DISTANCE": 389,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "COMPKEY": 167673,
+          "UNITID": "SGN-112639",
+          "SIGNTYPE": "R8-PAY6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 207.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "COMPKEY": 275128,
+          "UNITID": "SGN-98497",
+          "SIGNTYPE": "R7-STAPBD",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "600",
+          "ENDTIME": "1900",
+          "DISTANCE": 133.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "COMPKEY": 164198,
+          "UNITID": "SGN-110610",
+          "SIGNTYPE": "R8-PLZSTP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1600",
+          "ENDTIME": "1800",
+          "DISTANCE": 324,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "COMPKEY": 125241,
+          "UNITID": "SGN-73695",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 275,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "COMPKEY": 72044,
+          "UNITID": "SGN-23058",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 143,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "COMPKEY": 72043,
+          "UNITID": "SGN-22989",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 13,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 702731,
+          "UNITID": "SGN-217295",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 340,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "COMPKEY": 80010,
+          "UNITID": "SGN-32424",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 139,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 697633,
+          "UNITID": "SGN-215096",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 146,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "COMPKEY": 617536,
+          "UNITID": "SGN-187000",
+          "SIGNTYPE": "R7-BUS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 151.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841752,
+          "UNITID": "SGN-240477",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 285,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "COMPKEY": 840237,
+          "UNITID": "SGN-239465",
+          "SIGNTYPE": "R8-4PAYB6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 157,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "COMPKEY": 72047,
+          "UNITID": "SGN-23061",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 562,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 757740,
+          "UNITID": "SGN-226944",
+          "SIGNTYPE": "R7-STOPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 137,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488057,
+          "UNITID": "SGN-128562",
+          "SIGNTYPE": "R8-2HZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "2000",
+          "DISTANCE": 88,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "COMPKEY": 682453,
+          "UNITID": "SGN-211251",
+          "SIGNTYPE": "R7-NPR",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 33,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841755,
+          "UNITID": "SGN-240479",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 380,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "COMPKEY": 506927,
+          "UNITID": "SGN-132863",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 273,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "COMPKEY": 149750,
+          "UNITID": "SGN-97853",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 74,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 65103,
+          "UNITID": "SGN-16549",
+          "SIGNTYPE": "R7-STOPS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 209,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760378,
+          "UNITID": "SGN-228460",
+          "SIGNTYPE": "R8-2HRSUN",
+          "STARTDAY": "7",
+          "ENDDAY": "7",
+          "STARTTIME": "1000",
+          "ENDTIME": "1800",
+          "DISTANCE": 117,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760384,
+          "UNITID": "SGN-228466",
+          "SIGNTYPE": "R8-2HRSUN",
+          "STARTDAY": "7",
+          "ENDDAY": "7",
+          "STARTTIME": "1000",
+          "ENDTIME": "1800",
+          "DISTANCE": 195,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "COMPKEY": 840227,
+          "UNITID": "SGN-239459",
+          "SIGNTYPE": "R8-PAY6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 59,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "COMPKEY": 83433,
+          "UNITID": "SGN-34423",
+          "SIGNTYPE": "R8-PLZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 130,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760387,
+          "UNITID": "SGN-228469",
+          "SIGNTYPE": "R7-STAPBD",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "600",
+          "ENDTIME": "1900",
+          "DISTANCE": 256,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841749,
+          "UNITID": "SGN-240475",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 155,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "COMPKEY": 757067,
+          "UNITID": "SGN-226537",
+          "SIGNTYPE": "R7-BUS",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 107.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 164954,
+          "UNITID": "SGN-109631",
+          "SIGNTYPE": "R8-PLZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 265,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841746,
+          "UNITID": "SGN-240473",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 97,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841758,
+          "UNITID": "SGN-240482",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 435,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841739,
+          "UNITID": "SGN-240469",
+          "SIGNTYPE": "R8-LG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 50,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "COMPKEY": 840226,
+          "UNITID": "SGN-239458",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 59,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488083,
+          "UNITID": "SGN-128578",
+          "SIGNTYPE": "R8-2HZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "2000",
+          "DISTANCE": 554,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 65081,
+          "UNITID": "SGN-17702",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 35,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "COMPKEY": 167674,
+          "UNITID": "SGN-112640",
+          "SIGNTYPE": "R8-2PAYB6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 145.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 696575,
+          "UNITID": "SGN-214450",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 272,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "COMPKEY": 606807,
+          "UNITID": "SGN-180267",
+          "SIGNTYPE": "R8-PLZSTP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1600",
+          "ENDTIME": "1800",
+          "DISTANCE": 220,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 280373,
+          "UNITID": "SGN-115214",
+          "SIGNTYPE": "R8-PAY8",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 63,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841745,
+          "UNITID": "SGN-240472",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0",
+          "DISTANCE": 97,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "COMPKEY": 506934,
+          "UNITID": "SGN-132868",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 243,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849461,
+          "UNITID": "SGN-244733",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 63,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 698255,
+          "UNITID": "SGN-215463",
+          "SIGNTYPE": "R8-DISABLX",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 275,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "COMPKEY": 164197,
+          "UNITID": "SGN-110609",
+          "SIGNTYPE": "R8-PLZSTP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1600",
+          "ENDTIME": "1800",
+          "DISTANCE": 289,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "COMPKEY": 666290,
+          "UNITID": "SGN-207033",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 67,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "COMPKEY": 682472,
+          "UNITID": "SGN-211256",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 275,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841757,
+          "UNITID": "SGN-240481",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0",
+          "DISTANCE": 435,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "COMPKEY": 844354,
+          "UNITID": "SGN-241975",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 209,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "COMPKEY": 855798,
+          "UNITID": "SGN-246685",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 75,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "COMPKEY": 840239,
+          "UNITID": "SGN-239467",
+          "SIGNTYPE": "R8-PAY6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 211,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "COMPKEY": 167672,
+          "UNITID": "SGN-112638",
+          "SIGNTYPE": "R8-PAY6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 60.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41918,
+          "COMPKEY": 149686,
+          "UNITID": "SGN-96748",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 438,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "COMPKEY": 149751,
+          "UNITID": "SGN-97854",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 187,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "COMPKEY": 83432,
+          "UNITID": "SGN-34422",
+          "SIGNTYPE": "R8-PLZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 40,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "COMPKEY": 80011,
+          "UNITID": "SGN-32425",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 246,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "COMPKEY": 65565,
+          "UNITID": "SGN-16862",
+          "SIGNTYPE": "R7-BUSK",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 252.5,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 696578,
+          "UNITID": "SGN-214453",
+          "SIGNTYPE": "R7-NP",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 37,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 698300,
+          "UNITID": "SGN-215495",
+          "SIGNTYPE": "R8-2HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 230,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "COMPKEY": 72045,
+          "UNITID": "SGN-23059",
+          "SIGNTYPE": "R8-4HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 346,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849471,
+          "UNITID": "SGN-244740",
+          "SIGNTYPE": "R8-DISABLX",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 223,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "COMPKEY": 844355,
+          "UNITID": "SGN-241976",
+          "SIGNTYPE": "R8-2HZ19",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "700",
+          "ENDTIME": "1900",
+          "DISTANCE": 209,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849465,
+          "UNITID": "SGN-244736",
+          "SIGNTYPE": "R8-2PYEVNT",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 123,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641683,
+          "UNITID": "SGN-201057",
+          "SIGNTYPE": "R8-SBOX",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 63,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 629004,
+          "UNITID": "SGN-193896",
+          "SIGNTYPE": "R8-2HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 33,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "COMPKEY": 629001,
+          "UNITID": "SGN-193893",
+          "SIGNTYPE": "R8-2HR",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 101,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841754,
+          "UNITID": "SGN-240478",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0",
+          "DISTANCE": 380,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760363,
+          "UNITID": "SGN-228450",
+          "SIGNTYPE": "R8-PAY6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 55,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760370,
+          "UNITID": "SGN-228454",
+          "SIGNTYPE": "R8-2PAYB6",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 117,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760375,
+          "UNITID": "SGN-228458",
+          "SIGNTYPE": "R7-STAPBD",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "600",
+          "ENDTIME": "1900",
+          "DISTANCE": 117,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 697632,
+          "UNITID": "SGN-215095",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 107,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 697636,
+          "UNITID": "SGN-215099",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 394,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488060,
+          "UNITID": "SGN-128564",
+          "SIGNTYPE": "R8-LG",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 88,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88082,
+          "COMPKEY": 151773,
+          "UNITID": "SGN-101968",
+          "SIGNTYPE": "R7-WI30",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 390,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760364,
+          "UNITID": "SGN-228451",
+          "SIGNTYPE": "R8-2HRSUN",
+          "STARTDAY": "7",
+          "ENDDAY": "7",
+          "STARTTIME": "1000",
+          "ENDTIME": "1800",
+          "DISTANCE": 55,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "COMPKEY": 886752,
+          "UNITID": "SGN-256698",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 219,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760362,
+          "UNITID": "SGN-228449",
+          "SIGNTYPE": "R7-STAPBD",
+          "STARTDAY": "1",
+          "ENDDAY": "5",
+          "STARTTIME": "600",
+          "ENDTIME": "1900",
+          "DISTANCE": 55,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "COMPKEY": 125237,
+          "UNITID": "SGN-73691",
+          "SIGNTYPE": "R8-2HZ8",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 77,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 65682,
+          "UNITID": "SGN-19296",
+          "SIGNTYPE": "R8-LULD",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "800",
+          "ENDTIME": "1800",
+          "DISTANCE": 125,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488056,
+          "UNITID": "SGN-128561",
+          "SIGNTYPE": "R7-RPZ27",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "2000",
+          "ENDTIME": "2359",
+          "DISTANCE": 88,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841748,
+          "UNITID": "SGN-240474",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0",
+          "DISTANCE": 155,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 697634,
+          "UNITID": "SGN-215097",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 350,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841738,
+          "UNITID": "SGN-240468",
+          "SIGNTYPE": "R8-2HZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "6",
+          "STARTTIME": "700",
+          "ENDTIME": "1800",
+          "DISTANCE": 50,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841736,
+          "UNITID": "SGN-240466",
+          "SIGNTYPE": "R7-RPZ13",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "1800",
+          "ENDTIME": "0",
+          "DISTANCE": 50,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "COMPKEY": 841737,
+          "UNITID": "SGN-240467",
+          "SIGNTYPE": "R7-L",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 50,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "COMPKEY": 849462,
+          "UNITID": "SGN-244734",
+          "SIGNTYPE": "R8-PAYBL",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 63,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "COMPKEY": 760361,
+          "UNITID": "SGN-228448",
+          "SIGNTYPE": "R7-NPL",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 55,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 641684,
+          "UNITID": "SGN-201058",
+          "SIGNTYPE": "R8-SBOX",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 98,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "COMPKEY": 488059,
+          "UNITID": "SGN-128563",
+          "SIGNTYPE": "R7-L",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 88,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "COMPKEY": 280376,
+          "UNITID": "SGN-115217",
+          "SIGNTYPE": "R8-4PAYB8",
+          "STARTDAY": null,
+          "ENDDAY": null,
+          "STARTTIME": null,
+          "ENDTIME": null,
+          "DISTANCE": 86,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "COMPKEY": 65092,
+          "UNITID": "SGN-16737",
+          "SIGNTYPE": "R8-PLZ",
+          "STARTDAY": "1",
+          "ENDDAY": "7",
+          "STARTTIME": "0",
+          "ENDTIME": "2359",
+          "DISTANCE": 87,
+          "CUSTOMTEXT": null,
+          "STANDARDTEXT": null
+        }
+      }
+    ]
+  },
+  "fuller_text": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128575",
+          "SIGNTYPE": "R8-2HZ27",
+          "TEXT": "2 H [Circle P] 8A-8P MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 389
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244737",
+          "SIGNTYPE": "R7-SPACE",
+          "TEXT": "NO PARKING THIS SPACE",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 172
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241973",
+          "SIGNTYPE": "R8-2HZ19",
+          "TEXT": "2 H [CIRCLE P] 7A-7P MON-FRI, EXC BY ZN 19 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 23
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITID": "SGN-246690",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H [CIRCLE P] 7A-6P EXC SUN-HOL, EXC BY ZN 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 219
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240479",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 380
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-215464",
+          "SIGNTYPE": "R8-2HRL",
+          "TEXT": "2 H [Circle P] 7AM-6PM EXC SUN-HOL [Left Arrow]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 275
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "UNITID": "SGN-110609",
+          "SIGNTYPE": "R8-PLZSTP",
+          "TEXT": "3 M PLZ, NO STOPS 4-6P EXC SAT-SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 289
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-215097",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 350
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241976",
+          "SIGNTYPE": "R8-2HZ19",
+          "TEXT": "2 H [CIRCLE P] 7A-7P MON-FRI, EXC BY ZN 19 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 209
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228457",
+          "SIGNTYPE": "R8-2PAYB6",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 2 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 117
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240474",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 155
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-193894",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 33
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-214450",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 272
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-16549",
+          "SIGNTYPE": "R7-STOPS",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 209
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "UNITID": "SGN-23058",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 143
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "UNITID": "SGN-112639",
+          "SIGNTYPE": "R8-PAY6",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 207.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201058",
+          "SIGNTYPE": "R8-SBOX",
+          "TEXT": "(11)15 MINUTESHUTTLE BUS ONLY6-10AM MON-FRIVALID PERMIT ONLYPAY TO PARK10AM-8PM MON-FRI8AM-8PM SAT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 98
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-215099",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 394
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "UNITID": "SGN-226536",
+          "SIGNTYPE": "R7-BUS",
+          "TEXT": "[METRO LOGO] BUS, TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 31.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244741",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 257
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITID": "SGN-239467",
+          "SIGNTYPE": "R8-PAY6",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 211
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240480",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 435
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241975",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 209
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128574",
+          "SIGNTYPE": "R7-RPZ27",
+          "TEXT": "[RED SLASHED CIRCLE] P  8P-12A MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 389
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128577",
+          "SIGNTYPE": "R7-RPZ27",
+          "TEXT": "[RED SLASHED CIRCLE] P  8P-12A MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 554
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128565",
+          "SIGNTYPE": "R7-RPZ27",
+          "TEXT": "[RED SLASHED CIRCLE] P  8P-12A MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128265",
+          "SIGNTYPE": "R8-2HRR",
+          "TEXT": "2 H [Circle P] 7AM-6PM EXC SUN-HOL [Right Arrow]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1625,
+          "UNITID": "SGN-241974",
+          "SIGNTYPE": "R8-2HZ19",
+          "TEXT": "2 H [CIRCLE P] 7A-7P MON-FRI, EXC BY ZN 19 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 123
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128561",
+          "SIGNTYPE": "R7-RPZ27",
+          "TEXT": "[RED SLASHED CIRCLE] P  8P-12A MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-215096",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 146
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228466",
+          "SIGNTYPE": "R8-2HRSUN",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 195
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "UNITID": "SGN-16862",
+          "SIGNTYPE": "R7-BUSK",
+          "TEXT": "[BUS] [CUSTOM KIOSKS WITH BUS ROUTE INFORMATION]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 252.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "UNITID": "SGN-98332",
+          "SIGNTYPE": "R7-STAPBD",
+          "TEXT": "NO STOPS 6-9A 3-7P EXC SAT-SUN-HOL, TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 207.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "UNITID": "SGN-112638",
+          "SIGNTYPE": "R8-PAY6",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 60.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "UNITID": "SGN-132863",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANYTIME",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 273
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-208711",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240468",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-226944",
+          "SIGNTYPE": "R7-STOPS",
+          "TEXT": "NO STOPS\n\rTOW-AWAY ZONE Phone 684-5444",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 137
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-193896",
+          "SIGNTYPE": "R8-2HR",
+          "TEXT": "2 H PARKING 7AM-6PM EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 33
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITID": "SGN-256698",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H [CIRCLE P] 7A-6P EXC SUN-HOL, EXC BY ZN 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 219
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "UNITID": "SGN-23059",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 346
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITID": "SGN-12504",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 20
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-214453",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 37
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "UNITID": "SGN-73691",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H PARKING 7A-6P EXC SUN-HOL, EXC BY ZONE 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 77
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITID": "SGN-137084",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANY TIME",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 249
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-16737",
+          "SIGNTYPE": "R8-PLZ",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 87
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "UNITID": "SGN-22989",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 13
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "UNITID": "SGN-32425",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 246
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88082,
+          "UNITID": "SGN-101968",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 390
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-115217",
+          "SIGNTYPE": "R8-4PAYB8",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 86
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201077",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "TEXT": "(16)PAY TO PARK 8AM-3PM 6-8PM MON-FRI8AM-8PM SATMETRO BUSES ONLY3-6PM MON-FRI",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 200
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240466",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240482",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 435
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-201004",
+          "SIGNTYPE": "R8-LUL",
+          "TEXT": "30 M LOAD AND UNLOAD ONLY TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITID": "SGN-207033",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 67
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201057",
+          "SIGNTYPE": "R8-SBOX",
+          "TEXT": "(11)15 MINUTESHUTTLE BUS ONLY6-10AM MON-FRIVALID PERMIT ONLYPAY TO PARK10AM-8PM MON-FRI8AM-8PM SATz",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-15322",
+          "SIGNTYPE": "R7-STOPS",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 209
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-215495",
+          "SIGNTYPE": "R8-2HR",
+          "TEXT": "2 H PARKING 7AM-6PM EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 230
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-19296",
+          "SIGNTYPE": "R8-LULD",
+          "TEXT": "30 M LOAD & UNLOAD ONLY 7A-6P EXC SUN-HOL, TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 125
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITID": "SGN-239459",
+          "SIGNTYPE": "R8-PAY6",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-17702",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 35
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "UNITID": "SGN-23060",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 462
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "UNITID": "SGN-73693",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H PARKING 7A-6P EXC SUN-HOL, EXC BY ZONE 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 205
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128266",
+          "SIGNTYPE": "R8-SG",
+          "TEXT": "SOUTH OF HERE",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITID": "SGN-207032",
+          "SIGNTYPE": "R8-PAY8",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 67
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITID": "SGN-207038",
+          "SIGNTYPE": "R8-PAY8",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 233
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-215095",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 107
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-193892",
+          "SIGNTYPE": "R8-2HRL",
+          "TEXT": "2 H [Circle P] 7AM-6PM EXC SUN-HOL [Left Arrow]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 128
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITID": "SGN-239465",
+          "SIGNTYPE": "R8-4PAYB6",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 157
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240477",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 285
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240476",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 285
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201075",
+          "SIGNTYPE": "R8-RBW",
+          "TEXT": "[RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 154
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "UNITID": "SGN-112640",
+          "SIGNTYPE": "R8-2PAYB6",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 2 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 145.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "UNITID": "SGN-32426",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 378
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "UNITID": "SGN-97853",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANYTIME",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 74
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-48295",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 599
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228448",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 55
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228450",
+          "SIGNTYPE": "R8-PAY6",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 55
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240467",
+          "SIGNTYPE": "R7-L",
+          "TEXT": "[LEFT FACING ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240478",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 380
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244738",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 208
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240473",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 97
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "UNITID": "SGN-211256",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 275
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244742",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 257
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228451",
+          "SIGNTYPE": "R8-2HRSUN",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 55
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201074",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "TEXT": "(16)PAY TO PARK 8AM-3PM 6-8PM MON-FRI8AM-8PM SATMETRO BUSES ONLY3-6PM MON-FRI",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 154
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITID": "SGN-207035",
+          "SIGNTYPE": "R8-LUL",
+          "TEXT": "30 M LOAD AND UNLOAD ONLY TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 124
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-246695",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "TEXT": "(16)PAY TO PARK 8AM-3PM 6-8PM MON-FRI8AM-8PM SATMETRO BUSES ONLY3-6PM MON-FRI",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 249
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "UNITID": "SGN-34423",
+          "SIGNTYPE": "R8-PLZ",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 130
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240472",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 97
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-115214",
+          "SIGNTYPE": "R8-PAY8",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITID": "SGN-239466",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 211
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228467",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 256
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228460",
+          "SIGNTYPE": "R8-2HRSUN",
+          "TEXT": "2 HOUR [CIRCLE P] 10AM-6PM SUNDAYS\n\rNO PAYMENT REQUIRED\n\r",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 117
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "UNITID": "SGN-34422",
+          "SIGNTYPE": "R8-PLZ",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 40
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "UNITID": "SGN-97854",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANYTIME",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 187
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128566",
+          "SIGNTYPE": "R8-2HZ27",
+          "TEXT": "2 H [Circle P] 8A-8P MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71289,
+          "UNITID": "SGN-207036",
+          "SIGNTYPE": "R8-PAY4B8",
+          "TEXT": "[CIRCLE P] 4 Hours Max\n\rPay 8am-8pm Mon-Sat",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 155
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1214,
+          "UNITID": "SGN-228470",
+          "SIGNTYPE": "R8-PAY6",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 256
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244734",
+          "SIGNTYPE": "R8-PAYBL",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-193893",
+          "SIGNTYPE": "R8-2HR",
+          "TEXT": "2 H PARKING 7AM-6PM EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 101
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-109631",
+          "SIGNTYPE": "R8-PLZ",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 265
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128562",
+          "SIGNTYPE": "R8-2HZ27",
+          "TEXT": "2 H [Circle P] 8A-8P MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70725,
+          "UNITID": "SGN-98497",
+          "SIGNTYPE": "R7-STAPBD",
+          "TEXT": "NO STOPS 6-9A 3-7P EXC SAT-SUN-HOL, TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 133.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 29021,
+          "UNITID": "SGN-23061",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 562
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "UNITID": "SGN-226537",
+          "SIGNTYPE": "R7-BUS",
+          "TEXT": "[METRO LOGO] BUS, TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 107.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-215463",
+          "SIGNTYPE": "R8-DISABLX",
+          "TEXT": "(28)[WHEELCHAIR SYMBOL] STATE DISABLED PARKING PERMIT REQUIRED, 4HR LIMIT 7AM-6PM EXC SUN-HOL,TOW AWAY ZONE SYMBOL PHONE 206-684-5444",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 275
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITID": "SGN-211253",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 219
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244733",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244740",
+          "SIGNTYPE": "R8-DISABLX",
+          "TEXT": "(35)[WHEELCHAIR] STATE DISABLED\rPARKING PERMIT REQUIRED\r4 HOUR LIMIT\r8A-8P EXC SUN-HOL NO PAYMENT REQUIRED\r[TOWED CAR]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 223
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201078",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "TEXT": "(16)PAY TO PARK 8AM-3PM 6-8PM MON-FRI8AM-8PM SATMETRO BUSES ONLY3-6PM MON-FRI",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 224
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27397,
+          "UNITID": "SGN-187000",
+          "SIGNTYPE": "R7-BUS",
+          "TEXT": "[METRO LOGO] BUS, TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 151.5
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "UNITID": "SGN-180267",
+          "SIGNTYPE": "R8-PLZSTP",
+          "TEXT": "3 M PLZ, NO STOPS 4-6P EXC SAT-SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 220
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2785,
+          "UNITID": "SGN-201076",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "TEXT": "(16)PAY TO PARK 8AM-3PM 6-8PM MON-FRI8AM-8PM SATMETRO BUSES ONLY3-6PM MON-FRI",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 177
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88477,
+          "UNITID": "SGN-217295",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 340
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITID": "SGN-246683",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "UNITID": "SGN-32423",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 139
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "UNITID": "SGN-73695",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H PARKING 7A-6P EXC SUN-HOL, EXC BY ZONE 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 275
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41918,
+          "UNITID": "SGN-96748",
+          "SIGNTYPE": "R7-WI30",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 438
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31497,
+          "UNITID": "SGN-110610",
+          "SIGNTYPE": "R8-PLZSTP",
+          "TEXT": "3 M PLZ, NO STOPS 4-6P EXC SAT-SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 324
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128578",
+          "SIGNTYPE": "R8-2HZ27",
+          "TEXT": "2 H [Circle P] 8A-8P MON-SAT, EXC BY ZN 27 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 554
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128563",
+          "SIGNTYPE": "R7-L",
+          "TEXT": "[LEFT FACING ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 46457,
+          "UNITID": "SGN-215093",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 4 Hours Max",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 229
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240469",
+          "SIGNTYPE": "R8-LG",
+          "TEXT": "[LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITID": "SGN-246687",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H [CIRCLE P] 7A-6P EXC SUN-HOL, EXC BY ZN 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14362,
+          "UNITID": "SGN-246685",
+          "SIGNTYPE": "R8-2HZ8",
+          "TEXT": "2 H [CIRCLE P] 7A-6P EXC SUN-HOL, EXC BY ZN 8 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 75
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33434,
+          "UNITID": "SGN-128564",
+          "SIGNTYPE": "R8-LG",
+          "TEXT": "[LEFT  ARROW]  (GREEN ON WHITE)",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 62009,
+          "UNITID": "SGN-239458",
+          "SIGNTYPE": "R7-NPL",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240481",
+          "SIGNTYPE": "R7-RPZ13",
+          "TEXT": "NO PARKING SYMBOL, 6PM-12AM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 435
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 14366,
+          "UNITID": "SGN-211251",
+          "SIGNTYPE": "R7-NPR",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 33
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 68929,
+          "UNITID": "SGN-244736",
+          "SIGNTYPE": "R8-2PYEVNT",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 2 Hours Max No time limit after 5pm",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 123
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 41922,
+          "UNITID": "SGN-132868",
+          "SIGNTYPE": "R7-NP",
+          "TEXT": "NO PARKING ANYTIME",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 243
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 27430,
+          "UNITID": "SGN-240475",
+          "SIGNTYPE": "R8-2HZ13",
+          "TEXT": "2 HOUR PARKING SYMBOL 7AM-6PM, EXCEPT BY ZONE 13 PERMIT",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 155
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8281,
+          "UNITID": "SGN-32424",
+          "SIGNTYPE": "R8-4HR",
+          "TEXT": "4 H PARKING 7A-6P EXC SUN-HOL",
+          "CURRENT_STATUS": "INSVC",
+          "DISTANCE": 139
+        }
+      }
+    ]
+  }
+}

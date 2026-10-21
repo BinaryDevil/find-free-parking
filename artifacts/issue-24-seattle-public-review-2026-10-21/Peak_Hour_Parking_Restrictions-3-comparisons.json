@@ -1,0 +1,1439 @@
+{
+  "source_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Peak_Hour_Parking_Restrictions/FeatureServer/3",
+  "keys": [
+    56462,
+    75153,
+    6181,
+    25701,
+    2386,
+    26665,
+    56658,
+    31438,
+    33018,
+    1610
+  ],
+  "selection": "first ten distinct non-null curb keys from at most 2000 safe projected records; not a representative passing safety sample",
+  "source_records": [
+    {
+      "attributes": {
+        "OBJECTID": 26222,
+        "SIDE": "SE",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 56462
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26223,
+        "SIDE": "SW",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 75153
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26224,
+        "SIDE": "SW",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 6181
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26225,
+        "SIDE": "SW",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25701
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26226,
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2386
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26227,
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 26665
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26228,
+        "SIDE": "NE",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 56658
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26229,
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 31438
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26230,
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 33018
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 26231,
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 1610
+      }
+    }
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITDESC": "5TH AVE BETWEEN MADISON ST AND SPRING ST",
+          "SIDE": "SW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": "7-9AM 4-6PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 2,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITDESC": "2ND AVE BETWEEN UNION ST AND PIKE ST",
+          "SIDE": "SW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": "6-9AM 3-7PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 2.5,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 6181,
+          "UNITDESC": "4TH AVE BETWEEN MARION ST AND MADISON ST",
+          "SIDE": "SW",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "4-6PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 2,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31438,
+          "UNITDESC": "AIRPORT WAY S BETWEEN S BRADFORD ST AND S ANDOVER ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "7-9AM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITDESC": "25TH AVE NE BETWEEN NE BLAKELEY ST AND NE 54TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "7-9AM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2386,
+          "UNITDESC": "16TH AVE S BETWEEN DALLAS AVE S AND S CLOVERDALE ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "7-9AM 4-6PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1610,
+          "UNITDESC": "12TH AVE NE BETWEEN NE 61ST ST AND NE 62ND ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "4-6PM",
+          "RPZ_ZONE": "19",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITDESC": "LAKE CITY WAY NE BETWEEN NE NORTHGATE WAY AND NE 115TH ST",
+          "SIDE": "SE",
+          "PARKING_CATEGORY": "Time Limited Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": "6-9AM 3-7PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITDESC": "LEARY WAY NW BETWEEN NW BOWDOIN N PL AND NW 40TH ST",
+          "SIDE": "NE",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "7-9AM 4-6PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33018,
+          "UNITDESC": "EASTLAKE AVE E BETWEEN E ROANOKE ST AND E EDGAR ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": "4-6PM",
+          "RPZ_ZONE": "8",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 31438,
+          "UNITID": "SGN-32007",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 147
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-205061",
+          "SIGNTYPE": "R8-2HPKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARK 6A-9A 3P-7P TAW EXP SAT-SUN-HOL\n\r2 HR 9A-3P EXP SUN-HOL",
+          "DISTANCE": 390
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169967",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES)",
+          "DISTANCE": 573
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-173605",
+          "SIGNTYPE": "R8-LUDSTX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "15 MINUTE LOAD AND UNLOAD ONLY 9AM-10PM EXCEPT SUN-HOL\n\rNO STOPS 7-9AM EXCEPT SAT-SUN-HOL",
+          "DISTANCE": 392
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-110797",
+          "SIGNTYPE": "R7-STAPBD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS 6-9A 3-7P EXC SAT-SUN-HOL, TAZ",
+          "DISTANCE": 77
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-9525",
+          "SIGNTYPE": "R7-STAPBD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS 6-9A 3-7P EXC SAT-SUN-HOL, TAZ",
+          "DISTANCE": 61
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169966",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 573
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-127135",
+          "SIGNTYPE": "R8-PLZDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[BUS LOGO], BUS, 5-10AM,EXCEPT SAT-SUN-HOL,PASSENGER,LOAD ONLY,10AM-8PM,EVERYDAY,[TOW SYMBOL,PHONE 684-5444",
+          "DISTANCE": 124
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169970",
+          "SIGNTYPE": "R8-LUDSTA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M LOAD & UNLOAD ONLY 9A-6P EXC SUN-HOL NO STOPS 7-9AM",
+          "DISTANCE": 489
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-205063",
+          "SIGNTYPE": "R8-2HPKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARK 6A-9A 3P-7P TAW EXP SAT-SUN-HOL\n\r2 HR 9A-3P EXP SUN-HOL",
+          "DISTANCE": 555
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-8241",
+          "SIGNTYPE": "R7-STAPBD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS 6-9A 3-7P EXC SAT-SUN-HOL, TAZ",
+          "DISTANCE": 119
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-112405",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 117
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 6181,
+          "UNITID": "SGN-124203",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 39
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169977",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 170
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-243023",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES ZONES)",
+          "DISTANCE": 53
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169976",
+          "SIGNTYPE": "R8-LULSTA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M LOAD AND UNLOAD ONLY, NO STOPS 7-9A EXC SAT-SUN-HOL",
+          "DISTANCE": 191
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITID": "SGN-215440",
+          "SIGNTYPE": "R7-PKAPDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARK PEAK TIMES TAZ",
+          "DISTANCE": 129
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-111259",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 44
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33018,
+          "UNITID": "SGN-43659",
+          "SIGNTYPE": "R7-PKP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 86
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-110795",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 119
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-10601",
+          "SIGNTYPE": "R7-BUS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS TOW AWAY ZONE 684-5444",
+          "DISTANCE": 208
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-51536",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES)",
+          "DISTANCE": 254
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-106817",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES) #16,66E,358,ST [DECAL]",
+          "DISTANCE": 174
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-203610",
+          "SIGNTYPE": "R7-BUSC",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[BUS] [CUSTOM SIGNS WITH BUS ROUTE INFORMATION]",
+          "DISTANCE": 131
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169972",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES)",
+          "DISTANCE": 392
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169975",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES)",
+          "DISTANCE": 218
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169969",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES)",
+          "DISTANCE": 514
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-51535",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 217
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 6181,
+          "UNITID": "SGN-124204",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 113
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169968",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 514
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-110796",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 77
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-174237",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 61
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2386,
+          "UNITID": "SGN-209153",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 28
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-146479",
+          "SIGNTYPE": "R7-PKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM 4-6PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 71
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-205057",
+          "SIGNTYPE": "R8-2HPKPX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 H PARKING VARIABLE TIMES",
+          "DISTANCE": 103
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-243024",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES ZONES)",
+          "DISTANCE": 155
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31438,
+          "UNITID": "SGN-32266",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "DGST: R404 (0046) - TXT: *CHG LN 8: 123     ",
+          "DISTANCE": 223
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-174236",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 39
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-51533",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 103
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169974",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 218
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITID": "SGN-52683",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES)",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 6181,
+          "UNITID": "SGN-124205",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 175
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-10946",
+          "SIGNTYPE": "R7-BUS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS TOW AWAY ZONE 684-5444",
+          "DISTANCE": 246
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1610,
+          "UNITID": "SGN-36910",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "DGST: R402 (0015) - TXT: *CHG LN 7: 22 23,71 72,305     ",
+          "DISTANCE": 93
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31438,
+          "UNITID": "SGN-32005",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 23
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-108686",
+          "SIGNTYPE": "R7-PKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM 4-6PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 44
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 6181,
+          "UNITID": "SGN-124206",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 240
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2386,
+          "UNITID": "SGN-209154",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITID": "SGN-215443",
+          "SIGNTYPE": "R7-PKAPDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARK PEAK TIMES TAZ",
+          "DISTANCE": 328
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-10681",
+          "SIGNTYPE": "R8-PLZSTX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(13) 3M PLZ, NO STOPS 6-9A 3-7P EXC SAT-SUN-HOL",
+          "DISTANCE": 327
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33018,
+          "UNITID": "SGN-44395",
+          "SIGNTYPE": "R7-PKP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 437
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2386,
+          "UNITID": "SGN-88826",
+          "SIGNTYPE": "R7-PKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM 4-6PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 124
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169973",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING (VARIABLE DATES TIMES)",
+          "DISTANCE": 334
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITID": "SGN-215444",
+          "SIGNTYPE": "R7-R",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RIGHT FACING ARROW]",
+          "DISTANCE": 328
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-51538",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 364
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITID": "SGN-215442",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 328
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 33018,
+          "UNITID": "SGN-43660",
+          "SIGNTYPE": "R7-PKP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 4-6 PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 202
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-110794",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 61
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-108684",
+          "SIGNTYPE": "R7-PKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM 4-6PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 117
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-111260",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 79
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-162984",
+          "SIGNTYPE": "R8-MOTCYCX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "MOTOR CYCLES ONLY, PAY @ PS 9A-4P MON-FRI, 8AM-8PM SAT\n\r",
+          "DISTANCE": 71
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-176571",
+          "SIGNTYPE": "R8-LUDSTX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "{11}15 MINUTE\n\rLOAD AND UNLOAD ONLY\n\r9AM-10PM\n\rEXCEPT SUN-HOL\n\rNO STOPS 7-9AM\n\rEXCEPT SAT-SUN-HOL",
+          "DISTANCE": 435
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 6181,
+          "UNITID": "SGN-124207",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 273
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-239028",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 53
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-169971",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 392
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56462,
+          "UNITID": "SGN-51539",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 555
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31438,
+          "UNITID": "SGN-32006",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 108
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-106815",
+          "SIGNTYPE": "R7-BUS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS TOW AWAY ZONE 684-5444",
+          "DISTANCE": 225
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-65530",
+          "SIGNTYPE": "R7-LR45",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "45 DEGREE DOWN LEFT & RIGHT ARROWS (RED ON WHITE)",
+          "DISTANCE": 71
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25701,
+          "UNITID": "SGN-203609",
+          "SIGNTYPE": "R7-BUSC",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[BUS] [CUSTOM SIGNS WITH BUS ROUTE INFORMATION]",
+          "DISTANCE": 131
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56658,
+          "UNITID": "SGN-215441",
+          "SIGNTYPE": "R7-PKAPDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARK PEAK TIMES TAZ",
+          "DISTANCE": 278
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-239029",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 53
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2386,
+          "UNITID": "SGN-88750",
+          "SIGNTYPE": "R7-PKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM 4-6PM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 28
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 75153,
+          "UNITID": "SGN-108683",
+          "SIGNTYPE": "R7-PKAP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM 4-6PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 79
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 26665,
+          "UNITID": "SGN-239027",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 115
+        }
+      }
+    ]
+  }
+}

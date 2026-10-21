@@ -1,0 +1,109 @@
+{
+  "url": "https://data.seattle.gov/resource/7jzm-ucez.json",
+  "count": [
+    {
+      "count": "167799"
+    }
+  ],
+  "name": "Annual Parking Study Data",
+  "rowsUpdatedAt": 1574807442,
+  "licenseId": "PUBLIC_DOMAIN",
+  "columns": [
+    {
+      "fieldName": "elmntkey",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "study_area",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "sub_area",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "date_time",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "side",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "unitdesc",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "peak_hour_sdot",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "parking_spaces",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "total_vehicle_count",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "dp_count",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "rpz_count",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "tg_car2go",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "bmw_dn",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "lime",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "idling",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "field_notes",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "construction",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "event_closure",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "subarea_label",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "study_year",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "peak_hour_yes_or_no",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "rpz_blocks",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "csm",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "time_stamp",
+      "dataTypeName": "calendar_date"
+    }
+  ]
+}

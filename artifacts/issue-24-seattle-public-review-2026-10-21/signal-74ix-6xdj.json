@@ -1,0 +1,85 @@
+{
+  "url": "https://data.seattle.gov/resource/74ix-6xdj.json",
+  "count": [
+    {
+      "count": "518838"
+    }
+  ],
+  "name": "72hr Parking Ordinance Violations",
+  "rowsUpdatedAt": 1792597451,
+  "licenseId": "PUBLIC_DOMAIN",
+  "columns": [
+    {
+      "fieldName": "servicerequestnumber",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "createddate",
+      "dataTypeName": "calendar_date"
+    },
+    {
+      "fieldName": "methodreceivedname",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "servicerequeststatusname",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "location",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "x_value",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "y_value",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "latitude",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "longitude",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "latitude_longitude",
+      "dataTypeName": "point"
+    },
+    {
+      "fieldName": "zipcode",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "councildistrict",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "policeprecinct",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "community_reporting_area",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "licenseplatenumber",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "state",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "vehiclecolor",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "vehiclemake",
+      "dataTypeName": "text"
+    }
+  ]
+}

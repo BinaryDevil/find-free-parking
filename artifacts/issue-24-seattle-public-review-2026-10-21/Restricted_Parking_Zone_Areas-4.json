@@ -1,0 +1,338 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:08.778310+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer/4",
+  "name": "Restricted Parking Zones",
+  "geometry": "esriGeometryPolygon",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 35
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588284279,
+    "schemaLastEditDate": 1792588284279,
+    "dataLastEditDate": 1792588284279
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_ZONE",
+      "type": "esriFieldTypeString",
+      "alias": "RPZ Zone:",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUBSIDIES",
+      "type": "esriFieldTypeString",
+      "alias": "Subsidies:",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RENEW",
+      "type": "esriFieldTypeString",
+      "alias": "Renews:",
+      "sqlType": "sqlTypeOther",
+      "length": 100,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INEFFECT",
+      "type": "esriFieldTypeString",
+      "alias": "In Effect:",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NAME",
+      "type": "esriFieldTypeString",
+      "alias": "Zone Name",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WEBLINK",
+      "type": "esriFieldTypeString",
+      "alias": "Weblink",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GLOBALID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GLOBALID",
+      "sqlType": "sqlTypeOther",
+      "length": 38,
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CREATED_USER",
+      "type": "esriFieldTypeString",
+      "alias": "CREATED_USER",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CREATED_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "CREATED_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "LAST_EDITED_USER",
+      "type": "esriFieldTypeString",
+      "alias": "LAST_EDITED_USER",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LAST_EDITED_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "LAST_EDITED_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Shape__Area",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Area",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "f6f00c5cf9634d578d41156bf4a4679f",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792588286000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "GLOBALID",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ Zone:",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "INEFFECT",
+        "type": "esriFieldTypeString",
+        "alias": "In Effect:",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NAME",
+        "type": "esriFieldTypeString",
+        "alias": "Zone Name",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WEBLINK",
+        "type": "esriFieldTypeString",
+        "alias": "Weblink",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 701,
+          "RPZ_ZONE": "12",
+          "INEFFECT": "Monday-Friday 7 AM to 6 PM",
+          "NAME": "North Capitol Hill",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 702,
+          "RPZ_ZONE": "25",
+          "INEFFECT": "Monday \u2013 Friday 9 AM to 4 PM",
+          "NAME": "Westlake East",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 703,
+          "RPZ_ZONE": "14",
+          "INEFFECT": "Monday-Friday 7 AM to 6 PM.  Every Day 6 PM to Midnight",
+          "NAME": "Central District",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 704,
+          "RPZ_ZONE": "35",
+          "INEFFECT": "Monday-Saturday 7 AM - 6 PM",
+          "NAME": "West Seattle Junction",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 705,
+          "RPZ_ZONE": "19",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 7 PM",
+          "NAME": "Roosevelt",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 706,
+          "RPZ_ZONE": "13",
+          "INEFFECT": "Every Day, 7AM to Midnight",
+          "NAME": "Lower Queen Anne",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 707,
+          "RPZ_ZONE": "28",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM",
+          "NAME": "Beacon Hill",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 708,
+          "RPZ_ZONE": "21",
+          "INEFFECT": "Check Signs.  In unpaid parking areas, Daily 7 AM \u2013 10 PM or Monday-Saturday 7 AM \u2013 6 PM.  In paid parking areas, RPZ hours match paid parking hours, Monday-Saturday 8 AM \u2013 8 PM or 8 AM \u2013 6 PM. ",
+          "NAME": "Pike/Pine",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 709,
+          "RPZ_ZONE": "32",
+          "INEFFECT": "Monday - Saturday 7 AM - 8 PM",
+          "NAME": "West Capitol Hill",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 710,
+          "RPZ_ZONE": "22",
+          "INEFFECT": "Monday \u2013 Friday 7 AM to 4 PM.  Area 2 Monday - Friday 8 AM to 5 PM",
+          "NAME": "Wallingford West",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      }
+    ]
+  }
+}

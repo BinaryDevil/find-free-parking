@@ -1,0 +1,1794 @@
+{
+  "source_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curbspace_Transit_Layover/FeatureServer/0",
+  "keys": [
+    31893,
+    30093,
+    1281,
+    56690,
+    8265,
+    54953,
+    73409,
+    76402,
+    32490,
+    47025
+  ],
+  "selection": "first ten distinct non-null curb keys from at most 2000 safe projected records; not a representative passing safety sample",
+  "source_records": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 31893,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 30093,
+        "SIDE": "W",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 1281,
+        "SIDE": "W",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 56690,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 8265,
+        "SIDE": "W",
+        "STARTDAY": "2",
+        "ENDDAY": "6"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 73409,
+        "SIDE": "W",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 76402,
+        "SIDE": "NE",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 32490,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 47025,
+        "SIDE": "W",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 19,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 56690,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 36,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 38,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 46,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 32490,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 111,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 114,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 119,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 56690,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 157,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 190,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 31893,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 201,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 56690,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 205,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 54953,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 215,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 56690,
+        "SIDE": "SE",
+        "STARTDAY": " ",
+        "ENDDAY": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 253,
+        "SPACETYPE": "PS-LAY",
+        "CATEGORY": "PAID",
+        "ELMNTKEY": 31893,
+        "SIDE": "NW",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 256,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 8265,
+        "SIDE": "W",
+        "STARTDAY": "2",
+        "ENDDAY": "6"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 279,
+        "SPACETYPE": "BUSLAY",
+        "CATEGORY": "BUS",
+        "ELMNTKEY": 8265,
+        "SIDE": "W",
+        "STARTDAY": " ",
+        "ENDDAY": " "
+      }
+    }
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITDESC": "1ST AVE W BETWEEN W MERCER ST AND W ROY ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITDESC": "7TH AVE NE BETWEEN NE 45TH ST ON RP AND NE 47TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITDESC": "CLAY ST BETWEEN 2ND AVE AND 3RD AVE",
+          "SIDE": "SE",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITDESC": "9TH AVE BETWEEN ALDER ST AND JEFFERSON ST",
+          "SIDE": "NE",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 30,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47025,
+          "UNITDESC": "13TH AVE S BETWEEN S BAILEY ST AND S ANGELO ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Time Limited Parking",
+          "PARKING_TIME_LIMIT": 60,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITDESC": "BATTERY ST BETWEEN 3RD AVE AND 4TH AVE",
+          "SIDE": "NW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 73409,
+          "UNITDESC": "35TH AVE SW BETWEEN SW ROXBURY ST AND SW 97TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITDESC": "LENORA ST BETWEEN 7TH AVE AND 8TH AVE",
+          "SIDE": "SE",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITDESC": "CEDAR ST BETWEEN 2ND AVE AND 3RD AVE",
+          "SIDE": "NW",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 30093,
+          "UNITDESC": "5TH AVE BETWEEN 5TH AVE S AND TERRACE ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 2,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-33878",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 295
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47025,
+          "UNITID": "SGN-48557",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "DGST: R404 (0064) - TXT: *CHG LN 8: 60     ",
+          "DISTANCE": 135
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-27953",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 235
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259021",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(39) METRO BUSES, ONLY, 5-10AM 2-7PM, MON-FRI",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 73409,
+          "UNITID": "SGN-20695",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "DGST: R404 (0097) - TXT: *CHG LN 8: 21 20     ",
+          "DISTANCE": 250
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-176485",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 73409,
+          "UNITID": "SGN-20696",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 332
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 47025,
+          "UNITID": "SGN-49120",
+          "SIGNTYPE": "R8-1HR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "1 H PARKING 7AM-6PM EXC SUN-HOL",
+          "DISTANCE": 304
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-228632",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\r\rPHONE (206) 684-5444",
+          "DISTANCE": 222
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226933",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 154
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-124654",
+          "SIGNTYPE": "R8-CLZ8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE COMMERCIAL OR PERMIT VEHICLE\n\rLOAD ONLY 7AM-8PM EXCEPT SUN-HOL\n\rUSE PAYSTATION EXCEPT WITH PERMIT\n\rPhone (206) 684-5103 for Information\n\rTOW-AWAY ZONE PHONE (206) 684-5444",
+          "DISTANCE": 517
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-174598",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 138
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 30093,
+          "UNITID": "SGN-170875",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 200
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259015",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259018",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(39) METRO BUSES, ONLY, 5-10AM 2-7PM, MON-FRI",
+          "DISTANCE": 106
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226975",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(27)PAY AT PAY STATION 8AM-1PM 6PM-8PM  MON-FRI, 8AM-8PM SAT METRO BUSES ONLY 1-6PM MON-FRI",
+          "DISTANCE": 110
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-176484",
+          "SIGNTYPE": "R8-SBW",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "SOUTH OF HERE ",
+          "DISTANCE": 134
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-174600",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "{17} COMMUNITY TRANSIT ONLY\n\rNOON-7P M-F\n\r[CAR BEING TOWED]\n\r206-684-5444",
+          "DISTANCE": 461
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-33880",
+          "SIGNTYPE": "R7-BUS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS TOW AWAY ZONE 684-5444",
+          "DISTANCE": 259
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-33540",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 106
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-174597",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 44
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 30093,
+          "UNITID": "SGN-203233",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 164
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226928",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 72
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247066",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 195
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-174599",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "{17} COMMUNITY TRANSIT ONLY\n\rNOON-7P M-F\n\r[CAR BEING TOWED]\n\r206-684-5444",
+          "DISTANCE": 312
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 30093,
+          "UNITID": "SGN-203234",
+          "SIGNTYPE": "R8-LULX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "{6}15 M LOAD & UNLOAD ONLY EVERYDAY, [CAR BEING TOWED]",
+          "DISTANCE": 146
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247070",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 72
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-228475",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS\n\rTOW-AWAY ZONE Phone 684-5444",
+          "DISTANCE": 180
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-124652",
+          "SIGNTYPE": "R8-EXMPTX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "MEDIC 1 VEHICLES ONLY\n\r",
+          "DISTANCE": 405
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-115331",
+          "SIGNTYPE": "R8-4PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 109
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-234365",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 106
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-147715",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "SOUND, TRANSIT, ONLY, 6AM-7PM, MON-FRI",
+          "DISTANCE": 44
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259016",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(39) METRO BUSES, ONLY, 5-10AM 2-7PM, MON-FRI",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226984",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(27)PAY AT PAY STATION 8AM-1PM 6PM-8PM  MON-FRI, 8AM-8PM SAT METRO BUSES ONLY 1-6PM MON-FRI",
+          "DISTANCE": 262
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226978",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS\r\rTOW-AWAY ZONE Phone 684-5444",
+          "DISTANCE": 174
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259019",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\r\rPHONE (206) 684-5444",
+          "DISTANCE": 106
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247069",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 154
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-243476",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 232
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-147717",
+          "SIGNTYPE": "R8-BUSLAYX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "SOUND, TRANSIT, ONLY, 6AM-7PM, MON-FRI",
+          "DISTANCE": 138
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-173525",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(20)PAY AT PAY STATION 8A-2P 7-8P MON-FRI\r8AM-8PM SAT\rMETRO BUSES ONLY\r2-7PM MON-FRI",
+          "DISTANCE": 148
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-38740",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 266
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226976",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 110
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 8265,
+          "UNITID": "SGN-31059",
+          "SIGNTYPE": "R7-NPN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING NORTH OF HERE",
+          "DISTANCE": 461
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-176486",
+          "SIGNTYPE": "R7-SPACE",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING THIS SPACE",
+          "DISTANCE": 24
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 30093,
+          "UNITID": "SGN-203235",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 85
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259017",
+          "SIGNTYPE": "R8-VENDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(80)FOOD VEHICLE ZONE; 10AM-2PM; MON-FRI; VALID PERMIT ONLY; PAY TO PARK; ALL OTHER POSTED DAYS AND TIMES",
+          "DISTANCE": 106
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-119395",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 4 Hours Max",
+          "DISTANCE": 277
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-115334",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 266
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226935",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 231
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247059",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 231
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-243475",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS\n\rTOW-AWAY ZONE Phone 684-5444",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226986",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 262
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-234372",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-234157",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 357
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 73409,
+          "UNITID": "SGN-20691",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 64
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-27014",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 169
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-115332",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 148
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-173526",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAY @ PS 8AM-2PM 7-8PM MON-FRI 8AM-8PM SAT, METRO BUSES ONLY 2-7PM MON-FRI",
+          "DISTANCE": 109
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-205534",
+          "SIGNTYPE": "R8-4PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 205
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226981",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 205
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226980",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 205
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226932",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 154
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-228661",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS\n\rTOW-AWAY ZONE Phone 684-5444",
+          "DISTANCE": 87
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226930",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 72
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247068",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 154
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247058",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 231
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226973",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(27)PAY AT PAY STATION 8AM-1PM 6PM-8PM  MON-FRI, 8AM-8PM SAT METRO BUSES ONLY 1-6PM MON-FRI",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247055",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 280
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-134246",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 446
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-251697",
+          "SIGNTYPE": "R8-VENDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(80 )FOOD VEHICLE ZONE 10AM-2PM MON - FRI VALID PERMIT ONLY PAY TO PARK ALL OTHER POSTED DAYS AND TIMES",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-228631",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(27)PAY AT PAY STATION 8AM-1PM 6PM-8PM  MON-FRI, 8AM-8PM SAT METRO BUSES ONLY 1-6PM MON-FRI",
+          "DISTANCE": 222
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-124660",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 586
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-38739",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 186
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-41478",
+          "SIGNTYPE": "R7-WI30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "DISTANCE": 49
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 73409,
+          "UNITID": "SGN-20693",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 212
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226972",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-260313",
+          "SIGNTYPE": "R8-LBW",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[LEFT ARROW]",
+          "DISTANCE": 134
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1281,
+          "UNITID": "SGN-16618",
+          "SIGNTYPE": "R8-LULD8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M LOAD & UNLOAD ONLY 7A-8P EXC SUN-HOL, TAZ",
+          "DISTANCE": 241
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-133934",
+          "SIGNTYPE": "R8-SBOX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "15 M SHUTTLE BUS ONLY VALID PERMIT ONLY, TAZ",
+          "DISTANCE": 138
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-251698",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226936",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 231
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 31893,
+          "UNITID": "SGN-173524",
+          "SIGNTYPE": "R8-LBW",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[LEFT ARROW]",
+          "DISTANCE": 148
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-253050",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 517
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-134247",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ [LOGO] ONLY TOW-AWAY ZONE PH 684-5444\n\r",
+          "DISTANCE": 472
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226974",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\n\rPHONE (206) 684-5444",
+          "DISTANCE": 66
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 56690,
+          "UNITID": "SGN-259020",
+          "SIGNTYPE": "R8-VENDX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(80)FOOD VEHICLE ZONE; 10AM-2PM; MON-FRI; VALID PERMIT ONLY; PAY TO PARK; ALL OTHER POSTED DAYS AND TIMES",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-226938",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\r\rPHONE (206) 684-5444",
+          "DISTANCE": 280
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-124653",
+          "SIGNTYPE": "R8-EXMPTX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "MEDIC 1 VEHICLES ONLY",
+          "DISTANCE": 351
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 32490,
+          "UNITID": "SGN-247067",
+          "SIGNTYPE": "R7-TAZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CAR BEING TOWED]\r\rPHONE (206) 684-5444",
+          "DISTANCE": 195
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 76402,
+          "UNITID": "SGN-224004",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 517
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 54953,
+          "UNITID": "SGN-226979",
+          "SIGNTYPE": "R8-PSBUSLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(27)PAY AT PAY STATION 8AM-1PM 6PM-8PM  MON-FRI, 8AM-8PM SAT METRO BUSES ONLY 1-6PM MON-FRI",
+          "DISTANCE": 205
+        }
+      }
+    ]
+  }
+}

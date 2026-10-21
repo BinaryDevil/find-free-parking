@@ -1,0 +1,490 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:11.452815+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Temporary_No_Parking_1/FeatureServer/1",
+  "name": "Temporary No Parking Reservations (Past, Current, and Future)",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 2336
+  },
+  "editingInfo": {
+    "lastEditDate": 1792597904951,
+    "schemaLastEditDate": 1792597904951,
+    "dataLastEditDate": 1792597904951
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CREATED_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "Date/time of record creation",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "MODIFIED_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "Date/time of record modification",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "TNP_RECORD_ID",
+      "type": "esriFieldTypeString",
+      "alias": "Temporary No Park Record ID",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CONTACT_FULL_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "Full name of Contact",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CONTACT_PHONE",
+      "type": "esriFieldTypeString",
+      "alias": "Phone number of Contact",
+      "sqlType": "sqlTypeOther",
+      "length": 40,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURBSPACE_NUMBER",
+      "type": "esriFieldTypeString",
+      "alias": "Curbspace Number (also known as Meter Space ID)",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELEMENT_KEY",
+      "type": "esriFieldTypeString",
+      "alias": "Blockface Element Key",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NOPARKING_SIGN_TYPE",
+      "type": "esriFieldTypeString",
+      "alias": "No Parking Sign Type",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "START_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "START_DATE_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "END_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "Date/time of Temporary No Park End",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "ACTUAL_START_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "Actual date/time of Temporary No Park Start",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "ACTUAL_END_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "Actual date/time of Temporary No Park End",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "SE_ANNO_CAD_DATA",
+      "type": "esriFieldTypeBlob",
+      "alias": "SE_ANNO_CAD_DATA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RECORD_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "RECORD_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PUBLICNOTICEPOSTDATETIME",
+      "type": "esriFieldTypeDate",
+      "alias": "PublicNoticePostDateTime",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "dd379f4f60294aea9d813185fb5144a4",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792597919000,
+    "licenseInfo": "The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Temporary_No_Parking_1/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "MODIFIED_DATE_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "Date/time of record modification",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TNP_RECORD_ID",
+        "type": "esriFieldTypeString",
+        "alias": "Temporary No Park Record ID",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURBSPACE_NUMBER",
+        "type": "esriFieldTypeString",
+        "alias": "Curbspace Number (also known as Meter Space ID)",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELEMENT_KEY",
+        "type": "esriFieldTypeString",
+        "alias": "Blockface Element Key",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NOPARKING_SIGN_TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "No Parking Sign Type",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "START_DATE_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "START_DATE_TIME",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "END_DATE_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "Date/time of Temporary No Park End",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ACTUAL_START_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "Actual date/time of Temporary No Park Start",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ACTUAL_END_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "Actual date/time of Temporary No Park End",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RECORD_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "RECORD_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 1,
+          "MODIFIED_DATE_TIME": 1790714712000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45533",
+          "CURBSPACE_NUMBER": "OW-15-18",
+          "ELEMENT_KEY": "81478",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1788274800000,
+          "END_DATE_TIME": 1794009600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 2,
+          "MODIFIED_DATE_TIME": 1787856246000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45503",
+          "CURBSPACE_NUMBER": "NFV-01-16",
+          "ELEMENT_KEY": "33142",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787842800000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3,
+          "MODIFIED_DATE_TIME": 1791945757000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45371",
+          "CURBSPACE_NUMBER": "13-02-07",
+          "ELEMENT_KEY": "58498",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787756400000,
+          "END_DATE_TIME": 1794614400000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4,
+          "MODIFIED_DATE_TIME": 1787154784000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+          "CURBSPACE_NUMBER": "EBL-01-01",
+          "ELEMENT_KEY": "59122",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787238000000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 5,
+          "MODIFIED_DATE_TIME": 1787154784000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+          "CURBSPACE_NUMBER": "EBL-01-08",
+          "ELEMENT_KEY": "59121",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787238000000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 6,
+          "MODIFIED_DATE_TIME": 1787154784000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+          "CURBSPACE_NUMBER": "EBL-01-09",
+          "ELEMENT_KEY": "59122",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787238000000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 7,
+          "MODIFIED_DATE_TIME": 1787154784000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+          "CURBSPACE_NUMBER": "EBL-01-10",
+          "ELEMENT_KEY": "59121",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787238000000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 8,
+          "MODIFIED_DATE_TIME": 1787154784000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+          "CURBSPACE_NUMBER": "EBL-01-19",
+          "ELEMENT_KEY": "59122",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787238000000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 9,
+          "MODIFIED_DATE_TIME": 1787154784000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45283",
+          "CURBSPACE_NUMBER": "EBL-01-32",
+          "ELEMENT_KEY": "59121",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1787238000000,
+          "END_DATE_TIME": 1798761600000,
+          "ACTUAL_START_TIME": null,
+          "ACTUAL_END_TIME": null,
+          "RECORD_STATUS": "Issued"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 10,
+          "MODIFIED_DATE_TIME": 1792190089000,
+          "TNP_RECORD_ID": "SDOT-TNP-00-45171",
+          "CURBSPACE_NUMBER": "N35-07-33",
+          "ELEMENT_KEY": "83222",
+          "NOPARKING_SIGN_TYPE": "YELLOW: 7am-6pm Mon-Sat",
+          "START_DATE_TIME": 1786719600000,
+          "END_DATE_TIME": 1792162800000,
+          "ACTUAL_START_TIME": 1786568040000,
+          "ACTUAL_END_TIME": 1792190040000,
+          "RECORD_STATUS": "Issued"
+        }
+      }
+    ]
+  }
+}

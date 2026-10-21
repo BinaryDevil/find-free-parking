@@ -1,0 +1,6064 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:11.116576+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer/0",
+  "name": "Restricted Parking Zone Signed Blocks",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 72188
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588003459,
+    "schemaLastEditDate": 1792588003459,
+    "dataLastEditDate": 1792588003459
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "SEGKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DISTANCE",
+      "type": "esriFieldTypeInteger",
+      "alias": "DISTANCE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKFACE_LENGTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "BLOCKFACE_LENGTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "END_DISTANCE",
+      "type": "esriFieldTypeInteger",
+      "alias": "END_DISTANCE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WIDTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "WIDTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITID",
+      "type": "esriFieldTypeString",
+      "alias": "UNITID",
+      "sqlType": "sqlTypeOther",
+      "length": 20,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITID2",
+      "type": "esriFieldTypeString",
+      "alias": "UNITID2",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITDESC",
+      "type": "esriFieldTypeString",
+      "alias": "UNITDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "SIDE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_ID",
+      "type": "esriFieldTypeString",
+      "alias": "BLOCK_ID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_NBR",
+      "type": "esriFieldTypeDouble",
+      "alias": "BLOCK_NBR",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CSM",
+      "type": "esriFieldTypeString",
+      "alias": "CSM",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PARKING_CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "PARKING_CATEGORY",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TOTAL_SPACES",
+      "type": "esriFieldTypeDouble",
+      "alias": "TOTAL_SPACES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAID_SPACES",
+      "type": "esriFieldTypeDouble",
+      "alias": "PAID_SPACES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CARPOOL_SPACES",
+      "type": "esriFieldTypeDouble",
+      "alias": "CARPOOL_SPACES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_SPACES",
+      "type": "esriFieldTypeDouble",
+      "alias": "RPZ_SPACES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TL_SPACES",
+      "type": "esriFieldTypeDouble",
+      "alias": "TL_SPACES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BUS",
+      "type": "esriFieldTypeDouble",
+      "alias": "BUS",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NOPARK",
+      "type": "esriFieldTypeDouble",
+      "alias": "NOPARK",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NOSTOP",
+      "type": "esriFieldTypeDouble",
+      "alias": "NOSTOP",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TOTAL_NOPARK",
+      "type": "esriFieldTypeDouble",
+      "alias": "TOTAL_NOPARK",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LOAD_",
+      "type": "esriFieldTypeDouble",
+      "alias": "LOAD",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ZONE",
+      "type": "esriFieldTypeDouble",
+      "alias": "ZONE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TOTAL_ZONES",
+      "type": "esriFieldTypeDouble",
+      "alias": "TOTAL_ZONES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PARKING_SPACES",
+      "type": "esriFieldTypeDouble",
+      "alias": "PARKING_SPACES",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNRESTRICTED",
+      "type": "esriFieldTypeDouble",
+      "alias": "UNRESTRICTED",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TIER",
+      "type": "esriFieldTypeInteger",
+      "alias": "TIER",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_RATE1",
+      "type": "esriFieldTypeDouble",
+      "alias": "WKD_RATE1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_START1",
+      "type": "esriFieldTypeInteger",
+      "alias": "WKD_START1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_END1",
+      "type": "esriFieldTypeInteger",
+      "alias": "WKD_END1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_RATE2",
+      "type": "esriFieldTypeDouble",
+      "alias": "WKD_RATE2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_START2",
+      "type": "esriFieldTypeInteger",
+      "alias": "WKD_START2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_END2",
+      "type": "esriFieldTypeInteger",
+      "alias": "WKD_END2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_RATE3",
+      "type": "esriFieldTypeDouble",
+      "alias": "WKD_RATE3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_START3",
+      "type": "esriFieldTypeInteger",
+      "alias": "WKD_START3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "WKD_END3",
+      "type": "esriFieldTypeInteger",
+      "alias": "WKD_END3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_RATE1",
+      "type": "esriFieldTypeDouble",
+      "alias": "SAT_RATE1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_START1",
+      "type": "esriFieldTypeInteger",
+      "alias": "SAT_START1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_END1",
+      "type": "esriFieldTypeInteger",
+      "alias": "SAT_END1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_RATE2",
+      "type": "esriFieldTypeDouble",
+      "alias": "SAT_RATE2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_START2",
+      "type": "esriFieldTypeInteger",
+      "alias": "SAT_START2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_END2",
+      "type": "esriFieldTypeInteger",
+      "alias": "SAT_END2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_RATE3",
+      "type": "esriFieldTypeDouble",
+      "alias": "SAT_RATE3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_START3",
+      "type": "esriFieldTypeInteger",
+      "alias": "SAT_START3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SAT_END3",
+      "type": "esriFieldTypeInteger",
+      "alias": "SAT_END3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_RATE1",
+      "type": "esriFieldTypeDouble",
+      "alias": "SUN_RATE1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_START1",
+      "type": "esriFieldTypeInteger",
+      "alias": "SUN_START1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_END1",
+      "type": "esriFieldTypeInteger",
+      "alias": "SUN_END1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_RATE2",
+      "type": "esriFieldTypeDouble",
+      "alias": "SUN_RATE2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_START2",
+      "type": "esriFieldTypeInteger",
+      "alias": "SUN_START2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_END2",
+      "type": "esriFieldTypeInteger",
+      "alias": "SUN_END2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_RATE3",
+      "type": "esriFieldTypeDouble",
+      "alias": "SUN_RATE3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_START3",
+      "type": "esriFieldTypeInteger",
+      "alias": "SUN_START3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUN_END3",
+      "type": "esriFieldTypeInteger",
+      "alias": "SUN_END3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimes",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Descript",
+        "codedValues": [
+          {
+            "name": "7 AM",
+            "code": 479
+          },
+          {
+            "name": "8 AM",
+            "code": 480
+          },
+          {
+            "name": "8 AM",
+            "code": 539
+          },
+          {
+            "name": "9 AM",
+            "code": 540
+          },
+          {
+            "name": "10 AM",
+            "code": 599
+          },
+          {
+            "name": "10 AM",
+            "code": 600
+          },
+          {
+            "name": "11 AM",
+            "code": 659
+          },
+          {
+            "name": "11 AM",
+            "code": 660
+          },
+          {
+            "name": "12 PM",
+            "code": 719
+          },
+          {
+            "name": "12 PM",
+            "code": 720
+          },
+          {
+            "name": "1 PM",
+            "code": 779
+          },
+          {
+            "name": "1 PM",
+            "code": 780
+          },
+          {
+            "name": "2 PM",
+            "code": 839
+          },
+          {
+            "name": "2 PM",
+            "code": 840
+          },
+          {
+            "name": "3 PM",
+            "code": 899
+          },
+          {
+            "name": "3 PM",
+            "code": 900
+          },
+          {
+            "name": "4 PM",
+            "code": 959
+          },
+          {
+            "name": "4 PM",
+            "code": 960
+          },
+          {
+            "name": "5 PM",
+            "code": 1019
+          },
+          {
+            "name": "5 PM",
+            "code": 1020
+          },
+          {
+            "name": "6 PM",
+            "code": 1079
+          },
+          {
+            "name": "6 PM",
+            "code": 1080
+          },
+          {
+            "name": "7 PM",
+            "code": 1139
+          },
+          {
+            "name": "7 PM",
+            "code": 1140
+          },
+          {
+            "name": "8 PM",
+            "code": 1199
+          },
+          {
+            "name": "8 PM",
+            "code": 1200
+          },
+          {
+            "name": "10 PM",
+            "code": 1319
+          },
+          {
+            "name": "10 PM",
+            "code": 1320
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "PEAK_HOUR",
+      "type": "esriFieldTypeString",
+      "alias": "PEAK_HOUR",
+      "sqlType": "sqlTypeOther",
+      "length": 60,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_ZONE",
+      "type": "esriFieldTypeString",
+      "alias": "RPZ_ZONE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_AREA",
+      "type": "esriFieldTypeString",
+      "alias": "RPZ_AREA",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAIDAREA",
+      "type": "esriFieldTypeString",
+      "alias": "PAIDAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 40,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PARKING_TIME_LIMIT",
+      "type": "esriFieldTypeDouble",
+      "alias": "PARKING_TIME_LIMIT",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": {
+        "type": "codedValue",
+        "name": "SDOT_ParkingTimeLimit",
+        "mergePolicy": "esriMPTDefaultValue",
+        "splitPolicy": "esriSPTDefaultValue",
+        "description": "Coded domain to translate parking time limits from minutes to hours",
+        "codedValues": [
+          {
+            "name": "0.5",
+            "code": 30
+          },
+          {
+            "name": "1.0",
+            "code": 60
+          },
+          {
+            "name": "2.0",
+            "code": 120
+          },
+          {
+            "name": "3.0",
+            "code": 180
+          },
+          {
+            "name": "4.0",
+            "code": 240
+          },
+          {
+            "name": "6.0",
+            "code": 360
+          },
+          {
+            "name": "7.0",
+            "code": 420
+          },
+          {
+            "name": "10.0",
+            "code": 600
+          }
+        ]
+      },
+      "defaultValue": null
+    },
+    {
+      "name": "SUBAREA",
+      "type": "esriFieldTypeString",
+      "alias": "SUBAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 15,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "START_TIME_WKD",
+      "type": "esriFieldTypeString",
+      "alias": "START_TIME_WKD",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "END_TIME_WKD",
+      "type": "esriFieldTypeString",
+      "alias": "END_TIME_WKD",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "START_TIME_SAT",
+      "type": "esriFieldTypeString",
+      "alias": "START_TIME_SAT",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "END_TIME_SAT",
+      "type": "esriFieldTypeString",
+      "alias": "END_TIME_SAT",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "START_TIME_SUN",
+      "type": "esriFieldTypeString",
+      "alias": "START_TIME_SUN",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "END_TIME_SUN",
+      "type": "esriFieldTypeString",
+      "alias": "END_TIME_SUN",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PRIMARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "PRIMARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SECONDARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "SECONDARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDEYN",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDEYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDECOMMENT",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDECOMMENT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CreationDate",
+      "type": "esriFieldTypeDate",
+      "alias": "CreationDate",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Creator",
+      "type": "esriFieldTypeString",
+      "alias": "Creator",
+      "sqlType": "sqlTypeOther",
+      "length": 128,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EditDate",
+      "type": "esriFieldTypeDate",
+      "alias": "EditDate",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Editor",
+      "type": "esriFieldTypeString",
+      "alias": "Editor",
+      "sqlType": "sqlTypeOther",
+      "length": 128,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "f6f00c5cf9634d578d41156bf4a4679f",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792588286000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeInteger",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BLOCKFACE_LENGTH",
+        "type": "esriFieldTypeInteger",
+        "alias": "BLOCKFACE_LENGTH",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "END_DISTANCE",
+        "type": "esriFieldTypeInteger",
+        "alias": "END_DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE2",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE2",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START2",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START2",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END2",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END2",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE3",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE3",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START3",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START3",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END3",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END3",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "SAT_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "SAT_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "SAT_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_RATE2",
+        "type": "esriFieldTypeDouble",
+        "alias": "SAT_RATE2",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_START2",
+        "type": "esriFieldTypeInteger",
+        "alias": "SAT_START2",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_END2",
+        "type": "esriFieldTypeInteger",
+        "alias": "SAT_END2",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_RATE3",
+        "type": "esriFieldTypeDouble",
+        "alias": "SAT_RATE3",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_START3",
+        "type": "esriFieldTypeInteger",
+        "alias": "SAT_START3",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SAT_END3",
+        "type": "esriFieldTypeInteger",
+        "alias": "SAT_END3",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "SUN_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "SUN_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "SUN_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_RATE2",
+        "type": "esriFieldTypeDouble",
+        "alias": "SUN_RATE2",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_START2",
+        "type": "esriFieldTypeInteger",
+        "alias": "SUN_START2",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_END2",
+        "type": "esriFieldTypeInteger",
+        "alias": "SUN_END2",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_RATE3",
+        "type": "esriFieldTypeDouble",
+        "alias": "SUN_RATE3",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_START3",
+        "type": "esriFieldTypeInteger",
+        "alias": "SUN_START3",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUN_END3",
+        "type": "esriFieldTypeInteger",
+        "alias": "SUN_END3",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_AREA",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_AREA",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PAIDAREA",
+        "type": "esriFieldTypeString",
+        "alias": "PAIDAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 40,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUBAREA",
+        "type": "esriFieldTypeString",
+        "alias": "SUBAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 15,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 1515949,
+          "ELMNTKEY": 106723,
+          "DISTANCE": 0,
+          "BLOCKFACE_LENGTH": 268,
+          "END_DISTANCE": 268,
+          "UNITID": "10615",
+          "UNITDESC": "WOODLAWN AVE NE BETWEEN NE 73RD ST AND 4TH N AVE NE",
+          "SIDE": "C",
+          "PARKING_CATEGORY": "None",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515950,
+          "ELMNTKEY": 121923,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 254,
+          "END_DISTANCE": 267,
+          "UNITID": "03065",
+          "UNITDESC": "39TH AVE S BETWEEN S HOLLY PARK DR AND S LYON CT",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": "30",
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": 120,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515951,
+          "ELMNTKEY": 116673,
+          "DISTANCE": 0,
+          "BLOCKFACE_LENGTH": 287,
+          "END_DISTANCE": 287,
+          "UNITID": "17370",
+          "UNITDESC": "SW ATLANTIC ST BETWEEN 44TH AVE SW AND 45TH E AVE SW",
+          "SIDE": "C",
+          "PARKING_CATEGORY": "None",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515952,
+          "ELMNTKEY": 44030,
+          "DISTANCE": 30,
+          "BLOCKFACE_LENGTH": 121,
+          "END_DISTANCE": 151,
+          "UNITID": "17235",
+          "UNITDESC": "SW 106TH ST BETWEEN CALIFORNIA AVE SW AND MARINE VIEW DR SW",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515953,
+          "ELMNTKEY": 49333,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 637,
+          "END_DISTANCE": 650,
+          "UNITID": "01910",
+          "UNITDESC": "28TH AVE NE BETWEEN NE 62ND ST AND NE 65TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515954,
+          "ELMNTKEY": 88481,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 211,
+          "END_DISTANCE": 224,
+          "UNITID": "16240",
+          "UNITDESC": "S HUDSON ST BETWEEN 43RD AVE S AND 44TH W AVE S",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515955,
+          "ELMNTKEY": 110671,
+          "DISTANCE": 0,
+          "BLOCKFACE_LENGTH": 659,
+          "END_DISTANCE": 659,
+          "UNITID": "12715",
+          "UNITDESC": "N NORTHGATE WAY BETWEEN BURKE AVE N AND MERIDIAN AVE N",
+          "SIDE": "C",
+          "PARKING_CATEGORY": "None",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515956,
+          "ELMNTKEY": 51209,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 639,
+          "END_DISTANCE": 652,
+          "UNITID": "02970",
+          "UNITDESC": "38TH AVE NE BETWEEN NE 65TH ST AND NE 68TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515957,
+          "ELMNTKEY": 86969,
+          "DISTANCE": 23,
+          "BLOCKFACE_LENGTH": 284,
+          "END_DISTANCE": 307,
+          "UNITID": "14845",
+          "UNITDESC": "NW 85TH ST BETWEEN MARY AVE NW AND 15TH AVE NW",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 1515958,
+          "ELMNTKEY": 100845,
+          "DISTANCE": 0,
+          "BLOCKFACE_LENGTH": 663,
+          "END_DISTANCE": 663,
+          "UNITID": "04075",
+          "UNITDESC": "52ND AVE NE BETWEEN NE 65TH ST AND NE 68TH ST",
+          "SIDE": "C",
+          "PARKING_CATEGORY": "None",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0,
+          "WKD_RATE2": 0,
+          "WKD_START2": 0,
+          "WKD_END2": 0,
+          "WKD_RATE3": 0,
+          "WKD_START3": 0,
+          "WKD_END3": 0,
+          "SAT_RATE1": 0,
+          "SAT_START1": 0,
+          "SAT_END1": 0,
+          "SAT_RATE2": 0,
+          "SAT_START2": 0,
+          "SAT_END2": 0,
+          "SAT_RATE3": 0,
+          "SAT_START3": 0,
+          "SAT_END3": 0,
+          "SUN_RATE1": 0,
+          "SUN_START1": 0,
+          "SUN_END1": 0,
+          "SUN_RATE2": 0,
+          "SUN_START2": 0,
+          "SUN_END2": 0,
+          "SUN_RATE3": 0,
+          "SUN_START3": 0,
+          "SUN_END3": 0,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "RPZ_AREA": null,
+          "PAIDAREA": null,
+          "PARKING_TIME_LIMIT": null,
+          "SUBAREA": null
+        }
+      }
+    ]
+  }
+}

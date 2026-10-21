@@ -1,0 +1,254 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:08.773705+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer/3",
+  "name": "Restricted Parking Zone A or B Husky Game Days",
+  "geometry": "esriGeometryPolygon",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 2
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588218787,
+    "schemaLastEditDate": 1792588218787,
+    "dataLastEditDate": 1792588218787
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_ZONE",
+      "type": "esriFieldTypeString",
+      "alias": "RPZ_ZONE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RENEW",
+      "type": "esriFieldTypeString",
+      "alias": "Renew",
+      "sqlType": "sqlTypeOther",
+      "length": 100,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INEFFECT",
+      "type": "esriFieldTypeString",
+      "alias": "InEffect",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ZONE_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "Zone_Name",
+      "sqlType": "sqlTypeOther",
+      "length": 70,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WEBLINK",
+      "type": "esriFieldTypeString",
+      "alias": "WEBLINK",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GLOBALID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GLOBALID",
+      "sqlType": "sqlTypeOther",
+      "length": 38,
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CREATED_USER",
+      "type": "esriFieldTypeString",
+      "alias": "CREATED_USER",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CREATED_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "CREATED_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "LAST_EDITED_USER",
+      "type": "esriFieldTypeString",
+      "alias": "LAST_EDITED_USER",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LAST_EDITED_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "LAST_EDITED_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Shape__Area",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Area",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "f6f00c5cf9634d578d41156bf4a4679f",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792588286000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "GLOBALID",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "INEFFECT",
+        "type": "esriFieldTypeString",
+        "alias": "InEffect",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ZONE_NAME",
+        "type": "esriFieldTypeString",
+        "alias": "Zone_Name",
+        "sqlType": "sqlTypeOther",
+        "length": 70,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WEBLINK",
+        "type": "esriFieldTypeString",
+        "alias": "WEBLINK",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 43,
+          "RPZ_ZONE": "A",
+          "INEFFECT": "Husky Football Game Days",
+          "ZONE_NAME": "Montlake - Husky Game Days",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 44,
+          "RPZ_ZONE": "B",
+          "INEFFECT": "Husky Football Game Days",
+          "ZONE_NAME": "Ravenna/Laurelhurst - Husky Game Days",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:10.642601+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curb_Space_Categories/FeatureServer/6",
+  "name": "Curb Space Categories",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 40539
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588680650,
+    "schemaLastEditDate": 1792588680650,
+    "dataLastEditDate": 1792588680650
+  },
+  "description": "Curbspaces (nightly update) is sourced from SDOT.Curb_Spaces. Symbolized on Description field to draw different color lines with hatches.",
+  "copyrightText": "SDOT",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKID",
+      "type": "esriFieldTypeString",
+      "alias": "BLOCKID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_ST",
+      "type": "esriFieldTypeDouble",
+      "alias": "BLOCK_ST",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_END",
+      "type": "esriFieldTypeDouble",
+      "alias": "BLOCK_END",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WIDTH_OFFSET",
+      "type": "esriFieldTypeInteger",
+      "alias": "WIDTH_OFFSET",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GEOBASYS",
+      "type": "esriFieldTypeDouble",
+      "alias": "GEOBASYS",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACELENGTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "SPACELENGTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACETYPE",
+      "type": "esriFieldTypeString",
+      "alias": "SPACETYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACETYPEDESC",
+      "type": "esriFieldTypeString",
+      "alias": "SPACETYPEDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TIME_LIMIT",
+      "type": "esriFieldTypeString",
+      "alias": "TIME_LIMIT",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACE_NB",
+      "type": "esriFieldTypeString",
+      "alias": "SPACE_NB",
+      "sqlType": "sqlTypeOther",
+      "length": 11,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "SIDE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURRENT_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "CURRENT_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeDouble",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACEKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "SPACEKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "SEGKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PRIMARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "PRIMARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SECONDARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "SECONDARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDEYN",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDEYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDECOMMENT",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDECOMMENT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAIDAREA",
+      "type": "esriFieldTypeString",
+      "alias": "PAIDAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 40,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUBAREA",
+      "type": "esriFieldTypeString",
+      "alias": "SUBAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 15,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "4a2fe0abbaa0468b90f841be631c798b",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792588686000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curb_Space_Categories/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SPACETYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SPACETYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeDouble",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PAIDAREA",
+        "type": "esriFieldTypeString",
+        "alias": "PAIDAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 40,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SUBAREA",
+        "type": "esriFieldTypeString",
+        "alias": "SUBAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 15,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 4045349,
+          "SPACETYPE": "NP",
+          "CATEGORY": "NP",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24449,
+          "PAIDAREA": "University District",
+          "SUBAREA": "Edge"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045350,
+          "SPACETYPE": "CLR",
+          "CATEGORY": "NP",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 69489,
+          "PAIDAREA": "University District",
+          "SUBAREA": "Core"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045351,
+          "SPACETYPE": "CS",
+          "CATEGORY": "CS",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24409,
+          "PAIDAREA": "Capitol Hill",
+          "SUBAREA": "South"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045352,
+          "SPACETYPE": "CR",
+          "CATEGORY": "NS",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 1574,
+          "PAIDAREA": null,
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045353,
+          "SPACETYPE": "CLR",
+          "CATEGORY": "NP",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24270,
+          "PAIDAREA": "Uptown",
+          "SUBAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045354,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 71574,
+          "PAIDAREA": "Ballard",
+          "SUBAREA": "Edge"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045355,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 70866,
+          "PAIDAREA": "Pioneer Square",
+          "SUBAREA": "Edge"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045356,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24417,
+          "PAIDAREA": "Capitol Hill",
+          "SUBAREA": "South"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045357,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 25042,
+          "PAIDAREA": "University District",
+          "SUBAREA": "Edge"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045358,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 74149,
+          "PAIDAREA": "Uptown",
+          "SUBAREA": null
+        }
+      }
+    ]
+  }
+}

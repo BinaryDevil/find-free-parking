@@ -1,0 +1,104 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:15.262974+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Driveways_and_Parking_Lots_Dissolved/FeatureServer/11",
+  "name": "Driveways and Parking Lots Dissolved",
+  "geometry": "esriGeometryPolygon",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 1
+  },
+  "editingInfo": {
+    "lastEditDate": 1709847529842,
+    "schemaLastEditDate": 1709847529842,
+    "dataLastEditDate": 1709847186909
+  },
+  "description": "<DIV STYLE=\"text-align:Left;\"><DIV><P><SPAN>Surface type land cover classifications for describing pervious and impervious surfaces.</SPAN></P></DIV></DIV>",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Type",
+      "type": "esriFieldTypeString",
+      "alias": "Type",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Area",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Area",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "29c897b2f9d642ea8d0372cabec65e66",
+    "owner": "CityLight_SeattleCityGIS",
+    "access": "public",
+    "modified": 1709847200000,
+    "licenseInfo": "",
+    "accessInformation": "",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Driveways_and_Parking_Lots_Dissolved/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 1
+        }
+      }
+    ]
+  }
+}

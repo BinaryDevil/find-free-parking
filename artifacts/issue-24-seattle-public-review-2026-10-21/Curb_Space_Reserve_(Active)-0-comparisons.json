@@ -1,0 +1,3009 @@
+{
+  "source_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curb_Space_Reserve_(Active)/FeatureServer/0",
+  "keys": [
+    71574,
+    70866,
+    24417,
+    25042,
+    74149,
+    69930,
+    2065,
+    24553,
+    24585,
+    2089
+  ],
+  "selection": "first ten distinct non-null curb keys from at most 2000 safe projected records; not a representative passing safety sample",
+  "source_records": [
+    {
+      "attributes": {
+        "OBJECTID": 4045354,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045355,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045356,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045357,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045358,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045367,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045374,
+        "SPACETYPE": "PS-LUL",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045379,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045386,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045392,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045481,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045525,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045630,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045631,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045635,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045667,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045721,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045755,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045808,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045813,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045814,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045839,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045896,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045928,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045948,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046011,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046031,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046040,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046045,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046056,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046075,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046081,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046219,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046294,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046411,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046554,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046601,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046653,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046709,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046742,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046805,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046847,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046858,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046880,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046973,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047110,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047112,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047130,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047158,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047159,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047200,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047204,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047320,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047405,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047444,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047452,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047528,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047567,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047626,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047634,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047660,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047750,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047752,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047794,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047796,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047800,
+        "SPACETYPE": "PS-LUL",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047804,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047821,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047832,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047880,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047967,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048029,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048043,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048081,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048099,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048164,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048217,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048225,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048266,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048329,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048342,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048346,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048362,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048364,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048369,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048423,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048558,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048599,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048676,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048718,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048725,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048840,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048888,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4048891,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049017,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049053,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049106,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049108,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049127,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049186,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049210,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049267,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049295,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049331,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049361,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049368,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049380,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049385,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049453,
+        "SPACETYPE": "PS-LUL",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049462,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049477,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049492,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049542,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049548,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049594,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049625,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049679,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049740,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049752,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049767,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049865,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049871,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4049919,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050020,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050048,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050070,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050077,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050089,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050098,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69930
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050161,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050185,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050188,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2089
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050197,
+        "SPACETYPE": "PS-TR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050204,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 2065
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050215,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24585
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4050345,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24553
+      }
+    }
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITDESC": "15TH AVE NE BETWEEN NE 45TH ST AND NE 47TH ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": "3-7PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITDESC": "2ND AVE S BETWEEN S JACKSON ST AND S KING ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITDESC": "15TH AVE E BETWEEN E HARRISON N ST AND E REPUBLICAN S ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": "4",
+          "WKD_RATE1": 2.5,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITDESC": "15TH AVE NE BETWEEN NE 47TH ST AND NE 50TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": "7-9AM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITDESC": "4TH AVE W BETWEEN W HARRISON ST AND W REPUBLICAN ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITDESC": "11TH AVE BETWEEN E HOWELL ST AND E DENNY WAY",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITDESC": "12TH AVE NE BETWEEN NE 41ST ST AND NE 42ND ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITDESC": "24TH AVE NW BETWEEN NW 56TH ST AND NW 57TH ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITDESC": "15TH AVE E BETWEEN E REPUBLICAN N ST AND E MERCER S ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": "4",
+          "WKD_RATE1": 2.5,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITDESC": "12TH AVE BETWEEN E CHERRY ST AND E COLUMBIA ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-106003",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING VARIABLE DATES TIMES",
+          "DISTANCE": 197
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-118482",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 43
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-118483",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 225
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-200849",
+          "SIGNTYPE": "R8-LUL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M LOAD AND UNLOAD ONLY TAZ",
+          "DISTANCE": 243
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-249138",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 505
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-253738",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 53
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253731",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 10
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260372",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 279
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-164189",
+          "SIGNTYPE": "R7-STOPSL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS [LEFT FACING ARROW]\n\rTOW-AWAY ZONE",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-189998",
+          "SIGNTYPE": "R7-STOPSL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS [LEFT FACING ARROW]\n\rTOW-AWAY ZONE",
+          "DISTANCE": 35
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-26170",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 361
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218160",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 610
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138381",
+          "SIGNTYPE": "R8-4PAYB10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-10PM EXCEPT SUN-HOL 4 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 139
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165861",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 410
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248054",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 492
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138379",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 270
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-23831",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 348
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-34870",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-66149",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 30
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-62652",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 344
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165862",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 544
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218158",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 544
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244175",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 153
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253732",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 157
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-253737",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 53
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248055",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES)",
+          "DISTANCE": 507
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-253740",
+          "SIGNTYPE": "R8-LUDPS8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE LOAD AND UNLOAD ONLY 8AM-8PM EXCEPT SUN-HOL PAY TO PARK TAZ SYMBOL PHONE 206-684-5444",
+          "DISTANCE": 98
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-109107",
+          "SIGNTYPE": "R7-N",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NORTH OF HERE",
+          "DISTANCE": 360
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-249135",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 396
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-10229",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-103570",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 120
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-11009",
+          "SIGNTYPE": "R8-2PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 2 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 171
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138380",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 316
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165863",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 610
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138382",
+          "SIGNTYPE": "R8-4PAYB10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-10PM EXCEPT SUN-HOL 4 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 270
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-118484",
+          "SIGNTYPE": "R8-PAY4B8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CIRCLE P] 4 Hours Max\n\rPay 8am-8pm Mon-Sat",
+          "DISTANCE": 118
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-239433",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 35
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-239434",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 141
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-208707",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 373
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-32396",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 54
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-235710",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 191
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-23829",
+          "SIGNTYPE": "R7-WI30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "DISTANCE": 13
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-33584",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 126
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-67326",
+          "SIGNTYPE": "R8-PLZSTA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY NO STOPS 7-9AM EXC SAT-SUN-HOL",
+          "DISTANCE": 255
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-200467",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 178
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-222710",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 65
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-235709",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 191
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-67280",
+          "SIGNTYPE": "R8-PLZSTA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY NO STOPS 7-9AM EXC SAT-SUN-HOL",
+          "DISTANCE": 50
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260368",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 333
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24585,
+          "UNITID": "SGN-249140",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 240
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260375",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 204
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-110310",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 380
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253734",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 282
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-63610",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS TOW AWAY ZONE 684-5444",
+          "DISTANCE": 328
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165860",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 233
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138378",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 139
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248049",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 404
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-222709",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 65
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-13398",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-64818",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES) #46 48,78 244,372",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218155",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 213
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260377",
+          "SIGNTYPE": "R8-5LUL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "5 MINUTE LOAD AND UNLOAD ONLY TAZ SYMBOL PHONE 206-684-5444",
+          "DISTANCE": 80
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-111777",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 208
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138375",
+          "SIGNTYPE": "R8-PAY10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-10PM EXCEPT SUN-HOL",
+          "DISTANCE": 361
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-111776",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 292
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244177",
+          "SIGNTYPE": "R8-LULD8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE\r\rLOAD AND UNLOAD ONLY\r\r7AM-8PM EXCEPT SUN-HOL\r\r[CAR BEING TOWED]\r\rPHONE 684-5444",
+          "DISTANCE": 125
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248043",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 71
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-253741",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 143
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260371",
+          "SIGNTYPE": "R8-LUDPS8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE LOAD AND UNLOAD ONLY 8AM-8PM EXCEPT SUN-HOL PAY TO PARK TAZ SYMBOL PHONE 206-684-5444",
+          "DISTANCE": 282
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-200466",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165516",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 622
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-67254",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TOW-AWAY ZONE PHONE 684-5444",
+          "DISTANCE": 233
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-34877",
+          "SIGNTYPE": "R8-TKD8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE TRUCK LOAD ONLY\n\r7AM-8PM EXCEPT SUN-HOL\n\r[TOW AWAY] PHONE (206) 684-5444",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-64972",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 10
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-199237",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 171
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-251747",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 319
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253735",
+          "SIGNTYPE": "R8-LUDPS8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE LOAD AND UNLOAD ONLY 8AM-8PM EXCEPT SUN-HOL PAY TO PARK TAZ SYMBOL PHONE 206-684-5444",
+          "DISTANCE": 176
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-253150",
+          "SIGNTYPE": "R8-LBW",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[LEFT ARROW]",
+          "DISTANCE": 65
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260370",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 307
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260369",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 307
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253729",
+          "SIGNTYPE": "R8-DISABLX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "35)[WHEELCHAIR] STATE DISABLED\rPARKING PERMIT REQUIRED\r4 HOUR LIMIT\r8A-8P EXC SUN-HOL NO PAYMENT REQUIRED\r[TOWED CAR]",
+          "DISTANCE": 67
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248044",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 71
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253733",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 282
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138376",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 361
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-109106",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 360
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24553,
+          "UNITID": "SGN-34945",
+          "SIGNTYPE": "R7-S",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "SOUTH OF HERE",
+          "DISTANCE": 183
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-64641",
+          "SIGNTYPE": "R8-PLZSTP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY NO STOPS 4-6PM EXC SAT-SUN-HOL",
+          "DISTANCE": 473
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-13149",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-115754",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 410
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218156",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 350
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244178",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 61
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-247430",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 213
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248056",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 587
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248053",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 492
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253736",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 176
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69930,
+          "UNITID": "SGN-253728",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 49
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-121353",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 146
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244172",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 373
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248046",
+          "SIGNTYPE": "R7-PKA",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 7-9AM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 120
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2089,
+          "UNITID": "SGN-248052",
+          "SIGNTYPE": "R8-5LULSTX",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "(6)R8-5LULSTX - 5 MINUTE LOAD AND UNLOAD ONLY 7AM-3PM 7-10PM EXCEPT SUN-HOL NO STOPS 3-7PM EXCEPT SAT-SUN-HOL",
+          "DISTANCE": 457
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138377",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 2065,
+          "UNITID": "SGN-260374",
+          "SIGNTYPE": "R8-5LUL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "5 MINUTE LOAD AND UNLOAD ONLY TAZ SYMBOL PHONE 206-684-5444",
+          "DISTANCE": 242
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244173",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 4 Hours Max",
+          "DISTANCE": 233
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-200468",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 88
+        }
+      }
+    ]
+  }
+}

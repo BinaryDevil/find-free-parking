@@ -1,0 +1,2789 @@
+{
+  "source_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curb_Space_Categories/FeatureServer/6",
+  "keys": [
+    24449,
+    69489,
+    24409,
+    1574,
+    24270,
+    71574,
+    70866,
+    24417,
+    25042,
+    74149
+  ],
+  "selection": "first ten distinct non-null curb keys from at most 2000 safe projected records; not a representative passing safety sample",
+  "source_records": [
+    {
+      "attributes": {
+        "OBJECTID": 4045349,
+        "SPACETYPE": "NP",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24449,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045350,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045351,
+        "SPACETYPE": "CS",
+        "CATEGORY": "CS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045352,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 1574,
+        "PAIDAREA": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045353,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045354,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045355,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045356,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045357,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045358,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045415,
+        "SPACETYPE": "PLZ",
+        "CATEGORY": "ZONE",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045443,
+        "SPACETYPE": "XW",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24449,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045493,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045525,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045553,
+        "SPACETYPE": "XW",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045560,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045624,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045630,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045631,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045635,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045654,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045667,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045700,
+        "SPACETYPE": "XW",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045743,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045755,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045769,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045774,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045785,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045808,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045813,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045814,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045827,
+        "SPACETYPE": "TAZ",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045828,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045839,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045841,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045848,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045934,
+        "SPACETYPE": "CVLZ",
+        "CATEGORY": "LOAD",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045948,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4045962,
+        "SPACETYPE": "XW",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046011,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046017,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046031,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046041,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046081,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046090,
+        "SPACETYPE": "NP",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046097,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046155,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046176,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046181,
+        "SPACETYPE": "DW",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046182,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046219,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046230,
+        "SPACETYPE": "NP",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046232,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046244,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046255,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046286,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046294,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046305,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046332,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046402,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046411,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046470,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046500,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046508,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046539,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046543,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046554,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046570,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046598,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046602,
+        "SPACETYPE": "CR",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046653,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046688,
+        "SPACETYPE": "BUS",
+        "CATEGORY": "BUS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046702,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046709,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046711,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046742,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046743,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046745,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046752,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046760,
+        "SPACETYPE": "NP",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046805,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046810,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046827,
+        "SPACETYPE": "TAZ",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046847,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046858,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046914,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046928,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046973,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4046992,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047001,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047034,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 71574,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047047,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24270,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047065,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 69489,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047068,
+        "SPACETYPE": "HYD",
+        "CATEGORY": "NS",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 70866,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047086,
+        "SPACETYPE": "TAZ",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047110,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047112,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047158,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047177,
+        "SPACETYPE": "CLR",
+        "CATEGORY": "NP",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047200,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047204,
+        "SPACETYPE": "PS",
+        "CATEGORY": "PAID",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24417,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047237,
+        "SPACETYPE": "DW",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24449,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047307,
+        "SPACETYPE": "XW",
+        "CATEGORY": "NS",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 24409,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047314,
+        "SPACETYPE": "PLZ",
+        "CATEGORY": "ZONE",
+        "SIDE": "E",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 25042,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4047329,
+        "SPACETYPE": "L/UL",
+        "CATEGORY": "LOAD",
+        "SIDE": "W",
+        "CURRENT_STATUS": "INSVC",
+        "ELMNTKEY": 74149,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null
+      }
+    }
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITDESC": "15TH AVE NE BETWEEN NE 45TH ST AND NE 47TH ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": "3-7PM",
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITDESC": "2ND AVE S BETWEEN S JACKSON ST AND S KING ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITDESC": "12TH AVE NE BETWEEN NE 47TH ST AND NE 50TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITDESC": "11TH AVE BETWEEN E PINE ST AND E OLIVE ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITDESC": "4TH AVE W BETWEEN W HARRISON ST AND W REPUBLICAN ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITDESC": "11TH AVE BETWEEN E HOWELL ST AND E DENNY WAY",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24270,
+          "UNITDESC": "1ST AVE W BETWEEN W REPUBLICAN ST AND W MERCER ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": "13",
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITDESC": "24TH AVE NW BETWEEN NW 56TH ST AND NW 57TH ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Paid Parking",
+          "PARKING_TIME_LIMIT": 240,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITDESC": "12TH AVE BETWEEN E ALDER ST AND E TERRACE ST",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24449,
+          "UNITDESC": "11TH AVE NE BETWEEN NE 43RD ST AND NE 45TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 1,
+          "WKD_START1": 480,
+          "WKD_END1": 659
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-106003",
+          "SIGNTYPE": "R7-EVENT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING VARIABLE DATES TIMES",
+          "DISTANCE": 197
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-118482",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 43
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-118483",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 225
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-138405",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 152
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-237989",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 260
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-264118",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 67
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24449,
+          "UNITID": "SGN-264082",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 85
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-26170",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 361
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-209708",
+          "SIGNTYPE": "R8-PARALEL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARALLEL PARKING ONLY",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218160",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 610
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-209709",
+          "SIGNTYPE": "R8-PARALEL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARALLEL PARKING ONLY",
+          "DISTANCE": 152
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-219080",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 250
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138381",
+          "SIGNTYPE": "R8-4PAYB10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-10PM EXCEPT SUN-HOL 4 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 139
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-245413",
+          "SIGNTYPE": "R8-SHAREZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "ZIPCAR CAR SHARE VEHICLES ONLY [CAR TOWED]",
+          "DISTANCE": 77
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165861",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 410
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138379",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 270
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24449,
+          "UNITID": "SGN-29975",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 380
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-23831",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 348
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165862",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 544
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218158",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 544
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244175",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 153
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-37414",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 329
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-10229",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-256635",
+          "SIGNTYPE": "R8-PAY10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-10PM EXCEPT SUN-HOL",
+          "DISTANCE": 195
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-11009",
+          "SIGNTYPE": "R8-2PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 2 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 171
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138380",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 316
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165863",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 610
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138382",
+          "SIGNTYPE": "R8-4PAYB10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-10PM EXCEPT SUN-HOL 4 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 270
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-238810",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES)",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-238806",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 51
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-118484",
+          "SIGNTYPE": "R8-PAY4B8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[CIRCLE P] 4 Hours Max\n\rPay 8am-8pm Mon-Sat",
+          "DISTANCE": 118
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-246697",
+          "SIGNTYPE": "R7-R",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RIGHT FACING ARROW]",
+          "DISTANCE": 152
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24270,
+          "UNITID": "SGN-214582",
+          "SIGNTYPE": "R8-2PYEVNT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 2 Hours Max No time limit after 5pm",
+          "DISTANCE": 237
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-208707",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 373
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-252848",
+          "SIGNTYPE": "I6-200A",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PAYBYPHONE, LOCATION# [VARIABLE]",
+          "DISTANCE": 580
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24270,
+          "UNITID": "SGN-214580",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 37
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-23829",
+          "SIGNTYPE": "R7-WI30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "DISTANCE": 13
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-118598",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 557
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24449,
+          "UNITID": "SGN-28893",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 286
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-200467",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 178
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-222710",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 M PLZ ONLY, TAZ",
+          "DISTANCE": 65
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-138400",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-138404",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 276
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165860",
+          "SIGNTYPE": "R7-PKPD",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING 3-7 PM EXC SAT-SUN-HOL TAZ",
+          "DISTANCE": 233
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138378",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 139
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24270,
+          "UNITID": "SGN-214586",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 435
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-243859",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 143
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24449,
+          "UNITID": "SGN-264084",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 128
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-38799",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 597
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-256636",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 195
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-222709",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 65
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-13398",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 88
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-64818",
+          "SIGNTYPE": "R7-BUSR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[METRO LOGO] BUS (ROUTES) #46 48,78 244,372",
+          "DISTANCE": 165
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218155",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 213
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-24318",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 413
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-114404",
+          "SIGNTYPE": "R8-2PAYB8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-8PM EXCEPT SUN-HOL 2 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 399
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138375",
+          "SIGNTYPE": "R8-PAY10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-10PM EXCEPT SUN-HOL",
+          "DISTANCE": 361
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-219011",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 597
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-238809",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 181
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244177",
+          "SIGNTYPE": "R8-LULD8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 MINUTE\r\rLOAD AND UNLOAD ONLY\r\r7AM-8PM EXCEPT SUN-HOL\r\r[CAR BEING TOWED]\r\rPHONE 684-5444",
+          "DISTANCE": 125
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-201438",
+          "SIGNTYPE": "R8-4PAYB10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-10PM EXCEPT SUN-HOL 4 HOURS MAX NO TIME LIMIT AFTER 5PM PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 276
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-237990",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 201
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-264117",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 67
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-200466",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-165516",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 622
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-201437",
+          "SIGNTYPE": "R8-PAY10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-10PM EXCEPT SUN-HOL",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-138401",
+          "SIGNTYPE": "R8-PAY10",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-10PM EXCEPT SUN-HOL",
+          "DISTANCE": 367
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-199237",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 171
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-243862",
+          "SIGNTYPE": "R8-PAY8",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-8PM EXCEPT SUN-HOL",
+          "DISTANCE": 534
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-253150",
+          "SIGNTYPE": "R8-LBW",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[LEFT ARROW]",
+          "DISTANCE": 65
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24449,
+          "UNITID": "SGN-264085",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 254
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-236147",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS\n\rTOW-AWAY ZONE Phone 684-5444",
+          "DISTANCE": 396
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-238807",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 110
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-138406",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 367
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138376",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 361
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-245412",
+          "SIGNTYPE": "R8-SHAREZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "ZIPCAR CAR SHARE VEHICLES ONLY [CAR TOWED]",
+          "DISTANCE": 59
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-209711",
+          "SIGNTYPE": "R7-L",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[LEFT FACING ARROW]",
+          "DISTANCE": 152
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-64641",
+          "SIGNTYPE": "R8-PLZSTP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY NO STOPS 4-6PM EXC SAT-SUN-HOL",
+          "DISTANCE": 473
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24270,
+          "UNITID": "SGN-111526",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 79
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-13149",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 248
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-115754",
+          "SIGNTYPE": "R8-4PAYB6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY 8AM-6PM EXCEPT SUN-HOL 4 HOURS MAX PAY BY PHONE SYMBOL OR ENTER PLATE NUMBER PAYSTATION SYMBOL",
+          "DISTANCE": 410
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 69489,
+          "UNITID": "SGN-1990",
+          "SIGNTYPE": "R8-CLZ8PM",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "30 M CLZ 7A-8P EXC SUN-HOL, USE PS EXC WITH PERMIT, TAZ",
+          "DISTANCE": 580
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-218156",
+          "SIGNTYPE": "R8-PAY6",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "PARKING SYMBOL PAY TO PARK 8AM-6PM EXCEPT SUN-HOL",
+          "DISTANCE": 350
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244178",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 61
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 25042,
+          "UNITID": "SGN-247430",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 213
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 1574,
+          "UNITID": "SGN-238808",
+          "SIGNTYPE": "R8-BUSLAY",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "METRO BUS ONLY 24 HOURS EVERYDAY",
+          "DISTANCE": 130
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 71574,
+          "UNITID": "SGN-121353",
+          "SIGNTYPE": "R8-PLZ",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "3 MINUTE PASSENGER LOAD [LOGO] ONLY TOW-AWAY ZONE PH 684-5444",
+          "DISTANCE": 146
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244172",
+          "SIGNTYPE": "R8-PAYBL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[PARKING SYMBOL] PAY TO PARK",
+          "DISTANCE": 373
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24409,
+          "UNITID": "SGN-25865",
+          "SIGNTYPE": "R7-STOPS",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO STOPS TOW AWAY ZONE PH 625-2061",
+          "DISTANCE": 367
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 24417,
+          "UNITID": "SGN-138377",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 63
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 74149,
+          "UNITID": "SGN-244173",
+          "SIGNTYPE": "R8-4PYEVNT",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "Parking symbol, Event Parking Pricing Area 8am-10pm, Check pay station or phone for rates and max hours or seattle.gov/eventparking, Non-Event Days Pay 8am-8pm 4 Hours Max",
+          "DISTANCE": 233
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 70866,
+          "UNITID": "SGN-200468",
+          "SIGNTYPE": "R8-BACKIN",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "BACK-IN ANGLE PARKING ONLY",
+          "DISTANCE": 88
+        }
+      }
+    ]
+  }
+}

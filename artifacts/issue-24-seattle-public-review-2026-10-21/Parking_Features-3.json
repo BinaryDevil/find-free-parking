@@ -1,0 +1,263 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:14.530292+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer/3",
+  "name": "Temporary No Parking",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 83572
+  },
+  "editingInfo": {
+    "lastEditDate": 1792578257935,
+    "schemaLastEditDate": 1792578257935,
+    "dataLastEditDate": 1792578257935
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "Object Id",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELEMENT_KEY",
+      "type": "esriFieldTypeString",
+      "alias": "Blockface Element Key",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NOPARKING_SIGN_TYPE",
+      "type": "esriFieldTypeString",
+      "alias": "No Parking Sign Type",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "START_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "Start",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "END_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "End",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "PUBLICNOTICEPOSTDATETIME",
+      "type": "esriFieldTypeDate",
+      "alias": "PublicNoticePostDateTime",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "c599cc4b87bd411787ab88cd4e99fbda",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792578449000,
+    "licenseInfo": "",
+    "accessInformation": "SDOT, City of Seattle",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "Object Id",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELEMENT_KEY",
+        "type": "esriFieldTypeString",
+        "alias": "Blockface Element Key",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NOPARKING_SIGN_TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "No Parking Sign Type",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "START_DATE_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "Start",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "END_DATE_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "End",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 39031072,
+          "ELEMENT_KEY": "59041",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031073,
+          "ELEMENT_KEY": "59041",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031074,
+          "ELEMENT_KEY": "59042",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031075,
+          "ELEMENT_KEY": "59041",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031076,
+          "ELEMENT_KEY": "59042",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031077,
+          "ELEMENT_KEY": "59041",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031078,
+          "ELEMENT_KEY": "59042",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031079,
+          "ELEMENT_KEY": "59041",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031080,
+          "ELEMENT_KEY": "59042",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 39031081,
+          "ELEMENT_KEY": "59041",
+          "NOPARKING_SIGN_TYPE": "BARRICADE: custom time limit",
+          "START_DATE_TIME": 1792396800000,
+          "END_DATE_TIME": 1792425600000
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,460 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:10.550319+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Temporary_No_Parking_Unpaid/FeatureServer/10",
+  "name": "Temporary No Parking (Unpaid)",
+  "geometry": "esriGeometryPoint",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 1161
+  },
+  "editingInfo": {
+    "lastEditDate": 1792597355805,
+    "schemaLastEditDate": 1792597355805,
+    "dataLastEditDate": 1792597355805
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TNPN_RECORDID",
+      "type": "esriFieldTypeString",
+      "alias": "TNPN_RECORDID",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CONTACT_FULLNAME",
+      "type": "esriFieldTypeString",
+      "alias": "CONTACT_FULLNAME",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CONTACT_PHONE",
+      "type": "esriFieldTypeString",
+      "alias": "CONTACT_PHONE",
+      "sqlType": "sqlTypeOther",
+      "length": 40,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ONSITE_CONTACTNAME",
+      "type": "esriFieldTypeString",
+      "alias": "ONSITE_CONTACTNAME",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ONSITE_CONTACTNUMBER",
+      "type": "esriFieldTypeString",
+      "alias": "ONSITE_CONTACTNUMBER",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "NUMBER_OF_SIGNS",
+      "type": "esriFieldTypeString",
+      "alias": "NUMBER_OF_SIGNS",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PERMITTED_ADDRESS",
+      "type": "esriFieldTypeString",
+      "alias": "PERMITTED_ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MAF_ID",
+      "type": "esriFieldTypeString",
+      "alias": "MAF_ID",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "REQUESTED_STARTDATE",
+      "type": "esriFieldTypeDate",
+      "alias": "REQUESTED_STARTDATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "REQUESTED_ENDDATE",
+      "type": "esriFieldTypeDate",
+      "alias": "REQUESTED_ENDDATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "DAILY_START_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_START_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_START_AMPM",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_START_AMPM",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_END_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_END_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_END_AMPM",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_END_AMPM",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INCLUDE_SATURDAY",
+      "type": "esriFieldTypeString",
+      "alias": "INCLUDE_SATURDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INCLUDE_SUNDAY",
+      "type": "esriFieldTypeString",
+      "alias": "INCLUDE_SUNDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FULL_DAY_PARKING",
+      "type": "esriFieldTypeString",
+      "alias": "FULL_DAY_PARKING",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LOCATION",
+      "type": "esriFieldTypeString",
+      "alias": "LOCATION",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RECORD_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "RECORD_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CREATED_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "CREATED_DATE_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "MODIFIED_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "MODIFIED_DATE_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "INSTALL_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "INSTALL_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "INSTALL_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "INSTALL_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INSTALL_AMPM",
+      "type": "esriFieldTypeString",
+      "alias": "INSTALL_AMPM",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ISSUE_DATE",
+      "type": "esriFieldTypeDate",
+      "alias": "ISSUE_DATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "REASON",
+      "type": "esriFieldTypeString",
+      "alias": "REASON",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OTHER_REASON",
+      "type": "esriFieldTypeString",
+      "alias": "OTHER_REASON",
+      "sqlType": "sqlTypeOther",
+      "length": 1000,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "f486ed9dacf3488d94169f67fb48c931",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792597359000,
+    "licenseInfo": "The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Temporary_No_Parking_Unpaid/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RECORD_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "RECORD_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "MODIFIED_DATE_TIME",
+        "type": "esriFieldTypeDate",
+        "alias": "MODIFIED_DATE_TIME",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 1,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1792009706000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 2,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1792009251000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1792503526000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1792536489000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 5,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1790601017000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 6,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1790264133000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 7,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1790344729000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 8,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1789744324000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 9,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1789744663000
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 10,
+          "RECORD_STATUS": "Issued",
+          "MODIFIED_DATE_TIME": 1788883716000
+        }
+      }
+    ],
+    "exceededTransferLimit": true
+  }
+}

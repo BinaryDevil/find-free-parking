@@ -1,0 +1,713 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "geometryType": "esriGeometryPolygon",
+  "spatialReference": {
+    "wkid": 2926,
+    "latestWkid": 2926
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAIDAREA",
+      "type": "esriFieldTypeString",
+      "alias": "PAIDAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 20,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUBAREA",
+      "type": "esriFieldTypeString",
+      "alias": "SUBAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 15,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MORNING_RATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "MORNING_RATE",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MORNING_START",
+      "type": "esriFieldTypeString",
+      "alias": "MORNING_START",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MORNING_END",
+      "type": "esriFieldTypeString",
+      "alias": "MORNING_END",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAY_RATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "DAY_RATE",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAY_START",
+      "type": "esriFieldTypeString",
+      "alias": "DAY_START",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAY_END",
+      "type": "esriFieldTypeString",
+      "alias": "DAY_END",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EVENING_RATE",
+      "type": "esriFieldTypeDouble",
+      "alias": "EVENING_RATE",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EVENING_START",
+      "type": "esriFieldTypeString",
+      "alias": "EVENING_START",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EVENING_END",
+      "type": "esriFieldTypeString",
+      "alias": "EVENING_END",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 3701,
+        "PAIDAREA": "Westlake Ave N",
+        "SUBAREA": "South",
+        "MORNING_RATE": 1,
+        "MORNING_START": "9AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1,
+        "DAY_START": "11AM",
+        "DAY_END": "4PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3702,
+        "PAIDAREA": "Belltown",
+        "SUBAREA": "South",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3703,
+        "PAIDAREA": "Lake Union Park",
+        "SUBAREA": null,
+        "MORNING_RATE": 1.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3704,
+        "PAIDAREA": "Cherry Hill",
+        "SUBAREA": null,
+        "MORNING_RATE": 2.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3705,
+        "PAIDAREA": "Belltown",
+        "SUBAREA": "North",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3706,
+        "PAIDAREA": "15th Avenue E",
+        "SUBAREA": null,
+        "MORNING_RATE": 2.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 5.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 5.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3707,
+        "PAIDAREA": "Commercial Core",
+        "SUBAREA": "Financial",
+        "MORNING_RATE": 2,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3708,
+        "PAIDAREA": "Denny Triangle",
+        "SUBAREA": "South",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 6,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 6,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3709,
+        "PAIDAREA": "12th Avenue",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 4.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 7,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3710,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Core",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 6.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 7,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3711,
+        "PAIDAREA": "Westlake Ave N",
+        "SUBAREA": "North",
+        "MORNING_RATE": 1,
+        "MORNING_START": "9AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2,
+        "DAY_START": "11AM",
+        "DAY_END": "4PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3712,
+        "PAIDAREA": "Roosevelt",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3713,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 3.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3714,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Core",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 6.5,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3715,
+        "PAIDAREA": "First Hill",
+        "SUBAREA": null,
+        "MORNING_RATE": 1.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 7,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 6.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3716,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 3.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3717,
+        "PAIDAREA": "Uptown Triangle",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3718,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Core",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 5.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 3,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3719,
+        "PAIDAREA": "University District",
+        "SUBAREA": "Edge",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3720,
+        "PAIDAREA": "Fremont",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 5.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 6.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3721,
+        "PAIDAREA": "Pioneer Square",
+        "SUBAREA": "Edge",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3722,
+        "PAIDAREA": "Columbia City",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 4,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 4,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3723,
+        "PAIDAREA": "Ballard Blocks",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 2.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3724,
+        "PAIDAREA": "Commercial Core",
+        "SUBAREA": "Waterfront",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 8,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 5.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3725,
+        "PAIDAREA": "Chinatown/ID",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 5.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3726,
+        "PAIDAREA": "Commercial Core",
+        "SUBAREA": "Retail",
+        "MORNING_RATE": 2.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 6,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3727,
+        "PAIDAREA": "Uptown",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 1.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "10PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3728,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "South",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 3,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 4.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "10PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3729,
+        "PAIDAREA": "South Lake Union",
+        "SUBAREA": "North",
+        "MORNING_RATE": 1.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1.5,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3730,
+        "PAIDAREA": "Pike-Pine",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 8,
+        "EVENING_START": "5PM",
+        "EVENING_END": "10PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3731,
+        "PAIDAREA": "South Lake Union",
+        "SUBAREA": "South",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 5,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": null,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3732,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 3.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3733,
+        "PAIDAREA": "Ballard",
+        "SUBAREA": "Edge",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 2,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 3.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3734,
+        "PAIDAREA": "Green Lake",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 4,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 3.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3735,
+        "PAIDAREA": "Denny Triangle",
+        "SUBAREA": "North",
+        "MORNING_RATE": 2.5,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 7.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 2.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "8PM"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3736,
+        "PAIDAREA": "Ballard Locks",
+        "SUBAREA": null,
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 1,
+        "DAY_START": "11AM",
+        "DAY_END": "6PM",
+        "EVENING_RATE": 1,
+        "EVENING_START": null,
+        "EVENING_END": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3737,
+        "PAIDAREA": "Capitol Hill",
+        "SUBAREA": "North",
+        "MORNING_RATE": 1,
+        "MORNING_START": "8AM",
+        "MORNING_END": "11AM",
+        "DAY_RATE": 4.5,
+        "DAY_START": "11AM",
+        "DAY_END": "5PM",
+        "EVENING_RATE": 4.5,
+        "EVENING_START": "5PM",
+        "EVENING_END": "10PM"
+      }
+    }
+  ]
+}
