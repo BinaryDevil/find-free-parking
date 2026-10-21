@@ -43,7 +43,7 @@ A source is approved when two agents agree in writing, both recorded in the city
 
 The inventory line reads `approved by agent review on <date> (author <PR>, reviewer <PR or comment>)`. The release PR that first serves the source lists it under *Production actions*, and the human merge makes it live.
 
-- **Reuse terms (criterion 6):** only a published licence or published terms covering the exact item count. Where none exists, the source is excluded and Coverage narrows. No human judgement or outreach stands in for missing terms.
+- **Public availability (criterion 6):** the reviewer confirms the endpoint is retrievable without sign-in or payment. Licence terms are recorded where shown but are not a gate.
 - **Old data (criterion 5):** where the last edit is more than 24 months old, the reviewer agent's own fresh spot check, dated within 30 days, takes the place of human re-review.
 - **Spot checks (criterion 7):** a field photo is not required. The other independent official signals suffice.
 - Any disagreement between the two agents leaves the source `pending`, with the reason recorded.

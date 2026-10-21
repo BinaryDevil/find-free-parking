@@ -1,5 +1,7 @@
 # Seattle, Washington: source inventory
 
+> **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
+
 Status: draft
 Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
 Timezone: America/Los_Angeles
@@ -600,7 +602,7 @@ Inventory preparation can be complete while Coverage is none. The maintainer acc
 - Pay-station schedules alone cannot permit free after hours; holidays, large-event charging, load zones and vehicle conditions must be checked. Table A already shows paid summaries with uncorroborated payment signs and mixed restrictions.
 - No complete E3 inventory claim or qualifying E7 default; no import-ready public lot evidence. Citywide boundaries and facility-directory entries confer no Coverage.
 - Reuse applicability and the GIS proxy crawl remain incomplete. Current `lastEditDate` can be an export refresh; symbology/reserve `dataLastEditDate` is older than 24 months. No routine timestamp should hide an old rule.
-- Required SDOT clarification package (not sent): official sign code/day/time/arrow dictionary, payment minute-boundary conventions, RPZ discrepancies/visitor allowances, empty signed-block layer, unpaid restriction geometry/daily hours, and scheduled-versus-actual TNP semantics. Requests require separate human authorization; existing #24 owns approval, #25–#27 own implementation clarifications. No new public-records or data-request ticket/contact was filed in this scoped inventory run.
+- Required SDOT clarification package (not sent): official sign code/day/time/arrow dictionary, payment minute-boundary conventions, RPZ discrepancies/visitor allowances, empty signed-block layer, unpaid restriction geometry/daily hours, and scheduled-versus-actual TNP semantics. This historical request plan is superseded by ADR-0004: resolve gaps only from existing published evidence; existing #24 owns approval, #25–#27 own implementation. No new public-records or data-request ticket/contact was filed in this scoped inventory run.
 - Possible future partial subset: precisely delimited managed curb portions with validated Blockface + signs + payment + applicable RPZ + both temporary restriction channels. This is a research target, **not** an approved or implemented Coverage verdict. Full requires citywide accepted E1 (or complete E3 + qualifying E7), permit/payment coverage and E5 daily sync.
 
 ## Tickets

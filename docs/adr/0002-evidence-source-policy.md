@@ -1,6 +1,6 @@
 # Evidence Source Policy
 
-Canonical policy for city Coverage setup and seeding, moved without policy changes from the [verified-rules spec (#2)](https://github.com/BinaryDevil/find-free-parking/issues/2) under [#23](https://github.com/BinaryDevil/find-free-parking/issues/23). Read with [ADR-0001](0001-verified-rules-only.md). This records the policy, not implementation or source approval. Who approves sources, and how, is set by [ADR-0005](0005-agent-verified-gates.md).
+Canonical policy for city Coverage setup and seeding, moved without policy changes from the [verified-rules spec (#2)](https://github.com/BinaryDevil/find-free-parking/issues/2) under [#23](https://github.com/BinaryDevil/find-free-parking/issues/23). Read with [ADR-0001](0001-verified-rules-only.md). Criterion 6 was amended by the project owner on 2026-10-20 to require public availability rather than published reuse terms. This records project acceptance policy, not a legal determination, implementation or source approval. Who approves sources, and how, is set by [ADR-0005](0005-agent-verified-gates.md).
 
 This policy decides which data sources may be used to set up or seed a city, what each source may establish, and what Coverage a city can then claim. A city's source inventory is checked against it, and adapters and seeding may use only approved sources.
 
@@ -26,7 +26,7 @@ Commercial data (INRIX, Parkopedia, Arrive and the like) is not an Evidence Sour
 3. **Location precision.** Block side or better for E1, E3 and E5; polygon for E4; lot footprint or entrance for E6.
 4. **Schedule semantics.** Days, times, limits and the timezone can be read from fields or from documented formats; anything ambiguous is `UNKNOWN`.
 5. **Freshness signal.** A source edit date, a published update cadence, or a record-level timestamp. Last-edit dates over 24 months old need a fresh independent re-review before approval (ADR-0005).
-6. **Reuse terms.** A published open licence or published terms covering the exact item, recorded in the inventory. Under ADR-0004 no permission is requested; without published terms the source is excluded.
+6. **Public availability.** Retrievable through the official channel without sign-in, payment or bypassing access controls. Public availability is sufficient for reuse; no licence is sought or required, and a missing or unclear licence never makes a source pending or rejected. Record any licence or attribution text the publisher shows.
 7. **Spot check.** At least 10 sample locations, chosen to include permit, metered, time-limited and no-parking cases, cross-checked against an independent official signal (city web page, a second official layer, the sign inventory, citation data, or a field photo when one already exists), with zero contradictions on fields that matter for safety (no stopping, tow-away, permit, payment).
 
 **Coverage levels**

@@ -62,5 +62,5 @@ and recovery, see [production release automation](../PRODUCTION_RELEASE.md).
 - **R1:** the 2026-10-05 failures are fixed in production (West End blocks not shown free; three reports don't create "Verified Free"; no "real-time regulations" claim); `pnpm audit --prod` shows no critical or high advisories in `next`, `axios`, `uuid` or `maplibre-gl`.
 - **R2:** a fresh Neon branch built from migrations alone matches production's schema; running an import twice adds no rows.
 - **R3:** with no approved Coverage area, the API and map behave exactly as after R1 (dark launch); the evaluator test suite passes.
-- **R4:** each served source is approved by agent review in its inventory (ADR-0005); sources without published reuse terms are excluded and the Coverage subset says so; the go-live spot checks pass on the live site.
+- **R4:** each served source is approved by agent review in its inventory (ADR-0005); the go-live spot checks pass on the live site.
 - **R5:** each city's sources are approved by agent review before their data is served.
