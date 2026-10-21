@@ -1,5 +1,7 @@
 # Vancouver, British Columbia: source inventory
 
+> **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
+
 Status: inventory complete; source approval pending
 Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
 Timezone: America/Vancouver

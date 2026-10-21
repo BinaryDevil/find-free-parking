@@ -30,7 +30,7 @@ Done when: every evidence type E1–E7 has candidate sources or "none found" wit
 For each candidate, record its fields, record count, last edit date, geometry, and a sample record. Then apply the policy's acceptance criteria one by one.
 
 - **Spot check**: record the locations, independent official comparisons, and safety contradictions required by ADR-0002 acceptance criterion 7.
-- **Reuse terms**: record the terms required by ADR-0002 acceptance criterion 6 from the portal or the service's item page. Only a published licence or published terms covering the exact item count; without them the verdict is `rejected (criterion 6)`, not pending, since ADR-0004 rules out asking.
+- **Public availability**: confirm ADR-0002 acceptance criterion 6 (retrievable without sign-in or payment). Record any licence or attribution text shown; do not seek a licence or treat its absence as a failure.
 - Anything the source leaves ambiguous becomes an explicit Unknown case.
 
 Done when: every candidate has a verdict (approved / rejected with the failed criterion / pending with what is missing).

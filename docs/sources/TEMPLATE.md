@@ -32,7 +32,7 @@ Repeat this block for each candidate source, including rejected ones.
 - Geometry and precision:
 - Records: <count> as of <YYYY-MM-DD>; last edited <YYYY-MM-DD>
 - Fields used: <field → meaning, including day/time/limit semantics>
-- Reuse terms: <published licence or terms covering this item; link>
+- Public availability: <retrievable without sign-in or payment; any licence or attribution text shown, with link>
 - Spot check: <10+ sample places, the independent official signal used for each, contradictions found>
 - May establish: <per the policy table>
 - Unknown cases: <records or conditions that stay UNKNOWN>
@@ -40,8 +40,8 @@ Repeat this block for each candidate source, including rejected ones.
 
 ## Unknown areas and gaps
 
-<Where results stay UNKNOWN and why; data requests filed with the city (issue links).>
+<Where results stay UNKNOWN and why, and the places searched.>
 
 ## Tickets
 
-<Issue links: one per adapter, coverage approval, data requests.>
+<Issue links: one per adapter, and the source review.>

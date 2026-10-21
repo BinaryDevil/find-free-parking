@@ -1,6 +1,8 @@
 # City of North Vancouver, British Columbia: source inventory
 
-Status: draft — independent review incomplete; selected GIS sources rejected (criterion 6)
+> **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
+
+Status: draft — independent source review incomplete; historical criterion-6 rejection superseded
 Timezone: America/Vancouver
 Coverage verdict: none (no approved source; not covered)
 Draft partial target: precisely assigned City curb segments with complete, reconciled time-limit, payment, prohibition and applicable vehicle/permit conditions. Permit eligibility polygons alone are excluded. All other streets and lots remain Unknown.

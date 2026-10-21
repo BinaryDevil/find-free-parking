@@ -1,5 +1,7 @@
 # North Vancouver independent source review — 2026-10-19
 
+> **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
+
 Scope: [#50](https://github.com/BinaryDevil/find-free-parking/issues/50), independently reviewed by an agent that did not author the [inventory](north-vancouver.md). This is a partial review, not source approval. **Coverage remains none; no partial subset is approved.** The proposed subset remains only exact reconciled City curb segments, excluding District streets, unsupported lot rules, polygon interiors without signed applicability and unresolved curbs.
 
 ## Published reuse terms checked first
