@@ -14,6 +14,8 @@ runs after a newer main revision. Humans alone merge release PRs under
 
 ## Preparing a release
 
+The owner-approved [preservation-lineage contract](adr/0003-sql-migrations.md#preservation-lineage-amendment--accepted-2026-10-21) is policy, not implemented release support. The workflow and plan format below still use the legacy runner and its complete pending-file checks. Do not use a runtime file filter or list preservation files in this format to bypass pending legacy SQL. The [design](plans/schema91-preservation-design.md) requires independently verified manifest/adoption support before that lineage can execute. A future production release must list the exact adoption metadata write separately from SQL files, with snapshot, schema/history comparison, verification and rollback. Accepting the ADR authorizes none of those writes or retention execution.
+
 Before the human merge, update `.github/production-migrations.json` to a JSON
 array of the exact SQL filenames to apply for this release. Include those same
 files in the release PR description using this format:
@@ -83,10 +85,11 @@ For the staged writer rollout, prepare two separately human-merged release PRs:
    verification/rollback evidence. Its human merge authorizes only those listed
    actions; it does not extend the first release's authorization.
 
-This support does not resolve the non-additive migration-policy conflict tracked
-in #91 or make either release ready. Resolve that policy and independently verify
-production-derived schema, historical values and rollback compatibility before
-listing a conversion action. Never rewrite or fake-mark immutable migrations.
+The accepted preservation contract addresses #91's policy direction without approving
+the legacy conversion. Its implementation, production-derived schema/history,
+historical-value preservation and rollback compatibility remain unverified.
+Neither lineage is made release-ready by policy acceptance. Never rewrite sealed
+migrations or record superseded operations as executed.
 
 After snapshot readiness, every release verifies deployment/runtime and checks
 that main still equals the authorized SHA. A nonempty plan repeats its earlier
