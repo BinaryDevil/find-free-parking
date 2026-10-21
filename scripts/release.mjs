@@ -12,6 +12,16 @@ export function authorizeRelease(prs, sha) {
   const pr = matches[0];
   const actions = pr.body?.match(/^## Production actions\s*\n([\s\S]*?)(?=^## |$(?![\s\S]))/m)?.[1];
   if (!actions) throw new Error('Missing Production actions');
+  if (/^- (?:Migration lineage|Migration manifest|Adoption reference):/m.test(actions) || actions.includes('sql/preservation-v1/')) {
+    const lineages = [...actions.matchAll(/^- Migration lineage: `([^`]+)`\s*$/gm)].map(match => match[1]);
+    const hashes = [...actions.matchAll(/^- Migration manifest: `([a-f0-9]{64})`\s*$/gm)].map(match => match[1]);
+    const references = [...actions.matchAll(/^- Adoption reference: `([a-f0-9]{64})`\s*$/gm)].map(match => match[1]);
+    const entries = [...actions.matchAll(/^- Migration: `sql\/preservation-v1\/(\d{13}_[a-z0-9_]+\.sql)`\s*$/gm)].map(match => match[1]);
+    const reserved = actions.split('\n').filter(line => /^- (?:Migration(?: lineage| manifest)?|Adoption reference):/.test(line));
+    if (lineages.length !== 1 || lineages[0] !== 'preservation-v1' || hashes.length !== 1 || references.length > 1 || entries.length === 0 ||
+        reserved.length !== 2 + references.length + entries.length || new Set(entries).size !== entries.length || /^No automated migrations\.$/m.test(actions)) throw new Error('Invalid preservation production actions');
+    return { number: pr.number, lineage: 'preservation-v1', manifestHash: hashes[0], adoptionReference: references[0] ?? null, migrations: entries.sort() };
+  }
   const migrations = [...actions.matchAll(/^- Migration: `sql\/migrations\/(\d{13}_[a-z0-9_]+\.sql)`\s*$/gm)].map(m => m[1]);
   if (migrations.length && /^No automated migrations\.$/m.test(actions)) throw new Error('Contradictory migration list');
   if (!migrations.length && !/^No automated migrations\.$/m.test(actions)) throw new Error('List exact migrations or explicitly none');
@@ -31,6 +41,7 @@ export async function runRelease(release, config, { github, database, readiness,
   const comment = async () => github(['api', `repos/${repository}/issues/${release.number}/comments`, '--method', 'POST', '--input', '-'],
     JSON.stringify({ body: `Production release ${config.sha}\n\n${results.join('\n')}` }));
   try {
+    if (release.lineage) throw new Error('Preservation release execution is not enabled');
     if (config.files.some(f => !migrationPattern.test(f)) || !Array.isArray(config.plan) || config.plan.some(f => !migrationPattern.test(f)) ||
         JSON.stringify([...config.plan].sort()) !== JSON.stringify(release.migrations)) throw new Error('Plan differs from merged release');
     const ledger = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
