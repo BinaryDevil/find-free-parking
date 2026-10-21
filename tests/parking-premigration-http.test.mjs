@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
 import { Client } from 'pg';
+import { smokeProduction } from '../scripts/release.mjs';
 
 const connectionString = process.env.PARKING_COMPAT_TEST_DATABASE_URL;
 test('public parking APIs preserve baseline rows and fail closed before the warning migration', { skip: !connectionString, timeout: 180000 }, async () => {
@@ -46,6 +47,7 @@ test('public parking APIs preserve baseline rows and fail closed before the warn
       await delay(500);
     }
     assert.ok(ready, 'Local Next health endpoint must become ready');
+    await smokeProduction(fetch, base);
     const selected = '&at=2026-10-12T17:00:00Z&legacyTimeZone=America%2FVancouver';
     const paths = ['/api/parking?north=1&south=-1&east=1&west=-1', '/api/parking/zones?bbox=-1,-1,1,1', '/api/parking/zones?lat=0&lng=0'];
     const read = async (path) => {
