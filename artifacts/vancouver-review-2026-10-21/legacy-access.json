@@ -1,0 +1,10 @@
+{
+  "atom": {
+    "url": "https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "georss": {
+    "url": "https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml",
+    "error": "HTTP Error 403: Forbidden"
+  }
+}

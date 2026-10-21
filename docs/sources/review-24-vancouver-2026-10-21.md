@@ -1,0 +1,162 @@
+# Vancouver independent source reassessment, 2026-10-21
+
+Refs [#24](https://github.com/BinaryDevil/find-free-parking/issues/24), [#2](https://github.com/BinaryDevil/find-free-parking/issues/2). Reviewer: a fresh agent that did not author the Vancouver inventory. Base: `fc5612d12b2c5ea47797038c09961d46598fcba6`. This review applies the owner-amended ADR-0002 criterion 6: official public retrieval suffices; licence ambiguity is not a failure. **No source is approved; Coverage remains none.** Intended approval states remain `pending` for the meter, permit and Road Ahead candidates; excluded/reference sources are not proposed for activation. No database approval state was read or written.
+
+This is a partial completion of #24. Fresh endpoint properties and new contradictions are recorded below; ten successful independent current curb/schedule checks per source are still missing. No source approval agreement with the inventory author is claimed. No import, scheduler, database branch/write, source activation, outreach, deployment, `dev` merge or production action is included.
+
+## Retrieval and artifacts
+
+Official JSON endpoints were retrieved without sign-in, payment or bypass. Field lists, counts, native geometry, edit timestamps, official item owner/access and published licence text are retained in [metadata.json](../../artifacts/vancouver-review-2026-10-21/metadata.json). [GDH metadata](../../artifacts/vancouver-review-2026-10-21/gdh-metadata.json) refreshes the alternate server separately. Dates below are UTC source edits, not inspections of every parking rule. Public asset locations are not driver locations. Contact/applicant fields were omitted from Road Ahead requests; embedded contact text was redacted from retained samples.
+
+The initial hosted meter request was explicitly truncated at 2,000 rows. It was replaced by two pages ordered by `OBJECTID` (offsets 0 and 2,000), yielding 3,523 distinct IDs and a non-truncated final page. Portal JSON export also yielded 3,523 distinct IDs. Only selected records and comparison results are committed, rather than whole feed exports. Raw full-feed research files are temporary local files and are not an import artifact. The [final metadata check](../../artifacts/vancouver-review-2026-10-21/final-metadata-check.json) records the later edit/count check. Portal meters, hosted meters and permit edit metadata were unchanged across the check. Road Ahead changed from `2026-10-21T21:19:35.643Z` to `21:24:05.521Z` during research, so its 750-record observation and ten samples are explicitly a non-atomic dated snapshot, not a stable current sync or freshness approval.
+
+Reproduction: portal metadata `/api/explore/v2.1/catalog/datasets/<id>`, samples `/records?limit=10`, full meter `/exports/json`; ArcGIS layer `?f=pjson`, `/query?where=1%3D1&returnCountOnly=true&f=json`, and stable pagination with explicit public fields. Permit comparisons use the independently fetched City `street-intersections` export and polygon point-in-ring tests (EPSG:4326). These location checks do not establish curb permission.
+
+## Current endpoint observations
+
+| Candidate | Count | Source edit (UTC) | Published licence metadata / availability |
+|---|---:|---|---|
+| [DisabilityParking](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/DisabilityParking/FeatureServer/0?f=pjson) | 163 | 2026-10-19T09:27:37.959000+00:00 | CC BY; public retrieval succeeded |
+| [ResidentialParkingPermitZones](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/ResidentialParkingPermitZones/FeatureServer/0?f=pjson) | 535 | 2026-10-16T09:12:11.693000+00:00 | CC BY; public retrieval succeeded |
+| [COVCarShareParking](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/COVCarShareParking/FeatureServer/0?f=pjson) | 99 | 2026-10-16T08:03:07.084000+00:00 | CC BY; public retrieval succeeded |
+| [RoadAheadHistoricFilmPermits_3820d](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/RoadAheadHistoricFilmPermits_3820d/FeatureServer/0?f=pjson) | 478 | 2026-10-21T10:38:51.129000+00:00 | none shown; public retrieval succeeded |
+| [paMeter](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=pjson) | 3523 | 2026-10-21T09:33:46.539000+00:00 | CC BY; public retrieval succeeded |
+| [COVMotorcycleParkingNonMetered](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/COVMotorcycleParkingNonMetered/FeatureServer/0?f=pjson) | 86 | 2026-10-19T09:34:54.477000+00:00 | CC BY; public retrieval succeeded |
+| [Road_Ahead_View](https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/Road_Ahead_View/FeatureServer/0?f=pjson) | 750 | 2026-10-21T21:19:35.643000+00:00 | none shown; public retrieval succeeded |
+| [motorcycle-parking](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/motorcycle-parking) | 224 | 2026-10-19T13:31:20+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [road-ahead-current-road-closures](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/road-ahead-current-road-closures) | 23 | 2026-09-17T13:31:44+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [disability-parking](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/disability-parking) | 163 | 2026-08-24T13:30:39+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [road-ahead-projects-under-construction](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/road-ahead-projects-under-construction) | 68 | 2026-09-17T13:31:46+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [parking-meters](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters) | 3523 | 2026-10-19T13:31:55+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [ubc-meter](https://services2.arcgis.com/NlsizNmbMFiinWw4/arcgis/rest/services/Parking_Meters/FeatureServer/0?f=pjson) | 7946 | 2022-04-11T00:52:05.681000+00:00 | none shown; public retrieval succeeded |
+| [olympic-transportation-plan-parking-restrictions](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/olympic-transportation-plan-parking-restrictions) | 25 | 2016-06-26T09:30:08+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [road-ahead-upcoming-projects](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/road-ahead-upcoming-projects) | 199 | 2026-09-17T13:31:48+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [parking-tickets-2020-2025](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2020-2025) | 2472917 | 2026-06-01T23:08:21+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [parking-tickets](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets) | 357691 | 2026-10-15T13:54:50+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [parking-tickets-2014-2016](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2014-2016) | 1169233 | 2019-08-06T14:25:17+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [parking-tickets-2017-2019](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2017-2019) | 1318735 | 2025-07-15T13:12:21+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [parking-tickets-2010-2013](https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-tickets-2010-2013) | 1091149 | 2019-08-07T18:17:45+00:00 | Open Government Licence - Vancouver; public retrieval succeeded |
+| [GDH/paMeter/1](https://maps.vancouver.ca/server/rest/services/GDH/paMeter/MapServer/1?f=pjson) | 3523 | no layer edit signal exposed; `LAST_EDITED_DATE` field exists | none shown; public retrieval succeeded |
+
+The 2010–13/2014–16 ticket archives, UBC copy and Olympic layer are intentionally old; none is accepted as current parking-rule evidence. A fresh metadata retrieval does not replace the required ten-location re-review of old data. Current ticket data is signal only. The GDH directory now lists only layer 1 with the modern meter schema: older time-limit/pay-station representations are **not presently discoverable there**, rather than current zero-count sources. Washington search hits remain outside City of Vancouver, BC jurisdiction and were not promoted or treated as candidates for approval.
+
+Legacy [Atom](https://vanmapp1.vancouver.ca/georss/roadahead_atom.xml) and [GeoRSS](https://vanmapp1.vancouver.ca/georss/roadahead_georss.xml) each returned HTTP 403; [access evidence](../../artifacts/vancouver-review-2026-10-21/legacy-access.json). Their count/schema/edit/spot checks and public availability remain unverified. No bypass was attempted.
+
+## Seven-criterion verdicts
+
+P = property passed on this retrieval; U = unresolved; F = fails this role. A candidate property pass is not approval. All rows retain criterion 7 as unresolved or failing; no row satisfies all seven.
+
+| Candidate / intended role | 1 Authority | 2 Stable machine format | 3 Location | 4 Schedule | 5 Freshness signal | 6 Public availability | 7 Independent safety checks / verdict |
+|---|---|---|---|---|---|---|---|
+| Portal meters / E2 | P City | P current IDs and recorded fields | U actual head/curb extent | U rush days, overrides, competing restrictions | P weekly extract + edit | P OGL text recorded | U 12 selected matches, eight other service/rate conflicts; pending 3/4/7 |
+| Hosted paMeter / E2 alternate | P City item owner | P current uppercase fields/IDs | U same extent issue | U same semantics | P layer edit | P CC BY recorded | U full comparison conflicts; pending 3/4/7 |
+| GDH/paMeter/1 / E2 alternate | P City server | P current fields/count; older views absent | U extent | U same missing semantics | U record timestamps need cadence/meaning validation | P no licence gate | U ten independent checks absent; not selected production input |
+| ResidentialParkingPermitZones / E4 | P City item owner | P MAPID plus polygon part; not OBJECTID alone | P polygon minimum | U eligibility versus signed curb, visitor hours | P layer edit | P CC BY recorded | U ten location joins rerun; no ten current signed-curb confirmations; pending 4/7 |
+| Road_Ahead_View / E5 | P City owner/map | P planitid + recorded interval fields | U project envelopes versus curb | U phase/recurrence/status ambiguity | P layer and record edits | P no licence shown | U ten comparisons below do not establish exact active curb restrictions; pending 3/4/7 |
+| Each of three portal Road Ahead extracts / standalone E5 | P City | P current endpoint schema; null fields must fail closed | F approximate segments without curb side | F completion date lacks start/daily hours | P source modified signal, but Sept 17 snapshot/cadence discrepancy unresolved | P OGL recorded | U ten successful checks per extract absent; excluded as standalone rules |
+| Legacy Atom / GeoRSS / E5 | P official URLs | U HTTP 403 | U | U | U | U HTTP 403 | U inaccessible; pending access/format evidence |
+| Portal motorcycle + hosted nonmetered motorcycle / complete E1 or public-free rules | P City | P recorded fields, IDs/geometry | U exact designated-space extent | U null/n/a and rush-day semantics | P published edits | P OGL / CC BY | U ten current curb checks per feed absent; excluded as standalone complete E1/free evidence |
+| Portal disability + hosted DisabilityParking / complete E1 or free rules | P City | P recorded fields, IDs/geometry | U exact designated extent | U schedule/payment and exemptions | P published edits | P OGL / CC BY | U ten checks per feed absent; excluded as standalone complete E1/free evidence |
+| COVCarShareParking / ordinary public parking | P City | P recorded CADKEY/geometry | U exact spaces | F company reservation is not ordinary-vehicle permission | P layer edit | P CC BY | U ten checks absent; excluded for ordinary public-free role |
+| RoadAheadHistoricFilmPermits / current E5 | P City | P recorded fields | U project/permit polygon | F historic permit/status does not establish current posting | P layer edit, not current permit validity | P no licence shown | U ten current checks absent; excluded standalone current E5 |
+| UBC legacy meter copy / City-current E2 | F not regulator's current channel | P old IDs/fields | U | U old representation | F 2022 edit; no ten-location fresh re-review | P public | U; excluded authority/freshness |
+| Olympic restriction layer / current E5 | P City | P recorded ID/geometry | U approximate polygons | F 2010 period | F 2016 edit; no ten-location fresh re-review | P OGL | U; excluded current-rule role |
+| Each current/historical ticket dataset / rules | P City | P recorded aggregate schema | F 100-block, no curb | F issuance history is not current permission | P published edits; archives historical | P OGL | F policy signal only; never rule approval/Coverage |
+| EasyPark directory / import-ready E6 | P official operator page | U no stable bulk rule contract established | U entrance/footprint per lot | U each product/hour/limit | U no dated per-lot rule signal established | P directory loads publicly | U ten independent complete lot checks absent; pending research, excluded import-ready role |
+| TransLink Park and Ride / Vancouver E6 | P agency | U webpage, no selected machine contract | U regional lots not Vancouver curbs | P some per-lot hours/rates, incomplete selected scope | U no dated rule signal established | P page loads publicly | U ten independently checked Vancouver lots absent; excluded Vancouver street role |
+| By-law 2849 / unsigned page / qualifying E7 | P City | U prose not selected spatial adapter | F no precise qualifying area | F unsigned statutory exceptions defeat signs-only default | P consolidation May 19, 2026 | P public | F qualifying E7 premise; constraints only |
+| By-law 2952 / meter interpretation | P City | U prose interpretation, not per-meter feed | U actual sign/head assignment needed | P general fee exemption and conditional rules; U per-curb completeness | P body amendment effective April 1, 2026 | P public | U general corroboration cannot replace ten curb checks; reference only |
+
+## Meter comparison and official semantic evidence
+
+[Retained comparison](../../artifacts/vancouver-review-2026-10-21/meter-comparisons.json) maps 21 fields, including status, equipment/head/direction, vehicle, both rates, all four limits, flat rate, rush windows, both prohibition triples and both overrides. Blank/null equivalence was used only to compare exports, never as a permission default. No IDs were missing or duplicated. The original 12 distinct samples were independently rerun:
+
+| Meter | Safety case | Fresh result / independent signal limit |
+|---|---|---|
+| 081034 | AM/PM rush | Portal and hosted agree; official meter guidance requires checking rush restrictions, but does not provide this curb's days |
+| 070815 | Rush ends 10:00 | Fields agree; no independent per-curb day/sign evidence |
+| 512404 | Loading after rush | Fields agree; general loading rules do not independently confirm this curb schedule |
+| 990114 | No stopping; override | Fields agree; override semantics and exact sign still unresolved |
+| 110116 | Overnight passenger zone | Fields agree; cannot discard next-day prohibition |
+| A10599 | Motorcycle only | Fields agree; City motorcycle guidance independently bars passenger cars from designated spaces, but does not confirm this exact painted extent |
+| B50415 | Accessible meter | Fields agree; City accessible guidance independently requires SPARC eligibility and meter payment, not this exact curb schedule |
+| B20226 | Time-limit override | Fields agree; precedence undocumented |
+| 540411 | Two prohibition slots; taxi overnight | Both slots agree; no independent precise sign confirmation |
+| 300524 | Removed meter | Both say Removed; populated schedules do not reactivate it |
+| B70219 | Flat rate/no prohibition candidate | Fields agree; absence of prohibitions is not completeness or permission |
+| 642315 | Historical weekend-limit conflict | Both now say 4 Hr; old 3-versus-4 observation no longer reproduced |
+
+The full population comparison adds **eight unresolved service/equipment conflicts**, not merely a repeated selected-sample pass:
+
+| Meter ID | Portal status | Hosted status | Additional discrepancy |
+|---|---|---|---|
+| 303004 | In Service | Removed | Twin/East versus Pay Station/blank |
+| 303025 | In Service | Removed | Twin/East versus Pay Station/blank |
+| 302128 | Out of Service | Removed | Twin/West versus Pay Station/blank; daytime rate $2.00 versus $1.50 |
+| 302928 | In Service | Removed | Twin/East versus Pay Station/blank |
+| 302909 | Removed | In Service | Pay Station/blank versus Twin/East |
+| 302906 | Removed | In Service | Pay Station/blank versus Twin/East |
+| 303009 | In Service | Removed | Twin/East versus Pay Station/blank |
+| 303212 | In Service | Removed | Twin/East versus Pay Station/blank |
+
+The portal is an Oct 19 weekly snapshot while the hosted layer has a later edit. An export lag or equipment reassignment is plausible, **not established reconciliation**. Equal total counts do not demonstrate equal operational state, and the comparison is not an atomic City snapshot. The two official representations may share an upstream system, limiting their independence. Criterion 7 remains unmet even for the twelve agreeing samples.
+
+Fresh independent City references:
+
+- [Meter guidance](https://vancouver.ca/streets-transportation/time-limited-metered-parking.aspx): daily 09:00–22:00 including holidays; broken meters must not be used; rush/construction/event restrictions take precedence. This is general corroboration, not numeric-rate or sign confirmation for each meter.
+- [Parking Meter By-law 2952](https://bylaws.vancouver.ca/2952c.pdf), section 2: single/twin meter geometry depends on head direction/traffic sequence; pay-station applicability depends on signs and markings. Section 6(3) provides positive 22:00–09:00 fee exemption, subject to Street and Traffic limits/prohibitions and EV charging rates. Section 7 permits temporary discontinuance by signs. These are useful interpretation leads; they do not prove actual curb assignment, complete restrictions or the E2 same-feed prerequisite.
+- [Motorcycle guidance](https://vancouver.ca/streets-transportation/motorcycles-and-scooters.aspx) and [accessible guidance](https://vancouver.ca/streets-transportation/accessible-parking.aspx): vehicle eligibility and competing restrictions matter; SPARC provides a three-hour residential-zone exemption, not universal meter-free parking. The accessible map expressly omits short-term construction/event changes.
+
+No narrower subset was approved: removing the eight conflicts would still leave independent curb/schedule completeness and ten successful safety checks unresolved. No code or parser semantics changed.
+
+## Permit: ten fresh location checks, stronger map leads, unresolved curb rules
+
+The [ten intersection comparisons](../../artifacts/vancouver-review-2026-10-21/permit-location-checks.json) were recomputed from independently retrieved City street-intersection coordinates against all 535 current polygon records. Nine intersect RPP025 West End Plateau; Robson/Bidwell intersects RPP019 Robson North. This corroborates placement only, not signed rule or legal parking at an intersection.
+
+| Distinct place | Current polygon | Independent official rule evidence / remaining gap |
+|---|---|---|
+| Barclay/Bidwell | RPP025 | Current permit page names West End Plateau; exact side/sign/hour not independently confirmed |
+| Robson/Bidwell | RPP019 | Current Robson North map text describes full-time permit curbs and eligibility shading; exact sampled side not visually confirmed |
+| Comox/Bute | RPP025 | Current permit program allows mixed permit/time-limited signs; no curb-specific match |
+| Haro/Bidwell | RPP025 | Same mixed-rule program; no current signed 1000 Bidwell curb evidence |
+| Bute/Barclay | RPP025 | Same program/map lead; exact side/hours unresolved |
+| Bute/Haro | RPP025 | Same program/map lead; exact side/hours unresolved |
+| Comox/Jervis | RPP025 | Same program/map lead; exact side/hours unresolved |
+| Jervis/Barclay | RPP025 | Same program/map lead; exact side/hours unresolved |
+| Nicola/Haro | RPP025 | Same program/map lead; exact side/hours unresolved |
+| Barclay/Nicola | RPP025 | Same program/map lead; exact side/hours unresolved |
+
+Fresh [permit purchase page](https://vancouver.ca/streets-transportation/buy-your-annual-or-short-term-or-visitor-parking-permit.aspx) links the **current** [West End Plateau detailed map](https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf) and [Robson North map](https://vancouver.ca/files/cov/residential-permit-parking-robson-north.pdf). The page labels the zone map a changeable guide. The current Plateau PDF is recognized as one page by the web reader, but its extracted text is empty; web screenshot calls did not expose usable image content in this tool session, direct HTTP download returned 403, and an ordinary background IAB visit rendered blank. No visual reading or successful curb-symbol matching is claimed. Robson North extracted text includes full-time permit parking and eligibility shading, with a posted-sign disclaimer; it does not resolve the sampled curb without a usable visual. No authentication/header/access-control workaround was used.
+
+The older [West End residential map](https://vancouver.ca/files/cov/residential-permit-parking-west-end.pdf) has publicly indexed legend text describing mixed full-time permit, time-limited and paid curbs, and omits rush signs. It is a discovery lead, **not substituted for the current Plateau map**. The current [residential permit program](https://vancouver.ca/streets-transportation/residential-parking-permits.aspx) independently confirms mixed No Parking Except Permit and Time Limited Except Permit signs. [Residential zones](https://vancouver.ca/streets-transportation/residential-parking-zones.aspx) and accessible guidance establish context-sensitive exemptions. Eligibility polygons cannot become blanket permit-only prohibitions or visitor permission. Exact 1000 Bidwell curb evidence and ten successful current signed-curb/schedule comparisons remain pending; historic ticket counts were not reused as present signage proof.
+
+## Road Ahead: ten re-fetched events and independent project-page comparisons
+
+[Ten retained event samples](../../artifacts/vancouver-review-2026-10-21/road-samples.json) preserve public identifiers, schedules and descriptions, with embedded contacts redacted. All ten old event IDs still exist in the 750-record fresh view. Official [roadwork directory](https://vancouver.ca/streets-transportation/roadwork.aspx) links the independent project pages below. Work hours, project envelopes and `today=Y` do not establish the precise no-parking interval. The serialized schedules must be parsed independently of display summaries; no schedule interpretation was approved here.
+
+| Event / distinct place | Fresh hosted observation | Independently retrieved official comparison / verdict |
+|---|---|---|
+| b522f6b4-468b-4acc-938a-db17f4518a47 / Nanaimo E37–E41 | Parking Lane Closure; Jul 20–Aug 31; today N; exact dates TBD in description | No matching current project detail in roadwork directory; present parking rule unconfirmed |
+| a6b21e28-4880-4bda-81ba-221647916beb / Main–Terminal | Interim repairs; Mar 2025–Aug 1 2026; today N | [Terminal page](https://vancouver.ca/streets-transportation/terminal-avenue-sewer-repairs.aspx) describes permanent repairs fall 2026–spring 2027 and east Lot 16 closure. Different phase: cannot extend expired event or treat whole lot as closed |
+| 6bcedcfb-9212-4166-9be9-7ccbb55404b4 / W49 Columbia–Cambie | Future water service transfers Oct 26–Feb 28; Reduced Lanes; today N | [W49 page](https://vancouver.ca/streets-transportation/west-49th-avenue-upgrades.aspx) confirms corridor and parking disruptions, not this transfer phase's exact curb/time |
+| e34992b4-0e20-4bf7-8db3-c011cff9de10 / St George Broadway–E8 | Parking Lane Closure through Sep 30; today N | [Rainway page](https://vancouver.ca/streets-transportation/st-george-rainway.aspx) specifies phased closures and north curb lane 400–600 E Broadway; no independent exact present interval for this expired event |
+| 57f0264d-2adf-42a4-9e22-9c8b087d246f / Kamloops Broadway–E5 | Full Closure; weekdays 07–17 through Dec31; today Y | [Kamloops page](https://vancouver.ca/streets-transportation/nanaimo-east-kamloops-sewer-upgrades.aspx) confirms parking restrictions on that corridor and work 07–17, with weekends/evenings as needed; does not make work hours equal restriction hours or confirm every curb |
+| 7a199adc-5919-465f-85b9-a454c728ae41 / Georgia–Dunsmuir | Lighting-mast placeholder; Reduced Lanes Sep28–Nov30; today Y | [Viaduct page](https://vancouver.ca/streets-transportation/georgia-viaduct-rehabilitation.aspx) says eastern Georgia joint repairs and westbound Dunsmuir unaffected. Lighting project identity/curb/schedule not established; do not apply directory's broad viaduct context to Dunsmuir restrictions |
+| f72258a1-0e4d-4c7d-86b5-f70649199f50 / Cambie–Pacific–Nelson | Electrical works; Reduced Lanes Aug3–Oct30; today Y | [Cambie page](https://vancouver.ca/streets-transportation/cambie-street-bridge-upgrades.aspx) confirms work below deck and intermittent Marinaside/Cooperage parking restrictions; not exact electrical-event curb/interval |
+| 9f5e15ce-f10f-4965-9231-efed6174d208 / W49–Alberta | Phase1 Apr2025–Dec15 2026; says Phase2 north Alberta in 2027; today Y | Current W49 page says Phase2 began April 2026 and is scheduled complete Nov2026. **Unresolved phase/date disagreement**, not evidence to classify all polygon curbs restricted |
+| fbd85804-d2a3-43e8-a8d1-a440d6e4c21c / north 400 Drake | BC Hydro; parking lane closure Oct21–22, Wed–Thu 21–05; today Y | [Drake page](https://vancouver.ca/streets-transportation/drake-street-upgrades.aspx) is City transportation work, with different dates/scope; no independent confirmation of BC Hydro overnight event |
+| a73bb5fd-ded3-43ce-8cc7-7b023ee1fc3a / Davie | Alternating Traffic Sep23–25; null location; today N | [Davie page](https://vancouver.ca/streets-transportation/davie-village-upgrades.aspx) confirms work Jervis–Thurlow from Sep8 to spring2028 with parking restrictions; cannot extend this expired null-location event to the whole project |
+
+This re-runs ten comparisons but passes **zero complete independent curb-and-active-schedule safety checks**. Several sources corroborate actual parking impacts more specifically than the directory alone, but safety gaps remain. The portal extracts each supply ten freshly fetched rows (linked artifacts); none gains missing start/daily schedule or curb side by joining the same underlying event. Successful ten-location independent checks **per portal extract**, historic film feed, or legacy feeds remain incomplete.
+
+## Other candidate families and remaining work
+
+[EasyPark directory](https://www.easypark.ca/find-parking/locations-and-lot-information) and [TransLink page](https://www.translink.ca/rider-guide/driving/park-and-ride) loaded publicly. EasyPark lists named Vancouver lots and product categories; this does not establish all entry/hours/rates/limits or their change signal. TransLink supplies regional per-lot hours/rates and a no-overnight condition; it cannot establish City street rules. Ten independent Vancouver lot checks were not completed. The newly observed Terminal project's partial Lot16 public closure is an example of why whole-lot permission must not be inferred from directory presence.
+
+[Unsigned-parking guidance](https://vancouver.ca/streets-transportation/unsigned-streets-and-lanes.aspx) explicitly says some restrictions require no signs. [By-law 2849](https://bylaws.vancouver.ca/2849c.pdf) is consolidated to May19 2026. Its statutory exclusions defeat the qualifying E7 premise; no three-hour rule or missing sign creates Verified Free. No citation record values or driver information were retained. No new source type or policy exception is proposed.
+
+To complete #24 for Vancouver: reconcile meter export status/equipment/rate conflicts; obtain precise metered-curb and complete per-record semantics with ten successful independent safety checks; visually verify current permit-map/sign scope and signed hours/exemptions at ten curbs; resolve Road Ahead phases, exact prohibited curb extents and active recurrence with ten independent current checks per selected source. Independently review excluded/reference sources further only if proposing a narrower qualifying role. The author agent must then agree in writing on all seven criteria, and a later human-merged release must list any approved source going live. These are evidence gates, not licence or outreach tasks.
+
+## Validation
+
+Docs-only checks: local Markdown targets exist; each retained JSON parses; `CLAUDE.md` remains a relative `AGENTS.md` symlink with Git mode `120000`; `git diff --check` passes. Review scope is documentation and source snapshots, so application builds and database tests were not run (RETURNING). No independent review of this PR's documentation diff has yet passed; that review remains required before any later ticket-PR merge. This report itself is the independent source reassessment, not a substitute for author agreement or a successful PR review.

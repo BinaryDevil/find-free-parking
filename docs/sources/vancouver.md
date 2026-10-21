@@ -3,7 +3,7 @@
 > **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
 
 Status: inventory complete; source approval pending
-Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
+Independent review: [2026-10-21 Vancouver public-source reassessment](review-24-vancouver-2026-10-21.md), following the [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
 Timezone: America/Vancouver
 Coverage verdict: none (no approved source; Vancouver remains not covered)
 Draft partial target: **validated, in-service City meter locations and their precisely assigned metered curb portions, plus independently confirmed signed Resident Parking Only / Resident Permit Parking curb restrictions within RPO, RPP and VRPP polygons**. This excludes whole unmetered blocks, polygon interiors without confirmed curb rules, lots, and specialized spaces without matching vehicle context. See the approval conditions below.
@@ -11,6 +11,17 @@ Policy: [ADR-0002 Evidence Source Policy](../adr/0002-evidence-source-policy.md)
 Observed: 2026-10-09. Counts are live public-source counts, not imported rows. ArcGIS edit times are UTC export/service edits; they do not prove every rule was inspected that day.
 
 This read-only inventory implements the research scope of [#21](https://github.com/BinaryDevil/find-free-parking/issues/21). All sources remain unapproved. It does not seed data, change the registry, establish implemented Coverage, or authorize production loading. No city contact, permission request or external message has been sent. Source approval remains a separate independent two-agent review under ADR-0005 in [#24](https://github.com/BinaryDevil/find-free-parking/issues/24).
+
+## Current independent reassessment (2026-10-21)
+
+The [fresh Vancouver review](review-24-vancouver-2026-10-21.md) supersedes the dated observations below for current retrieval/approval status. Public availability passes for the retrieved official meter, permit, hosted Road Ahead, specialized, portal, operator and bylaw candidates. Legacy Road Ahead Atom/GeoRSS returned 403 and remain unverified; no access controls were bypassed. Published licence text is attribution metadata, never a permission gate.
+
+- Portal/hosted meter exports each have 3,523 distinct IDs. The twelve original sample IDs now agree, including `642315` at 4 Hr. A full 21-field comparison nevertheless found eight other status/equipment conflicts, including `302128` with $2.00/$1.50 daytime rates. Exact curb extent, rush/override semantics and ten successful independent safety checks remain pending.
+- Permit polygons now have 535 records. Ten independent official-intersection location joins were rerun; nine are RPP025 and Robson/Bidwell is RPP019. These do not establish signed curb hours or eligibility exemptions. Current detailed permit-map links were retrieved, but no successful visual curb-symbol check was possible in the available readers. Criteria 4/7 remain pending.
+- Hosted Road Ahead now has 750 records. Ten events were re-fetched and compared to current official project pages, revealing more specific parking-impact evidence and an unresolved W49/Alberta phase/date disagreement. None completes an independent exact-curb/active-schedule safety check; criteria 3/4/7 remain pending. Work hours are not restriction hours.
+- By-law 2952 section 6(3) provides positive overnight fee-exemption language, with Street and Traffic restrictions and EV charging exceptions; its section 2 defines metered-space geometry conditionally on heads/signs/markings. This improves the interpretation evidence without proving complete per-curb feed semantics or approving after-hours recommendations.
+
+All candidates retain their narrower pending/excluded/reference roles. **Coverage remains none.** No source approval state, database, adapter, registry or scheduler changed. The review does not complete #24's per-source independent-check criteria or the author/reviewer agreement gate.
 
 ## Evidence types
 

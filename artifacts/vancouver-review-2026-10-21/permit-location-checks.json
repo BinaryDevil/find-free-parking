@@ -1,0 +1,162 @@
+[
+  {
+    "intersection": "BARCLAY ST AND BIDWELL ST",
+    "point": {
+      "lon": -123.13598732309208,
+      "lat": 49.28905200759368
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "ROBSON ST AND BIDWELL ST",
+    "point": {
+      "lon": -123.13386109040187,
+      "lat": 49.29045878858825
+    },
+    "zones": [
+      {
+        "MAPID": "RPP019",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "Robson North",
+        "URL": "http://vancouver.ca/files/cov/residential-permit-parking-robson-north.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "COMOX ST AND BUTE ST",
+    "point": {
+      "lon": -123.13123262895633,
+      "lat": 49.28319052114935
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "HARO ST AND BIDWELL ST",
+    "point": {
+      "lon": -123.1349244774467,
+      "lat": 49.28975582998319
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "BUTE ST AND BARCLAY ST",
+    "point": {
+      "lon": -123.12910585415918,
+      "lat": 49.28459784639256
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "BUTE ST AND HARO ST",
+    "point": {
+      "lon": -123.1280428400028,
+      "lat": 49.285301201436376
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "COMOX ST AND JERVIS ST",
+    "point": {
+      "lon": -123.13280462893053,
+      "lat": 49.28420800449966
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "JERVIS ST AND BARCLAY ST",
+    "point": {
+      "lon": -123.13067819989578,
+      "lat": 49.28561569985262
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "NICOLA ST AND HARO ST",
+    "point": {
+      "lon": -123.13216956637456,
+      "lat": 49.2879727803653
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  },
+  {
+    "intersection": "BARCLAY ST AND NICOLA ST",
+    "point": {
+      "lon": -123.1332334297218,
+      "lat": 49.287268658097155
+    },
+    "zones": [
+      {
+        "MAPID": "RPP025",
+        "TYPE": "RPP",
+        "DESCRIPTION": "Resident Permit Parking",
+        "NAME": "West End Plateau",
+        "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+      }
+    ]
+  }
+]
