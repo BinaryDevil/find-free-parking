@@ -1,0 +1,1059 @@
+{
+  "observedUTC": "2026-10-21T22:27:20.977264+00:00",
+  "scope": "City of North Vancouver only; public non-personal rule evidence; no approval",
+  "privacy": "Explicit allowlist; no editor/creator/contact/eligibility-address values; public curb geometry only, never driver locations. Full exports not retained.",
+  "sources": {
+    "regulations": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/BaseMapServices/StaffMap/MapServer/133",
+      "name": "Parking Regulations",
+      "geometryType": "esriGeometryPolyline",
+      "fields": [
+        "OBJECTID",
+        "STATUS",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "EXEMPT_PARKING",
+        "BLOCK_STREET",
+        "NEIGHBOURHOOD",
+        "COMMENTS",
+        "GEOM_SOURCE",
+        "GIS_ATTR_DATE",
+        "GIS_EDIT_DATE",
+        "GIS_EDITOR",
+        "GIS_CREATION_DATE",
+        "Shape",
+        "GlobalID",
+        "Shape.STLength()",
+        "PARKING_TYPE",
+        "SUPPLY",
+        "ZONE_ID",
+        "DESCRIPTION",
+        "ATTR_SOURCE",
+        "IMPLEMENTATION_AREA"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "STATUS",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "EXEMPT_PARKING",
+        "BLOCK_STREET",
+        "GIS_ATTR_DATE",
+        "GIS_EDIT_DATE",
+        "GlobalID",
+        "ZONE_ID",
+        "DESCRIPTION",
+        "IMPLEMENTATION_AREA"
+      ],
+      "count": {
+        "count": 4330
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 4330,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": "2026-04-20T00:00:00+00:00",
+        "GIS_ATTR_DATE": "2026-04-15T00:00:00+00:00"
+      },
+      "sample": {
+        "OBJECTID": 59,
+        "STATUS": "Existing",
+        "SIGNTYPE": "TIME LIMITED",
+        "PARKING_TIME": "1 HR",
+        "RESTRICTIONS": "9AM-6PM",
+        "EXEMPT_PARKING": "False",
+        "BLOCK_STREET": "BLK - 1000 MARINE DR",
+        "GIS_ATTR_DATE": null,
+        "GIS_EDIT_DATE": 1721158851000,
+        "GlobalID": "{72BE1BEE-CA06-4321-9D1D-6D04628EE7CC}",
+        "ZONE_ID": "PZN-000059",
+        "DESCRIPTION": null,
+        "IMPLEMENTATION_AREA": "False"
+      },
+      "selectedFeatures": [
+        {
+          "attributes": {
+            "OBJECTID": 59,
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "1 HR",
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 1000 MARINE DR",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1721158851000,
+            "GlobalID": "{72BE1BEE-CA06-4321-9D1D-6D04628EE7CC}",
+            "ZONE_ID": "PZN-000059",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.1015130416569,
+                  49.32375375802237
+                ],
+                [
+                  -123.1016092049797,
+                  49.323788704987216
+                ],
+                [
+                  -123.10170829344383,
+                  49.32381998918678
+                ],
+                [
+                  -123.10180997929561,
+                  49.32384750565946
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 68,
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "2 HR",
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 1600 MACKAY AVE",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1721158840000,
+            "GlobalID": "{538796FB-5184-4E99-B886-150C4D726812}",
+            "ZONE_ID": "PZN-000068",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.10117508833882,
+                  49.324133647166974
+                ],
+                [
+                  -123.10122912083553,
+                  49.32384943258341
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 69,
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "4 HR",
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 300 MACKAY RD",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1720481058000,
+            "GlobalID": "{1AF68CE4-1B06-42E8-BFC3-01EF2077498C}",
+            "ZONE_ID": "PZN-000069",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.10238258705442,
+                  49.32032988030598
+                ],
+                [
+                  -123.1023219175381,
+                  49.32166359947093
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 241,
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED – EXCEPT WITH PERMIT",
+            "PARKING_TIME": "2 HR",
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "True",
+            "BLOCK_STREET": "BLK - 600 W KEITH RD",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1719955518000,
+            "GlobalID": "{9D9A69E3-FC70-49C9-A907-1F45C281FD13}",
+            "ZONE_ID": "PZN-000241",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.09011491494324,
+                  49.32019975087425
+                ],
+                [
+                  -123.09090278424225,
+                  49.32020294153201
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 535,
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED – EXCEPT WITH PERMIT",
+            "PARKING_TIME": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "True",
+            "BLOCK_STREET": "BLK - 1300 DELBRUCK AVE",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1720479620000,
+            "GlobalID": "{17C90E40-9026-47B8-AEAF-4671151F5965}",
+            "ZONE_ID": "PZN-000535",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.08798685841303,
+                  49.32036291311427
+                ],
+                [
+                  -123.0879828939604,
+                  49.320589964571575
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 3191,
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO STOPPING",
+            "PARKING_TIME": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 900 W 1ST ST",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1719030752000,
+            "GlobalID": "{BB73A890-A210-4CA2-B87F-C937F1F0940E}",
+            "ZONE_ID": "PZN-003191",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.10152375042105,
+                  49.318038237152656
+                ],
+                [
+                  -123.10033106473405,
+                  49.318027854860084
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 3197,
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO PARKING",
+            "PARKING_TIME": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 300 HANES AVE",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1719030752000,
+            "GlobalID": "{414FA898-C0B8-486F-9E79-C82A6D55EFAB}",
+            "ZONE_ID": "PZN-003197",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.0988217252656,
+                  49.32036004877063
+                ],
+                [
+                  -123.09881336740067,
+                  49.32054997702101
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 3199,
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO PARKING",
+            "PARKING_TIME": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 100 DONAGHY AVE",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": 1719030752000,
+            "GlobalID": "{30656AF2-9D92-41FF-A956-C2090A97FA4A}",
+            "ZONE_ID": "PZN-003199",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "False"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.09700431304667,
+                  49.318503122223554
+                ],
+                [
+                  -123.09699197323967,
+                  49.31889344702031
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 7774,
+            "STATUS": "Existing",
+            "SIGNTYPE": "PAY PARKING",
+            "PARKING_TIME": "4 HRS",
+            "RESTRICTIONS": "9AM-9PM",
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 100 W 3RD ST",
+            "GIS_ATTR_DATE": 1764720000000,
+            "GIS_EDIT_DATE": 1764720000000,
+            "GlobalID": "{CE5A750D-2EDE-4149-A54E-D5E78D04015A}",
+            "ZONE_ID": "PZN-004253",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "True"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.07904575163369,
+                  49.31425998640477
+                ],
+                [
+                  -123.0787307625637,
+                  49.314124491038115
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 7786,
+            "STATUS": "Existing",
+            "SIGNTYPE": "PAY PARKING",
+            "PARKING_TIME": "4 HRS",
+            "RESTRICTIONS": "9AM-9PM",
+            "EXEMPT_PARKING": "False",
+            "BLOCK_STREET": "BLK - 200 LONSDALE AVE",
+            "GIS_ATTR_DATE": 1764720000000,
+            "GIS_EDIT_DATE": 1764720000000,
+            "GlobalID": "{F5D01049-2C37-4861-8C4E-4307178E3E3D}",
+            "ZONE_ID": "PZN-004265",
+            "DESCRIPTION": null,
+            "IMPLEMENTATION_AREA": "True"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.07739294081215,
+                  49.312986255322464
+                ],
+                [
+                  -123.0772962546738,
+                  49.31308342693079
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "signs": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/BaseMapServices/StaffMap/MapServer/132",
+      "name": "Parking Signs",
+      "geometryType": "esriGeometryPoint",
+      "fields": [
+        "OBJECTID",
+        "UNITID",
+        "STATUS",
+        "UNITTYPE",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "SIGN_ORDER",
+        "CREATE_REFERENCE",
+        "RESTRICTIONS",
+        "EXEMPT_PARKING",
+        "REFLECTIVITY",
+        "OWNER",
+        "INSTALLATION_DATE",
+        "CONDITION",
+        "INSPECTION_DATE",
+        "REMOVAL_DATE",
+        "BLOCK_STREET",
+        "ADDRKEY",
+        "NEIGHBOURHOOD",
+        "MAPNO",
+        "COMMENTS",
+        "GEOM_SOURCE",
+        "GEOM_REFERENCE",
+        "GIS_GEOM_DATE",
+        "ATTR_SOURCE",
+        "ATTR_REFERENCE",
+        "GIS_ATTR_DATE",
+        "GIS_EDIT_DATE",
+        "GIS_EDITOR",
+        "CREATE_SOURCE",
+        "GIS_CREATION_DATE",
+        "GIS_CREATION_EDITOR",
+        "Shape",
+        "GlobalID"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "UNITID",
+        "STATUS",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "SIGN_ORDER",
+        "RESTRICTIONS",
+        "EXEMPT_PARKING",
+        "BLOCK_STREET",
+        "GIS_ATTR_DATE",
+        "GIS_EDIT_DATE",
+        "GlobalID"
+      ],
+      "count": {
+        "count": 2615
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 2615,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": "2026-08-12T00:00:00+00:00",
+        "GIS_ATTR_DATE": "2026-08-25T00:00:00+00:00"
+      },
+      "sample": {
+        "OBJECTID": 1,
+        "UNITID": "SIG-000001",
+        "STATUS": "Existing",
+        "SIGNTYPE": "TIME LIMITED",
+        "PARKING_TIME": "30 MIN",
+        "SIGN_ORDER": null,
+        "RESTRICTIONS": "7AM-9PM EXCEPT FRIDAYS 7AM-10PM",
+        "EXEMPT_PARKING": "NO",
+        "BLOCK_STREET": "BLK - 100 CHADWICK CRT",
+        "GIS_ATTR_DATE": 1542672000000,
+        "GIS_EDIT_DATE": null,
+        "GlobalID": "{A1DF1F4A-0DA2-488C-AC95-13249ABF82A9}"
+      },
+      "selectedFeatures": [
+        {
+          "attributes": {
+            "OBJECTID": 44,
+            "UNITID": "SIG-000044",
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "1 HR",
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 200 LONSDALE AVE",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{5AF5AD76-DCB2-4680-912C-BB124A2B872C}"
+          },
+          "geometry": {
+            "x": -123.0772962546738,
+            "y": 49.31308342693079
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 94,
+            "UNITID": "SIG-000094",
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "1 HR",
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 100 W 3RD ST",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{1DF092E3-C8A0-422E-B90B-B04495C92AB0}"
+          },
+          "geometry": {
+            "x": -123.07904575163369,
+            "y": 49.31425998640477
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 471,
+            "UNITID": "SIG-000471",
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": null,
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 1000 MARINE DR",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{DD792AB3-7128-47EA-8DDD-CA7E4ADF87BB}"
+          },
+          "geometry": {
+            "x": -123.1015130416569,
+            "y": 49.32375375802237
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 578,
+            "UNITID": "SIG-000575",
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "2 HR",
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 1600 MACKAY AVE",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{1FC9650A-9067-4220-943D-EEADDAA5EB28}"
+          },
+          "geometry": {
+            "x": -123.10122912083553,
+            "y": 49.32384943258341
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 587,
+            "UNITID": "SIG-000584",
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "4 HR",
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 300 MACKAY RD",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": 1591978711000,
+            "GlobalID": "{981786B9-BCF7-4DE7-8A19-1CC48F42E112}"
+          },
+          "geometry": {
+            "x": -123.10236621182541,
+            "y": 49.320689875353565
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 593,
+            "UNITID": "SIG-000590",
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO STOPPING",
+            "PARKING_TIME": null,
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 900 W 1ST ST",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{CF433672-F9E0-4991-9C64-5B231D11C747}"
+          },
+          "geometry": {
+            "x": -123.10152375042105,
+            "y": 49.318038237152656
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 674,
+            "UNITID": "SIG-000671",
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO PARKING",
+            "PARKING_TIME": null,
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 300 HANES AVE",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{3EBE1037-5762-44E7-8AD9-B13F42599A42}"
+          },
+          "geometry": {
+            "x": -123.0988217252656,
+            "y": 49.32036004877063
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 699,
+            "UNITID": "SIG-000696",
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO PARKING",
+            "PARKING_TIME": null,
+            "SIGN_ORDER": null,
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 100 DONAGHY AVE",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{1DBC1B63-469F-4092-95EB-829B1D2FD194}"
+          },
+          "geometry": {
+            "x": -123.09699197323967,
+            "y": 49.31889344702031
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 1012,
+            "UNITID": "SIG-001009",
+            "STATUS": "Existing",
+            "SIGNTYPE": "TIME LIMITED",
+            "PARKING_TIME": "2 HR",
+            "SIGN_ORDER": "CD1621691",
+            "RESTRICTIONS": "9AM-6PM",
+            "EXEMPT_PARKING": "YES",
+            "BLOCK_STREET": "BLK - 600 W KEITH RD",
+            "GIS_ATTR_DATE": 1542672000000,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{0722FEFB-48F1-4558-9097-B2361B9D62B5}"
+          },
+          "geometry": {
+            "x": -123.09090278424225,
+            "y": 49.32020294153201
+          }
+        },
+        {
+          "attributes": {
+            "OBJECTID": 3053,
+            "UNITID": "SIG-001494",
+            "STATUS": "Existing",
+            "SIGNTYPE": "NO STOPPING",
+            "PARKING_TIME": null,
+            "SIGN_ORDER": "18117",
+            "RESTRICTIONS": null,
+            "EXEMPT_PARKING": "NO",
+            "BLOCK_STREET": "BLK - 1300 DELBRUCK AVE",
+            "GIS_ATTR_DATE": null,
+            "GIS_EDIT_DATE": null,
+            "GlobalID": "{742E4A11-D764-4EB7-8ECB-1BDDCD90718F}"
+          },
+          "geometry": {
+            "x": -123.08798289464842,
+            "y": 49.32058996457105
+          }
+        }
+      ]
+    },
+    "permit": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/BaseMapServices/StaffMap/MapServer/136",
+      "name": "Permit Areas",
+      "geometryType": "esriGeometryPolygon",
+      "fields": [
+        "OBJECTID",
+        "Shape",
+        "ZONE_ID",
+        "Shape.STLength()",
+        "Shape.STArea()",
+        "STATUS",
+        "DESCRIPTION",
+        "COMMENTS",
+        "GEOM_SOURCE",
+        "GIS_ATTR_DATE",
+        "ATTR_SOURCE",
+        "GlobalID"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "ZONE_ID",
+        "STATUS",
+        "DESCRIPTION",
+        "GIS_ATTR_DATE",
+        "GlobalID"
+      ],
+      "count": {
+        "count": 14
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 14,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 1,
+        "ZONE_ID": "W50",
+        "STATUS": "Existing",
+        "DESCRIPTION": null,
+        "GIS_ATTR_DATE": null,
+        "GlobalID": "{263673FE-D975-41D2-9961-70F43CF0EC26}"
+      }
+    },
+    "resident": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/ResidentPermitParking/MapServer/0",
+      "name": "Resident Permit Parking Space",
+      "geometryType": "esriGeometryPolyline",
+      "fields": [
+        "OBJECTID",
+        "Shape",
+        "SIGNTYPE",
+        "Shape.STLength()",
+        "Occupancy",
+        "GIS_CREATION_DATE",
+        "GIS_EDIT_DATE",
+        "GIS_EDITOR",
+        "PARKING_TYPE",
+        "WKDY_MAX_OCCUPANCY",
+        "WKND_MAX_OCCUPANCY",
+        "SUPPLY",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "GIS_CREATOR",
+        "STATUS",
+        "GIS_GEOM_DATE",
+        "GEOM_SOURCE",
+        "GEOM_REFERENCE",
+        "GIS_ATTR_DATE",
+        "ATTR_SOURCE",
+        "ATTR_REFERENCE",
+        "CREATE_SOURCE",
+        "CREATE_REFERENCE",
+        "COMMENTS",
+        "GlobalID_1"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "SIGNTYPE",
+        "GIS_EDIT_DATE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "STATUS",
+        "GIS_ATTR_DATE",
+        "GlobalID_1"
+      ],
+      "count": {
+        "count": 754
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 754,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": "2024-07-30T00:00:00+00:00",
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 1,
+        "SIGNTYPE": "PAY PARKING - EWP",
+        "GIS_EDIT_DATE": 1721952000000,
+        "PARKING_TIME": " ",
+        "RESTRICTIONS": " ",
+        "STATUS": "Existing",
+        "GIS_ATTR_DATE": null,
+        "GlobalID_1": "{5898A96A-D24D-4EC3-9514-78264D81AA58}"
+      },
+      "selectedFeatures": [
+        {
+          "attributes": {
+            "OBJECTID": 1,
+            "SIGNTYPE": "PAY PARKING - EWP",
+            "GIS_EDIT_DATE": 1721952000000,
+            "PARKING_TIME": " ",
+            "RESTRICTIONS": " ",
+            "STATUS": "Existing",
+            "GIS_ATTR_DATE": null,
+            "GlobalID_1": "{5898A96A-D24D-4EC3-9514-78264D81AA58}"
+          },
+          "geometry": {
+            "paths": [
+              [
+                [
+                  -123.0761501356211,
+                  49.31300456919586
+                ],
+                [
+                  -123.07601219086231,
+                  49.31294331233021
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "residentZones": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/ResidentPermitParking/MapServer/1",
+      "name": "ResidentPermitZones",
+      "geometryType": "esriGeometryPolygon",
+      "fields": [
+        "OBJECTID",
+        "Shape",
+        "ZONE_ID",
+        "Shape.STLength()",
+        "Shape.STArea()",
+        "STATUS",
+        "DESCRIPTION",
+        "COMMENTS",
+        "GEOM_SOURCE",
+        "GIS_ATTR_DATE",
+        "ATTR_SOURCE",
+        "GlobalID"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "ZONE_ID",
+        "STATUS",
+        "DESCRIPTION",
+        "GIS_ATTR_DATE",
+        "GlobalID"
+      ],
+      "count": {
+        "count": 14
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 14,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 1,
+        "ZONE_ID": "W50",
+        "STATUS": "Existing",
+        "DESCRIPTION": null,
+        "GIS_ATTR_DATE": null,
+        "GlobalID": "{263673FE-D975-41D2-9961-70F43CF0EC26}"
+      }
+    },
+    "pay": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/3",
+      "name": "Pay Parking On Street",
+      "geometryType": "esriGeometryPolyline",
+      "fields": [
+        "OBJECTID",
+        "Shape",
+        "SIGNTYPE",
+        "PARKING_TYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "Shape.STLength()",
+        "ZONE_ID",
+        "EXEMPT_PARKING",
+        "IMPLEMENTATION_AREA"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "ZONE_ID",
+        "EXEMPT_PARKING",
+        "IMPLEMENTATION_AREA"
+      ],
+      "count": {
+        "count": 223
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 223,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 7774,
+        "SIGNTYPE": "PAY PARKING",
+        "PARKING_TIME": "4 HRS",
+        "RESTRICTIONS": "9AM-9PM",
+        "ZONE_ID": "PZN-004253",
+        "EXEMPT_PARKING": "False",
+        "IMPLEMENTATION_AREA": "True"
+      }
+    },
+    "payZones": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/4",
+      "name": "Pay Parking Zones",
+      "geometryType": "esriGeometryPolygon",
+      "fields": [
+        "OBJECTID",
+        "Pay_Parking_Zone",
+        "Shape",
+        "GlobalID",
+        "GIS_EDITOR",
+        "GIS_EDIT_DATE",
+        "Shape.STArea()",
+        "Shape.STLength()"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "Pay_Parking_Zone",
+        "GlobalID",
+        "GIS_EDIT_DATE"
+      ],
+      "count": {
+        "count": 7
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 7,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 1,
+        "Pay_Parking_Zone": "70514",
+        "GlobalID": "{61A34F28-D3AC-456C-AFF9-DE08EB2805A5}",
+        "GIS_EDIT_DATE": null
+      }
+    },
+    "lots": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/2",
+      "name": "Pay Parking Off Street",
+      "geometryType": "esriGeometryPoint",
+      "fields": [
+        "OBJECTID",
+        "Shape",
+        "LOT_NAME",
+        "ADDRESS",
+        "Operator",
+        "PAY_PARKING",
+        "RESTRICTION",
+        "SPACES_WEEKDAY",
+        "SPACES_WEEKNIGHT_WKND",
+        "ACCESSIBLE_PARKING_SPACES",
+        "EV_PARKING_SPACES",
+        "IMAGE",
+        "STATUS"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "STATUS"
+      ],
+      "count": {
+        "count": 28
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 28,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 1,
+        "STATUS": "Existing"
+      }
+    },
+    "curb": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/curbaccessparking/MapServer/1",
+      "name": "ParkingZones",
+      "geometryType": "esriGeometryPolyline",
+      "fields": [
+        "OBJECTID",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "Shape",
+        "Shape.STLength()"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS"
+      ],
+      "count": {
+        "count": 1173
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 1173,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 2882,
+        "SIGNTYPE": "ACCESSIBLE",
+        "PARKING_TIME": "2 HR",
+        "RESTRICTIONS": "9AM-6PM"
+      }
+    },
+    "curb2": {
+      "endpoint": "https://gisext2.cnv.org/arcgis/rest/services/Applications/curbaccessparking2/MapServer/1",
+      "name": "ParkingZones",
+      "geometryType": "esriGeometryPolyline",
+      "fields": [
+        "OBJECTID",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS",
+        "Shape",
+        "Shape.STLength()"
+      ],
+      "selectedFields": [
+        "OBJECTID",
+        "SIGNTYPE",
+        "PARKING_TIME",
+        "RESTRICTIONS"
+      ],
+      "count": {
+        "count": 1173
+      },
+      "editingInfo": null,
+      "licenseInfo": "",
+      "copyrightText": "",
+      "queriedRowCount": 1173,
+      "positiveDateMaxUTC": {
+        "GIS_EDIT_DATE": null,
+        "GIS_ATTR_DATE": null
+      },
+      "sample": {
+        "OBJECTID": 2882,
+        "SIGNTYPE": "ACCESSIBLE",
+        "PARKING_TIME": "2 HR",
+        "RESTRICTIONS": "9AM-6PM"
+      }
+    }
+  }
+}

@@ -1,15 +1,15 @@
 # City of North Vancouver, British Columbia: source inventory
 
-> **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
+> **Current review (2026-10-21):** [Fresh official-source assessment](north-vancouver-review-2026-10-21.md) and [selected evidence](north-vancouver-evidence-2026-10-21.json) supersede historical rights-only exclusions. Criterion 6 passes for the ten refreshed layers. Counts/date maxima and ten geometry/text comparisons were repeated; payment/no-stopping conflicts remain unresolved. No source is approved; Coverage remains none.
 
-Status: draft — independent source review incomplete; historical criterion-6 rejection superseded
+Status: draft — fresh review incomplete on safety/applicability; public availability passes
 Timezone: America/Vancouver
 Coverage verdict: none (no approved source; not covered)
 Draft partial target: precisely assigned City curb segments with complete, reconciled time-limit, payment, prohibition and applicable vehicle/permit conditions. Permit eligibility polygons alone are excluded. All other streets and lots remain Unknown.
 Policy: [ADR-0002: Evidence Source Policy](../adr/0002-evidence-source-policy.md)
 Observed: 2026-10-13 for counts and record samples below; these are historical public-source observations, not imported rows or vacant spaces. Independent metadata/reuse review: [2026-10-19](north-vancouver-review-2026-10-19.md). Counts, sample records and ten-location probes were not refreshed in that review.
 
-Research portion of [#31](https://github.com/BinaryDevil/find-free-parking/issues/31). Adapter implementation remains blocked by [#11](https://github.com/BinaryDevil/find-free-parking/issues/11); this inventory defines evidence requirements, not a new schema or API contract. Approval is [#50](https://github.com/BinaryDevil/find-free-parking/issues/50). No source approval, registry change, loading, database write, city contact or production action occurred.
+Research portion of [#31](https://github.com/BinaryDevil/find-free-parking/issues/31). Evaluator [#11](https://github.com/BinaryDevil/find-free-parking/issues/11) is closed as checked 2026-10-21; adapters remain gated by source approval, not the historical evaluator blocker; this inventory defines evidence requirements, not a new schema or API contract. Approval is [#50](https://github.com/BinaryDevil/find-free-parking/issues/50). No source approval, registry change, loading, database write, city contact or production action occurred.
 
 **Jurisdiction:** City of North Vancouver (`cnv.org` / `gisext2.cnv.org`), not District of North Vancouver (`dnv.org` / GEOweb), Vancouver, or West Vancouver. District data cannot establish City street permission. Verify every future feature against jurisdiction and exact curb geometry.
 
@@ -17,7 +17,7 @@ Research portion of [#31](https://github.com/BinaryDevil/find-free-parking/issue
 
 | Type | Source(s) | Search result / limit |
 |---|---|---|
-| E1 Block-level regulations | StaffMap Parking Regulations; current curbaccessparking views | Found curb polylines; reuse rejected (criterion 6); schedule grammar and safety reconciliation unresolved. |
+| E1 Block-level regulations | StaffMap Parking Regulations; current curbaccessparking views | Found curb polylines; public availability passes; approval pending; schedule grammar and safety reconciliation unresolved. |
 | E2 Meter / payment feed | pparking Pay Parking On Street; City pay page | Found pay curb lines, no per-record rates; not a complete standalone free-after-hours feed. |
 | E3 Sign inventory | StaffMap Parking Signs | Found points; completeness and assignment to all applicable curb signs unproven. |
 | E4 Zone polygons | StaffMap Permit Areas; ResidentPermitZones; Pay Parking Zones | Found eligibility/payment polygons; polygon interiors are not universal curb rules. |
@@ -43,7 +43,7 @@ All GIS endpoints below use native EPSG:26910 (metres). Query `?f=json` for fiel
 
 Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates below are maxima of positive record-level timestamps, not inspection dates for every curb or successful runtime sync dates. Null and 1899 sentinel dates cannot establish freshness. The July 2024 observation in #2 is superseded for regulations by current record dates; the resident-space snapshot still needs over-24-month independent agent re-review.
 
-`/MapServer/info/iteminfo?f=json` reports empty `licenseInfo` for StaffMap, ResidentPermitParking, pparking and curbaccessparking. Copyright fields are also empty. [CityMap terms](https://gisext2.cnv.org/citymap/) disclaim accuracy/completeness; they do not grant an open reuse licence. Public query access, official authority and City page embeds do not authorize redistribution. The independent 2026-10-19 review re-fetched StaffMap, ResidentPermitParking, pparking, curbaccessparking and curbaccessparking2 item metadata and found no published reuse grant covering these exact services. All their candidate layers/views are **rejected (criterion 6) and excluded** under ADR-0002/0004/0005; other unresolved criteria remain recorded below. This is a bounded search result, not proof that unpublished rights do not exist. No District or Vancouver licence is inherited. Fixtures must omit GIS editor/creator identities, eligibility addresses and unrelated administrative fields.
+`/MapServer/info/iteminfo?f=json` was independently re-fetched on 2026-10-21 for the selected services and returned empty `licenseInfo`; refreshed layer copyright fields were empty. All ten selected layers were publicly retrievable without sign-in or payment, satisfying amended criterion 6. Missing licence text is not a gate. See the dated review for exact metadata, current counts, selected privacy-filtered records, ten fresh geometry/text comparisons and unresolved non-licence criteria. No District or Vancouver attribution is inherited. Fixtures omit editor/creator identities, private eligibility-address values and unrelated administrative fields.
 
 ## Sources
 
@@ -55,11 +55,11 @@ Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates 
 - Fields: `OBJECTID`, `GlobalID`, `ZONE_ID` identifiers; `STATUS` lifecycle; `BLOCK_STREET` public block label; `SIGNTYPE` rule category; `PARKING_TIME` duration text; `RESTRICTIONS` schedule/conditions text; `EXEMPT_PARKING` exemption flag; `PARKING_TYPE` space orientation, not permission; `SUPPLY` capacity, not vacancy; `IMPLEMENTATION_AREA` planning flag, not approval; geometry and date fields. Do not interpret flags or missing values through guesses.
 - Sample: OBJECTID **7774**, 100 W 3rd St, PAY PARKING, `4 HRS`, `9AM-9PM`, zone `PZN-004253`.
 - Formats include `1 HR`, `15 MIN`, `4 HRS`, null; `9AM-6PM MON-FRI`, `8AM-5PM SCHOOL DAYS`, overnight and specialized conditions. Categories include no stopping/parking, fire, loading, accessible, electric, permit-exempt time limits/pay and unlimited.
-- Reuse: **rejected (criterion 6)**; no published exact-item terms found; excluded.
+- Public availability: **passes**; empty licence metadata is recorded for attribution. Source approval remains pending on the other criteria below.
 - Spot check: ten-place table below; unresolved payment/sign and prohibition association discrepancies, not criterion-7 pass.
 - May establish: precise current E1 rules after all criteria pass, including restrictions and explicitly supported free/time-limit rules.
 - Unknown: blank/ambiguous schedule, school calendar, unsupported vehicle/permit exemption, uncertain lifecycle/planning state, overlaps, stale source or unresolved sign mismatch. “Unlimited” is not a permission default outside mapped curb segments.
-- Verdict: **rejected (criterion 6), excluded**; unresolved checks: semantics, precise assignments, reuse and independent zero-contradiction checks.
+- Verdict: **pending (other criteria); public availability passes**; unresolved checks: semantics, precise assignments and independent zero-contradiction checks.
 
 ### Permit Areas (E4)
 
@@ -67,11 +67,11 @@ Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates 
 - Geometry/precision: **14 polygons** in each representation; do not import outlines as additional zones.
 - Freshness: no service edit date; queried StaffMap `GIS_ATTR_DATE` values all null. Published cadence/currentness requires confirmation.
 - Fields: `ZONE_ID` permit area code (sample **W50**, OBJECTID 1), `GlobalID`, `STATUS`, `DESCRIPTION`, `COMMENTS`, `GEOM_SOURCE`, `GIS_ATTR_DATE`, `ATTR_SOURCE`; no enforcement days/hours/visitor allowance fields.
-- Reuse: **rejected (criterion 6)**; no published exact-view terms found; excluded.
+- Public availability: **passes**; empty licence metadata is recorded for attribution. Source approval remains pending on the other criteria below.
 - Spot check: permit curb candidates Keith/Delbruck below; exact polygon membership and signed zone entitlement still required, not passed.
 - May establish: zone association and supported restrictions with published applicable curb/hours; never free outside a polygon or blanket permit-only inside it.
 - Unknown: polygon eligibility versus signed space applicability, zone-to-curb join, visitor/time-limit/payment exemptions and freshness.
-- Verdict: **rejected (criterion 6), excluded**; unresolved checks: criteria 4–7; polygon geometry meets E4 minimum but does not establish signed curb permission.
+- Verdict: **pending (other criteria); public availability passes**; unresolved checks: criteria 4, 5 and 7; polygon geometry meets E4 minimum but does not establish signed curb permission.
 
 ### Resident Permit Parking Space (E1/E4-associated curb candidate)
 
@@ -79,11 +79,11 @@ Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates 
 - Geometry/records: **754 curb polylines**; maximum `GIS_EDIT_DATE` **2024-07-30**, over 24 months old; null attribute dates and negative sentinel timestamps occur.
 - Fields: `OBJECTID`, `GlobalID_1`, `SIGNTYPE`, `PARKING_TIME`, `RESTRICTIONS`, `STATUS`, geometry/date fields; `PARKING_TYPE` orientation; `SUPPLY` and weekday/weekend occupancy fields are not permission or current vacancy. Values include `RE`, `RE - EXISTING`, `PAY PARKING - EWP`, `PAY PARKING EWP`, blank schedules, `2HRS`, `4HRS`.
 - Sample: OBJECTID **1**, PAY PARKING - EWP, blank duration/restrictions, Existing; stable key `{5898A96A-D24D-4EC3-9514-78264D81AA58}`.
-- Reuse: **rejected (criterion 6)**; no published exact-item terms found; excluded.
+- Public availability: **passes**; empty licence metadata is recorded for attribution. Source approval remains pending on the other criteria below.
 - Spot check: legacy codes cannot be assumed equivalent to current permit categories; current sign/zone checks and dated re-review outstanding.
 - May establish: only reconciled current signed permit/pay/time-limit curb rules; no rule from occupancy or blank fields.
 - Unknown: undocumented RE/EWP semantics, blank schedules, missing permit zone key, obsolete versus current geometries.
-- Verdict: **rejected (criterion 6), excluded**; unresolved checks: explicit freshness re-review and source-selection reconciliation, semantics, reuse and ten independent checks. Not selected as current canonical data merely because #31 names it.
+- Verdict: **pending (other criteria); public availability passes**; unresolved checks: explicit freshness re-review and source-selection reconciliation, semantics and ten independent checks. Not selected as current canonical data merely because #31 names it.
 
 ### Pay Parking On Street (E2 with E1 curb geometry)
 
@@ -92,11 +92,11 @@ Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates 
 - Fields: `OBJECTID`, `ZONE_ID`, `SIGNTYPE` (PAY PARKING or PAY PARKING – EXCEPT WITH PERMIT), `PARKING_TIME` (`4 HRS` in this snapshot), `RESTRICTIONS` (`9AM-9PM`), `PARKING_TYPE`, `EXEMPT_PARKING`, `IMPLEMENTATION_AREA`, geometry. No rates, days, holiday policy or complete prohibitions in this view.
 - Sample: **7774**, PZN-004253, pay, four hours, 09–21; compare regulation/sign table below.
 - The independently retrieved City pay page (2026-10-19) states 09:00–21:00 daily including statutory holidays, unless otherwise posted. It lists registration even for the initial free 30 minutes, then $1 for the next 30 minutes, $3/hour daytime and $2/hour evening, plus a $0.15 app fee for sessions over 30 minutes. The page dates Lonsdale installation to September 2025 and ties effectiveness to each block’s sign installation. These are program-level statements, not a per-record tariff/exception join or clearance of the W 3rd/Lonsdale discrepancies. Do not infer standalone free-after-hours rules.
-- Reuse: GIS **rejected (criterion 6)** and excluded; page-derived tariff reuse scope remains unresolved.
+- Reuse: GIS public availability passes; per-curb tariff applicability remains pending.
 - Spot check: W 3rd and Lonsdale disagree with nearby legacy signs; reconciliation outstanding.
 - May establish: paid conditions on assigned curbs after approval. **No standalone free-after-hours inference:** this view lacks all applicable prohibition/time-limit semantics; combine approved complete E1 evidence and signed conditions.
 - Unknown: exemptions, registration requirements, effective implementation state, rate tiers and other overlapping restrictions.
-- Verdict: **rejected (criterion 6), excluded**; unresolved checks: freshness, tariffs/semantics, source conflicts, reuse and independent checks.
+- Verdict: **pending (other criteria); public availability passes**; unresolved checks: freshness, tariffs/semantics, source conflicts and independent checks.
 
 ### Parking Signs (E3)
 
@@ -104,30 +104,30 @@ Service `editingInfo.lastEditDate` was absent for these MapServer layers. Dates 
 - Geometry/records: **2,615 sign points**; full-snapshot maximum edit **2026-08-12**, attribute date **2026-08-25**. These maxima do not refresh old individual signs.
 - Fields: `OBJECTID`, `GlobalID`, `UNITID`, `STATUS`, `UNITTYPE`, `SIGNTYPE`, `PARKING_TIME`, `RESTRICTIONS`, `SIGN_ORDER`, `EXEMPT_PARKING`, `OWNER`, `BLOCK_STREET`, installation/removal/inspection and GIS dates. Preserve ordering/curb direction only when documented; a nearby point is not an exact assignment.
 - Sample: OBJECTID **578**, 1600 Mackay Ave, TIME LIMITED, 2 HR, 9AM-6PM; independent-layer probe below.
-- Reuse: **rejected (criterion 6)**; no published exact-item terms found; excluded.
+- Public availability: **passes**; empty licence metadata is recorded for attribution. Source approval remains pending on the other criteria below.
 - Spot check: ten candidate comparisons below; incomplete fields and conflicting categories prevent approval.
 - May establish: rules once every applicable sign is parsed and assigned to the exact curb side. No sign-completeness statement found.
 - Unknown: missing sign fields, incomplete inventory, signs across a corner/opposite curb, direction/order, unsupported codes and stale individual records.
-- Verdict: **rejected (criterion 6), excluded**; unresolved checks: completeness, mapping, grammar, reuse and zero-contradiction checks.
+- Verdict: **pending (other criteria); public availability passes**; unresolved checks: completeness, mapping, grammar and zero-contradiction checks.
 
 ### Current topic views and other candidates
 
-- [curbaccessparking layer 1](https://gisext2.cnv.org/arcgis/rest/services/Applications/curbaccessparking/MapServer/1), layer 2 scale view and [curbaccessparking2 layer 1](https://gisext2.cnv.org/arcgis/rest/services/Applications/curbaccessparking2/MapServer/1): **1,173 lines** each, `OBJECTID`, `SIGNTYPE`, `PARKING_TIME`, `RESTRICTIONS`, geometry. Sample **2882**, ACCESSIBLE, 2 HR, 9AM-6PM. No edit date; empty licence. Current [City curb page](https://www.cnv.org/Streets-Transportation/Parking/Curb-Access-%2C-a-%2Camp%3B-Parking-Plan) links topic mapping. **Rejected (criterion 6), excluded alternate E1 view**, not an extra independent check or additive Coverage; confirm view filters/effective changes and reconcile with StaffMap.
-- [Pay Parking Zones layer 4](https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/4): **7 polygons**, `Pay_Parking_Zone`, `GlobalID`, `GIS_EDIT_DATE`, geometry; E4 candidate, **rejected (criterion 6), excluded**; unresolved rates/curb applicability, dates/reuse and independent checks. Not a substitute for 223 pay curb lines.
-- [Pay Parking Off Street layer 2](https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/2): **28 points**, `LOT_NAME`, `ADDRESS`, `Operator`, `PAY_PARKING`, `RESTRICTION`, `STATUS`, capacity fields. Sample **1**, Advanced Parking Parkade, 1111 & 1113 Lonsdale Ave, paid, restriction `n/a`. **Rejected as import-ready E6:** no complete rates/hours/public-use conditions or freshness signal; geometry entrance accuracy and operator authority need checks. City publication does not make every private operator lot free/public. Reuse rejected (criterion 6); separate operator inventory required before any adapter.
-- [accessibleparking layer 0](https://gisext2.cnv.org/arcgis/rest/services/Applications/accessibleparking/MapServer/0): **158 points**, `PAY_PARKING`, `NUMBER_SPOTS`, `TIME_LIMIT`, `BLOCK_STREET`, geometry, photo link. **Rejected for general-driver permission:** specialized vehicle conditions and full schedules absent; no edit/reuse evidence. No ordinary free rule from capacity.
-- [ResidentExemptParking layer 0](https://gisext2.cnv.org/arcgis/rest/services/Applications/ResidentExemptParking/MapServer/0) (**201 lines**) and layer 1 (**165 polygons**): legacy `ZONE_`/`SPECIFIC`/`TYPE` or `MAPZONE`/`STATUS`/`DESCRIPTION`/`ELIGIBLE_ADDRESS`, no complete schedules or freshness. **Rejected as current canonical feed** until legacy/current program reconciliation; omit eligibility-address details. Empty/unstated reuse and no independent checks passed.
+- [curbaccessparking layer 1](https://gisext2.cnv.org/arcgis/rest/services/Applications/curbaccessparking/MapServer/1), layer 2 scale view and [curbaccessparking2 layer 1](https://gisext2.cnv.org/arcgis/rest/services/Applications/curbaccessparking2/MapServer/1): **1,173 lines** each, `OBJECTID`, `SIGNTYPE`, `PARKING_TIME`, `RESTRICTIONS`, geometry. Sample **2882**, ACCESSIBLE, 2 HR, 9AM-6PM. No edit date; empty licence. Current [City curb page](https://www.cnv.org/Streets-Transportation/Parking/Curb-Access-%2C-a-%2Camp%3B-Parking-Plan) links topic mapping. **Pending alternate E1 view; public availability passes**, not an extra independent check or additive Coverage; confirm view filters/effective changes and reconcile with StaffMap.
+- [Pay Parking Zones layer 4](https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/4): **7 polygons**, `Pay_Parking_Zone`, `GlobalID`, `GIS_EDIT_DATE`, geometry; E4 candidate, **pending (other criteria); public availability passes**; unresolved rates/curb applicability, dates and independent checks. Not a substitute for 223 pay curb lines.
+- [Pay Parking Off Street layer 2](https://gisext2.cnv.org/arcgis/rest/services/Applications/pparking/MapServer/2): **28 points**, `LOT_NAME`, `ADDRESS`, `Operator`, `PAY_PARKING`, `RESTRICTION`, `STATUS`, capacity fields. Sample **1**, Advanced Parking Parkade, 1111 & 1113 Lonsdale Ave, paid, restriction `n/a`. **Rejected as import-ready E6:** no complete rates/hours/public-use conditions or freshness signal; geometry entrance accuracy and operator authority need checks. City publication does not make every private operator lot free/public. Public availability passes; separate operator inventory required before any adapter.
+- [accessibleparking layer 0](https://gisext2.cnv.org/arcgis/rest/services/Applications/accessibleparking/MapServer/0): **158 points**, `PAY_PARKING`, `NUMBER_SPOTS`, `TIME_LIMIT`, `BLOCK_STREET`, geometry, photo link. **Rejected for general-driver permission:** specialized vehicle conditions and full schedules absent; no complete conditions/currentness evidence. No ordinary free rule from capacity.
+- [ResidentExemptParking layer 0](https://gisext2.cnv.org/arcgis/rest/services/Applications/ResidentExemptParking/MapServer/0) (**201 lines**) and layer 1 (**165 polygons**): legacy `ZONE_`/`SPECIFIC`/`TYPE` or `MAPZONE`/`STATUS`/`DESCRIPTION`/`ELIGIBLE_ADDRESS`, no complete schedules or freshness. **Rejected as current canonical feed** until legacy/current program reconciliation; omit eligibility-address details. Currentness and independent safety checks remain unresolved.
 - E7 [parking guidance](https://www.cnv.org/Streets-Transportation/Parking/Parking-Rules-and-Regulations) and Bylaw 6234 above: maximum 72 hours, additional unsigned exclusions. **Rejected as qualifying E7 permission default**; web/PDF guidance lacks precise rule geometry/stable record IDs and signs are not the only exceptions. No Verified Free from unsigned streets.
-- [Street-use permit guidance](https://www.cnv.org/streets-transportation/street-use-permits) is an E5 discovery lead, **rejected as an active restriction feed**: no dated precise reservation records, IDs or daily sync endpoint. Freshness/geometry/schedule/reuse checks remain for any future feed.
+- [Street-use permit guidance](https://www.cnv.org/streets-transportation/street-use-permits) is an E5 discovery lead, **rejected as an active restriction feed**: no dated precise reservation records, IDs or daily sync endpoint. Freshness/geometry/schedule checks remain for any future feed.
 
 ### Secondary candidate assessment limits
 
-All secondary sources above remain unapproved. No independent ten-place checks were performed for these sources; their discovery/sample inspection is not criterion-7 validation. The GIS views within the five reviewed services are rejected (criterion 6) and excluded. Published reuse scope for other candidates, including accessibleparking and ResidentExemptParking, was not independently reviewed on 2026-10-19; their existing substantive rejections remain. Page-derived dataset reuse remains unresolved. No source edit date/cadence was established for the secondary views.
+All secondary sources above remain unapproved. No independent ten-place checks were performed for these sources; their discovery/sample inspection is not criterion-7 validation. The GIS views within the five reviewed services are pending on non-licence criteria. Other candidates, including accessibleparking and ResidentExemptParking, were not refreshed on 2026-10-21; their existing substantive limitations remain. Missing licence text is never a rejection. No source edit date/cadence was established for the secondary views.
 
 | Candidate | Public sample / field meaning | May establish after approval | Unknown cases / current assessment |
 |---|---|---|---|
-| Curb topic views | 2882 ACCESSIBLE, 2 HR, 9AM-6PM; restriction is text, not parsed schedule | E1 rules for exact filtered curbs | Same-origin alternate representation, filters/changes/exemptions unresolved; rejected (criterion 6), excluded. |
-| Pay Parking Zones | OBJECTID 3, Pay_Parking_Zone=70517; payment zone identifier, not rate/permit entitlement. GIS_EDIT_DATE null in all seven records | E4 paid zone constraints with documented applicability | No currentness/rate/curb rights established; rejected (criterion 6), excluded. |
+| Curb topic views | 2882 ACCESSIBLE, 2 HR, 9AM-6PM; restriction is text, not parsed schedule | E1 rules for exact filtered curbs | Same-origin alternate representation, filters/changes/exemptions unresolved; pending (other criteria); public availability passes. |
+| Pay Parking Zones | OBJECTID 3, Pay_Parking_Zone=70517; payment zone identifier, not rate/permit entitlement. GIS_EDIT_DATE null in all seven records | E4 paid zone constraints with documented applicability | No currentness/rate/curb rights established; pending (other criteria); public availability passes. |
 | Pay Parking Off Street | OBJECTID 1 above; PAY_PARKING=Yes is payment indication, RESTRICTION=n/a is not permission | E6 lot rules only with operator conditions and entrance/footprint | Public use, hours, rates, currentness and precision unresolved; rejected import-ready feed. |
 | Accessible parking | OBJECTID 1, 300 E Esplanade, PAY_PARKING=No, TIME_LIMIT=No time limit, NUMBER_SPOTS=1 | Specialized E1/E6 conditions only with precise applicable context | No ordinary-driver permission; absent schedule/currentness, entrance/curb scope unresolved; rejected general-driver source. |
 | ResidentExemptParking lines | OBJECTID 2, ZONE_=902, SPECIFIC=east side, TYPE=RE; legacy zone/side/category labels | Reconciled signed curb conditions | Code semantics/currentness and legacy-to-current program mapping unresolved; rejected canonical source. |
@@ -165,21 +165,21 @@ Criteria 1–5 and 7 below preserve the original assessment and unresolved gaps,
 | 3 Precision | Curb mapping pending | Polygon minimum; curb rights pending | Curb mapping pending | Curb mapping pending | Every-sign assignment pending |
 | 4 Schedule/conditions | Grammar/exemptions pending | No schedule fields | Legacy codes/blanks | Rates/days/prohibitions missing | Grammar/completeness pending |
 | 5 Freshness signal | Record dates, heterogeneous | No populated signal established | July 2024: re-review | No signal established | Record dates, heterogeneous |
-| 6 Reuse | Rejected; excluded | Rejected; excluded | Rejected; excluded | Rejected; excluded | Rejected; excluded |
+| 6 Public availability | Pass: public availability | Pass: public availability | Pass: public availability | Pass: public availability | Pass: public availability |
 | 7 Independent checks | Conflicts/gaps pending | Signed membership pending | Currentness checks pending | Payment conflicts pending | Assignment/conflicts pending |
 
 ## Unknown areas, gaps and adapter requirements
 
 - Present Coverage is **none**. A possible future partial target is only exact reconciled curb segments described above; no citywide or District claim. Lots, unnamed/unmapped curbs, polygon interiors without signed rules and unresolved records remain Unknown. Full Coverage needs precise E5 daily synchronization and all other policy prerequisites.
-- Reuse/freshness/source-selection approval must precede loading. Existing #31 owns the four requested layer adapters; this research does not create duplicate tickets or lift #11. Optional sign/topic-view adapters remain a scoped follow-up under #31 after source selection, not an automatic enlargement of implementation.
-- After #11 integration, record public fixtures for all ten selectors, rate/registration rules, permit and vehicle exceptions, overnight/school-day cases, null/sentinel dates and changed-field failures. Validate complete pagination, EPSG transformation, stable identity, status/planning filters and joins; a renamed/missing field stops sync and produces Unknown. Do not encode the draft requirements as an invented evaluator contract now.
+- Freshness/source-selection approval must precede loading. Existing #31 owns the four requested layer adapters; this research does not create duplicate tickets; #11 is closed, while source approval is still pending. Optional sign/topic-view adapters remain a scoped follow-up under #31 after source selection, not an automatic enlargement of implementation.
+- With #11 now closed, source-approved adapter work must record public fixtures for all ten selectors, rate/registration rules, permit and vehicle exceptions, overnight/school-day cases, null/sentinel dates and changed-field failures. Validate complete pagination, EPSG transformation, stable identity, status/planning filters and joins; a renamed/missing field stops sync and produces Unknown. Do not encode the draft requirements as an invented evaluator contract now.
 - Do not blanket-restrict every eligible permit polygon: official program allows non-permit vehicles subject to signed time/payment rules. Permits exempt only matching signed areas and conditions. Preserve applicable specialized rules without guessing exemption from a Boolean flag.
 - E1–E4 successful sync must be within seven days; E5 within 24 hours or temporary restrictions are unknown. Source maximum edit dates do not establish current runtime synchronization. Resolve records older than 24 months individually and source re-review as required.
 - No new evidence type or policy change is proposed. Mixed permit/payment curbs, registration-required zero-cost periods, sparse schedules and stale thematic copies expose application questions covered by existing precision/condition/approval criteria. Keep them explicit until #50 resolves them.
 
 ## Tickets
 
-- [#31 inventory and regulation adapters](https://github.com/BinaryDevil/find-free-parking/issues/31): existing adapter umbrella reused; inventory prepared now, adapters remain open and blocked by #11.
+- [#31 inventory and regulation adapters](https://github.com/BinaryDevil/find-free-parking/issues/31): existing adapter umbrella reused; inventory prepared now, adapters remain open and gated by source approval; the historical #11 blocker is closed.
 - [#50 independent agent source review](https://github.com/BinaryDevil/find-free-parking/issues/50): exact service scope, current-source selection, semantics, freshness re-review and zero-contradiction confirmations; approval unlocks only the stated subset and later #12 registry/coverage work.
 - [#51 former E5 request preparation (superseded by ADR-0004)](https://github.com/BinaryDevil/find-free-parking/issues/51): no contact sent; no outreach permitted. Full Coverage is outside the present partial target.
 - [#2 spec](https://github.com/BinaryDevil/find-free-parking/issues/2), [#11 evaluator](https://github.com/BinaryDevil/find-free-parking/issues/11), [#12 computed Coverage](https://github.com/BinaryDevil/find-free-parking/issues/12), [#15 sync](https://github.com/BinaryDevil/find-free-parking/issues/15): inventories and prepared fixtures are not adapter validation, deployment or production verification.
