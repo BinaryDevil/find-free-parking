@@ -1,0 +1,50 @@
+{
+  "portal-final": {
+    "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters",
+    "retrieved": "2026-10-21T21:25:43.460845+00:00",
+    "edit": null,
+    "portal": {
+      "records_count": 3523,
+      "modified": "2026-10-19T13:31:55+00:00"
+    }
+  },
+  "hosted-final": {
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=json",
+    "retrieved": "2026-10-21T21:25:43.084501+00:00",
+    "edit": {
+      "lastEditDate": 1792575226539,
+      "schemaLastEditDate": 1792575199131,
+      "dataLastEditDate": 1792575226539
+    },
+    "portal": {
+      "records_count": null,
+      "modified": null
+    }
+  },
+  "permit-final": {
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/ResidentialParkingPermitZones/FeatureServer/0?f=json",
+    "retrieved": "2026-10-21T21:25:42.989333+00:00",
+    "edit": {
+      "lastEditDate": 1792141931693,
+      "schemaLastEditDate": 1792141926168,
+      "dataLastEditDate": 1792141931693
+    },
+    "portal": {
+      "records_count": null,
+      "modified": null
+    }
+  },
+  "road-final": {
+    "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/Road_Ahead_View/FeatureServer/0?f=json",
+    "retrieved": "2026-10-21T21:25:42.988520+00:00",
+    "edit": {
+      "lastEditDate": 1792617845521,
+      "schemaLastEditDate": 1790136938967,
+      "dataLastEditDate": 1792617845521
+    },
+    "portal": {
+      "records_count": null,
+      "modified": null
+    }
+  }
+}

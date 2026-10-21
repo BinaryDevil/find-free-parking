@@ -1,0 +1,75 @@
+# Issue #91: preservation-first final design proposal
+
+Prepared 2026-10-21 after the owner requested a final form, integrated into dev and withheld from production until verified. **Proposed, not an accepted ADR decision or production authorization.** No source code, SQL, ledger, target database or authoritative ADR was changed while preparing this document.
+
+## Outcome and inspected base
+
+Keep every existing row and existing field value unchanged during schema installation. Keep `city_requests.user_ip text`, the existing `target_type` enum including SPOT, and both existing UUID/crypto extensions. Continue validating new request IPs at application ingress. Add the evidence/rule model and nullable legacy provenance columns without fabricating historical identities or breaking old explicit-column imports. Retention remains a distinct, explicitly listed data-clearing action.
+
+Inspected implementation at `fc5612d12b2c5ea47797038c09961d46598fcba6`: [ADR-0003](../adr/0003-sql-migrations.md), [ADR-0005](../adr/0005-agent-verified-gates.md), both runners, migration immutability checker, all eight sealed SQL migrations, classified-place/Coverage readers, legacy serving/retirement, evidence importer and source-sync references. Research-only changes through this proposal's base `d8a43a5fe690615ecdd13f6577bdb5aa92c445cc` do not change these inputs. Live [#91](https://github.com/BinaryDevil/find-free-parking/issues/91) and its [independently reviewed options](https://github.com/BinaryDevil/find-free-parking/issues/91#issuecomment-6327867860) were read. This document supplies a concrete proposed design rather than selecting a policy exception.
+
+## Smallest safe migration contract
+
+Use **two fixed lineages**, not an arbitrary migration-file allowlist:
+
+- `legacy`: the existing `sql/migrations/` and existing `migration_meta.pgmigrations`, kept byte-for-byte, with their existing replay/order behavior. Never silently switch an existing database off it.
+- `preservation-v1`: the exact sealed legacy baseline plus a new directory containing one additive foundation migration, followed by future append-only migrations. Its own ledger is `migration_meta.preservation_migrations`. The new foundation is a reviewed replacement *definition*, not a claim that excluded legacy files ran.
+
+Keep one small committed manifest identifying these two fixed lineages, baseline path/hash, ordered new-lineage paths/hashes and the exact legacy operation identities superseded for this lineage. Do not accept a caller-supplied file list, arbitrary directory, per-run exclusion or production environment flag that alone chooses a different history. Future additions append entries; integrated identities, paths, hashes, ordering and supersession records cannot change under CI. Selection is stored on the target by an explicit reviewed adoption command, never inferred from missing tables. Both the guarded migration command and release runner consume the same resolver.
+
+Why a separate directory and one foundation file: merely adding replacement provenance at today's timestamp leaves it after older dependent migrations; filtering the old directory retains the same ordering/dependency problem. Duplicating only the necessary schema definitions into a reviewed additive foundation avoids rewriting sealed files, renaming executed identities, disabling order checks, or building a general graph migration engine. The cost is deliberate SQL duplication and an explicit schema-contract parity test. There is no automatic synchronization between old and new SQL.
+
+### Target selection and adoption
+
+Add a single-row-per-database adoption record in `migration_meta`, containing lineage ID, adoption manifest hash, baseline hash, expected existing history fingerprint and review/release reference. Store no connection secrets or personal fields. Protect this operator-owned metadata from application roles. SQL hash verification continues for every invocation; subsequent manifest revisions must extend the adopted prefix unchanged.
+
+Initial implementation supports only these cases:
+
+| Target before adoption | Required behavior |
+| --- | --- |
+| Fresh empty disposable database, no history | Explicitly choose preservation-v1, execute the unchanged baseline normally, then the new foundation in order. Record actual execution; no fake baseline. |
+| Exact baseline schema and exactly the baseline row in legacy history | Read-only baseline application-schema comparison and ledger validation first; record explicit lineage adoption; leave the legacy baseline ledger row untouched. New ledger starts empty and applies the foundation. |
+| Exact baseline schema but no legacy ledger | Use the existing separately reviewed baseline-adoption process first, with snapshot and schema comparison. It records only the baseline under its existing rules. Then perform the preceding case. No generalized fake marking. |
+| Any later legacy migration is recorded, any new-model object already exists, conflicting lineage metadata, unknown row or drift | Stop without schema writes. Do not attempt a downgrade, drop objects, replay replacement SQL, or manufacture history. Continue operating the known legacy lineage. A target-specific reconciliation design and preservation proof are a separate ticket. |
+
+Baseline comparison includes application owners/ACLs/defaults/triggers/enum labels/indexes under ADR-0003's explicit infrastructure projection. Do not claim provider/default-ACL parity from a local projection. Even a matching ledger does not establish matching schema. Inspect actual shared dev/production state; historical observations are not current adoption proof.
+
+Adoption and migration are distinct ordered actions. A human-merged release must list a production adoption metadata write as well as every SQL file; the release executor must never perform adoption implicitly while handling a migration list. Snapshot precedes any target write. Code-only `[]` releases remain exempt from adoption/migration/history writes and retain their existing behavior.
+
+## Additive foundation contents
+
+1. Create `evidence_sources` and `source_syncs` with current runtime contracts, indexes and restricted app read grants. New source records default pending; insert no approved source and no legacy pseudo-source. The approval constraint must follow amended ADR-0002: retain optional licence/attribution metadata but never require nonempty licence/reuse text. Require authority, reviewed inventory and written two-agent approval identity/date; the other evidence criteria remain mandatory.
+2. Add nullable `source_id`, `source_record_id`, `fetched_at`, `source_edited_at` to each of `parking_meters`, `street_segments`, `parking_zones`. Do not UPDATE historical rows or touch timestamp triggers. Keep ordinary UNIQUE `(source_id, source_record_id)` constraints and nonempty/pair-consistency checks that permit both identity fields NULL. Ordinary nullable UNIQUE preserves the current importer's `ON CONFLICT` inference while allowing legacy rows/imports without invented source identity. A half-filled identity fails. Timestamp unknown remains NULL.
+3. Create the new `places`/`parking_rules` model with its current required provenance, schedule and geometry constraints. Include current tombstone/hash/drift-history additions directly in this new definition. New-source identity is mandatory on new model rows; nullable legacy columns are not permission evidence. Preserve source-rule unique identity and format-failure behavior.
+4. Create Coverage tables/functions/indexes and the same 24 uncovered page anchors. New rows have level none, no source links and no approved Coverage. Create the advisory aggregate Driver Warning view with current strict >90-day window and restricted read grant. The view performs no retention clearing and does not make reports authoritative.
+5. Create the retained-in-place retirement manifest tables, leaving them empty. Defining archive capability does not authorize retiring or reversing any place. Keep existing legacy serving checks compatible with absent/complete retirement metadata.
+6. Define the separately callable restricted retention capability with the existing field-specific policy, without converting text IPs, replacing enum types or dropping extensions. Use a fixed SECURITY DEFINER search path, explicit owner, restrictive EXECUTE grants and validated existing-role attributes/membership. An incompatible preexisting role or function stops instead of silently expanding access. No scheduler/login membership provisioning, invocation or PII clearing occurs during schema installation.
+
+No `IF NOT EXISTS` is used to silently accept partial preexisting application objects. Duplicate/conflicting objects indicate a target outside the initial supported adoption set and fail closed.
+
+## Application and rollback contract
+
+The staged validated writer in dev remains compatible with text and inet; preservation-v1 deliberately stays text. Old writer imports can continue after adding nullable provenance. Both old/new parking readers must retain Unknown for legacy context; no source identity, city polygon, report count or page anchor establishes permission. Missing new schema continues to fail closed.
+
+The legacy report trigger/count fields remain for old code. SPOT rows and dependent objects stay intact. Extension functions remain available. Schema rollback is redeploying compatible code while leaving additive objects present; no down migration, deletion, history rewrite or snapshot-over-user-data restore is part of this proposal. Compare every actual eligible rollback deployment/writer, not merely a historical Git branch. Source approval, sync, retirement and retention execution each require their own listed actions and verification.
+
+Fresh preservation-v1 and baseline-adopted preservation-v1 must have the same resulting application schema (including role grants and function settings) aside from documented target infrastructure and ledger timestamps. They need not equal the legacy lineage schema: different IP type/enum/extensions/nullable provenance are intentional and must appear in a committed comparison contract. Never describe this as R2 full schema parity with today's production before the exact release is applied and compared. Update R2's release criteria to the selected lineage only through the reviewed owner decision.
+
+## Retention is separate from preservation
+
+Installing the function preserves every private value. Invoking it intentionally clears report/request IP and location at age **at least 90 days**, and RESOLVED-report email at **any age**; OPEN/DISMISSED email remains. Rows, content, target IDs and report counts remain. This is irreversible field clearing even though the schema is additive. Correct #14's abbreviated older-than-90-days check before copying it into a future release. Scheduler setup and first invocation each need exact scope, clock/boundary proof, limited role, verification and explicit production action authorization. Disabling a job prevents future execution but cannot restore cleared data.
+
+## Proposed exact ADR-0003 amendment
+
+> **Proposed — not accepted. Preservation lineage.** Existing integrated migration files and existing migration history remain immutable. The project supports the legacy migration lineage and a separately identified preservation-v1 lineage. The latter starts from the unchanged baseline and reviewed additive foundation, preserves all existing fields and rows during installation, and does not record superseded legacy operations as executed. A committed append-only manifest fixes lineage membership, order, SQL hashes and superseded identities. Target selection requires explicit reviewed adoption with exact schema/history comparison; runners never select a lineage by inference or an arbitrary runtime file filter. The migration and release runners use the same manifest and target adoption record, retain transaction/advisory-lock and strict selected-lineage order checks, and reject unknown history or changed hashes before any write. Initial adoption supports empty or baseline-only targets; later legacy targets require a separate reviewed reconciliation. Every production adoption metadata write and migration remains a listed action under a human-merged release PR. Code-only releases perform neither.
+
+ADR-0005's additive requirement and human release merge gate remain unchanged. The new manifest/adoption exception to ADR-0003's single-directory contract requires owner acceptance before activating this lineage anywhere shared. A draft spec or code PR can be independently reviewed in dev before that acceptance; it must leave new execution disabled.
+
+## Implementation tickets and acceptance
+
+1. **Contract/spec and owner decision.** Review this design against real schema/history, inventory runtime/importer queries and approve/reject the exact ADR amendment. Clarify unsupported later-legacy targets. Update DATA, PRODUCTION_RELEASE, R2/#14 checks consistently, without claiming deployment.
+2. **Guarded lineage resolver/adoption (dark).** Table tests: correct-prefix history; unknown/out-of-order/duplicate/changed SQL; path traversal/unlisted files; changed manifest prefix; missing/conflicting adoption; wrong endpoint/DB/role; forbidden cross-lineage switch; direct invocation without adoption; partial objects; baseline-only vs empty. Prove all rejection paths stop before snapshot/adoption/migration as appropriate. Code-only release tests remain unchanged. No shared/production adoption.
+3. **New foundation SQL and importer compatibility.** Fresh-empty local PostGIS and separately baseline-populated disposable database, same database clock and serial execution. Compare original columns/rows byte-for-byte privately including duplicates, SPOT and unusual IP text; schema install changes none. Test old explicit-column imports, new identity upserts twice (no duplicates), mixed-null identity rejection, stable timestamps/triggers, UUID/crypto functions, role ACLs, new-model constraints, no approved sources/Coverage/scheduler. Test both current and eligible rollback app behavior before/after installation. Run migrated and pre-schema API/desktop/mobile checks. Keep sensitive data out of retained logs.
+4. **Integration/release authorization.** Shared dev adoption only after owner accepts policy, independent review and required snapshot/comparison. Before production, use a suitable isolated production-derived disposable target for exact compatibility/lock/provider proof; fresh-empty isolation remains separately required. Final release lists lineage/manifest/hash, adoption and exact files, includes snapshot plus readbacks, and records all applicable ticket checks. Independently review the final release head and action list. Only the owner merges to main.
+
+A minimal implementation may combine tickets 2 and 3 in one branch if review remains manageable, but acceptance evidence must remain separated. This document proves a source-grounded design, not any implementation test, target readiness or owner acceptance.

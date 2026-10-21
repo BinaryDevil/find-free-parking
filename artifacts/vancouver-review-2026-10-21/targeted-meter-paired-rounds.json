@@ -1,0 +1,778 @@
+[
+  {
+    "round": 1,
+    "before": {
+      "portal": {
+        "start": "2026-10-21T21:30:21.096296+00:00",
+        "end": "2026-10-21T21:30:21.526692+00:00",
+        "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters",
+        "marker": {
+          "modified": "2026-10-19T13:31:55+00:00",
+          "records_count": 3523
+        }
+      },
+      "hosted": {
+        "start": "2026-10-21T21:30:21.096493+00:00",
+        "end": "2026-10-21T21:30:21.339602+00:00",
+        "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=json",
+        "marker": {
+          "editingInfo": {
+            "lastEditDate": 1792575226539,
+            "schemaLastEditDate": 1792575199131,
+            "dataLastEditDate": 1792575226539
+          }
+        }
+      }
+    },
+    "records": {
+      "portal": {
+        "start": "2026-10-21T21:30:21.527731+00:00",
+        "end": "2026-10-21T21:30:21.913846+00:00",
+        "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters/records?where=meter_id+in+%28%27303004%27%2C%27303025%27%2C%27302128%27%2C%27302928%27%2C%27302909%27%2C%27302906%27%2C%27303009%27%2C%27303212%27%29&limit=100&order_by=meter_id",
+        "response": {
+          "total_count": 16,
+          "results": [
+            {
+              "meter_id": "302128",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302128",
+              "service_status": "Out of Service",
+              "meter_head": "Twin",
+              "direction": "West",
+              "rate_9am_6pm": "$2.00"
+            },
+            {
+              "meter_id": "302906",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302906",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302909",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302909",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302928",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302928",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303004",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303004",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303009",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303009",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303025",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303025",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303212",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303212",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            }
+          ]
+        }
+      },
+      "hosted": {
+        "start": "2026-10-21T21:30:21.528177+00:00",
+        "end": "2026-10-21T21:30:21.758478+00:00",
+        "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0/query?where=METER_ID+in+%28%27303004%27%2C%27303025%27%2C%27302128%27%2C%27302928%27%2C%27302909%27%2C%27302906%27%2C%27303009%27%2C%27303212%27%29&outFields=METER_ID%2CSERVICE_STATUS%2CMETER_HEAD%2CDIRECTION%2CRATE_9A_6P&returnGeometry=false&f=json&orderByFields=METER_ID",
+        "response": {
+          "objectIdFieldName": "OBJECTID",
+          "uniqueIdField": {
+            "name": "OBJECTID",
+            "isSystemMaintained": true
+          },
+          "globalIdFieldName": "GlobalID",
+          "geometryType": "esriGeometryPoint",
+          "spatialReference": {
+            "wkid": 26910,
+            "latestWkid": 26910
+          },
+          "fields": [
+            {
+              "name": "METER_ID",
+              "type": "esriFieldTypeString",
+              "alias": "Meter ID",
+              "sqlType": "sqlTypeOther",
+              "length": 7,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "SERVICE_STATUS",
+              "type": "esriFieldTypeString",
+              "alias": "Service Status",
+              "sqlType": "sqlTypeOther",
+              "length": 20,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "METER_HEAD",
+              "type": "esriFieldTypeString",
+              "alias": "Meter Head",
+              "sqlType": "sqlTypeOther",
+              "length": 20,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "DIRECTION",
+              "type": "esriFieldTypeString",
+              "alias": "Direction",
+              "sqlType": "sqlTypeOther",
+              "length": 20,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "RATE_9A_6P",
+              "type": "esriFieldTypeString",
+              "alias": "Rate 9AM-6PM",
+              "sqlType": "sqlTypeOther",
+              "length": 10,
+              "domain": null,
+              "defaultValue": null
+            }
+          ],
+          "features": [
+            {
+              "attributes": {
+                "METER_ID": "302128",
+                "SERVICE_STATUS": "Out of Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "West",
+                "RATE_9A_6P": "$2.00"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302128",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302906",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302906",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302909",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302909",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302928",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302928",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303004",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303004",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303009",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303009",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303025",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303025",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303212",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303212",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "after": {
+      "portal": {
+        "start": "2026-10-21T21:30:21.914684+00:00",
+        "end": "2026-10-21T21:30:22.287420+00:00",
+        "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters",
+        "marker": {
+          "modified": "2026-10-19T13:31:55+00:00",
+          "records_count": 3523
+        }
+      },
+      "hosted": {
+        "start": "2026-10-21T21:30:21.915121+00:00",
+        "end": "2026-10-21T21:30:22.029737+00:00",
+        "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=json",
+        "marker": {
+          "editingInfo": {
+            "lastEditDate": 1792575226539,
+            "schemaLastEditDate": 1792575199131,
+            "dataLastEditDate": 1792575226539
+          }
+        }
+      }
+    },
+    "markers_stable": {
+      "portal": true,
+      "hosted": true
+    }
+  },
+  {
+    "round": 2,
+    "before": {
+      "portal": {
+        "start": "2026-10-21T21:30:22.288218+00:00",
+        "end": "2026-10-21T21:30:22.554010+00:00",
+        "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters",
+        "marker": {
+          "modified": "2026-10-19T13:31:55+00:00",
+          "records_count": 3523
+        }
+      },
+      "hosted": {
+        "start": "2026-10-21T21:30:22.288560+00:00",
+        "end": "2026-10-21T21:30:22.390803+00:00",
+        "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=json",
+        "marker": {
+          "editingInfo": {
+            "lastEditDate": 1792575226539,
+            "schemaLastEditDate": 1792575199131,
+            "dataLastEditDate": 1792575226539
+          }
+        }
+      }
+    },
+    "records": {
+      "portal": {
+        "start": "2026-10-21T21:30:22.555025+00:00",
+        "end": "2026-10-21T21:30:22.877739+00:00",
+        "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters/records?where=meter_id+in+%28%27303004%27%2C%27303025%27%2C%27302128%27%2C%27302928%27%2C%27302909%27%2C%27302906%27%2C%27303009%27%2C%27303212%27%29&limit=100&order_by=meter_id",
+        "response": {
+          "total_count": 16,
+          "results": [
+            {
+              "meter_id": "302128",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302128",
+              "service_status": "Out of Service",
+              "meter_head": "Twin",
+              "direction": "West",
+              "rate_9am_6pm": "$2.00"
+            },
+            {
+              "meter_id": "302906",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302906",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302909",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302909",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302928",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "302928",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303004",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303004",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303009",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303009",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303025",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303025",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303212",
+              "service_status": "Removed",
+              "meter_head": "Pay Station",
+              "direction": null,
+              "rate_9am_6pm": "$1.50"
+            },
+            {
+              "meter_id": "303212",
+              "service_status": "In Service",
+              "meter_head": "Twin",
+              "direction": "East",
+              "rate_9am_6pm": "$1.50"
+            }
+          ]
+        }
+      },
+      "hosted": {
+        "start": "2026-10-21T21:30:22.555589+00:00",
+        "end": "2026-10-21T21:30:22.642115+00:00",
+        "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0/query?where=METER_ID+in+%28%27303004%27%2C%27303025%27%2C%27302128%27%2C%27302928%27%2C%27302909%27%2C%27302906%27%2C%27303009%27%2C%27303212%27%29&outFields=METER_ID%2CSERVICE_STATUS%2CMETER_HEAD%2CDIRECTION%2CRATE_9A_6P&returnGeometry=false&f=json&orderByFields=METER_ID",
+        "response": {
+          "objectIdFieldName": "OBJECTID",
+          "uniqueIdField": {
+            "name": "OBJECTID",
+            "isSystemMaintained": true
+          },
+          "globalIdFieldName": "GlobalID",
+          "geometryType": "esriGeometryPoint",
+          "spatialReference": {
+            "wkid": 26910,
+            "latestWkid": 26910
+          },
+          "fields": [
+            {
+              "name": "METER_ID",
+              "type": "esriFieldTypeString",
+              "alias": "Meter ID",
+              "sqlType": "sqlTypeOther",
+              "length": 7,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "SERVICE_STATUS",
+              "type": "esriFieldTypeString",
+              "alias": "Service Status",
+              "sqlType": "sqlTypeOther",
+              "length": 20,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "METER_HEAD",
+              "type": "esriFieldTypeString",
+              "alias": "Meter Head",
+              "sqlType": "sqlTypeOther",
+              "length": 20,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "DIRECTION",
+              "type": "esriFieldTypeString",
+              "alias": "Direction",
+              "sqlType": "sqlTypeOther",
+              "length": 20,
+              "domain": null,
+              "defaultValue": null
+            },
+            {
+              "name": "RATE_9A_6P",
+              "type": "esriFieldTypeString",
+              "alias": "Rate 9AM-6PM",
+              "sqlType": "sqlTypeOther",
+              "length": 10,
+              "domain": null,
+              "defaultValue": null
+            }
+          ],
+          "features": [
+            {
+              "attributes": {
+                "METER_ID": "302128",
+                "SERVICE_STATUS": "Out of Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "West",
+                "RATE_9A_6P": "$2.00"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302128",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302906",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302906",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302909",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302909",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302928",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "302928",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303004",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303004",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303009",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303009",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303025",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303025",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303212",
+                "SERVICE_STATUS": "In Service",
+                "METER_HEAD": "Twin",
+                "DIRECTION": "East",
+                "RATE_9A_6P": "$1.50"
+              }
+            },
+            {
+              "attributes": {
+                "METER_ID": "303212",
+                "SERVICE_STATUS": "Removed",
+                "METER_HEAD": "Pay Station",
+                "DIRECTION": "",
+                "RATE_9A_6P": "$1.50"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "after": {
+      "portal": {
+        "start": "2026-10-21T21:30:22.878389+00:00",
+        "end": "2026-10-21T21:30:23.149790+00:00",
+        "url": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/parking-meters",
+        "marker": {
+          "modified": "2026-10-19T13:31:55+00:00",
+          "records_count": 3523
+        }
+      },
+      "hosted": {
+        "start": "2026-10-21T21:30:22.878882+00:00",
+        "end": "2026-10-21T21:30:22.965691+00:00",
+        "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/paMeter/FeatureServer/0?f=json",
+        "marker": {
+          "editingInfo": {
+            "lastEditDate": 1792575226539,
+            "schemaLastEditDate": 1792575199131,
+            "dataLastEditDate": 1792575226539
+          }
+        }
+      }
+    },
+    "markers_stable": {
+      "portal": true,
+      "hosted": true
+    }
+  }
+]

@@ -1,0 +1,265 @@
+{
+  "total_count": 163,
+  "results": [
+    {
+      "object_id": 1,
+      "location": "North Side 1000 Alberni St",
+      "geo_local_area": "West End",
+      "street_name": "Alberni St",
+      "block": 1000,
+      "type": "Metered Accessible Parking Space",
+      "description": "Metered Accessible Parking Space",
+      "spaces": 1,
+      "side": "North Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.12192699980345,
+            49.284200998945536
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.12192699980345,
+        "lat": 49.284200998945536
+      }
+    },
+    {
+      "object_id": 2,
+      "location": "West Side  5400 Balsam St",
+      "geo_local_area": "Arbutus Ridge",
+      "street_name": "Balsam St",
+      "block": 5400,
+      "type": "Accessible Parking Space",
+      "description": "Accessible Parking Space",
+      "spaces": 1,
+      "side": "West Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.16131700046863,
+            49.23677999911697
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.16131700046863,
+        "lat": 49.23677999911697
+      }
+    },
+    {
+      "object_id": 3,
+      "location": "East Side  5800 Balsam St",
+      "geo_local_area": "Kerrisdale",
+      "street_name": "Balsam St",
+      "block": 5800,
+      "type": "Accessible Parking Space",
+      "description": "Accessible Parking Space",
+      "spaces": 1,
+      "side": "East Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.16135100054922,
+            49.233617998634955
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.16135100054922,
+        "lat": 49.233617998634955
+      }
+    },
+    {
+      "object_id": 8,
+      "location": "South Side 1700 Parker St",
+      "geo_local_area": "Grandview-Woodland",
+      "street_name": "Parker St",
+      "block": 1700,
+      "type": "Metered Accessible Parking Space",
+      "description": "Metered Accessible Parking Space",
+      "spaces": 1,
+      "side": "South Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.06926499963103,
+            49.27572999894454
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.06926499963103,
+        "lat": 49.27572999894454
+      }
+    },
+    {
+      "object_id": 11,
+      "location": "North Side 1700 William St",
+      "geo_local_area": "Grandview-Woodland",
+      "street_name": "William St",
+      "block": 1700,
+      "type": "Metered Accessible Parking Space",
+      "description": "Metered Accessible Parking Space",
+      "spaces": 1,
+      "side": "North Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.06924199953224,
+            49.27397999908466
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.06924199953224,
+        "lat": 49.27397999908466
+      }
+    },
+    {
+      "object_id": 12,
+      "location": "West Side  5300 Yew St",
+      "geo_local_area": "Arbutus Ridge",
+      "street_name": "Yew St",
+      "block": 5300,
+      "type": "Accessible Parking Space",
+      "description": "Accessible Parking Space",
+      "spaces": 1,
+      "side": "West Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.15848399995153,
+            49.23781099889855
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.15848399995153,
+        "lat": 49.23781099889855
+      }
+    },
+    {
+      "object_id": 14,
+      "location": "South Side 2400 W 41st Av",
+      "geo_local_area": "Arbutus Ridge",
+      "street_name": "W 41st Av",
+      "block": 2400,
+      "type": "Metered Accessible Parking Space",
+      "description": "Metered Accessible Parking Space",
+      "spaces": 1,
+      "side": "South Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.16168600019044,
+            49.23460199885558
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.16168600019044,
+        "lat": 49.23460199885558
+      }
+    },
+    {
+      "object_id": 22,
+      "location": "West Side  700 Broughton St",
+      "geo_local_area": "West End",
+      "street_name": "Broughton St",
+      "block": 700,
+      "type": "Metered Accessible Parking Space",
+      "description": "Metered Accessible Parking Space",
+      "spaces": 1,
+      "side": "West Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.12979599979353,
+            49.288054998864645
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.12979599979353,
+        "lat": 49.288054998864645
+      }
+    },
+    {
+      "object_id": 23,
+      "location": "North Side 1800 Robson St",
+      "geo_local_area": "West End",
+      "street_name": "Robson St",
+      "block": 1800,
+      "type": "2HR Accessible Parking Space",
+      "description": "2HR Accessible Parking Space",
+      "spaces": 1,
+      "side": "North Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.13559599982548,
+            49.291634999240536
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.13559599982548,
+        "lat": 49.291634999240536
+      }
+    },
+    {
+      "object_id": 24,
+      "location": "West Side  1000 Bidwell St",
+      "geo_local_area": "West End",
+      "street_name": "Bidwell St",
+      "block": 1000,
+      "type": "Accessible Parking Space",
+      "description": "Accessible Parking Space",
+      "spaces": 1,
+      "side": "West Side",
+      "geom": {
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -123.13773800042377,
+            49.28795999941129
+          ],
+          "type": "Point"
+        },
+        "properties": {}
+      },
+      "geo_point_2d": {
+        "lon": -123.13773800042377,
+        "lat": 49.28795999941129
+      }
+    }
+  ]
+}
