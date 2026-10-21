@@ -1,0 +1,342 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "",
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 2926,
+    "latestWkid": 2926
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TNPN_RECORDID",
+      "type": "esriFieldTypeString",
+      "alias": "TNPN_RECORDID",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PERMITTED_ADDRESS",
+      "type": "esriFieldTypeString",
+      "alias": "PERMITTED_ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "REQUESTED_STARTDATE",
+      "type": "esriFieldTypeDate",
+      "alias": "REQUESTED_STARTDATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "REQUESTED_ENDDATE",
+      "type": "esriFieldTypeDate",
+      "alias": "REQUESTED_ENDDATE",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_START_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_START_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_START_AMPM",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_START_AMPM",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_END_TIME",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_END_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DAILY_END_AMPM",
+      "type": "esriFieldTypeString",
+      "alias": "DAILY_END_AMPM",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INCLUDE_SATURDAY",
+      "type": "esriFieldTypeString",
+      "alias": "INCLUDE_SATURDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INCLUDE_SUNDAY",
+      "type": "esriFieldTypeString",
+      "alias": "INCLUDE_SUNDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FULL_DAY_PARKING",
+      "type": "esriFieldTypeString",
+      "alias": "FULL_DAY_PARKING",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "LOCATION",
+      "type": "esriFieldTypeString",
+      "alias": "LOCATION",
+      "sqlType": "sqlTypeOther",
+      "length": 500,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RECORD_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "RECORD_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 30,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MODIFIED_DATE_TIME",
+      "type": "esriFieldTypeDate",
+      "alias": "MODIFIED_DATE_TIME",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "TNPN_RECORDID": "SDOT-TNPN-03-94782",
+        "PERMITTED_ADDRESS": "123 N 136TH ST",
+        "REQUESTED_STARTDATE": 1792134000000,
+        "REQUESTED_ENDDATE": 1794556800000,
+        "DAILY_START_TIME": "8",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "6",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "Yes",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "FOR SPAN OF PROPERTY ON SOUTH SIDE OF STREET AT 123 N 136TH ST.",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1792009706000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "TNPN_RECORDID": "SDOT-TNPN-03-94777",
+        "PERMITTED_ADDRESS": "14115 AURORA AVE N",
+        "REQUESTED_STARTDATE": 1792738800000,
+        "REQUESTED_ENDDATE": 1792738800000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "6",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "NO PARKING IN AURORA AVE N, BETWEEN N 143RD ST AND N 141ST ST, BOTH SIDES OF THE STREET.",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1792009251000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "TNPN_RECORDID": "SDOT-TNPN-03-95552",
+        "PERMITTED_ADDRESS": "13530 LINDEN AVE N",
+        "REQUESTED_STARTDATE": 1792566000000,
+        "REQUESTED_ENDDATE": 1793257200000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "5",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "No parking within 50ft of sign on either side of N 137th ST between Aurora AVE N and Linden AVE N (13530 Linden Ave N) 74838",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1792503526000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "TNPN_RECORDID": "SDOT-TNPN-03-95784",
+        "PERMITTED_ADDRESS": "14002 LINDEN AVE N",
+        "REQUESTED_STARTDATE": 1792738800000,
+        "REQUESTED_ENDDATE": 1792825200000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "6",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "Yes",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "Yes",
+        "LOCATION": "14002 linden ave N",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1792536489000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "TNPN_RECORDID": "SDOT-TNPN-03-91959",
+        "PERMITTED_ADDRESS": "14378 30TH AVE NE",
+        "REQUESTED_STARTDATE": 1790751600000,
+        "REQUESTED_ENDDATE": 1793257200000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "4",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "The East side of 30th Ave NE",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1790601017000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "TNPN_RECORDID": "SDOT-TNPN-03-91564",
+        "PERMITTED_ADDRESS": "13225 1ST AVE NW",
+        "REQUESTED_STARTDATE": 1790578800000,
+        "REQUESTED_ENDDATE": 1792998000000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "5",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "Job#108667580 - BOTH SIDES OF THE 13200 BLOCK OF 1ST AVE NW",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1790264133000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "TNPN_RECORDID": "SDOT-TNPN-03-91718",
+        "PERMITTED_ADDRESS": "13225 1ST AVE NW",
+        "REQUESTED_STARTDATE": 1790578800000,
+        "REQUESTED_ENDDATE": 1792998000000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "5",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "Job#108667580 - BOTH SIDES OF 1ST AVE NW BETWEEN NW 132ND ST AND NW 135TH PL",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1790344729000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "TNPN_RECORDID": "SDOT-TNPN-03-90591",
+        "PERMITTED_ADDRESS": "13023 GREENWOOD AVE N",
+        "REQUESTED_STARTDATE": 1789974000000,
+        "REQUESTED_ENDDATE": 1792393200000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "5",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "Job#108665877 - BOTH SIDES OF THE GREENWOOD AVE N BETWEEN N 130TH ST AND N 132ND ST",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1789744324000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "TNPN_RECORDID": "SDOT-TNPN-03-90597",
+        "PERMITTED_ADDRESS": "13023 GREENWOOD AVE N",
+        "REQUESTED_STARTDATE": 1789974000000,
+        "REQUESTED_ENDDATE": 1792393200000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "5",
+        "DAILY_END_AMPM": "PM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "No",
+        "LOCATION": "Job#108665877 - BOTH SIDES OF GREENWOOD AVE N BETWEEN N 130TH ST AND N 132ND ST",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1789744663000
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "TNPN_RECORDID": "SDOT-TNPN-03-88595",
+        "PERMITTED_ADDRESS": "12755 GREENWOOD AVE N",
+        "REQUESTED_STARTDATE": 1793606400000,
+        "REQUESTED_ENDDATE": 1793779200000,
+        "DAILY_START_TIME": "7",
+        "DAILY_START_AMPM": "AM",
+        "DAILY_END_TIME": "8",
+        "DAILY_END_AMPM": "AM",
+        "INCLUDE_SATURDAY": "No",
+        "INCLUDE_SUNDAY": "No",
+        "FULL_DAY_PARKING": "Yes",
+        "LOCATION": "We will place two, 5-minute parking signs to reserve 2 parallel parking stalls on N 130th St, closest to the ballot drop box.",
+        "RECORD_STATUS": "Issued",
+        "MODIFIED_DATE_TIME": 1788883716000
+      }
+    }
+  ],
+  "exceededTransferLimit": true
+}

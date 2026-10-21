@@ -1,0 +1,141 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:12.833307+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer/0",
+  "name": "Parking Facilities",
+  "geometry": "esriGeometryPoint",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 700
+  },
+  "editingInfo": {
+    "lastEditDate": 1792577867123,
+    "schemaLastEditDate": 1792577867123,
+    "dataLastEditDate": 1792577867123
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "Object Id",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "Facility Name",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_ADDRESS",
+      "type": "esriFieldTypeString",
+      "alias": "Facility Address",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "c599cc4b87bd411787ab88cd4e99fbda",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792578449000,
+    "licenseInfo": "",
+    "accessInformation": "SDOT, City of Seattle",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "Object Id",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 486313
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486314
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486315
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486316
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486317
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486318
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486319
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486320
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486321
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 486322
+        }
+      }
+    ]
+  }
+}

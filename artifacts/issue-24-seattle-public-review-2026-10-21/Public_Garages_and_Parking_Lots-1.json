@@ -1,0 +1,495 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:14.000059+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Public_Garages_and_Parking_Lots/FeatureServer/1",
+  "name": "Public Garages and Parking Lots",
+  "geometry": "esriGeometryPoint",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 700
+  },
+  "editingInfo": {
+    "lastEditDate": 1792430527517,
+    "schemaLastEditDate": 1792430527517,
+    "dataLastEditDate": 1792430527517
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BUSLIC_ID",
+      "type": "esriFieldTypeInteger",
+      "alias": "BUSLIC_ID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BUSLIC_LOCATION_ID",
+      "type": "esriFieldTypeInteger",
+      "alias": "BUSLIC_LOCATION_ID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_OWNER",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_FACILITY_OWNER",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_FACILITY_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_BUSINESS_CONTACT",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_BUSINESS_CONTACT",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_BUSINESS_PHONE",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_BUSINESS_PHONE",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_ADDRESS",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_FACILITY_ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_STALLS",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "DEA_STALLS",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FAC_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "FAC_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "HRS_MONFRI",
+      "type": "esriFieldTypeString",
+      "alias": "HRS_MONFRI",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "HRS_SAT",
+      "type": "esriFieldTypeString",
+      "alias": "HRS_SAT",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "HRS_SUN",
+      "type": "esriFieldTypeString",
+      "alias": "HRS_SUN",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "FAC_TYPE",
+      "type": "esriFieldTypeString",
+      "alias": "FAC_TYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_1HR",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_1HR",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_2HR",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_2HR",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_3HR",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_3HR",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_ALLDAY",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_ALLDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DISABLED",
+      "type": "esriFieldTypeString",
+      "alias": "DISABLED",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OP_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "OP_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OP_PHONE",
+      "type": "esriFieldTypeString",
+      "alias": "OP_PHONE",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OP_PHONE2",
+      "type": "esriFieldTypeString",
+      "alias": "OP_PHONE2",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OP_WEB",
+      "type": "esriFieldTypeString",
+      "alias": "OP_WEB",
+      "sqlType": "sqlTypeOther",
+      "length": 100,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAYMENT_TYPE",
+      "type": "esriFieldTypeString",
+      "alias": "PAYMENT_TYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OTHER",
+      "type": "esriFieldTypeString",
+      "alias": "OTHER",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WEBNAME",
+      "type": "esriFieldTypeString",
+      "alias": "WEBNAME",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "REGIONID",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "REGIONID",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OUTOFSERV",
+      "type": "esriFieldTypeString",
+      "alias": "OUTOFSERV",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "VACANT",
+      "type": "esriFieldTypeSmallInteger",
+      "alias": "VACANT",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DATETIME",
+      "type": "esriFieldTypeDate",
+      "alias": "DATETIME",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "SE_ANNO_CAD_DATA",
+      "type": "esriFieldTypeBlob",
+      "alias": "SE_ANNO_CAD_DATA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIGNID",
+      "type": "esriFieldTypeString",
+      "alias": "SIGNID",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GlobalID",
+      "type": "esriFieldTypeGlobalID",
+      "alias": "GlobalID",
+      "sqlType": "sqlTypeOther",
+      "length": 38,
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": "NEWID() WITH VALUES"
+    }
+  ],
+  "item": {
+    "id": "3029d63401544cd6b9783ef1bfb40b91",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792430530000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location or any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Public_Garages_and_Parking_Lots/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "GlobalID",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BUSLIC_ID",
+        "type": "esriFieldTypeInteger",
+        "alias": "BUSLIC_ID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 263901,
+          "BUSLIC_ID": 666877
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263902,
+          "BUSLIC_ID": 574590
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263903,
+          "BUSLIC_ID": 732098
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263904,
+          "BUSLIC_ID": 611676
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263905,
+          "BUSLIC_ID": 57562
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263906,
+          "BUSLIC_ID": 661194
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263907,
+          "BUSLIC_ID": 591247
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263908,
+          "BUSLIC_ID": 535675
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263909,
+          "BUSLIC_ID": 588668
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 263910,
+          "BUSLIC_ID": 684294
+        }
+      }
+    ]
+  }
+}

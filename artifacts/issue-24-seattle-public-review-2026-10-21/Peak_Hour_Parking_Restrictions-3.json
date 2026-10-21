@@ -1,0 +1,323 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:11.801329+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Peak_Hour_Parking_Restrictions/FeatureServer/3",
+  "name": "Peak Hour Parking Restrictions",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 492
+  },
+  "editingInfo": {
+    "lastEditDate": 1792430447750,
+    "schemaLastEditDate": 1792430447750,
+    "dataLastEditDate": 1792430447750
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STPOINT",
+      "type": "esriFieldTypeDouble",
+      "alias": "STPOINT",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ENDPOINT",
+      "type": "esriFieldTypeDouble",
+      "alias": "ENDPOINT",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WID",
+      "type": "esriFieldTypeInteger",
+      "alias": "WID",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PKHRCODE",
+      "type": "esriFieldTypeString",
+      "alias": "PKHRCODE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PKHRDESC",
+      "type": "esriFieldTypeString",
+      "alias": "PKHRDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeDouble",
+      "alias": "SEGKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "SIDE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURRENT_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "CURRENT_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PRIMARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "PRIMARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SECONDARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "SECONDARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDEYN",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDEYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDECOMMENT",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDECOMMENT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "19f041b427604175810c0f294e77dfdf",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792430453000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location or any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Peak_Hour_Parking_Restrictions/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 26222,
+          "SIDE": "SE",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 56462
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26223,
+          "SIDE": "SW",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 75153
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26224,
+          "SIDE": "SW",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 6181
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26225,
+          "SIDE": "SW",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 25701
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26226,
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 2386
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26227,
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 26665
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26228,
+          "SIDE": "NE",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 56658
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26229,
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 31438
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26230,
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 33018
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 26231,
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 1610
+        }
+      }
+    ]
+  }
+}

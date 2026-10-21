@@ -1,0 +1,648 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:08.994608+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer/1",
+  "name": "Residents Eligible for Restricted Parking Zone Permits",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 4464
+  },
+  "editingInfo": {
+    "lastEditDate": 1792588144734,
+    "schemaLastEditDate": 1792588144734,
+    "dataLastEditDate": 1792588144734
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SEGKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "SEGKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DISTANCE",
+      "type": "esriFieldTypeInteger",
+      "alias": "DISTANCE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKFACE_LENGTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "BLOCKFACE_LENGTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ENDDISTANCE",
+      "type": "esriFieldTypeInteger",
+      "alias": "ENDDISTANCE",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WIDTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "WIDTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITID",
+      "type": "esriFieldTypeString",
+      "alias": "UNITID",
+      "sqlType": "sqlTypeOther",
+      "length": 20,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITID2",
+      "type": "esriFieldTypeString",
+      "alias": "UNITID2",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITDESC",
+      "type": "esriFieldTypeString",
+      "alias": "UNITDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "SIDE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKID",
+      "type": "esriFieldTypeString",
+      "alias": "BLOCKID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKNBR",
+      "type": "esriFieldTypeDouble",
+      "alias": "BLOCKNBR",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZZONE",
+      "type": "esriFieldTypeString",
+      "alias": "RPZZONE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZAREA",
+      "type": "esriFieldTypeString",
+      "alias": "RPZAREA",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_ZONE_AREA",
+      "type": "esriFieldTypeString",
+      "alias": "RPZ_ZONE_AREA",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DECAL_1",
+      "type": "esriFieldTypeDouble",
+      "alias": "DECAL_1",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DECAL_2",
+      "type": "esriFieldTypeDouble",
+      "alias": "DECAL_2",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DECAL_3",
+      "type": "esriFieldTypeDouble",
+      "alias": "DECAL_3",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GUESTPERMIT",
+      "type": "esriFieldTypeDouble",
+      "alias": "GUESTPERMIT",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RENEWS",
+      "type": "esriFieldTypeString",
+      "alias": "RENEWS",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WEBLINK",
+      "type": "esriFieldTypeString",
+      "alias": "WEBLINK",
+      "sqlType": "sqlTypeOther",
+      "length": 100,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PRIMARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "PRIMARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SECONDARYDISTRICTCD",
+      "type": "esriFieldTypeString",
+      "alias": "SECONDARYDISTRICTCD",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDEYN",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDEYN",
+      "sqlType": "sqlTypeOther",
+      "length": 1,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OVERRIDECOMMENT",
+      "type": "esriFieldTypeString",
+      "alias": "OVERRIDECOMMENT",
+      "sqlType": "sqlTypeOther",
+      "length": 255,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SUBSIDIES",
+      "type": "esriFieldTypeString",
+      "alias": "SUBSIDIES",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "INEFFECT",
+      "type": "esriFieldTypeString",
+      "alias": "INEFFECT",
+      "sqlType": "sqlTypeOther",
+      "length": 200,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CreationDate",
+      "type": "esriFieldTypeDate",
+      "alias": "CreationDate",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Creator",
+      "type": "esriFieldTypeString",
+      "alias": "Creator",
+      "sqlType": "sqlTypeOther",
+      "length": 128,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "EditDate",
+      "type": "esriFieldTypeDate",
+      "alias": "EditDate",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null,
+      "precision": 1
+    },
+    {
+      "name": "Editor",
+      "type": "esriFieldTypeString",
+      "alias": "Editor",
+      "sqlType": "sqlTypeOther",
+      "length": 128,
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "f6f00c5cf9634d578d41156bf4a4679f",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792588286000,
+    "licenseInfo": "<span style='font-family:&quot;Avenir Next W01&quot;, &quot;Avenir Next W00&quot;, &quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px;'>The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.</span>",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeInteger",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BLOCKFACE_LENGTH",
+        "type": "esriFieldTypeInteger",
+        "alias": "BLOCKFACE_LENGTH",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZAREA",
+        "type": "esriFieldTypeString",
+        "alias": "RPZAREA",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WEBLINK",
+        "type": "esriFieldTypeString",
+        "alias": "WEBLINK",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "INEFFECT",
+        "type": "esriFieldTypeString",
+        "alias": "INEFFECT",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 93724,
+          "ELMNTKEY": 121923,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 254,
+          "UNITID": "03065",
+          "UNITDESC": "39TH AVE S BETWEEN S HOLLY PARK DR AND S LYON CT",
+          "SIDE": "W",
+          "RPZZONE": "30",
+          "RPZAREA": null,
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93725,
+          "ELMNTKEY": 47250,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 648,
+          "UNITID": "00555",
+          "UNITDESC": "15TH AVE NE BETWEEN NE 70TH ST AND NE 73RD ST",
+          "SIDE": "E",
+          "RPZZONE": "19",
+          "RPZAREA": "2",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 7 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93726,
+          "ELMNTKEY": 69777,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 238,
+          "UNITID": "00455",
+          "UNITDESC": "14TH AVE NE BETWEEN NE 65TH ST AND NE 66TH ST",
+          "SIDE": "W",
+          "RPZZONE": "19",
+          "RPZAREA": "2",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 7 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93727,
+          "ELMNTKEY": 69773,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 454,
+          "UNITID": "00455",
+          "UNITDESC": "14TH AVE NE BETWEEN NE 63RD ST AND NE 65TH ST",
+          "SIDE": "W",
+          "RPZZONE": "19",
+          "RPZAREA": "1",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 7 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93728,
+          "ELMNTKEY": 47241,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 262,
+          "UNITID": "00555",
+          "UNITDESC": "15TH AVE NE BETWEEN NE 62ND ST AND NE 63RD ST",
+          "SIDE": "W",
+          "RPZZONE": "19",
+          "RPZAREA": "1",
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 7 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93729,
+          "ELMNTKEY": 20682,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 261,
+          "UNITID": "16240",
+          "UNITDESC": "S HUDSON ST BETWEEN RAINIER AVE S AND 39TH AVE S",
+          "SIDE": "S",
+          "RPZZONE": "29",
+          "RPZAREA": null,
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93730,
+          "ELMNTKEY": 67853,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 260,
+          "UNITID": "18135",
+          "UNITDESC": "SW ROSE ST BETWEEN 46TH AVE SW AND FAUNTLEROY WAY SW",
+          "SIDE": "N",
+          "RPZZONE": "3",
+          "RPZAREA": null,
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Every Day 2 AM to 5 AM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93731,
+          "ELMNTKEY": 22833,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 300,
+          "UNITID": "18055",
+          "UNITDESC": "SW OREGON ST BETWEEN 42ND AVE SW AND CALIFORNIA AVE SW",
+          "SIDE": "N",
+          "RPZZONE": "35",
+          "RPZAREA": null,
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Saturday 7 AM to 6 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93732,
+          "ELMNTKEY": 20681,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 261,
+          "UNITID": "16240",
+          "UNITDESC": "S HUDSON ST BETWEEN RAINIER AVE S AND 39TH AVE S",
+          "SIDE": "N",
+          "RPZZONE": "29",
+          "RPZAREA": null,
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday-Friday 7 AM \u2013 6 PM"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 93733,
+          "ELMNTKEY": 63449,
+          "DISTANCE": 13,
+          "BLOCKFACE_LENGTH": 306,
+          "UNITID": "14315",
+          "UNITDESC": "NW 39TH ST BETWEEN 1ST W AVE NW AND 2ND AVE NW",
+          "SIDE": "N",
+          "RPZZONE": "27",
+          "RPZAREA": null,
+          "WEBLINK": "https://cosaccela.seattle.gov/portal/",
+          "INEFFECT": "Monday \u2013 Saturday 8 AM to Midnight (2-hr parking allowed for non-permitted vehicles 8am-8pm; No parking except by permit from 8pm to midnight)"
+        }
+      }
+    ]
+  }
+}

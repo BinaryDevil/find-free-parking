@@ -1,0 +1,337 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:15.053782+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer/2",
+  "name": "Street Parking",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 46234
+  },
+  "editingInfo": {
+    "lastEditDate": 1792578091683,
+    "schemaLastEditDate": 1792578091683,
+    "dataLastEditDate": 1792578091683
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "Object Id",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeInteger",
+      "alias": "Element Key",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "UNITDESC",
+      "type": "esriFieldTypeString",
+      "alias": "Unit Description",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "Side",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PARKING_CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "Parking Category",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PEAK_HOUR",
+      "type": "esriFieldTypeString",
+      "alias": "Peak Hour",
+      "sqlType": "sqlTypeOther",
+      "length": 60,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RPZ_ZONE",
+      "type": "esriFieldTypeString",
+      "alias": "RPZ Zone",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PAIDAREA",
+      "type": "esriFieldTypeString",
+      "alias": "Paid Area",
+      "sqlType": "sqlTypeOther",
+      "length": 40,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "c599cc4b87bd411787ab88cd4e99fbda",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1792578449000,
+    "licenseInfo": "",
+    "accessInformation": "SDOT, City of Seattle",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Features/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "Object Id",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "Element Key",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "Unit Description",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "Side",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "Parking Category",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "Peak Hour",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ Zone",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PAIDAREA",
+        "type": "esriFieldTypeString",
+        "alias": "Paid Area",
+        "sqlType": "sqlTypeOther",
+        "length": 40,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 31581285,
+          "ELMNTKEY": 6097,
+          "UNITDESC": "39TH AVE S BETWEEN S KENYON WAY AND S ROSE ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581286,
+          "ELMNTKEY": 31149,
+          "UNITDESC": "8TH AVE NE BETWEEN NE NORTHGATE WAY AND NE 115TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581287,
+          "ELMNTKEY": 16490,
+          "UNITDESC": "NE 115TH ST BETWEEN PINEHURST WAY NE AND 14TH AVE NE",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581288,
+          "ELMNTKEY": 53101,
+          "UNITDESC": "59TH AVE S BETWEEN S EASTWOOD DR AND DEAD END 2",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581289,
+          "ELMNTKEY": 2409,
+          "UNITDESC": "16TH AVE SW BETWEEN SW AUSTIN ST AND SW HOLDEN ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581290,
+          "ELMNTKEY": 53105,
+          "UNITDESC": "59TH AVE S BETWEEN DEAD END 3 AND S AVON ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581291,
+          "ELMNTKEY": 122426,
+          "UNITDESC": "4TH AVE SB ON RP BETWEEN 4TH AVE S AND EDGAR MARTINEZ DR S",
+          "SIDE": "E",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581292,
+          "ELMNTKEY": 88485,
+          "UNITDESC": "S HUDSON ST BETWEEN 44TH E AVE S AND BOWEN PL S",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581293,
+          "ELMNTKEY": 62493,
+          "UNITDESC": "NE 65TH ST BETWEEN 32ND E AVE NE AND 33RD AVE NE",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "Time Limited Parking",
+          "PEAK_HOUR": "7-9AM",
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 31581294,
+          "ELMNTKEY": 68206,
+          "UNITDESC": "W BERTONA ST BETWEEN 43RD AVE W AND 44TH AVE W",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "PAIDAREA": null
+        }
+      }
+    ]
+  }
+}

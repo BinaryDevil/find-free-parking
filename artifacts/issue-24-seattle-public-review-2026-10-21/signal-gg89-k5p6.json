@@ -1,0 +1,61 @@
+{
+  "url": "https://data.seattle.gov/resource/gg89-k5p6.json",
+  "count": [
+    {
+      "count": "156519"
+    }
+  ],
+  "name": "Paid Parking Transaction Data",
+  "rowsUpdatedAt": 1792591894,
+  "licenseId": "PUBLIC_DOMAIN",
+  "columns": [
+    {
+      "fieldName": "transaction_id",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "meter_code",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "transactiondatetime",
+      "dataTypeName": "calendar_date"
+    },
+    {
+      "fieldName": "payment_mean",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "amount_paid",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "durationinminutes",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "blockface_name",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "sideofstreet",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "elementkey",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "parkingspacenumber",
+      "dataTypeName": "text"
+    },
+    {
+      "fieldName": "latitude",
+      "dataTypeName": "number"
+    },
+    {
+      "fieldName": "longitude",
+      "dataTypeName": "number"
+    }
+  ]
+}

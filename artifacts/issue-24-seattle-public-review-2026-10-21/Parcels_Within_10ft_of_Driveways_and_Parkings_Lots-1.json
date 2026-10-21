@@ -1,0 +1,341 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:14.408976+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parcels_Within_10ft_of_Driveways_and_Parkings_Lots/FeatureServer/1",
+  "name": "Parcels Within 10ft of Driveways and Parkings Lots",
+  "geometry": "esriGeometryPolygon",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 140023
+  },
+  "editingInfo": {
+    "lastEditDate": 1709839054905,
+    "schemaLastEditDate": 1709839054905,
+    "dataLastEditDate": 1709839054905
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GEOM_AREA",
+      "type": "esriFieldTypeDouble",
+      "alias": "GEOM_AREA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GEOM_PERIMETER",
+      "type": "esriFieldTypeDouble",
+      "alias": "GEOM_PERIMETER",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PIN",
+      "type": "esriFieldTypeString",
+      "alias": "PIN",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MAJOR",
+      "type": "esriFieldTypeString",
+      "alias": "MAJOR",
+      "sqlType": "sqlTypeOther",
+      "length": 6,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "MINOR",
+      "type": "esriFieldTypeString",
+      "alias": "MINOR",
+      "sqlType": "sqlTypeOther",
+      "length": 4,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "PRES_USE_DESC",
+      "type": "esriFieldTypeString",
+      "alias": "PRES_USE_DESC",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SQFTLOT",
+      "type": "esriFieldTypeInteger",
+      "alias": "SQFTLOT",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TAXPAYER",
+      "type": "esriFieldTypeString",
+      "alias": "TAXPAYER",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_HOUSE",
+      "type": "esriFieldTypeString",
+      "alias": "STR_HOUSE",
+      "sqlType": "sqlTypeOther",
+      "length": 5,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_MOD",
+      "type": "esriFieldTypeString",
+      "alias": "STR_MOD",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_PREF",
+      "type": "esriFieldTypeString",
+      "alias": "STR_PREF",
+      "sqlType": "sqlTypeOther",
+      "length": 2,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "STR_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 25,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_TYPE",
+      "type": "esriFieldTypeString",
+      "alias": "STR_TYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 6,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_SUFF",
+      "type": "esriFieldTypeString",
+      "alias": "STR_SUFF",
+      "sqlType": "sqlTypeOther",
+      "length": 2,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STR_ZIP",
+      "type": "esriFieldTypeString",
+      "alias": "STR_ZIP",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ADDRESS",
+      "type": "esriFieldTypeString",
+      "alias": "ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "length": 60,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SE_ANNO_CAD_DATA",
+      "type": "esriFieldTypeBlob",
+      "alias": "SE_ANNO_CAD_DATA",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Area",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Area",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "171b624d920049539a50bcae9ac6d169",
+    "owner": "CityLight_SeattleCityGIS",
+    "access": "public",
+    "modified": 1709839066000,
+    "licenseInfo": "",
+    "accessInformation": "",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parcels_Within_10ft_of_Driveways_and_Parkings_Lots/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ADDRESS",
+        "type": "esriFieldTypeString",
+        "alias": "ADDRESS",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 1,
+          "ADDRESS": "931   29TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 2,
+          "ADDRESS": "941   29TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 3,
+          "ADDRESS": "947   29TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4,
+          "ADDRESS": "920   29TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 5,
+          "ADDRESS": "913   30TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 6,
+          "ADDRESS": "925   30TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 7,
+          "ADDRESS": "931   30TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 8,
+          "ADDRESS": "923   29TH AVE   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 9,
+          "ADDRESS": "3119  E PIKE ST   98122"
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 10,
+          "ADDRESS": "1501   32ND AVE   98122"
+        }
+      }
+    ]
+  }
+}

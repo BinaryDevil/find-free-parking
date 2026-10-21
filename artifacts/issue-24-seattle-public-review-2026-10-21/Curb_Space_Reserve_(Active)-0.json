@@ -1,0 +1,382 @@
+{
+  "retrieved_utc": "2026-10-21T21:21:11.910231+00:00",
+  "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curb_Space_Reserve_(Active)/FeatureServer/0",
+  "name": "Curb Space Categories",
+  "geometry": "esriGeometryPolyline",
+  "objectIdField": "OBJECTID",
+  "count": {
+    "count": 12632
+  },
+  "editingInfo": {
+    "lastEditDate": 1711037930944,
+    "schemaLastEditDate": 1711037930944,
+    "dataLastEditDate": 1711037930944
+  },
+  "description": "",
+  "copyrightText": "",
+  "dateFieldsTimeReference": {
+    "timeZone": "UTC",
+    "timeZoneIANA": "Etc/UTC",
+    "respectsDaylightSaving": false
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID",
+      "sqlType": "sqlTypeOther",
+      "nullable": false,
+      "editable": false,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCKID",
+      "type": "esriFieldTypeString",
+      "alias": "BLOCKID",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ROWNBR",
+      "type": "esriFieldTypeDouble",
+      "alias": "ROWNBR",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_ST",
+      "type": "esriFieldTypeDouble",
+      "alias": "BLOCK_ST",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "BLOCK_END",
+      "type": "esriFieldTypeDouble",
+      "alias": "BLOCK_END",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "WIDTH_OFFSET",
+      "type": "esriFieldTypeInteger",
+      "alias": "WIDTH_OFFSET",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "GEOBASYS",
+      "type": "esriFieldTypeDouble",
+      "alias": "GEOBASYS",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACELENGTH",
+      "type": "esriFieldTypeInteger",
+      "alias": "SPACELENGTH",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACETYPE",
+      "type": "esriFieldTypeString",
+      "alias": "SPACETYPE",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACETYPEDESC",
+      "type": "esriFieldTypeString",
+      "alias": "SPACETYPEDESC",
+      "sqlType": "sqlTypeOther",
+      "length": 300,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "TIME_LIMIT",
+      "type": "esriFieldTypeString",
+      "alias": "TIME_LIMIT",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SPACE_NB",
+      "type": "esriFieldTypeString",
+      "alias": "SPACE_NB",
+      "sqlType": "sqlTypeOther",
+      "length": 11,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CATEGORY",
+      "type": "esriFieldTypeString",
+      "alias": "CATEGORY",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "SIDE",
+      "type": "esriFieldTypeString",
+      "alias": "SIDE",
+      "sqlType": "sqlTypeOther",
+      "length": 3,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "CURRENT_STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "CURRENT_STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 10,
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "ELMNTKEY",
+      "type": "esriFieldTypeDouble",
+      "alias": "ELMNTKEY",
+      "sqlType": "sqlTypeOther",
+      "nullable": true,
+      "editable": true,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "Shape__Length",
+      "type": "esriFieldTypeDouble",
+      "alias": "Shape__Length",
+      "sqlType": "sqlTypeDouble",
+      "nullable": true,
+      "editable": true,
+      "isViewOverride": true,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "item": {
+    "id": "8c91829ccb624aa2a997fa4ecca4d5fd",
+    "owner": "Transportation_SeattleCityGIS",
+    "access": "public",
+    "modified": 1713736851000,
+    "licenseInfo": "The City of Seattle makes no representation or warranty as to its accuracy, and in particular, its accuracy as to labeling, dimensions, contours, property boundaries, or placement or location of any map feature thereof.",
+    "accessInformation": "City of Seattle, Seattle Department of Transportation",
+    "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Curb_Space_Reserve_(Active)/FeatureServer"
+  },
+  "sample": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SPACETYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SPACETYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeDouble",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "exceededTransferLimit": true,
+    "features": [
+      {
+        "attributes": {
+          "OBJECTID": 4045354,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 71574
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045355,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 70866
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045356,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24417
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045357,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 25042
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045358,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 74149
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045367,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "E",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 69930
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045374,
+          "SPACETYPE": "PS-LUL",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 2065
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045379,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24553
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045386,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 24585
+        }
+      },
+      {
+        "attributes": {
+          "OBJECTID": 4045392,
+          "SPACETYPE": "PS",
+          "CATEGORY": "PAID",
+          "SIDE": "W",
+          "CURRENT_STATUS": "INSVC",
+          "ELMNTKEY": 2089
+        }
+      }
+    ]
+  }
+}

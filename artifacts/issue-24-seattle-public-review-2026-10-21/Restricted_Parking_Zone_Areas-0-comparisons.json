@@ -1,0 +1,1183 @@
+{
+  "source_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Restricted_Parking_Zone_Areas/FeatureServer/0",
+  "keys": [
+    106723,
+    121923,
+    116673,
+    44030,
+    49333,
+    88481,
+    110671,
+    51209,
+    86969,
+    100845
+  ],
+  "selection": "first ten distinct non-null curb keys from at most 2000 safe projected records; not a representative passing safety sample",
+  "source_records": [
+    {
+      "attributes": {
+        "OBJECTID": 1515949,
+        "ELMNTKEY": 106723,
+        "DISTANCE": 0,
+        "BLOCKFACE_LENGTH": 268,
+        "END_DISTANCE": 268,
+        "UNITID": "10615",
+        "UNITDESC": "WOODLAWN AVE NE BETWEEN NE 73RD ST AND 4TH N AVE NE",
+        "SIDE": "C",
+        "PARKING_CATEGORY": "None",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515950,
+        "ELMNTKEY": 121923,
+        "DISTANCE": 13,
+        "BLOCKFACE_LENGTH": 254,
+        "END_DISTANCE": 267,
+        "UNITID": "03065",
+        "UNITDESC": "39TH AVE S BETWEEN S HOLLY PARK DR AND S LYON CT",
+        "SIDE": "W",
+        "PARKING_CATEGORY": "Restricted Parking Zone",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": "30",
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": 120,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515951,
+        "ELMNTKEY": 116673,
+        "DISTANCE": 0,
+        "BLOCKFACE_LENGTH": 287,
+        "END_DISTANCE": 287,
+        "UNITID": "17370",
+        "UNITDESC": "SW ATLANTIC ST BETWEEN 44TH AVE SW AND 45TH E AVE SW",
+        "SIDE": "C",
+        "PARKING_CATEGORY": "None",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515952,
+        "ELMNTKEY": 44030,
+        "DISTANCE": 30,
+        "BLOCKFACE_LENGTH": 121,
+        "END_DISTANCE": 151,
+        "UNITID": "17235",
+        "UNITDESC": "SW 106TH ST BETWEEN CALIFORNIA AVE SW AND MARINE VIEW DR SW",
+        "SIDE": "S",
+        "PARKING_CATEGORY": "Unrestricted Parking",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515953,
+        "ELMNTKEY": 49333,
+        "DISTANCE": 13,
+        "BLOCKFACE_LENGTH": 637,
+        "END_DISTANCE": 650,
+        "UNITID": "01910",
+        "UNITDESC": "28TH AVE NE BETWEEN NE 62ND ST AND NE 65TH ST",
+        "SIDE": "W",
+        "PARKING_CATEGORY": "Unrestricted Parking",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515954,
+        "ELMNTKEY": 88481,
+        "DISTANCE": 13,
+        "BLOCKFACE_LENGTH": 211,
+        "END_DISTANCE": 224,
+        "UNITID": "16240",
+        "UNITDESC": "S HUDSON ST BETWEEN 43RD AVE S AND 44TH W AVE S",
+        "SIDE": "N",
+        "PARKING_CATEGORY": "No Parking Allowed",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515955,
+        "ELMNTKEY": 110671,
+        "DISTANCE": 0,
+        "BLOCKFACE_LENGTH": 659,
+        "END_DISTANCE": 659,
+        "UNITID": "12715",
+        "UNITDESC": "N NORTHGATE WAY BETWEEN BURKE AVE N AND MERIDIAN AVE N",
+        "SIDE": "C",
+        "PARKING_CATEGORY": "None",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515956,
+        "ELMNTKEY": 51209,
+        "DISTANCE": 13,
+        "BLOCKFACE_LENGTH": 639,
+        "END_DISTANCE": 652,
+        "UNITID": "02970",
+        "UNITDESC": "38TH AVE NE BETWEEN NE 65TH ST AND NE 68TH ST",
+        "SIDE": "W",
+        "PARKING_CATEGORY": "Unrestricted Parking",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515957,
+        "ELMNTKEY": 86969,
+        "DISTANCE": 23,
+        "BLOCKFACE_LENGTH": 284,
+        "END_DISTANCE": 307,
+        "UNITID": "14845",
+        "UNITDESC": "NW 85TH ST BETWEEN MARY AVE NW AND 15TH AVE NW",
+        "SIDE": "N",
+        "PARKING_CATEGORY": "No Parking Allowed",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1515958,
+        "ELMNTKEY": 100845,
+        "DISTANCE": 0,
+        "BLOCKFACE_LENGTH": 663,
+        "END_DISTANCE": 663,
+        "UNITID": "04075",
+        "UNITDESC": "52ND AVE NE BETWEEN NE 65TH ST AND NE 68TH ST",
+        "SIDE": "C",
+        "PARKING_CATEGORY": "None",
+        "WKD_RATE1": 0,
+        "WKD_START1": 0,
+        "WKD_END1": 0,
+        "WKD_RATE2": 0,
+        "WKD_START2": 0,
+        "WKD_END2": 0,
+        "WKD_RATE3": 0,
+        "WKD_START3": 0,
+        "WKD_END3": 0,
+        "SAT_RATE1": 0,
+        "SAT_START1": 0,
+        "SAT_END1": 0,
+        "SAT_RATE2": 0,
+        "SAT_START2": 0,
+        "SAT_END2": 0,
+        "SAT_RATE3": 0,
+        "SAT_START3": 0,
+        "SAT_END3": 0,
+        "SUN_RATE1": 0,
+        "SUN_START1": 0,
+        "SUN_END1": 0,
+        "SUN_RATE2": 0,
+        "SUN_START2": 0,
+        "SUN_END2": 0,
+        "SUN_RATE3": 0,
+        "SUN_START3": 0,
+        "SUN_END3": 0,
+        "PEAK_HOUR": null,
+        "RPZ_ZONE": null,
+        "RPZ_AREA": null,
+        "PAIDAREA": null,
+        "PARKING_TIME_LIMIT": null,
+        "SUBAREA": null
+      }
+    }
+  ],
+  "blockface": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPolyline",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITDESC",
+        "type": "esriFieldTypeString",
+        "alias": "UNITDESC",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIDE",
+        "type": "esriFieldTypeString",
+        "alias": "SIDE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "PARKING_CATEGORY",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "PARKING_TIME_LIMIT",
+        "type": "esriFieldTypeDouble",
+        "alias": "PARKING_TIME_LIMIT",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimeLimit",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Coded domain to translate parking time limits from minutes to hours",
+          "codedValues": [
+            {
+              "name": "0.5",
+              "code": 30
+            },
+            {
+              "name": "1.0",
+              "code": 60
+            },
+            {
+              "name": "2.0",
+              "code": 120
+            },
+            {
+              "name": "3.0",
+              "code": 180
+            },
+            {
+              "name": "4.0",
+              "code": 240
+            },
+            {
+              "name": "6.0",
+              "code": 360
+            },
+            {
+              "name": "7.0",
+              "code": 420
+            },
+            {
+              "name": "10.0",
+              "code": 600
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PEAK_HOUR",
+        "type": "esriFieldTypeString",
+        "alias": "PEAK_HOUR",
+        "sqlType": "sqlTypeOther",
+        "length": 60,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RPZ_ZONE",
+        "type": "esriFieldTypeString",
+        "alias": "RPZ_ZONE",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_RATE1",
+        "type": "esriFieldTypeDouble",
+        "alias": "WKD_RATE1",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_START1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_START1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "WKD_END1",
+        "type": "esriFieldTypeInteger",
+        "alias": "WKD_END1",
+        "sqlType": "sqlTypeOther",
+        "domain": {
+          "type": "codedValue",
+          "name": "SDOT_ParkingTimes",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Descript",
+          "codedValues": [
+            {
+              "name": "7 AM",
+              "code": 479
+            },
+            {
+              "name": "8 AM",
+              "code": 480
+            },
+            {
+              "name": "8 AM",
+              "code": 539
+            },
+            {
+              "name": "9 AM",
+              "code": 540
+            },
+            {
+              "name": "10 AM",
+              "code": 599
+            },
+            {
+              "name": "10 AM",
+              "code": 600
+            },
+            {
+              "name": "11 AM",
+              "code": 659
+            },
+            {
+              "name": "11 AM",
+              "code": 660
+            },
+            {
+              "name": "12 PM",
+              "code": 719
+            },
+            {
+              "name": "12 PM",
+              "code": 720
+            },
+            {
+              "name": "1 PM",
+              "code": 779
+            },
+            {
+              "name": "1 PM",
+              "code": 780
+            },
+            {
+              "name": "2 PM",
+              "code": 839
+            },
+            {
+              "name": "2 PM",
+              "code": 840
+            },
+            {
+              "name": "3 PM",
+              "code": 899
+            },
+            {
+              "name": "3 PM",
+              "code": 900
+            },
+            {
+              "name": "4 PM",
+              "code": 959
+            },
+            {
+              "name": "4 PM",
+              "code": 960
+            },
+            {
+              "name": "5 PM",
+              "code": 1019
+            },
+            {
+              "name": "5 PM",
+              "code": 1020
+            },
+            {
+              "name": "6 PM",
+              "code": 1079
+            },
+            {
+              "name": "6 PM",
+              "code": 1080
+            },
+            {
+              "name": "7 PM",
+              "code": 1139
+            },
+            {
+              "name": "7 PM",
+              "code": 1140
+            },
+            {
+              "name": "8 PM",
+              "code": 1199
+            },
+            {
+              "name": "8 PM",
+              "code": 1200
+            },
+            {
+              "name": "10 PM",
+              "code": 1319
+            },
+            {
+              "name": "10 PM",
+              "code": 1320
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 86969,
+          "UNITDESC": "NW 85TH ST BETWEEN MARY AVE NW AND 15TH AVE NW",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITDESC": "S HUDSON ST BETWEEN 43RD AVE S AND 44TH W AVE S",
+          "SIDE": "N",
+          "PARKING_CATEGORY": "No Parking Allowed",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 121923,
+          "UNITDESC": "39TH AVE S BETWEEN S HOLLY PARK DR AND S LYON CT",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Restricted Parking Zone",
+          "PARKING_TIME_LIMIT": 120,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": "30",
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 44030,
+          "UNITDESC": "SW 106TH ST BETWEEN CALIFORNIA AVE SW AND MARINE VIEW DR SW",
+          "SIDE": "S",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 49333,
+          "UNITDESC": "28TH AVE NE BETWEEN NE 62ND ST AND NE 65TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 51209,
+          "UNITDESC": "38TH AVE NE BETWEEN NE 65TH ST AND NE 68TH ST",
+          "SIDE": "W",
+          "PARKING_CATEGORY": "Unrestricted Parking",
+          "PARKING_TIME_LIMIT": null,
+          "PEAK_HOUR": null,
+          "RPZ_ZONE": null,
+          "WKD_RATE1": 0,
+          "WKD_START1": 0,
+          "WKD_END1": 0
+        }
+      }
+    ]
+  },
+  "signs": {
+    "objectIdFieldName": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdFieldName": "",
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+      "wkid": 2926,
+      "latestWkid": 2926
+    },
+    "fields": [
+      {
+        "name": "ELMNTKEY",
+        "type": "esriFieldTypeInteger",
+        "alias": "ELMNTKEY",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "UNITID",
+        "type": "esriFieldTypeString",
+        "alias": "UNITID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "SIGNTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "SIGNTYPE",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CURRENT_STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "CURRENT_STATUS",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TEXT",
+        "type": "esriFieldTypeString",
+        "alias": "TEXT",
+        "sqlType": "sqlTypeOther",
+        "length": 300,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DISTANCE",
+        "type": "esriFieldTypeDouble",
+        "alias": "DISTANCE",
+        "sqlType": "sqlTypeOther",
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "features": [
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100447",
+          "SIGNTYPE": "R7-NPL",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [LEFT ARROW]",
+          "DISTANCE": 44
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100446",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 13
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 121923,
+          "UNITID": "SGN-131437",
+          "SIGNTYPE": "R8-2HZ30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 H [Circle P] 7A-6P MON-FRI, EXC BY ZN 30 PERMIT",
+          "DISTANCE": 33
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 86969,
+          "UNITID": "SGN-97679",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 107
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-99397",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 206
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 51209,
+          "UNITID": "SGN-242696",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 632
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 121923,
+          "UNITID": "SGN-125298",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 33
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100445",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 13
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 49333,
+          "UNITID": "SGN-243536",
+          "SIGNTYPE": "R7-NPR",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[SLASH OVER CIRCLE] P [RIGHT ARROW]",
+          "DISTANCE": 630
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 86969,
+          "UNITID": "SGN-258266",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "[RED SLASHED CIRCLE] P",
+          "DISTANCE": 38
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 121923,
+          "UNITID": "SGN-131439",
+          "SIGNTYPE": "R8-2HZ30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 H [Circle P] 7A-6P MON-FRI, EXC BY ZN 30 PERMIT",
+          "DISTANCE": 156
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100449",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 78
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100452",
+          "SIGNTYPE": "R7-W",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "WEST OF HERE",
+          "DISTANCE": 78
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100448",
+          "SIGNTYPE": "R7-NP",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING ANYTIME",
+          "DISTANCE": 78
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 88481,
+          "UNITID": "SGN-100451",
+          "SIGNTYPE": "R7-W",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "WEST OF HERE",
+          "DISTANCE": 78
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 51209,
+          "UNITID": "SGN-21775",
+          "SIGNTYPE": "R7-WI30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "NO PARKING WITHIN 30 FEET",
+          "DISTANCE": 13
+        }
+      },
+      {
+        "attributes": {
+          "ELMNTKEY": 121923,
+          "UNITID": "SGN-131440",
+          "SIGNTYPE": "R8-2HZ30",
+          "CURRENT_STATUS": "INSVC",
+          "TEXT": "2 H [Circle P] 7A-6P MON-FRI, EXC BY ZN 30 PERMIT",
+          "DISTANCE": 239
+        }
+      }
+    ]
+  }
+}

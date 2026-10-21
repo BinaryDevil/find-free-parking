@@ -1,0 +1,323 @@
+{
+  "objectIdFieldName": "OBJECTID",
+  "uniqueIdField": {
+    "name": "OBJECTID",
+    "isSystemMaintained": true
+  },
+  "globalIdFieldName": "GlobalID",
+  "geometryType": "esriGeometryPoint",
+  "spatialReference": {
+    "wkid": 2926,
+    "latestWkid": 2926
+  },
+  "fields": [
+    {
+      "name": "BUSLIC_ID",
+      "type": "esriFieldTypeInteger",
+      "alias": "BUSLIC_ID",
+      "sqlType": "sqlTypeOther",
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_FACILITY_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DEA_FACILITY_ADDRESS",
+      "type": "esriFieldTypeString",
+      "alias": "DEA_FACILITY_ADDRESS",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "HRS_MONFRI",
+      "type": "esriFieldTypeString",
+      "alias": "HRS_MONFRI",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "HRS_SAT",
+      "type": "esriFieldTypeString",
+      "alias": "HRS_SAT",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "HRS_SUN",
+      "type": "esriFieldTypeString",
+      "alias": "HRS_SUN",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_1HR",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_1HR",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_2HR",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_2HR",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_3HR",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_3HR",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "RTE_ALLDAY",
+      "type": "esriFieldTypeString",
+      "alias": "RTE_ALLDAY",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OP_NAME",
+      "type": "esriFieldTypeString",
+      "alias": "OP_NAME",
+      "sqlType": "sqlTypeOther",
+      "length": 150,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "OP_WEB",
+      "type": "esriFieldTypeString",
+      "alias": "OP_WEB",
+      "sqlType": "sqlTypeOther",
+      "length": 100,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "STATUS",
+      "type": "esriFieldTypeString",
+      "alias": "STATUS",
+      "sqlType": "sqlTypeOther",
+      "length": 50,
+      "domain": null,
+      "defaultValue": null
+    },
+    {
+      "name": "DATETIME",
+      "type": "esriFieldTypeDate",
+      "alias": "DATETIME",
+      "sqlType": "sqlTypeOther",
+      "length": 8,
+      "domain": null,
+      "defaultValue": null
+    }
+  ],
+  "exceededTransferLimit": true,
+  "features": [
+    {
+      "attributes": {
+        "BUSLIC_ID": 666877,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING  WX04",
+        "DEA_FACILITY_ADDRESS": "4333 FREMONT AVE N, SEATTLE, WA 98103",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 574590,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING  WU15",
+        "DEA_FACILITY_ADDRESS": "1919 N 45TH ST, SEATTLE, WA 98103",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 732098,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING SERVICES WX33",
+        "DEA_FACILITY_ADDRESS": "4301 11TH AVE NE, SEATTLE, WA 98105",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 611676,
+        "DEA_FACILITY_NAME": "UNIVERSITY BOOK STORE PARKING",
+        "DEA_FACILITY_ADDRESS": "4315 15TH AVE NE, SEATTLE, WA 98105",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 57562,
+        "DEA_FACILITY_NAME": "U DISTRICT PARKING LOT 3B MANOR",
+        "DEA_FACILITY_ADDRESS": "4236 BROOKLYN AVE NE, SEATTLE, WA 98105",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 661194,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING  WX01",
+        "DEA_FACILITY_ADDRESS": "4244 8TH AVE NE, SEATTLE, WA 98115",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 591247,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING  WU51",
+        "DEA_FACILITY_ADDRESS": "4131 11TH AVE NE, SEATTLE, WA 98105",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 535675,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING  WU13",
+        "DEA_FACILITY_ADDRESS": "4100 UNIVERSITY WAY NE, SEATTLE, WA 98105",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 588668,
+        "DEA_FACILITY_NAME": "DIAMOND PARKING  WU46",
+        "DEA_FACILITY_ADDRESS": "4244 11TH AVE NE, SEATTLE, WA 98105",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    },
+    {
+      "attributes": {
+        "BUSLIC_ID": 684294,
+        "DEA_FACILITY_NAME": "DIAMOND  A617",
+        "DEA_FACILITY_ADDRESS": "2003 W DRAVUS ST, SEATTLE, WA 98199",
+        "HRS_MONFRI": null,
+        "HRS_SAT": null,
+        "HRS_SUN": null,
+        "RTE_1HR": null,
+        "RTE_2HR": null,
+        "RTE_3HR": null,
+        "RTE_ALLDAY": null,
+        "OP_NAME": null,
+        "OP_WEB": null,
+        "STATUS": null,
+        "DATETIME": null
+      }
+    }
+  ]
+}
