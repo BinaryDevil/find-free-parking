@@ -2,6 +2,8 @@
 
 > Source approval is two-agent review under [ADR-0005](../adr/0005-agent-verified-gates.md). Public availability satisfies [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 (amended 2026-10-20); remaining gaps are resolved only from published evidence ([ADR-0004](../adr/0004-no-external-outreach.md)).
 
+Current assessment: [2026-10-21 independent public-source review](north-vancouver-review-2026-10-21.md), with selected checksummed evidence. Public availability passes; unresolved safety/applicability criteria leave all sources unapproved and Coverage none. The historical observations below remain context.
+
 Observed: 2026-10-14. Scope: [#50](https://github.com/BinaryDevil/find-free-parking/issues/50), supplementing the [inventory](north-vancouver.md) under [ADR-0002](../adr/0002-evidence-source-policy.md). Coverage remains none. Owner progression approval is already recorded on #50; no repeated discretionary owner approval is needed once factual prerequisites pass. This document does not approve a source.
 
 ## New evidence
@@ -26,4 +28,4 @@ Unresolved conflicts stay Unknown unless published evidence identifies the preci
 
 ## Completion boundary
 
-#50 remains open for published evidence and safety confirmation; #31 adapters remain dependent on #11. This work performs no import, database write, registry change, deployment or production operation.
+#50 remains open for published evidence and safety confirmation; #31 adapters remain source gated; #11 is closed as independently checked 2026-10-21. This work performs no import, database write, registry change, deployment or production operation.
