@@ -2,13 +2,13 @@
 
 Refs [#24](https://github.com/BinaryDevil/find-free-parking/issues/24), [#2](https://github.com/BinaryDevil/find-free-parking/issues/2). Reviewer: a fresh agent that did not author the Vancouver inventory. Base: `fc5612d12b2c5ea47797038c09961d46598fcba6`. This review applies the owner-amended ADR-0002 criterion 6: official public retrieval suffices; licence ambiguity is not a failure. **No source is approved; Coverage remains none.** Intended approval states remain `pending` for the meter, permit and Road Ahead candidates; excluded/reference sources are not proposed for activation. No database approval state was read or written.
 
-This is a partial completion of #24. Fresh endpoint properties and new contradictions are recorded below; ten successful independent current curb/schedule checks per source are still missing. No source approval agreement with the inventory author is claimed. No import, scheduler, database branch/write, source activation, outreach, deployment, `dev` merge or production action is included.
+This is a partial completion of #24. Fresh endpoint properties and unresolved safety gaps are recorded below; ten successful independent current curb/schedule checks per source are still missing. No source approval agreement with the inventory author is claimed. No import, scheduler, database branch/write, source activation, outreach, deployment, `dev` merge or production action is included.
 
 ## Retrieval and artifacts
 
 Official JSON endpoints were retrieved without sign-in, payment or bypass. Field lists, counts, native geometry, edit timestamps, official item owner/access and published licence text are retained in [metadata.json](../../artifacts/vancouver-review-2026-10-21/metadata.json). [GDH metadata](../../artifacts/vancouver-review-2026-10-21/gdh-metadata.json) refreshes the alternate server separately. Dates below are UTC source edits, not inspections of every parking rule. Public asset locations are not driver locations. Contact/applicant fields were omitted from Road Ahead requests; embedded contact text was redacted from retained samples.
 
-The initial hosted meter request was explicitly truncated at 2,000 rows. It was replaced by two pages ordered by `OBJECTID` (offsets 0 and 2,000), yielding 3,523 distinct IDs and a non-truncated final page. Portal JSON export also yielded 3,523 distinct IDs. Only selected records and comparison results are committed, rather than whole feed exports. Raw full-feed research files are temporary local files and are not an import artifact. The [final metadata check](../../artifacts/vancouver-review-2026-10-21/final-metadata-check.json) records the later edit/count check. Portal meters, hosted meters and permit edit metadata were unchanged across the check. Road Ahead changed from `2026-10-21T21:19:35.643Z` to `21:24:05.521Z` during research, so its 750-record observation and ten samples are explicitly a non-atomic dated snapshot, not a stable current sync or freshness approval.
+The initial hosted meter request was explicitly truncated at 2,000 rows. It was replaced by two pages ordered by `OBJECTID` (offsets 0 and 2,000), yielding 3,523 rows (3,507 distinct meter IDs) and a non-truncated final page. Portal JSON export also yielded 3,523 rows and 3,507 distinct meter IDs. Sixteen IDs occur twice in each feed; meter ID alone is not a row identity. Only selected records and comparison results are committed, rather than whole feed exports. Raw full-feed research files are temporary local files and are not an import artifact. The [final metadata check](../../artifacts/vancouver-review-2026-10-21/final-metadata-check.json) records the later edit/count check. Portal meters, hosted meters and permit edit metadata were unchanged across the check. Road Ahead changed from `2026-10-21T21:19:35.643Z` to `21:24:05.521Z` during research, so its 750-record observation and ten samples are explicitly a non-atomic dated snapshot, not a stable current sync or freshness approval.
 
 Reproduction: portal metadata `/api/explore/v2.1/catalog/datasets/<id>`, samples `/records?limit=10`, full meter `/exports/json`; ArcGIS layer `?f=pjson`, `/query?where=1%3D1&returnCountOnly=true&f=json`, and stable pagination with explicit public fields. Permit comparisons use the independently fetched City `street-intersections` export and polygon point-in-ring tests (EPSG:4326). These location checks do not establish curb permission.
 
@@ -48,8 +48,8 @@ P = property passed on this retrieval; U = unresolved; F = fails this role. A ca
 
 | Candidate / intended role | 1 Authority | 2 Stable machine format | 3 Location | 4 Schedule | 5 Freshness signal | 6 Public availability | 7 Independent safety checks / verdict |
 |---|---|---|---|---|---|---|---|
-| Portal meters / E2 | P City | P current IDs and recorded fields | U actual head/curb extent | U rush days, overrides, competing restrictions | P weekly extract + edit | P OGL text recorded | U 12 selected matches, eight other service/rate conflicts; pending 3/4/7 |
-| Hosted paMeter / E2 alternate | P City item owner | P current uppercase fields/IDs | U same extent issue | U same semantics | P layer edit | P CC BY recorded | U full comparison conflicts; pending 3/4/7 |
+| Portal meters / E2 | P City | P current IDs and recorded fields | U actual head/curb extent | U rush days, overrides, competing restrictions | P weekly extract + edit | P OGL text recorded | U 12 selected matches; complete independent curb/schedule checks missing; pending 3/4/7 |
+| Hosted paMeter / E2 alternate | P City item owner | P current uppercase fields/IDs | U same extent issue | U same semantics | P layer edit | P CC BY recorded | U replicated feed parity is not complete safety evidence; pending 3/4/7 |
 | GDH/paMeter/1 / E2 alternate | P City server | P current fields/count; older views absent | U extent | U same missing semantics | U record timestamps need cadence/meaning validation | P no licence gate | U ten independent checks absent; not selected production input |
 | ResidentialParkingPermitZones / E4 | P City item owner | P MAPID plus polygon part; not OBJECTID alone | P polygon minimum | U eligibility versus signed curb, visitor hours | P layer edit | P CC BY recorded | U ten location joins rerun; no ten current signed-curb confirmations; pending 4/7 |
 | Road_Ahead_View / E5 | P City owner/map | P planitid + recorded interval fields | U project envelopes versus curb | U phase/recurrence/status ambiguity | P layer and record edits | P no licence shown | U ten comparisons below do not establish exact active curb restrictions; pending 3/4/7 |
@@ -69,7 +69,7 @@ P = property passed on this retrieval; U = unresolved; F = fails this role. A ca
 
 ## Meter comparison and official semantic evidence
 
-[Retained comparison](../../artifacts/vancouver-review-2026-10-21/meter-comparisons.json) maps 21 fields, including status, equipment/head/direction, vehicle, both rates, all four limits, flat rate, rush windows, both prohibition triples and both overrides. Blank/null equivalence was used only to compare exports, never as a permission default. No IDs were missing or duplicated. The original 12 distinct samples were independently rerun:
+[Retained comparison](../../artifacts/vancouver-review-2026-10-21/meter-comparisons.json) maps 21 fields, including status, equipment/head/direction, vehicle, both rates, all four limits, flat rate, rush windows, both prohibition triples and both overrides. Blank/null equivalence was used only to compare exports, never as a permission default. No meter IDs were missing between feeds, but sixteen IDs occur twice in each. The corrected comparison groups by meter ID and compares multisets of all 21 field tuples, retaining multiplicity; no mapped-field multiset differences were found across all 3,523 rows. The earlier keyed-overwrite interpretation incorrectly compared different equipment rows and is superseded. A stable composite identity must be validated before adapter use; meter ID alone cannot select one record safely. The original 12 distinct samples were independently rerun:
 
 | Meter | Safety case | Fresh result / independent signal limit |
 |---|---|---|
@@ -86,20 +86,9 @@ P = property passed on this retrieval; U = unresolved; F = fails this role. A ca
 | B70219 | Flat rate/no prohibition candidate | Fields agree; absence of prohibitions is not completeness or permission |
 | 642315 | Historical weekend-limit conflict | Both now say 4 Hr; old 3-versus-4 observation no longer reproduced |
 
-The full population comparison adds **eight unresolved service/equipment conflicts**, not merely a repeated selected-sample pass:
+The [two targeted paired reads](../../artifacts/vancouver-review-2026-10-21/targeted-meter-paired-rounds.json) re-fetched the eight initially flagged IDs (`303004`, `303025`, `302128`, `302928`, `302909`, `302906`, `303009`, `303212`). Each feed returned sixteen rows: each ID has both a Twin record and a Removed Pay Station record. Both rounds match as multisets for status/head/direction/daytime rate, with stable before/after portal and hosted edit markers. `302128` has the same Out of Service Twin at $2.00 and Removed Pay Station at $1.50 in both feeds. These are not established cross-publication rate or status contradictions. This correction follows the retained records, rather than choosing one source as ground truth.
 
-| Meter ID | Portal status | Hosted status | Additional discrepancy |
-|---|---|---|---|
-| 303004 | In Service | Removed | Twin/East versus Pay Station/blank |
-| 303025 | In Service | Removed | Twin/East versus Pay Station/blank |
-| 302128 | Out of Service | Removed | Twin/West versus Pay Station/blank; daytime rate $2.00 versus $1.50 |
-| 302928 | In Service | Removed | Twin/East versus Pay Station/blank |
-| 302909 | Removed | In Service | Pay Station/blank versus Twin/East |
-| 302906 | Removed | In Service | Pay Station/blank versus Twin/East |
-| 303009 | In Service | Removed | Twin/East versus Pay Station/blank |
-| 303212 | In Service | Removed | Twin/East versus Pay Station/blank |
-
-The portal is an Oct 19 weekly snapshot while the hosted layer has a later edit. An export lag or equipment reassignment is plausible, **not established reconciliation**. Equal total counts do not demonstrate equal operational state, and the comparison is not an atomic City snapshot. The two official representations may share an upstream system, limiting their independence. Criterion 7 remains unmet even for the twelve agreeing samples.
+The full-feed 21-field multiset comparison likewise finds zero differences after blank/null normalization, with 3,507 distinct IDs and sixteen duplicated IDs per 3,523-row feed. This establishes dated export parity on those fields only; it does not prove correct curb assignment, independent signs, safe identity selection or complete rules. The two official representations may share an upstream system, limiting their independence. Criterion 7 remains unmet even for the twelve agreeing samples.
 
 Fresh independent City references:
 
@@ -107,7 +96,7 @@ Fresh independent City references:
 - [Parking Meter By-law 2952](https://bylaws.vancouver.ca/2952c.pdf), section 2: single/twin meter geometry depends on head direction/traffic sequence; pay-station applicability depends on signs and markings. Section 6(3) provides positive 22:00–09:00 fee exemption, subject to Street and Traffic limits/prohibitions and EV charging rates. Section 7 permits temporary discontinuance by signs. These are useful interpretation leads; they do not prove actual curb assignment, complete restrictions or the E2 same-feed prerequisite.
 - [Motorcycle guidance](https://vancouver.ca/streets-transportation/motorcycles-and-scooters.aspx) and [accessible guidance](https://vancouver.ca/streets-transportation/accessible-parking.aspx): vehicle eligibility and competing restrictions matter; SPARC provides a three-hour residential-zone exemption, not universal meter-free parking. The accessible map expressly omits short-term construction/event changes.
 
-No narrower subset was approved: removing the eight conflicts would still leave independent curb/schedule completeness and ten successful safety checks unresolved. No code or parser semantics changed.
+No narrower subset was approved: export parity leaves independent curb/schedule completeness and ten successful safety checks unresolved. No code or parser semantics changed.
 
 ## Permit: ten fresh location checks, stronger map leads, unresolved curb rules
 
@@ -155,7 +144,7 @@ This re-runs ten comparisons but passes **zero complete independent curb-and-act
 
 [Unsigned-parking guidance](https://vancouver.ca/streets-transportation/unsigned-streets-and-lanes.aspx) explicitly says some restrictions require no signs. [By-law 2849](https://bylaws.vancouver.ca/2849c.pdf) is consolidated to May19 2026. Its statutory exclusions defeat the qualifying E7 premise; no three-hour rule or missing sign creates Verified Free. No citation record values or driver information were retained. No new source type or policy exception is proposed.
 
-To complete #24 for Vancouver: reconcile meter export status/equipment/rate conflicts; obtain precise metered-curb and complete per-record semantics with ten successful independent safety checks; visually verify current permit-map/sign scope and signed hours/exemptions at ten curbs; resolve Road Ahead phases, exact prohibited curb extents and active recurrence with ten independent current checks per selected source. Independently review excluded/reference sources further only if proposing a narrower qualifying role. The author agent must then agree in writing on all seven criteria, and a later human-merged release must list any approved source going live. These are evidence gates, not licence or outreach tasks.
+To complete #24 for Vancouver: validate stable equipment identity without collapsing duplicate meter IDs; obtain precise metered-curb and complete per-record semantics with ten successful independent safety checks; visually verify current permit-map/sign scope and signed hours/exemptions at ten curbs; resolve Road Ahead phases, exact prohibited curb extents and active recurrence with ten independent current checks per selected source. Independently review excluded/reference sources further only if proposing a narrower qualifying role. The author agent must then agree in writing on all seven criteria, and a later human-merged release must list any approved source going live. These are evidence gates, not licence or outreach tasks.
 
 ## Validation
 

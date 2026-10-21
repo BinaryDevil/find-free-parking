@@ -3,8 +3,42 @@
   "portal_count": 3523,
   "hosted_count": 3523,
   "hosted_exceededTransferLimit": false,
-  "portal_duplicate_ids": 16,
-  "hosted_duplicate_ids": 16,
+  "portal_duplicate_ids": {
+    "303009": 2,
+    "303004": 2,
+    "303117": 2,
+    "302825": 2,
+    "303227": 2,
+    "303209": 2,
+    "302909": 2,
+    "302822": 2,
+    "303025": 2,
+    "303108": 2,
+    "303224": 2,
+    "303024": 2,
+    "302906": 2,
+    "303212": 2,
+    "302928": 2,
+    "302128": 2
+  },
+  "hosted_duplicate_ids": {
+    "303004": 2,
+    "303009": 2,
+    "303108": 2,
+    "302825": 2,
+    "302822": 2,
+    "303117": 2,
+    "303024": 2,
+    "302928": 2,
+    "302128": 2,
+    "302906": 2,
+    "303227": 2,
+    "303025": 2,
+    "303212": 2,
+    "303209": 2,
+    "303224": 2,
+    "302909": 2
+  },
   "portal_only": [],
   "hosted_only": [],
   "mapped_fields": {
@@ -30,124 +64,7 @@
     "time_limit_weekend_9am_6pm": "TIME_LIMIT_WEEKEND_9A_6P",
     "time_limit_weekend_6pm_10pm": "TIME_LIMIT_WEEKEND_6P_10P"
   },
-  "differences": {
-    "303004": {
-      "service_status": {
-        "portal": "In Service",
-        "hosted": "Removed"
-      },
-      "meter_head": {
-        "portal": "Twin",
-        "hosted": "Pay Station"
-      },
-      "direction": {
-        "portal": "East",
-        "hosted": ""
-      }
-    },
-    "303025": {
-      "service_status": {
-        "portal": "In Service",
-        "hosted": "Removed"
-      },
-      "meter_head": {
-        "portal": "Twin",
-        "hosted": "Pay Station"
-      },
-      "direction": {
-        "portal": "East",
-        "hosted": ""
-      }
-    },
-    "302128": {
-      "service_status": {
-        "portal": "Out of Service",
-        "hosted": "Removed"
-      },
-      "meter_head": {
-        "portal": "Twin",
-        "hosted": "Pay Station"
-      },
-      "direction": {
-        "portal": "West",
-        "hosted": ""
-      },
-      "rate_9am_6pm": {
-        "portal": "$2.00",
-        "hosted": "$1.50"
-      }
-    },
-    "302928": {
-      "service_status": {
-        "portal": "In Service",
-        "hosted": "Removed"
-      },
-      "meter_head": {
-        "portal": "Twin",
-        "hosted": "Pay Station"
-      },
-      "direction": {
-        "portal": "East",
-        "hosted": ""
-      }
-    },
-    "302909": {
-      "service_status": {
-        "portal": "Removed",
-        "hosted": "In Service"
-      },
-      "meter_head": {
-        "portal": "Pay Station",
-        "hosted": "Twin"
-      },
-      "direction": {
-        "portal": null,
-        "hosted": "East"
-      }
-    },
-    "302906": {
-      "service_status": {
-        "portal": "Removed",
-        "hosted": "In Service"
-      },
-      "meter_head": {
-        "portal": "Pay Station",
-        "hosted": "Twin"
-      },
-      "direction": {
-        "portal": null,
-        "hosted": "East"
-      }
-    },
-    "303009": {
-      "service_status": {
-        "portal": "In Service",
-        "hosted": "Removed"
-      },
-      "meter_head": {
-        "portal": "Twin",
-        "hosted": "Pay Station"
-      },
-      "direction": {
-        "portal": "East",
-        "hosted": ""
-      }
-    },
-    "303212": {
-      "service_status": {
-        "portal": "In Service",
-        "hosted": "Removed"
-      },
-      "meter_head": {
-        "portal": "Twin",
-        "hosted": "Pay Station"
-      },
-      "direction": {
-        "portal": "East",
-        "hosted": ""
-      }
-    }
-  },
+  "differences": {},
   "samples": [
     {
       "meter_id": "081034",
@@ -1288,6 +1205,34 @@
         }
       },
       "differences": {}
+    }
+  ],
+  "portal_distinct_meter_ids": 3507,
+  "hosted_distinct_meter_ids": 3507,
+  "comparison_method": "Group by METER_ID; compare multisets of 21 normalized field tuples, preserving every row. Null and blank compare equal only for export parity.",
+  "correction": "Supersedes the earlier keyed-overwrite comparison: METER_ID is not unique. The eight apparent discrepancies were different equipment rows sharing IDs, not established source conflicts.",
+  "targeted_paired_round_summary": [
+    {
+      "round": 1,
+      "markers_stable": {
+        "portal": true,
+        "hosted": true
+      },
+      "portal_rows": 16,
+      "hosted_rows": 16,
+      "distinct_ids": 8,
+      "different_multisets": []
+    },
+    {
+      "round": 2,
+      "markers_stable": {
+        "portal": true,
+        "hosted": true
+      },
+      "portal_rows": 16,
+      "hosted_rows": 16,
+      "distinct_ids": 8,
+      "different_multisets": []
     }
   ]
 }
