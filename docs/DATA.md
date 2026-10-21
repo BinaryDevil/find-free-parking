@@ -23,6 +23,10 @@ For #16's guarded retained archive, serving retirement, aggregate reconciliation
 and reverse command, see [Legacy retirement](LEGACY_RETIREMENT.md). Production
 execution requires the exact actions in a human-merged release PR.
 
+For dated backup limits, recovery into a separate branch, and deployment rollback,
+follow [Recovery](RECOVERY.md). A documented procedure is not a completed restore
+rehearsal or evidence of continuous recovery beyond the provider's history window.
+
 ## Request-driven imports
 
 `pnpm check-requests` runs `scripts/automate_seeding.ts` to group city requests case-insensitively and open `Cover city: <City>` GitHub issues when the count is more than 10. Issues carry `needs-triage`, the aggregate request count, and instructions to use the `cover-city` skill under ADR-0002. An exact, case-insensitive matching open issue in this repository is skipped (pull requests do not count). Legacy `covered_cities` and page registry entries do not suppress evidence-review requests or establish Coverage.
