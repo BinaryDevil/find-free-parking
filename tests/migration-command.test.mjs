@@ -20,3 +20,18 @@ test('migration command rejects unsafe targets and unapproved baseline marking b
   assert.match(mark.stderr, /human approval/);
   assert.ok(!mark.stderr.includes('private'));
 });
+
+test('migration command rejects connection overrides before attempting a connection', () => {
+  for (const query of ['host=other.invalid', 'hostaddr=127.0.0.1', 'port=5433', 'user=other',
+    'password=override', 'dbname=other', 'database=other', 'options=-c%20role%3Dother',
+    '%68ost=other.invalid', 'sslcert=unreviewed-file', 'sslmode=require&sslmode=disable']) {
+    const result = spawnSync(process.execPath, ['scripts/migrate.mjs', 'up'], {
+      encoding: 'utf8', env: { ...process.env,
+        MIGRATION_DATABASE_URL: `postgres://operator:synthetic@expected.invalid/parking?${query}`,
+        MIGRATION_EXPECTED_HOST: 'expected.invalid', MIGRATION_EXPECTED_DATABASE: 'parking' },
+    });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /Unsupported PostgreSQL connection options/);
+    assert.ok(!result.stderr.includes('synthetic') && !result.stderr.includes('override'));
+  }
+});
