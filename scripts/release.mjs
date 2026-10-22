@@ -1,5 +1,10 @@
 import { pathToFileURL } from 'node:url';
 import { reportFailure } from './github-alert.ts';
+import { canonical, digest, resolveMigrationLineage } from './migration-lineage.mjs';
+import { readMigrationState, readAdoptionInputs, verifyAdoptionReference, captureSchema } from './preservation-adoption.mjs';
+import { loadMigrationManifest } from './migration-lineage.mjs';
+import { materializeAdoptionReference } from './preservation-reference.mjs';
+import { basename } from 'node:path';
 
 const repository = 'BinaryDevil/find-free-parking';
 const migrationPattern = /^\d{13}_[a-z0-9_]+\.sql$/;
@@ -36,12 +41,45 @@ export async function releaseForCommit(github, sha) {
   return authorizeRelease(prs, sha);
 }
 
-export async function runRelease(release, config, { github, database, readiness, snapshot, migrate, smoke }) {
+export async function runRelease(release, config, { github, database, readiness, snapshot, migrate, smoke, preflightAdoption, adopt }) {
   const results = [];
   const comment = async () => github(['api', `repos/${repository}/issues/${release.number}/comments`, '--method', 'POST', '--input', '-'],
     JSON.stringify({ body: `Production release ${config.sha}\n\n${results.join('\n')}` }));
   try {
-    if (release.lineage) throw new Error('Preservation release execution is not enabled');
+    if (release.lineage) {
+      const manifest = config.manifest;
+      const expected = { lineage: release.lineage, manifestHash: release.manifestHash, adoptionReference: release.adoptionReference, migrations: release.migrations };
+      if (!manifest || release.lineage !== 'preservation-v1' || release.manifestHash !== digest(canonical(manifest)) || canonical(config.plan) !== canonical(expected) ||
+          release.migrations.some(file => !manifest.preservation.some(entry => basename(entry.path) === file))) throw new Error('Preservation plan differs from merged release');
+      const state = await readMigrationState(database);
+      const selected = resolveMigrationLineage(manifest, state, { lineage: release.lineage, adopt: !state.adoption });
+      const pending = selected.pending.map(entry => basename(entry.path));
+      if (selected.requiresBaseline || pending.some(file => !release.migrations.includes(file))) throw new Error('Preservation baseline or pending authorization mismatch');
+      if (selected.requiresAdoption) {
+        if (!release.adoptionReference || typeof preflightAdoption !== 'function' || typeof adopt !== 'function') throw new Error('Explicit adoption authorization required');
+        await preflightAdoption();
+      } else if (release.adoptionReference && digest(canonical(state.adoption.reference)) !== release.adoptionReference) throw new Error('Recorded adoption reference differs');
+      results.push('Exact preservation manifest, selected history and adoption authorization verified.');
+      await readiness();
+      const branch = await snapshot();
+      results.push(`Snapshot retained: ${branch}.`);
+      await readiness();
+      if (selected.requiresAdoption) {
+        await adopt({ snapshotReference: branch });
+        const adopted = await readMigrationState(database);
+        if (!adopted.adoption || resolveMigrationLineage(manifest, adopted).lineage !== 'preservation-v1' || digest(canonical(adopted.adoption.reference)) !== release.adoptionReference) throw new Error('Adoption verification failed');
+        results.push('Explicit preservation adoption metadata verified; no legacy operation marked executed.');
+      }
+      if (selected.requiresAdoption) await readiness();
+      await migrate();
+      const after = await readMigrationState(database);
+      if (!after.adoption || resolveMigrationLineage(manifest, after).pending.length) throw new Error('Preservation history mismatch');
+      results.push(`Preservation migrations verified: ${pending.length} applied; legacy fields and history retained.`);
+      await smoke();
+      results.push('Health and Seattle/Vancouver parking API smoke checks passed.');
+      await comment();
+      return { snapshot: branch, applied: pending };
+    }
     if (config.files.some(f => !migrationPattern.test(f)) || !Array.isArray(config.plan) || config.plan.some(f => !migrationPattern.test(f)) ||
         JSON.stringify([...config.plan].sort()) !== JSON.stringify(release.migrations)) throw new Error('Plan differs from merged release');
     const ledger = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
@@ -149,7 +187,7 @@ export async function smokeProduction(fetcher = fetch, origin = 'https://findfre
 }
 
 async function main() {
-  const { readFileSync, readdirSync } = await import('node:fs');
+  const { readFileSync, readdirSync, appendFileSync } = await import('node:fs');
   const { execFile } = await import('node:child_process');
   const { promisify } = await import('node:util');
   const { Client } = await import('pg');
@@ -158,6 +196,7 @@ async function main() {
     const child = execFile('gh', args, { maxBuffer: 4 * 1024 * 1024 }, (error, stdout) => error ? reject(new Error('GitHub request failed')) : resolve(stdout));
     child.stdin.end(input);
   });
+  if (process.argv.length > 3 || (process.argv[2] && process.argv[2] !== '--prepare')) throw new Error('Unknown release command');
   const sha = process.env.GITHUB_SHA;
   if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main' ||
       process.env.GITHUB_REPOSITORY !== repository || !/^[a-f0-9]{40}$/.test(sha || '')) throw new Error('Not a production push');
@@ -171,6 +210,13 @@ async function main() {
   if (!release) { console.log('Skipped: no authorized human release.'); return; }
   const current = JSON.parse(await github(['api', `repos/${repository}/git/ref/heads/main`]));
   if (current.object.sha !== sha) { console.log('Skipped: a newer main revision exists.'); return; }
+  if (process.argv[2] === '--prepare') {
+    if (!process.env.GITHUB_OUTPUT) throw new Error('Workflow output is required');
+    appendFileSync(process.env.GITHUB_OUTPUT, `needs_pg_dump=${!!(release.lineage && release.adoptionReference)}\n`);
+    return;
+  }
+  const manifest = release.lineage ? loadMigrationManifest() : null;
+  let referenceFiles;
   const project = 'misty-breeze-47060812';
   const parent = 'br-rough-base-aryz0z5a';
   const neon = async (path, body) => {
@@ -206,10 +252,17 @@ async function main() {
   } };
   try {
     await runRelease(release, { sha, runId: process.env.GITHUB_RUN_ID,
-      files: readdirSync('sql/migrations').sort(), plan: (() => { try { return JSON.parse(readFileSync('.github/production-migrations.json', 'utf8')); } catch { return null; } })() }, {
+      manifest, files: readdirSync('sql/migrations').sort(), plan: (() => { try { return JSON.parse(readFileSync('.github/production-migrations.json', 'utf8')); } catch { return null; } })() }, {
       github, database,
       readiness: () => verifyProductionRevision(github, sha),
       snapshot: () => snapshotProduction(neon, { sha, project, parent }),
+      preflightAdoption: async () => {
+        referenceFiles = materializeAdoptionReference(process.env, { approvedHash: release.adoptionReference, baseline: manifest.baseline });
+        const inputs = readAdoptionInputs({ ...process.env, ...referenceFiles.paths, MIGRATION_ADOPTION_APPROVED: release.adoptionReference });
+        const target = await captureSchema(process.env.MIGRATION_DATABASE_URL);
+        verifyAdoptionReference({ ...inputs, baseline: manifest.baseline, targetDump: target.dump, pgDumpVersion: target.version });
+      },
+      adopt: ({ snapshotReference }) => execute('pnpm', ['db:adopt-preservation'], { env: { ...process.env, ...referenceFiles.paths, MIGRATION_ADOPTION_APPROVED: release.adoptionReference, MIGRATION_SNAPSHOT_REFERENCE: snapshotReference }, timeout: 10 * 60 * 1000 }),
       migrate: () => execute('pnpm', ['db:migrate'], { env: process.env, timeout: 10 * 60 * 1000 }),
       smoke: async () => {
         // Retry transient API failures only after deployment revision verification.
@@ -219,7 +272,7 @@ async function main() {
         }
       },
     });
-  } finally { await client?.end(); }
+  } finally { referenceFiles?.cleanup(); await client?.end(); }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

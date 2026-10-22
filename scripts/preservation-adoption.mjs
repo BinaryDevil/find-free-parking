@@ -18,14 +18,32 @@ export function verifyAdoptionReference({ reference, approvedHash, baseline, ref
 export async function captureSchema(connectionString, { snapshot } = {}) {
   const execute = promisify(execFile);
   const env = Object.fromEntries(Object.entries(process.env).filter(([name]) => !name.startsWith('PG')));
-  env.PGDATABASE = connectionString;
+  const url = new URL(connectionString);
+  env.PGHOST = url.hostname;
+  env.PGPORT = url.port || '5432';
+  env.PGUSER = decodeURIComponent(url.username);
+  env.PGDATABASE = decodeURIComponent(url.pathname.slice(1));
+  env.PGPASSWORD = decodeURIComponent(url.password);
+  if (url.searchParams.has('sslmode')) env.PGSSLMODE = url.searchParams.get('sslmode');
+  if (url.searchParams.has('channel_binding')) env.PGCHANNELBINDING = url.searchParams.get('channel_binding');
   const { stdout: version } = await execute('pg_dump', ['--version'], { env });
   const { stdout: dump } = await execute('pg_dump', [...dumpOptions, ...(snapshot ? [`--snapshot=${snapshot}`] : [])], { env, maxBuffer: 16 * 1024 * 1024, timeout: 120000 });
   return { dump, version: version.trim() };
 }
 
 export async function readMigrationState(database) {
-  const { rows: [tables] } = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS legacy, to_regclass('migration_meta.preservation_migrations') AS preservation, to_regclass('migration_meta.lineage_adoption') AS adoption");
+  const { rows: [tables] } = await database.query(`SELECT to_regclass('migration_meta.pgmigrations') AS legacy,
+    to_regclass('migration_meta.preservation_migrations') AS preservation,
+    to_regclass('migration_meta.lineage_adoption') AS adoption,
+    NOT EXISTS (SELECT FROM pg_namespace n WHERE n.nspname='migration_meta' AND
+      (n.nspowner<>(SELECT oid FROM pg_roles WHERE rolname=current_user) OR EXISTS
+        (SELECT FROM aclexplode(COALESCE(n.nspacl,acldefault('n',n.nspowner))) a WHERE a.grantee<>n.nspowner AND a.privilege_type='CREATE')))
+    AND NOT EXISTS (SELECT FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace
+      WHERE n.nspname='migration_meta' AND c.relkind IN ('r','p','S') AND
+      (c.relowner<>(SELECT oid FROM pg_roles WHERE rolname=current_user) OR EXISTS
+        (SELECT FROM aclexplode(COALESCE(c.relacl,acldefault(CASE WHEN c.relkind='S' THEN 'S'::"char" ELSE 'r'::"char" END,c.relowner))) a
+          WHERE a.grantee<>c.relowner AND a.privilege_type IN ('INSERT','UPDATE','DELETE','TRUNCATE','REFERENCES','TRIGGER','USAGE')))) AS protected`);
+  if (tables.protected !== true) throw new Error('Migration metadata is not protected by the operator');
   const legacy = tables.legacy ? (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(row => row.name) : [];
   const preservation = tables.preservation ? (await database.query('SELECT name FROM migration_meta.preservation_migrations ORDER BY id')).rows.map(row => row.name) : [];
   const adoptions = tables.adoption ? (await database.query('SELECT * FROM migration_meta.lineage_adoption')).rows : [];

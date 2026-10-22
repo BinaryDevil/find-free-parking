@@ -65,3 +65,21 @@ test('preservation manifest names every sealed operation it does not execute', (
   try { f.manifest.superseded = []; f.save(); assert.throws(() => loadMigrationManifest(f.root), /superseded/); }
   finally { f.cleanup(); }
 });
+
+import { execFileSync, spawnSync } from 'node:child_process';
+import { resolve } from 'node:path';
+test('migration CI seals preservation files and adopted manifest prefixes', () => {
+  const f = fixture();
+  const git = (...args) => execFileSync('git', args, { cwd: f.root, stdio: 'pipe' });
+  const check = () => spawnSync(process.execPath, [resolve('scripts/check-migration-files.mjs'), 'HEAD'], { cwd: f.root, encoding: 'utf8' });
+  try {
+    git('init'); git('config', 'user.email', 'test@example.invalid'); git('config', 'user.name', 'Migration test');
+    git('add', '.'); git('commit', '-m', 'accepted manifest');
+    assert.equal(check().status, 0);
+    f.manifest.preservation[0].sha256 = 'b'.repeat(64); f.save();
+    assert.notEqual(check().status, 0, 'rewritten manifest must be rejected');
+    f.manifest.preservation[0].sha256 = createHash('sha256').update('SELECT 3;').digest('hex'); f.save();
+    writeFileSync(join(f.root, f.manifest.preservation[0].path), 'SELECT 9;');
+    assert.notEqual(check().status, 0, 'sealed preservation SQL must be rejected');
+  } finally { f.cleanup(); }
+});

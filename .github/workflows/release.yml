@@ -49,9 +49,28 @@ jobs:
           node-version: '24.11.1'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Authorize optional adoption tooling
+        id: tooling
+        run: node scripts/release.mjs --prepare
+        env:
+          GH_TOKEN: ${{ github.token }}
+      # Ubuntu's default client is 16; adoption references require an exact 17.x
+      # client version. PGDG is the official PostgreSQL package repository.
+      - name: Install PostgreSQL 17 client for reviewed adoption
+        if: steps.tooling.outputs.needs_pg_dump == 'true'
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl --fail --silent --show-error https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc
+          . /etc/os-release
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt ${VERSION_CODENAME}-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list > /dev/null
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-client-17
+          echo '/usr/lib/postgresql/17/bin' >> "$GITHUB_PATH"
       - name: Authorize, snapshot, migrate and smoke-check
         run: node scripts/release.mjs
         env:
           GH_TOKEN: ${{ github.token }}
           NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
           PRODUCTION_MIGRATION_DATABASE_URL: ${{ secrets.PRODUCTION_MIGRATION_DATABASE_URL }}
+          PRODUCTION_BASELINE_REFERENCE_METADATA: ${{ secrets.PRODUCTION_BASELINE_REFERENCE_METADATA }}
+          PRODUCTION_BASELINE_REFERENCE_SCHEMA: ${{ secrets.PRODUCTION_BASELINE_REFERENCE_SCHEMA }}

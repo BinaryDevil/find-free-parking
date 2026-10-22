@@ -26,7 +26,7 @@ test('schema drift prevents every adoption write and valid adoption never record
   for (const valid of [false, true]) {
     const writes = [];
     const database = { query: async (sql, values) => {
-      if (sql.startsWith('SELECT to_regclass')) return { rows: [{ legacy: 'present', preservation: null, adoption: null }] };
+      if (sql.startsWith('SELECT to_regclass')) return { rows: [{ legacy: 'present', preservation: null, adoption: null, protected: true }] };
       if (sql.startsWith('SELECT name')) return { rows: [{ name: '1791676800000_baseline' }] };
       writes.push({ sql, values }); return { rows: [] };
     } };
