@@ -87,12 +87,20 @@ test('preservation foundation keeps original values and writers while adding the
       'ALTER ROLE pii_retention_executor LOGIN',
       'GRANT pii_retention_executor TO app_rw',
       'GRANT SELECT ON public.reports TO pii_retention_executor',
+      'GRANT CREATE ON SCHEMA public TO pii_retention_executor',
+      'ALTER SCHEMA public OWNER TO pii_retention_executor',
+      'GRANT EXECUTE ON FUNCTION extensions.uuid_generate_v4() TO pii_retention_executor',
+      "CREATE FUNCTION public.role_probe() RETURNS int LANGUAGE sql AS 'SELECT 1'; ALTER FUNCTION public.role_probe() OWNER TO pii_retention_executor",
+      'GRANT CREATE ON DATABASE preservation_foundation_test_fresh TO pii_retention_executor',
+      'GRANT TEMPORARY ON DATABASE preservation_foundation_test_fresh TO pii_retention_executor',
+      'ALTER DATABASE preservation_foundation_test_fresh OWNER TO pii_retention_executor',
+      'CREATE SCHEMA role_probe; CREATE TABLE role_probe.private_fixture(value int); GRANT SELECT ON role_probe.private_fixture TO pii_retention_executor',
     ]) {
       await fresh.query('BEGIN');
       try {
         await fresh.query(grant);
         await fresh.query('SAVEPOINT rejected_install');
-        await assert.rejects(fresh.query(readFileSync(foundation, 'utf8')), /Existing retention role/);
+        await assert.rejects(fresh.query(readFileSync(foundation, 'utf8')), /Existing retention role/, grant);
         await fresh.query('ROLLBACK TO SAVEPOINT rejected_install');
         assert.equal((await fresh.query("SELECT to_regclass('public.evidence_sources') AS relation")).rows[0].relation, null, 'Rejected role leaves no partial foundation');
       } finally { await fresh.query('ROLLBACK'); }
