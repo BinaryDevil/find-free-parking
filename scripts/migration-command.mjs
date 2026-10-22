@@ -1,6 +1,7 @@
 import { runner } from 'node-pg-migrate';
 import { Client } from 'pg';
 import { resolve } from 'node:path';
+import { directMigrationUrl, verifyMigrationIdentity } from './migration-connection.mjs';
 import { baselineName, loadMigrationManifest, resolveMigrationLineage } from './migration-lineage.mjs';
 import { adoptPreservation, captureSchema, readAdoptionInputs, readMigrationState, verifyAdoptionReference } from './preservation-adoption.mjs';
 
@@ -10,15 +11,13 @@ const migrationLock = '7241865325823964';
 const quiet = { debug() {}, info() {}, warn() {}, error() {} };
 export function migrationTarget(command, env) {
   if (!['up', 'mark-baseline', 'bootstrap-preservation', 'adopt-preservation'].includes(command)) throw new Error('Unknown guarded migration command');
-  const url = new URL(env.MIGRATION_DATABASE_URL || '');
-  if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname.includes('-pooler')) throw new Error('Use a direct PostgreSQL owner connection');
-  if ([...url.searchParams.keys()].some(key => !['sslmode', 'channel_binding'].includes(key))) throw new Error('URI connection overrides are not permitted');
-  if (!env.MIGRATION_EXPECTED_HOST || url.hostname !== env.MIGRATION_EXPECTED_HOST || !env.MIGRATION_EXPECTED_DATABASE || decodeURIComponent(url.pathname.slice(1)) !== env.MIGRATION_EXPECTED_DATABASE || !url.username || decodeURIComponent(url.username) === 'app_rw') throw new Error('Migration target confirmation mismatch');
-  if (command === 'mark-baseline' && env.MIGRATION_BASELINE_APPROVED !== baselineName) throw new Error('Baseline marking requires explicit approval');
+  const url = directMigrationUrl(env.MIGRATION_DATABASE_URL || '');
+  if (!env.MIGRATION_EXPECTED_HOST || url.hostname !== env.MIGRATION_EXPECTED_HOST || !env.MIGRATION_EXPECTED_DATABASE || decodeURIComponent(url.pathname.slice(1)) !== env.MIGRATION_EXPECTED_DATABASE || !url.username || decodeURIComponent(url.username) === 'app_rw') throw new Error('Confirm the provider branch endpoint and database using MIGRATION_EXPECTED_HOST and MIGRATION_EXPECTED_DATABASE.');
+  if (command === 'mark-baseline' && env.MIGRATION_BASELINE_APPROVED !== baselineName) throw new Error('Baseline marking needs human approval after schema comparison and snapshot; see docs/DATA.md.');
   return url;
 }
 
-/** Shared command boundary; not called by the current CLI until integration. */
+/** Shared guarded command boundary for the operator CLI and release executor. */
 export async function executeMigration(command, env = process.env) {
   const url = migrationTarget(command, env);
   const manifest = loadMigrationManifest();
@@ -34,11 +33,16 @@ export async function executeMigration(command, env = process.env) {
   let transaction = false;
   try {
     await database.connect();
-    const row = (await database.query('SELECT current_database() AS database, current_user AS role, pg_get_userbyid(datdba) AS owner FROM pg_database WHERE datname=current_database()')).rows[0];
-    if (row.database !== env.MIGRATION_EXPECTED_DATABASE || row.role !== decodeURIComponent(url.username) || row.owner !== row.role) throw new Error('Connected database identity mismatch');
+    await verifyMigrationIdentity(database, url);
     locked = (await database.query('SELECT pg_try_advisory_lock($1::bigint) AS locked', [migrationLock])).rows[0].locked;
     if (!locked) throw new Error('Another migration is running');
     const state = await readMigrationState(database);
+    const hasExistingSchema = async () => (await database.query(`
+      SELECT EXISTS (SELECT FROM pg_namespace WHERE nspname NOT IN ('public','pg_catalog','information_schema') AND nspname !~ '^pg_')
+        OR EXISTS (SELECT FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname NOT IN ('pg_catalog','information_schema') AND n.nspname NOT LIKE 'pg_toast%')
+        OR EXISTS (SELECT FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname NOT IN ('pg_catalog','information_schema') AND n.nspname NOT LIKE 'pg_toast%')
+        OR EXISTS (SELECT FROM pg_type t JOIN pg_namespace n ON n.oid=t.typnamespace WHERE n.nspname NOT IN ('pg_catalog','information_schema') AND n.nspname NOT LIKE 'pg_toast%') AS present`)).rows[0].present;
+    if (command === 'up' && !state.legacy.length && !state.adoption && await hasExistingSchema()) throw new Error('Baseline adoption required before existing schema migration');
     const settings = { dbClient: database, migrationsSchema: 'migration_meta', createMigrationsSchema: true, direction: 'up', checkOrder: true, singleTransaction: true, log() {}, logger: quiet };
     if (command === 'adopt-preservation') {
       await database.query('BEGIN ISOLATION LEVEL REPEATABLE READ'); transaction = true;
@@ -50,8 +54,7 @@ export async function executeMigration(command, env = process.env) {
     }
     if (command === 'bootstrap-preservation') {
       if (state.legacy.length || state.preservation.length || state.adoption) throw new Error('Fresh empty database required');
-      const objects = (await database.query("SELECT count(*)::int AS count FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname NOT IN ('pg_catalog','information_schema') AND n.nspname NOT LIKE 'pg_toast%' UNION ALL SELECT count(*)::int FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname NOT IN ('pg_catalog','information_schema') AND n.nspname NOT LIKE 'pg_toast%' UNION ALL SELECT count(*)::int FROM pg_type t JOIN pg_namespace n ON n.oid=t.typnamespace WHERE n.nspname NOT IN ('pg_catalog','information_schema') AND n.nspname NOT LIKE 'pg_toast%'")).rows;
-      if (objects.some(row => row.count !== 0)) throw new Error('Fresh empty database required');
+      if (await hasExistingSchema()) throw new Error('Fresh empty database required');
       await runner({ ...settings, dir: resolve('sql/migrations'), migrationsTable: 'pgmigrations', count: 1 });
       return 'Unchanged baseline executed and recorded; explicit lineage adoption is still required.';
     }

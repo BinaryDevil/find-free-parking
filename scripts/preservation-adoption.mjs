@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { directMigrationUrl } from './migration-connection.mjs';
 import { promisify } from 'node:util';
 import { execFile } from 'node:child_process';
 import { normalizeSchema } from './schema-comparison.mjs';
@@ -18,7 +19,7 @@ export function verifyAdoptionReference({ reference, approvedHash, baseline, ref
 export async function captureSchema(connectionString, { snapshot } = {}) {
   const execute = promisify(execFile);
   const env = Object.fromEntries(Object.entries(process.env).filter(([name]) => !name.startsWith('PG')));
-  const url = new URL(connectionString);
+  const url = directMigrationUrl(connectionString);
   env.PGHOST = url.hostname;
   env.PGPORT = url.port || '5432';
   env.PGUSER = decodeURIComponent(url.username);

@@ -16,6 +16,8 @@
     "test": "node --test tests/*.test.mjs",
     "db:migrate": "node scripts/migrate.mjs up",
     "db:baseline": "node scripts/migrate.mjs mark-baseline",
+    "db:bootstrap-preservation": "node scripts/migrate.mjs bootstrap-preservation",
+    "db:adopt-preservation": "node scripts/migrate.mjs adopt-preservation",
     "db:check-files": "node scripts/check-migration-files.mjs"
   },
   "dependencies": {
