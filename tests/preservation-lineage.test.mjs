@@ -35,6 +35,30 @@ test('baseline-only target can explicitly adopt preservation without recording s
   } finally { f.cleanup(); }
 });
 
+test('legacy corrections can append after sealed superseded operations', () => {
+  const f = fixture();
+  try {
+    const before = loadMigrationManifest(f.root);
+    const path = 'sql/migrations/1792713600000_legacy_correction.sql';
+    const sql = 'SELECT 4;';
+    writeFileSync(join(f.root, path), sql);
+    f.manifest.legacy.push({ path, sha256: createHash('sha256').update(sql).digest('hex') });
+    f.save();
+    const after = loadMigrationManifest(f.root);
+    assert.doesNotThrow(() => checkManifestExtension(before, after));
+    const plan = resolveMigrationLineage(after, { legacy: ['1791676800000_baseline', '1791853200000_schema_hygiene'], preservation: [], adoption: null });
+    assert.deepEqual(plan.pending.map(file => file.path), [path]);
+    assert.deepEqual(after.superseded, ['sql/migrations/1791853200000_schema_hygiene.sql']);
+    const rewritten = structuredClone(after);
+    rewritten.superseded.push(path);
+    assert.throws(() => checkManifestExtension(before, rewritten), /immutable manifest contract/);
+    rewritten.superseded = [];
+    assert.throws(() => checkManifestExtension(before, rewritten), /immutable manifest contract/);
+    f.manifest.superseded.push(path); f.save();
+    assert.throws(() => loadMigrationManifest(f.root), /superseded/);
+  } finally { f.cleanup(); }
+});
+
 test('changed hashes, unlisted files and rewritten history fail before selecting a migration', () => {
   const f = fixture();
   try {

@@ -4,6 +4,10 @@ import { authorizeRelease } from '../scripts/release.mjs';
 
 const sha = 'a'.repeat(40);
 const file = '1791849600000_evidence_provenance.sql';
+const baseline = '1791676800000_baseline.sql';
+const manifest = { version: 1, baseline: { path: `sql/migrations/${baseline}`, sha256: 'b'.repeat(64) }, legacy: [baseline, file].map(name => ({ path: `sql/migrations/${name}`, sha256: 'b'.repeat(64) })), preservation: [], superseded: [ `sql/migrations/${file}` ] };
+const legacyDatabase = (applied = () => false) => ({ query: async sql => ({ rows: sql.includes('to_regclass') ? [{ protected: true, legacy: true }] : [{ name: baseline.slice(0, -4) }, ...(applied() ? [{ name: file.slice(0, -4) }] : [])] }) });
+
 const pr = { number: 80, merged: true, merge_commit_sha: sha, merged_by: { type: 'User' }, base: { ref: 'main', repo: { full_name: 'BinaryDevil/find-free-parking' } }, head: { ref: 'dev', repo: { full_name: 'BinaryDevil/find-free-parking' } }, body: `## Production actions\n- Migration: \`sql/migrations/${file}\`\n\n## Rollback\nRedeploy previous deployment.` };
 test('only a human-merged dev release authorizes its exact listed migrations', () => {
   assert.deepEqual(authorizeRelease([pr], sha), { number: 80, migrations: [file] });
@@ -148,12 +152,12 @@ test('migration waits for matching ready deployment and public production revisi
     return { ok: true, json: async () => ({ revision: sha, environment: 'production' }) };
   };
   let applied = false;
-  await runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+  await runRelease({ number: 80, migrations: [file] }, { sha, manifest, files: [baseline, file], plan: [file] }, {
     github: async () => '[]',
-    database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : applied ? [{ name: file.slice(0, -4) }] : [] }) },
+    database: legacyDatabase(() => applied),
     readiness: () => verifyProductionRevision(github, sha, fetcher),
     snapshot: async () => { events.push('snapshot'); return 'br-test'; },
-    migrate: async () => { events.push('migrate'); applied = true; }, smoke: async () => {},
+    migrate: async ({ lineage }) => { assert.equal(lineage, 'legacy'); events.push('migrate'); applied = true; }, smoke: async () => {},
   });
   assert.deepEqual(events, ['deployment', 'runtime', 'main', 'snapshot', 'deployment', 'runtime', 'main', 'migrate']);
 });
@@ -180,9 +184,9 @@ test('absent, pending, failed and stale readiness evidence blocks every migratio
       if (fixture.unavailable) throw new Error('secret-runtime-error');
       return { ok: fixture.httpOK ?? true, json: async () => fixture.runtime ?? goodRuntime };
     });
-    await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+    await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, manifest, files: [baseline, file], plan: [file] }, {
       github: async (args, body) => { if (body) reports.push(body); return '[]'; },
-      database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : [] }) },
+      database: legacyDatabase(),
       ...(fixture.missingVerifier ? {} : { readiness }),
       snapshot: async () => { writes++; return 'br-test'; }, migrate: async () => { writes++; }, smoke: async () => {},
     }));
@@ -197,9 +201,9 @@ test('revision drift during snapshot readiness prevents migration and reports a 
   let liveRevision = sha;
   let migrated = false;
   const github = async args => JSON.stringify(args[1].includes('/git/ref/') ? { object: { sha: liveRevision } } : { sha, statuses: [{ context: 'Vercel', state: 'success' }] });
-  await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, files: [file], plan: [file] }, {
+  await assert.rejects(runRelease({ number: 80, migrations: [file] }, { sha, manifest, files: [baseline, file], plan: [file] }, {
     github: async (args, body) => { if (body) reports.push(body); return '[]'; },
-    database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: 'present' }] : [] }) },
+    database: legacyDatabase(),
     readiness: () => verifyProductionRevision(github, sha, async () => ({ ok: true, json: async () => ({ revision: liveRevision, environment: 'production' }) })),
     snapshot: async () => { liveRevision = 'b'.repeat(40); return 'br-test'; },
     migrate: async () => { migrated = true; }, smoke: async () => {},
@@ -263,9 +267,9 @@ test('nonempty migration plans retain baseline and unknown-history rejection', a
   ]) {
     let snapshots = 0;
     let migrations = 0;
-    await assert.rejects(runRelease({ number: 80, migrations: fixture.plan }, { sha, files: fixture.files, plan: fixture.plan }, {
+    await assert.rejects(runRelease({ number: 80, migrations: fixture.plan }, { sha, manifest, files: fixture.files, plan: fixture.plan }, {
       github: async () => '[]',
-      database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ ledger: fixture.ledger }] : fixture.history }) },
+      database: { query: async sql => ({ rows: sql.includes('to_regclass') ? [{ protected: true, legacy: fixture.ledger }] : fixture.history }) },
       readiness: async () => {}, snapshot: async () => { snapshots++; },
       migrate: async () => { migrations++; }, smoke: async () => {},
     }));

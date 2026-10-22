@@ -58,7 +58,7 @@ export async function executeMigration(command, env = process.env) {
       await runner({ ...settings, dir: resolve('sql/migrations'), migrationsTable: 'pgmigrations', count: 1 });
       return 'Unchanged baseline executed and recorded; explicit lineage adoption is still required.';
     }
-    const selected = resolveMigrationLineage(manifest, state);
+    const selected = resolveMigrationLineage(manifest, state, { lineage: env.MIGRATION_EXPECTED_LINEAGE });
     if (command === 'mark-baseline') {
       if (state.adoption || state.legacy.length || state.preservation.length) throw new Error('Baseline history already exists');
       await runner({ ...settings, dir: resolve('sql/migrations'), migrationsTable: 'pgmigrations', fake: true, file: baselineName, count: 1 });

@@ -32,7 +32,7 @@ function execution() {
   const referenceHash = digest(canonical(metadata));
   const release = { number: 999, lineage: 'preservation-v1', manifestHash: digest(canonical(definition)), adoptionReference: referenceHash, migrations: [file] };
   const database = { query: async sql => {
-    if (sql.startsWith('SELECT to_regclass')) return { rows: [{ protected: true, legacy: true, preservation: state.preservation.length ? true : null, adoption: state.adoption ? true : null }] };
+    if (sql.startsWith('SELECT to_regclass')) return { rows: [{ protected: true, ledger: true, legacy: true, preservation: state.preservation.length ? true : null, adoption: state.adoption ? true : null }] };
     if (sql.includes('FROM migration_meta.pgmigrations')) return { rows: state.legacy.map(name => ({ name })) };
     if (sql.includes('FROM migration_meta.preservation_migrations')) return { rows: state.preservation.map(name => ({ name })) };
     if (sql.includes('FROM migration_meta.lineage_adoption')) return { rows: [state.adoption] };
@@ -42,7 +42,7 @@ function execution() {
     snapshot: async () => { events.push('snapshot'); return 'retained-snapshot'; },
     preflightAdoption: async () => events.push('comparison'),
     adopt: async ({ snapshotReference }) => { events.push(`adopt:${snapshotReference}`); state.adoption = { lineage: 'preservation-v1', manifest: definition, manifest_hash: release.manifestHash, baseline_hash: baseline.sha256, history_hash: digest(canonical(state.legacy)), reference: metadata }; },
-    migrate: async () => { events.push('migrate'); state.preservation = [file.slice(0, -4)]; }, smoke: async () => events.push('smoke') };
+    migrate: async ({ lineage }) => { assert.equal(lineage, 'preservation-v1'); events.push('migrate'); state.preservation = [file.slice(0, -4)]; }, smoke: async () => events.push('smoke') };
   return { events, state, release, boundaries, config: { sha, manifest: definition, plan: { lineage: release.lineage, manifestHash: release.manifestHash, adoptionReference: referenceHash, migrations: [file] } } };
 }
 test('preservation release separately compares, snapshots, adopts and applies only its selected lineage', async () => {
@@ -65,4 +65,16 @@ test('unauthorized adoption, changed manifests, later history and omitted pendin
     await assert.rejects(runRelease(f.release, f.config, f.boundaries));
     assert.deepEqual(f.events, []);
   }
+});
+
+test('legacy authorization rejects an adopted preservation target before snapshot or migration', async () => {
+  const f = execution();
+  await f.boundaries.adopt({ snapshotReference: 'existing-snapshot' });
+  f.events.length = 0;
+  const legacyFile = '1791849600000_evidence_provenance.sql';
+  const legacy = { path: `sql/migrations/${legacyFile}`, sha256: 'f'.repeat(64) };
+  const manifest = { ...definition, legacy: [baseline, legacy] };
+  await assert.rejects(runRelease({ number: 999, migrations: [legacyFile] },
+    { sha, manifest, files: [baseline.path.split('/').at(-1), legacyFile], plan: [legacyFile] }, f.boundaries));
+  assert.deepEqual(f.events, []);
 });

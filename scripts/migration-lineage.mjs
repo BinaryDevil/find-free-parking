@@ -33,7 +33,9 @@ export function loadMigrationManifest(root = '.') {
     }
     if (canonical(readdirSync(join(root, directory)).sort()) !== canonical(names)) throw new Error('Unlisted migration file');
   }
-  if (canonical(manifest.superseded) !== canonical(manifest.legacy.slice(1).map(file => file.path)) || new Set(manifest.superseded).size !== manifest.superseded.length || manifest.superseded.some(path => !manifest.legacy.slice(1).some(file => file.path === path))) throw new Error('Invalid superseded operations');
+  // Preservation replaces only the historical legacy prefix, not future corrections.
+  const historicalLegacy = manifest.legacy.slice(1).filter(file => identity(file) <= '1792368000000_legacy_retirement');
+  if (canonical(manifest.superseded) !== canonical(historicalLegacy.map(file => file.path)) || new Set(manifest.superseded).size !== manifest.superseded.length || manifest.superseded.some(path => !manifest.legacy.slice(1).some(file => file.path === path))) throw new Error('Invalid superseded operations');
   return manifest;
 }
 

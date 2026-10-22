@@ -56,6 +56,20 @@ test('guarded commands bootstrap, compare, adopt and replay preservation without
         finally { await client.query('SELECT pg_advisory_unlock(7241865325823964::bigint)'); }
         await cli('adopt-preservation', env);
         assert.equal((await client.query("SELECT to_regclass('public.evidence_sources') AS relation")).rows[0].relation, null, 'adoption is metadata only');
+        const adopted = await readMigrationState(client);
+        await assert.rejects(executeMigration('up', { ...env, MIGRATION_EXPECTED_LINEAGE: 'legacy' }), /Conflicting lineage/);
+        await assert.rejects(cli('up', { ...env, MIGRATION_EXPECTED_LINEAGE: 'legacy' }));
+        assert.deepEqual(await readMigrationState(client), adopted, 'lineage drift cannot write migration history');
+        assert.equal((await client.query("SELECT to_regclass('public.evidence_sources') AS relation")).rows[0].relation, null, 'unlisted foundation cannot commit');
+        const events = [];
+        const files = manifest.legacy.map(entry => entry.path.split('/').at(-1));
+        const legacyPlan = files.slice(1);
+        await assert.rejects(runRelease({ number: 999, migrations: legacyPlan }, { sha: 'a'.repeat(40), manifest, files, plan: legacyPlan }, {
+          database: client, github: async () => '[]', readiness: async () => events.push('revision'),
+          snapshot: async () => events.push('snapshot'), migrate: async () => events.push('migration'), smoke: async () => events.push('smoke'),
+        }));
+        assert.deepEqual(events, [], 'legacy release authorization rejects the adopted target before snapshot or migration');
+        assert.deepEqual(await readMigrationState(client), adopted);
         await cli('up', env);
         assert.deepEqual((await client.query('SELECT * FROM public.city_requests ORDER BY id')).rows.map(row => ({ ...row })), before);
       } else {
@@ -124,7 +138,7 @@ test('release orchestration binds a real disposable adoption and replay to its s
     const dependencies={database:client,github:async()=> '[]',readiness:async()=>events.push('revision'),snapshot:async()=> {events.push('snapshot');return 'disposable:release-snapshot';},
       preflightAdoption:async()=> {const target=await captureSchema(releaseUrl);assert.equal(normalizeSchema(target.dump),normalizeSchema(captured.dump));},
       adopt:async({snapshotReference})=> {events.push('adoption');await executeMigration('adopt-preservation',{...env,MIGRATION_SNAPSHOT_REFERENCE:snapshotReference});},
-      migrate:async()=> {events.push('migration');await executeMigration('up',env);},
+      migrate:async({lineage})=> {events.push('migration');await executeMigration('up',{...env,MIGRATION_EXPECTED_LINEAGE:lineage});},
       smoke:async()=> {assert.equal((await client.query('SELECT count(*)::int AS n FROM public.evidence_sources')).rows[0].n,0);}};
     const config={sha,manifest,plan:{lineage:release.lineage,manifestHash,adoptionReference:release.adoptionReference,migrations:release.migrations}};
     await runRelease(release,config,dependencies);

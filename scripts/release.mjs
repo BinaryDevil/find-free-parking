@@ -84,7 +84,7 @@ export async function runRelease(release, config, { github, database, readiness,
         results.push('Explicit preservation adoption metadata verified; no legacy operation marked executed.');
       }
       if (selected.requiresAdoption) await readiness();
-      await migrate();
+      await migrate({ lineage: selected.lineage });
       const after = await readMigrationState(database);
       if (!after.adoption || resolveMigrationLineage(manifest, after).pending.length) throw new Error('Preservation history mismatch');
       results.push(`Preservation migrations verified: ${pending.length} applied; legacy fields and history retained.`);
@@ -95,15 +95,14 @@ export async function runRelease(release, config, { github, database, readiness,
     }
     if (config.files.some(f => !migrationPattern.test(f)) || !Array.isArray(config.plan) || config.plan.some(f => !migrationPattern.test(f)) ||
         JSON.stringify([...config.plan].sort()) !== JSON.stringify(release.migrations)) throw new Error('Plan differs from merged release');
-    const ledger = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
+    await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
     let pending = [];
     if (release.migrations.length) {
-      const applied = ledger.rows[0]?.ledger ? (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`) : [];
-      if (applied.some(f => !config.files.includes(f))) throw new Error('Unknown migration history');
-      pending = config.files.filter(f => !applied.includes(f));
+      const selected = resolveMigrationLineage(config.manifest, await readMigrationState(database), { lineage: 'legacy' });
+      pending = selected.pending.map(entry => basename(entry.path));
       if (pending.some(f => !release.migrations.includes(f))) throw new Error('Pending migration not authorized');
       // Existing production must adopt the baseline separately; never replay its DDL.
-      if (pending.includes('1791676800000_baseline.sql')) throw new Error('Baseline adoption required');
+      if (selected.requiresBaseline) throw new Error('Baseline adoption required');
       results.push('Authorization and pending migration checks passed.');
       await readiness();
       results.push('Exact release deployment and public production revision verified before migrations.');
@@ -115,7 +114,7 @@ export async function runRelease(release, config, { github, database, readiness,
     // Snapshot readiness can wait; do not reuse deployment proof from before it.
     await readiness();
     if (release.migrations.length) {
-      await migrate();
+      await migrate({ lineage: 'legacy' });
       const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
       if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
       results.push(`Migrations verified: ${pending.length} applied; ${pending.length ? 'additive rollback uses previous deployment' : 'no-op'}.`);
@@ -228,7 +227,7 @@ async function main() {
     appendFileSync(process.env.GITHUB_OUTPUT, `needs_pg_dump=${!!(release.lineage && release.adoptionReference)}\n`);
     return;
   }
-  const manifest = release.lineage ? loadMigrationManifest() : null;
+  const manifest = release.migrations.length ? loadMigrationManifest() : null;
   let referenceFiles;
   const neon = async (path, body) => {
     const response = await fetch(`https://console.neon.tech/api/v2/${path}`, {
@@ -269,7 +268,7 @@ async function main() {
         verifyAdoptionReference({ ...inputs, baseline: manifest.baseline, targetDump: target.dump, pgDumpVersion: target.version });
       },
       adopt: ({ snapshotReference }) => execute('pnpm', ['db:adopt-preservation'], { env: { ...process.env, ...referenceFiles.paths, MIGRATION_ADOPTION_APPROVED: release.adoptionReference, MIGRATION_SNAPSHOT_REFERENCE: snapshotReference }, timeout: 10 * 60 * 1000 }),
-      migrate: () => execute('pnpm', ['db:migrate'], { env: process.env, timeout: 10 * 60 * 1000 }),
+      migrate: ({ lineage }) => execute('pnpm', ['db:migrate'], { env: { ...process.env, MIGRATION_EXPECTED_LINEAGE: lineage }, timeout: 10 * 60 * 1000 }),
       smoke: async () => {
         // Retry transient API failures only after deployment revision verification.
         for (let attempt = 0; ; attempt++) {
