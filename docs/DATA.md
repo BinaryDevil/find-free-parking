@@ -61,6 +61,11 @@ comments or ordinary logs. The checks match endpoint/database but cannot prove
 the branch's purpose: verify its branch ID/name in Neon before every operation.
 App credentials must remain separate; no migration runs during build/deployment.
 
+Migration and release owner URLs accept only `sslmode` and `channel_binding`
+query options, each once. Other options are rejected before connecting because
+`pg` can use them to override the inspected host, database or role. The connected
+database and role must match the URL, and the role must own that database.
+
 All integrated migrations are immutable, including ones not applied yet. CI checks
 against the PR base, previous push on dev/main, or dev for feature pushes, without
 database credentials. Unmerged migrations can be corrected during disposable

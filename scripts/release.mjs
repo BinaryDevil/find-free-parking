@@ -5,9 +5,22 @@ import { readMigrationState, readAdoptionInputs, verifyAdoptionReference, captur
 import { loadMigrationManifest } from './migration-lineage.mjs';
 import { materializeAdoptionReference } from './preservation-reference.mjs';
 import { basename } from 'node:path';
+import { directMigrationUrl, verifyMigrationIdentity } from './migration-connection.mjs';
 
 const repository = 'BinaryDevil/find-free-parking';
 const migrationPattern = /^\d{13}_[a-z0-9_]+\.sql$/;
+const project = 'misty-breeze-47060812';
+const parent = 'br-rough-base-aryz0z5a';
+
+export function productionMigrationUrl(connectionString, endpoints, databases) {
+  const url = directMigrationUrl(connectionString);
+  const endpoint = endpoints.find(e => e.branch_id === parent && e.type === 'read_write' && e.host === url.hostname);
+  const databaseName = decodeURIComponent(url.pathname.slice(1));
+  if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname.includes('-pooler') || !endpoint ||
+      !databases.some(d => d.name === databaseName && d.owner_name === decodeURIComponent(url.username)) ||
+      decodeURIComponent(url.username) !== 'find-free-parking-db_owner') throw new Error('Production identity mismatch');
+  return url;
+}
 
 export function authorizeRelease(prs, sha) {
   const matches = prs.filter(pr => pr.merged && pr.merge_commit_sha === sha && pr.merged_by?.type === 'User' &&
@@ -217,8 +230,6 @@ async function main() {
   }
   const manifest = release.lineage ? loadMigrationManifest() : null;
   let referenceFiles;
-  const project = 'misty-breeze-47060812';
-  const parent = 'br-rough-base-aryz0z5a';
   const neon = async (path, body) => {
     const response = await fetch(`https://console.neon.tech/api/v2/${path}`, {
       method: body ? 'POST' : 'GET', signal: AbortSignal.timeout(30000), redirect: 'error',
@@ -231,19 +242,14 @@ async function main() {
   let client;
   const database = { query: async sql => {
     if (!client) {
-      const url = new URL(process.env.PRODUCTION_MIGRATION_DATABASE_URL || '');
       const endpoints = (await neon(`projects/${project}/endpoints`)).endpoints;
-      const endpoint = endpoints.find(e => e.branch_id === parent && e.type === 'read_write' && e.host === url.hostname);
       const databases = (await neon(`projects/${project}/branches/${parent}/databases`)).databases;
+      const url = productionMigrationUrl(process.env.PRODUCTION_MIGRATION_DATABASE_URL || '', endpoints, databases);
       const databaseName = decodeURIComponent(url.pathname.slice(1));
-      if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname.includes('-pooler') || !endpoint ||
-          !databases.some(d => d.name === databaseName && d.owner_name === decodeURIComponent(url.username)) ||
-          decodeURIComponent(url.username) !== 'find-free-parking-db_owner') throw new Error('Production identity mismatch');
       client = new Client({ connectionString: url.toString(), connectionTimeoutMillis: 15000,
         options: '-c statement_timeout=120000 -c lock_timeout=15000' });
       await client.connect();
-      const identity = (await client.query('SELECT current_database() AS database,current_user AS role')).rows[0];
-      if (identity.database !== databaseName || identity.role !== 'find-free-parking-db_owner') throw new Error('Database identity mismatch');
+      await verifyMigrationIdentity(client, url);
       process.env.MIGRATION_DATABASE_URL = url.toString();
       process.env.MIGRATION_EXPECTED_HOST = url.hostname;
       process.env.MIGRATION_EXPECTED_DATABASE = databaseName;

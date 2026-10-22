@@ -2,6 +2,7 @@ import { runner } from 'node-pg-migrate';
 import { Client } from 'pg';
 import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { directMigrationUrl, verifyMigrationIdentity } from './migration-connection.mjs';
 
 const baseline = '1791676800000_baseline';
 const command = process.argv[2];
@@ -10,10 +11,7 @@ try {
   if (!['up', 'mark-baseline'].includes(command) || process.argv.length !== 3) {
     throw new Error('Use pnpm db:migrate or pnpm db:baseline. No down/reset command is provided.');
   }
-  const url = new URL(process.env.MIGRATION_DATABASE_URL || '');
-  if (!['postgres:', 'postgresql:'].includes(url.protocol) || url.hostname.includes('-pooler')) {
-    throw new Error('MIGRATION_DATABASE_URL must be a direct PostgreSQL owner connection.');
-  }
+  const url = directMigrationUrl(process.env.MIGRATION_DATABASE_URL || '');
   if (!process.env.MIGRATION_EXPECTED_HOST || url.hostname !== process.env.MIGRATION_EXPECTED_HOST ||
       !process.env.MIGRATION_EXPECTED_DATABASE || decodeURIComponent(url.pathname.slice(1)) !== process.env.MIGRATION_EXPECTED_DATABASE) {
     throw new Error('Confirm the provider branch endpoint and database using MIGRATION_EXPECTED_HOST and MIGRATION_EXPECTED_DATABASE.');
@@ -27,10 +25,7 @@ try {
   }
   client = new Client({ connectionString: url.toString() });
   await client.connect();
-  const identity = await client.query('SELECT current_database() AS database, current_user AS role');
-  if (identity.rows[0].database !== process.env.MIGRATION_EXPECTED_DATABASE || identity.rows[0].role === 'app_rw') {
-    throw new Error('Database identity mismatch or app credential selected. Use the separate owner connection.');
-  }
+  await verifyMigrationIdentity(client, url);
   await runner({
     dbClient: client,
     dir: resolve('sql/migrations'),
