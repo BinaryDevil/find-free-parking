@@ -25,9 +25,10 @@ and explicit adoption are tracked in [#113](https://github.com/BinaryDevil/find-
   independent reviewer agreement; a database insert does not supply that review.
 - Retention is a restricted SECURITY DEFINER capability with an explicit owner
   and `pg_catalog` search path. Installation never calls it. An existing role
-  with login, elevated attributes, memberships, owned objects or direct table
-  grants is rejected rather than repaired. Normal PUBLIC PostGIS metadata
-  access is not confused with a private-field grant.
+  with login, elevated attributes, memberships, schema CREATE/ownership,
+  function grants/ownership, database CREATE/TEMPORARY/ownership, or relation
+  and column capabilities in any schema is rejected rather than repaired.
+  Ordinary PUBLIC metadata rights remain compatible.
 - A later, separately authorized retention call clears request/report IP and
   location at age **at least 90 days**, and RESOLVED-report email at any age.
   Other emails and all rows remain. Disabling a job cannot recover cleared fields.

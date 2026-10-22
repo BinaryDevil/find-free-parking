@@ -275,6 +275,7 @@ COMMENT ON TABLE public.legacy_retirement_members IS 'Original rows retained in 
 
 
 -- Validate existing capability roles instead of repairing their privileges.
+-- Inspect explicit grants/ownership; ordinary PUBLIC metadata rights are not role-specific capabilities.
 -- This definition does not provision a scheduler/login or clear any private data.
 DO $$
 DECLARE executor_oid oid;
@@ -286,11 +287,16 @@ BEGIN
     IF EXISTS (SELECT FROM pg_roles WHERE oid=executor_oid AND
       (rolcanlogin OR rolinherit OR rolsuper OR rolcreatedb OR rolcreaterole OR rolreplication OR rolbypassrls OR rolconfig IS NOT NULL))
       OR EXISTS (SELECT FROM pg_auth_members WHERE roleid=executor_oid OR member=executor_oid)
-      OR EXISTS (SELECT FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace
-        WHERE n.nspname IN ('public','extensions') AND (c.relowner=executor_oid OR
+      OR EXISTS (SELECT FROM pg_namespace n WHERE n.nspowner=executor_oid OR
+        EXISTS (SELECT FROM aclexplode(n.nspacl) a WHERE a.grantee=executor_oid AND a.privilege_type='CREATE'))
+      OR EXISTS (SELECT FROM pg_proc p WHERE p.proowner=executor_oid OR
+        EXISTS (SELECT FROM aclexplode(p.proacl) a WHERE a.grantee=executor_oid))
+      OR EXISTS (SELECT FROM pg_database d WHERE d.datdba=executor_oid OR
+        EXISTS (SELECT FROM aclexplode(d.datacl) a WHERE a.grantee=executor_oid AND a.privilege_type IN ('CREATE','TEMPORARY')))
+      OR EXISTS (SELECT FROM pg_class c WHERE c.relowner=executor_oid OR
           EXISTS (SELECT FROM aclexplode(c.relacl) a WHERE a.grantee=executor_oid) OR
           EXISTS (SELECT FROM pg_attribute col CROSS JOIN LATERAL aclexplode(col.attacl) a
-            WHERE col.attrelid=c.oid AND a.grantee=executor_oid)))
+            WHERE col.attrelid=c.oid AND a.grantee=executor_oid))
       OR pg_catalog.has_table_privilege(executor_oid,'public.reports','SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER')
       OR pg_catalog.has_table_privilege(executor_oid,'public.city_requests','SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER')
       OR pg_catalog.has_any_column_privilege(executor_oid,'public.reports','SELECT,INSERT,UPDATE,REFERENCES')
