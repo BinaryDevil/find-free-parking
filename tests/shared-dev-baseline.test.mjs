@@ -74,6 +74,10 @@ test('reconciliation binds a direct owner URL to the reviewed provider target be
     assert.throws(() => reconciliationTarget(url, reviewed, digest(canonical(reviewed))), { code: 'DEV_BASELINE_TARGET_UNREVIEWED' });
   }
   assert.throws(() => reconciliationTarget(url, approval, 'unreviewed'), { code: 'DEV_BASELINE_TARGET_UNREVIEWED' });
+  const postgresUrl = url.replace(/\/find-free-parking-db$/, '/postgres');
+  assert.throws(() => reconciliationTarget(postgresUrl, approval, digest(canonical(approval))), { code: 'DEV_BASELINE_TARGET_UNREVIEWED' });
+  const otherDatabase = { ...approval, database: 'other-db' };
+  assert.throws(() => reconciliationTarget(url.replace(/\/find-free-parking-db$/, '/other-db'), otherDatabase, digest(canonical(otherDatabase))), { code: 'DEV_BASELINE_TARGET_UNREVIEWED' });
 });
 
 test('rehearsal targets need a validation name and the exact dev parent', () => {
@@ -120,6 +124,8 @@ test('operator command refuses unreviewed inputs before connecting', async () =>
     [reviewed => { reviewed.snapshot.parentBranchId = 'br-other-parent'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.providerRecordHash = 'z'.repeat(64); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.verifiedAt = new Date(Date.parse(reviewed.snapshot.createdAt) - 60000).toISOString(); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
+    [reviewed => { delete reviewed.snapshot.branchId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
+    [reviewed => { reviewed.snapshot.verifiedAt = new Date(Date.now() + 10 * 60000).toISOString(); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { delete reviewed.beforeSchemaHash; }, 'DEV_BASELINE_APPROVAL_INVALID'],
     [reviewed => Object.assign(reviewed.snapshot, { createdAt: new Date(Date.now() - 3 * hour).toISOString(), verifiedAt: new Date(Date.now() - 2 * hour).toISOString() }), 'DEV_BASELINE_SNAPSHOT_STALE'],
     [reviewed => { reviewed.snapshot.retainedUntil = new Date(Date.now() - 1000).toISOString(); }, 'DEV_BASELINE_SNAPSHOT_EXPIRED'],
