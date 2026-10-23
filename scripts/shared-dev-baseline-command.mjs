@@ -63,14 +63,22 @@ export async function executeReconciliation(env, { approval, reference, referenc
   if (retained <= now) throw guard('DEV_BASELINE_SNAPSHOT_EXPIRED');
   if (await dumpVersion() !== reference.pgDumpVersion) throw guard('DEV_BASELINE_PG_DUMP_VERSION');
   const write = evidenceWriter(env.DEV_BASELINE_EVIDENCE_DIR);
-  const evidence = { reason: null, beforeSchemaHash: null, afterSchemaHash: null, fingerprints: {} };
+  const evidence = { reason: null, connectionLost: false, beforeSchemaHash: null, afterSchemaHash: null, fingerprints: {} };
   const committed = reason => { evidence.reason = reason; return guard('DEV_BASELINE_COMMITTED'); };
   const database = connect(url);
+  // pg rejects any pending query and then emits 'error' when the socket drops;
+  // unhandled, that event would crash before a commit outcome or evidence is recorded.
+  database.on?.('error', () => { evidence.connectionLost = true; });
   let locked = false;
   let transaction = false;
   try {
     await database.connect();
     try { await verifyMigrationIdentity(database, url); } catch (error) { throw error?.code ? error : guard('DEV_BASELINE_IDENTITY_MISMATCH'); }
+    // Read-only and before any lock: production and an already reconciled target both have the extension.
+    const prior = (await database.query(`SELECT EXISTS (SELECT FROM pg_extension WHERE extname='pg_stat_statements') AS installed,
+      EXISTS (SELECT FROM pg_namespace WHERE nspname='migration_meta') OR to_regclass('public.evidence_sources') IS NOT NULL AS adopted`)).rows[0];
+    if (prior.installed) throw guard('DEV_BASELINE_ALREADY_RECONCILED');
+    if (prior.adopted) throw guard('DEV_BASELINE_STATE_UNEXPECTED');
     locked = (await database.query('SELECT pg_try_advisory_lock($1::bigint) AS locked', [migrationLock])).rows[0].locked;
     if (!locked) throw guard('DEV_BASELINE_LOCK_BUSY');
     await database.query('BEGIN ISOLATION LEVEL REPEATABLE READ'); transaction = true;
@@ -99,6 +107,8 @@ export async function executeReconciliation(env, { approval, reference, referenc
     try {
       after = await capture(url.toString());
       write('after.sql', after.dump);
+      // A dropped session also released the advisory lock during the capture.
+      if (evidence.connectionLost) throw new Error();
     } catch {
       throw committed('AFTER_CAPTURE_FAILED');
     }
@@ -117,7 +127,8 @@ export async function executeReconciliation(env, { approval, reference, referenc
   } finally {
     if (transaction) await database.query('ROLLBACK').catch(() => {});
     if (locked) await database.query('SELECT pg_advisory_unlock($1::bigint)', [migrationLock]).catch(() => {});
-    await database.end();
+    // A failed close must not skip the evidence write below.
+    await database.end().catch(() => {});
     try {
       write('evidence.json', `${JSON.stringify(evidence, null, 2)}\n`);
     } catch {

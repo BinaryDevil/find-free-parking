@@ -18,6 +18,7 @@ export const guardMessages = {
   DEV_BASELINE_SNAPSHOT_EXPIRED: 'Snapshot retention ends before execution; re-fetch and re-review it.',
   DEV_BASELINE_EVIDENCE_DIR: 'DEV_BASELINE_EVIDENCE_DIR must name a new directory outside the checkout.',
   DEV_BASELINE_IDENTITY_MISMATCH: 'Connected database or owner differs from the reviewed target.',
+  DEV_BASELINE_ALREADY_RECONCILED: 'pg_stat_statements is already installed; target is not the unreconciled shared dev database.',
   DEV_BASELINE_LOCK_BUSY: 'Another migration is running.',
   DEV_BASELINE_STATE_UNEXPECTED: 'Migration history or foundation objects exist.',
   DEV_BASELINE_TRACK_MISMATCH: 'pg_stat_statements.track differs from the approval.',
@@ -25,7 +26,7 @@ export const guardMessages = {
   DEV_BASELINE_SCHEMA_DRIFT: 'Live schema has drift beyond the two documented differences.',
   DEV_BASELINE_FINGERPRINT_CHANGED: 'Original rows or fields changed; rolled back.',
   DEV_BASELINE_COMMIT_UNKNOWN: 'COMMIT outcome unknown. Verify catalog state before anything else.',
-  DEV_BASELINE_COMMITTED: 'Committed, but final capture or comparison failed. Stop; do not run baseline marking, adoption or replay.',
+  DEV_BASELINE_COMMITTED: 'Committed, but final capture, comparison or evidence write failed. Stop; do not run baseline marking, adoption or replay.',
 };
 
 export function guard(code) {
