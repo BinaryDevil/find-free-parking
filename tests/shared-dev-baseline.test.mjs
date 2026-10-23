@@ -13,14 +13,16 @@ import { productionBranchId, reconciliationTarget, verifyReconciliationSchema } 
 
 const approval = { version: 1, branchId: 'br-rough-lake-arrxiape', branchName: 'dev', hostHash: digest('dev.invalid'), database: 'find-free-parking-db', owner: 'find-free-parking-db_owner' };
 const url = 'postgres://find-free-parking-db_owner:private@dev.invalid/find-free-parking-db';
-const reference = readFileSync('sql/migrations/1791676800000_baseline.sql', 'utf8');
+// The committed baseline lost pg_dump's trailing space after "Owner:" on COMMENT headers; restore the real pg_dump 17 format.
+const baselineFile = readFileSync('sql/migrations/1791676800000_baseline.sql', 'utf8');
+const reference = baselineFile.replace(/(Type: COMMENT; Schema: -; Owner:)$/gm, '$1 ');
 // Fixture reproduces the two differences recorded in DATA before this command existed.
 const extensionBlock = '--\n-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -\n--\n\nCREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;\n\n\n';
-const commentBlock = "--\n-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner:\n--\n\nCOMMENT ON EXTENSION pg_stat_statements IS 'track planning and execution statistics of all SQL statements executed';\n\n\n";
+const commentBlock = "--\n-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: \n--\n\nCOMMENT ON EXTENSION pg_stat_statements IS 'track planning and execution statistics of all SQL statements executed';\n\n\n";
 const appStatusGrant = 'GRANT INSERT(reported_status) ON TABLE public.reports TO app_rw;';
 const before = reference.replace(extensionBlock, '').replace(commentBlock, '')
   .replace('GRANT INSERT(reported_status)', 'GRANT SELECT(reported_status),INSERT(reported_status)');
-const metadata = { version: 1, provenance: 'baseline-replay', projection: 'application', baselineHash: digest(reference),
+const metadata = { version: 1, provenance: 'baseline-replay', projection: 'application', baselineHash: digest(baselineFile),
   schemaHash: digest(normalizeSchema(reference, 'application')), pgDumpVersion: 'pg_dump (PostgreSQL) 17.6',
   options: ['--schema-only', '--exclude-schema=migration_meta'], review: 'https://github.com/BinaryDevil/find-free-parking/issues/120' };
 const scratch = mkdtempSync(join(tmpdir(), 'ffp-120-'));
@@ -110,6 +112,16 @@ test('only the two documented baseline differences pass the pre-write schema gua
   for (const changed of [reference, `${before}\nGRANT SELECT ON public.reports TO app_rw;`, before.replace('GRANT SELECT(reported_status) ON TABLE public.reports TO app_report_counts;', ''), before.replace('CREATE TABLE public.reports', 'CREATE TABLE public.other_reports')]) {
     assert.throws(() => verifyReconciliationSchema(changed, reference, 'application'), { code: 'DEV_BASELINE_SCHEMA_DRIFT' });
   }
+});
+
+test('real pg_dump 17 header formatting passes the guard and extra drift is still refused', () => {
+  const head = '--\n-- Name: widgets; Type: TABLE; Schema: public; Owner: find-free-parking-db_owner\n--\n\nCREATE TABLE public.widgets (id integer);\n\n\n';
+  const acl = (grants) => `--\n-- Name: COLUMN reports.reported_status; Type: ACL; Schema: public; Owner: find-free-parking-db_owner\n--\n\n${grants}\n`;
+  const realReference = head + extensionBlock + commentBlock + acl('GRANT INSERT(reported_status) ON TABLE public.reports TO app_rw;\nGRANT SELECT(reported_status) ON TABLE public.reports TO app_report_counts;');
+  assert.match(realReference, /Type: COMMENT; Schema: -; Owner: \n--/);
+  const realTarget = head + acl('GRANT SELECT(reported_status),INSERT(reported_status) ON TABLE public.reports TO app_rw;\nGRANT SELECT(reported_status) ON TABLE public.reports TO app_report_counts;');
+  verifyReconciliationSchema(realTarget, realReference, 'application');
+  assert.throws(() => verifyReconciliationSchema(`${realTarget}GRANT SELECT ON public.reports TO app_rw;\n`, realReference, 'application'), { code: 'DEV_BASELINE_SCHEMA_DRIFT' });
 });
 
 test('operator command refuses unreviewed inputs before connecting', async () => {

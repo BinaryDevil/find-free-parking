@@ -54,7 +54,7 @@ export function verifyReconciliationSchema(targetDump, referenceDump, projection
   let expected = normalizeSchema(referenceDump, projection);
   for (const block of [
     "--\n-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -\n--\n\nCREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;\n\n\n",
-    "--\n-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner:\n--\n\nCOMMENT ON EXTENSION pg_stat_statements IS 'track planning and execution statistics of all SQL statements executed';\n\n\n",
+    "--\n-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: \n--\n\nCOMMENT ON EXTENSION pg_stat_statements IS 'track planning and execution statistics of all SQL statements executed';\n\n\n",
   ]) {
     if (expected.split(block).length !== 2) throw guard('DEV_BASELINE_REFERENCE_UNTRUSTED');
     expected = expected.replace(block, '');
