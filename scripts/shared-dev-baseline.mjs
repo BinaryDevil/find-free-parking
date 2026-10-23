@@ -7,7 +7,7 @@ export function reconciliationTarget(connectionString, approval, approvedHash) {
   const rehearsal = /^validation\/issue-120-[a-z0-9-]+$/.test(approval.branchName || '') &&
     /^br-[a-z0-9-]+$/.test(approval.branchId || '') && approval.branchId !== 'br-rough-lake-arrxiape' && approval.parentBranchId === 'br-rough-lake-arrxiape';
   if (approval.version !== 1 || digest(canonical(approval)) !== approvedHash || (!shared && !rehearsal) ||
-      digest(url.hostname) !== approval.hostHash || approval.database !== 'find-free-parking-db' ||
+      url.port !== '5432' || digest(url.hostname) !== approval.hostHash || approval.database !== 'find-free-parking-db' ||
       approval.owner !== 'find-free-parking-db_owner' || decodeURIComponent(url.pathname.slice(1)) !== approval.database ||
       decodeURIComponent(url.username) !== approval.owner) throw new Error('Reviewed shared-dev provider target required');
   return url;
