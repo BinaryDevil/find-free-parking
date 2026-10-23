@@ -2,10 +2,10 @@
 
 > **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
 
-Status: inventory complete; source approval pending
-Independent review: [2026-10-21 Vancouver public-source reassessment](review-24-vancouver-2026-10-21.md), following the [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
+Status: inventory complete; source approval pending (reviewer [2026-10-23 review](vancouver-review-2026-10-23.md): criterion 7 fails for the pre-registered meter and permit subset, 8 of 12 checks contradict; no source approved)
+Independent review: [2026-10-23 Vancouver independent source review](vancouver-review-2026-10-23.md) (current), following the [2026-10-21 Vancouver public-source reassessment](review-24-vancouver-2026-10-21.md), following the [2026-10-19 partial review](review-24-2026-10-19.md); no sources approved, Coverage remains none.
 Timezone: America/Vancouver
-Coverage verdict: none (no approved source; Vancouver remains not covered)
+Coverage verdict: none (no approved source; Vancouver remains not covered). 2026-10-23 review: no Partial subset passes; no `coverage_areas` row or `subset_geom` proposed.
 Draft partial target: **validated, in-service City meter locations and their precisely assigned metered curb portions, plus independently confirmed signed Resident Parking Only / Resident Permit Parking curb restrictions within RPO, RPP and VRPP polygons**. This excludes whole unmetered blocks, polygon interiors without confirmed curb rules, lots, and specialized spaces without matching vehicle context. See the approval conditions below.
 Policy: [ADR-0002 Evidence Source Policy](../adr/0002-evidence-source-policy.md), [ADR-0004 no outreach](../adr/0004-no-external-outreach.md), and [ADR-0005 agent verification](../adr/0005-agent-verified-gates.md)
 Observed: 2026-10-09. Counts are live public-source counts, not imported rows. ArcGIS edit times are UTC export/service edits; they do not prove every rule was inspected that day.
@@ -72,6 +72,7 @@ Portal metadata: `GET https://opendata.vancouver.ca/api/explore/v2.1/catalog/dat
 - May establish: E2 paid hours/rates; after-hours Verified Free only at confirmed meter curb portions with complete parsed prohibitions and limits and no competing restriction. No nearby unmetered permission.
 - Unknown cases: undocumented rush days/holiday treatment, override flags, missing schedules/limits, specialized vehicle context, unclear pay-station extent, conflicting/missing IDs, flat-rate conditions, temporary changes, null fields and stale sync. Out of Service/broken meters are not free; Removed/missing meters must not be served as current recommendations, while stored history is preserved.
 - Verdict: **pending criteria 3/4/7**, and criterion 6 for alternate hosted production reuse. Portal terms recorded; no source approval. Link #28.
+- Verdict 2026-10-23 ([review](vancouver-review-2026-10-23.md)): **pending criteria 3/4/7** for paid use; after-hours free **pending criteria 3/7** (the per-meter E2 fields are present, but meter points carry no curb extent, so other restrictions on the same block cannot be excluded). 8 of 9 sampled meters, and 1,747 of 2,618 meters in the tested strata, sit on blocks with 2026 tickets for signed restrictions (no stopping, bus stop, tour bus, disabled and others) that no meter on the block carries. Criterion 6 is no longer a gate (2026-10-20 amendment).
 
 ### Resident Parking Fees and Zones (E4)
 
@@ -84,6 +85,7 @@ Portal metadata: `GET https://opendata.vancouver.ca/api/explore/v2.1/catalog/dat
 - May establish: E4 restricted/paid zone context where actual signed curb application and hours are confirmed; never free outside polygons. The [City conversion page](https://vancouver.ca/streets-transportation/changing-citywide-resident-parking-only-to-residential-permit-parking.aspx) describes full-time permit and two-hour-except-permit combinations. Do not invent a blanket visitor allowance or classify every meter inside an eligibility polygon permit-only.
 - Unknown cases: polygon boundary/curb side, administrative eligibility versus actual signs, RPO conversions, visitor schedules, special exemptions, overlapping meters and unsigned parts. [Accessible-parking guidance](https://vancouver.ca/streets-transportation/accessible-parking.aspx) has different permit/zone exemptions; ordinary passenger-car fixtures cannot stand in for all contexts.
 - Verdict: **pending criteria 4/6/7**; polygon precision meets E4's minimum, but signed applicability/schedules and reuse confirmation need reconciliation. #29 regressions should use precise signed curb fixtures for RPP025 rather than convert an eligibility polygon into universal permission/prohibition.
+- Verdict 2026-10-23 ([review](vancouver-review-2026-10-23.md)): **pending criteria 4/7**. No days, hours or visitor fields (criterion 4 fails for any timed claim); sample 1 agree, 2 unverified, 0 contradictions; criterion 6 is no longer a gate.
 
 ### Road Ahead current hosted view (E5)
 

@@ -1,0 +1,400 @@
+{
+ "currentVersion": 10.91,
+ "cimVersion": "2.9.0",
+ "id": 1,
+ "name": "Parking Meters",
+ "type": "Feature Layer",
+ "description": "",
+ "geometryType": "esriGeometryPoint",
+ "sourceSpatialReference": {
+  "wkid": 26910,
+  "latestWkid": 26910,
+  "xyTolerance": 0.001,
+  "zTolerance": 0.001,
+  "mTolerance": 0.001,
+  "falseX": -5120900,
+  "falseY": -9998100,
+  "xyUnits": 10000,
+  "falseZ": -100000,
+  "zUnits": 10000,
+  "falseM": -100000,
+  "mUnits": 10000
+ },
+ "copyrightText": "",
+ "parentLayer": null,
+ "subLayers": [],
+ "minScale": 0,
+ "maxScale": 0,
+ "referenceScale": 0.0,
+ "drawingInfo": {
+  "renderer": {
+   "type": "simple",
+   "symbol": {
+    "type": "esriPMS",
+    "url": "01c97e6fc0b46061df7fa8ef12966791",
+    "imageData": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABbElEQVQ4jbXTTyjDYRzH8feYGGVLzSZpZSliJilckJRIiVJODpLagVIKF0fciCV/Tg5yUFNSDrYsF/825c8J20WyVrMma2z7bQ4Ts5+xks/x+fZ59Tw9zyPlj5H+C+BsR7PzwGgwQokQJaTOYr9Pg1GySfBXwFiN8cjDYG8RGcrM2NqVj45VJ+MrNQwM2thOCkxVstisxFCW+xWtkEOFHOXWPRvTOjonLjGLgLFSdFVy+hPL8ekqJHvumllAJwLCEYbb1GQmr8fSoqK8u4gG0x0HX4ACGarfyu/HkUihERIAIUooFQAgIHzexgdw/cxNKmX3C/5jD2ciYPMO05CWHr2C4p+AJSdm9yv7IuApxInBzpqliRFZOorvyjYvp/MOFoCwCAA4fGS63kJwuYbW2jwagLT3kc94y+7kBeteAUt8J/Elhs59zNRZ2NPmoNPLyQ9ECVrduAICVsCVuKtkn8nu8GN3+JNMUwBSzhtdnW7g5DYQzQAAAABJRU5ErkJggg==",
+    "contentType": "image/png",
+    "width": 12,
+    "height": 12,
+    "angle": 0,
+    "xoffset": 0,
+    "yoffset": 0
+   }
+  },
+  "scaleSymbols": true,
+  "transparency": 0,
+  "labelingInfo": null
+ },
+ "defaultVisibility": true,
+ "extent": {
+  "xmin": 484407.09279999975,
+  "ymin": 5450872.338199999,
+  "xmax": 497622.6495000003,
+  "ymax": 5460055.329500001,
+  "spatialReference": {
+   "wkid": 26910,
+   "latestWkid": 26910,
+   "xyTolerance": 0.001,
+   "zTolerance": 0.001,
+   "mTolerance": 0.001,
+   "falseX": -5120900,
+   "falseY": -9998100,
+   "xyUnits": 10000,
+   "falseZ": -100000,
+   "zUnits": 10000,
+   "falseM": -100000,
+   "mUnits": 10000
+  }
+ },
+ "hasAttachments": false,
+ "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+ "displayField": "METER_ID",
+ "typeIdField": null,
+ "subtypeFieldName": null,
+ "subtypeField": null,
+ "defaultSubtypeCode": null,
+ "fields": [
+  {
+   "name": "OBJECTID",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID",
+   "domain": null
+  },
+  {
+   "name": "SHAPE",
+   "type": "esriFieldTypeGeometry",
+   "alias": "SHAPE",
+   "domain": null
+  },
+  {
+   "name": "METER_ID",
+   "type": "esriFieldTypeString",
+   "alias": "METER_ID",
+   "length": 7,
+   "domain": null
+  },
+  {
+   "name": "FID_METER",
+   "type": "esriFieldTypeInteger",
+   "alias": "FID_METER",
+   "domain": null
+  },
+  {
+   "name": "FID_POST",
+   "type": "esriFieldTypeInteger",
+   "alias": "FID_POST",
+   "domain": null
+  },
+  {
+   "name": "MOBILE_PAYMENT_NUMBER",
+   "type": "esriFieldTypeString",
+   "alias": "MOBILE_PAYMENT_NUMBER",
+   "length": 5,
+   "domain": null
+  },
+  {
+   "name": "VEHICLE_TYPE",
+   "type": "esriFieldTypeString",
+   "alias": "VEHICLE_TYPE",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "METER_HEAD",
+   "type": "esriFieldTypeString",
+   "alias": "METER_HEAD",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "DIRECTION",
+   "type": "esriFieldTypeString",
+   "alias": "DIRECTION",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "METER_MANUFACTURER",
+   "type": "esriFieldTypeString",
+   "alias": "METER_MANUFACTURER",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "METER_MECHANISM",
+   "type": "esriFieldTypeString",
+   "alias": "METER_MECHANISM",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "SERVICE_STATUS",
+   "type": "esriFieldTypeString",
+   "alias": "SERVICE_STATUS",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "CREDIT_CARD",
+   "type": "esriFieldTypeString",
+   "alias": "CREDIT_CARD",
+   "length": 5,
+   "domain": null
+  },
+  {
+   "name": "SECTOR",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "SECTOR",
+   "domain": null
+  },
+  {
+   "name": "RATE_CODE_9A_6P",
+   "type": "esriFieldTypeString",
+   "alias": "RATE_CODE_9A_6P",
+   "length": 1,
+   "domain": null
+  },
+  {
+   "name": "RATE_9A_6P",
+   "type": "esriFieldTypeString",
+   "alias": "RATE_9A_6P",
+   "length": 10,
+   "domain": null
+  },
+  {
+   "name": "TIME_LIMIT_9A_6P",
+   "type": "esriFieldTypeString",
+   "alias": "TIME_LIMIT_9A_6P",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "RATE_CODE_6P_10P",
+   "type": "esriFieldTypeString",
+   "alias": "RATE_CODE_6P_10P",
+   "length": 1,
+   "domain": null
+  },
+  {
+   "name": "RATE_6P_10P",
+   "type": "esriFieldTypeString",
+   "alias": "RATE_6P_10P",
+   "length": 10,
+   "domain": null
+  },
+  {
+   "name": "TIME_LIMIT_6P_10P",
+   "type": "esriFieldTypeString",
+   "alias": "TIME_LIMIT_6P_10P",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "TIME_LIMIT_WEEKEND_9A_6P",
+   "type": "esriFieldTypeString",
+   "alias": "TIME_LIMIT_WEEKEND_9A_6P",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "TIME_LIMIT_WEEKEND_6P_10P",
+   "type": "esriFieldTypeString",
+   "alias": "TIME_LIMIT_WEEKEND_6P_10P",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "FLAT_RATE",
+   "type": "esriFieldTypeString",
+   "alias": "FLAT_RATE",
+   "length": 50,
+   "domain": null
+  },
+  {
+   "name": "AM_RUSH_HOURS",
+   "type": "esriFieldTypeString",
+   "alias": "AM_RUSH_HOURS",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "PM_RUSH_HOURS",
+   "type": "esriFieldTypeString",
+   "alias": "PM_RUSH_HOURS",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_1_ZONE",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_1_ZONE",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_1_TIME",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_1_TIME",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_1_DAYS",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_1_DAYS",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_2_ZONE",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_2_ZONE",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_2_TIME",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_2_TIME",
+   "length": 30,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_2_DAYS",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_2_DAYS",
+   "length": 20,
+   "domain": null
+  },
+  {
+   "name": "CREATED_DATE",
+   "type": "esriFieldTypeDate",
+   "alias": "CREATED_DATE",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "LAST_EDITED_DATE",
+   "type": "esriFieldTypeDate",
+   "alias": "LAST_EDITED_DATE",
+   "length": 8,
+   "domain": null
+  },
+  {
+   "name": "TIME_LIMIT_OVERRIDE",
+   "type": "esriFieldTypeString",
+   "alias": "TIME_LIMIT_OVERRIDE",
+   "length": 5,
+   "domain": null
+  },
+  {
+   "name": "PROHIBITION_OVERRIDE",
+   "type": "esriFieldTypeString",
+   "alias": "PROHIBITION_OVERRIDE",
+   "length": 5,
+   "domain": null
+  }
+ ],
+ "geometryField": {
+  "name": "SHAPE",
+  "type": "esriFieldTypeGeometry",
+  "alias": "SHAPE"
+ },
+ "indexes": [
+  {
+   "name": "FDO_OBJECTID",
+   "fields": "OBJECTID",
+   "isAscending": true,
+   "isUnique": true,
+   "description": ""
+  },
+  {
+   "name": "SHAPE_INDEX",
+   "fields": "SHAPE",
+   "isAscending": true,
+   "isUnique": false,
+   "description": ""
+  }
+ ],
+ "subtypes": [],
+ "relationships": [],
+ "canModifyLayer": true,
+ "canScaleSymbols": false,
+ "hasLabels": false,
+ "capabilities": "Map,Query,Data",
+ "maxRecordCount": 2000,
+ "supportsStatistics": true,
+ "supportsExceedsLimitStatistics": true,
+ "supportsAdvancedQueries": true,
+ "supportedQueryFormats": "JSON, geoJSON, PBF",
+ "isDataVersioned": false,
+ "ownershipBasedAccessControlForFeatures": {"allowOthersToQuery": true},
+ "useStandardizedQueries": true,
+ "supportedSpatialRelationships": [
+  "esriSpatialRelIntersects",
+  "esriSpatialRelContains",
+  "esriSpatialRelCrosses",
+  "esriSpatialRelEnvelopeIntersects",
+  "esriSpatialRelIndexIntersects",
+  "esriSpatialRelOverlaps",
+  "esriSpatialRelTouches",
+  "esriSpatialRelWithin",
+  "esriSpatialRelRelation"
+ ],
+ "advancedQueryCapabilities": {
+  "useStandardizedQueries": true,
+  "supportsStatistics": true,
+  "supportsPercentileStatistics": true,
+  "supportsHavingClause": true,
+  "supportsOrderBy": true,
+  "supportsDistinct": true,
+  "supportsCountDistinct": true,
+  "supportsPagination": true,
+  "supportsLod": false,
+  "supportsQueryWithLodSR": false,
+  "supportsTrueCurve": true,
+  "supportsQueryWithDatumTransformation": true,
+  "supportsReturningQueryExtent": true,
+  "supportsQueryWithDistance": true,
+  "supportsSqlExpression": true,
+  "supportsTimeRelation": true,
+  "supportsSqlFormat": false,
+  "supportsQueryAnalytic": false
+ },
+ "supportsDatumTransformation": true,
+ "dateFieldsTimeReference": {
+  "timeZone": "Pacific Standard Time",
+  "respectsDaylightSaving": true
+ },
+ "preferredTimeReference": null,
+ "datesInUnknownTimezone": false,
+ "hasMetadata": true,
+ "isDataArchived": false,
+ "archivingInfo": {
+  "supportsQueryWithHistoricMoment": false,
+  "startArchivingMoment": -1
+ },
+ "supportsCoordinatesQuantization": true,
+ "supportsDynamicLegends": true,
+ "serviceItemId": "b76d0e81752a4f1db25df2b2141a36d9"
+}

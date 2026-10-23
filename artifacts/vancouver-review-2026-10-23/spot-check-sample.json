@@ -1,0 +1,3641 @@
+{
+ "generated_utc": "2026-10-23T19:44:30+00:00",
+ "draw": {
+  "MT": [
+   5090,
+   5117,
+   20929
+  ],
+  "MR": [
+   4819,
+   8689,
+   6102
+  ],
+  "MX": [
+   5646,
+   30136,
+   17011
+  ],
+  "P": [
+   "1000 BUTE ST",
+   "3800 CAROLINA ST",
+   "1300 W 11TH AV"
+  ]
+ },
+ "checks": [
+  {
+   "id": "MT1",
+   "stratum": "MT",
+   "feature_id": 5090,
+   "meter_id": "302911",
+   "record": {
+    "object_id": "1398",
+    "meter_id": "302911",
+    "service_status": "In Service",
+    "meter_head": "Twin",
+    "credit_card": "No",
+    "mobile_payment_number": 51597,
+    "local_area": "Kitsilano",
+    "sector": 3,
+    "direction": "West",
+    "rate_9am_6pm": "$1.50",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": null,
+    "pm_rush_hours": null,
+    "prohibition_1_days": null,
+    "prohibition_1_time": null,
+    "prohibition_1_zone": null,
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 5090,
+    "post_feature_id": 10565,
+    "meter_mechanism": "GRDX5",
+    "meter_manufacturer": "MacKay",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.17073613375008,
+       49.26419764948826
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.17073613375008,
+     "lat": 49.26419764948826
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "2900 W BROADWAY",
+    "candidates": [
+     [
+      9.16141846110571,
+      "2900 W BROADWAY"
+     ],
+     [
+      34.768757317431074,
+      "2400 BAYSWATER ST"
+     ],
+     [
+      46.63228232373416,
+      "2500 MACKENZIE ST"
+     ]
+    ]
+   },
+   "hblock": "2900 W BROADWAY",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:22+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:22+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 227,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 4,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "WR",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 1,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW..",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(a)(ii)",
+     "n": 1,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 272,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 5,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "WR",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 4,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 1,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 1,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET INDICATED BY A SIGN OR OTHER MARKER AS RESERVED FOR ONE OR MORE CLASS OF VEHICLE, EXCEPT FOR RECOGNIZED VEHICLES OF THAT CLASS",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(J)",
+     "n": 12,
+     "cats": [
+      "CLASS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 4,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP OR PARK OTHER THAN WITH THE CURBSIDE WHEELS OF THE VEHICLE WITHIN 30 CM OF THE CURB OR EDGE OF THE ROADWAY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "18.1(C)(ii)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 6 METRES OF EITHER SIDE OF A CROSSWALK, EXCEPT FOR THE DRIVER OF A MOTORCYCLE OR MOTOR ASSISTED CYCLE WHO IS PARKING IN A CLEARANCE PARKING AREA OR A BICYCLE RIDER PARKING AT A BICYCLE RACK",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.4(B)",
+     "n": 1,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 7475,
+   "categories_present": [
+    "BUS",
+    "CLASS",
+    "METER",
+    "NS"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 546,
+     "meter_id": "302904",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5089,
+     "meter_id": "302909",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5085,
+     "meter_id": "302930",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 9047,
+     "meter_id": "302998",
+     "status": "In Service",
+     "vehicle": "Motorcycle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5083,
+     "meter_id": "302926",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5082,
+     "meter_id": "302912",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 547,
+     "meter_id": "302906",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5087,
+     "meter_id": "302905",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5091,
+     "meter_id": "302913",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 548,
+     "meter_id": "302903",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5090,
+     "meter_id": "302911",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5084,
+     "meter_id": "302928",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5088,
+     "meter_id": "302907",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5092,
+     "meter_id": "302915",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5086,
+     "meter_id": "302901",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5081,
+     "meter_id": "302910",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5080,
+     "meter_id": "302908",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "BUS",
+    "NS"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: BUS, NS"
+  },
+  {
+   "id": "MT2",
+   "stratum": "MT",
+   "feature_id": 5117,
+   "meter_id": "303031",
+   "record": {
+    "object_id": "3060",
+    "meter_id": "303031",
+    "service_status": "In Service",
+    "meter_head": "Twin",
+    "credit_card": "No",
+    "mobile_payment_number": 53500,
+    "local_area": "Kitsilano",
+    "sector": 3,
+    "direction": "West",
+    "rate_9am_6pm": "$1.50",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": null,
+    "pm_rush_hours": null,
+    "prohibition_1_days": null,
+    "prohibition_1_time": null,
+    "prohibition_1_zone": null,
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 5117,
+    "post_feature_id": 10580,
+    "meter_mechanism": "Mobile Payment Only",
+    "meter_manufacturer": "Mobile Payment Only",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.17354509810549,
+       49.26424401577734
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.17354509810549,
+     "lat": 49.26424401577734
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "3000 W BROADWAY",
+    "candidates": [
+     [
+      8.911716484647448,
+      "3000 W BROADWAY"
+     ],
+     [
+      31.09868231447719,
+      "2400 BALACLAVA ST"
+     ],
+     [
+      32.325868910481965,
+      "2500 BALACLAVA ST"
+     ]
+    ]
+   },
+   "hblock": "3000 W BROADWAY",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:22+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:22+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 411,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 14,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "WR",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 3,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 406,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 10,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "WR",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 4,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON A STREET WHERE A TRAFFIC SIGN RESTRICTS PARKING, EXCEPT IN ACCORDANCE WITH SUCH RESTRICTION",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.6(B)",
+     "n": 1,
+     "cats": [
+      "SR"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 5,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET THAT IS DESIGNATED FOR PARKING USE BY VEHICLES DISPLAYING A DISABLED PERSON'S PARKING PLACARD AUTHORIZED BY THE CITY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(M)",
+     "n": 4,
+     "cats": [
+      "DIS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 3,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 7475,
+   "categories_present": [
+    "DIS",
+    "METER",
+    "NS",
+    "SR"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 5098,
+     "meter_id": "303016",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5104,
+     "meter_id": "303005",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5103,
+     "meter_id": "303001",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5112,
+     "meter_id": "303021",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5108,
+     "meter_id": "303013",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 549,
+     "meter_id": "303006",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5113,
+     "meter_id": "303023",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5109,
+     "meter_id": "303015",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5093,
+     "meter_id": "303004",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 550,
+     "meter_id": "303003",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5102,
+     "meter_id": "303028",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5096,
+     "meter_id": "303012",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5100,
+     "meter_id": "303024",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5099,
+     "meter_id": "303018",
+     "status": "In Service",
+     "vehicle": "Accessibility",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5118,
+     "meter_id": "303033",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5095,
+     "meter_id": "303010",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5114,
+     "meter_id": "303025",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5094,
+     "meter_id": "303008",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5111,
+     "meter_id": "303019",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5116,
+     "meter_id": "303029",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5110,
+     "meter_id": "303017",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5105,
+     "meter_id": "303007",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5097,
+     "meter_id": "303014",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5106,
+     "meter_id": "303009",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5115,
+     "meter_id": "303027",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5101,
+     "meter_id": "303026",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5117,
+     "meter_id": "303031",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5107,
+     "meter_id": "303011",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "NS"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: NS"
+  },
+  {
+   "id": "MT3",
+   "stratum": "MT",
+   "feature_id": 20929,
+   "meter_id": "A40115",
+   "record": {
+    "object_id": "2949",
+    "meter_id": "A40115",
+    "service_status": "In Service",
+    "meter_head": "Pay Station",
+    "credit_card": "Yes",
+    "mobile_payment_number": 54285,
+    "local_area": "Mount Pleasant",
+    "sector": 15,
+    "direction": null,
+    "rate_9am_6pm": "$1.50",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": null,
+    "pm_rush_hours": null,
+    "prohibition_1_days": null,
+    "prohibition_1_time": null,
+    "prohibition_1_zone": null,
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 20929,
+    "post_feature_id": 20852,
+    "meter_mechanism": "CWT S5",
+    "meter_manufacturer": "Precise",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.10106921404372,
+       49.26737488781466
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.10106921404372,
+     "lat": 49.26737488781466
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "100 E 4TH AV",
+    "candidates": [
+     [
+      6.153627984661087,
+      "100 E 4TH AV"
+     ],
+     [
+      21.525187419752132,
+      "1900 MAIN ST"
+     ],
+     [
+      22.391017108553754,
+      "200 E 4TH AV"
+     ]
+    ]
+   },
+   "hblock": "100 E 4TH AV",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:23+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:23+00:00",
+   "tickets": [],
+   "street_2026_ticket_count": 0,
+   "categories_present": [],
+   "result": "UNVERIFIED",
+   "reason": "street name has no 2026 tickets citywide"
+  },
+  {
+   "id": "MR1",
+   "stratum": "MR",
+   "feature_id": 4819,
+   "meter_id": "301732",
+   "record": {
+    "object_id": "673",
+    "meter_id": "301732",
+    "service_status": "In Service",
+    "meter_head": "Twin",
+    "credit_card": "No",
+    "mobile_payment_number": 54252,
+    "local_area": "Fairview",
+    "sector": 8,
+    "direction": "West",
+    "rate_9am_6pm": "$2.00",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": "7:00am to 10:00am",
+    "pm_rush_hours": "3:00pm to 7:00pm",
+    "prohibition_1_days": null,
+    "prohibition_1_time": null,
+    "prohibition_1_zone": null,
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 4819,
+    "post_feature_id": 10401,
+    "meter_mechanism": "Mobile Payment Only",
+    "meter_manufacturer": "Mobile Payment Only",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.14495437356938,
+       49.263611428116405
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.14495437356938,
+     "lat": 49.263611428116405
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "1700 W BROADWAY",
+    "candidates": [
+     [
+      9.943636042595205,
+      "1700 W BROADWAY"
+     ],
+     [
+      58.57670979548629,
+      "2500 BURRARD ST"
+     ],
+     [
+      59.41834588827998,
+      "1800 W BROADWAY"
+     ]
+    ]
+   },
+   "hblock": "1700 W BROADWAY",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:23+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:24+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 69,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 2,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 79,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 3,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 10,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 1,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 33,
+     "cats": [
+      "RUSH"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 2,
+     "cats": [
+      "RUSH"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 5,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 2,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 7475,
+   "categories_present": [
+    "BUS",
+    "METER",
+    "RUSH"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 4816,
+     "meter_id": "301726",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4819,
+     "meter_id": "301732",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4882,
+     "meter_id": "301715",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 512,
+     "meter_id": "301704",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4811,
+     "meter_id": "301716",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4888,
+     "meter_id": "301727",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4808,
+     "meter_id": "301710",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4818,
+     "meter_id": "301730",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4880,
+     "meter_id": "301709",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4887,
+     "meter_id": "301725",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4889,
+     "meter_id": "301729",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      "PASSENGER ZONE",
+      null
+     ]
+    },
+    {
+     "feature_id": 4890,
+     "meter_id": "301731",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      "PASSENGER ZONE",
+      null
+     ]
+    },
+    {
+     "feature_id": 4812,
+     "meter_id": "301718",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4886,
+     "meter_id": "301723",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4814,
+     "meter_id": "301722",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4809,
+     "meter_id": "301712",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4884,
+     "meter_id": "301719",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4885,
+     "meter_id": "301721",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4813,
+     "meter_id": "301720",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4883,
+     "meter_id": "301717",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 511,
+     "meter_id": "301711",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4891,
+     "meter_id": "301702",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4817,
+     "meter_id": "301728",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4881,
+     "meter_id": "301713",
+     "status": "Out of Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4810,
+     "meter_id": "301714",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4892,
+     "meter_id": "301706",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4815,
+     "meter_id": "301724",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 4893,
+     "meter_id": "301708",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "BUS"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: BUS"
+  },
+  {
+   "id": "MR2",
+   "stratum": "MR",
+   "feature_id": 8689,
+   "meter_id": "300022",
+   "record": {
+    "object_id": "3421",
+    "meter_id": "300022",
+    "service_status": "In Service",
+    "meter_head": "Twin",
+    "credit_card": "No",
+    "mobile_payment_number": 53127,
+    "local_area": "Mount Pleasant",
+    "sector": 15,
+    "direction": "West",
+    "rate_9am_6pm": "$1.50",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": "7:00am to 10:00am",
+    "pm_rush_hours": "3:00pm to 7:00pm",
+    "prohibition_1_days": null,
+    "prohibition_1_time": null,
+    "prohibition_1_zone": null,
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 8689,
+    "post_feature_id": 13486,
+    "meter_mechanism": "Mobile Payment Only",
+    "meter_manufacturer": "Mobile Payment Only",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.10601866997344,
+       49.26294219640762
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.10601866997344,
+     "lat": 49.26294219640762
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "0 W BROADWAY",
+    "candidates": [
+     [
+      9.999777794391603,
+      "0 W BROADWAY"
+     ],
+     [
+      59.19249158183151,
+      "2500 MANITOBA ST"
+     ]
+    ]
+   },
+   "hblock": "0 W BROADWAY",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:24+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:25+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 7,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 1,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 1,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON ANY PORTION OF A STREET FOR A LONGER PERIOD OF TIME THAN INDICATED ON ANY TRAFFIC SIGN GOVERNING THAT PORTION OF A STREET",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.6(E)",
+     "n": 2,
+     "cats": [
+      "TL"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 3,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 1,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 2,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 3,
+     "cats": [
+      "RUSH"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 2,
+     "cats": [
+      "RUSH"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 5,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP OR PARK OTHER THAN WITH THE CURBSIDE WHEELS OF THE VEHICLE WITHIN 30 CM OF THE CURB OR EDGE OF THE ROADWAY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "18.1(C)(ii)",
+     "n": 1,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 7475,
+   "categories_present": [
+    "BUS",
+    "METER",
+    "NS",
+    "RUSH",
+    "TL"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 8285,
+     "meter_id": "300004",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8695,
+     "meter_id": "300034",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8682,
+     "meter_id": "300008",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8693,
+     "meter_id": "300030",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8691,
+     "meter_id": "300026",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8685,
+     "meter_id": "300014",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8688,
+     "meter_id": "300020",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8694,
+     "meter_id": "300032",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8284,
+     "meter_id": "300002",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8687,
+     "meter_id": "300018",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8692,
+     "meter_id": "300028",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8684,
+     "meter_id": "300012",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8690,
+     "meter_id": "300024",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8686,
+     "meter_id": "300016",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8689,
+     "meter_id": "300022",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8683,
+     "meter_id": "300010",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8681,
+     "meter_id": "300006",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "BUS"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: BUS"
+  },
+  {
+   "id": "MR3",
+   "stratum": "MR",
+   "feature_id": 6102,
+   "meter_id": "772704",
+   "record": {
+    "object_id": "2559",
+    "meter_id": "772704",
+    "service_status": "In Service",
+    "meter_head": "Twin",
+    "credit_card": "No",
+    "mobile_payment_number": 52538,
+    "local_area": "Kitsilano",
+    "sector": 8,
+    "direction": "North",
+    "rate_9am_6pm": "$2.00",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": "7:00am to 9:30am",
+    "pm_rush_hours": null,
+    "prohibition_1_days": null,
+    "prohibition_1_time": null,
+    "prohibition_1_zone": null,
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 6102,
+    "post_feature_id": 11283,
+    "meter_mechanism": "Mobile Payment Only",
+    "meter_manufacturer": "Mobile Payment Only",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.15291085024519,
+       49.26169234814021
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.15291085024519,
+     "lat": 49.26169234814021
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "2700 ARBUTUS ST",
+    "candidates": [
+     [
+      7.0564441330471865,
+      "2700 ARBUTUS ST"
+     ],
+     [
+      27.64057101834356,
+      "2000 W 11TH AV"
+     ],
+     [
+      28.519827172252693,
+      "2100 W 11TH AV"
+     ]
+    ]
+   },
+   "hblock": "2700 ARBUTUS ST",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:25+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:25+00:00",
+   "tickets": [
+    {
+     "infractiontext": "CAUSE, ALLOW OR PERMIT A VEHICLE TO IDLE FOR MORE THAN THREE CONSECUTIVE MINUTES IN A 60 MINUTE PERIOD",
+     "status": "VA",
+     "bylaw": 9344,
+     "section": "2.7(i)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 30,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 53,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 4,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "WR",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 3,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 1,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 5,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 11,
+     "cats": [
+      "RUSH"
+     ]
+    }
+   ],
+   "street_2026_ticket_count": 905,
+   "categories_present": [
+    "BUS",
+    "METER",
+    "NS",
+    "RUSH"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 6101,
+     "meter_id": "772702",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 9:30am",
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8319,
+     "meter_id": "772709",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8854,
+     "meter_id": "772705",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8857,
+     "meter_id": "772713",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8852,
+     "meter_id": "772701",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8855,
+     "meter_id": "772707",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8858,
+     "meter_id": "772715",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8860,
+     "meter_id": "772719",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8861,
+     "meter_id": "772721",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8859,
+     "meter_id": "772717",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 6103,
+     "meter_id": "772706",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 9:30am",
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8856,
+     "meter_id": "772711",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 936,
+     "meter_id": "772710",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 9:30am",
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 6102,
+     "meter_id": "772704",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 9:30am",
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 6104,
+     "meter_id": "772708",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 9:30am",
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 8853,
+     "meter_id": "772703",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      "3:00pm to 6:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "BUS"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: BUS"
+  },
+  {
+   "id": "MX1",
+   "stratum": "MX",
+   "feature_id": 5646,
+   "meter_id": "0M2415",
+   "record": {
+    "object_id": "2797",
+    "meter_id": "0M2415",
+    "service_status": "In Service",
+    "meter_head": "Single",
+    "credit_card": "Yes",
+    "mobile_payment_number": 53385,
+    "local_area": "Kitsilano",
+    "sector": 3,
+    "direction": null,
+    "rate_9am_6pm": "$1.50",
+    "rate_6pm_10pm": "$1.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "3 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "3 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": null,
+    "pm_rush_hours": null,
+    "prohibition_1_days": "7 Days a Week",
+    "prohibition_1_time": "9:00am to 6:00pm",
+    "prohibition_1_zone": "CVLZ",
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 5646,
+    "post_feature_id": 10942,
+    "meter_mechanism": "Beacon Single",
+    "meter_manufacturer": "MacKay",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.17791222160012,
+       49.26442266963081
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.17791222160012,
+     "lat": 49.26442266963081
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "2400 BLENHEIM ST",
+    "candidates": [
+     [
+      5.445793576992786,
+      "2400 BLENHEIM ST"
+     ],
+     [
+      20.384662275062315,
+      "3300 W BROADWAY"
+     ],
+     [
+      21.101152205531843,
+      "2500 BLENHEIM ST"
+     ]
+    ]
+   },
+   "hblock": "2400 BLENHEIM ST",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:26+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:26+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 57,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 1,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 47,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON A STREET WHERE A TRAFFIC SIGN RESTRICTS PARKING, EXCEPT IN ACCORDANCE WITH SUCH RESTRICTION",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.6(B)",
+     "n": 12,
+     "cats": [
+      "SR"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON A STREET WHERE A TRAFFIC SIGN RESTRICTS PARKING, EXCEPT IN ACCORDANCE WITH SUCH RESTRICTION",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.6(B)",
+     "n": 1,
+     "cats": [
+      "SR"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON ANY PORTION OF A STREET FOR A LONGER PERIOD OF TIME THAN INDICATED ON ANY TRAFFIC SIGN GOVERNING THAT PORTION OF A STREET",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.6(E)",
+     "n": 1,
+     "cats": [
+      "TL"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 11,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 1,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN COMMERCIAL LOADING ZONE",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "21.5",
+     "n": 128,
+     "cats": [
+      "CLZ"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN COMMERCIAL LOADING ZONE",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "21.5",
+     "n": 3,
+     "cats": [
+      "CLZ"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN LOADING ZONE",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "21.3",
+     "n": 1,
+     "cats": [
+      "LZ"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN LOADING ZONE",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "21.3",
+     "n": 1,
+     "cats": [
+      "LZ"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN TOUR BUS ZONE",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "21.7",
+     "n": 1,
+     "cats": [
+      "TOUR"
+     ]
+    },
+    {
+     "infractiontext": "STOP OR PARK OTHER THAN HEADED IN THE DIRECTION OF TRAFFIC",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "18.1(B)(ii)",
+     "n": 5,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 1.5 METRES OF THAT PORTION OF AN INTERSECTING LANE THAT IS USEABLE FOR TRAVEL",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.5(A)(ii)",
+     "n": 4,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 6 METRES OF THE NEAREST EDGE OF THE CLOSEST SIDEWALK ON AN INTERSECTING STREET",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.5(C)(ii)",
+     "n": 1,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 578,
+   "categories_present": [
+    "CLZ",
+    "LZ",
+    "METER",
+    "NS",
+    "SR",
+    "TL",
+    "TOUR"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 5645,
+     "meter_id": "0M2413",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      "CVLZ",
+      null
+     ]
+    },
+    {
+     "feature_id": 726,
+     "meter_id": "0M2412",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5644,
+     "meter_id": "0M2414",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 5646,
+     "meter_id": "0M2415",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      "CVLZ",
+      null
+     ]
+    },
+    {
+     "feature_id": 5643,
+     "meter_id": "0M2410",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 727,
+     "meter_id": "0M2411",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      "CVLZ",
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "NS",
+    "TOUR"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: NS, TOUR"
+  },
+  {
+   "id": "MX2",
+   "stratum": "MX",
+   "feature_id": 30136,
+   "meter_id": "1112NNS",
+   "record": {
+    "object_id": "165",
+    "meter_id": "1112NNS",
+    "service_status": "In Service",
+    "meter_head": "Zone Only",
+    "credit_card": "No",
+    "mobile_payment_number": 62363,
+    "local_area": "Downtown",
+    "sector": 30,
+    "direction": null,
+    "rate_9am_6pm": "$5.00",
+    "rate_6pm_10pm": "$3.50",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": null,
+    "pm_rush_hours": null,
+    "prohibition_1_days": "7 Days a Week",
+    "prohibition_1_time": "7:00am to 7:00pm",
+    "prohibition_1_zone": "NO STOPPING",
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 30136,
+    "post_feature_id": 30135,
+    "meter_mechanism": "Mobile Payment Only",
+    "meter_manufacturer": "Mobile Payment Only",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.12604787227998,
+       49.28774117247233
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.12604787227998,
+     "lat": 49.28774117247233
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "1200 W GEORGIA ST",
+    "candidates": [
+     [
+      9.785428110604661,
+      "1200 W GEORGIA ST"
+     ]
+    ]
+   },
+   "hblock": "1200 W GEORGIA ST",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:27+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:27+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK ON A STREET WHERE A TRAFFIC SIGN RESTRICTS PARKING, EXCEPT IN ACCORDANCE WITH SUCH RESTRICTION",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.6(B)",
+     "n": 18,
+     "cats": [
+      "SR"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON A STREET WHERE A TRAFFIC SIGN RESTRICTS PARKING, EXCEPT IN ACCORDANCE WITH SUCH RESTRICTION",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.6(B)",
+     "n": 1,
+     "cats": [
+      "SR"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 5,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 2,
+     "cats": [
+      "RUSH"
+     ]
+    }
+   ],
+   "street_2026_ticket_count": 838,
+   "categories_present": [
+    "NS",
+    "RUSH",
+    "SR"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 30136,
+     "meter_id": "1112NNS",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      null,
+      null
+     ],
+     "zones": [
+      "NO STOPPING",
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "RUSH"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: RUSH"
+  },
+  {
+   "id": "MX3",
+   "stratum": "MX",
+   "feature_id": 17011,
+   "meter_id": "060612",
+   "record": {
+    "object_id": "1482",
+    "meter_id": "060612",
+    "service_status": "In Service",
+    "meter_head": "Dual",
+    "credit_card": "Yes",
+    "mobile_payment_number": 67108,
+    "local_area": "Downtown",
+    "sector": 34,
+    "direction": "East",
+    "rate_9am_6pm": "$6.50",
+    "rate_6pm_10pm": "$4.00",
+    "flat_rate": null,
+    "time_limit_9am_6pm": "2 Hr",
+    "time_limit_6pm_10pm": "4 Hr",
+    "time_limit_weekend_9am_6pm": "2 Hr",
+    "time_limit_weekend_6pm_10pm": "4 Hr",
+    "time_limit_override": "No",
+    "am_rush_hours": "7:00am to 10:00am",
+    "pm_rush_hours": "3:00pm to 7:00pm",
+    "prohibition_1_days": "7 Days a Week",
+    "prohibition_1_time": "7:00pm to 2:00am",
+    "prohibition_1_zone": "PASSENGER ZONE",
+    "prohibition_2_days": null,
+    "prohibition_2_time": null,
+    "prohibition_2_zone": null,
+    "prohibition_override": "No",
+    "vehicle_type": "Any Vehicle",
+    "feature_id": 17011,
+    "post_feature_id": 17003,
+    "meter_mechanism": "Beacon Dual",
+    "meter_manufacturer": "MacKay",
+    "parking_zone_feature_id": null,
+    "geom": {
+     "type": "Feature",
+     "geometry": {
+      "coordinates": [
+       -123.11364846681312,
+       49.285036896355706
+      ],
+      "type": "Point"
+     },
+     "properties": {}
+    },
+    "geo_point_2d": {
+     "lon": -123.11364846681312,
+     "lat": 49.285036896355706
+    }
+   },
+   "mapping": {
+    "status": "mapped",
+    "hblock": "600 W HASTINGS ST",
+    "candidates": [
+     [
+      10.224122167607032,
+      "600 W HASTINGS ST"
+     ],
+     [
+      32.37269379495831,
+      "400 GRANVILLE ST"
+     ],
+     [
+      33.96709444362775,
+      "300 GRANVILLE ST"
+     ]
+    ]
+   },
+   "hblock": "600 W HASTINGS ST",
+   "pameter_transcription": {
+    "retrieved_utc": "2026-10-23T19:44:28+00:00",
+    "records": 1,
+    "differing_fields": []
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:28+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 10,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE PARKING METER HEAD DISPLAYS FOUR FLASHING ZEROS IN A WINDOW",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(A)(ii)",
+     "n": 2,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "IS",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 53,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "PARK IN A METERED SPACE IF THE TIME RECORDED BY THE OPERATOR UNDER THE PAY BY PHONE OR PAY BY LICENCE PLATE OPTION HAS EXPIRED",
+     "status": "VA",
+     "bylaw": 2952,
+     "section": "5(4)(B)",
+     "n": 2,
+     "cats": [
+      "METER"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 26,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 3,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN PASSENGER ZONE",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "21.1",
+     "n": 1,
+     "cats": [
+      "PZ"
+     ]
+    },
+    {
+     "infractiontext": "STOP IN TOUR BUS ZONE",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "21.7",
+     "n": 1,
+     "cats": [
+      "TOUR"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON A LANE IN SUCH A MANNER AS TO LEAVE AVAILABLE LESS THAN 3M OF USABLE LANE FOR FREE MOVEMENT OF VEHICLES",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(D)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON A LANE IN SUCH A MANNER AS TO LEAVE AVAILABLE LESS THAN 3M OF USABLE LANE FOR FREE MOVEMENT OF VEHICLES",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "19.1(D)",
+     "n": 2,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON A LANE WITHIN AN AREA 1.5M FROM EITHER SIDE AND 5.5M IN FRONT OF A DRIVE -WAY OR PRIVATE ROAD ADJOINING SUCH LANE",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(G)",
+     "n": 2,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON A LANE WITHIN AN AREA 1.5M FROM EITHER SIDE AND 5.5M IN FRONT OF A DRIVE -WAY OR PRIVATE ROAD ADJOINING SUCH LANE",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "19.1(G)",
+     "n": 2,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON A SIDEWALK",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.4(C)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 3,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET DESIGNATED AS A BUS STOP",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.3",
+     "n": 1,
+     "cats": [
+      "BUS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET INDICATED BY A SIGN OR OTHER MARKER AS RESERVED FOR ONE OR MORE CLASS OF VEHICLE, EXCEPT FOR RECOGNIZED VEHICLES OF THAT CLASS",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(J)",
+     "n": 4,
+     "cats": [
+      "CLASS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET THAT IS DESIGNATED FOR PARKING USE BY VEHICLES DISPLAYING A DISABLED PERSON'S PARKING PLACARD AUTHORIZED BY THE CITY",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.2(M)",
+     "n": 1,
+     "cats": [
+      "DIS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 59,
+     "cats": [
+      "RUSH"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY STREET OR PORTION OF A STREET DESIGNATED AS A PRIORITY CONGESTION MANAGEMENT ROADWAY DURING THE TIME STOPPING IS PROHIBITED",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.2(K)",
+     "n": 1,
+     "cats": [
+      "RUSH"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 59,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON EITHER SIDE OF A LANE WHICH ABUTS COMMERCIALLY USED PROPERTY",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "19.1(H)",
+     "n": 3,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP OR PARK OTHER THAN WITH THE CURBSIDE WHEELS OF THE VEHICLE WITHIN 30 CM OF THE CURB OR EDGE OF THE ROADWAY",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "18.1(C)(ii)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 2 METRES OF THE NEAREST EDGE OF THE CLOSEST SIDEWALK ON AN INTERSECTING STREET",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "19.1(B)",
+     "n": 2,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 2 METRES OF THE NEAREST EDGE OF THE CLOSEST SIDEWALK ON AN INTERSECTING STREET",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "19.1(B)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 5 METRES OF A FIRE HYDRANT",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(C)",
+     "n": 12,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 6 METRES OF EITHER SIDE OF A CROSSWALK, EXCEPT FOR THE DRIVER OF A MOTORCYCLE OR MOTOR ASSISTED CYCLE WHO IS PARKING IN A CLEARANCE PARKING AREA OR A BICYCLE RIDER PARKING AT A BICYCLE RACK",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.4(B)",
+     "n": 1,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 4168,
+   "categories_present": [
+    "BUS",
+    "CLASS",
+    "DIS",
+    "METER",
+    "NS",
+    "PZ",
+    "RUSH",
+    "TOUR"
+   ],
+   "block_meters": [
+    {
+     "feature_id": 17012,
+     "meter_id": "060614",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      "PASSENGER ZONE",
+      null
+     ]
+    },
+    {
+     "feature_id": 17011,
+     "meter_id": "060612",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      "PASSENGER ZONE",
+      null
+     ]
+    },
+    {
+     "feature_id": 17004,
+     "meter_id": "060696",
+     "status": "In Service",
+     "vehicle": "Motorcycle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    },
+    {
+     "feature_id": 17009,
+     "meter_id": "060608",
+     "status": "In Service",
+     "vehicle": "Any Vehicle",
+     "rush": [
+      "7:00am to 10:00am",
+      "3:00pm to 7:00pm"
+     ],
+     "zones": [
+      null,
+      null
+     ]
+    }
+   ],
+   "unrepresented": [
+    "BUS",
+    "DIS",
+    "TOUR"
+   ],
+   "result": "CONTRADICTION",
+   "reason": "unrepresented restriction categories on block: BUS, DIS, TOUR"
+  },
+  {
+   "id": "P1",
+   "stratum": "P",
+   "hblock": "1000 BUTE ST",
+   "streetuse": "Residential",
+   "polygons": [
+    {
+     "OBJECTID": 267,
+     "MAPID": "RPP025",
+     "TYPE": "RPP",
+     "NAME": "West End Plateau",
+     "DESCRIPTION": "Resident Permit Parking",
+     "URL": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf"
+    }
+   ],
+   "mapping": {
+    "status": "frame"
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:28+00:00",
+   "tickets": [
+    {
+     "infractiontext": "PARK ON A STREET WHERE A TRAFFIC SIGN RESTRICTS PARKING, EXCEPT IN ACCORDANCE WITH SUCH RESTRICTION",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.6(B)",
+     "n": 4,
+     "cats": [
+      "SR"
+     ]
+    },
+    {
+     "infractiontext": "PARK ON ANY PORTION OF A STREET FOR A LONGER PERIOD OF TIME THAN INDICATED ON ANY TRAFFIC SIGN GOVERNING THAT PORTION OF A STREET",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.6(E)",
+     "n": 16,
+     "cats": [
+      "TL"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 6,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP AT A PLACE WHERE A TRAFFIC SIGN PROHIBITS STOPPING",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.1(B)",
+     "n": 1,
+     "cats": [
+      "NS"
+     ]
+    },
+    {
+     "infractiontext": "STOP ON ANY PORTION OF A STREET INDICATED BY A SIGN OR OTHER MARKER AS RESERVED FOR ONE OR MORE CLASS OF VEHICLE, EXCEPT FOR RECOGNIZED VEHICLES OF THAT CLASS",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(J)",
+     "n": 2,
+     "cats": [
+      "CLASS"
+     ]
+    },
+    {
+     "infractiontext": "STOP OR PARK OTHER THAN HEADED IN THE DIRECTION OF TRAFFIC",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "18.1(B)(ii)",
+     "n": 1,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 1133,
+   "categories_present": [
+    "CLASS",
+    "NS",
+    "SR",
+    "TL"
+   ],
+   "result": "AGREE",
+   "reason": "signed restriction tickets on block"
+  },
+  {
+   "id": "P2",
+   "stratum": "P",
+   "hblock": "3800 CAROLINA ST",
+   "streetuse": "Residential",
+   "polygons": [
+    {
+     "OBJECTID": 8,
+     "MAPID": "RPO012",
+     "TYPE": "RPO",
+     "NAME": "RPO",
+     "DESCRIPTION": "Resident Parking Only",
+     "URL": "http://vancouver.ca/streets-transportation/permit-programs.aspx"
+    }
+   ],
+   "mapping": {
+    "status": "frame"
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:29+00:00",
+   "tickets": [
+    {
+     "infractiontext": "BE PARKED ON A STREET WITHOUT THE MOTIVE POWER UNIT ATTACHED",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "20.3",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP ON A LANE IN SUCH A MANNER AS TO LEAVE AVAILABLE LESS THAN 3M OF USABLE LANE FOR FREE MOVEMENT OF VEHICLES",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "19.1(D)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 2 METRES OF THE APPROACH SIDE OF THE NEAREST EDGE OF THE CLOSEST SIDEWALK ON AN INTERSECTING STREET",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.5(B)",
+     "n": 5,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 5 METRES OF A FIRE HYDRANT",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.2(C)",
+     "n": 1,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 6 METRES OF THE NEAREST EDGE OF THE CLOSEST SIDEWALK ON AN INTERSECTING STREET",
+     "status": "IS",
+     "bylaw": 2849,
+     "section": "17.5(C)(ii)",
+     "n": 12,
+     "cats": []
+    },
+    {
+     "infractiontext": "STOP WITHIN 6 METRES OF THE NEAREST EDGE OF THE CLOSEST SIDEWALK ON AN INTERSECTING STREET",
+     "status": "VA",
+     "bylaw": 2849,
+     "section": "17.5(C)(ii)",
+     "n": 2,
+     "cats": []
+    }
+   ],
+   "street_2026_ticket_count": 458,
+   "categories_present": [],
+   "result": "UNVERIFIED",
+   "reason": "no SR/NP ticket on block"
+  },
+  {
+   "id": "P3",
+   "stratum": "P",
+   "hblock": "1300 W 11TH AV",
+   "streetuse": "Residential",
+   "polygons": [
+    {
+     "OBJECTID": 244,
+     "MAPID": "RPP016",
+     "TYPE": "RPP",
+     "NAME": "Oak West",
+     "DESCRIPTION": "Resident Permit Parking",
+     "URL": "http://vancouver.ca/files/cov/residential-permit-parking-oak-west.pdf"
+    }
+   ],
+   "mapping": {
+    "status": "frame"
+   },
+   "tickets_retrieved_utc": "2026-10-23T19:44:29+00:00",
+   "tickets": [],
+   "street_2026_ticket_count": 0,
+   "categories_present": [],
+   "result": "UNVERIFIED",
+   "reason": "street name has no 2026 tickets citywide"
+  }
+ ],
+ "summary": {
+  "AGREE": 1,
+  "CONTRADICTION": 8,
+  "UNVERIFIED": 3
+ }
+}
