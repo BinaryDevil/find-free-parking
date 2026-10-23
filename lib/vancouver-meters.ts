@@ -2,7 +2,7 @@ import type { ParkingRule, RuleSource } from './parking-rules.ts';
 import { isDeepStrictEqual } from 'node:util';
 import type { Point } from 'geojson';
 
-const fields = ['meter_id', 'service_status', 'vehicle_type', 'rate_9am_6pm', 'rate_6pm_10pm',
+const fields = ['meter_id', 'feature_id', 'post_feature_id', 'service_status', 'vehicle_type', 'rate_9am_6pm', 'rate_6pm_10pm',
   'flat_rate', 'time_limit_9am_6pm', 'time_limit_6pm_10pm', 'time_limit_weekend_9am_6pm',
   'time_limit_weekend_6pm_10pm', 'time_limit_override', 'prohibition_override', 'am_rush_hours',
   'pm_rush_hours', 'prohibition_1_days', 'prohibition_1_time', 'prohibition_1_zone',
@@ -57,7 +57,8 @@ export interface VancouverMeterOptions {
   source: RuleSource;
   fetchedAt: string;
   sourceEditedAt: string | null;
-  /** Human-reviewed semantics bound to an exact raw record, never feed-wide defaults. */
+  /** Human-reviewed semantics keyed by record identity (`feature:<feature_id>`) and
+   * bound to an exact raw record, never feed-wide defaults. */
   reviewed?: Record<string, {
     rawRecord: unknown;
     evidence: string;
@@ -71,12 +72,15 @@ export function adaptVancouverMeters(rows: unknown, options: VancouverMeterOptio
   if (!Array.isArray(rows) || rows.length === 0) throw new Error('Expected nonempty Vancouver meter records');
   if (options.source.evidenceType !== 'E2') throw new Error('Vancouver meters require E2 evidence');
   const seen = new Set<string>();
+  const posts = new Map<string, Set<number>>();
   const records = rows.map((value: unknown) => {
     if (!value || typeof value !== 'object') throw new Error('Invalid meter record');
     const raw = value as Raw;
     for (const field of fields) {
       if (!Object.hasOwn(raw, field)) throw new Error(`Vancouver meter format missing ${field}`);
-      if (field !== 'geom' && raw[field] !== null && typeof raw[field] !== 'string') throw new Error(`Invalid ${field} type`);
+      if (field === 'feature_id' || field === 'post_feature_id') {
+        if (!Number.isSafeInteger(raw[field]) || Number(raw[field]) <= 0) throw new Error(`Invalid ${field}`);
+      } else if (field !== 'geom' && raw[field] !== null && typeof raw[field] !== 'string') throw new Error(`Invalid ${field} type`);
     }
     if (typeof raw.meter_id !== 'string' || !raw.meter_id.trim()) throw new Error('Invalid meter_id');
     const feature = raw.geom as { type?: string; geometry?: Point } | null;
@@ -84,9 +88,16 @@ export function adaptVancouverMeters(rows: unknown, options: VancouverMeterOptio
     if (feature?.type !== 'Feature' || geom?.type !== 'Point' || !Array.isArray(geom.coordinates) ||
       geom.coordinates.length !== 2 || !geom.coordinates.every(n => typeof n === 'number' && Number.isFinite(n)) ||
       Math.abs(geom.coordinates[0]) > 180 || Math.abs(geom.coordinates[1]) > 90) throw new Error('Invalid meter geom');
-    const id = raw.meter_id;
-    if (seen.has(id)) throw new Error(`Duplicate meter_id ${id}`);
+    // meter_id repeats in the live feed: each repeat is different equipment
+    // (own feature_id and post), matching the hosted FID_METER. A repeated
+    // feature_id, even byte-identical, is indistinguishable from a page re-read
+    // and fails closed; so does one meter_id twice on the same post.
+    const id = `feature:${raw.feature_id}`;
+    if (seen.has(id)) throw new Error(`Duplicate feature_id ${raw.feature_id}`);
     seen.add(id);
+    const meterPosts = posts.get(raw.meter_id) ?? new Set<number>();
+    if (meterPosts.has(raw.post_feature_id as number)) throw new Error(`Ambiguous repeated meter_id ${raw.meter_id}`);
+    posts.set(raw.meter_id, meterPosts.add(raw.post_feature_id as number));
     const review = options.reviewed?.[id];
     const reviewed = review && review.evidence.trim() && isDeepStrictEqual(review.rawRecord, raw) ? review : undefined;
     const rules: ParkingRule[] = [];
@@ -174,10 +185,18 @@ export function createVancouverMeterAdapter(options: VancouverMeterOptions, requ
       };
       const before = await metadata();
       const rows: unknown[] = [];
+      // Offset paging needs a total order: feature_id is unique per record, and
+      // strictly ascending pages prove no record was skipped or read twice.
+      let last = 0;
       while (rows.length < before.count) {
-        const page = await get(`${VANCOUVER_METERS_ENDPOINT}/records?order_by=meter_id&limit=100&offset=${rows.length}`) as { total_count?: unknown; results?: unknown };
+        const page = await get(`${VANCOUVER_METERS_ENDPOINT}/records?order_by=feature_id&limit=100&offset=${rows.length}`) as { total_count?: unknown; results?: unknown };
         if (page?.total_count !== before.count || !Array.isArray(page.results) || !page.results.length ||
           page.results.length > 100 || rows.length + page.results.length > before.count) throw new Error('Incomplete Vancouver meter feed');
+        for (const row of page.results) {
+          const key = (row as Raw | null)?.feature_id;
+          if (!Number.isSafeInteger(key) || Number(key) <= last) throw new Error('Vancouver meter pages out of feature_id order');
+          last = Number(key);
+        }
         rows.push(...page.results);
       }
       const after = await metadata();

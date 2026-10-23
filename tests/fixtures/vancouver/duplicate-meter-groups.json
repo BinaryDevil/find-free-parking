@@ -1,0 +1,1578 @@
+{
+ "retrieved": "2026-10-23 (America/Vancouver)",
+ "request": "GET /api/explore/v2.1/catalog/datasets/parking-meters/records?where=meter_id in (<16 repeated IDs>)&limit=100&order_by=meter_id",
+ "dataset_modified": "2026-10-19T13:31:55+00:00",
+ "dataset_records_count": 3523,
+ "note": "All 32 rows sharing the 16 repeated meter_id values in the 3,523-row feed. Public City asset records, unmodified. Hosted paMeter FID_METER equals feature_id for all 32 on the same date.",
+ "total_count": 32,
+ "results": [
+  {
+   "object_id": "2290",
+   "meter_id": "302822",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 51183,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 544,
+   "post_feature_id": 10551,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.16936902596078,
+      49.264010509443516
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.16936902596078,
+    "lat": 49.264010509443516
+   }
+  },
+  {
+   "object_id": "2063",
+   "meter_id": "302906",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 53744,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 547,
+   "post_feature_id": 10558,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.1704967333689,
+      49.26402836146327
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.1704967333689,
+    "lat": 49.26402836146327
+   }
+  },
+  {
+   "object_id": "1540",
+   "meter_id": "302128",
+   "service_status": "Out of Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 54058,
+   "local_area": "Kitsilano",
+   "sector": 8,
+   "direction": "West",
+   "rate_9am_6pm": "$2.00",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 4826,
+   "post_feature_id": 10405,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.15428250042146,
+      49.26375979446006
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.15428250042146,
+    "lat": 49.26375979446006
+   }
+  },
+  {
+   "object_id": "1566",
+   "meter_id": "303212",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 54125,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 4959,
+   "post_feature_id": 10477,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17658264043963,
+      49.26413065771401
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17658264043963,
+    "lat": 49.26413065771401
+   }
+  },
+  {
+   "object_id": "133",
+   "meter_id": "303224",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 53401,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "West",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 4965,
+   "post_feature_id": 10480,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17709058332463,
+      49.26413967608409
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17709058332463,
+    "lat": 49.26413967608409
+   }
+  },
+  {
+   "object_id": "1342",
+   "meter_id": "303209",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 51666,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 4971,
+   "post_feature_id": 10484,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.176511476929,
+      49.26429444327593
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.176511476929,
+    "lat": 49.26429444327593
+   }
+  },
+  {
+   "object_id": "2287",
+   "meter_id": "303227",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 53252,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "West",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 4980,
+   "post_feature_id": 10489,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17736167033723,
+      49.26430769465874
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17736167033723,
+    "lat": 49.26430769465874
+   }
+  },
+  {
+   "object_id": "805",
+   "meter_id": "302825",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 51709,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5077,
+   "post_feature_id": 10555,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.16963368420694,
+      49.26417947487737
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.16963368420694,
+    "lat": 49.26417947487737
+   }
+  },
+  {
+   "object_id": "2068",
+   "meter_id": "302928",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 51785,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5084,
+   "post_feature_id": 10561,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.171698314608,
+      49.26404912410605
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.171698314608,
+    "lat": 49.26404912410605
+   }
+  },
+  {
+   "object_id": "1442",
+   "meter_id": "302909",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 53741,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5089,
+   "post_feature_id": 10565,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17073613375008,
+      49.26419764948826
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17073613375008,
+    "lat": 49.26419764948826
+   }
+  },
+  {
+   "object_id": "2378",
+   "meter_id": "303004",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 54801,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5093,
+   "post_feature_id": 10567,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17242292567627,
+      49.26406141191279
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17242292567627,
+    "lat": 49.26406141191279
+   }
+  },
+  {
+   "object_id": "1364",
+   "meter_id": "303024",
+   "service_status": "In Service",
+   "meter_head": "Single",
+   "credit_card": "No",
+   "mobile_payment_number": 50828,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5100,
+   "post_feature_id": 10571,
+   "meter_mechanism": "GRDX5",
+   "meter_manufacturer": "MacKay",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17322526526726,
+      49.26407414446504
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17322526526726,
+    "lat": 49.26407414446504
+   }
+  },
+  {
+   "object_id": "1974",
+   "meter_id": "303009",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 54108,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5106,
+   "post_feature_id": 10575,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17271764221108,
+      49.26423079227618
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17271764221108,
+    "lat": 49.26423079227618
+   }
+  },
+  {
+   "object_id": "1369",
+   "meter_id": "303025",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 52265,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5114,
+   "post_feature_id": 10579,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17337885897678,
+      49.26424131492431
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17337885897678,
+    "lat": 49.26424131492431
+   }
+  },
+  {
+   "object_id": "580",
+   "meter_id": "303108",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 51290,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5120,
+   "post_feature_id": 10583,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17447769233397,
+      49.26409498996162
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17447769233397,
+    "lat": 49.26409498996162
+   }
+  },
+  {
+   "object_id": "3257",
+   "meter_id": "303117",
+   "service_status": "In Service",
+   "meter_head": "Twin",
+   "credit_card": "No",
+   "mobile_payment_number": 50152,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": "East",
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 5139,
+   "post_feature_id": 10593,
+   "meter_mechanism": "Mobile Payment Only",
+   "meter_manufacturer": "Mobile Payment Only",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17527149652486,
+      49.26427392567005
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17527149652486,
+    "lat": 49.26427392567005
+   }
+  },
+  {
+   "object_id": "3425",
+   "meter_id": "303227",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50102,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30838,
+   "post_feature_id": 30837,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.177356829714,
+      49.2643146823714
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.177356829714,
+    "lat": 49.2643146823714
+   }
+  },
+  {
+   "object_id": "2574",
+   "meter_id": "303209",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50102,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30840,
+   "post_feature_id": 30839,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17650862253356,
+      49.264299565910406
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17650862253356,
+    "lat": 49.264299565910406
+   }
+  },
+  {
+   "object_id": "2089",
+   "meter_id": "303224",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50121,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30842,
+   "post_feature_id": 30841,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17709420226909,
+      49.26414081292878
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17709420226909,
+    "lat": 49.26414081292878
+   }
+  },
+  {
+   "object_id": "737",
+   "meter_id": "303212",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50121,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30844,
+   "post_feature_id": 30843,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.1765852067756,
+      49.26413340632581
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.1765852067756,
+    "lat": 49.26413340632581
+   }
+  },
+  {
+   "object_id": "992",
+   "meter_id": "303117",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50111,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30846,
+   "post_feature_id": 30845,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.1752554303119,
+      49.264278222765
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.1752554303119,
+    "lat": 49.264278222765
+   }
+  },
+  {
+   "object_id": "2126",
+   "meter_id": "302128",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50104,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30848,
+   "post_feature_id": 30847,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17535488496165,
+      49.26411063504679
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17535488496165,
+    "lat": 49.26411063504679
+   }
+  },
+  {
+   "object_id": "1580",
+   "meter_id": "303108",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50104,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30850,
+   "post_feature_id": 30849,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17448461101941,
+      49.264096427742224
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17448461101941,
+    "lat": 49.264096427742224
+   }
+  },
+  {
+   "object_id": "447",
+   "meter_id": "303025",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50112,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30852,
+   "post_feature_id": 30851,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17336308818153,
+      49.264247590258705
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17336308818153,
+    "lat": 49.264247590258705
+   }
+  },
+  {
+   "object_id": "183",
+   "meter_id": "303009",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50112,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30854,
+   "post_feature_id": 30853,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17269510375262,
+      49.26423953332788
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17269510375262,
+    "lat": 49.26423953332788
+   }
+  },
+  {
+   "object_id": "3440",
+   "meter_id": "303024",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50140,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30856,
+   "post_feature_id": 30855,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17328877911284,
+      49.26406217554814
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17328877911284,
+    "lat": 49.26406217554814
+   }
+  },
+  {
+   "object_id": "599",
+   "meter_id": "303004",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50140,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30858,
+   "post_feature_id": 30857,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17241004034099,
+      49.26406349104388
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17241004034099,
+    "lat": 49.26406349104388
+   }
+  },
+  {
+   "object_id": "3164",
+   "meter_id": "302909",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50167,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30860,
+   "post_feature_id": 30859,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17073038420828,
+      49.26420041051815
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17073038420828,
+    "lat": 49.26420041051815
+   }
+  },
+  {
+   "object_id": "1618",
+   "meter_id": "302928",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50150,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30862,
+   "post_feature_id": 30861,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17169899131191,
+      49.264050049606965
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17169899131191,
+    "lat": 49.264050049606965
+   }
+  },
+  {
+   "object_id": "852",
+   "meter_id": "302906",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50150,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30864,
+   "post_feature_id": 30863,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.17049321387972,
+      49.26403210866365
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.17049321387972,
+    "lat": 49.26403210866365
+   }
+  },
+  {
+   "object_id": "2336",
+   "meter_id": "302825",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50185,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30866,
+   "post_feature_id": 30865,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.16962720512507,
+      49.26418595194459
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.16962720512507,
+    "lat": 49.26418595194459
+   }
+  },
+  {
+   "object_id": "686",
+   "meter_id": "302822",
+   "service_status": "Removed",
+   "meter_head": "Pay Station",
+   "credit_card": "Yes",
+   "mobile_payment_number": 50177,
+   "local_area": "Kitsilano",
+   "sector": 3,
+   "direction": null,
+   "rate_9am_6pm": "$1.50",
+   "rate_6pm_10pm": "$1.50",
+   "flat_rate": null,
+   "time_limit_9am_6pm": "2 Hr",
+   "time_limit_6pm_10pm": "4 Hr",
+   "time_limit_weekend_9am_6pm": "2 Hr",
+   "time_limit_weekend_6pm_10pm": "4 Hr",
+   "time_limit_override": "No",
+   "am_rush_hours": null,
+   "pm_rush_hours": null,
+   "prohibition_1_days": null,
+   "prohibition_1_time": null,
+   "prohibition_1_zone": null,
+   "prohibition_2_days": null,
+   "prohibition_2_time": null,
+   "prohibition_2_zone": null,
+   "prohibition_override": "No",
+   "vehicle_type": "Any Vehicle",
+   "feature_id": 30868,
+   "post_feature_id": 30867,
+   "meter_mechanism": "CWT S5",
+   "meter_manufacturer": "Precise",
+   "parking_zone_feature_id": null,
+   "geom": {
+    "type": "Feature",
+    "geometry": {
+     "coordinates": [
+      -123.16937996371878,
+      49.26401363273745
+     ],
+     "type": "Point"
+    },
+    "properties": {}
+   },
+   "geo_point_2d": {
+    "lon": -123.16937996371878,
+    "lat": 49.26401363273745
+   }
+  }
+ ]
+}
