@@ -1,0 +1,11 @@
+# Shared-dev baseline prerequisite (#120)
+
+Work in progress: target binding and exact expected schema drift guards have unit coverage. The operator command, SQL catalog guards, disposable dev-derived rehearsal under the actual app role and independent implementation reviews remain pending. This source checkpoint authorizes no execution.
+
+The fixed operation will install only baseline-compatible `pg_stat_statements` and its comment, and revoke only the obsolete direct `app_rw` SELECT on `reports.reported_status`. INSERT, the report-count definer and every original row/field remain intact. It is separate from baseline marking, preservation adoption and foundation replay. Neither migration lineage nor the manifest changes.
+
+A privately reviewed approval binds provider branch identity, direct host SHA256, database/owner, before-schema hash, independent baseline replay reference and verified retained snapshot evidence. The only shared target is `br-rough-lake-arrxiape` / `dev`. An explicitly reviewed disposable rehearsal may target an owned `validation/issue-120-*` branch whose provider parent is that exact dev branch, with its own host binding. A caller's unreviewed branch flag is insufficient. Keep provider records, private dumps and credentials out of commits and logs.
+
+The exact pre-schema comparison removes precisely the baseline pg_stat_statements extension/comment blocks from the independently replayed reference and substitutes precisely its direct app status INSERT grant with the recorded SELECT+INSERT grant. It rejects all other application drift, including extra grants and changed definer permissions. This comparison does not rewrite a dump or alter the independent reference. The existing application projection excludes only documented cloud_admin default ACLs; retain strict provider comparison separately.
+
+Before shared execution: integrate independently reviewed source; rehearse on an isolated dev-derived clone under the actual app role; revalidate eligible rollback consumers; verify original-field fingerprints/catalogs; verify a retained dev snapshot/restore procedure and current provider binding. Stop for unknown drift, unavailable/preload-disabled statistics, wrong owner/target or any migration/adoption/foundation object. All operator DDL must respect the existing migration advisory lock and maintenance boundary.
