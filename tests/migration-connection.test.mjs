@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Client } from 'pg';
 import { productionMigrationUrl } from '../scripts/release.mjs';
-import { verifyMigrationIdentity } from '../scripts/migration-connection.mjs';
+import { directMigrationUrl, verifyMigrationIdentity } from '../scripts/migration-connection.mjs';
 
 const parent = 'br-rough-base-aryz0z5a';
 const endpoints = [{ branch_id: parent, type: 'read_write', host: 'expected.invalid' }];
@@ -51,4 +51,13 @@ test('release retains provider endpoint, database and owner checks', () => {
     assert.throws(() => productionMigrationUrl(target, endpoints, database), /Production identity mismatch/);
   }
   assert.throws(() => productionMigrationUrl(target.replace('find-free-parking-db_owner', 'other'), endpoints, databases), /Production identity mismatch/);
+});
+
+test('declared or default direct port does not inherit PGPORT from the operator shell', () => {
+  const prior = process.env.PGPORT;
+  process.env.PGPORT = '6543';
+  try {
+    assert.equal(new Client({ connectionString: directMigrationUrl('postgres://owner@validation.invalid/disposable').toString() }).connectionParameters.port, 5432);
+    assert.equal(new Client({ connectionString: directMigrationUrl('postgres://owner@validation.invalid:5434/disposable').toString() }).connectionParameters.port, 5434);
+  } finally { if (prior === undefined) delete process.env.PGPORT; else process.env.PGPORT = prior; }
 });

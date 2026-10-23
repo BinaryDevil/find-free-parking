@@ -1,5 +1,10 @@
 import { pathToFileURL } from 'node:url';
 import { reportFailure } from './github-alert.ts';
+import { canonical, digest, resolveMigrationLineage } from './migration-lineage.mjs';
+import { readMigrationState, readAdoptionInputs, verifyAdoptionReference, captureSchema } from './preservation-adoption.mjs';
+import { loadMigrationManifest } from './migration-lineage.mjs';
+import { materializeAdoptionReference } from './preservation-reference.mjs';
+import { basename } from 'node:path';
 import { directMigrationUrl, verifyMigrationIdentity } from './migration-connection.mjs';
 
 const repository = 'BinaryDevil/find-free-parking';
@@ -25,6 +30,16 @@ export function authorizeRelease(prs, sha) {
   const pr = matches[0];
   const actions = pr.body?.match(/^## Production actions\s*\n([\s\S]*?)(?=^## |$(?![\s\S]))/m)?.[1];
   if (!actions) throw new Error('Missing Production actions');
+  if (/^- (?:Migration lineage|Migration manifest|Adoption reference):/m.test(actions) || actions.includes('sql/preservation-v1/')) {
+    const lineages = [...actions.matchAll(/^- Migration lineage: `([^`]+)`\s*$/gm)].map(match => match[1]);
+    const hashes = [...actions.matchAll(/^- Migration manifest: `([a-f0-9]{64})`\s*$/gm)].map(match => match[1]);
+    const references = [...actions.matchAll(/^- Adoption reference: `([a-f0-9]{64})`\s*$/gm)].map(match => match[1]);
+    const entries = [...actions.matchAll(/^- Migration: `sql\/preservation-v1\/(\d{13}_[a-z0-9_]+\.sql)`\s*$/gm)].map(match => match[1]);
+    const reserved = actions.split('\n').filter(line => /^- (?:Migration(?: lineage| manifest)?|Adoption reference):/.test(line));
+    if (lineages.length !== 1 || lineages[0] !== 'preservation-v1' || hashes.length !== 1 || references.length > 1 || entries.length === 0 ||
+        reserved.length !== 2 + references.length + entries.length || new Set(entries).size !== entries.length || /^No automated migrations\.$/m.test(actions)) throw new Error('Invalid preservation production actions');
+    return { number: pr.number, lineage: 'preservation-v1', manifestHash: hashes[0], adoptionReference: references[0] ?? null, migrations: entries.sort() };
+  }
   const migrations = [...actions.matchAll(/^- Migration: `sql\/migrations\/(\d{13}_[a-z0-9_]+\.sql)`\s*$/gm)].map(m => m[1]);
   if (migrations.length && /^No automated migrations\.$/m.test(actions)) throw new Error('Contradictory migration list');
   if (!migrations.length && !/^No automated migrations\.$/m.test(actions)) throw new Error('List exact migrations or explicitly none');
@@ -39,22 +54,55 @@ export async function releaseForCommit(github, sha) {
   return authorizeRelease(prs, sha);
 }
 
-export async function runRelease(release, config, { github, database, readiness, snapshot, migrate, smoke }) {
+export async function runRelease(release, config, { github, database, readiness, snapshot, migrate, smoke, preflightAdoption, adopt }) {
   const results = [];
   const comment = async () => github(['api', `repos/${repository}/issues/${release.number}/comments`, '--method', 'POST', '--input', '-'],
     JSON.stringify({ body: `Production release ${config.sha}\n\n${results.join('\n')}` }));
   try {
+    if (release.lineage) {
+      const manifest = config.manifest;
+      const expected = { lineage: release.lineage, manifestHash: release.manifestHash, adoptionReference: release.adoptionReference, migrations: release.migrations };
+      if (!manifest || release.lineage !== 'preservation-v1' || release.manifestHash !== digest(canonical(manifest)) || canonical(config.plan) !== canonical(expected) ||
+          release.migrations.some(file => !manifest.preservation.some(entry => basename(entry.path) === file))) throw new Error('Preservation plan differs from merged release');
+      const state = await readMigrationState(database);
+      const selected = resolveMigrationLineage(manifest, state, { lineage: release.lineage, adopt: !state.adoption });
+      const pending = selected.pending.map(entry => basename(entry.path));
+      if (selected.requiresBaseline || pending.some(file => !release.migrations.includes(file))) throw new Error('Preservation baseline or pending authorization mismatch');
+      if (selected.requiresAdoption) {
+        if (!release.adoptionReference || typeof preflightAdoption !== 'function' || typeof adopt !== 'function') throw new Error('Explicit adoption authorization required');
+        await preflightAdoption();
+      } else if (release.adoptionReference && digest(canonical(state.adoption.reference)) !== release.adoptionReference) throw new Error('Recorded adoption reference differs');
+      results.push('Exact preservation manifest, selected history and adoption authorization verified.');
+      await readiness();
+      const branch = await snapshot();
+      results.push(`Snapshot retained: ${branch}.`);
+      await readiness();
+      if (selected.requiresAdoption) {
+        await adopt({ snapshotReference: branch });
+        const adopted = await readMigrationState(database);
+        if (!adopted.adoption || resolveMigrationLineage(manifest, adopted).lineage !== 'preservation-v1' || digest(canonical(adopted.adoption.reference)) !== release.adoptionReference) throw new Error('Adoption verification failed');
+        results.push('Explicit preservation adoption metadata verified; no legacy operation marked executed.');
+      }
+      if (selected.requiresAdoption) await readiness();
+      await migrate({ lineage: selected.lineage });
+      const after = await readMigrationState(database);
+      if (!after.adoption || resolveMigrationLineage(manifest, after).pending.length) throw new Error('Preservation history mismatch');
+      results.push(`Preservation migrations verified: ${pending.length} applied; legacy fields and history retained.`);
+      await smoke();
+      results.push('Health and Seattle/Vancouver parking API smoke checks passed.');
+      await comment();
+      return { snapshot: branch, applied: pending };
+    }
     if (config.files.some(f => !migrationPattern.test(f)) || !Array.isArray(config.plan) || config.plan.some(f => !migrationPattern.test(f)) ||
         JSON.stringify([...config.plan].sort()) !== JSON.stringify(release.migrations)) throw new Error('Plan differs from merged release');
-    const ledger = await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
+    await database.query("SELECT to_regclass('migration_meta.pgmigrations') AS ledger");
     let pending = [];
     if (release.migrations.length) {
-      const applied = ledger.rows[0]?.ledger ? (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`) : [];
-      if (applied.some(f => !config.files.includes(f))) throw new Error('Unknown migration history');
-      pending = config.files.filter(f => !applied.includes(f));
+      const selected = resolveMigrationLineage(config.manifest, await readMigrationState(database), { lineage: 'legacy' });
+      pending = selected.pending.map(entry => basename(entry.path));
       if (pending.some(f => !release.migrations.includes(f))) throw new Error('Pending migration not authorized');
       // Existing production must adopt the baseline separately; never replay its DDL.
-      if (pending.includes('1791676800000_baseline.sql')) throw new Error('Baseline adoption required');
+      if (selected.requiresBaseline) throw new Error('Baseline adoption required');
       results.push('Authorization and pending migration checks passed.');
       await readiness();
       results.push('Exact release deployment and public production revision verified before migrations.');
@@ -66,7 +114,7 @@ export async function runRelease(release, config, { github, database, readiness,
     // Snapshot readiness can wait; do not reuse deployment proof from before it.
     await readiness();
     if (release.migrations.length) {
-      await migrate();
+      await migrate({ lineage: 'legacy' });
       const after = (await database.query('SELECT name FROM migration_meta.pgmigrations ORDER BY id')).rows.map(r => `${r.name}.sql`);
       if (JSON.stringify(after) !== JSON.stringify(config.files)) throw new Error('Migration history mismatch');
       results.push(`Migrations verified: ${pending.length} applied; ${pending.length ? 'additive rollback uses previous deployment' : 'no-op'}.`);
@@ -151,7 +199,7 @@ export async function smokeProduction(fetcher = fetch, origin = 'https://findfre
 }
 
 async function main() {
-  const { readFileSync, readdirSync } = await import('node:fs');
+  const { readFileSync, readdirSync, appendFileSync } = await import('node:fs');
   const { execFile } = await import('node:child_process');
   const { promisify } = await import('node:util');
   const { Client } = await import('pg');
@@ -160,6 +208,7 @@ async function main() {
     const child = execFile('gh', args, { maxBuffer: 4 * 1024 * 1024 }, (error, stdout) => error ? reject(new Error('GitHub request failed')) : resolve(stdout));
     child.stdin.end(input);
   });
+  if (process.argv.length > 3 || (process.argv[2] && process.argv[2] !== '--prepare')) throw new Error('Unknown release command');
   const sha = process.env.GITHUB_SHA;
   if (process.env.GITHUB_EVENT_NAME !== 'push' || process.env.GITHUB_REF !== 'refs/heads/main' ||
       process.env.GITHUB_REPOSITORY !== repository || !/^[a-f0-9]{40}$/.test(sha || '')) throw new Error('Not a production push');
@@ -173,6 +222,13 @@ async function main() {
   if (!release) { console.log('Skipped: no authorized human release.'); return; }
   const current = JSON.parse(await github(['api', `repos/${repository}/git/ref/heads/main`]));
   if (current.object.sha !== sha) { console.log('Skipped: a newer main revision exists.'); return; }
+  if (process.argv[2] === '--prepare') {
+    if (!process.env.GITHUB_OUTPUT) throw new Error('Workflow output is required');
+    appendFileSync(process.env.GITHUB_OUTPUT, `needs_pg_dump=${!!(release.lineage && release.adoptionReference)}\n`);
+    return;
+  }
+  const manifest = release.migrations.length ? loadMigrationManifest() : null;
+  let referenceFiles;
   const neon = async (path, body) => {
     const response = await fetch(`https://console.neon.tech/api/v2/${path}`, {
       method: body ? 'POST' : 'GET', signal: AbortSignal.timeout(30000), redirect: 'error',
@@ -201,11 +257,18 @@ async function main() {
   } };
   try {
     await runRelease(release, { sha, runId: process.env.GITHUB_RUN_ID,
-      files: readdirSync('sql/migrations').sort(), plan: (() => { try { return JSON.parse(readFileSync('.github/production-migrations.json', 'utf8')); } catch { return null; } })() }, {
+      manifest, files: readdirSync('sql/migrations').sort(), plan: (() => { try { return JSON.parse(readFileSync('.github/production-migrations.json', 'utf8')); } catch { return null; } })() }, {
       github, database,
       readiness: () => verifyProductionRevision(github, sha),
       snapshot: () => snapshotProduction(neon, { sha, project, parent }),
-      migrate: () => execute('pnpm', ['db:migrate'], { env: process.env, timeout: 10 * 60 * 1000 }),
+      preflightAdoption: async () => {
+        referenceFiles = materializeAdoptionReference(process.env, { approvedHash: release.adoptionReference, baseline: manifest.baseline });
+        const inputs = readAdoptionInputs({ ...process.env, ...referenceFiles.paths, MIGRATION_ADOPTION_APPROVED: release.adoptionReference });
+        const target = await captureSchema(process.env.MIGRATION_DATABASE_URL);
+        verifyAdoptionReference({ ...inputs, baseline: manifest.baseline, targetDump: target.dump, pgDumpVersion: target.version });
+      },
+      adopt: ({ snapshotReference }) => execute('pnpm', ['db:adopt-preservation'], { env: { ...process.env, ...referenceFiles.paths, MIGRATION_ADOPTION_APPROVED: release.adoptionReference, MIGRATION_SNAPSHOT_REFERENCE: snapshotReference }, timeout: 10 * 60 * 1000 }),
+      migrate: ({ lineage }) => execute('pnpm', ['db:migrate'], { env: { ...process.env, MIGRATION_EXPECTED_LINEAGE: lineage }, timeout: 10 * 60 * 1000 }),
       smoke: async () => {
         // Retry transient API failures only after deployment revision verification.
         for (let attempt = 0; ; attempt++) {
@@ -214,7 +277,7 @@ async function main() {
         }
       },
     });
-  } finally { await client?.end(); }
+  } finally { referenceFiles?.cleanup(); await client?.end(); }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

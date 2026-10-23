@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "baseline": {
+    "path": "sql/migrations/1791676800000_baseline.sql",
+    "sha256": "7037d3afd264310046637bec881dad18cd18b1ed8815ea9a77affc460e34ad90"
+  },
+  "legacy": [
+    {
+      "path": "sql/migrations/1791676800000_baseline.sql",
+      "sha256": "7037d3afd264310046637bec881dad18cd18b1ed8815ea9a77affc460e34ad90"
+    },
+    {
+      "path": "sql/migrations/1791849600000_evidence_provenance.sql",
+      "sha256": "d3308f68febcf4b9fb21fdb1b1ca7b190dc9db39f45985e08bb5a0c392e0a528"
+    },
+    {
+      "path": "sql/migrations/1791853200000_schema_hygiene.sql",
+      "sha256": "fbb73fe103ea037851ed658860bddd42800ff98c296cf20c616caaf0a8be25ba"
+    },
+    {
+      "path": "sql/migrations/1791856800000_places_parking_rules.sql",
+      "sha256": "47444d174ad6e204524f4fa4327292c2f1238c0d29f5636c6b31e500e7eacb23"
+    },
+    {
+      "path": "sql/migrations/1791979200012_coverage_areas.sql",
+      "sha256": "542c0e8f1543781454b6e8c203631d78f60c07a7405848211114b3965b742065"
+    },
+    {
+      "path": "sql/migrations/1792021300000_driver_warnings.sql",
+      "sha256": "6069f78be691b28b1f2b758459732a815c84d26982ecfaf2826f48d1edd82dc3"
+    },
+    {
+      "path": "sql/migrations/1792021500000_source_sync_runner.sql",
+      "sha256": "376b3b33e7a30a84d9099e0f2a00d6bc026de6b455e55a6a27e0ac84d73b9ee3"
+    },
+    {
+      "path": "sql/migrations/1792368000000_legacy_retirement.sql",
+      "sha256": "7c5baeaf7f1ca717dda6e5fa85362b1a9e3029a8926811b33b19d1d533ae8fae"
+    }
+  ],
+  "preservation": [
+    {
+      "path": "sql/preservation-v1/1792627200000_foundation.sql",
+      "sha256": "4a83f4bc5dce1c6f2cbf69f8113ebc0871354af50869a8f6e2c29dd504605fbc"
+    }
+  ],
+  "superseded": [
+    "sql/migrations/1791849600000_evidence_provenance.sql",
+    "sql/migrations/1791853200000_schema_hygiene.sql",
+    "sql/migrations/1791856800000_places_parking_rules.sql",
+    "sql/migrations/1791979200012_coverage_areas.sql",
+    "sql/migrations/1792021300000_driver_warnings.sql",
+    "sql/migrations/1792021500000_source_sync_runner.sql",
+    "sql/migrations/1792368000000_legacy_retirement.sql"
+  ]
+}

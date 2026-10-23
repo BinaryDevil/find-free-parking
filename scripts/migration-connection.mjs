@@ -13,6 +13,8 @@ export function directMigrationUrl(connectionString) {
     }
     seen.add(key);
   }
+  // pg otherwise falls back to PGPORT even for an explicit URI host.
+  if (!url.port) url.port = '5432';
   return url;
 }
 
