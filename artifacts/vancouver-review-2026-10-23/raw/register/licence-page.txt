@@ -1,0 +1,834 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    
+    
+
+    
+    
+
+
+
+
+
+
+
+    
+        <title>Open data licence &mdash; City of Vancouver Open Data Portal</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Language" content="en-US">
+
+        <style>/* Montserrat - https://opendata.vancouver.ca/static/fonts/Montserrat/LICENSE.txt */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/static/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+/* Montserrat - https://opendata.vancouver.ca/static/fonts/Montserrat/LICENSE.txt */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/static/fonts/Montserrat/Montserrat-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+/* Montserrat - https://opendata.vancouver.ca/static/fonts/Montserrat/LICENSE.txt */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/static/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+/* Montserrat - https://opendata.vancouver.ca/static/fonts/Montserrat/LICENSE.txt */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/static/fonts/Montserrat/Montserrat-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+</style>
+
+        
+
+    <link rel="icon" href="https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/favicon">
+
+
+
+        
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="/static/vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/vendor/normalize/normalize.css">
+    <link rel="stylesheet" href="/static/pictos/odsui/odsui.css" type="text/css">
+
+    <base href="/pages/licence/">
+
+
+    
+    
+
+    <link rel="canonical" href="https://opendata.vancouver.ca/pages/licence/">
+
+    <meta name="description" content="View datasets from the City of Vancouver, BC, Canada. Download data in various formats, explore with charts and maps, and access via API.">
+
+    <link rel="stylesheet" href="/css/front-angular.css?2030" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/stylesheet/2030.css">
+
+    
+    
+
+<link  rel="stylesheet" href="/static/assets/automationAxios-Cr3vzyXe.css" />
+<link  rel="stylesheet" href="/static/assets/createContext-DEiHFDgR.css" />
+<link  rel="stylesheet" href="/static/assets/Card-CTgDu3Kw.css" />
+<link  rel="stylesheet" href="/static/assets/usePrevious-C5llbaAr.css" />
+<link  rel="stylesheet" href="/static/assets/MessageCard-CGfNNWyC.css" />
+<link  rel="stylesheet" href="/static/assets/QuotaMessage-Bgcfop1Y.css" />
+<link  rel="stylesheet" href="/static/assets/strings-Bdi-Pmbg.css" />
+<link  rel="stylesheet" href="/static/assets/SearchFilter-DB5wvJNr.css" />
+<link  rel="stylesheet" href="/static/assets/Picto-BquBjE2L.css" />
+<link  rel="stylesheet" href="/static/assets/TagButton-C5R10GmS.css" />
+<link  rel="stylesheet" href="/static/assets/types-B1pDmZQz.css" />
+<link  rel="stylesheet" href="/static/assets/UserAvatar-DOOfYdXS.css" />
+<link  rel="stylesheet" href="/static/assets/shared-DIiYDQiN.css" />
+<link  rel="stylesheet" href="/static/assets/PrefilledLogin-DiVKbXqi.css" />
+<link  rel="stylesheet" href="/static/assets/PrefilledSignup-_KbnApvr.css" />
+<link  rel="stylesheet" href="/static/assets/FrontOfficeFeatures-DRLiFLlY.css" />
+<link  rel="stylesheet" href="/static/assets/setupCatalogSearchWidget-Bxl5m8ag.css" />
+<link  rel="stylesheet" href="/static/assets/Notifications-06iQaaRO.css" />
+<script type="module" crossorigin="" src="/static/assets/angularjs-frontoffice-CpFuoGhC.js"></script>
+<link href="/static/assets/init-CnyANzsd.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/automationAxios-BZ-oqe5m.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/react-render-compat-DrmYianO.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/ReactEntryWrapper-BYNtmWae.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/FrontOfficeFeatures-DhaidjOo.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/setupCatalogSearchWidget-BGzu8hoE.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/Notifications-pJpdgAOc.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/usePrevious-G4RZNyOe.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/array-B6pXA-bg.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/context-YUPGpemZ.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/createContext-D-diHxiu.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/wikitPropsUtils-DeYWf4_i.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/MessageCard-CnXzeClo.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/Card-D3CyWD_O.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/QuotaMessage-DazexeK9.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/platformUrls-OwHSKpW6.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/planTypes-DHEYsDtq.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/KeyboardShortcut-CA9vHOQq.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/SearchFilter-C-DEsme2.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/strings-BOnff8RE.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/constants-BU5i-PYA.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/assets-Cqr3-j2e.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/FormattedDate-DUnAl9Us.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/Picto-CJhlaiDG.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/constants-BYS8bs3l.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/TagButton-Bd_PXFYN.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/mixpanelTrackEvent-CBihJ8IF.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/screeb-DLlCmLWQ.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/explore-CwiwtM1N.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/useExploreAPIAction-Db0CHCC1.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/mixpanelTrackEventWithDebug-CMIE8L1e.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/types-C4mYjPMi.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/types-CknojM9k.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/Tag-DN6cnEio.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/FallbackWarning-Pe9diJrL.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/usePopper-BxGm-zq_.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/UserContext-CvfDdcyP.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/UserAvatar-n3swEhjZ.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/user-CbzI_S7S.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/index-B_qJ3qyu.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/portal-C9i3JlT1.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/PrefilledLogin-UgDUVsGF.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/identityProviders-CD7f-2JH.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/shared-Cx-XbrBl.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/useNextSearchParam-ChGEx145.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/huwise-login-logo-Cc8XfSUd.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/ProSanteConnect-lz_NxEzD.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/PrefilledSignup-A-GAksSE.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="/static/assets/tslib.es6-dNzWdQaU.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+
+
+    
+    
+        <script type="text/javascript" crossorigin="" src="/static/i18n/angularjs-frontoffice.en.f8519b55.js"></script>
+    
+
+    
+        <script type="text/javascript" crossorigin="" src="/static/i18n/shared.en.f8519b55.js"></script>
+    
+
+
+    
+
+    
+        <script type="application/ld+json">{"@context": "https://schema.org/", "@type": "WebPage", "name": "Open data licence", "url": "https://opendata.vancouver.ca/pages/licence/", "dateCreated": "2019-02-01T20:37:58+00:00", "dateModified": "2026-07-21T16:54:46+00:00", "keywords": ["Visualizations"]}</script>
+    
+    
+
+    </head>
+    <body>
+        
+    
+    
+    <div class="ods-content">
+
+        <header class="ng-cloak" role="banner" ng-controller="HeaderController">
+        
+            
+                
+                    <nav breakpoint="1000" class="ods-front-header" ods-responsive-menu="">
+<ods-responsive-menu-placeholder>
+<a class="paris-header__brand-link" href="/">
+<div class="paris-header__kpi paris-header__ods">
+<img alt="City of Vancouver Open Data Portal" class="ods-front-header__logo" src="https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/logo"/>
+</div>
+</a>
+<div class="paris-header__perf">Open Data Portal</div>
+</ods-responsive-menu-placeholder>
+<ods-responsive-menu-collapsible>
+<div class="container paris-header__container">
+<a class="paris-header__brand-link" href="/">
+<div class="paris-header__kpi paris-header__ods">
+<img alt="City of Vancouver Open Data Portal" class="ods-front-header__logo" src="https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/logo"/>
+</div>
+<div class="paris-header__perf">
+                    Open Data Portal
+                </div>
+</a>
+</div>
+<div class="paris-header__nav">
+<ul class="ods-front-header__menu">
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="/explore/">
+            Catalogue
+        </a>
+</li>
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="/pages/dashboards/">
+            Dashboards
+        </a>
+</li>
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="/chart/">
+            Chart builder
+        </a>
+</li>
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="/map/">
+            Map builder
+        </a>
+</li>
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="/pages/help/">
+            Help &amp; API
+        </a>
+</li>
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="/pages/contact/">
+            Contact
+        </a>
+</li>
+<li class="ods-front-header__menu-item" ng-non-bindable="">
+<a class="ods-front-header__menu-item-link" href="https://vancouver.ca" target="_blank">
+            vancouver.ca
+        </a>
+</li>
+</ul>
+<ul class="ods-front-header__management-menu">
+<li class="ods-front-header__management-menu-item">
+<div class="ods-front-header__login-signup-buttons-button" data-login-signup-placeholder="" ng-non-bindable=""></div>
+</li>
+</ul>
+</div>
+</ods-responsive-menu-collapsible>
+</nav>
+                
+            
+        
+        </header>
+        <main id="main" role="main" class="main--page">
+    
+    <div ng-app="ods.frontend" ng-controller="PageController">
+        <div class="page-layout ng-cloak">
+            <style type="text/css" ods-bind-angular-content="blocks.css"></style>
+            <div ods-bind-angular-content="blocks.html"></div>
+        </div>
+    </div>
+</main>
+    </div>
+    
+
+    
+        <footer id="footer" role="contentinfo" ng-controller="FooterController">
+        
+            <div class="ods-front-footer">
+<div class="row bottom clearfix">
+<div class="copyright">
+<p><span>© <any ods-datetime="">{{ datetime|moment:'YYYY' }}</any> City of Vancouver</span></p>
+</div>
+<div class="lookingfor">
+<p>
+<a href="https://vancouver.ca/your-government/terms-of-use.aspx">Terms of Use</a>
+<a href="https://vancouver.ca/your-government/privacy-policy.aspx">Privacy Policy</a>
+<a aria-label="Accessibility statement from OpenDataSoft, the technology provider of the Open Data Portal" href="https://help.opendatasoft.com/platform/en/other_resources/accessibility/accessibility.html" target="_blank">Website accessibility <i aria-hidden="true" class="fa fa-external-link"></i></a>
+</p>
+</div>
+</div>
+</div>
+        
+        </footer>
+    
+
+
+        <script src="/static/ods/js/supported-browsers-message.js" type="text/javascript"></script>
+        
+    
+    
+    <script src="/static/compressed/js/output.ebb7fb5cf398.js"></script>
+
+    <script src="/static/vendor/angular-1.8.3/i18n/angular-locale_en-us.js" type="text/javascript"></script>
+
+    <script src="/static/compressed/js/output.bce6781d8d14.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module('ods.core.config', []);
+
+        app.factory("config", [function() {
+            return {
+                DATASET_ID: '',
+                LANGUAGE: 'en',
+                AVAILABLE_LANGUAGES: ["en"],
+                USER: null,
+                FQ_USERNAME: null,
+                BRAND_HOSTNAME: "opendatasoft.com",
+                DEFAULT_BASEMAP: {"provider": "jawg.streets", "jawg_apikey": "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH", "jawg_odsdomain": "vancouver"},
+            
+                DOMAIN_ID: 'vancouver',
+                ANONYMOUS_ACCESS_ENABLED: 'true',
+                FEEDBACK: false,
+                RESOURCE_DOWNLOAD_CONDITIONS: false,
+                PARENT_DOMAIN: true,
+                
+                
+                MINUTE_LEVEL_SCHEDULING: true,
+                CATALOG_SEARCH_BOOSTING_ENABLED: true,
+                CSV_DELIMITER: ';',
+                EXPLORE_AGENT_ENABLED: false,
+            
+                CENTRALSTORE: true,
+                RECAPTCHA_PUBLIC_KEY: '6LfqeoUjAAAAAO5al6_pzMl6PS6XirvfEERg55qa'
+            }
+        }]);
+    </script>
+
+    <script type="text/javascript">
+        var ods = angular.module('ods.minimal', [
+            'ods.core.config',
+            'ods.core',
+            'ods.core.form.directives',
+        ]);
+
+        ods.config(['$locationProvider', function($locationProvider) {
+            $locationProvider.html5Mode(true).hashPrefix('');
+        }]);
+
+        // Add 'sms' to the default angular whitelist
+        ods.config(['$compileProvider', function ($compileProvider) {
+            $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|s?ftp|mailto|tel|file|sms):/);
+        }]);
+
+        ods.config(function($sceDelegateProvider, $sanitizeProvider) {
+            $sceDelegateProvider.resourceUrlWhitelist(["self", "*://www.youtube.com/embed/**", "//platform.twitter.com/widgets.js", "*://player.vimeo.com/video/**", "https://www.veed.io/embed/**"]);
+            $sanitizeProvider.enableSvg(true);
+        });
+
+        ods.run(['gettextCatalog', '$http', function(gettextCatalog, $http){
+            
+            var translations = {
+    "Based on a spacial reference, compute distance between two geometries":{
+        "$$noContext":"Compute distance between two geometries"
+    },
+    "Case sensitive":{
+        "$$noContext":"Case sensitive"
+    },
+    "Compute Geo distance":{
+        "$$noContext":"Geo distance"
+    },
+    "Coordinates system conversion":{
+        "$$noContext":"Convert Degrees"
+    },
+    "Dataset url":{
+        "$$noContext":"Dataset url"
+    },
+    "Local key":{
+        "$$noContext":"Local key"
+    },
+    "One line":{
+        "$$noContext":"One line"
+    },
+    "Remote key":{
+        "$$noContext":"Remote key"
+    },
+    "Separator":{
+        "$$noContext":"Separator"
+    },
+    "User":{
+        "$$noContext":"User"
+    },
+    "double":{
+        "$$noContext":"decimal"
+    },
+    "geo":{
+        "$$noContext":"Geocoding"
+    },
+    "geo_point_2d":{
+        "$$noContext":"geo point"
+    },
+    "geo_shape":{
+        "$$noContext":"geo shape"
+    },
+    "int":{
+        "$$noContext":"integer"
+    },
+    "invalid epsg code":{
+        "$$noContext":"Invalid epsg code"
+    },
+    "invalid field name":{
+        "$$noContext":"Invalid field name"
+    },
+    "invalid key":{
+        "$$noContext":"Invalid key"
+    },
+    "invalid type":{
+        "$$noContext":"Invalid type"
+    },
+    "invalid url":{
+        "$$noContext":"Invalid url"
+    },
+    "misc":{
+        "$$noContext":"Miscellanous"
+    },
+    "string_operation":{
+        "$$noContext":"String operations"
+    },
+    "unauthorized":{
+        "$$noContext":"Unauthorized"
+    }
+}
+;
+            
+            
+            var current_language = "en";
+
+            gettextCatalog.setStrings(current_language, translations);
+            gettextCatalog.setCurrentLanguage(current_language);
+
+            $http.defaults.xsrfCookieName = 'csrftoken';
+            $http.defaults.xsrfHeaderName = 'X-CSRFToken';
+        }]);
+    </script>
+
+
+    
+
+<script src="/static/compressed/js/output.1185628e843d.js"></script>
+
+
+
+<script type="text/javascript">
+    (function() {
+        var app = angular.module('ods.core.config');
+
+        app.factory("domainConfig", [function() {
+            // explore.reuse has been renamed explore.enable_showcases
+            return {"explore.enable_api_tab": true, "explore.disable_analyze": null, "languages": ["en"], "explore.dataset_catalog_default_source_shared": null, "explore.enable_showcases": null, "explore.catalog.geonavigation": null, "enable_form_recaptcha": true};
+        }]);
+    })();
+</script>
+
+
+
+
+<script type="text/javascript">
+    (function() {
+        var ods = angular.module('ods', [
+            'ods.minimal',
+            'ods.core.config',
+            'ods.core',
+            'ods.core.form.directives',
+            'ods-widgets',
+            'gettext',
+        ]);
+
+        
+        ods.config(function(ODSCurrentDomainProvider) {
+            ODSCurrentDomainProvider.setDomain('vancouver');
+        });
+        
+
+        ods.config(function(ODSWidgetsConfigProvider) {
+            ODSWidgetsConfigProvider.setConfig({
+            
+                disqusShortname: "https-vancouver-opendatasoft-com-pages-home",
+                basemaps: [{"provider": "jawg.streets", "label": "Jawg Streets", "id": "jawg.streets", "jawg_apikey": "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH", "jawg_odsdomain": "vancouver"}, {"provider": "custom", "label": "custom test", "url": "https://maps.vancouver.ca/vanmap-viewer/", "id": "4edcc5"}],
+                neutralBasemap: {"provider": "jawg.light", "jawg_apikey": "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH", "shortAttribution": true},
+                mapGeobox: true,
+                chartColors: ["#0279B1", "#61a644", "#4d8c3f", "#1e366c", "#872A90", "#784e28", "#fcd700", "#f6b332", "#ff5000", "#c21f32", "#5ab6b2", "#444444", "#96BF50"],
+                language: "en",
+                themes: {"default": {"url": "/static/ods/img/themes/logo.svg", "color": "#000000"}, "Business and economy": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Business-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Business.svg"}, "Culture and education": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/CultureAndEducation-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/CultureAndEducation.svg"}, "Demographics": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Population-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Population.svg"}, "Food and housing": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/FoodAndHousing-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/FoodAndHousing.svg"}, "Geography and imagery": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/GeographyAndImagery-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/GeographyAndImagery.svg"}, "Government and finance": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/GovernmentAndFinance-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/GovernmentAndFinance.svg"}, "Parks, recreation, and pets": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/ParksRecreationAndPets-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/ParksRecreationAndPets.svg"}, "Property and development": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/PropertyAndDevelopment-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/PropertyAndDevelopment.svg"}, "Safety": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Safety-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Safety.svg"}, "Streets and transportation": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/StreetsAndTransportation-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/StreetsAndTransportation.svg"}, "Sustainability": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Sustainability-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Sustainability.svg"}, "Water and sewer": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/WaterAndSewer-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/WaterAndSewer.svg"}, "Tests": {}, "Transport, Movements": {}},
+                basePath: '/static/ods-widgets/',
+                websiteName: "City of Vancouver Open Data Portal",
+                mapPrependAttribution: 'Powered by <a href="http://www.huwise.com/" target="_blank">Huwise</a>',
+                defaultMapLocation: "10,49.25167,-123.09631",
+                isMultiAssets: true,
+                jawgGeocodingAPIKey: "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH",
+                secureContextDomain: true,
+                localDomain: "vancouver",
+                trustedIssuers: {"agents": {"widget_url": "https://static.huwise.com/agents/", "service_url": "https://agents-chat-api.huwise.com", "aud": "agents-api"}, "artifacts": {"widget_url": "https://static.huwise.com/artifacts/", "service_url": "https://artifacts-api.huwise.com", "aud": "huwise-platform"}, "embeds": {"widget_url": null, "service_url": null, "aud": "huwise-embed"}},
+                agentsTenantSlug: "",
+                currentPageSlug: "licence",
+                sessionScopeId: "",
+                appendedURLQuerystring: ""
+            
+            });
+        });
+        ods.filter('isocode_to_language', function () {
+            var languages = {"en": "English", "fr": "French", "nl": "Dutch", "pt": "Portuguese", "it": "Italian", "ar": "Arabic", "de": "German", "es": "Spanish", "ca": "Catalan", "eu": "Basque", "sv": "Swedish"};
+            return function (code) {
+                if (!code) {
+                    return code;
+                }
+                if (angular.isDefined(languages[code])) {
+                    return languages[code];
+                } else {
+                    return code;
+                }
+            };
+        });
+
+        moment.locale("en-us");
+    })();
+</script>
+
+<script type="text/javascript">
+    (function() {
+        var ods = angular.module('ods');
+
+        ods.config(function (ModuleLazyLoaderProvider) {
+            var loadingConfig = ModuleLazyLoaderProvider.getConfig();
+            // TODO: Better API to append a locale dependency? It's really ugly to define this list twice...
+
+            // We can't rely on CDNs, especially because some ITs are using a whitelist and won't add our CDNs in it.
+            // Let's use our local copies
+            loadingConfig.highcharts.js = [
+                ["/static/vendor/highcharts/highcharts.js"],
+                ["/static/vendor/highcharts/no-data-to-display.js"],
+                [
+                    "/static/vendor/highcharts-i18n/en-us.js",
+                    "/static/vendor/highcharts/highcharts-more.js",
+                    "/static/vendor/highcharts/treemap.js",
+                    "/static/vendor/highcharts/funnel.js"
+                ]
+            ];
+            loadingConfig['simple-statistics'] = {
+                'css': [],
+                'js': [
+                    'ss@/static/vendor/simple-statistics/simple-statistics.js'
+                ]
+            };
+            loadingConfig['html-entities'] = {
+                'css': [],
+                'js': [
+                    'he@/static/vendor/he/he.js'
+                ]
+            };
+            loadingConfig['ion.rangeSlider'] = {
+                'js': ['/static/vendor/ion-rangeslider-2.3.0/ion.rangeSlider.min.js'],
+                'css': ['/static/vendor/ion-rangeslider-2.3.0/ion.rangeSlider.min.css']
+            };
+            loadingConfig.leaflet = {
+                'css': [
+                    "/static/vendor/leaflet/leaflet.css",
+                    "libs/ods-map-fullscreen/ods-map-fullscreen.css",
+                    "/static/vendor/leaflet-locatecontrol/L.Control.Locate.css",
+                    "libs/leaflet-control-geocoder/Control.Geocoder.css",
+                    "libs/ods-vectormarker/vectormarker.css",
+                    "libs/ods-clustermarker/clustermarker.css",
+                    "libs/leaflet-label/leaflet.label.css",
+                    "libs/leaflet-draw/leaflet.draw.css"
+                ],
+                'js': [
+                    ["L@/static/vendor/leaflet/leaflet.js"],
+                    [
+                        "L.Control.ODSMapFullscreen@libs/ods-map-fullscreen/ods-map-fullscreen.js",
+                        "L.Control.Locate@/static/vendor/leaflet-locatecontrol/L.Control.Locate.js",
+                        "L.Label@libs/leaflet-label/leaflet.label.js",
+                        "L.ODSMap@libs/ods-map/ods-map.js",
+                        "L.ODSTileLayer@libs/ods-map/ods-tilelayer.js",
+                        "L.Control.Geocoder@libs/leaflet-control-geocoder/Control.Geocoder.js",
+                        "L.VectorMarker@libs/ods-vectormarker/vectormarker.js",
+                        "L.ClusterMarker@libs/ods-clustermarker/clustermarker.js",
+                        "L.Draw@libs/leaflet-draw/leaflet.draw.js",
+                        "L.HeatLayer@libs/leaflet-heat/leaflet-heat.js"
+                    ]
+                ]
+            };
+            loadingConfig['d3.scale'] = {
+                'js': [
+                    '/static/vendor/d3/d3-array.v2.min.js',
+                    '/static/vendor/d3/d3-color.v1.min.js',
+                    '/static/vendor/d3/d3-interpolate.v1.min.js',
+                    '/static/vendor/d3/d3-scale.v3.min.js'
+                ]
+            };
+        });
+    })();
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    if (window.L) L.Icon.Default.imagePath = '/static/vendor/leaflet/images/';
+</script>
+
+
+    <script src="/static/compressed/js/output.3dea1a45094e.js"></script>
+
+    <script src="/static/compressed/js/output.3cb46d3fbc15.js"></script>
+
+    
+
+
+    
+        
+        
+
+    
+<script type="text/javascript">
+    var gaLoaded = false;
+    function loadGoogleAnalytics() {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-526620-1', {
+            'cookieExpires': 31536000
+        });
+        ga('set', 'anonymizeIp', true);
+        ga(function() {
+            var trackers = ga.getAll();
+            for (var i=0; i<trackers.length; ++i) {
+                var tracker = trackers[i];
+                
+                tracker.send('pageview');
+                
+            }
+        });
+        gaLoaded = true;
+    }
+    
+    loadGoogleAnalytics();
+    
+</script>
+
+
+        
+
+<script type="text/javascript" >
+    var ga4Loaded = false;
+    function loadGoogleAnalytics4() {
+        (function() {
+            var d=document,
+                g=d.createElement('script'),
+                s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript';
+            g.async=true;
+            g.src=`https://www.googletagmanager.com/gtag/js?id=G-FPPJDSTX71`;
+            s.parentNode.insertBefore(g,s);
+        })();
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-FPPJDSTX71');
+        window.gtag = gtag;
+        ga4Loaded = true;
+    }
+
+    
+    loadGoogleAnalytics4();
+    
+</script>
+
+
+        
+
+
+        
+
+
+        
+
+<script type="text/javascript">
+    window.MIXPANEL_CUSTOM_LIB_URL = "/static/vendor/mixpanel-2.47.0/mixpanel.min.js";
+
+    (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+    for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+
+    var config = {
+        track_pageview: false,
+        persistence: 'localStorage',
+        disable_persistence: true,
+        api_host: 'https://mpc.huwise.com'
+    };
+
+    
+    // Disable IP tracking to prevent geographic information like city, country, and region from being sent to Mixpanel
+    config.ip = false;
+    // Mixpanel automatically captures default properties, but we don't want to capture any of them in the front office.
+    // Except "mp_processing_time_ms", "$mp_api_timestamp_ms" and "$insert_id".
+    // See: https://docs.mixpanel.com/docs/data-structure/property-reference#default-properties
+    config.property_blacklist = [
+        // Mixpanel default properties
+        "$city",
+        "$region",
+        "mp_country_code",
+        "$browser",
+        "$browser_version",
+        "$device",
+        "$device_id",
+        "$user_id",
+        "$current_url",
+        "$initial_referrer",
+        "$initial_referring_domain",
+        "$os",
+        "mp_lib",
+        "$referrer",
+        "$referring_domain",
+        "$screen_height",
+        "$screen_width",
+        "$search_engine",
+        "mp_keyword",
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_content",
+        "utm_term",
+    ];
+    
+
+    mixpanel.init("3a6fdb48b4721a74c205a56a744a5484", config);
+    mixpanel.register({
+        "domainId": "vancouver",
+        "isAnonymous": true,
+        "origin": "FO",
+        "isInternalReferrer": false,
+        
+        "planName": "advanced",
+        
+        
+        "clientType": "paying",
+        
+        "isHuwise": false,
+    }, { persistent: false });
+
+    
+    mixpanel.identify("d9f448444de223cfa4cc1e75c937d2a4");
+    
+</script>
+
+
+        
+
+
+
+        
+
+
+        
+
+
+
+        
+        <script type="text/javascript">
+            window.HUWISE_TRACKING_CONFIG = {"enabled": true, "service_url": "/rw/vaf/events", "domain_info": {"client_type": "paying", "domain_id": "vancouver"}, "user_info": {"user_tracked_id": "560810eeb9ee7144", "is_anonymous": true, "is_huwise": false}};
+        </script>
+    
+
+    
+    <script>
+    window.addEventListener('HuwiseAppReady', (appEvent) => {
+        appEvent.detail.initialize({
+            i18n: {
+                shortLanguageCode: 'en',
+                languageCode: 'en-us',
+            },
+            config: {"defaultBasemap": {"provider": "jawg.streets", "jawg_apikey": "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH", "jawg_odsdomain": "vancouver"}, "defaultNeutralBasemap": {"provider": "jawg.light", "jawg_apikey": "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH", "shortAttribution": true}, "jawgAPIKey": "4cKtE4Rze1HrvxWa9a7mdolSk10lVThTFC8zadQYMIMxTjkpTeIDJAAmhReDGnCH", "uploadMaxFileSize": 251658240, "recaptchaPublicKey": "6LfqeoUjAAAAAO5al6_pzMl6PS6XirvfEERg55qa"},
+            domain: {"properties": {"access.anonymous": true, "ui#thunderforest#api_key": null, "ui#mapbox#access_token": null, "ui#cartograph#default_location": "10,49.25167,-123.09631", "ui#basemaps": [{"provider": "jawg.streets", "label": {"en": "Jawg Streets"}}, {"provider": "custom", "label": {"en": "custom test"}, "url": "https://maps.vancouver.ca/vanmap-viewer/"}], "ui#enable_marketplace_experience": true, "ui#explore_catalog_settings": {"draft": {"default_sort": "updatedDesc", "filters": [{"type": "refines", "name": "category", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "themes", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "keywords", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "data-owner", "template_name": "custom", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "data-team", "template_name": "custom", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}], "cards": {"show_themes": true, "show_category": true, "show_showcase": false, "show_description": true, "display_thumbnail": "bottom", "size": "medium", "metadata_list": [{"name": "updated_at", "template_name": "asset"}, {"name": "records_count", "template_name": "default"}, {"name": "keywords", "template_name": "asset"}, {"name": "update_frequency", "template_name": "asset"}], "show_ctas": false}, "page_title": {"en": "Explore the asset catalog"}, "page_heading": {"en": "Catalog"}, "updated_at": "2026-07-13T17:30:25.232750+00:00"}, "published": {"default_sort": "updatedDesc", "filters": [{"type": "refines", "name": "category", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "themes", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "keywords", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "data-owner", "template_name": "custom", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "data-team", "template_name": "custom", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}], "cards": {"show_themes": true, "show_category": true, "show_showcase": false, "show_description": true, "display_thumbnail": "middle", "size": "medium", "metadata_list": [{"name": "updated_at", "template_name": "asset"}, {"name": "records_count", "template_name": "default"}, {"name": "keywords", "template_name": "asset"}, {"name": "update_frequency", "template_name": "asset"}], "show_ctas": false}, "page_title": {"en": "Explore the asset catalog"}, "page_heading": {"en": "Catalog"}, "updated_at": "2026-07-13T14:44:24.098682+00:00"}}, "ui#domain_title": "City of Vancouver Open Data Portal", "ui#registration_form_enabled": true, "ui#reciteme_key": false, "ui#localized_registration_form_description": "\u003Ch2\u003EWhy register?\u003C/h2\u003E\u003Cp\u003E\n\tWhen you create an account, you can:\u003C/p\u003E\u003Cul\u003E\n\u003Cli\u003EFollow datasets to get notified when they're modified\u003C/li\u003E \u003Cli\u003ESave maps and charts\u003C/li\u003E \u003Cli\u003EGenerate API keys\u003C/li\u003E\u003C/ul\u003E\u003Ch2\u003EYour information and how we use it\u003C/h2\u003E\u003Cp\u003E\n\tThe City of Vancouver collects your personal information in accordance with section 26(c) of the Freedom of Information and Protection of Privacy Act for purposes of administering the City\u2019s Open Data Portal website. If you have questions about the collection or use of your personal information by the City, contact the director of Information Access and Privacy by phone at 3-1-1 or email at \n\t\u003Ca href=\"mailto:privacy@vancouver.ca\"\u003Eprivacy@vancouver.ca\u003C/a\u003E.\u003C/p\u003E\u003Cp\u003E\n\tAny personal information provided during account creation will also be collected by OPENDATASOFT and may be collected by their service providers and integrated platforms such as Twitter, Facebook, and LinkedIn. While OPENDATASOFT stores information in Canada, personal information accessed and used by their service providers maybe transmitted or stored outside Canada. By choosing to create an account, you are consenting to the collection and use of your personal information by OPENDATASOFT and associated providers in accordance with their privacy policies. Consent will be immediate upon registration and will remain in effect until you otherwise notify the organization(s) holding your information. For further information, please consult these providers\u2019 privacy policies.\u003C/p\u003E\u003Cp\u003E\n\u003Ca href=\"https://legal.opendatasoft.com/en/privacy-policy.html\" target=\"_blank\"\u003ERead the OpenDataSoft Privacy Policy (opens in new tab)\u003C/a\u003E\u003C/p\u003E\u003Ch2\u003ECity of Vancouver staff\u003C/h2\u003E\u003Cp\u003E\u003Ca href=\"https://opendata.vancouver.ca/saml2/login\"\u003EUse the staff sign-in page\u003C/a\u003E\u003C/p\u003E\u003Cp\u003EIf you're not connected to the City network, use the link \"Sign in for staff with network ID\" and\u00a0enter your username and password for your work computer and email.\u003C/p\u003E", "ui#localized_registration_form_title": null, "ui#signup_force_message_enabled": false, "ui#signup_checkconditions_enabled": true, "ui#languages": ["en"], "users#signup_freeregistration_enabled": true, "auth#default_login_page": "ods_login", "ui.dataset_snapshots": true, "metadata.themes": [{"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Business-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Business.svg"}, "labels": {"en": "Business and economy"}, "id": "273821e"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/CultureAndEducation-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/CultureAndEducation.svg"}, "labels": {"en": "Culture and education"}, "id": "e5fe7e4"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Population-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Population.svg"}, "labels": {"en": "Demographics"}, "id": "b636a08"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/FoodAndHousing-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/FoodAndHousing.svg"}, "labels": {"en": "Food and housing"}, "id": "29c7d1a"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/GeographyAndImagery-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/GeographyAndImagery.svg"}, "labels": {"en": "Geography and imagery"}, "id": "9c6cfa5"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/GovernmentAndFinance-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/GovernmentAndFinance.svg"}, "labels": {"en": "Government and finance"}, "id": "445f28d"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/ParksRecreationAndPets-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/ParksRecreationAndPets.svg"}, "labels": {"en": "Parks, recreation, and pets"}, "id": "c1637fc"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/PropertyAndDevelopment-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/PropertyAndDevelopment.svg"}, "labels": {"en": "Property and development"}, "id": "af91cf3"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Safety-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Safety.svg"}, "labels": {"en": "Safety"}, "id": "3a99241"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/StreetsAndTransportation-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/StreetsAndTransportation.svg"}, "labels": {"en": "Streets and transportation"}, "id": "74301a9"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/Sustainability-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/Sustainability.svg"}, "labels": {"en": "Sustainability"}, "id": "48c9b77"}, {"image": {"url": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/metadata_theme_picto/WaterAndSewer-96BF50.svg", "color": "#96BF50", "_original_url": "/assets/metadata_theme_picto/WaterAndSewer.svg"}, "labels": {"en": "Water and sewer"}, "id": "1aabf33"}, {"image": {}, "labels": {"en": "Tests"}, "id": "41e550f"}, {"image": {}, "labels": {"en": "Transport, Movements"}, "id": "9deb455"}], "metadata.asset_categories": [{"id": "data", "labels": {"en": "Data"}, "image_url": "/static/pictos/img/mingcute/pictos/coin_2_line.svg", "color": "#CE0037"}, {"id": "visualizations", "labels": {"en": "Visualizations"}, "image_url": "/static/pictos/img/mingcute/pictos/classify_2_line.svg", "color": "#0F79D0"}, {"id": "applications", "labels": {"en": "Applications"}, "image_url": "/static/pictos/img/mingcute/pictos/profile_line.svg", "color": "#00C7B1"}], "ui.explore.catalog_default_sort": "#relevance", "ui.explore.enable_anonymous_showcases": true, "ui.show_login": true, "ui.show_signup": true, "users.registration_allowed": true, "ui.csv_delimiter": ";", "ui.cookies_conditions": false, "ui.custom.logo_login_alt_text": null}, "license": {"enable_multi_assets": true, "enable_static_exports": false, "enable_explore_data_with_ai": true, "enable_asset_page_customization": true, "enable_next_gen_search": true, "enable_reciteme": false, "enable_forms_beta": false, "enable_sso_signin": true, "enable_ods_explore_autocomplete_search": true}, "technical": {"enable_vector_tiles": false, "vector_tiles_max_records_per_tile": 20000}, "availableDomainPermissions": ["edit_domain", "edit_page", "edit_dataset", "publish_dataset", "manage_dataset", "create_dataset", "create_external_asset", "edit_external_asset", "manage_showcase_requests", "manage_subdomains", "edit_theme", "create_page", "manage_page", "edit_form", "manage_glossary", "explore_restricted_dataset", "explore_restricted_external_asset", "explore_monitoring", "explore_restricted_page", "submit_private_form"], "theme_colors": {"highlight": "#5DA61B", "background": "#FFFFFF", "boxBackground": "#f8f8f8", "boxBorder": "#d9d9d5", "footerBackground": "#0279b1", "footerLink": "#ffffff", "headerBackground": "#0279B1", "headerLink": "#FFFFFF", "text": "#444444", "link": "#0279b1", "titleText": "#444444", "bigTitleText": "#FFFFFF", "bigTitleBackground": "#0279B1", "chart": ["#0279B1", "#61a644", "#4d8c3f", "#1e366c", "#872A90", "#784e28", "#fcd700", "#f6b332", "#ff5000", "#c21f32", "#5ab6b2", "#444444", "#96BF50"]}, "style": {"general": {"section": {"background": "#f8f8f8", "border": "#d9d9d5", "borderRadius": "6px"}, "accent": "#5DA61B", "background": "#FFFFFF"}, "typography": {"titles": {"fontFamily": "Montserrat", "h1": {"color": "#444444", "fontSize": 31, "fontWeight": 700}, "h2": {"color": "#444444", "fontSize": 22, "fontWeight": 700}, "h3": {"color": "#444444", "fontSize": 18, "fontWeight": 700}}, "texts": {"fontFamily": "Montserrat", "primary": {"color": "#444444", "fontSize": 16}, "secondary": {"color": "#444444", "fontSize": 14}, "link": {"color": "#0279b1"}}}, "button": {"primary": {"default": {"background": "#5DA61B", "border": null, "text": "#FFFFFF"}, "hover": {"background": "#386410", "border": null, "text": "#FFFFFF"}}, "secondary": {"default": {"background": null, "border": "#5DA61B", "text": "#5DA61B"}, "hover": {"background": "#e7f2dd", "border": "#386410", "text": "#386410"}}, "tertiary": {"default": {"background": null, "border": null, "text": "#5DA61B"}, "hover": {"background": "#e7f2dd", "border": null, "text": "#386410"}}, "borderRadius": "50%"}, "form": {"input": {"border": "#d9d9d5"}}, "header": {"background": "#0279B1", "link": "#FFFFFF"}, "footer": {"background": "#0279b1", "link": "#ffffff"}, "catalogCard": {"default": {"background": "#f8f8f8", "border": "#d9d9d5"}, "hover": {"background": "#f8f8f8", "border": "#5DA61B"}, "borderRadius": "6px"}, "visualizationCard": {"background": "#f8f8f8", "border": "#d9d9d5"}, "legacy": {"bigTitleText": "#FFFFFF", "bigTitleBackground": "#0279B1"}}, "domain_id": "vancouver", "is_frozen": false, "logo_login_path": "https://s3-ca-central-1.amazonaws.com/aws-ec2-ca-central-1-opendatasoft-staticfileset/vancouver/logo_login", "is_asset_access_request_active": false, "is_showcase_requests_active": null, "is_explore_data_with_ai_requests_limit_reached": false, "explore_catalog_settings": {"default_sort": "updatedDesc", "filters": [{"type": "refines", "name": "category", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "themes", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "keywords", "template_name": "asset", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "data-owner", "template_name": "custom", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}, {"type": "refines", "name": "data-team", "template_name": "custom", "hierarchical_separator": null, "has_date_range_filter": false, "multi_selection": true, "sort": "-count"}], "cards": {"show_themes": true, "show_category": true, "show_showcase": false, "show_description": true, "display_thumbnail": "middle", "size": "medium", "metadata_list": [{"name": "updated_at", "template_name": "asset"}, {"name": "records_count", "template_name": "default"}, {"name": "keywords", "template_name": "asset"}, {"name": "update_frequency", "template_name": "asset"}], "show_ctas": false}, "page_title": {"en": "Explore the asset catalog"}, "page_heading": {"en": "Catalog"}, "updated_at": "2026-07-13T14:44:24.098682+00:00"}, "agent": {"enabled": false}, "tableau_embed_origins": [], "asset_default_settings": {"consumption_tool_buttons": {"dataset": {"basic": [{"id": "explorer", "icon": "perceptio:table-search-custom", "label": {"en": "Explore data"}, "description": {"en": "Browse the full dataset and access its schema"}, "is_visible": true}, {"id": "playground", "icon": "perceptio:chart-search-custom", "label": {"en": "Explore data"}, "description": {"en": "Explore your raw datasets and turn them into concrete insights"}, "is_visible": true}, {"id": "exporter", "icon": "perceptio:download-2", "label": {"en": "Export data"}, "description": {"en": "Download the dataset for external use"}, "is_visible": true}, {"id": "custom_views", "icon": "perceptio:bar-chart-box-line", "label": {"en": "Show view(s)"}, "description": {"en": "Explore data view(s) prepared by the asset owner to get instant insights"}, "is_visible": true}, {"id": "api_console", "icon": "perceptio:braces", "label": {"en": "Use API console"}, "description": {"en": "Run API queries to speed up data integrations"}, "is_visible": true}], "custom": []}, "pages": {"basic": [{"id": "explorer", "icon": "perceptio:window-line", "label": {"en": "Show page"}, "description": {"en": "See the dashboard connected to your data"}, "is_visible": true}], "custom": []}, "external": {"basic": [{"id": "explorer", "icon": "perceptio:external-link", "label": {"en": "Open in tool"}, "description": {"en": "Open asset in the external tool"}, "is_visible": true}], "custom": []}, "power_bi_dashboard": {"basic": [{"id": "explorer", "icon": "perceptio:external-link", "label": {"en": "Open in tool"}, "description": {"en": "Open asset in Power BI"}, "is_visible": true}], "custom": []}, "power_bi_report": {"basic": [{"id": "explorer", "icon": "perceptio:window-line", "label": {"en": "Show report"}, "description": {"en": "Show the Power BI report"}, "is_visible": true}], "custom": []}, "virtualized_asset": {"basic": [{"id": "explorer", "icon": "perceptio:chart-search-custom", "label": {"en": "Explore data"}, "description": {"en": "Browse the full dataset and access its schema"}, "is_visible": true}, {"id": "playground", "icon": "perceptio:chart-search-custom", "label": {"en": "Explore data"}, "description": {"en": "Explore your raw datasets and turn them into concrete insights"}, "is_visible": true}], "custom": []}, "tableau_dashboard": {"basic": [{"id": "explorer", "icon": "perceptio:window-line", "label": {"en": "Show dashboard"}, "description": {"en": "Show the Tableau dashboard"}, "is_visible": true}], "custom": []}}, "conversion_objective": {"dataset": {"main_cta": "explorer"}, "pages": {"main_cta": "explorer"}, "external": {"main_cta": "explorer"}, "power_bi_dashboard": {"main_cta": "explorer"}, "power_bi_report": {"main_cta": "explorer"}, "virtualized_asset": {"main_cta": "explorer"}, "tableau_dashboard": {"main_cta": "explorer"}}, "asset_page": {"blocks": [{"uid": "overview_block_MV6A20G4R6OGI", "type": "description", "is_visible": true}, {"uid": "overview_block_MV6A20G4Y7398", "type": "attachments", "is_visible": true}, {"uid": "overview_block_MV6A20G4QWQ0T", "type": "metadata", "is_visible": true}, {"uid": "overview_block_MV6A20G4J2E0C", "type": "related_assets", "is_visible": true}, {"uid": "overview_block_MV6A20G47PLIO", "type": "similar_assets", "is_visible": true}]}}},
+            huwiseIdp: {"login_link": "/central_keycloak/authenticate/", "signup_link": "/central_keycloak/register/", "account_link": "https://account.opendatasoft.com?kc_locale=en"},
+            tracking: {"enabled": true, "service_url": "/rw/vaf/events", "domain_info": {"client_type": "paying", "domain_id": "vancouver"}, "user_info": {"user_tracked_id": "560810eeb9ee7144", "is_anonymous": true, "is_huwise": false}},
+            currentUser: null
+        });
+    });
+    </script>
+    
+
+
+    <script type="text/javascript">
+        var app = angular.module('ods.frontend', ['ods', 'ods.core']);
+
+        app.value('PageConfig', {
+            pageId: 'licence',
+        });
+
+        app.controller('PageController', function ($scope, domainConfig, config) {
+            $scope.blocks = {"html": "&lt;div class=&quot;container-fluid cov-container&quot;&gt;\n&lt;div class=&quot;intro row&quot;&gt;\n&lt;div class=&quot;col-md-12&quot;&gt;\n&lt;h1&gt;Open Government Licence \u2013 Vancouver&lt;/h1&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;row&quot;&gt;\n&lt;div class=&quot;col-md-8&quot;&gt;\n&lt;p&gt;We publish open data under the terms of the Open Government Licence \u2013 Vancouver.&lt;/p&gt;\n&lt;p&gt;The Open Government Licence \u2013 Vancouver is based on version 2.0 of the Open Government Licence \u2013 British Columbia, which was developed through public consultation and collaborative efforts by the provincial and federal governments. The only substantive change to the licence is references to the Province of British Columbia are replaced with the City of Vancouver.&lt;/p&gt;\n&lt;p&gt;You are encouraged to use the information that is available under this licence with only a few conditions.&lt;/p&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;row&quot;&gt;\n&lt;div class=&quot;col-md-12&quot;&gt;\n&lt;hr/&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=&quot;row&quot;&gt;\n&lt;div class=&quot;col-md-8&quot;&gt;\n&lt;h2&gt;Using information under this licence&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;Use of any Information indicates your acceptance of the terms below.&lt;/li&gt;\n&lt;li&gt;The Information Provider grants you a worldwide, royalty-free, perpetual, non-exclusive licence to use the Information, including for commercial purposes, subject to the terms below.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;You are free to:&lt;/h2&gt;\n&lt;ol start=&quot;3&quot;&gt;\n&lt;li&gt;Copy, modify, publish, translate, adapt, distribute or otherwise use the Information in any medium, mode or format for any lawful purpose.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;You must, where you do any of the above:&lt;/h2&gt;\n&lt;ol start=&quot;4&quot;&gt;\n&lt;li&gt;\n&lt;p&gt;Acknowledge the source of the Information by including any attribution statement specified by the Information Provider and, where possible, provide a link to this licence.&lt;/p&gt;\n&lt;p&gt;If the Information Provider does not provide a specific attribution statement, or if you are using information from several information providers and multiple attributions are not practical for your product or application, you must use the following attribution statement:&lt;/p&gt;\n&lt;p&gt;Contains information licensed under the Open Government Licence \u2013 Vancouver.&lt;/p&gt;\n&lt;/li&gt;\n&lt;li&gt;The terms of this licence are important, and if you fail to comply with any of them, the rights granted to you under this licence, or any similar licence granted by the Information Provider, will end automatically.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;Exemptions&lt;/h2&gt;\n&lt;ol start=&quot;6&quot;&gt;\n&lt;li&gt;This licence does not grant you any right to use:\n                    &lt;ol style=&quot;list-style-type: lower-alpha;&quot;&gt;\n&lt;li&gt;Personal Information&lt;/li&gt;\n&lt;li&gt;Information or Records not accessible under the &lt;a href=&quot;http://www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/96165_00&quot; target=&quot;_top&quot; title=&quot;Read the Freedom of Information and Protection of Privacy Act (B.C.)&quot;&gt;Freedom of Information and Protection of Privacy Act (B.C.) &lt;i aria-hidden=&quot;true&quot; class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;Third party rights the Information Provider is not authorized to licence&lt;/li&gt;\n&lt;li&gt;The names, crests, logos, or other official marks of the Information Provider&lt;/li&gt;\n&lt;li&gt;Information subject to other intellectual property rights, including patents, trade-marks and official marks&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;Non-endorsement&lt;/h2&gt;\n&lt;ol start=&quot;7&quot;&gt;\n&lt;li&gt;This licence does not grant you any right to use the Information in a way that suggests any official status or that the Information Provider endorses you or your use of the Information.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;No warranty&lt;/h2&gt;\n&lt;ol start=&quot;8&quot;&gt;\n&lt;li&gt;The Information is licensed \u201cas is\u201d, and the Information Provider excludes all representations, warranties, obligations, and liabilities, whether express or implied, to the maximum extent permitted by law.&lt;/li&gt;\n&lt;li&gt;The Information Provider is not liable for any errors or omissions in the Information, and will not under any circumstances be liable for any direct, indirect, special, incidental, consequential, or other loss, injury or damage caused by its use or otherwise arising in connection with this licence or the Information, even if specifically advised of the possibility of such loss, injury or damage.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;Governing law&lt;/h2&gt;\n&lt;ol start=&quot;10&quot;&gt;\n&lt;li&gt;This licence is governed by the laws of the province of British Columbia and the applicable laws of Canada.&lt;/li&gt;\n&lt;li&gt;Legal proceedings related to this licence may only be brought in the courts of British Columbia.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;Definitions&lt;/h2&gt;\n&lt;ol start=&quot;12&quot;&gt;\n&lt;li&gt;In this licence, the terms below have the following meanings:\n                    &lt;ul&gt;\n&lt;li&gt;&quot;Information&quot; means information resources or Records protected by copyright or other information or Records that is/are offered for use under the terms of this licence.&lt;/li&gt;\n&lt;li&gt;&quot;Information Provider&quot; means The City of Vancouver.&lt;/li&gt;\n&lt;li&gt;\u201cPersonal Information\u201d has the meaning set out in &lt;a href=&quot;http://www.bclaws.ca/EPLibraries/bclaws_new/document/LOC/freeside/--%20F%20--/Freedom%20of%20Information%20and%20Protection%20of%20Privacy%20Act%20RSBC%201996%20c.%20165/00_Act/96165_07.xml#Schedule1&quot; target=&quot;_top&quot; title=&quot;View Schedule 1 of the Freedom of Information and Protection of Privacy Act (B.C.)&quot;&gt;Schedule 1 of the Freedom of Information and Protection of Privacy Act (B.C.) &lt;i aria-hidden=&quot;true&quot; class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/li&gt;\n&lt;li&gt;\u201cRecords\u201d has the meaning set out in &lt;a href=&quot;http://www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/00_96238_01#section29&quot; target=&quot;_top&quot; title=&quot;View section 29 of the Interpretation Act (B.C.)&quot;&gt;section 29 of the Interpretation Act (B.C.) &lt;i aria-hidden=&quot;true&quot; class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/li&gt;\n&lt;li&gt;&quot;You&quot; means the natural or legal person, or body of persons corporate or incorporate, acquiring rights under this licence.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ol&gt;\n&lt;h2&gt;Versioning&lt;/h2&gt;\n&lt;ol start=&quot;13&quot;&gt;\n&lt;li&gt;This is version 1.0 of the Open Government Licence - Vancouver. The Information Provider may make changes to the terms of this licence from time to time and issue a new version of the licence. Your use of the Information will be governed by the terms of the licence in force as of the date you accessed the Information.&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n&lt;/div&gt;\n", "css": ".cov-container .row {\n    margin-bottom: 20px;\n}\n\n.cov-container {\n    max-width: 1160px;\n    width: inherit;\n    margin: 20px auto;\n}\n\n.ods-box{\n    background-color:#FFFFFF;\n    border:none;\n    width:100%;\n    padding:0;\n}\n/*\n.container-fluid{\n        width:100%;\n        margin: 0 0 0 100px;\n}\n*/\n.ods-box hr{\n        color:#B2B2B2;\n        height:1px;\n}\n/*\n@media screen and (max-width: 1024px){\n    .container-fluid{\n        padding-left:20px;\n        padding-right:20px;\n        margin: auto;\n    }\n}\n*/\n@media screen and (max-width: 1023px){\n    .container-fluid{\n        padding-left:10px;\n        padding-right:10px;\n    }\n}\n/*\n@media only screen and (min-width: 1150px) and (max-width:2000px){\n    .container-fluid,\n    .ods-box{\n        width:720px;\n    }\n}\n*/\n/* lists - jc - 2019-03-29 */\nli {\n    padding-left: 0;\n    padding-bottom: .5em;\n}\nli:last-child {\n    padding-bottom: 0;\n}\nol, ol ol {\n    list-style-type: decimal;\n}\nul, ul ul {\n    list-style-type: disc;\n}\n    ol ol, ul ul, ol ul, ul ol {\n        margin: .5em 0 0 0;\n        padding-left: 2em;\n    }\nli &gt; ul &gt; li:last-child, li &gt; ol &gt; li:last-child {\n    padding-bottom: 0;\n}\nli &gt; p {\n  margin: 0 0 0.25em 0;\n}"};
+            $scope.pageId = 'licence';
+            // explore.reuse has been renamed explore.enable_showcases
+            $scope.reusesEnabled = domainConfig['explore.enable_showcases'];
+            $scope.user = {
+                is_authenticated: config.USER !== null,
+            };
+            $scope.domain = {
+                languages: config.AVAILABLE_LANGUAGES,
+                current_language: config.LANGUAGE,
+                is_explore_agent_available: config.EXPLORE_AGENT_ENABLED
+            };
+        });
+
+        var widgetsApp = angular.module('ods-widgets');
+        widgetsApp.config(function (ODSWidgetsConfigProvider) {
+            ODSWidgetsConfigProvider.setConfig({
+                defaultCustomViewConfig: {
+                    title: 'Custom view',
+                    slug: 'custom',
+                    icon: 'tachometer'
+                },
+                customAPIHeaders: {
+                    "ODS-API-Analytics-App": "page-licence"
+                }
+            });
+        });
+    </script>
+    <script src="/static/compressed/js/output.e9c8905605ab.js"></script>
+
+    
+
+
+
+    
+
+
+
+
+    
+
+    </body>
+</html>
