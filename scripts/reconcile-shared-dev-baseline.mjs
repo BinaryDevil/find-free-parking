@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { executeReconciliation } from './shared-dev-baseline-command.mjs';
+import { guardMessages } from './shared-dev-baseline.mjs';
 
 try {
   if (process.argv.length !== 2) throw new Error('No command arguments accepted');
@@ -8,9 +9,9 @@ try {
   const referenceDump = readFileSync(process.env.MIGRATION_REFERENCE_DUMP, 'utf8');
   console.log(await executeReconciliation(process.env, { approval, reference, referenceDump }));
 } catch (error) {
-  // Provider errors and private input paths may contain secrets. Never log them.
-  console.error(error?.code === 'DEV_BASELINE_COMMITTED'
-    ? 'Dev prerequisite committed, but final comparison failed. Stop; do not run baseline marking, adoption or replay.'
-    : 'Dev baseline prerequisite failed. Inspect private evidence; do not run adoption or replay.');
+  // Provider errors and private input paths may contain secrets. Print only fixed guard messages.
+  console.error(guardMessages[error?.code]
+    ? `${error.code}: ${guardMessages[error.code]}`
+    : 'DEV_BASELINE_FAILED: Dev baseline prerequisite failed. Inspect DEV_BASELINE_EVIDENCE_DIR privately if it was created; do not run adoption or replay.');
   process.exitCode = 1;
 }
