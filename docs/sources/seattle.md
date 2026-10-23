@@ -3,7 +3,7 @@
 > **Policy amendment (2026-10-20):** [ADR-0002](../adr/0002-evidence-source-policy.md) criterion 6 now tests official public retrieval without sign-in, payment or access-control bypass. Licence gaps and criterion-6 rejections in the dated observations below are historical and superseded; retain licence text for attribution. This amendment performs no fresh endpoint or safety check, approves no source and leaves Coverage none. All other evidence gaps and independent two-agent approval requirements remain.
 
 Status: draft
-Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); [2026-10-21 reassessment](seattle-public-review-2026-10-21.md); [2026-10-23 reviewer re-check](seattle-review-2026-10-23.md), which records a per-criterion verdict for every candidate. No source approved; no Partial subset passes. The tested pre-registered Blockface + RPZ subset had 6 contradictions in 12 random spot checks, and `LOAD_` is empty citywide. Coverage remains none.
+Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); [2026-10-21 reassessment](seattle-public-review-2026-10-21.md); [2026-10-23 reviewer re-check](seattle-review-2026-10-23.md), which records a per-criterion verdict for every candidate. No source approved; no Partial subset passes. The tested pre-registered Blockface + RPZ subset had 6 contradictions in 12 random spot checks under its pre-registered rule, 2 of them (permit hours) on criterion 7's listed fields, and `LOAD_` is empty citywide. Coverage remains none.
 Timezone: America/Los_Angeles
 Coverage verdict: none (no source approved; Seattle remains not covered)
 Policy: [Evidence Source Policy in #2](https://github.com/BinaryDevil/find-free-parking/issues/2)

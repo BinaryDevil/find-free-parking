@@ -1,6 +1,7 @@
 c9765d707487e16186bdee05965cc0671e18def207a2d253747e62c22d3a28fb  ./method/audit.py
 117b6a1cb85adc2fee140c143940ba5d02e9919d2ced7012401ccfe1ddf8ca2a  ./method/prereg.py
 c303163ec32f18b0c6f35ba4d511af6d878c5c8e321322fdd0881cd8ba0e203c  ./method/sample.py
+7886222597aa503c7fcb97ba200bf66c918aaf8bb08b6c702386457d30bdf0d7  ./raw/count-Blockface-1-LOAD_notnull.json
 27a62c6032f83b7500530af5d87e666b5b231c6323972fe340b469dea04cf351  ./raw/count-Blockface-1.json
 80211d5d41732ccac8b78af85b8d3b5f021d9a9c041530e9ba14ec0b51189d19  ./raw/count-Curb_Space_Categories-6.json
 80211d5d41732ccac8b78af85b8d3b5f021d9a9c041530e9ba14ec0b51189d19  ./raw/count-Curb_Space_Categories_with_Symbology_Active-0.json

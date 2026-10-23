@@ -1,6 +1,6 @@
 # Seattle independent source review, 2026-10-23
 
-Refs [#24](https://github.com/BinaryDevil/find-free-parking/issues/24) (Seattle half only). Base `origin/dev` at `ef1ebba`. Reviewer: a fresh agent that did not author the [Seattle inventory](seattle.md) or the [2026-10-21 reassessment](seattle-public-review-2026-10-21.md). This is the ADR-0005 reviewer re-check. Every endpoint, count, edit date, item/licence record and spot-check signal below was retrieved by this reviewer between 2026-10-23T19:11:41Z and 19:16:49Z UTC, without sign-in, payment or access-control bypass. The 2026-10-21 packet was not used as evidence.
+Refs [#24](https://github.com/BinaryDevil/find-free-parking/issues/24) (Seattle half only). Base `origin/dev` at `ef1ebba`. Reviewer: a fresh agent that did not author the [Seattle inventory](seattle.md) or the [2026-10-21 reassessment](seattle-public-review-2026-10-21.md). This is the ADR-0005 reviewer re-check. Every endpoint, count, edit date, item/licence record and spot-check signal below was retrieved by this reviewer between 2026-10-23T19:11:41Z and 19:19:14Z UTC (plus the archived `LOAD_ IS NOT NULL` count at 19:27:18Z), without sign-in, payment or access-control bypass. The 2026-10-21 packet was not used as evidence.
 
 **Verdict: no Seattle source is approved and no Partial Coverage subset passes. Seattle Coverage stays none.** The review tested a narrower premise than earlier attempts did. It asked whether a mechanically defined subset of SDOT Blockface block sides (plus RPZ zones, excluding the known conflict zones) could pass on its own. It cannot. Blockface's own competing-use fields do not represent signed no-parking, no-stopping, loading, disabled-permit and peak tow-away portions. Across the whole subset population, a majority of the "clean" time-limited sides carry such signs. Shrinking the subset further would mean filtering on the sign inventory, which is the independent signal the spot check needs. That would make the check circular.
 
@@ -53,7 +53,7 @@ Cross-check against the 2026-10-21 packet (comparison only): counts moved as exp
 
 ## The tested subset (pre-registered)
 
-Four strata of Blockface block sides, defined only by Blockface fields. A common filter applies to all four: `BUS`, `NOSTOP`, `LOAD_`, `ZONE`, `TOTAL_ZONES` and `CARPOOL_SPACES` all 0 or null, `PEAK_HOUR` null, `OVERRIDEYN='N'`. Each stratum also makes the most conservative claim available:
+Four strata of Blockface block sides, defined only by Blockface fields. A common filter applies to strata T, P and R: `BUS`, `NOSTOP`, `LOAD_`, `ZONE`, `TOTAL_ZONES` and `CARPOOL_SPACES` all 0 or null, `PEAK_HOUR` null, `OVERRIDEYN='N'`. Stratum N uses its own filter, shown in its row: `NOSTOP`, `PEAK_HOUR`, `OVERRIDEYN` and spaces only, so it does not filter `BUS`, `LOAD_`, `ZONE`, `TOTAL_ZONES` or `CARPOOL_SPACES`. Each stratum also makes the most conservative claim available:
 
 | Stratum | Extra filter | Population | Claim tested |
 |---|---|---:|---|
@@ -75,7 +75,7 @@ Independent official signals used:
 | # | Side (`ELMNTKEY`) | Source says | Independent signal | Result |
 |---|---|---|---|---|
 | T1 | 1ST AVE S, S DAKOTA ST to dead end, E (24250) | TL 120 min, no other use | Six "2 HOUR PARKING 7AM-6PM EXC SUN-HOL" signs, plus north/south-of-here plates | Agrees. Free with the 2 h limit at all times is conservative. |
-| T2 | 20TH AVE NW, NW 56TH to NW 57TH, W (25929) | TL 60 min; `NOPARK`=0 | R7-WI30 "NO PARKING WITHIN 30 FEET" at 30 ft and R7-NPR no-parking arrow at 218 ft (side ends 238 ft); 1 h 7–18 exc Sun/hol | **Contradiction: no parking** |
+| T2 | 20TH AVE NW, NW 56TH to NW 57TH, W (25929) | TL 60 min; `NOPARK`=0 | R7-WI30 "NO PARKING WITHIN 30 FEET" at 30 ft and R7-NPR no-parking arrow at 218 ft (side ends 238 ft), which appears only in layer 0 (no status field; included under the rule's "all if status absent"); 1 h 7–18 exc Sun/hol | **Contradiction: no parking.** This holds on the in-service R7-WI30 alone. |
 | T3 | 30TH AVE NE, NE 50TH to NE BLAKELEY, W (72549) | TL 120 min | "2 H PARKING 7AM-6PM EXC SUN-HOL" plus south-of-here | Agrees |
 | P1 | S WASHINGTON ST, 3RD AVE S to 4TH AVE S, N (21773) | Paid Mon–Sat 08–18, $1 then $2, `LOAD_`/`ZONE` 0 | Pay 8–6 exc Sun/hol; rates match Pioneer Square Edge ($1 / $2). Two R8-LUPSX "30 MINUTE LOAD AND UNLOAD ONLY EVERYDAY" | **Contradiction: loading-only zone** |
 | P2 | S WELLER ST, 7TH AVE S to CANTON AL S, N (66621) | Paid Mon–Sat 08–20, $1 / $5 / $5.50; `NOPARK` 4 | "PAY TO PARK 8AM-8PM EXCEPT SUN-HOL"; rates match Chinatown/ID; 30 ft no-parking sign covered by `NOPARK` | Agrees |
@@ -87,15 +87,23 @@ Independent official signals used:
 | N2 | CONVENTION PL, UNION ST to PIKE ST, E (55058) | No parking; `BUS` 0 | "NO PARKING ANYTIME" and four "METRO BUS ONLY 24 HOURS EVERYDAY" | **Contradiction under the rule: bus-only not carried.** Not a free-parking hazard, because the claim already restricts. |
 | N3 | MERCER ST, TERRY AVE N to BOREN AVE N, N (11781) | No parking | No record in either sign layer | **Unverified:** no independent signal |
 
-Result: 5 agree, 6 contradict and 1 is unverified. That is not zero contradictions, so the subset fails criterion 7. The failures are not edge cases. T2 and R3 do not hinge on how to read an arrow: the record says zero no-parking spaces, but no-parking signs stand inside the recorded side extent. P1 and R2 fail on rules the record has no field for at all.
+Result: 5 agree, 6 contradict and 1 is unverified. That is not zero contradictions, so the subset fails criterion 7.
+
+The 6 are counted under the pre-registered rule, which is broader than criterion 7's listed fields:
+
+- **R1 and R2** fall directly on a listed criterion 7 field: permit hours.
+- **T2 and R3** (no parking inside a side claimed free or permit) and **P1** (loading-only portion) are safety-relevant under ADR-0001 and the rule, but are not one of the four listed fields.
+- **N2** (bus-only on a no-parking claim) is a contradiction under the rule only. It does not mislead a driver.
+
+Two listed-field contradictions are enough to fail criterion 7. The failures are not edge cases. T2 and R3 do not hinge on how to read an arrow: the record says zero no-parking spaces, but no-parking signs stand inside the recorded side extent. P1 and R2 fail on rules the record has no field for at all.
 
 ### Whole-population audit: why shrinking does not help
 
-[`stratum-sign-audit.json`](../../artifacts/issue-24-seattle-review-2026-10-23/stratum-sign-audit.json) counts sign categories on every side in strata T and P, not on a sample:
+[`stratum-sign-audit.json`](../../artifacts/issue-24-seattle-review-2026-10-23/stratum-sign-audit.json) counts sign categories on every side in strata T and P, not on a sample. It uses Parking Signs layer 0 only, with no status filter. Layer 0 has no status field and holds about 450 more records than the in-service text layer 4, so a few counted signs may be retired. The scale of the counts makes the conclusion robust to that:
 
 - **T, 499 sides with `NOPARK`=`TOTAL_NOPARK`=0:** 299 have no-parking (PNP) signs, 23 disabled-parking, 4 paid-regulatory, 4 no-stopping and 1 peak tow-away. Every side has a time-limit sign.
 - **P, 401 sides with `NOSTOP`=`ZONE`=`TOTAL_ZONES`=`BUS`=0 and null `LOAD_`:** 97 have no-stopping signs, 54 special zones (charter, taxi, carshare and similar), 13 passenger-load, 11 load/unload, 11 school, 8 peak tow-away, 4 bus-zone, 4 disabled, 3 RPZ and 3 commercial-load.
-- `LOAD_` is null on all 47,926 Blockface rows (`LOAD_ IS NOT NULL` → 0), while the sign inventory holds 3,300 load/unload signs.
+- `LOAD_` is null on all 47,926 Blockface rows (`LOAD_ IS NOT NULL` → 0, [`raw/count-Blockface-1-LOAD_notnull.json`](../../artifacts/issue-24-seattle-review-2026-10-23/raw/count-Blockface-1-LOAD_notnull.json)), while the sign inventory holds 3,300 load/unload signs.
 
 So Blockface's competing-use fields cannot carry a safe subset definition. The only way to remove these sides is to filter on the sign inventory. The spot check would then be graded by the same layer that chose the sample, and no third official signal is available: no current geocoded citation feed, and ADR-0004 rules out new field evidence. For permit zones, two of three random zones (1 and 26) disagree with their polygon hours. That is on top of the five zones already excluded (14, 22 and 25 conflicting, 13 split, 21 alternative hours), so 7 of 35 zones now have conflicting, split or alternative hours. Zone-by-zone exclusion would still leave the no-parking-extent failure seen at R3.
 
@@ -117,7 +125,7 @@ C1 and C6 pass for every row (see above). "Pending" names what is missing; "reje
 | Temporary No Parking 0/1/2 (E5) | pass | curb polylines plus reservation and space keys | scheduled vs actual vs custom-time semantics unresolved | pass | not run this session; no independent official schedule signal identified | **pending** (C4/C7). Override-only, never free. |
 | Temporary No Parking Unpaid 10 (E5) | pass | points, not block-side extents | daily fields, posting unverified | pass | not run | **pending** (C3/C4/C7) |
 | Curb Space Categories 6 / Paid Area Curb Spaces 0 | pass | linear spaces, paid areas only | type and limit, not full schedule; loading labelled PAID | pass | not run as a subset; probe above | **pending**, a lead for #25 |
-| Symbology (Active) 0 / Reserve (Active) 0 | pass | as above | as above | data 2024-03 / 2024-05, over 24 months | no fresh old-data re-check | **pending** (C5/C7) |
+| Symbology (Active) 0 / Reserve (Active) 0 | pass | as above | as above | data 2024-05 / 2024-03, over 24 months | no fresh old-data re-check | **pending** (C5/C7) |
 | Peak Hour Restrictions 3, Transit Layover 0 | pass | linear extents | split and shared-use windows | pass | not run | **pending** as restriction supplements; **rejected** as free evidence |
 | Parking Categories 0, Parking Features 2 | pass | duplicate Blockface views | as Blockface | pass | as Blockface | **pending**, same defects as Blockface |
 | Parking Tiers 0 | pass | payment-area polygons, not curbs | rate windows only | pass | not run | **rejected** as permission (C3); paid context only |
@@ -148,7 +156,7 @@ No `coverage_areas` row and no `subset_geom` is proposed, and no city-page sente
 ## Follow-ups
 
 1. **#25: test a space-level paid subset.** Use Curb Space Categories `SPACETYPE` and `BLOCK_ST`/`BLOCK_END` (not Blockface counts) for paid areas, with signs as the independent check. Pre-register the definition and seed. It can at best establish `PAID` at space level; it does not reach unpaid streets.
-2. **#26: zone-by-zone RPZ audit of all 35 zones** against sign text, before any E4 subset. Treat 1, 13, 14, 21, 22, 25 and 26 as Unknown until each is reconciled.
+2. **#26: zone-by-zone RPZ audit of all 35 zones** against the sign **text** in Parking Features layer 4, not layer 0's structured days (at R2, layer 0 gives days 1–6 for R8-2HZ1A while its text says Mon–Fri), before any E4 subset. Treat 1, 13, 14, 21, 22, 25 and 26 as Unknown until each is reconciled.
 3. **Free-parking path:** no current Seattle evidence supports any free claim. A free subset needs an E3 interpretation with an official arrow and extent dictionary and a third independent signal. Neither was found in public sources (ADR-0004: no outreach). That stays a recorded gap, not a task to request data.
 4. **#27:** unchanged. E5 still lacks an independent schedule signal.
 
