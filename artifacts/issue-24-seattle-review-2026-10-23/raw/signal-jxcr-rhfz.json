@@ -1,0 +1,121 @@
+{
+  "id" : "jxcr-rhfz",
+  "name" : "Seattle Vehicle Infractions",
+  "assetType" : "href",
+  "attribution" : "City of Seattle",
+  "averageRating" : 0,
+  "category" : "Public Safety",
+  "createdAt" : 1560374026,
+  "description" : "City of Seattle vehicle infractions by type and year",
+  "diciBackend" : false,
+  "displayType" : "href",
+  "domainCName" : "data.seattle.gov",
+  "downloadCount" : 0,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "indexUpdatedAt" : 1562188583,
+  "licenseId" : "PUBLIC_DOMAIN",
+  "locked" : false,
+  "newBackend" : false,
+  "numberOfComments" : 0,
+  "oid" : 31701625,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1560374151,
+  "publicationGroup" : 16271332,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1560374026,
+  "tableId" : 16271332,
+  "totalTimesRated" : 0,
+  "viewCount" : 1506,
+  "viewLastModified" : 1738167676,
+  "viewType" : "href",
+  "approvals" : [ {
+    "reviewedAt" : 1562188579,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 864353,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1562188579,
+    "targetAudience" : "public",
+    "workflowId" : 3127,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1562188580,
+      "failureCount" : 0,
+      "startedAt" : 1562188579,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "wt5u-xzdz",
+      "displayName" : "Palay, Claire"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 4739
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Public Domain"
+  },
+  "metadata" : {
+    "additionalAccessPoints" : [ {
+      "urls" : {
+        "Tableau Visualization" : "https://public.tableau.com/profile/seattlemunicipalcourt#!/vizhome/SMCVehicleInfractionTicketTrends2009-2014/VehicleInfractions"
+      },
+      "description" : "City of Seattle vehicle infractions by type and year\n",
+      "title" : "Seattle Vehicle Infractions"
+    } ],
+    "custom_fields" : {
+      "Department" : {
+        "Department" : "Seattle Municipal Court"
+      },
+      "Common Core" : {
+        "Contact Email" : "open.data@seattle.gov",
+        "Publisher" : "data.seattle.gov"
+      },
+      "Refresh Frequency" : {
+        "Frequency" : "Quarterly"
+      }
+    },
+    "accessPoints" : {
+      "Tableau Visualization" : "https://public.tableau.com/profile/seattlemunicipalcourt#!/vizhome/SMCVehicleInfractionTicketTrends2009-2014/VehicleInfractions"
+    },
+    "rowLabel" : "Municipal Court",
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "wqdh-g22j",
+    "disabledAt" : 1645548691,
+    "displayName" : "Gary Ireland",
+    "screenName" : "Gary Ireland",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "wqdh-g22j",
+    "disabledAt" : 1645548691,
+    "displayName" : "Gary Ireland",
+    "screenName" : "Gary Ireland",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula", "mayBeStoriesCoOwner" ]
+  },
+  "tags" : [ "vehicle", "traffic camera", "tickets", "parking", "traffic tickets", "vehicle infractions", "court" ],
+  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted" ]
+}

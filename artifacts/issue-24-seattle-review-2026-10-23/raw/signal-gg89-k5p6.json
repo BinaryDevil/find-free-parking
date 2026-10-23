@@ -1,0 +1,989 @@
+{
+  "id" : "gg89-k5p6",
+  "name" : "Paid Parking Transaction Data",
+  "assetType" : "dataset",
+  "attribution" : "City of Seattle",
+  "attributionLink" : "https://www.seattle.gov",
+  "averageRating" : 0,
+  "category" : "Transportation",
+  "createdAt" : 1590096999,
+  "description" : "The City of Seattle has made paid parking transaction data set available for public use for research and entrepreneurial purposes under the City’s Open Data Program.  This dataset is derived from parking pay stations placed on streets within city limits and the paid by phone parking transactions.  The dataset is downloaded nightly with the prior days paid parking transaction data.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.seattle.gov",
+  "downloadCount" : 2122,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PUBLIC_DOMAIN",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 34210047,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1590098569,
+  "publicationGroup" : 17145658,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1792764223,
+  "rowsUpdatedBy" : "2866-np2t",
+  "tableId" : 17146066,
+  "totalTimesRated" : 0,
+  "viewCount" : 17751,
+  "viewLastModified" : 1792764191,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1594828321,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 2439565,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1594828321,
+    "targetAudience" : "public",
+    "workflowId" : 3127,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "endedAt" : 1594828322,
+      "failureCount" : 0,
+      "startedAt" : 1594828321,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "2866-np2t",
+      "displayName" : "Wang, Xinbao"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 4739
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 469351749,
+    "name" : "Transaction ID",
+    "dataTypeName" : "text",
+    "description" : "The unique transaction identifier",
+    "fieldName" : "transaction_id",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398262,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "1635046625",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1634814352",
+        "count" : "1"
+      }, {
+        "item" : "1634507297",
+        "count" : "1"
+      }, {
+        "item" : "1633565760",
+        "count" : "1"
+      }, {
+        "item" : "1633586517",
+        "count" : "1"
+      }, {
+        "item" : "1633063300",
+        "count" : "1"
+      }, {
+        "item" : "1634864262",
+        "count" : "1"
+      }, {
+        "item" : "1633562558",
+        "count" : "1"
+      }, {
+        "item" : "1634516252",
+        "count" : "1"
+      }, {
+        "item" : "1634144368",
+        "count" : "1"
+      }, {
+        "item" : "1633334405",
+        "count" : "1"
+      }, {
+        "item" : "1634477837",
+        "count" : "1"
+      }, {
+        "item" : "1634374185",
+        "count" : "1"
+      }, {
+        "item" : "1634695654",
+        "count" : "1"
+      }, {
+        "item" : "1634873156",
+        "count" : "1"
+      }, {
+        "item" : "1633130824",
+        "count" : "1"
+      }, {
+        "item" : "1634655722",
+        "count" : "1"
+      }, {
+        "item" : "1635015541",
+        "count" : "1"
+      }, {
+        "item" : "1634697268",
+        "count" : "1"
+      }, {
+        "item" : "1634352674",
+        "count" : "1"
+      }, {
+        "item" : "1633291545",
+        "count" : "1"
+      } ],
+      "smallest" : "1633002829",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351750,
+    "name" : "Meter Code",
+    "dataTypeName" : "text",
+    "description" : "Unique identifier of the pay station",
+    "fieldName" : "meter_code",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398263,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "9600002",
+      "null" : "0",
+      "top" : [ {
+        "item" : "7065002",
+        "count" : "757"
+      }, {
+        "item" : "11080002",
+        "count" : "655"
+      }, {
+        "item" : "11088002",
+        "count" : "546"
+      }, {
+        "item" : "6026002",
+        "count" : "524"
+      }, {
+        "item" : "15117002",
+        "count" : "491"
+      }, {
+        "item" : "12053002",
+        "count" : "468"
+      }, {
+        "item" : "1017002",
+        "count" : "466"
+      }, {
+        "item" : "11067004",
+        "count" : "457"
+      }, {
+        "item" : "11057004",
+        "count" : "443"
+      }, {
+        "item" : "11070004",
+        "count" : "438"
+      }, {
+        "item" : "11004004",
+        "count" : "428"
+      }, {
+        "item" : "6502004",
+        "count" : "397"
+      }, {
+        "item" : "1049002",
+        "count" : "391"
+      }, {
+        "item" : "3008002",
+        "count" : "386"
+      }, {
+        "item" : "11030004",
+        "count" : "384"
+      }, {
+        "item" : "11098002",
+        "count" : "375"
+      }, {
+        "item" : "11201002",
+        "count" : "375"
+      }, {
+        "item" : "15113002",
+        "count" : "358"
+      }, {
+        "item" : "3013002",
+        "count" : "357"
+      }, {
+        "item" : "7066002",
+        "count" : "354"
+      } ],
+      "smallest" : "10002502",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351791,
+    "name" : "Transaction DateTime",
+    "dataTypeName" : "calendar_date",
+    "description" : "The date and time of the transaction as recorded",
+    "fieldName" : "transactiondatetime",
+    "position" : 3,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 102402534,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "2026-10-22T21:59:00.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2026-10-20T08:00:00.000",
+        "count" : "590"
+      }, {
+        "item" : "2026-10-19T08:00:00.000",
+        "count" : "584"
+      }, {
+        "item" : "2026-10-16T08:00:00.000",
+        "count" : "582"
+      }, {
+        "item" : "2026-10-21T08:00:00.000",
+        "count" : "578"
+      }, {
+        "item" : "2026-10-22T08:00:00.000",
+        "count" : "573"
+      }, {
+        "item" : "2026-10-17T08:00:00.000",
+        "count" : "333"
+      }, {
+        "item" : "2026-10-19T09:00:00.000",
+        "count" : "75"
+      }, {
+        "item" : "2026-10-17T08:01:00.000",
+        "count" : "74"
+      }, {
+        "item" : "2026-10-16T08:01:00.000",
+        "count" : "71"
+      }, {
+        "item" : "2026-10-17T10:01:00.000",
+        "count" : "70"
+      }, {
+        "item" : "2026-10-17T17:01:00.000",
+        "count" : "69"
+      }, {
+        "item" : "2026-10-17T16:55:00.000",
+        "count" : "68"
+      }, {
+        "item" : "2026-10-17T11:55:00.000",
+        "count" : "68"
+      }, {
+        "item" : "2026-10-17T15:08:00.000",
+        "count" : "68"
+      }, {
+        "item" : "2026-10-19T08:01:00.000",
+        "count" : "68"
+      }, {
+        "item" : "2026-10-17T12:04:00.000",
+        "count" : "67"
+      }, {
+        "item" : "2026-10-16T09:00:00.000",
+        "count" : "66"
+      }, {
+        "item" : "2026-10-17T14:59:00.000",
+        "count" : "66"
+      }, {
+        "item" : "2026-10-17T12:25:00.000",
+        "count" : "65"
+      }, {
+        "item" : "2026-10-22T12:01:00.000",
+        "count" : "65"
+      } ],
+      "smallest" : "2026-10-16T01:20:00.000",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351752,
+    "name" : "Payment Mean",
+    "dataTypeName" : "text",
+    "description" : "They type of payment",
+    "fieldName" : "payment_mean",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398265,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "PHONE",
+      "null" : "0",
+      "top" : [ {
+        "item" : "PHONE",
+        "count" : "128330"
+      }, {
+        "item" : "CREDIT CARD",
+        "count" : "25715"
+      }, {
+        "item" : "CASH",
+        "count" : "1386"
+      }, {
+        "item" : "IPSTEXT",
+        "count" : "241"
+      }, {
+        "item" : "MIXED",
+        "count" : "43"
+      }, {
+        "item" : "IPSAPP",
+        "count" : "2"
+      } ],
+      "smallest" : "CASH",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351793,
+    "name" : "Amount Paid",
+    "dataTypeName" : "number",
+    "description" : "The amount of the transactions in dollars",
+    "fieldName" : "amount_paid",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 102402536,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "39.60",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1.00",
+        "count" : "10931"
+      }, {
+        "item" : "2.00",
+        "count" : "10340"
+      }, {
+        "item" : "3.00",
+        "count" : "9588"
+      }, {
+        "item" : "1.50",
+        "count" : "8778"
+      }, {
+        "item" : "5.00",
+        "count" : "6891"
+      }, {
+        "item" : "4.00",
+        "count" : "6691"
+      }, {
+        "item" : "2.50",
+        "count" : "6224"
+      }, {
+        "item" : "0.50",
+        "count" : "5647"
+      }, {
+        "item" : "1.25",
+        "count" : "4596"
+      }, {
+        "item" : "0.75",
+        "count" : "4552"
+      }, {
+        "item" : "0.25",
+        "count" : "4536"
+      }, {
+        "item" : "6.00",
+        "count" : "4358"
+      }, {
+        "item" : "8.00",
+        "count" : "3244"
+      }, {
+        "item" : "2.25",
+        "count" : "3133"
+      }, {
+        "item" : "2.75",
+        "count" : "3097"
+      }, {
+        "item" : "5.50",
+        "count" : "3024"
+      }, {
+        "item" : "4.50",
+        "count" : "3008"
+      }, {
+        "item" : "3.50",
+        "count" : "2560"
+      }, {
+        "item" : "10.00",
+        "count" : "2192"
+      }, {
+        "item" : "1.75",
+        "count" : "1912"
+      } ],
+      "smallest" : "-4.56",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : {
+      "precisionStyle" : "currency",
+      "precision" : "2"
+    }
+  }, {
+    "id" : 469351790,
+    "name" : "Duration In Minutes",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "durationinminutes",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 102402533,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "7200",
+      "null" : "0",
+      "top" : [ {
+        "item" : "120",
+        "count" : "33868"
+      }, {
+        "item" : "60",
+        "count" : "33697"
+      }, {
+        "item" : "30",
+        "count" : "18955"
+      }, {
+        "item" : "90",
+        "count" : "6199"
+      }, {
+        "item" : "240",
+        "count" : "5551"
+      }, {
+        "item" : "15",
+        "count" : "3733"
+      }, {
+        "item" : "20",
+        "count" : "2308"
+      }, {
+        "item" : "180",
+        "count" : "2054"
+      }, {
+        "item" : "45",
+        "count" : "1967"
+      }, {
+        "item" : "10",
+        "count" : "1922"
+      }, {
+        "item" : "75",
+        "count" : "1403"
+      }, {
+        "item" : "16",
+        "count" : "1384"
+      }, {
+        "item" : "12",
+        "count" : "1294"
+      }, {
+        "item" : "6",
+        "count" : "936"
+      }, {
+        "item" : "18",
+        "count" : "930"
+      }, {
+        "item" : "40",
+        "count" : "919"
+      }, {
+        "item" : "50",
+        "count" : "840"
+      }, {
+        "item" : "80",
+        "count" : "839"
+      }, {
+        "item" : "46",
+        "count" : "834"
+      }, {
+        "item" : "21",
+        "count" : "815"
+      } ],
+      "smallest" : "-479",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351755,
+    "name" : "Blockface Name",
+    "dataTypeName" : "text",
+    "description" : "Street segment, name of street with the “from street” and “to street; ” Example is “1ST AVE BETWEEN BELL ST AND BATTERY ST” Combined with Side of Street for Blockface -- 1ST AVE BETWEEN BELL ST AND BATTERY ST SW Side. Also referred to as UnitDesc (description)",
+    "fieldName" : "blockface_name",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398268,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "YESLER WAY BETWEEN WESTERN AVE AND POST AVE",
+      "null" : "0",
+      "top" : [ {
+        "item" : "NW 54TH SR ST BETWEEN NW 54TH ST AND 32ND AVE NW",
+        "count" : "928"
+      }, {
+        "item" : "10TH AVE BETWEEN E PIKE ST AND E PINE ST",
+        "count" : "907"
+      }, {
+        "item" : "1ST AVE S BETWEEN S KING ST AND S DEARBORN ST",
+        "count" : "902"
+      }, {
+        "item" : "TALLMAN AVE NW BETWEEN NW CENTRAL PL AND NW MARKET ST",
+        "count" : "895"
+      }, {
+        "item" : "BALLARD AVE NW BETWEEN 22ND AVE NW AND NW MARKET ST",
+        "count" : "867"
+      }, {
+        "item" : "BALLARD AVE NW BETWEEN NW VERNON PL AND 22ND AVE NW",
+        "count" : "822"
+      }, {
+        "item" : "NE BOAT ST BETWEEN NE BOAT WR ST AND BROOKLYN AVE NE",
+        "count" : "786"
+      }, {
+        "item" : "2ND AVE S BETWEEN S JACKSON ST AND S KING ST",
+        "count" : "722"
+      }, {
+        "item" : "UNIVERSITY WAY NE BETWEEN NE 47TH ST AND NE 50TH ST",
+        "count" : "697"
+      }, {
+        "item" : "BROADWAY E BETWEEN E REPUBLICAN ST AND E MERCER ST",
+        "count" : "695"
+      }, {
+        "item" : "NW MARKET ST BETWEEN 24TH AVE NW AND 26TH AVE NW",
+        "count" : "653"
+      }, {
+        "item" : "UNIVERSITY WAY NE BETWEEN NE 45TH ST AND NE 47TH ST",
+        "count" : "626"
+      }, {
+        "item" : "11TH AVE BETWEEN E PIKE ST AND E PINE ST",
+        "count" : "610"
+      }, {
+        "item" : "NE 72ND ST BETWEEN WOODLAWN AVE NE AND 5TH AVE NE",
+        "count" : "609"
+      }, {
+        "item" : "LEARY AVE NW BETWEEN NW VERNON PL AND NW MARKET ST",
+        "count" : "600"
+      }, {
+        "item" : "1ST AVE BETWEEN STEWART ST AND VIRGINIA ST",
+        "count" : "592"
+      }, {
+        "item" : "11TH AVE BETWEEN E PINE ST AND E OLIVE ST",
+        "count" : "582"
+      }, {
+        "item" : "22ND AVE NW BETWEEN BALLARD AVE NW AND NW MARKET ST",
+        "count" : "576"
+      }, {
+        "item" : "NW 57TH ST BETWEEN 22ND AVE NW AND 24TH AVE NW",
+        "count" : "572"
+      }, {
+        "item" : "NE 71ST ST BETWEEN WOODLAWN AVE NE AND 5TH AVE NE",
+        "count" : "571"
+      } ],
+      "smallest" : "10TH AVE BETWEEN E MADISON ST AND E SENECA ST",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351756,
+    "name" : "Side Of Street",
+    "dataTypeName" : "text",
+    "description" : "Options are: E, S, N, W, NE, SW, SE, NW. The two digits are because many Seattle streets are at an angle. Avenues run north-south, Streets run east-west. 1st Ave on the SW side is the west side of the street",
+    "fieldName" : "sideofstreet",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398269,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "W",
+      "null" : "0",
+      "top" : [ {
+        "item" : "W",
+        "count" : "29683"
+      }, {
+        "item" : "E",
+        "count" : "27205"
+      }, {
+        "item" : "NE",
+        "count" : "20379"
+      }, {
+        "item" : "S",
+        "count" : "19130"
+      }, {
+        "item" : "SW",
+        "count" : "18870"
+      }, {
+        "item" : "N",
+        "count" : "17063"
+      }, {
+        "item" : "SE",
+        "count" : "11940"
+      }, {
+        "item" : "NW",
+        "count" : "11447"
+      } ],
+      "smallest" : "E",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351757,
+    "name" : "Element key",
+    "dataTypeName" : "text",
+    "description" : "Unique identifier for the city street segment where the pay station is located; Use this column to match with SDOT’s Pay Station data and other curbspace asset data",
+    "fieldName" : "elementkey",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398270,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "9770",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1234",
+        "count" : "757"
+      }, {
+        "item" : "31853",
+        "count" : "655"
+      }, {
+        "item" : "31850",
+        "count" : "546"
+      }, {
+        "item" : "54737",
+        "count" : "524"
+      }, {
+        "item" : "94732",
+        "count" : "500"
+      }, {
+        "item" : "85385",
+        "count" : "491"
+      }, {
+        "item" : "24413",
+        "count" : "481"
+      }, {
+        "item" : "35850",
+        "count" : "468"
+      }, {
+        "item" : "70866",
+        "count" : "466"
+      }, {
+        "item" : "46409",
+        "count" : "462"
+      }, {
+        "item" : "35682",
+        "count" : "457"
+      }, {
+        "item" : "41030",
+        "count" : "443"
+      }, {
+        "item" : "46410",
+        "count" : "440"
+      }, {
+        "item" : "35681",
+        "count" : "438"
+      }, {
+        "item" : "63126",
+        "count" : "437"
+      }, {
+        "item" : "94731",
+        "count" : "428"
+      }, {
+        "item" : "24409",
+        "count" : "397"
+      }, {
+        "item" : "24417",
+        "count" : "396"
+      }, {
+        "item" : "65042",
+        "count" : "386"
+      }, {
+        "item" : "41726",
+        "count" : "384"
+      } ],
+      "smallest" : "1001",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351758,
+    "name" : "Parking Space Number",
+    "dataTypeName" : "text",
+    "description" : "The assigned parking space identifier on the street segment that the payment was made for.",
+    "fieldName" : "parkingspacenumber",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 102398271,
+    "cachedContents" : {
+      "non_null" : "2307",
+      "largest" : "99",
+      "null" : "153410",
+      "top" : [ {
+        "item" : "179",
+        "count" : "15"
+      }, {
+        "item" : "165",
+        "count" : "15"
+      }, {
+        "item" : "178",
+        "count" : "13"
+      }, {
+        "item" : "367",
+        "count" : "12"
+      }, {
+        "item" : "175",
+        "count" : "12"
+      }, {
+        "item" : "7",
+        "count" : "12"
+      }, {
+        "item" : "170",
+        "count" : "12"
+      }, {
+        "item" : "428",
+        "count" : "11"
+      }, {
+        "item" : "369",
+        "count" : "11"
+      }, {
+        "item" : "363",
+        "count" : "11"
+      }, {
+        "item" : "122",
+        "count" : "11"
+      }, {
+        "item" : "126",
+        "count" : "11"
+      }, {
+        "item" : "139",
+        "count" : "11"
+      }, {
+        "item" : "362",
+        "count" : "11"
+      }, {
+        "item" : "176",
+        "count" : "11"
+      }, {
+        "item" : "436",
+        "count" : "10"
+      }, {
+        "item" : "366",
+        "count" : "10"
+      }, {
+        "item" : "1",
+        "count" : "10"
+      }, {
+        "item" : "163",
+        "count" : "10"
+      }, {
+        "item" : "3",
+        "count" : "10"
+      } ],
+      "smallest" : "002",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351794,
+    "name" : "Latitude",
+    "dataTypeName" : "number",
+    "description" : "Calculated based on the known location of a pay station along the same blockface. See Issues section for more info.",
+    "fieldName" : "latitude",
+    "position" : 11,
+    "renderTypeName" : "number",
+    "tableColumnId" : 102402537,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "47.68090582000000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "47.61468100000000",
+        "count" : "757"
+      }, {
+        "item" : "47.66808303000000",
+        "count" : "655"
+      }, {
+        "item" : "47.66711216000000",
+        "count" : "546"
+      }, {
+        "item" : "47.62369682000000",
+        "count" : "524"
+      }, {
+        "item" : "47.66738001000000",
+        "count" : "500"
+      }, {
+        "item" : "47.68076030000000",
+        "count" : "491"
+      }, {
+        "item" : "47.61696889000000",
+        "count" : "481"
+      }, {
+        "item" : "47.66399698000000",
+        "count" : "468"
+      }, {
+        "item" : "47.59876727000000",
+        "count" : "466"
+      }, {
+        "item" : "47.59737065000000",
+        "count" : "462"
+      }, {
+        "item" : "47.66793637000000",
+        "count" : "457"
+      }, {
+        "item" : "47.67010838000000",
+        "count" : "443"
+      }, {
+        "item" : "47.59736510000000",
+        "count" : "440"
+      }, {
+        "item" : "47.66790700000000",
+        "count" : "438"
+      }, {
+        "item" : "47.65239047000000",
+        "count" : "437"
+      }, {
+        "item" : "47.66756159000000",
+        "count" : "428"
+      }, {
+        "item" : "47.61587315000000",
+        "count" : "397"
+      }, {
+        "item" : "47.61813722000000",
+        "count" : "396"
+      }, {
+        "item" : "47.55779695000000",
+        "count" : "386"
+      }, {
+        "item" : "47.66859936000000",
+        "count" : "384"
+      } ],
+      "smallest" : "47.55641947000000",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  }, {
+    "id" : 469351792,
+    "name" : "Longitude",
+    "dataTypeName" : "number",
+    "description" : "Calculated based on the known location of a pay station along the same blockface. See Issues section for more info.",
+    "fieldName" : "longitude",
+    "position" : 12,
+    "renderTypeName" : "number",
+    "tableColumnId" : 102402535,
+    "cachedContents" : {
+      "non_null" : "155717",
+      "largest" : "-122.28402020000000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "-122.31934691000000",
+        "count" : "757"
+      }, {
+        "item" : "-122.38563801000000",
+        "count" : "655"
+      }, {
+        "item" : "-122.38389760000000",
+        "count" : "546"
+      }, {
+        "item" : "-122.32104278000000",
+        "count" : "524"
+      }, {
+        "item" : "-122.39716918000000",
+        "count" : "500"
+      }, {
+        "item" : "-122.32377375000000",
+        "count" : "491"
+      }, {
+        "item" : "-122.31829651000000",
+        "count" : "481"
+      }, {
+        "item" : "-122.31299460000000",
+        "count" : "468"
+      }, {
+        "item" : "-122.33145758000000",
+        "count" : "466"
+      }, {
+        "item" : "-122.33432548000000",
+        "count" : "462"
+      }, {
+        "item" : "-122.38076096000000",
+        "count" : "457"
+      }, {
+        "item" : "-122.38614290000000",
+        "count" : "443"
+      }, {
+        "item" : "-122.33405798000000",
+        "count" : "440"
+      }, {
+        "item" : "-122.38092352000000",
+        "count" : "438"
+      }, {
+        "item" : "-122.31628680000000",
+        "count" : "437"
+      }, {
+        "item" : "-122.39715910000000",
+        "count" : "428"
+      }, {
+        "item" : "-122.31827889000000",
+        "count" : "397"
+      }, {
+        "item" : "-122.31831508000000",
+        "count" : "396"
+      }, {
+        "item" : "-122.28419469000000",
+        "count" : "386"
+      }, {
+        "item" : "-122.38890666000000",
+        "count" : "384"
+      } ],
+      "smallest" : "-122.39902362000000",
+      "count" : "155717",
+      "cardinality" : "155717"
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Public Domain"
+  },
+  "metadata" : {
+    "attachments" : [ {
+      "filename" : "Paid Parking Transaction Data Extract -Socrata.docx",
+      "assetId" : "17991dde-e0ce-4ed7-a685-8e7e678852ad",
+      "name" : "Paid Parking Transaction Data Extract -Socrata.docx"
+    } ],
+    "custom_fields" : {
+      "Department" : {
+        "Department" : "Seattle Department of Transportation"
+      },
+      "Data Quality" : {
+        "Date Quality" : "Quality Checked Data"
+      },
+      "Refresh Frequency" : {
+        "Frequency" : "Daily"
+      }
+    },
+    "rowLabel" : "Paid Parking Transaction",
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "4pks-8wcm",
+    "disabledAt" : 1643045277,
+    "displayName" : "Snyder, MaryCatherine",
+    "screenName" : "Snyder, MaryCatherine",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "4pks-8wcm",
+    "disabledAt" : 1643045277,
+    "displayName" : "Snyder, MaryCatherine",
+    "screenName" : "Snyder, MaryCatherine",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "parking", "paid parking", "transaction", "pay station", "sdot" ],
+  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}

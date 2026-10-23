@@ -1,0 +1,45 @@
+{
+ "retrieved_utc": "2026-10-23T19:15:51+00:00",
+ "method": "for every ELMNTKEY in the stratum, fetch Parking_Signs-0 SIGNTYPE/CATEGORY on that key and count sides with at least one sign per category",
+ "strata": {
+  "T_time_limited_free": {
+   "sides": 499,
+   "sides_with_no_signs": 0,
+   "sides_with_category": {
+    "PTIML": 499,
+    "PNP": 299,
+    "PINST": 208,
+    "PDIS": 23,
+    "DISABLED_signtype": 23,
+    "PR": 4,
+    "PNS": 4,
+    "PPEAK": 1
+   }
+  },
+  "P_paid": {
+   "sides": 401,
+   "sides_with_no_signs": 2,
+   "sides_with_category": {
+    "PR": 381,
+    "PNP": 314,
+    "PNS": 97,
+    "PINST": 74,
+    "PS": 61,
+    "PZONE": 54,
+    "PPP": 33,
+    "PTIML": 20,
+    "PPL": 13,
+    "PLU": 11,
+    "PSCH": 11,
+    "PPEAK": 8,
+    "PBZ": 4,
+    "PDIS": 4,
+    "DISABLED_signtype": 4,
+    "PRZ": 3,
+    "PCVL": 3,
+    "PGA": 2,
+    "PBLO": 1
+   }
+  }
+ }
+}

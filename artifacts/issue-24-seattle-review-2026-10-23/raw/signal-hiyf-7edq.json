@@ -1,0 +1,235 @@
+{
+  "id" : "hiyf-7edq",
+  "name" : "Paid Parking (Last 48 Hours)",
+  "assetType" : "dataset",
+  "attribution" : "Seattle Department of Transportation",
+  "attributionLink" : "http://www.seattle.gov/transportation/projects-and-programs/programs/parking-program/maps-and-data",
+  "averageRating" : 0,
+  "category" : "Transportation",
+  "createdAt" : 1537560603,
+  "description" : "Notice: This dataset will soon be deprecated. Please transition to the replacement dataset available at https://data.seattle.gov/Transportation/Paid-Parking-Last-48-Hours-/jzyn-cn4n/about_data\n\nThe City of Seattle has created an on-street paid parking occupancy data set and is providing access to this data set for public use for research and entrepreneurial purposes under the City’s Open Data Program.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.seattle.gov",
+  "downloadCount" : 1086,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PUBLIC_DOMAIN",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 39886217,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1692295986,
+  "publicationGroup" : 15532012,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1792775338,
+  "rowsUpdatedBy" : "pfbu-yuv5",
+  "tableId" : 19260486,
+  "totalTimesRated" : 0,
+  "viewCount" : 8160,
+  "viewLastModified" : 1787933135,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1547078407,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 5708733,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1547078407,
+    "targetAudience" : "public",
+    "workflowId" : 3127,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "4equ-z4yd",
+      "displayName" : "Gwendolyn Goetz"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 4739
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 579883208,
+    "name" : "OccupancyDateTime",
+    "dataTypeName" : "calendar_date",
+    "description" : "The date and time (minute) of the transaction as recorded",
+    "fieldName" : "occupancydatetime",
+    "position" : 1,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 69598440,
+    "format" : { }
+  }, {
+    "id" : 579883209,
+    "name" : "PaidOccupancy",
+    "dataTypeName" : "number",
+    "description" : "The numerator of the paid occupancy percentage calculation. Number of transactions that have paid at this date/time on this blockface. This is the number of vehicles paid for parking at this time. It is not necessarily the number of vehicles along the blockface since there are most likely vehicles that haven’t paid.",
+    "fieldName" : "paidoccupancy",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 69598441,
+    "format" : { }
+  }, {
+    "id" : 579883210,
+    "name" : "BlockfaceName",
+    "dataTypeName" : "text",
+    "description" : "Street segment, name of street with the “from street” and “to street; ” Example is “1ST AVE BETWEEN BELL ST AND BATTERY ST” Combined with Side of Street for Blockface -- 1ST AVE BETWEEN BELL ST AND BATTERY ST SW Side. Also referred to as UnitDesc (description)",
+    "fieldName" : "blockfacename",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 69598442,
+    "format" : { }
+  }, {
+    "id" : 579883211,
+    "name" : "SideOfStreet",
+    "dataTypeName" : "text",
+    "description" : "Options are: E, S, N, W, NE, SW, SE, NW. The two digits are because many Seattle streets are at an angle. Avenues run north-south, Streets run east-west. 1 st Ave on the SW side is the west side of the street",
+    "fieldName" : "sideofstreet",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 69598443,
+    "format" : { }
+  }, {
+    "id" : 579883212,
+    "name" : "SourceElementKey",
+    "dataTypeName" : "number",
+    "description" : "Unique identifier for the city street segment where the pay station is located; Use this column to match with SDOT’s Pay Station data and other curbspace asset data",
+    "fieldName" : "sourceelementkey",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 69598444,
+    "format" : { }
+  }, {
+    "id" : 579883213,
+    "name" : "ParkingTimeLimitCategory",
+    "dataTypeName" : "number",
+    "description" : "In minutes. Options are 120 (2-hour parking), 240 (4-hour parking), 30, or 600 (10-hour parking)",
+    "fieldName" : "parkingtimelimitcategory",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 69598445,
+    "format" : { }
+  }, {
+    "id" : 579883214,
+    "name" : "ParkingSpaceCount",
+    "dataTypeName" : "number",
+    "description" : "Number of paid spaces on the blockface at the given date and time. This does not include any loading zones (even if payment is required at the loading zones). While SDOT does not delineate individual spaces, we maintain a record of legal parking supply if spaces were marked. Average parallel parking paid space length is 18 feet. Any summary of parking space counts needs to account for the amount of time covered as the data will count all spaces as discrete items over a time period.",
+    "fieldName" : "parkingspacecount",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 69598446,
+    "format" : { }
+  }, {
+    "id" : 579883215,
+    "name" : "PaidParkingArea",
+    "dataTypeName" : "text",
+    "description" : "The primary name of a paid parking neighborhood. Example is Commercial Core.",
+    "fieldName" : "paidparkingarea",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 69598447,
+    "format" : { }
+  }, {
+    "id" : 579883216,
+    "name" : "PaidParkingSubArea",
+    "dataTypeName" : "text",
+    "description" : "A subset of a paid parking area—not all paid parking areas have subareas. Example is Financial, so would be Commercial Core Financial.",
+    "fieldName" : "paidparkingsubarea",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 69598448,
+    "format" : { }
+  }, {
+    "id" : 579883217,
+    "name" : "PaidParkingRate",
+    "dataTypeName" : "text",
+    "description" : "Parking rate charged at date and time. Data is available for the parking rate when SDOT used to have one rate across the entire day, roughly 2012-2015. If the column is blank, that is because the rates were/are currently set by time of day. Rates vary by area or sub area and by morning, afternoon and evening (8-11 am, 11 am-5 or 6 pm, and 5 pm to 8 pm or 10 pm)",
+    "fieldName" : "paidparkingrate",
+    "position" : 10,
+    "renderTypeName" : "text",
+    "tableColumnId" : 69598449,
+    "format" : { }
+  }, {
+    "id" : 579883218,
+    "name" : "ParkingCategory",
+    "dataTypeName" : "text",
+    "description" : "An overall description of the type of parking allowed on a blockface. Examples could be Paid or RPZ (restricted parking zone)",
+    "fieldName" : "parkingcategory",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 69598450,
+    "format" : { }
+  }, {
+    "id" : 579883219,
+    "name" : "Location",
+    "dataTypeName" : "point",
+    "description" : "Calculated based on the known location of a pay station along the same blockface. See Issues section for more info.",
+    "fieldName" : "location",
+    "position" : 12,
+    "renderTypeName" : "point",
+    "tableColumnId" : 69598439,
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Public Domain"
+  },
+  "metadata" : {
+    "attachments" : [ {
+      "filename" : "Paid_Parking_Occupancy_Metadata.pdf",
+      "assetId" : "5430f314-4d49-425a-809e-9413bdc4ce6e",
+      "name" : "Paid_Parking_Occupancy_Metadata.pdf"
+    } ],
+    "custom_fields" : {
+      "Department" : {
+        "Department" : "Seattle Department of Transportation"
+      },
+      "Common Core" : {
+        "Contact Email" : "open.data@seattle.gov",
+        "Publisher" : "data.seattle.gov"
+      },
+      "Refresh Frequency" : {
+        "Frequency" : "Daily"
+      }
+    },
+    "rowLabel" : "Paid parking occupancy (rate of payment) ",
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "4pks-8wcm",
+    "disabledAt" : 1643045277,
+    "displayName" : "Snyder, MaryCatherine",
+    "screenName" : "Snyder, MaryCatherine",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "4pks-8wcm",
+    "disabledAt" : 1643045277,
+    "displayName" : "Snyder, MaryCatherine",
+    "screenName" : "Snyder, MaryCatherine",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "pay stations", "parking", "curbspace", "sdot" ],
+  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}
