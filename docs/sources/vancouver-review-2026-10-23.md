@@ -55,6 +55,8 @@ Common meter filter: `service_status='In Service'`, `vehicle_type='Any Vehicle'`
 
 Sampling: `random.Random(20261023)`, three per stratum in the order MT, MR, MX, P. Each meter maps to the nearest City `public-streets` 100-block within 30 m (ambiguous if another block is within 3 m).
 
+**Deviation from the pre-registration (permit frame).** The pre-registration text excludes from P "every hblock to which a non-Removed meter maps (nearest or within 30 m)". The code that produced the registered population hash (`prereg.py`, `sample.py`, `audit.py`) excludes only the up to three nearest candidate blocks within 30 m of each meter. That leaves 23 blocks within 30 m of a meter in the frame: 1,239 blocks instead of 1,216. Two of them, 1300 BURNABY ST and 800 BIDWELL ST, are among the 21 permit contradictions in the audit. The sample (P1–P3) is the same under both definitions, and the permit verdict rests on criterion 4 regardless. The pre-registration file is left unedited; this was found by the independent PR review and was not re-run.
+
 **Counted signal:** the City's current `parking-tickets` dataset (2026 tickets, all statuses), matched on block number and exact street text. It is an official enforcement record, independent of the meter asset system, but it is located only to the 100-block (both sides) with no time of day. **Contradiction:** for a meter check, a 2026 ticket on the block for a signed restriction (no stopping, rush-hour congestion route, commercial or general loading, passenger, tour bus, bus stop, reserved vehicle class, disabled, bicycle facility, no parking, sign-restricted parking) that no meter mapped to the block carries. For P, any metered-space ticket on the block. **Agreement** needs no contradiction plus corroboration: a metered-space ticket (MT, MR, MX), the matching restriction ticket (MR, MX), or a sign-restricted or no-parking ticket (P). Anything else is unverified. **Pass:** at least 10 agreements, zero contradictions and every stratum represented.
 
 Because the feed gives meter points rather than curb extents (criterion 3), an unrepresented restriction on the same block cannot be excluded from the curb a meter claims. The rule therefore fails closed and is side-blind. This is coarser than Seattle's same-side sign check, and the per-check reasons below show which restriction drove each result.
@@ -83,24 +85,27 @@ Result: **1 agrees, 8 contradict, 3 are unverified.** That is not zero contradic
 - **General signal agrees.** The City page (read in a browser at 19:45:38Z, after scripted requests got HTTP 403) states "Parking meters are in effect from 9am to 10pm, 7 days a week, including statutory holidays", and tells drivers to check for rush-hour, event and construction restrictions before paying. That matches the claimed paid hours and the rule that restrictions win. It says nothing about rush-hour days.
 - **Transcription is clean.** All nine sampled meters have exactly one paMeter record by `FID_METER`, with zero differences on the 17 rule fields compared.
 - **Post-hoc, not counted:** with the ticket spelling `AVE`, MT3 would contradict (4 no-stopping tickets, none of the 4 block meters carries no stopping) and P3 would agree (31 sign-restricted, 6 no-parking). The count would become 2 agree, 9 contradict, 1 unverified.
-- **Why the meters fail.** Five of the eight are bus stops, which the meter feed has no field for. The other three (MT1, MT2, MX1) are no-stopping, tour-bus or disabled restrictions that the feed *can* carry, but no meter on the block does. MX2 is the only rule-only case.
+- **Why the meters fail.** Five of the eight (MT1, MR1, MR2, MR3, MX3) include a bus stop, which the meter feed has no field for. Of the other three, MT2 and MX1 are no-stopping or tour-bus restrictions that the feed *can* carry, but no meter on the block does. MX2 is rule-only.
+- **Ticket status.** All statuses were counted, as pre-registered. The dataset uses `IS`, `VA`, `VS` and `WR` without documenting them; `VA` is presumably a voided ticket. Some cited categories rest only on `VA` tickets: the no-stopping ticket at MT1, the three no-stopping tickets at MR2, and the tour-bus and disabled tickets at MX3. Every contradiction also has at least one `IS` ticket in an unrepresented category (bus stop at MT1, MR2 and MX3), so no result changes.
 
 ### Whole-population audit: why shrinking does not help
 
 [`population-audit.json`](../../artifacts/vancouver-review-2026-10-23/population-audit.json) applies the same rule to every stratum member, using one grouped export of all 357,691 2026 tickets (retrieved 19:47:38Z):
 
-| Stratum | Members | Contradiction | Agreement-eligible (no contradiction, corroborated) | Unverified (name mismatch, range block, ambiguous mapping, no corroborating ticket) |
+| Stratum | Members | Contradiction | No contradiction, payment corroborated¹ | Unverified (name mismatch, range block, ambiguous mapping, no corroborating ticket) |
 |---|---:|---:|---:|---:|
 | MT | 1,932 | 1,235 (64%) | 74 | 623 |
 | MR | 440 | 340 (77%) | 74 | 26 |
 | MX | 246 | 172 (70%) | 12 | 62 |
 | P | 1,239 | 21 (2%) | 461 agree | 757 |
 
+¹ For MR and MX, agreement also needs a ticket in the claimed restriction category; the audit did not test that, so this column is an upper bound on agreements. For P, the column counts agreements (a sign-restricted or no-parking ticket).
+
 With the post-hoc `AV`→`AVE` spelling, MT rises to 1,681 contradictions (87%). The most common unrepresented category in MT is no stopping (1,132 meters), then bus stop (319) and passenger zone (282).
 
 The meter feed's own fields cannot pick out the safe meters: bus stops and most no-stopping portions appear in no meter field. Excluding the blocks that have tickets would use the grading signal to choose the subset. No third official curb signal exists in public sources: no sign inventory, no curb-space layer, no geocoded or timed tickets. ADR-0004 rules out new field evidence or requests. So no narrower meter subset was re-registered.
 
-The permit stratum has few contradictions, but it cannot pass on its own. The polygons publish no days or hours (criterion 4). Its "restricted at all times" claim is a conservative invention, not a schedule read from the source. A sign-restricted ticket is also not specific to permits. The 21 permit blocks with metered-space tickets but no mapped meter were not investigated; they may be meters that map to a neighbouring block, or gaps in the feed.
+The permit stratum has few contradictions, but it cannot pass on its own. The polygons publish no days or hours (criterion 4). Its "restricted at all times" claim is a conservative invention, not a schedule read from the source. A sign-restricted ticket is also not specific to permits. The 21 permit blocks with metered-space tickets but no mapped meter were not fully investigated. Two are within 30 m of a meter (see the permit-frame deviation above); the rest may be meters that map to a neighbouring block, or gaps in the feed.
 
 ## Per-source verdicts (2026-10-23)
 
@@ -108,7 +113,7 @@ C1 and C6 pass for every row (see above). "Pending" names what is missing; "reje
 
 | Source | C2 | C3 | C4 | C5 | C7 | Verdict |
 |---|---|---|---|---|---|---|
-| Portal `parking-meters` (E2) | pass: `feature_id` unique (#28, PR #122) | **fail as a curb claim:** meter points, no extent; restrictions on the same block are not represented | rush-hour days undocumented (City page silent); override and flat-rate semantics undocumented | pass: weekly, 2026-10-19 | **fail:** 8 of 12, 1,747 of 2,618 stratum meters | **pending** (C3/C4/C7) for paid use. After-hours free: **rejected** on current evidence (E2 boundary not met: the feed does not carry the block's other restrictions). |
+| Portal `parking-meters` (E2) | pass: `feature_id` unique (#28, PR #122) | **fail as a curb claim:** meter points, no extent; restrictions on the same block are not represented | rush-hour days undocumented (City page silent); override and flat-rate semantics undocumented | pass: weekly, 2026-10-19 | **fail:** 8 of 12, 1,747 of 2,618 stratum meters | **pending** (C3/C4/C7) for paid use. After-hours free: **pending** (C3/C7). The per-meter prohibition, rush and time-limit fields that ADR-0002's E2 condition asks for are present, but meter points carry no curb extent, so unrepresented bus-stop and no-stopping restrictions on the same block cannot be excluded. |
 | Hosted `paMeter/0` (E2 alternate) | pass: `FID_METER` = portal `feature_id` | as portal | as portal | pass | not independent; 9/9 transcription matches | **pending** (C3/C4/C7) |
 | GDH `paMeter/1` (E2 alternate) | pass | as portal | as portal | **pending:** no layer edit date | not run | **pending** (C3/C4/C5/C7) |
 | `ResidentialParkingPermitZones/0` (E4) | pass: `MAPID` plus polygon part | pass: polygon | **fail:** no days, hours or visitor fields | pass: 2026-10-23 | 1 agree, 2 unverified, 0 contradictions in sample; audit 21 of 1,239 contradict | **pending** (C4/C7) |
@@ -124,8 +129,8 @@ C1 and C6 pass for every row (see above). "Pending" names what is missing; "reje
 
 None changes to `approved`. If Vancouver rows are created, the values are:
 
-- `pending`: portal `parking-meters` (paid use only), hosted `paMeter/0`, GDH `paMeter/1`, `ResidentialParkingPermitZones/0`, `Road_Ahead_View/0`, legacy Atom/GeoRSS, disability, motorcycle and carshare layers (as restriction supplements).
-- `rejected`: meters as after-hours free evidence, portal Road Ahead extracts as standalone E5, historic film permits, ticket datasets, the E7 by-law default.
+- `pending`: portal `parking-meters` (paid use and after-hours free use, both C3/C7), hosted `paMeter/0`, GDH `paMeter/1`, `ResidentialParkingPermitZones/0`, `Road_Ahead_View/0`, legacy Atom/GeoRSS, disability, motorcycle and carshare layers (as restriction supplements).
+- `rejected`: portal Road Ahead extracts as standalone E5, historic film permits, ticket datasets, the E7 by-law default.
 
 No `coverage_areas` row and no `subset_geom` is proposed. The city-page sentence stays "Vancouver is not covered."
 
