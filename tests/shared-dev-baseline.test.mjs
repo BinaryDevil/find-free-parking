@@ -98,7 +98,7 @@ test('postcommit comparison failure does not pretend the operation rolled back',
   const { env, inputs } = commandInputs();
   const db = databaseBoundary();
   await assert.rejects(executeReconciliation(env, inputs, { connect: () => db,
-    capture: async () => ({ dump: before, version: metadata.pgDumpVersion }) }), /Baseline application schema mismatch/);
+    capture: async () => ({ dump: before, version: metadata.pgDumpVersion }) }), { code: 'DEV_BASELINE_COMMITTED' });
   assert.ok(db.statements.includes('COMMIT'));
   assert.equal(db.statements.includes('ROLLBACK'), false);
 });

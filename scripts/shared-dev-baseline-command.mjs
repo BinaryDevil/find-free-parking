@@ -59,9 +59,15 @@ export async function executeReconciliation(env, { approval, reference, referenc
     // pg_dump in another session cannot see this transaction's DDL. Fixed SQL verifies
     // catalog postconditions before commit; exact independent dump comparison follows.
     await database.query('COMMIT'); transaction = false;
-    const after = await capture(url.toString());
-    verifyAdoptionReference({ reference, approvedHash: approval.referenceHash, baseline: manifest.baseline,
-      referenceDump, targetDump: after.dump, pgDumpVersion: after.version });
+    try {
+      const after = await capture(url.toString());
+      verifyAdoptionReference({ reference, approvedHash: approval.referenceHash, baseline: manifest.baseline,
+        referenceDump, targetDump: after.dump, pgDumpVersion: after.version });
+    } catch {
+      const failure = new Error('Prerequisite committed but final comparison failed; stop before any adoption');
+      failure.code = 'DEV_BASELINE_COMMITTED';
+      throw failure;
+    }
     return 'Dev baseline prerequisite committed and independently compared. No ledger marking, adoption or foundation was run.';
   } finally {
     if (transaction) await database.query('ROLLBACK').catch(() => {});
