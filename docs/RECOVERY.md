@@ -92,6 +92,90 @@ it can restart computes and replace the served data state. It is outside this
 inspection procedure. Do not infer permission from a successful restore preview,
 and do not delete the replaced branch or replay down/reset migrations.
 
+## Recover shared dev from a retained restore-point branch
+
+Neon refuses snapshots of non-root branches, and shared dev
+(`br-rough-lake-arrxiape`) is non-root. Before a shared-dev write such as the
+[#120 baseline prerequisite](implementation/shared-dev-baseline.md), dev's
+retained restore point is therefore a **child branch** created from dev just
+before the run, with no compute. It is not a `snap-` snapshot, and the snapshot
+procedure above does not apply to it. Production is never a source or target here.
+
+Recovery from this write is ordered as follows:
+
+1. **Primary rollback: the reviewed inverse SQL.** The #120 operation changes
+   catalog state only and touches no rows, so its exact inverse restores the
+   complete pre-run state. Use the exact SQL, preconditions, postconditions and
+   authorization in the runbook's
+   [Rollback](implementation/shared-dev-baseline.md#rollback) section: an owner
+   session on dev's direct host under migration advisory lock
+   `7241865325823964`, a live schema hash equal to the run's after hash,
+   `DROP EXTENSION pg_stat_statements RESTRICT` and the owner-issued
+   `GRANT SELECT (reported_status) ON public.reports TO app_rw` in one
+   transaction, never `CASCADE`. An independent second agent reviews the exact
+   SQL before an operator runs it manually, and both are recorded on
+   [#120](https://github.com/BinaryDevil/find-free-parking/issues/120).
+2. **Data backup: the retained restore-point branch**, inspected read-only as in
+   steps 1 and 2 below.
+3. **Last resort: restore dev from the restore-point branch**, steps 3 to 5
+   below, after the provider caveats that precede them. It needs explicit human authorization and may be refused by the
+   provider.
+
+### Inspect the restore point, or restore dev from it as a last resort
+
+Provider reference inspected read-only on 2026-10-23:
+[Neon instant restore](https://neon.com/docs/postgres/backup-restore/branch-restore)
+and [Manage branches](https://neon.com/docs/manage/branches). They document
+`neon branches restore <target> <source>` and
+`POST /projects/{project_id}/branches/{branch_id}/restore` with
+`source_branch_id` and `preserve_under_name`. The docs contradict each other on
+non-root targets. The instant-restore page states that instant restore is
+supported only for root branches and that child branches do not support it, yet
+the same page shows head restores ("latest data from another branch") into a
+child branch and limits only the point-in-time case to root sources, and Manage
+branches lists restoring a branch to the head of another branch without a root
+qualifier. None of the examples restores a non-root branch from **its own
+child**, which is what this procedure needs, and `preserve_under_name` moves the
+target's children, including this restore point, to the backup branch. The docs
+also disagree on whether a backup branch is created automatically. The provider
+may therefore refuse dev as a target. Inspect current provider docs and the
+installed CLI help or connected tool schema at execution time. If the provider
+does not accept restoring dev from this branch, stop: any other recovery path
+needs its own reviewed plan.
+
+1. Record the restore-point branch ID, its parent (dev's branch ID), the parent
+   LSN or timestamp it was created at, its creation time and its intended
+   retention. Read current provider metadata to confirm the branch still exists,
+   its parent is exactly dev at that LSN, and it is not production. Stop if any
+   of these cannot be confirmed.
+2. Inspect the restore point **read-only** first. It has no compute, so to see its
+   data either add a compute to it temporarily or create a further child branch of
+   it and inspect that. Do not write to either. The free plan allows 10 branches per
+   project: count existing branches before creating one, and create branches only
+   through the coordinator. Check schema, roles/ACLs, migration ledger and the
+   relevant row counts or fingerprints against the run's recorded `before` evidence.
+   Remove the temporary compute or extra child when inspection ends.
+3. Inspection needs no further approval. Restoring dev's served state from the
+   restore point overwrites existing dev rows and any user data written since, so
+   under [ADR-0005](adr/0005-agent-verified-gates.md) it needs **explicit human
+   authorization** naming dev, the restore-point branch and the accepted loss of
+   later changes. Record that authorization on the incident or ticket.
+4. With that authorization, restore dev from the restore-point branch, keeping
+   dev's current state as a backup. In the documented API this is a branch restore
+   with `source_branch_id` set to the restore-point branch and a
+   `preserve_under_name` (required when the target has children, as dev does);
+   the CLI form is `neon branches restore <dev> <restore-point-branch>`. These are
+   templates, not executed calls: check the current names, defaults and backup
+   behavior first. Connections to dev are interrupted during the restore.
+5. Afterwards re-verify dev's identity (branch ID, direct host, database and
+   owner), its schema hash and row fingerprints against the recorded `before`
+   evidence, and the `app_rw` behavior the release depends on. Record the result,
+   branch IDs and unrecovered later changes on the ticket.
+
+Never delete the restore-point branch until the write's post-checks pass and are
+recorded. After a restore, also keep it and any backup branch the restore creates
+until step 5 passes. Deletion goes through the coordinator.
+
 ## Roll back code separately
 
 [Vercel Instant Rollback](https://vercel.com/docs/instant-rollback) restores an
