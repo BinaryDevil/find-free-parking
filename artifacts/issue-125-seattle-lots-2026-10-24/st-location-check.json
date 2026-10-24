@@ -1,0 +1,42 @@
+{
+ "23": {
+  "page": "spot-st-pl-mercer-island-park-ride.html",
+  "points_on_page": 1,
+  "min_distance_m": 0
+ },
+ "2": {
+  "page": "spot-st-ss-edmonds-station.html",
+  "points_on_page": 4,
+  "min_distance_m": 29
+ },
+ "6": {
+  "page": "spot-st-ss-mukilteo-station.html",
+  "points_on_page": 1,
+  "min_distance_m": 122
+ },
+ "12": {
+  "page": "spot-st-ss-tukwila-station.html",
+  "points_on_page": 4,
+  "min_distance_m": 31
+ },
+ "45": {
+  "page": "spot-st-pl-ash-way-park-ride.html",
+  "points_on_page": 1,
+  "min_distance_m": 40
+ },
+ "24": {
+  "page": "spot-st-ss-mountlake-terrace-station.html",
+  "points_on_page": 8,
+  "min_distance_m": 0
+ },
+ "5": {
+  "page": "spot-st-ss-lakewood-station.html",
+  "points_on_page": 5,
+  "min_distance_m": 43
+ },
+ "30": {
+  "page": "spot-st-pl-south-sammamish-park-ride.html",
+  "points_on_page": 1,
+  "min_distance_m": 16
+ }
+}

@@ -1,0 +1,46 @@
+# Writes spot-check-results.json: the author's per-lot judgement under preregistration.json.
+# Findings cite raw/ files; quotes are short excerpts from the operator's own pages.
+# Usage: python3 -I results.py <evidence dir>
+import json, sys
+D = sys.argv[1].rstrip("/")
+C, A, U = "contradiction", "agree", "unknown"
+KC = [
+ (922, C, ["payment", "permit or reserved spaces", "maximum stay"], "Metro list: free on B1-B4, 'Rooftop parking is reserved for mall customers and parking rates apply'; Metro Northgate project page: station garage free only on levels 1-2 Mon-Fri 5-9 am, fees after 9 am and weekends (Metro's two pages disagree); Sound Transit station page: 'Up to 24 hours', carpool, monthly and one-day permits ($60/$6 on the parking page).", ["spot-kcm-parking-locations.html", "spot-kcm-northgate-project.html", "spot-st-ss-northgate-station.html", "spot-st-parking.html"], "95 m to Metro map pin"),
+ (727, C, ["maximum stay"], "Layer OWNER=ST. Sound Transit parking page: facilities owned and operated by Sound Transit allow parking 'for up to 24 hours'; the claim derives 72 hours from Metro's regulations. Station page gives no per-lot hours (system-level signal).", ["spot-st-parking.html", "spot-st-ss-south-bellevue-station.html", "spot-kcm-parking-regulations.html"], "77 m to Metro map pin; Metro and Sound Transit publish 2700 / 2704 Bellevue Way SE, layer 2000"),
+ (726, A, [], "Metro list: Redmond Transit Center, 377 spaces, note only about occupancy; Sound Transit page: 377 spaces, no hours. Layer OWNER=KC, so Metro's system rule applies.", ["spot-kcm-parking-locations.html", "spot-st-pl-redmond-transit-center-park-ride.html"], "2 m to Metro map pin"),
+ (873.1, C, ["maximum stay"], "Layer OWNER=ST; Sound Transit's 24-hour rule for its facilities versus the 72 hours derived from Metro. Metro list: 'Portion of spaces reserved for permit parking' (program suspended). System-level signal.", ["spot-st-parking.html", "spot-st-ss-auburn-station.html", "spot-kcm-parking-locations.html"], "128 m to Metro map pin"),
+ (872.1, C, ["maximum stay", "closure (lot identity inferred)"], "Layer OWNER=ST, so Sound Transit's 24-hour rule applies (system-level). Sound Transit alert: Kent Station's northwest Sounder surface lot is closed 2026-03-16 to 2027-01-01 except three ADA spaces. That this layer lot (400 1st Ave N) is the northwest lot is inferred, not verified.", ["spot-st-parking.html", "spot-st-ss-kent-station.html", "spot-st-alert-kent-capacity.html"], "71 m to Metro map pin"),
+ (753, C, ["closure or partial availability"], "Metro project page: 'Southern section of Park & Ride D available to transit customers'; Metro list: construction at P&R D 'will affect transit parking'. Sound Transit: P&R D 'Up to 72 hours', 448 spaces (layer 263).", ["spot-kcm-northgate-project.html", "spot-kcm-parking-locations.html", "spot-st-ss-northgate-station.html"], "89 m to Metro map pin"),
+ (731, A, [], "Metro list: Duvall Park & Ride, 49 spaces, no conditions. The three published addresses (layer 15935 Main St NE, list 26325 NE Woodinville Duvall Rd, map link 16011 Main St NE) geocode with King County's address locator to within 69 m of the layer point.", ["spot-kcm-parking-locations.html", "geocode-kc-duvall-1.json", "geocode-kc-duvall-2.json", "geocode-kc-duvall-3.json"], "0-69 m (King County geocoder)"),
+ (751, C, ["who may park"], "Metro list: Black Diamond Park & Ride, 'No Transit Service for this park & ride lot. Carpool and Vanpool only.' The claim derives transit-customer parking.", ["spot-kcm-parking-locations.html"], "11 m to Metro map pin"),
+ (632, C, ["not listed as operating"], "Absent from Metro's parking-locations list and Sound Transit's parking-locations list (absence-based, as pre-registered).", ["spot-kcm-parking-locations.html", "spot-st-parking-locations.html"], "no published location"),
+ (521, C, ["not listed as operating"], "Absent from Metro's parking-locations list and Sound Transit's parking-locations list (absence-based, as pre-registered).", ["spot-kcm-parking-locations.html", "spot-st-parking-locations.html"], "no published location"),
+ (540, A, [], "Metro list and Sound Transit page: Tibbetts Valley Park Park & Ride, 965 12th Ave NW, 27 spaces, no conditions.", ["spot-kcm-parking-locations.html", "spot-st-pl-tibbetts-valley-park-park-ride.html"], "114 m to Metro map pin"),
+ (516, A, [], "Metro list: QFC Village Park & Ride, SE 68th St & 84th Ave SE, 14 spaces (layer 21; counts are not safety fields), no conditions.", ["spot-kcm-parking-locations.html"], "38 m to Metro map pin"),
+]
+ST = [
+ (23, A, [], "Sound Transit page: 447 spaces, no hours, not a permit station.", ["spot-st-pl-mercer-island-park-ride.html", "spot-st-ss-mercer-island-station.html"]),
+ (2, A, [], "Station page: Edmonds Station Park-and-Ride, 156 spaces; not on the permit list.", ["spot-st-ss-edmonds-station.html", "spot-st-parking.html"]),
+ (6, A, [], "Station page: 63 spaces for Sound Transit passengers; permit program suspended.", ["spot-st-ss-mukilteo-station.html"]),
+ (12, A, [], "Station page: 390 spaces for Sound Transit passengers; permit program suspended.", ["spot-st-ss-tukwila-station.html"]),
+ (50, U, [], "Not on Sound Transit's or Metro's lists; Community Transit's list loads by script and has no static per-lot entry. No independent per-lot signal retrieved.", ["spot-st-parking-locations.html", "spot-ct-park-and-rides.html"]),
+ (52, C, ["not listed as operating"], "Freeway-station footprint with no parking entry on Sound Transit's or Metro's lists and no facility page in the Sound Transit sitemap (absence-based, as pre-registered).", ["spot-st-parking-locations.html", "spot-kcm-parking-locations.html", "st-sitemap.xml"]),
+ (45, C, ["maximum stay"], "Sound Transit's own facility page: 'Hours: Up to 72 hours'. The claim derives 24 hours from Sound Transit's system rule.", ["spot-st-pl-ash-way-park-ride.html", "spot-st-parking.html"]),
+ (24, U, [], "Station page lists the freeway-station park-and-ride (668) and the station garage (202) together with 'Up to 24 hours' and carpool permits; the permit area's extent and which facility the hours apply to are not published.", ["spot-st-ss-mountlake-terrace-station.html", "spot-st-parking.html"]),
+ (5, A, [], "Station page: Lakewood Station Park-and-Ride, 601 spaces; not on the permit list.", ["spot-st-ss-lakewood-station.html", "spot-st-parking.html"]),
+ (30, A, [], "Sound Transit page: 265 spaces, no hours; Metro list agrees (3015 228th Ave SE).", ["spot-st-pl-south-sammamish-park-ride.html", "spot-kcm-parking-locations.html"]),
+]
+pr = json.load(open(f"{D}/preregistration.json"))
+loc = json.load(open(f"{D}/st-location-check.json"))
+names = {x["id"]: x["name"] for g in ("KC_P", "KC_L", "ST") for x in pr["sample"][g]}
+kc = [{"id": i, "name": names[i], "result": r, "fields": f, "finding": t, "evidence": e, "location": l} for i, r, f, t, e, l in KC]
+st = [{"id": i, "name": names[i], "result": r, "fields": f, "finding": t, "evidence": e,
+       "location": (f"{loc[str(i)]['min_distance_m']} m from page pin to polygon" if str(i) in loc else "no published coordinates")} for i, r, f, t, e in ST]
+assert [x["id"] for x in kc] == [x["id"] for x in pr["sample"]["KC_P"] + pr["sample"]["KC_L"]]
+assert [x["id"] for x in st] == [x["id"] for x in pr["sample"]["ST"]]
+tally = lambda rows: {k: sum(r["result"] == k for r in rows) for k in (C, A, U)}
+out = {"issue": 125, "checked_utc_date": "2026-10-24", "preregistration": "preregistration.json",
+       "KC": {"tally": tally(kc), "lots": kc}, "ST": {"tally": tally(st), "lots": st},
+       "verdict": "Both samples fail criterion 7: the pass threshold is zero contradictions and zero Unknown."}
+json.dump(out, open(f"{D}/spot-check-results.json", "w"), indent=2)
+print(out["KC"]["tally"], out["ST"]["tally"])

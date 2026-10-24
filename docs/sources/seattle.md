@@ -6,6 +6,7 @@ Status: draft
 Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); [2026-10-21 reassessment](seattle-public-review-2026-10-21.md); [2026-10-23 reviewer re-check](seattle-review-2026-10-23.md), which records a per-criterion verdict for every candidate. No source approved; no Partial subset passes. The tested pre-registered Blockface + RPZ subset had 6 contradictions in 12 random spot checks under its pre-registered rule, 2 of them (permit hours) on criterion 7's listed fields, and `LOAD_` is empty citywide. Coverage remains none.
 Timezone: America/Los_Angeles
 Coverage verdict: none (no source approved; Seattle remains not covered)
+Lots and park-and-rides (E6): see [seattle-lots.md](seattle-lots.md) ([#125](https://github.com/BinaryDevil/find-free-parking/issues/125)).
 Policy: [Evidence Source Policy in #2](https://github.com/BinaryDevil/find-free-parking/issues/2)
 Observed: 2026-10-09. Counts are live `returnCountOnly` query results, not counts imported or validated in our database. Edit times below are UTC service `editingInfo.lastEditDate`, not evidence that every rule was inspected that day.
 
