@@ -13,7 +13,7 @@ import { guard, guardMessages, reconciliationTarget, verifyReconciliationSchema 
 // node-pg-migrate 9's lock identity, shared with migration-command.mjs so both
 // commands exclude each other; a test keeps the two literals equal.
 export const migrationLock = '7241865325823964';
-export const restoreProcedure = 'docs/RECOVERY.md#recover-a-provider-snapshot-into-a-separate-branch';
+export const restoreProcedure = 'docs/RECOVERY.md#recover-shared-dev-from-a-retained-restore-point-branch';
 const tables = ['city_requests', 'covered_cities', 'parking_meters', 'parking_zones', 'reports', 'street_segments'];
 const fingerprintSql = tables.map(table => `SELECT '${table}' AS name, count(*)::text AS count,
   md5(COALESCE(string_agg(row_hash, '' ORDER BY row_hash), '')) AS fingerprint

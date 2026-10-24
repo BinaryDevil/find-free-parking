@@ -124,6 +124,11 @@ test('real pg_dump 17 header formatting passes the guard and extra drift is stil
   assert.throws(() => verifyReconciliationSchema(`${realTarget}GRANT SELECT ON public.reports TO app_rw;\n`, realReference, 'application'), { code: 'DEV_BASELINE_SCHEMA_DRIFT' });
 });
 
+test('restore procedure names the RECOVERY.md restore-point branch section', () => {
+  assert.equal(restoreProcedure, 'docs/RECOVERY.md#recover-shared-dev-from-a-retained-restore-point-branch');
+  assert.match(readFileSync('docs/RECOVERY.md', 'utf8'), /^## Recover shared dev from a retained restore-point branch$/m);
+});
+
 test('operator command refuses unreviewed inputs before connecting', async () => {
   const hour = 3600000;
   const cases = [
@@ -132,6 +137,7 @@ test('operator command refuses unreviewed inputs before connecting', async () =>
     [reviewed => { reviewed.referenceHash = 'c'.repeat(64); }, 'DEV_BASELINE_REFERENCE_UNTRUSTED'],
     [reviewed => { reviewed.snapshot.verifiedAt = 'invalid'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.restoreProcedure = true; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
+    [reviewed => { reviewed.snapshot.restoreProcedure = 'docs/RECOVERY.md#recover-a-provider-snapshot-into-a-separate-branch'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.branchId = reviewed.branchId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.parentBranchId = 'br-other-parent'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.providerRecordHash = 'z'.repeat(64); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
