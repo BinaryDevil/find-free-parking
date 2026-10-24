@@ -1,0 +1,672 @@
+{
+  "results" :
+    [
+      {
+        "resource" :
+          {
+            "name" : "Park and Ride Locations Current Transportation",
+            "id" : "b55e-zfp9",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "PennDOT Official Park and Ride information that is  currently available. This is not all inclusive.",
+            "attribution" : "Pennsylvania Department of Transportation",
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-07T12:26:10.000Z",
+            "createdAt" : "2017-08-24T19:01:08.000Z",
+            "metadata_updated_at" : "2026-10-07T12:26:09.000Z",
+            "data_updated_at" : "2026-10-07T12:26:10.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 23,
+                "page_views_last_month" : 91,
+                "page_views_total" : 5945,
+                "page_views_last_week_log" : 4.584962500721157,
+                "page_views_last_month_log" : 6.523561956057013,
+                "page_views_total_log" : 12.537703747907644
+              },
+            "columns_name" :
+              [
+                "US House Districts for PA 2019 Health",
+                "Linear Reference Number",
+                "Traffic Route Designation Indicator",
+                "Exit Number",
+                "Transit Availability",
+                "Parking Space Availability",
+                "Parking Space Count",
+                "Handicap Availability",
+                "Longitude",
+                "Engineering District Number",
+                "Georeferenced Latitude & Longitude",
+                "Handicap Space Count",
+                "Owner Name",
+                "Open for Use",
+                "State Route Number",
+                "Official PennDOT Park and Ride",
+                "Description",
+                "Latitude",
+                "Unique Identifier",
+                "Description secondary",
+                "Traffic Route Sign Install",
+                "PA State House Districts 2016 Health",
+                "PA County Boundaries Spatial Data Current Transportation 2",
+                "US House Districts for PA 2019 2",
+                "Route Direction",
+                "Exit Name",
+                "PennDOT County Code",
+                "PA State Senate Districts 2016 Health"
+              ],
+            "columns_field_name" :
+              [
+                ":@computed_region_gbji_5m4q",
+                "linear_reference_number",
+                "traffic_route_designation_indicator",
+                "exit_number",
+                "transit_availability",
+                "parking_space_availability",
+                "parking_space_count",
+                "handicap_availability",
+                "longitude",
+                "engineering_district_number",
+                "georeferenced_latitude_longitude_2",
+                "handicap_space_count",
+                "owner_name",
+                "open_for_use",
+                "state_route_number",
+                "official_penndot_park_and_ride",
+                "description",
+                "latitude",
+                "unique_identifier",
+                "description_secondary",
+                "traffic_route_sign_install",
+                ":@computed_region_its3_bt6a",
+                ":@computed_region_4fjn_fq7k",
+                ":@computed_region_3x3q_vpda",
+                "route_direction",
+                "exit_name",
+                "dot_county_code",
+                ":@computed_region_75dh_jrw3"
+              ],
+            "columns_datatype" :
+              [
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Number",
+                "Number",
+                "Point",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Number"
+              ],
+            "columns_description" :
+              [
+                "This column was automatically created in order to record in what polygon from the dataset 'US House Districts for PA 2019 Health' (gbji-5m4q) the point in column 'georeferenced_latitude_longitude_2' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "A unique concatenation of the nearest PennDOT linear reference location for entrance to the Park and Ride derived from PennDOT’s RMSSEG database. The elements are: \n•\tcounty code (2)\n•\tstate route number (4)\n•\troute segment number (4)\n•\toffset from the beginning of the segment, in feet (4)\n",
+                "Traffic route designation. I=Interstate, US=Unites States, PA=Pennsylvania",
+                "Exit number appearing on signage in the primary linear referencing direction. The absence of a number indicates the exit is unnumbered.",
+                "Flag indicating the availability of transit at or near the lot. The absence of a flag indicates transit availability is unknown, Y=YES.",
+                "Flag indicating SPACES were determined by remote sensing means, Y=YES. All remotely sensed data was derived from ortho-photography captured between 2010 and 2017. Scale = 1:2,400.",
+                "The number of parking spaces available at the lot, including handicapped.",
+                "Flag indicating designated handicapped parking is available. The absence of a flag indicates handicapped parking availability is unknown, Y=YES.",
+                "Longitude expressed as decimal degrees derived from ortho-photography captured between 2010 and 2017. Scale = 1:2,400.",
+                "PennDOT Engineering District number responsible for the Park and Ride.",
+                "",
+                "The number of handicapped spaces at the Park and Ride. All handicapped spaces are approximated through remote sensing means. All remotely sensed data was derived from ortho-photography captured between 2010 to 2017. Scale = 1:2,400.",
+                "The owner or lessor of the lot.",
+                "Flag indicating the Park and Ride is open for use, Y=YES, N=NO",
+                "State route number assigned to the Park and Ride. A Null value indicates no route number has been assigned.",
+                "Flag indicating official PennDOT Park and Ride, Y=YES.",
+                "A textual description of the Park and Ride’s area served and street location.",
+                "Latitude expressed as decimal degrees derived from ortho-photography captured between 2010 and 2017. Scale = 1:2,400.",
+                "A unique identifier for each Park and Ride",
+                "Supplemental textual description information.",
+                "The traffic route where sign exit name and exit number is installed",
+                "This column was automatically created in order to record in what polygon from the dataset 'PA State House Districts 2016 Health' (its3-bt6a) the point in column 'georeferenced_latitude_longitude_2' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "This column was automatically created in order to record in what polygon from the dataset 'PA County Boundaries Spatial Data Current Transportation' (4fjn-fq7k) the point in column 'georeferenced_latitude_longitude_2' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "This column was automatically created in order to record in what polygon from the dataset 'US House Districts for PA 2019' (3x3q-vpda) the point in column 'georeferenced_latitude_longitude_2' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+                "Route direction from which the exit name and the exit number was captured",
+                "Exit ‘for’ location(s) appearing on signage on the exit route. ",
+                "PennDOT’s numeric county identifier for the Park and Ride’s location.  County code and County Name: 01 ADAMS, 02 ALLEGHENY, 03 ARMSTRONG,\t04 BEAVER, 05 BEDFORD, 06 BERKS, 07 BLAIR, 08 BRADFORD, 09 BUCKS, 10 BUTLER, 11 CAMBRIA, 12 CAMERON, 13 CARBON, 14 CENTRE, 15 CHESTER, 16 CLARION, 17 CLEARFIELD, 18 CLINTON, 19 COLUMBIA, 20 CRAWFORD, 21 CUMBERLAND, 22 DAUPHIN, 23 DELAWARE, 24 ELK, 25 ERIE, 26 FAYETTE, 27 FOREST, 28 FRANKLIN, 29 FULTON, 30 GREENE, 31 HUNTINGDON, 32 INDIANA, 33 JEFFERSON, 34 JUNIATA, 35 LACKAWANNA, 36 LANCASTER, 37 LAWRENCE, 38 LEBANON, 39 LEHIGH, 40 LUZERNE, 41 LYCOMING, 42 MCKEAN, 43 MERCER, 44 MIFFLIN, 45 MONROE, 46 MONTGOMERY, 47 MONTOUR, 48 NORTHAMPTON, 49 NORTHUMBERLAND, 50 PERRY, 51 PIKE, 52 POTTER, 53 SCHUYLKILL, 54 SNYDER, 55 SOMERSET, 56 SULLIVAN, 57 SUSQUEHANNA, 58 TIOGA, 59 UNION, 60 VENANGO, 61 WARREN, 62 WASHINGTON, 63 WAYNE, 64 WESTMORELAND, 65 WYOMING, 66 YORK, 67 PHILADELPHIA",
+                "This column was automatically created in order to record in what polygon from the dataset 'PA State Senate Districts 2016 Health' (75dh-jrw3) the point in column 'georeferenced_latitude_longitude_2' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens."
+              ],
+            "columns_format" :
+              [
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "right"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                { "displayStyle" : "plain", "align" : "right" },
+                { "displayStyle" : "plain", "align" : "center" },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                {},
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                { "displayStyle" : "plain", "align" : "left" },
+                { "displayStyle" : "plain", "align" : "center" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "true",
+                  "align" : "right"
+                },
+                { "displayStyle" : "plain", "align" : "center" },
+                { "displayStyle" : "plain", "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                { "displayStyle" : "plain", "align" : "left" },
+                { "displayStyle" : "plain", "align" : "right" },
+                {},
+                {},
+                {},
+                { "displayStyle" : "plain", "align" : "center" },
+                { "displayStyle" : "plain", "align" : "left" },
+                {
+                  "precisionStyle" : "standard",
+                  "noCommas" : "false",
+                  "align" : "right"
+                },
+                {}
+              ],
+            "download_count" : 526,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-03-12T19:56:18.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Infrastructure and Development",
+            "domain_tags" : [ "location", "ride", "penndot", "pdot", "park" ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Data-Management_Business-Owner",
+                  "value" : "Department of Transportation (PDOT)"
+                },
+                {
+                  "key" : "Data-Management_Update-Frequency",
+                  "value" : "Quarterly"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.pa.gov", "license" : "Public Domain" },
+        "permalink" : "https://data.pa.gov/d/b55e-zfp9",
+        "link" : "https://data.pa.gov/Infrastructure-and-Development/Park-and-Ride-Locations-Current-Transportation/b55e-zfp9",
+        "owner" :
+          {
+            "id" : "6jh9-ydjy",
+            "user_type" : "interactive",
+            "display_name" : "Jere Matthews"
+          },
+        "creator" :
+          {
+            "id" : "6jh9-ydjy",
+            "user_type" : "interactive",
+            "display_name" : "Jere Matthews"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "BWI Airport Shuttle Stops",
+            "id" : "taev-7mns",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Layer of BWI Shuttle Bus stops for all five shuttles. Bus stops are located at airport, parking lots and amtrak station. Created by CMRT.",
+            "attribution" : null,
+            "attribution_link" : null,
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-06-09T01:53:47.000Z",
+            "createdAt" : "2025-07-22T03:40:30.000Z",
+            "metadata_updated_at" : "2026-06-09T01:53:47.000Z",
+            "data_updated_at" : "2025-07-22T03:40:33.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 6,
+                "page_views_last_month" : 21,
+                "page_views_total" : 175,
+                "page_views_last_week_log" : 2.807354922057604,
+                "page_views_last_month_log" : 4.459431618637297,
+                "page_views_total_log" : 7.459431618637297
+              },
+            "columns_name" :
+              [
+                "Stop Name",
+                "Latitude",
+                "Longitude",
+                "the_geom",
+                "GIS Object ID"
+              ],
+            "columns_field_name" :
+              [ "stop_name", "stop_lat", "stop_lon", "the_geom", "objectid" ],
+            "columns_datatype" :
+              [ "Text", "Number", "Number", "Point", "Number" ],
+            "columns_description" : [ "", "", "", "", "" ],
+            "columns_format" : [ {}, {}, {}, {}, {} ],
+            "download_count" : 326,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2025-07-22T03:40:31.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_tags" :
+              [
+                "regional transportation agency",
+                "allegany",
+                "bus",
+                "carroll",
+                "cecil",
+                "cmrt",
+                "dynamic",
+                "frederick",
+                "kml",
+                "local transit",
+                "lots",
+                "maryland",
+                "md",
+                "md imap",
+                "mdtrip.org",
+                "meet the marc",
+                "montgomery",
+                "mta",
+                "ocean city",
+                "public transportation",
+                "queen anne's",
+                "ride on",
+                "routes",
+                "rta",
+                "shore transit",
+                "tran",
+                "transit",
+                "transit data",
+                "transportation",
+                "trip",
+                "vector",
+                "washington county",
+                "wfs",
+                "wms"
+              ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Agency_State-Agency-Performing-Data-Updates",
+                  "value" : "Maryland Transit Administration"
+                },
+                {
+                  "key" : "Time-Period_Update-Frequency",
+                  "value" : "As Needed"
+                },
+                {
+                  "key" : "Time-Period_Date-Metadata-Written",
+                  "value" : "2025-07-29"
+                },
+                {
+                  "key" : "Jurisdiction_Jurisdiction",
+                  "value" : "State of Maryland"
+                }
+              ]
+          },
+        "metadata" : { "domain" : "opendata.maryland.gov" },
+        "permalink" : "https://opendata.maryland.gov/d/taev-7mns",
+        "link" : "https://opendata.maryland.gov/dataset/BWI-Airport-Shuttle-Stops/taev-7mns",
+        "owner" :
+          {
+            "id" : "37pn-ebz8",
+            "user_type" : "interactive",
+            "display_name" : "J.B. Churchill"
+          },
+        "creator" :
+          {
+            "id" : "37pn-ebz8",
+            "user_type" : "interactive",
+            "display_name" : "J.B. Churchill"
+          }
+      },
+      {
+        "resource" :
+          {
+            "name" : "Wildland Search and Rescue Missions by NYS Forest Rangers: Beginning 2012",
+            "id" : "u6hu-h7p5",
+            "resource_name" : null,
+            "parent_fxf" : [],
+            "description" : "Search and Rescue incidents for which the Division of Forest Protection has responded",
+            "attribution" : "NYS Department of Environmental Conservation, Division of Forest Protection",
+            "attribution_link" : "http://www.dec.ny.gov/regulations/43084.html",
+            "contact_email" : null,
+            "type" : "dataset",
+            "updatedAt" : "2026-10-16T18:42:17.000Z",
+            "createdAt" : "2019-06-27T20:39:03.000Z",
+            "metadata_updated_at" : "2026-10-16T18:42:05.000Z",
+            "data_updated_at" : "2026-10-16T18:42:17.000Z",
+            "page_views" :
+              {
+                "page_views_last_week" : 71,
+                "page_views_last_month" : 335,
+                "page_views_total" : 5327,
+                "page_views_last_week_log" : 6.169925001442312,
+                "page_views_last_month_log" : 8.39231742277876,
+                "page_views_total_log" : 12.379378367071263
+              },
+            "columns_name" :
+              [
+                "SUBJECT GENDER",
+                "LAST KNOWN POINT MUNICIPALITY",
+                "INCIDENT CLOSED DATE",
+                "INCIDENT CLOSED TIME",
+                "LOCATION FOUND LONGITUDE",
+                "OTHER AGENCY INVOLVEMENT",
+                "LAST KNOWN POINT COUNTY",
+                "Counties",
+                "NYS Municipal Boundaries",
+                "New York Zip Codes",
+                "Georeference",
+                "RESPONSE TYPE",
+                "SUBJECT NUMBER",
+                "SUBJECT AGE",
+                "SUBJECT STATE",
+                "SUBJECT COUNTRY",
+                "ACTIVITY",
+                "LOCATION FOUND LATITUDE",
+                "LOCATION FOUND ELEVATION",
+                "FOUND IN SEARCH AREA",
+                "TECHNIQUE",
+                "NUMBER OF RANGERS INVOLVED",
+                "INCIDENT ADIRONDACK PARK",
+                "INCIDENT CATSKILL PARK",
+                "INCIDENT NUMBER",
+                "INCIDENT REGION",
+                "INCIDENT START TIME",
+                "LAST KNOWN POINT LAND CLASS",
+                "LAST KNOWN POINT STATE LAND NAME",
+                "INCIDENT START DATE",
+                "SITUATION"
+              ],
+            "columns_field_name" :
+              [
+                "subject_gender",
+                "last_known_point_municipality",
+                "incident_closed_date_time",
+                "incident_closed_time",
+                "location_found_longitude",
+                "other_agency_involvement",
+                "last_known_point_county",
+                ":@computed_region_kjdx_g34t",
+                ":@computed_region_yamh_8v7k",
+                ":@computed_region_wbg7_3whc",
+                "georeference",
+                "response_type",
+                "subject_number",
+                "subject_age",
+                "subject_state",
+                "subject_country",
+                "activity",
+                "location_found_latitude",
+                "location_found_elevation",
+                "found_in_search_area",
+                "technique",
+                "number_of_rangers_involved",
+                "incident_adirondack_park",
+                "incident_catskill_park",
+                "incident_number",
+                "incident_region",
+                "incident_start_time",
+                "last_known_point_land_class",
+                "last_known_point_state_land_name",
+                "start_date",
+                "situation"
+              ],
+            "columns_datatype" :
+              [
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text",
+                "Number",
+                "Checkbox",
+                "Text",
+                "Number",
+                "Number",
+                "Number",
+                "Point",
+                "Text",
+                "Number",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Number",
+                "Number",
+                "Checkbox",
+                "Text",
+                "Number",
+                "Checkbox",
+                "Checkbox",
+                "Text",
+                "Number",
+                "Text",
+                "Text",
+                "Text",
+                "Calendar date",
+                "Text"
+              ],
+            "columns_description" :
+              [
+                "Subject’s gender",
+                "Municipality of the Subject's last known point",
+                "Date the incident was completed and demobilized ",
+                "Time the incident was completed and demobilized",
+                "Longitude in WGS 84/NAD 83 format subject’s location",
+                "Agencies other than DEC involved (YES/NO) ",
+                "County of the Subject's last known point",
+                "",
+                "",
+                "",
+                "\t Open Data platform-generated geocoding information from supplied address components. Point-type location is the centroid of the address components provided and does not reflect a specific address if the street address component is not provided. Point-type location is supplied in \"POINT (longitude latitude)\" format.",
+                "Nature of the incident: Fugitive Search, Search, Rescue, or Recovery",
+                "Number in party being searched for",
+                "Subject’s Age",
+                "State Subject resides in",
+                "Subject's country of origin and/or legal residence",
+                "The primary activity the subject was undertaking in need of a search or rescue response: aircraft, biking, boating, camping, chainsaw climbing: rock/ice, criminal, despondent, fishing, flood victim, hiking, horseback riding, hunting, motor vehicle, off road vehicle/atv/, runaway, Skiing, snowmobile, stranded, swimming, walking, whitewater",
+                "Latitude in WGS 84/NAD 83 format subject’s location",
+                "Elevation at which the subject was located",
+                "Was the subject located in the established search area: (YES/NO)",
+                "The method by which the subject was rescued or recovered: Airboat, Aircraft evacuation, Assist/own power, Carry out by foot, Dive team, Evacuation by animal, High Angle, Swiftwater, Technical Rope, Vehicle/boat evacuation",
+                "The total number of DEC Forest Rangers involved in the incident",
+                "Did incident occur within the geographic boundary of the Adirondack Park (YES/NO)",
+                "Did incident occur within the geographic boundary of the Catskill Park (YES/NO)",
+                "Number assigned to each new incident",
+                "NYSDEC Region that has jurisdiction over the incident:  Region 1: (Long Island) Nassau and Suffolk counties Region; 2: (New York City) Brooklyn, Bronx, Manhattan, Queens and Staten Island; Region 3: (Lower Hudson Valley) Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster and Westchester* counties; Region 4: (Capital Region/Northern Catskills) Albany, Columbia, Delaware, Greene, Montgomery, Otsego, Rensselaer, Schenectady and Schoharie counties; Region 5: (Eastern Adirondacks/Lake Champlain) Clinton, Essex, Franklin, Fulton, Hamilton, Saratoga, Warren and Washington counties; Region 6: (Western Adirondacks/Eastern Lake Ontario) Herkimer, Jefferson, Lewis, Oneida and St. Lawrence counties; Region 7: (Central New York) Broome, Cayuga, Chenango, Cortland*, Madison, Onondaga, Oswego, Tioga and Tompkins counties; Region 8: (Western Finger Lakes) Chemung, Genesee, Livingston, Monroe, Ontario, Orleans, Schuyler, Seneca, Steuben, Wayne and Yates counties; Region 9: (Western New York) Allegany, Chautauqua, Cattaraugus, Erie, Niagara and Wyoming counties",
+                "Time NYS Forest Rangers were first deployed to the incident ",
+                "Land classification of the land of the subject's last known location (LKP): Conservation, Easement, County Land, DEC Campground, Federal Land, Forest Preserve, Native People's Land, OPRHP State Land, Other DEC Land, Other Municipal Land, Private Land, State Forests, Wildlife Management Area",
+                "Name of the State Land unit, if the incident search area is within a State Land unit",
+                "Date NYS Forest Rangers were first deployed to the incident ",
+                "The situation the subject was in when help was requested: Fugitive, Illness, Injured, Lost, Missing, Overdue, Stranded"
+              ],
+            "columns_format" :
+              [
+                { "align" : "center" },
+                {},
+                { "view" : "date", "align" : "center" },
+                { "align" : "center" },
+                {},
+                { "align" : "center" },
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { "align" : "center" },
+                { "align" : "center" },
+                { "align" : "center" },
+                { "align" : "center" },
+                {},
+                {},
+                { "align" : "right" },
+                { "align" : "center" },
+                {},
+                { "align" : "right" },
+                { "align" : "center" },
+                { "align" : "center" },
+                { "align" : "center" },
+                { "align" : "center" },
+                { "align" : "center" },
+                {},
+                {},
+                { "view" : "date", "align" : "center" },
+                {}
+              ],
+            "download_count" : 4826,
+            "provenance" : "official",
+            "lens_view_type" : "tabular",
+            "lens_display_type" : "table",
+            "locked" : false,
+            "backend" : "nbe",
+            "blob_mime_type" : null,
+            "hide_from_data_json" : false,
+            "publication_date" : "2026-09-09T15:06:29.000Z"
+          },
+        "classification" :
+          {
+            "categories" : [],
+            "tags" : [],
+            "domain_category" : "Public Safety",
+            "domain_tags" : [ "search", "rescue", "camping", "hiking" ],
+            "domain_metadata" :
+              [
+                {
+                  "key" : "Additional-Resources_See-Also",
+                  "value" : "https://www.dec.ny.gov/outdoor/57053.html"
+                },
+                {
+                  "key" : "Dataset-Summary_Dataset-Owner",
+                  "value" : "NYS Department of Environmental Conservation"
+                },
+                {
+                  "key" : "Dataset-Summary_Contact-Information",
+                  "value" : "rangers@dec.ny.gov"
+                },
+                {
+                  "key" : "Dataset-Summary_Granularity",
+                  "value" : "Individual incident"
+                },
+                { "key" : "Dataset-Summary_Coverage", "value" : "Statewide" },
+                {
+                  "key" : "Dataset-Summary_Posting-Frequency",
+                  "value" : "Annually"
+                },
+                {
+                  "key" : "Dataset-Summary_Organization",
+                  "value" : "Division of Forest Protection"
+                },
+                {
+                  "key" : "Dataset-Summary_Time-Period",
+                  "value" : "Beginning 2012"
+                },
+                { "key" : "Local-Data_County-Filter", "value" : "Yes" },
+                {
+                  "key" : "Local-Data_County_Column",
+                  "value" : "last_known_point_county"
+                },
+                { "key" : "Local-Data_Municipality-Filter", "value" : "Yes" },
+                {
+                  "key" : "Local-Data_Municipality_Column",
+                  "value" : "last_known_point_municipality"
+                },
+                {
+                  "key" : "Dataset-Information_Agency",
+                  "value" : "Environmental Conservation, Department of"
+                },
+                {
+                  "key" : "Disclaimers_Limitations",
+                  "value" : "The information reflects S&R missions based on subject activity.  Older information will be limited by less activities captured in past.  Open missions with no subject found."
+                }
+              ]
+          },
+        "metadata" : { "domain" : "data.ny.gov" },
+        "permalink" : "https://data.ny.gov/d/u6hu-h7p5",
+        "link" : "https://data.ny.gov/Public-Safety/Wildland-Search-and-Rescue-Missions-by-NYS-Forest-/u6hu-h7p5",
+        "owner" :
+          {
+            "id" : "xzik-pf59",
+            "user_type" : "interactive",
+            "display_name" : "NY Open Data"
+          },
+        "creator" :
+          {
+            "id" : "xzik-pf59",
+            "user_type" : "interactive",
+            "display_name" : "NY Open Data"
+          }
+      }
+    ],
+  "resultSetSize" : 3,
+  "timings" : { "serviceMillis" : 49, "searchMillis" : [ 5, 10 ] },
+  "warnings" : []
+}

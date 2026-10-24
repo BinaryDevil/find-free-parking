@@ -1,0 +1,179 @@
+{
+  "issue": 125,
+  "registered_utc": "2026-10-24T18:14:17Z",
+  "python": "3.15.0",
+  "seed": 125,
+  "method": "random.Random(125); sample KC-P(8), then KC-L(4), then ST(10), in that order, each from the sorted ID list",
+  "populations": {
+    "KC": {
+      "layer": "https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/PARKRIDE_POINT_386/FeatureServer/0",
+      "file": "kc-PARKRIDE_POINT_386-0-all.geojson",
+      "sha256": "7af0a5fb9c95110d8758e1dbf8f62b9ff8197dab33bd689673d92b471af6b61a",
+      "records": 87,
+      "strata": {
+        "OWNERSHIP_TYPE=P": 59,
+        "OWNERSHIP_TYPE=L": 28
+      },
+      "id_field": "INVENTORY_ID"
+    },
+    "ST": {
+      "layer": "https://services8.arcgis.com/MYIhHZJIRGCSLjBW/arcgis/rest/services/ParkingSites_gdb/FeatureServer/0",
+      "file": "st-ParkingSites-0-all.geojson",
+      "sha256": "1dde0b6f9105e2112131a108206e0c589c9d0fb6c03e0eeedd54048105afbc13",
+      "records": 43,
+      "filter": "FACILITY_TYPE in (PR, Parking, TC, FS)",
+      "eligible": 38,
+      "eligible_without_FACILID": 9,
+      "id_field": "OBJECTID (FACILID recorded; null FACILID means no stable ID)"
+    }
+  },
+  "claims_tested": {
+    "KC": "The rule an adapter would derive from the layer record plus Metro's published system policy: parking open to transit customers, no charge, first come first served, any hour, maximum stay 72 hours, at the layer point.",
+    "ST": "The rule an adapter would derive from the polygon plus Sound Transit's published system policy: open to transit passengers 24 hours a day, maximum stay 24 hours, no charge outside the station permit areas listed on the parking page, within the polygon."
+  },
+  "independent_signals": [
+    "The operator's own per-lot listing or facility page: Metro's parking-locations entry for the lot; Sound Transit's facility page under /ride-with-us/parking/parking-locations/ or the station page.",
+    "Where a different public operator owns or runs the lot, that operator's own official page for the lot (for example Sound Transit for a Metro-listed station garage).",
+    "Location: published coordinates in the operator's map link where present, otherwise the published street address compared with the layer address."
+  ],
+  "contradiction_rule": {
+    "safety_fields": [
+      "payment or fee",
+      "permit or reserved spaces",
+      "who may park (eligibility)",
+      "time window or closures",
+      "maximum stay / impound threshold",
+      "no transit parking available",
+      "location"
+    ],
+    "contradiction_if": [
+      "an independent official signal states a fee, permit-only or reserved area, eligibility, time window, closure or maximum stay for the lot that differs from or is absent from the tested claim",
+      "the independent signal says no transit-customer parking exists, or the lot is not listed as an operating facility",
+      "published coordinates are more than 150 m from the layer point (KC) or outside the polygon by more than 150 m (ST), or the published address names a different site"
+    ],
+    "not_a_contradiction": [
+      "space counts",
+      "route lists",
+      "spelling of names"
+    ],
+    "unknown_if": "no independent official per-lot signal can be retrieved; Unknown counts as not confirmed, never as a pass",
+    "pass_threshold": "zero contradictions across all drawn lots, and zero Unknown"
+  },
+  "sample": {
+    "KC_P": [
+      {
+        "id": 922,
+        "name": "Northgate Garage"
+      },
+      {
+        "id": 727,
+        "name": "South Bellevue Station Parking Garage"
+      },
+      {
+        "id": 726,
+        "name": "Redmond P&R Garage"
+      },
+      {
+        "id": 873.1,
+        "name": "Auburn Surface Lot at Auburn Station P&R"
+      },
+      {
+        "id": 872.1,
+        "name": "Kent Station Surface Lot P&R"
+      },
+      {
+        "id": 753,
+        "name": "Northgate Transit Center P&R"
+      },
+      {
+        "id": 731,
+        "name": "Duvall P&R"
+      },
+      {
+        "id": 751,
+        "name": "SR 18/Auburn- Black Diamond Rd P&R"
+      }
+    ],
+    "KC_L": [
+      {
+        "id": 632,
+        "name": "Redmond Ridge P&R"
+      },
+      {
+        "id": 521,
+        "name": "Kent Covenant Church P&R"
+      },
+      {
+        "id": 540,
+        "name": "Tibbetts Valley Park P&R"
+      },
+      {
+        "id": 516,
+        "name": "QFC Village P&R"
+      }
+    ],
+    "ST": [
+      {
+        "id": 23,
+        "FACILID": "RE09",
+        "FACILITY_TYPE": "PR",
+        "name": "Mercer Island Park and Ride"
+      },
+      {
+        "id": 2,
+        "FACILID": "SRP05",
+        "FACILITY_TYPE": "Parking",
+        "name": "Edmonds Station - Parking"
+      },
+      {
+        "id": 6,
+        "FACILID": "SRP03",
+        "FACILITY_TYPE": "Parking",
+        "name": "Mukilteo Station - Parking"
+      },
+      {
+        "id": 12,
+        "FACILID": "SRP09",
+        "FACILITY_TYPE": "Parking",
+        "name": "Tukwila Station - Parking"
+      },
+      {
+        "id": 50,
+        "FACILID": "571",
+        "FACILITY_TYPE": "PR",
+        "name": "Eastmont Park & Ride"
+      },
+      {
+        "id": 52,
+        "FACILID": null,
+        "FACILITY_TYPE": "FS",
+        "name": "Yarrow Point Freeway Station"
+      },
+      {
+        "id": 45,
+        "FACILID": null,
+        "FACILITY_TYPE": "PR",
+        "name": "Ash Way Park & Ride"
+      },
+      {
+        "id": 24,
+        "FACILID": "RE04",
+        "FACILITY_TYPE": "FS",
+        "name": "Montlake Terrace Freeway Station"
+      },
+      {
+        "id": 5,
+        "FACILID": "SRP23",
+        "FACILITY_TYPE": "Parking",
+        "name": "Lakewood Station - Parking"
+      },
+      {
+        "id": 30,
+        "FACILID": "RE11",
+        "FACILITY_TYPE": "PR",
+        "name": "South Sammamish Park and Ride"
+      }
+    ]
+  },
+  "disclosure": "Before registration the author fetched, for discovery only, Metro's parking-locations and regulations pages, Sound Transit's parking and parking-locations pages, and the Eastgate facility page. These are re-fetched after registration for the spot check."
+}
