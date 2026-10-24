@@ -8,7 +8,7 @@ A privately reviewed approval binds provider branch identity, direct host SHA256
 
 The exact pre-schema comparison removes precisely the baseline pg_stat_statements extension/comment blocks from the independently replayed reference and substitutes precisely its direct app status INSERT grant with the recorded SELECT+INSERT grant. It rejects all other application drift, including extra grants and changed definer permissions. This comparison does not rewrite a dump or alter the independent reference. The existing application projection excludes only documented cloud_admin default ACLs; retain strict provider comparison separately.
 
-Before shared execution: integrate independently reviewed source; rehearse on an isolated dev-derived clone under the actual app role; revalidate eligible rollback consumers; verify original-field fingerprints/catalogs; verify a fresh retained dev restore-point branch, its [restore procedure](../RECOVERY.md#recover-shared-dev-from-a-retained-restore-point-branch) and current provider binding. Stop for unknown drift, unavailable/preload-disabled statistics, wrong owner/target or any migration/adoption/foundation object. All operator DDL must respect the existing migration advisory lock and maintenance boundary.
+Before shared execution: integrate independently reviewed source; rehearse on an isolated dev-derived clone under the actual app role; revalidate eligible rollback consumers; verify original-field fingerprints/catalogs; verify a fresh retained dev restore-point branch, its [restore procedure](../RECOVERY.md#recover-shared-dev-from-a-retained-restore-point-branch) and current provider binding. The reviewed inverse SQL under [Rollback](#rollback) is the primary rollback; the restore-point branch is the data backup. Stop for unknown drift, unavailable/preload-disabled statistics, wrong owner/target or any migration/adoption/foundation object. All operator DDL must respect the existing migration advisory lock and maintenance boundary.
 
 
 ## Private reviewed inputs and command
@@ -24,6 +24,48 @@ Before connecting, the command checks the sealed baseline reference, its pg_dump
 All original row/field fingerprints are compared inside the transaction. SQL verifies extension/version/comment and retained INSERT/definer SELECT while rejecting effective app status SELECT before commit. Since another session's pg_dump cannot see uncommitted DDL, full independent application schema comparison runs **after commit**, with the advisory lock retained. If that last capture or comparison fails, the prerequisite is committed: the command reports `DEV_BASELINE_COMMITTED`; stop and report the state. If COMMIT itself loses its connection, it reports `DEV_BASELINE_COMMIT_UNKNOWN`; verify catalog state before anything else. A connection lost before COMMIT reports `DEV_BASELINE_FAILED` (the server rolls the transaction back); one lost after COMMIT, which also releases the advisory lock, reports `DEV_BASELINE_COMMITTED` with `AFTER_CAPTURE_FAILED`. If `evidence.json` cannot be written after a verified commit, the command still reports `DEV_BASELINE_COMMITTED`.
 
 The evidence directory receives `before.sql` (the pre-write dump at the exported snapshot), `after.sql` (when captured) and `evidence.json` (reason code, whether the connection was lost, normalized before/after schema hashes and per-table row fingerprints), each mode 0600. It holds no connection URL or credential, but schema dumps remain private: never commit or log them. Every refusal prints one fixed reason code from `guardMessages` in `scripts/shared-dev-baseline.mjs`, for example `DEV_BASELINE_SNAPSHOT_STALE` (regenerate the attestation) versus `DEV_BASELINE_SCHEMA_DRIFT` (stop); driver, file and pg_dump errors print only `DEV_BASELINE_FAILED`. Never automatically reverse SQL or continue baseline marking/adoption/foundation. No application DML, fixture writes or arbitrary SQL paths are provided.
+
+## Rollback
+
+The primary rollback for this operation is its exact inverse, run manually by an operator. The operation changes only catalog state (one extension with its comment and one column grant) and touches no rows; the rehearsal showed every original row and field identical before and after. Inverse DDL therefore restores the complete pre-run state, and only the collected statement statistics are lost. The retained restore-point branch is the data backup, and a [branch restore](../RECOVERY.md#inspect-the-restore-point-or-restore-dev-from-it-as-a-last-resort) is a last resort that needs explicit human authorization and may be refused by the provider.
+
+Use the inverse only after the command reported `DEV_BASELINE_COMMITTED_VERIFIED` or `DEV_BASELINE_COMMITTED` with an `afterSchemaHash` in `evidence.json`. After `DEV_BASELINE_COMMIT_UNKNOWN`, or a `DEV_BASELINE_COMMITTED` without an after hash, inspect the catalog read-only first: the operation is one transaction, so either both deltas exist or neither does. If neither exists, there is nothing to roll back. If the after hash cannot be established, stop.
+
+Authorization: shared dev falls under [ADR-0005](../adr/0005-agent-verified-gates.md)'s shared-dev rules, and the inverse restores the exact pre-approval state without rewriting or deleting rows. It runs only after an independent second agent has reviewed this exact SQL text against the run's `evidence.json`. Record on [#120](https://github.com/BinaryDevil/find-free-parking/issues/120) who reviewed it, who ran it, when, and the postcondition results. Never run it automatically, never add `CASCADE`, and never substitute other SQL.
+
+Run it in an owner session (`find-free-parking-db_owner`) on dev's direct (non-pooler) host, port 5432:
+
+```sql
+-- Session identity: expect find-free-parking-db_owner / find-free-parking-db.
+SELECT current_user, current_database();
+
+-- Hold the common migration advisory lock for the whole procedure.
+SELECT pg_advisory_lock(7241865325823964);
+
+-- PRECONDITION, checked outside this session while the lock is held: capture a
+-- pg_dump 17 schema of dev and normalize it under the reference projection, as
+-- the command does. Its hash must equal evidence.json afterSchemaHash.
+-- If it differs, run the unlock below and stop.
+
+BEGIN;
+DROP EXTENSION pg_stat_statements RESTRICT;
+GRANT SELECT (reported_status) ON public.reports TO app_rw;
+COMMIT;
+
+-- POSTCONDITIONS, checked while the lock is still held (see below).
+
+SELECT pg_advisory_unlock(7241865325823964);
+```
+
+`RESTRICT` makes `DROP EXTENSION` fail if anything now depends on the extension; if it fails, the transaction rolls back and the operator unlocks and stops. The `GRANT` is issued by the owner, so the restored column ACL is the original owner-issued, non-grantable grant.
+
+Postconditions, all required before unlocking and recording the result:
+
+1. A fresh pg_dump 17 capture, normalized the same way, hashes to the run's `beforeSchemaHash` in `evidence.json`.
+2. The six baseline application table fingerprints, computed with the command's fingerprint query (`fingerprintSql` in `scripts/shared-dev-baseline-command.mjs`), equal the `fingerprints` recorded in the run's `evidence.json`.
+3. The `app_rw` probe behaves as it did before the run: a direct SELECT of `reports.reported_status` succeeds again, and the report INSERT and report-count definer still work, with any probe writes inside `BEGIN … ROLLBACK`.
+
+If any postcondition fails, unlock, record the observed state on #120 and stop. Do not attempt further SQL, and do not attempt a branch restore without the authorization in [RECOVERY](../RECOVERY.md#recover-shared-dev-from-a-retained-restore-point-branch).
 
 ## Validation still required before merge
 
