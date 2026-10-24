@@ -1,0 +1,315 @@
+{
+  "issue": 125,
+  "checked_utc_date": "2026-10-24",
+  "preregistration": "preregistration.json",
+  "KC": {
+    "tally": {
+      "contradiction": 8,
+      "agree": 4,
+      "unknown": 0
+    },
+    "lots": [
+      {
+        "id": 922,
+        "name": "Northgate Garage",
+        "result": "contradiction",
+        "fields": [
+          "payment",
+          "permit or reserved spaces",
+          "maximum stay"
+        ],
+        "finding": "Metro list: free on B1-B4, 'Rooftop parking is reserved for mall customers and parking rates apply'; Metro Northgate project page lists a separate 'Northgate Station Garage' (free on levels 1-2 Mon-Fri 5-9 am, fees otherwise); treating it as P&R A is inferred from Sound Transit's naming, so any disagreement between Metro's pages is inferred, not established; Sound Transit station page: 'Up to 24 hours', carpool, monthly and one-day permits ($60/$6 on the parking page).",
+        "evidence": [
+          "spot-kcm-parking-locations.html",
+          "spot-kcm-northgate-project.html",
+          "spot-st-ss-northgate-station.html",
+          "spot-st-parking.html"
+        ],
+        "location": "95 m to Metro map pin"
+      },
+      {
+        "id": 727,
+        "name": "South Bellevue Station Parking Garage",
+        "result": "contradiction",
+        "fields": [
+          "maximum stay"
+        ],
+        "finding": "Layer OWNER=ST. Sound Transit parking page: facilities owned and operated by Sound Transit allow parking 'for up to 24 hours'; the claim derives 72 hours from Metro's regulations. Station page gives no per-lot hours (system-level signal).",
+        "evidence": [
+          "spot-st-parking.html",
+          "spot-st-ss-south-bellevue-station.html",
+          "spot-kcm-parking-regulations.html"
+        ],
+        "location": "77 m to Metro map pin; Metro and Sound Transit publish 2700 / 2704 Bellevue Way SE, layer 2000"
+      },
+      {
+        "id": 726,
+        "name": "Redmond P&R Garage",
+        "result": "agree",
+        "fields": [],
+        "finding": "Metro list: Redmond Transit Center, 377 spaces, note only about occupancy; Sound Transit page: 377 spaces, no hours. Layer OWNER=KC, so Metro's system rule applies.",
+        "evidence": [
+          "spot-kcm-parking-locations.html",
+          "spot-st-pl-redmond-transit-center-park-ride.html"
+        ],
+        "location": "2 m to Metro map pin"
+      },
+      {
+        "id": 873.1,
+        "name": "Auburn Surface Lot at Auburn Station P&R",
+        "result": "contradiction",
+        "fields": [
+          "maximum stay"
+        ],
+        "finding": "Layer OWNER=ST; Sound Transit's 24-hour rule for its facilities versus the 72 hours derived from Metro. Metro list: 'Portion of spaces reserved for permit parking' (program suspended). System-level signal.",
+        "evidence": [
+          "spot-st-parking.html",
+          "spot-st-ss-auburn-station.html",
+          "spot-kcm-parking-locations.html"
+        ],
+        "location": "128 m to Metro map pin"
+      },
+      {
+        "id": 872.1,
+        "name": "Kent Station Surface Lot P&R",
+        "result": "contradiction",
+        "fields": [
+          "maximum stay",
+          "closure (lot identity inferred)"
+        ],
+        "finding": "Layer OWNER=ST, so Sound Transit's 24-hour rule applies (system-level). Alert embedded in the Kent station page: the northwest Sounder surface lot is closed 2026-03-16 to 2027-01-01 except three ADA spaces (the separately saved alert concerns reduced garage capacity, 2026-08-10 to 2027-02-15). That this layer lot (400 1st Ave N) is the northwest lot is inferred, not verified.",
+        "evidence": [
+          "spot-st-parking.html",
+          "spot-st-ss-kent-station.html"
+        ],
+        "location": "71 m to Metro map pin"
+      },
+      {
+        "id": 753,
+        "name": "Northgate Transit Center P&R",
+        "result": "contradiction",
+        "fields": [
+          "closure or partial availability"
+        ],
+        "finding": "Metro project page: 'Southern section of Park & Ride D available to transit customers'; Metro list: construction at P&R D 'will affect transit parking'. Sound Transit: P&R D 'Up to 72 hours', 448 spaces (layer 263).",
+        "evidence": [
+          "spot-kcm-northgate-project.html",
+          "spot-kcm-parking-locations.html",
+          "spot-st-ss-northgate-station.html"
+        ],
+        "location": "89 m to Metro map pin"
+      },
+      {
+        "id": 731,
+        "name": "Duvall P&R",
+        "result": "agree",
+        "fields": [],
+        "finding": "Metro list: Duvall Park & Ride, 49 spaces, no conditions. The three published addresses (layer 15935 Main St NE, list 26325 NE Woodinville Duvall Rd, map link 16011 Main St NE) geocode with King County's address locator to within 69 m of the layer point.",
+        "evidence": [
+          "spot-kcm-parking-locations.html",
+          "geocode-kc-duvall-1.json",
+          "geocode-kc-duvall-2.json",
+          "geocode-kc-duvall-3.json"
+        ],
+        "location": "0-69 m (King County geocoder)"
+      },
+      {
+        "id": 751,
+        "name": "SR 18/Auburn- Black Diamond Rd P&R",
+        "result": "contradiction",
+        "fields": [
+          "who may park"
+        ],
+        "finding": "Metro list: Black Diamond Park & Ride, 'No Transit Service for this park & ride lot. Carpool and Vanpool only.' The claim derives transit-customer parking.",
+        "evidence": [
+          "spot-kcm-parking-locations.html"
+        ],
+        "location": "11 m to Metro map pin"
+      },
+      {
+        "id": 632,
+        "name": "Redmond Ridge P&R",
+        "result": "contradiction",
+        "fields": [
+          "not listed as operating"
+        ],
+        "finding": "Absent from Metro's parking-locations list and Sound Transit's parking-locations list (absence-based, as pre-registered).",
+        "evidence": [
+          "spot-kcm-parking-locations.html",
+          "spot-st-parking-locations.html"
+        ],
+        "location": "no published location"
+      },
+      {
+        "id": 521,
+        "name": "Kent Covenant Church P&R",
+        "result": "contradiction",
+        "fields": [
+          "not listed as operating"
+        ],
+        "finding": "Absent from Metro's parking-locations list and Sound Transit's parking-locations list (absence-based, as pre-registered).",
+        "evidence": [
+          "spot-kcm-parking-locations.html",
+          "spot-st-parking-locations.html"
+        ],
+        "location": "no published location"
+      },
+      {
+        "id": 540,
+        "name": "Tibbetts Valley Park P&R",
+        "result": "agree",
+        "fields": [],
+        "finding": "Metro list and Sound Transit page: Tibbetts Valley Park Park & Ride, 965 12th Ave NW, 27 spaces, no conditions.",
+        "evidence": [
+          "spot-kcm-parking-locations.html",
+          "spot-st-pl-tibbetts-valley-park-park-ride.html"
+        ],
+        "location": "114 m to Metro map pin"
+      },
+      {
+        "id": 516,
+        "name": "QFC Village P&R",
+        "result": "agree",
+        "fields": [],
+        "finding": "Metro list: QFC Village Park & Ride, SE 68th St & 84th Ave SE, 14 spaces (layer 21; counts are not safety fields), no conditions.",
+        "evidence": [
+          "spot-kcm-parking-locations.html"
+        ],
+        "location": "38 m to Metro map pin"
+      }
+    ]
+  },
+  "ST": {
+    "tally": {
+      "contradiction": 2,
+      "agree": 6,
+      "unknown": 2
+    },
+    "lots": [
+      {
+        "id": 23,
+        "name": "Mercer Island Park and Ride",
+        "result": "agree",
+        "fields": [],
+        "finding": "Sound Transit page: 447 spaces, no hours, not a permit station.",
+        "evidence": [
+          "spot-st-pl-mercer-island-park-ride.html",
+          "spot-st-ss-mercer-island-station.html"
+        ],
+        "location": "0 m from page pin to polygon"
+      },
+      {
+        "id": 2,
+        "name": "Edmonds Station - Parking",
+        "result": "agree",
+        "fields": [],
+        "finding": "Station page: Edmonds Station Park-and-Ride, 156 spaces; not on the permit list.",
+        "evidence": [
+          "spot-st-ss-edmonds-station.html",
+          "spot-st-parking.html"
+        ],
+        "location": "29 m from page pin to polygon"
+      },
+      {
+        "id": 6,
+        "name": "Mukilteo Station - Parking",
+        "result": "agree",
+        "fields": [],
+        "finding": "Station page: 63 spaces for Sound Transit passengers; permit program suspended.",
+        "evidence": [
+          "spot-st-ss-mukilteo-station.html"
+        ],
+        "location": "122 m from page pin to polygon"
+      },
+      {
+        "id": 12,
+        "name": "Tukwila Station - Parking",
+        "result": "agree",
+        "fields": [],
+        "finding": "Station page: 390 spaces for Sound Transit passengers; permit program suspended.",
+        "evidence": [
+          "spot-st-ss-tukwila-station.html"
+        ],
+        "location": "31 m from page pin to polygon"
+      },
+      {
+        "id": 50,
+        "name": "Eastmont Park & Ride",
+        "result": "unknown",
+        "fields": [],
+        "finding": "Not on Sound Transit's or Metro's lists; Community Transit's list loads by script and has no static per-lot entry. No independent per-lot signal retrieved.",
+        "evidence": [
+          "spot-st-parking-locations.html",
+          "spot-ct-park-and-rides.html"
+        ],
+        "location": "no published coordinates"
+      },
+      {
+        "id": 52,
+        "name": "Yarrow Point Freeway Station",
+        "result": "contradiction",
+        "fields": [
+          "not listed as operating"
+        ],
+        "finding": "Freeway-station footprint with no parking entry on Sound Transit's or Metro's lists and no facility page in the Sound Transit sitemap (absence-based, as pre-registered).",
+        "evidence": [
+          "spot-st-parking-locations.html",
+          "spot-kcm-parking-locations.html",
+          "st-sitemap.xml"
+        ],
+        "location": "no published coordinates"
+      },
+      {
+        "id": 45,
+        "name": "Ash Way Park & Ride",
+        "result": "contradiction",
+        "fields": [
+          "maximum stay"
+        ],
+        "finding": "Facility page: operated by Community Transit, 'Hours: Up to 72 hours'. The layer has no operator field, so the pre-registered claim applies Sound Transit's 24-hour rule (which covers only lots Sound Transit owns and operates); the contradiction is with that derived claim, not between two Sound Transit statements.",
+        "evidence": [
+          "spot-st-pl-ash-way-park-ride.html",
+          "spot-st-parking.html"
+        ],
+        "location": "40 m from page pin to polygon"
+      },
+      {
+        "id": 24,
+        "name": "Montlake Terrace Freeway Station",
+        "result": "unknown",
+        "fields": [],
+        "finding": "Station page lists the freeway-station park-and-ride (668) and the station garage (202) together with 'Up to 24 hours' and carpool permits; the permit area's extent and which facility the hours apply to are not published.",
+        "evidence": [
+          "spot-st-ss-mountlake-terrace-station.html",
+          "spot-st-parking.html"
+        ],
+        "location": "0 m from page pin to polygon"
+      },
+      {
+        "id": 5,
+        "name": "Lakewood Station - Parking",
+        "result": "agree",
+        "fields": [],
+        "finding": "Station page: Lakewood Station Park-and-Ride, 601 spaces; not on the permit list.",
+        "evidence": [
+          "spot-st-ss-lakewood-station.html",
+          "spot-st-parking.html"
+        ],
+        "location": "43 m from page pin to polygon"
+      },
+      {
+        "id": 30,
+        "name": "South Sammamish Park and Ride",
+        "result": "agree",
+        "fields": [],
+        "finding": "Sound Transit page: 265 spaces, no hours; Metro list agrees (3015 228th Ave SE).",
+        "evidence": [
+          "spot-st-pl-south-sammamish-park-ride.html",
+          "spot-kcm-parking-locations.html"
+        ],
+        "location": "16 m from page pin to polygon"
+      }
+    ]
+  },
+  "verdict": "Both samples fail criterion 7: the pass threshold is zero contradictions and zero Unknown."
+}
