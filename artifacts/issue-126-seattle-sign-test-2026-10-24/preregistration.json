@@ -1,0 +1,92 @@
+{
+  "issue": 126,
+  "written_utc": "2026-10-24T18:14:13Z",
+  "status": "Pre-registration. Written and committed before any side-level evidence (sampling frame, Blockface record, sign record or curb-space record of any block side) was fetched. Inputs used to write it: SDOT attribute PDFs and item metadata in docs-raw/, and the population-level count statistics in prereg-raw/ (counts per PAIDAREA and SPACETYPE only).",
+  "documentation_gate": {
+    "rule": "Sign-to-curb rules may use only semantics stated in SDOT's published documentation (docs-raw/). Undocumented semantics are not guessed. If arrow or extent semantics are undocumented, a sign cannot be turned into a rule for any curb length beyond its own point, and the verdict for sign-based rule adapters is no-go on documentation grounds. The bounded test below still runs, to measure whether matching and sign completeness would be reliable if those semantics were published.",
+    "documented": {
+      "Parking_Signs ELMNTKEY": "Street_Signs_OD.pdf: foreign key to the associated block face record",
+      "Parking_Signs DISTANCE": "Street_Signs_OD.pdf: asset location (in feet) from the low address end of associated [block face]",
+      "Parking_Signs FACING": "Street_Signs_OD.pdf: direction the sign is facing (no code list)",
+      "Parking_Signs SIDE": "Street_Signs_OD.pdf: side of street sign is located (field not present in published layer 0 or layer 4)",
+      "Parking_Signs SIGNTYPE": "Street_Signs_OD.pdf: MUTCD sign type enhanced for Seattle; R7 = parking/loading generally not allowed, R8 = allowed. No code list.",
+      "Parking_Signs CATEGORY": "Street_Signs_OD.pdf: sub-category of sign type; descriptions published in-record as CATEGORYDESCR",
+      "Parking_Signs STARTDAY/ENDDAY": "Street_Signs_OD.pdf: 1 = Sunday, 2 = Monday, 6 = Saturday (7 not stated)",
+      "Parking_Signs STARTTIME/ENDTIME": "Street_Signs_OD.pdf: military time",
+      "Blockface DISTANCE / END_DISTANCE": "Blockface_Elements_OD.pdf: start of block face from the low-address intersecting street centreline; end = distance + length (feet)",
+      "Blockface CSM": "Blockface_Elements_OD.pdf: in CSM paid areas every linear foot of blockface is measured and assigned to a parking or traffic regulation",
+      "Curb spaces BLOCK_ST / BLOCK_END": "Curbspaces_OD.pdf: start/end of the space along the segment centreline (start of blockface record + start of space along the blockface)",
+      "Curb spaces SPACETYPE": "Curbspaces_OD.pdf: full code list",
+      "Curb spaces WIDTH_OFFSET": "Curbspaces_OD.pdf: negative = right side in direction of addressing, positive = left"
+    },
+    "not_found_in_documentation": [
+      "Arrow meaning: SIGNTYPE suffixes such as R7-NPL / R7-NPR are not defined; no SIGNTYPE code list is published.",
+      "Extent: how far along the curb a sign's regulation applies (to the next sign, to the block end, or by arrow) is not stated.",
+      "FACING code reference frame relative to arrows.",
+      "Holiday and variable-date codes; STARTDAY value 7."
+    ]
+  },
+  "neighbourhood": {
+    "selection_rule": "Among Curb Space Categories (layer 6) PAIDAREA values with in-service spaces, pick the one that maximises the minimum count across the four case groups: metered = SPACETYPE 'PS'; permit = 'PS-RPZ' + 'TL-RPZ'; time-limited = 'TL'; no-parking = 'NP' + 'TAZ'. Ties broken by name. Counts from prereg-raw/stats-csc-paidarea-spacetype.json.",
+    "result": "First Hill",
+    "counts": { "metered": 442, "permit": 451, "time_limited": 17, "no_parking": 466 },
+    "runner_up": "Capitol Hill (minimum 11, time-limited)",
+    "why_paid_area": "Curb Space Categories is the independent grading signal and exists only in CSM (paid) areas. Unpaid streets cannot be graded by it, so free on unpaid streets is outside what this test can show."
+  },
+  "sampling_frame": "All distinct ELMNTKEY values with at least one Curb_Space_Categories/6 record where PAIDAREA = 'First Hill' and CURRENT_STATUS = 'INSVC', fetched with their in-service SPACETYPE values only.",
+  "strata": {
+    "order": ["permit", "metered", "time_limited", "no_parking"],
+    "permit": "side has an in-service space with SPACETYPE in ('PS-RPZ','TL-RPZ')",
+    "metered": "side has an in-service space with SPACETYPE = 'PS'",
+    "time_limited": "side has an in-service space with SPACETYPE = 'TL'",
+    "no_parking": "side has an in-service space with SPACETYPE in ('NP','TAZ')"
+  },
+  "seed": 20261024,
+  "sampling": "PRNG mulberry32(seed). For each stratum in the order above: candidates = ascending ELMNTKEYs in the stratum not already drawn; draw index floor(rng() * candidates.length), remove it, and repeat until 3 are drawn or none remain. Total target 12 sides (minimum 10).",
+  "evidence_per_side": "Blockface/1 record(s) for the ELMNTKEY; every Parking_Signs/0 record and every Parking_Features/4 (sign text) record with that ELMNTKEY; every Curb_Space_Categories/6 record with that ELMNTKEY (all statuses). Saved unmodified with SHA256SUMS.",
+  "matching_rule": {
+    "M1 side": "A sign belongs to the block side whose ELMNTKEY it carries.",
+    "M2 in-service": "Signs are the Parking_Features/4 records with CURRENT_STATUS = 'INSVC'. Layer 0 records are joined by UNITID only for STARTDAY/ENDDAY/STARTTIME/ENDTIME; a layer 0 record with no in-service layer 4 match is reported as status-unknown and is not used to grant anything.",
+    "M3 position": "Sign position on the segment axis = Blockface.DISTANCE + sign.DISTANCE (feet). Curb space extent = [BLOCK_ST, BLOCK_END].",
+    "M4 no extent": "A sign asserts its regulation family at its own position only. Arrow suffixes are ignored because they are undocumented. No regulation is extended along the curb.",
+    "M5 never free": "The matcher has no free output. Every curb length is Unknown unless a sign point asserts a restriction there; absence of a sign never yields free."
+  },
+  "families": {
+    "sign_category": {
+      "PNP": "NO_PARKING", "PNS": "NO_PARKING", "PPEAK": "NO_PARKING",
+      "PRZ": "PERMIT",
+      "PPP": "PAID", "PS": "PAID",
+      "PTIML": "TIME_LIMIT", "P1H": "TIME_LIMIT",
+      "PLU": "LOADING", "PCVL": "LOADING", "PTRKL": "LOADING", "PPL": "LOADING",
+      "PBZ": "BUS", "PBLO": "BUS",
+      "PDIS": "DISABLED", "PSCH": "SCHOOL",
+      "PZONE": "SPECIAL", "PGA": "SPECIAL", "PCARPL": "SPECIAL",
+      "PR": "UNCLASSIFIED", "PINST": "IGNORE",
+      "_other": "UNCLASSIFIED"
+    },
+    "spacetype": {
+      "PS": ["PAID"], "PS-RPZ": ["PAID", "PERMIT"], "TL": ["TIME_LIMIT"], "TL-RPZ": ["TIME_LIMIT", "PERMIT"],
+      "NP": ["NO_PARKING"], "OTHERN": ["NO_PARKING"], "TAZ": ["NO_PARKING"],
+      "L/UL": ["LOADING"], "CVLZ": ["LOADING"], "CVLZ-B": ["LOADING", "BUS"], "CVLZ-P": ["LOADING"], "CVLZS": ["LOADING"], "CV-TAX": ["LOADING", "SPECIAL"], "CVLZ-TRUCK": ["LOADING"], "TRUCK": ["LOADING"], "PLZ": ["LOADING"],
+      "PS-LUL": ["PAID", "LOADING"], "PS-CVLZ": ["PAID", "LOADING"], "PS-TRK": ["PAID", "LOADING"], "PS-PLZ": ["PAID", "LOADING"],
+      "TL-LUL": ["TIME_LIMIT", "LOADING"], "TL-TRK": ["TIME_LIMIT", "LOADING"], "TL-PLZ": ["TIME_LIMIT", "LOADING"], "TL-PKP": ["TIME_LIMIT", "NO_PARKING"],
+      "BUS": ["BUS"], "BUSLAY": ["BUS"], "CHRTR": ["BUS"], "SBO": ["BUS"], "PS-BUS": ["PAID", "BUS"], "PS-LAY": ["PAID", "BUS"], "PS-SBO": ["PAID", "BUS"], "TL-LAY": ["TIME_LIMIT", "BUS"],
+      "DISABL": ["DISABLED"], "PS-DIS": ["PAID", "DISABLED"], "PS-SCH": ["PAID", "SCHOOL"],
+      "CS": ["SPECIAL"], "CZ": ["SPECIAL"], "LEVO": ["SPECIAL"], "PS-LEV": ["PAID", "SPECIAL"], "SFD": ["SPECIAL"], "TAXI": ["SPECIAL"], "PS-TAX": ["PAID", "SPECIAL"], "PS-VEN": ["PAID", "SPECIAL"], "CRPL": ["SPECIAL"], "PS-CAR": ["PAID", "SPECIAL"], "PS-MC": ["PAID", "SPECIAL"], "PS-TR": ["PAID"],
+      "ALLEY": ["STATUTORY_OR_PHYSICAL"], "DW": ["STATUTORY_OR_PHYSICAL"], "HYD": ["STATUTORY_OR_PHYSICAL"], "XW": ["STATUTORY_OR_PHYSICAL"], "XWAREA": ["STATUTORY_OR_PHYSICAL"], "CR": ["STATUTORY_OR_PHYSICAL"], "CRBBLB": ["STATUTORY_OR_PHYSICAL"], "CLR": ["STATUTORY_OR_PHYSICAL"], "BA": ["STATUTORY_OR_PHYSICAL"], "BIKE": ["STATUTORY_OR_PHYSICAL"], "PARKLET": ["STATUTORY_OR_PHYSICAL"],
+      "UNR": ["UNRESTRICTED"], "OTHERP": ["UNRESTRICTED"],
+      "_other": ["UNDOCUMENTED"]
+    },
+    "note": "Codes absent from Curbspaces_OD.pdf (for example MVZ, PS-WASTE, PS-EV, PLZ-VEND, L/UL-P, TL-TR) map to UNDOCUMENTED. Families NO_PARKING, PERMIT and PAID are the criterion-7 listed fields (no stopping, tow-away, permit, payment); LOADING, BUS, DISABLED, SCHOOL, TIME_LIMIT and SPECIAL are other safety or rule fields. A sign-requiring family is any family except STATUTORY_OR_PHYSICAL, UNRESTRICTED and UNDOCUMENTED."
+  },
+  "tolerance_ft": 10,
+  "claims_and_grading": {
+    "G1 matching": "Every in-service sign's position lies within [Blockface.DISTANCE - 10, Blockface.END_DISTANCE + 10]. A sign outside is a matching failure.",
+    "G2 point agreement": "For each in-service sign whose family is not IGNORE or UNCLASSIFIED, take the in-service curb spaces on the same ELMNTKEY whose [BLOCK_ST - 10, BLOCK_END + 10] contains the sign position. If any has the sign's family, the sign agrees. If at least one space is in range and none has the family, that is a contradiction. If none is in range, the sign is unverified.",
+    "G3 completeness": "For each in-service curb space on the side whose families include a sign-requiring family F, at least one in-service sign of family F must exist anywhere on the side (lenient: extent unknown). If none exists, that is a contradiction: a sign-based adapter could not carry that regulation.",
+    "side_result": "contradict if any G1 failure or G2/G3 contradiction; unverified if the side has no in-service curb space or no in-service sign; otherwise agree.",
+    "contradiction_rule": "A contradiction is any G2 or G3 contradiction, or a G1 failure. Contradictions on NO_PARKING, PERMIT or PAID are reported as criterion-7 listed-field contradictions; others as rule contradictions. Both count against zero-contradiction.",
+    "not_tested": "Rates, day and hour windows, and time-limit values (Curb Space Categories has TIME_LIMIT but no schedule)."
+  },
+  "verdict_rule": "GO for sign-based curb rule adapters requires all of: (a) arrow and extent semantics documented; (b) G1 passes on every sampled side; (c) zero G2 and G3 contradictions across the sample. Otherwise NO-GO, with the failing parts named."
+}

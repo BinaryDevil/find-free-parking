@@ -1,0 +1,54 @@
+{
+ "retrieved_utc": "2026-10-24T18:15:21.689Z",
+ "seed": 20261024,
+ "sample": [
+  {
+   "stratum": "permit",
+   "ELMNTKEY": 31541
+  },
+  {
+   "stratum": "permit",
+   "ELMNTKEY": 54038
+  },
+  {
+   "stratum": "permit",
+   "ELMNTKEY": 58085
+  },
+  {
+   "stratum": "metered",
+   "ELMNTKEY": 35821
+  },
+  {
+   "stratum": "metered",
+   "ELMNTKEY": 79657
+  },
+  {
+   "stratum": "metered",
+   "ELMNTKEY": 56086
+  },
+  {
+   "stratum": "time_limited",
+   "ELMNTKEY": 54702
+  },
+  {
+   "stratum": "time_limited",
+   "ELMNTKEY": 76397
+  },
+  {
+   "stratum": "time_limited",
+   "ELMNTKEY": 32250
+  },
+  {
+   "stratum": "no_parking",
+   "ELMNTKEY": 54542
+  },
+  {
+   "stratum": "no_parking",
+   "ELMNTKEY": 36362
+  },
+  {
+   "stratum": "no_parking",
+   "ELMNTKEY": 34309
+  }
+ ]
+}
