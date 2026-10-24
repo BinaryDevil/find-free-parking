@@ -1,6 +1,6 @@
 # Seattle region lots (E6): author review, 2026-10-24
 
-Issue: [#125](https://github.com/BinaryDevil/find-free-parking/issues/125). Inventory: [seattle-lots.md](seattle-lots.md). Evidence: [`artifacts/issue-125-seattle-lots-2026-10-24/`](../../artifacts/issue-125-seattle-lots-2026-10-24/) (checksums in `SHA256SUMS`; every request with its UTC time and HTTP status in `retrievals.tsv`).
+Issue: [#125](https://github.com/BinaryDevil/find-free-parking/issues/125). Inventory: [seattle-lots.md](seattle-lots.md). Evidence: [`artifacts/issue-125-seattle-lots-2026-10-24/`](../../artifacts/issue-125-seattle-lots-2026-10-24/) (checksums in `SHA256SUMS`; every request with its UTC time and HTTP status in `retrievals.tsv`, where five superseded zero-result or wrong-service responses are marked "not retained").
 
 This is the author agent's review under ADR-0005. It approves nothing. An independent reviewer agent must re-fetch and re-check every criterion before any approval.
 
@@ -16,7 +16,7 @@ This is the author agent's review under ADR-0005. It approves nothing. An indepe
    - **Independent signals:** the operator's own per-lot listing or facility page; the other public operator's page where it owns or runs the lot; published coordinates.
    - **Contradiction rule:** any differing or omitted fee, permit area, eligibility, time window, closure or maximum stay; a lot not listed as operating; or a location more than 150 m off. Unknown counts as not confirmed. The pass threshold is zero contradictions and zero Unknown.
    - **Disclosure:** some system pages and the Eastgate facility page were fetched before registration, for discovery only. Eastgate was not drawn.
-3. **Spot-check retrieval** (from 18:14:43 UTC). Metro's list, regulations and Northgate pages were re-fetched. Sound Transit's parking, parking-location and station pages, one service alert, and King County address-locator results for Duvall were also fetched.
+3. **Spot-check retrieval** (from 18:14:43 UTC). Metro's list, regulations and Northgate pages were re-fetched. Sound Transit's parking, parking-location and station pages, one service alert (Kent garage capacity), and King County address-locator results for Duvall were also fetched.
 4. **Scoring.** Results are recorded in [`spot-check-results.json`](../../artifacts/issue-125-seattle-lots-2026-10-24/spot-check-results.json) by [`method/results.py`](../../artifacts/issue-125-seattle-lots-2026-10-24/method/results.py). Sound Transit pin distances are in `st-location-check.json` from `method/st_location.py`. Station pages publish transit-stop pins, not lot pins, so those location checks are stop-to-footprint distances.
 
 ## Metro sample
@@ -25,11 +25,11 @@ This is the author agent's review under ADR-0005. It approves nothing. An indepe
 
 | ID | Lot | Result | Fields | Finding | Location |
 |---|---|---|---|---|---|
-| 922 | Northgate Garage | **contradiction** | payment, permit areas, maximum stay | Metro list: free on B1–B4, rooftop reserved for mall customers with rates. Metro's Northgate page: station garage free on levels 1–2 Mon–Fri 5–9 am only, with fees after 9 am and on weekends, so Metro's two pages disagree. Sound Transit station page: up to 24 hours, with carpool, monthly and one-day permits. | 95 m |
+| 922 | Northgate Garage | **contradiction** | payment, permit areas, maximum stay | Metro list: free on B1–B4, rooftop reserved for mall customers with rates. Metro's Northgate page lists a separate "Northgate Station Garage" (free on levels 1–2 Mon–Fri 5–9 am only, fees otherwise). That this is P&R A is inferred from Sound Transit's naming, so a disagreement between Metro's pages is not established. Sound Transit station page: up to 24 hours, with carpool, monthly and one-day permits. | 95 m |
 | 727 | South Bellevue Station Parking Garage | **contradiction** | maximum stay | `OWNER` = ST. Sound Transit's 24-hour rule for its facilities, against the 72 hours derived from Metro. A system-level signal; the station page gives no hours. | 77 m |
 | 726 | Redmond P&R Garage | agree | — | Metro list and Sound Transit page: 377 spaces, no conditions. `OWNER` = KC. | 2 m |
 | 873.1 | Auburn Surface Lot at Auburn Station P&R | **contradiction** | maximum stay | `OWNER` = ST, so 24 hours against 72 (system-level). Metro's permit reservation is suspended. | 128 m |
-| 872.1 | Kent Station Surface Lot P&R | **contradiction** | maximum stay; closure (identity inferred) | `OWNER` = ST, so 24 hours against 72. A Sound Transit alert closes the NW Sounder surface lot from 2026-03-16 to 2027-01-01, except three ADA spaces. That this is the same lot is inferred. | 71 m |
+| 872.1 | Kent Station Surface Lot P&R | **contradiction** | maximum stay; closure (identity inferred) | `OWNER` = ST, so 24 hours against 72. An alert on the Kent station page closes the NW Sounder surface lot from 2026-03-16 to 2027-01-01, except three ADA spaces. That this is the same lot is inferred. (The separately saved alert concerns reduced garage capacity, 2026-08-10 to 2027-02-15.) | 71 m |
 | 753 | Northgate Transit Center P&R | **contradiction** | partial availability | Metro's Northgate page: only the "southern section of Park & Ride D" is available to transit customers. Construction notice on Metro's list. | 89 m |
 | 731 | Duvall P&R | agree | — | Three different published addresses all geocode within 69 m of the layer point (King County address locator). | 0–69 m |
 | 751 | SR 18/Auburn-Black Diamond Rd P&R | **contradiction** | who may park | Metro list: no transit service, carpool and vanpool only. | 11 m |
@@ -52,7 +52,7 @@ Five contradictions rest on per-lot statements (922, 753, 751, 632, 521). Three 
 | 12 | SRP09 | Tukwila Station - Parking | agree | 390 spaces, permit program suspended. | 31 m (stop pin) |
 | 50 | 571 | Eastmont Park & Ride | **Unknown** | No Sound Transit or Metro entry; Community Transit's list is script-loaded. | — |
 | 52 | (null) | Yarrow Point Freeway Station | **contradiction** | No operator lists parking, and there is no facility page (absence-based). | — |
-| 45 | (null) | Ash Way Park & Ride | **contradiction** | Facility page: "Hours: Up to 72 hours", against the 24 hours in the system rule. | 40 m |
+| 45 | (null) | Ash Way Park & Ride | **contradiction** | Facility page: operated by Community Transit, "Hours: Up to 72 hours". The layer has no operator field, so the derived claim applies Sound Transit's 24-hour rule for its own facilities. The conflict is with that derived claim, not between Sound Transit statements. | 40 m |
 | 24 | RE04 | Mountlake Terrace Freeway Station | **Unknown** | Hours and carpool-permit area published for the station as a whole, not located within this footprint. | inside (stop pin) |
 | 5 | SRP23 | Lakewood Station - Parking | agree | 601 spaces, not a permit station. | 43 m (stop pin) |
 | 30 | RE11 | South Sammamish Park and Ride | agree | 265 spaces; Metro agrees. | 16 m |
