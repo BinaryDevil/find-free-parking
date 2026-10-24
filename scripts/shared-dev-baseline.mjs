@@ -34,7 +34,7 @@ export function guard(code) {
 }
 
 export function reconciliationTarget(connectionString, approval, approvedHash) {
-  if ([approval?.branchId, approval?.parentBranchId, approval?.snapshot?.sourceBranchId].includes(productionBranchId)) {
+  if ([approval?.branchId, approval?.parentBranchId, approval?.snapshot?.branchId, approval?.snapshot?.parentBranchId].includes(productionBranchId)) {
     throw guard('DEV_BASELINE_PRODUCTION_DENIED');
   }
   let url;

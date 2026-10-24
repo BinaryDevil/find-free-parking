@@ -33,7 +33,7 @@ function commandInputs(change = () => {}) {
   const now = Date.now();
   const reviewed = { ...approval, beforeSchemaHash: digest(normalizeSchema(before, 'application')), referenceHash: digest(canonical(metadata)),
     operationHash: digest(readFileSync('sql/operations/reconcile_shared_dev_baseline.sql', 'utf8')), track: 'top',
-    snapshot: { snapshotId: 'snap-retained-dev', sourceBranchId: approval.branchId, providerRecordHash: 'a'.repeat(64),
+    snapshot: { branchId: 'br-retained-snapshot', parentBranchId: approval.branchId, providerRecordHash: 'a'.repeat(64),
       createdAt: new Date(now - 120000).toISOString(), verifiedAt: new Date(now - 60000).toISOString(),
       retainedUntil: new Date(now + 86400000).toISOString(), restoreProcedure } };
   change(reviewed);
@@ -97,7 +97,7 @@ test('production branch is denied on every path before connecting', async () => 
     reviewed => Object.assign(reviewed, { branchId: productionBranchId }),
     reviewed => Object.assign(reviewed, { branchId: productionBranchId, branchName: 'validation/issue-120-x', parentBranchId: approval.branchId }),
     reviewed => Object.assign(reviewed, { branchId: 'br-validation-120', branchName: 'validation/issue-120-x', parentBranchId: productionBranchId }),
-    reviewed => Object.assign(reviewed.snapshot, { sourceBranchId: productionBranchId }),
+    reviewed => Object.assign(reviewed.snapshot, { branchId: productionBranchId }),
   ]) {
     const { env, inputs, evidence } = commandInputs(change);
     let connected = false;
@@ -132,13 +132,11 @@ test('operator command refuses unreviewed inputs before connecting', async () =>
     [reviewed => { reviewed.referenceHash = 'c'.repeat(64); }, 'DEV_BASELINE_REFERENCE_UNTRUSTED'],
     [reviewed => { reviewed.snapshot.verifiedAt = 'invalid'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.restoreProcedure = true; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
-    [reviewed => { reviewed.snapshot.snapshotId = reviewed.branchId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
-    [reviewed => { reviewed.snapshot.snapshotId = 'snap-Retained'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
-    [reviewed => { reviewed.snapshot.sourceBranchId = 'br-other-source'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
-    [reviewed => { delete reviewed.snapshot.sourceBranchId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
+    [reviewed => { reviewed.snapshot.branchId = reviewed.branchId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
+    [reviewed => { reviewed.snapshot.parentBranchId = 'br-other-parent'; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.providerRecordHash = 'z'.repeat(64); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.verifiedAt = new Date(Date.parse(reviewed.snapshot.createdAt) - 60000).toISOString(); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
-    [reviewed => { delete reviewed.snapshot.snapshotId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
+    [reviewed => { delete reviewed.snapshot.branchId; }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { reviewed.snapshot.verifiedAt = new Date(Date.now() + 10 * 60000).toISOString(); }, 'DEV_BASELINE_SNAPSHOT_INVALID'],
     [reviewed => { delete reviewed.beforeSchemaHash; }, 'DEV_BASELINE_APPROVAL_INVALID'],
     [reviewed => Object.assign(reviewed.snapshot, { createdAt: new Date(Date.now() - 3 * hour).toISOString(), verifiedAt: new Date(Date.now() - 2 * hour).toISOString() }), 'DEV_BASELINE_SNAPSHOT_STALE'],

@@ -55,8 +55,8 @@ export async function executeReconciliation(env, { approval, reference, referenc
   const snapshot = approval.snapshot;
   const now = Date.now();
   const [created, verified, retained] = [snapshot?.createdAt, snapshot?.verifiedAt, snapshot?.retainedUntil].map(value => Date.parse(value));
-  if (!/^snap-[a-z0-9-]+$/.test(snapshot?.snapshotId || '') ||
-      snapshot.sourceBranchId !== approval.branchId || !/^[a-f0-9]{64}$/.test(snapshot.providerRecordHash || '') ||
+  if (!/^br-[a-z0-9-]+$/.test(snapshot?.branchId || '') || snapshot.branchId === approval.branchId ||
+      snapshot.parentBranchId !== approval.branchId || !/^[a-f0-9]{64}$/.test(snapshot.providerRecordHash || '') ||
       snapshot.restoreProcedure !== restoreProcedure || ![created, verified, retained].every(Number.isFinite) ||
       created > now || verified < created || verified > now) throw guard('DEV_BASELINE_SNAPSHOT_INVALID');
   if (now - verified > 3600000) throw guard('DEV_BASELINE_SNAPSHOT_STALE');
