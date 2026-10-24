@@ -1,0 +1,171 @@
+{
+ "as_preregistered": {
+  "MT": {
+   "members": 1932,
+   "outcomes": {
+    "contradiction": 1235,
+    "range hblock (no single block number)": 113,
+    "street name not in tickets": 489,
+    "block ambiguous": 20,
+    "no contradiction, payment corroborated": 74,
+    "block unmapped": 1
+   },
+   "unrepresented_category_counts": {
+    "NS": 1132,
+    "RUSH": 107,
+    "BUS": 319,
+    "BIKE": 87,
+    "DIS": 81,
+    "SR": 274,
+    "CLASS": 127,
+    "CLZ": 261,
+    "TOUR": 80,
+    "PZ": 282,
+    "LZ": 195,
+    "NP": 111
+   }
+  },
+  "MR": {
+   "members": 440,
+   "outcomes": {
+    "no contradiction, payment corroborated": 74,
+    "contradiction": 340,
+    "street name not in tickets": 20,
+    "range hblock (no single block number)": 3,
+    "block ambiguous": 2,
+    "no METER ticket": 1
+   },
+   "unrepresented_category_counts": {
+    "PZ": 38,
+    "BUS": 281,
+    "CLZ": 78,
+    "SR": 6,
+    "DIS": 7,
+    "CLASS": 22,
+    "BIKE": 8,
+    "LZ": 39,
+    "TOUR": 13,
+    "NP": 14
+   }
+  },
+  "MX": {
+   "members": 246,
+   "outcomes": {
+    "contradiction": 172,
+    "no contradiction, payment corroborated": 12,
+    "street name not in tickets": 50,
+    "no METER ticket": 4,
+    "range hblock (no single block number)": 4,
+    "block ambiguous": 2,
+    "block unmapped": 2
+   },
+   "unrepresented_category_counts": {
+    "NS": 126,
+    "TOUR": 32,
+    "BUS": 59,
+    "BIKE": 19,
+    "CLZ": 39,
+    "PZ": 47,
+    "DIS": 25,
+    "RUSH": 22,
+    "CLASS": 33,
+    "LZ": 6
+   }
+  },
+  "P": {
+   "members": 1239,
+   "outcomes": {
+    "street name not in tickets": 457,
+    "no SR/NP ticket": 187,
+    "SR/NP tickets (agree)": 461,
+    "range hblock (no single block number)": 113,
+    "contradiction (METER tickets)": 21
+   }
+  }
+ },
+ "post_hoc_AV_to_AVE": {
+  "MT": {
+   "members": 1932,
+   "outcomes": {
+    "contradiction": 1681,
+    "range hblock (no single block number)": 113,
+    "street name not in tickets": 28,
+    "block ambiguous": 20,
+    "no contradiction, payment corroborated": 88,
+    "block unmapped": 1,
+    "no METER ticket": 1
+   },
+   "unrepresented_category_counts": {
+    "NS": 1548,
+    "RUSH": 113,
+    "BUS": 382,
+    "BIKE": 95,
+    "DIS": 88,
+    "SR": 404,
+    "CLASS": 153,
+    "CLZ": 352,
+    "TOUR": 85,
+    "PZ": 320,
+    "LZ": 249,
+    "NP": 153
+   }
+  },
+  "MR": {
+   "members": 440,
+   "outcomes": {
+    "no contradiction, payment corroborated": 79,
+    "contradiction": 352,
+    "street name not in tickets": 2,
+    "no METER ticket": 2,
+    "range hblock (no single block number)": 3,
+    "block ambiguous": 2
+   },
+   "unrepresented_category_counts": {
+    "PZ": 38,
+    "BUS": 289,
+    "CLZ": 79,
+    "SR": 10,
+    "DIS": 7,
+    "CLASS": 27,
+    "BIKE": 8,
+    "LZ": 39,
+    "TOUR": 14,
+    "NP": 16
+   }
+  },
+  "MX": {
+   "members": 246,
+   "outcomes": {
+    "contradiction": 219,
+    "no contradiction, payment corroborated": 14,
+    "no METER ticket": 4,
+    "range hblock (no single block number)": 4,
+    "block ambiguous": 2,
+    "block unmapped": 2,
+    "street name not in tickets": 1
+   },
+   "unrepresented_category_counts": {
+    "NS": 169,
+    "TOUR": 33,
+    "BUS": 66,
+    "BIKE": 21,
+    "CLZ": 49,
+    "PZ": 49,
+    "DIS": 28,
+    "RUSH": 22,
+    "CLASS": 36,
+    "LZ": 6
+   }
+  },
+  "P": {
+   "members": 1239,
+   "outcomes": {
+    "no SR/NP ticket": 291,
+    "SR/NP tickets (agree)": 775,
+    "range hblock (no single block number)": 113,
+    "street name not in tickets": 25,
+    "contradiction (METER tickets)": 35
+   }
+  }
+ }
+}

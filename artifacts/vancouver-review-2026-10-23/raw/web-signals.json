@@ -1,0 +1,10 @@
+{
+ "note": "vancouver.ca returned HTTP 403 (5,484-byte block page) to scripted curl at 2026-10-23T19:45:13Z for every URL below; the page was then read in an ordinary browser without sign-in, challenge or bypass. Only the sentences used are recorded.",
+ "pages": [
+  {"url": "https://vancouver.ca/streets-transportation/time-limited-metered-parking.aspx", "browser_retrieved_utc": "2026-10-23T19:45:38Z", "title": "Time-limited and pay (meter) parking| Street parking | City of Vancouver",
+   "excerpts": ["Parking meters are in effect from 9am to 10pm, 7 days a week, including statutory holidays.", "Daytime rates (9am to 6pm) may be different from evening rates (6pm to 10pm).", "Before paying, check if there are parking restrictions in effect, such as rush hour, special events, or construction.", "If a parking meter is broken or not accepting payment, do not park in the space."]},
+  {"url": "https://vancouver.ca/streets-transportation/parking-meters.aspx", "browser_retrieved_utc": "2026-10-23T19:45:38Z", "result": "City 404 page (URL no longer exists)"},
+  {"url": "https://vancouver.ca/files/cov/west-end-plateau-residential-permit-parking-map.pdf", "curl_http": 403, "result": "not read; RPP025 record URL for P1"},
+  {"url": "https://vancouver.ca/streets-transportation/permit-programs.aspx", "curl_http": 403, "result": "not read; RPO012 record URL for P2"}
+ ]
+}

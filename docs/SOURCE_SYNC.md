@@ -146,7 +146,19 @@ shared database to rerun it.
 ## Vancouver meter adapter verification
 
 `node --test tests/vancouver-meters.test.mjs` checks the recorded portal format,
-recorded ambiguity and explicitly synthetic reviewed-permission cases. A stable
+recorded ambiguity and explicitly synthetic reviewed-permission cases.
+
+Vancouver `meter_id` is not unique: in the live feed sixteen IDs each name two
+different equipment records. Place identity is the publisher's `feature_id`
+(`feature:<feature_id>`, equal to the hosted layer's `FID_METER`), which is unique
+and stable in the recorded evidence; `object_id` changes between exports and is
+not used. Paging orders by `feature_id` and rejects any page that is not strictly
+ascending. A repeated `feature_id`, even a byte-identical row, a missing or
+non-integer `feature_id`/`post_feature_id`, or one `meter_id` twice on one post
+fails the whole snapshot. The evidence is in [the Vancouver inventory](sources/vancouver.md#record-identity-28-2026-10-23).
+`node --test tests/vancouver-meters-identity.test.mjs` replays all 32 recorded
+repeated rows: identity across refetch and reordering, rule changes, retirement
+of one member only, atomic failure and a page boundary inside a group. A stable
 metadata count of zero is a complete empty snapshot only when the edit timestamp
 and count agree on both metadata reads. It lets the runner retire the final meter
 without deleting its history; a failed or changing retrieval never does.

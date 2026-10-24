@@ -26,9 +26,10 @@ test('meter snapshots reach classified reads and retire absent/Removed meters wi
     const recorded = JSON.parse(readFileSync(new URL('./fixtures/vancouver/live-records.json', import.meta.url))).results[0];
     // Only the input format is recorded. Identities and reviewed permissions here
     // are synthetic contracts, never evidence for approving an actual City meter.
-    const row = { ...recorded, meter_id: 'synthetic-rush', flat_rate: null, am_rush_hours: '7:00 AM - 9:30 AM' };
-    const removed = { ...row, meter_id: 'synthetic-removed', am_rush_hours: null };
-    const absent = { ...removed, meter_id: 'synthetic-absent' };
+    // removed/absent repeat one meter_id on different posts, as the live feed does.
+    const row = { ...recorded, meter_id: 'synthetic-rush', feature_id: 1, post_feature_id: 1, flat_rate: null, am_rush_hours: '7:00 AM - 9:30 AM' };
+    const removed = { ...row, meter_id: 'synthetic-repeat', feature_id: 2, post_feature_id: 2, am_rush_hours: null };
+    const absent = { ...removed, feature_id: 3, post_feature_id: 3 };
     let rows = [row, removed, absent];
     let malformed = false;
     const request = async path => ({ ok: true, json: async () => path.includes('/records?')
@@ -37,14 +38,14 @@ test('meter snapshots reach classified reads and retire absent/Removed meters wi
     const adapter = createVancouverMeterAdapter({ source: { id: source.id, name: 'Synthetic fixture', evidenceType: 'E2',
       approvalState: 'approved', lastSyncAt: null, formatValid: true, freshnessMinutes: 10080 },
       fetchedAt: new Date().toISOString(), sourceEditedAt: null,
-      reviewed: { [row.meter_id]: { rawRecord: row, evidence: 'synthetic-only', rushDays: [1,2,3,4,5],
+      reviewed: { 'feature:1': { rawRecord: row, evidence: 'synthetic-only', rushDays: [1,2,3,4,5],
         afterHours: { days: [0,1,2,3,4,5,6], timeLimitMinutes: 120 } } },
     }, request);
     const run = () => syncSource(pool, source, adapter);
     assert.equal((await run()).status, 'succeeded');
     const identityRows = (await client.query('SELECT id,source_record_id FROM public.places WHERE source_id=$1', [source.id])).rows;
     const ids = identityRows.map(p => p.id);
-    const rushId = identityRows.find(p => p.source_record_id === row.meter_id).id;
+    const rushId = identityRows.find(p => p.source_record_id === 'feature:1').id;
     const features = instant => classifiedPlaces(client.query.bind(client), ids, [-124,49,-123,50],
       { instant: new Date(instant), context: {} }, new Date());
     const evaluation = async instant => (await features(instant)).find(f => f.properties.id === rushId).properties.evaluation;
@@ -56,7 +57,7 @@ test('meter snapshots reach classified reads and retire absent/Removed meters wi
     assert.deepEqual((await client.query('SELECT id,source_record_id FROM public.places WHERE source_id=$1', [source.id])).rows, identityRows);
     const historyCount = Number((await client.query('SELECT count(*) FROM public.parking_rules WHERE source_id=$1', [source.id])).rows[0].count);
     rows = [row, { ...removed, service_status: 'Removed' }];
-    assert.deepEqual((await run()).drift.removed.sort(), ['synthetic-absent','synthetic-removed']);
+    assert.deepEqual((await run()).drift.removed.sort(), ['feature:2','feature:3']);
     assert.equal((await features('2026-10-12T17:00:00Z')).length, 1);
     assert.equal(Number((await client.query('SELECT count(*) FROM public.places WHERE source_id=$1', [source.id])).rows[0].count), 3);
     assert.equal(Number((await client.query('SELECT count(*) FROM public.parking_rules WHERE source_id=$1', [source.id])).rows[0].count), historyCount);
@@ -66,7 +67,7 @@ test('meter snapshots reach classified reads and retire absent/Removed meters wi
     malformed = false;
     assert.equal((await run()).status, 'succeeded');
     rows = [];
-    assert.deepEqual((await run()).drift.removed, ['synthetic-rush']);
+    assert.deepEqual((await run()).drift.removed, ['feature:1']);
     assert.deepEqual(await features('2026-10-12T17:00:00Z'), []);
     assert.equal(Number((await client.query('SELECT count(*) FROM public.places WHERE source_id=$1', [source.id])).rows[0].count), 3);
   } finally { client.release(); await pool.end(); }
