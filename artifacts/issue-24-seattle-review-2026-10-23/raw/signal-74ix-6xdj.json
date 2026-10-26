@@ -1,1488 +1,463 @@
 {
-  "id" : "74ix-6xdj",
-  "name" : "72hr Parking Ordinance Violations",
-  "assetType" : "dataset",
-  "attribution" : "City of Seattle",
-  "averageRating" : 0,
-  "category" : "City Administration",
-  "createdAt" : 1712617188,
-  "description" : "This data set contains selected information for Abandoned Vehicle/72hr Parking Ordinance service requests.",
-  "diciBackend" : false,
-  "displayType" : "table",
-  "domainCName" : "data.seattle.gov",
-  "downloadCount" : 1662,
-  "hideFromCatalog" : false,
-  "hideFromDataJson" : false,
-  "licenseId" : "PUBLIC_DOMAIN",
-  "locked" : false,
-  "newBackend" : true,
-  "numberOfComments" : 0,
-  "oid" : 41439537,
-  "provenance" : "official",
-  "publicationAppendEnabled" : false,
-  "publicationDate" : 1752262856,
-  "publicationGroup" : 19496515,
-  "publicationStage" : "published",
-  "rowsUpdatedAt" : 1792772467,
-  "rowsUpdatedBy" : "2866-np2t",
-  "tableId" : 19957403,
-  "totalTimesRated" : 0,
-  "viewCount" : 14763,
-  "viewLastModified" : 1792771938,
-  "viewType" : "tabular",
-  "approvals" : [ {
-    "reviewedAt" : 1723057283,
-    "reviewedAutomatically" : false,
-    "state" : "approved",
-    "submissionId" : 6964262,
-    "submissionObject" : "public_audience_request",
-    "submissionOutcome" : "change_audience",
-    "submittedAt" : 1723057173,
-    "targetAudience" : "public",
-    "workflowId" : 3127,
-    "reviewer" : {
-      "id" : "wt5u-xzdz",
-      "displayName" : "Palay, Claire"
-    },
-    "submissionDetails" : {
-      "permissionType" : "read"
-    },
-    "submissionOutcomeApplication" : {
-      "endedAt" : 1723057283,
-      "failureCount" : 0,
-      "startedAt" : 1723057283,
-      "status" : "success"
-    },
-    "submitter" : {
-      "id" : "wt5u-xzdz",
-      "displayName" : "Palay, Claire"
-    }
-  }, {
-    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
-    "state" : "unsubmittable",
-    "targetAudience" : "internal",
-    "workflowId" : 4739
-  } ],
-  "clientContext" : {
-    "clientContextVariables" : [ ],
-    "inheritedVariables" : { }
-  },
-  "columns" : [ {
-    "id" : 613735056,
-    "name" : "Service Request Number",
-    "dataTypeName" : "text",
-    "description" : "The unique record number of the service request",
-    "fieldName" : "servicerequestnumber",
-    "position" : 2,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325686,
-    "cachedContents" : {
-      "non_null" : "519191",
-      "largest" : "26-00319901",
-      "null" : "0",
-      "top" : [ {
-        "item" : "25-00015100",
-        "count" : "1"
-      }, {
-        "item" : "23-00305329",
-        "count" : "1"
-      }, {
-        "item" : "17-00195016",
-        "count" : "1"
-      }, {
-        "item" : "25-00220189",
-        "count" : "1"
-      }, {
-        "item" : "24-00155704",
-        "count" : "1"
-      }, {
-        "item" : "26-00066973",
-        "count" : "1"
-      }, {
-        "item" : "22-00248098",
-        "count" : "1"
-      }, {
-        "item" : "20-00021182",
-        "count" : "1"
-      }, {
-        "item" : "18-00106446",
-        "count" : "1"
-      }, {
-        "item" : "24-00252549",
-        "count" : "1"
-      }, {
-        "item" : "24-00355447",
-        "count" : "1"
-      }, {
-        "item" : "23-00100139",
-        "count" : "1"
-      }, {
-        "item" : "23-00119081",
-        "count" : "1"
-      }, {
-        "item" : "15-00004537",
-        "count" : "1"
-      }, {
-        "item" : "26-00303687",
-        "count" : "1"
-      }, {
-        "item" : "25-00310809",
-        "count" : "1"
-      }, {
-        "item" : "20-00012728",
-        "count" : "1"
-      }, {
-        "item" : "25-00370134",
-        "count" : "1"
-      }, {
-        "item" : "16-00179921",
-        "count" : "1"
-      }, {
-        "item" : "19-00160825",
-        "count" : "1"
-      } ],
-      "smallest" : "13-00000002",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735057,
-    "name" : "Created Date",
-    "dataTypeName" : "calendar_date",
-    "description" : "The date and time the service request was created",
-    "fieldName" : "createddate",
-    "position" : 3,
-    "renderTypeName" : "calendar_date",
-    "tableColumnId" : 152572191,
-    "cachedContents" : {
-      "non_null" : "519191",
-      "largest" : "2026-10-22T23:28:22.000",
-      "null" : "0",
-      "top" : [ {
-        "item" : "2018-11-19T12:20:41.000",
-        "count" : "3"
-      }, {
-        "item" : "2024-01-08T13:43:15.000",
-        "count" : "2"
-      }, {
-        "item" : "2026-08-19T14:40:23.000",
-        "count" : "2"
-      }, {
-        "item" : "2018-06-16T14:45:04.000",
-        "count" : "2"
-      }, {
-        "item" : "2022-06-02T09:18:39.000",
-        "count" : "2"
-      }, {
-        "item" : "2023-09-05T17:08:10.000",
-        "count" : "2"
-      }, {
-        "item" : "2017-08-07T15:19:00.000",
-        "count" : "2"
-      }, {
-        "item" : "2013-04-23T14:07:27.000",
-        "count" : "2"
-      }, {
-        "item" : "2016-10-07T07:51:05.000",
-        "count" : "2"
-      }, {
-        "item" : "2015-08-03T14:43:16.000",
-        "count" : "2"
-      }, {
-        "item" : "2018-06-07T15:06:35.000",
-        "count" : "2"
-      }, {
-        "item" : "2015-06-16T13:01:40.000",
-        "count" : "2"
-      }, {
-        "item" : "2016-02-25T12:13:24.000",
-        "count" : "2"
-      }, {
-        "item" : "2017-12-05T09:35:44.000",
-        "count" : "2"
-      }, {
-        "item" : "2019-04-29T10:23:23.000",
-        "count" : "2"
-      }, {
-        "item" : "2018-01-08T14:19:06.000",
-        "count" : "2"
-      }, {
-        "item" : "2023-03-20T07:19:46.000",
-        "count" : "2"
-      }, {
-        "item" : "2019-11-26T15:19:56.000",
-        "count" : "2"
-      }, {
-        "item" : "2025-02-07T12:46:11.000",
-        "count" : "2"
-      }, {
-        "item" : "2026-03-06T10:10:17.000",
-        "count" : "2"
-      } ],
-      "smallest" : "2013-01-01T11:27:28.000",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : {
-      "view" : "date_time"
-    }
-  }, {
-    "id" : 613735058,
-    "name" : "Method Received",
-    "dataTypeName" : "text",
-    "description" : "The channel through which the service request was received",
-    "fieldName" : "methodreceivedname",
-    "position" : 4,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325688,
-    "cachedContents" : {
-      "non_null" : "519191",
-      "largest" : "zzzWeb Form",
-      "null" : "0",
-      "top" : [ {
-        "item" : "Find It Fix It Apps",
-        "count" : "275472"
-      }, {
-        "item" : "Citizen Web",
-        "count" : "148946"
-      }, {
-        "item" : "Phone",
-        "count" : "60512"
-      }, {
-        "item" : "Citizen Web Intake App",
-        "count" : "29711"
-      }, {
-        "item" : "Field",
-        "count" : "1637"
-      }, {
-        "item" : "Voice Mail",
-        "count" : "1267"
-      }, {
-        "item" : "PremierOne CSR Mobile Apps",
-        "count" : "796"
-      }, {
-        "item" : "E-Mail",
-        "count" : "532"
-      }, {
-        "item" : "Paper Form",
-        "count" : "197"
-      }, {
-        "item" : "Web Form",
-        "count" : "77"
-      }, {
-        "item" : "AV Hotline",
-        "count" : "11"
-      }, {
-        "item" : "Other",
-        "count" : "6"
-      }, {
-        "item" : "Mail",
-        "count" : "5"
-      }, {
-        "item" : "Walk-In",
-        "count" : "5"
-      }, {
-        "item" : "Radio Dispatch",
-        "count" : "4"
-      }, {
-        "item" : "Kiosk",
-        "count" : "2"
-      }, {
-        "item" : "Fax",
-        "count" : "2"
-      }, {
-        "item" : "Non-Emergency 911 Phone",
-        "count" : "2"
-      }, {
-        "item" : "Blog Post",
-        "count" : "2"
-      }, {
-        "item" : "Mass Entry",
-        "count" : "2"
-      } ],
-      "smallest" : "AV Hotline",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735059,
-    "name" : "Status",
-    "dataTypeName" : "text",
-    "description" : "The current status of the service request",
-    "fieldName" : "servicerequeststatusname",
-    "position" : 5,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325689,
-    "cachedContents" : {
-      "non_null" : "519191",
-      "largest" : "Transferred to Other Dept",
-      "null" : "0",
-      "top" : [ {
-        "item" : "Closed",
-        "count" : "487695"
-      }, {
-        "item" : "Closed as Duplicate",
-        "count" : "16871"
-      }, {
-        "item" : "Duplicate (Closed)",
-        "count" : "7009"
-      }, {
-        "item" : "Open",
-        "count" : "5371"
-      }, {
-        "item" : "Closed -Incomplete Information",
-        "count" : "1216"
-      }, {
-        "item" : "Canceled",
-        "count" : "719"
-      }, {
-        "item" : "Transferred to Other Dept",
-        "count" : "303"
-      }, {
-        "item" : "Reported",
-        "count" : "7"
-      } ],
-      "smallest" : "Canceled",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735060,
-    "name" : "Location",
-    "dataTypeName" : "text",
-    "description" : "The location of the service request",
-    "fieldName" : "location",
-    "position" : 6,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325690,
-    "cachedContents" : {
-      "non_null" : "519188",
-      "largest" : "YUKON AVE S & VALDEZ AVE S, SEATTLE, WA 98118",
-      "null" : "3",
-      "top" : [ {
-        "item" : "1525 FAIRVIEW AVE E, SEATTLE, WA 98102",
-        "count" : "504"
-      }, {
-        "item" : "700 NW 100TH PL, SEATTLE, WA 98177",
-        "count" : "440"
-      }, {
-        "item" : "1801 FAIRVIEW AVE E, SEATTLE, WA 98102",
-        "count" : "405"
-      }, {
-        "item" : "9007 14TH AVE NW, SEATTLE, WA 98117",
-        "count" : "389"
-      }, {
-        "item" : "4900 9TH AVE NW, SEATTLE, WA 98107",
-        "count" : "378"
-      }, {
-        "item" : "4430 BEACH DR SW, SEATTLE, WA 98116",
-        "count" : "378"
-      }, {
-        "item" : "9200 2ND AVE NW, SEATTLE, WA 98117",
-        "count" : "337"
-      }, {
-        "item" : "1500 LAKEVIEW BLVD E, SEATTLE, WA 98102",
-        "count" : "324"
-      }, {
-        "item" : "1932 FAIRVIEW AVE E, SEATTLE, WA 98102",
-        "count" : "311"
-      }, {
-        "item" : "620 AURORA AVE N, SEATTLE, WA 98109",
-        "count" : "299"
-      }, {
-        "item" : "1409 E PROSPECT ST, SEATTLE, WA 98112",
-        "count" : "298"
-      }, {
-        "item" : "9500 SAND POINT WAY NE, SEATTLE, WA 98115",
-        "count" : "292"
-      }, {
-        "item" : "8758 2ND AVE NW, SEATTLE, WA 98117",
-        "count" : "288"
-      }, {
-        "item" : "11538 25TH AVE NE, SEATTLE, WA 98125",
-        "count" : "282"
-      }, {
-        "item" : "1300 S DEARBORN ST, SEATTLE, WA 98144",
-        "count" : "268"
-      }, {
-        "item" : "2619 S BRIGHTON ST, SEATTLE, WA 98108",
-        "count" : "262"
-      }, {
-        "item" : "5147 S CLOVERDALE PL, SEATTLE, WA 98118",
-        "count" : "261"
-      }, {
-        "item" : "10704 MIDVALE AVE N, SEATTLE, WA 98133",
-        "count" : "254"
-      }, {
-        "item" : "1901 FAIRVIEW AVE E, SEATTLE, WA 98102",
-        "count" : "251"
-      }, {
-        "item" : "1613 FAIRVIEW AVE E, SEATTLE, WA 98102",
-        "count" : "245"
-      } ],
-      "smallest" : "0 NW MARKET ST, SEATTLE, WA 98107",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735061,
-    "name" : "X_Value",
-    "dataTypeName" : "number",
-    "description" : "The X (state plane) coordinate of the service request location",
-    "fieldName" : "x_value",
-    "position" : 7,
-    "renderTypeName" : "number",
-    "tableColumnId" : 152325673,
-    "cachedContents" : {
-      "non_null" : "519191",
-      "largest" : "1297706.5986753600",
-      "null" : "0",
-      "top" : [ {
-        "item" : "1272116.4311715800",
-        "count" : "500"
-      }, {
-        "item" : "1263283.3797188900",
-        "count" : "421"
-      }, {
-        "item" : "1252095.5848896000",
-        "count" : "377"
-      }, {
-        "item" : "1260909.9501704600",
-        "count" : "343"
-      }, {
-        "item" : "1264710.1232716900",
-        "count" : "333"
-      }, {
-        "item" : "1272010.0134610000",
-        "count" : "320"
-      }, {
-        "item" : "1271790.9011883000",
-        "count" : "311"
-      }, {
-        "item" : "1268086.2334988500",
-        "count" : "299"
-      }, {
-        "item" : "1264693.4690975600",
-        "count" : "286"
-      }, {
-        "item" : "1284847.4439050700",
-        "count" : "278"
-      }, {
-        "item" : "1285855.2585316300",
-        "count" : "266"
-      }, {
-        "item" : "1274681.8092717500",
-        "count" : "264"
-      }, {
-        "item" : "1271848.6239053500",
-        "count" : "245"
-      }, {
-        "item" : "1279011.3580493700",
-        "count" : "240"
-      }, {
-        "item" : "1281658.4066510200",
-        "count" : "239"
-      }, {
-        "item" : "1262071.4564705700",
-        "count" : "235"
-      }, {
-        "item" : "1272154.0406069700",
-        "count" : "234"
-      }, {
-        "item" : "1262193.7958766700",
-        "count" : "225"
-      }, {
-        "item" : "1263429.7701830500",
-        "count" : "223"
-      }, {
-        "item" : "1268830.4355590000",
-        "count" : "213"
-      } ],
-      "smallest" : "0E-10",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : {
-      "noCommas" : "true"
-    }
-  }, {
-    "id" : 613735062,
-    "name" : "Y_Value",
-    "dataTypeName" : "number",
-    "description" : "The Y (state plane) coordinate of the service request location",
-    "fieldName" : "y_value",
-    "position" : 8,
-    "renderTypeName" : "number",
-    "tableColumnId" : 152325674,
-    "cachedContents" : {
-      "non_null" : "519191",
-      "largest" : "287461.7515241400",
-      "null" : "0",
-      "top" : [ {
-        "item" : "234716.5967664770",
-        "count" : "499"
-      }, {
-        "item" : "209556.1960532680",
-        "count" : "321"
-      }, {
-        "item" : "231711.3527166280",
-        "count" : "299"
-      }, {
-        "item" : "257680.9961344310",
-        "count" : "292"
-      }, {
-        "item" : "256905.9630306300",
-        "count" : "286"
-      }, {
-        "item" : "235334.9608717430",
-        "count" : "278"
-      }, {
-        "item" : "259715.5410520120",
-        "count" : "263"
-      }, {
-        "item" : "220996.7625816490",
-        "count" : "258"
-      }, {
-        "item" : "235790.4429593240",
-        "count" : "249"
-      }, {
-        "item" : "263576.5281816750",
-        "count" : "239"
-      }, {
-        "item" : "257105.0167351450",
-        "count" : "225"
-      }, {
-        "item" : "246175.9938291520",
-        "count" : "225"
-      }, {
-        "item" : "234871.3766302760",
-        "count" : "214"
-      }, {
-        "item" : "257816.8253779330",
-        "count" : "205"
-      }, {
-        "item" : "241353.3884894740",
-        "count" : "203"
-      }, {
-        "item" : "192857.9152632200",
-        "count" : "202"
-      }, {
-        "item" : "195534.6383264420",
-        "count" : "195"
-      }, {
-        "item" : "268667.2113204010",
-        "count" : "193"
-      }, {
-        "item" : "246290.1869529030",
-        "count" : "193"
-      }, {
-        "item" : "257116.4503317840",
-        "count" : "192"
-      } ],
-      "smallest" : "0E-10",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : {
-      "noCommas" : "true"
-    }
-  }, {
-    "id" : 613735063,
-    "name" : "Latitude",
-    "dataTypeName" : "number",
-    "description" : "The latitude coordinate of the service request location",
-    "fieldName" : "latitude",
-    "position" : 9,
-    "renderTypeName" : "number",
-    "tableColumnId" : 152572192,
-    "cachedContents" : {
-      "non_null" : "518125",
-      "largest" : "47.77776908",
-      "null" : "1066",
-      "top" : [ {
-        "item" : "47.63366552",
-        "count" : "504"
-      }, {
-        "item" : "47.70171051",
-        "count" : "449"
-      }, {
-        "item" : "47.69442534",
-        "count" : "412"
-      }, {
-        "item" : "47.63535477",
-        "count" : "405"
-      }, {
-        "item" : "47.54699252",
-        "count" : "388"
-      }, {
-        "item" : "47.56360862",
-        "count" : "378"
-      }, {
-        "item" : "47.66453993",
-        "count" : "355"
-      }, {
-        "item" : "47.63239348",
-        "count" : "341"
-      }, {
-        "item" : "47.69621164",
-        "count" : "337"
-      }, {
-        "item" : "47.62818892",
-        "count" : "334"
-      }, {
-        "item" : "47.71313366",
-        "count" : "321"
-      }, {
-        "item" : "47.63659157",
-        "count" : "311"
-      }, {
-        "item" : "47.70700123",
-        "count" : "311"
-      }, {
-        "item" : "47.62521263",
-        "count" : "299"
-      }, {
-        "item" : "47.66456153",
-        "count" : "296"
-      }, {
-        "item" : "47.69764908",
-        "count" : "294"
-      }, {
-        "item" : "47.69408641",
-        "count" : "288"
-      }, {
-        "item" : "47.52698473",
-        "count" : "277"
-      }, {
-        "item" : "47.59619576",
-        "count" : "268"
-      }, {
-        "item" : "47.54205485",
-        "count" : "264"
-      } ],
-      "smallest" : "47.44969907",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : {
-      "noCommas" : "true"
-    }
-  }, {
-    "id" : 613735064,
-    "name" : "Longitude",
-    "dataTypeName" : "number",
-    "description" : "The longitude coordinate of the service request location",
-    "fieldName" : "longitude",
-    "position" : 10,
-    "renderTypeName" : "number",
-    "tableColumnId" : 152572193,
-    "cachedContents" : {
-      "non_null" : "518125",
-      "largest" : "-122.2197954",
-      "null" : "1066",
-      "top" : [ {
-        "item" : "-122.32720562",
-        "count" : "504"
-      }, {
-        "item" : "-122.36504218",
-        "count" : "449"
-      }, {
-        "item" : "-122.36836957",
-        "count" : "421"
-      }, {
-        "item" : "-122.37446688",
-        "count" : "412"
-      }, {
-        "item" : "-122.32768585",
-        "count" : "405"
-      }, {
-        "item" : "-122.3288175",
-        "count" : "388"
-      }, {
-        "item" : "-122.40630498",
-        "count" : "378"
-      }, {
-        "item" : "-122.32256066",
-        "count" : "341"
-      }, {
-        "item" : "-122.35908524",
-        "count" : "337"
-      }, {
-        "item" : "-122.31412042",
-        "count" : "334"
-      }, {
-        "item" : "-122.3014787",
-        "count" : "321"
-      }, {
-        "item" : "-122.32861029",
-        "count" : "311"
-      }, {
-        "item" : "-122.3426639",
-        "count" : "311"
-      }, {
-        "item" : "-122.34330929",
-        "count" : "299"
-      }, {
-        "item" : "-122.36887594",
-        "count" : "296"
-      }, {
-        "item" : "-122.27733726",
-        "count" : "294"
-      }, {
-        "item" : "-122.35909047",
-        "count" : "288"
-      }, {
-        "item" : "-122.26852884",
-        "count" : "277"
-      }, {
-        "item" : "-122.31573087",
-        "count" : "268"
-      }, {
-        "item" : "-122.29818765",
-        "count" : "264"
-      } ],
-      "smallest" : "-122.43577045",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : {
-      "noCommas" : "true"
-    }
-  }, {
-    "id" : 613735065,
-    "name" : "Latitude/Longitude",
-    "dataTypeName" : "point",
-    "description" : "Georeferenced column for map visualizations",
-    "fieldName" : "latitude_longitude",
-    "position" : 11,
-    "renderTypeName" : "point",
-    "tableColumnId" : 152572339,
-    "cachedContents" : {
-      "non_null" : "518125",
-      "null" : "1066",
-      "top" : [ {
-        "item" : {
-          "coordinates" : [ -122.32720562, 47.63366552 ],
-          "type" : "Point"
-        },
-        "count" : "504"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.36504218, 47.70171051 ],
-          "type" : "Point"
-        },
-        "count" : "449"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.37446688, 47.69442534 ],
-          "type" : "Point"
-        },
-        "count" : "412"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.32768585, 47.63535477 ],
-          "type" : "Point"
-        },
-        "count" : "405"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.3288175, 47.54699252 ],
-          "type" : "Point"
-        },
-        "count" : "388"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.40630498, 47.56360862 ],
-          "type" : "Point"
-        },
-        "count" : "378"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.36836957, 47.66453993 ],
-          "type" : "Point"
-        },
-        "count" : "355"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.32256066, 47.63239348 ],
-          "type" : "Point"
-        },
-        "count" : "341"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.35908524, 47.69621164 ],
-          "type" : "Point"
-        },
-        "count" : "337"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.31412042, 47.62818892 ],
-          "type" : "Point"
-        },
-        "count" : "334"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.3014787, 47.71313366 ],
-          "type" : "Point"
-        },
-        "count" : "321"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.32861029, 47.63659157 ],
-          "type" : "Point"
-        },
-        "count" : "311"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.3426639, 47.70700123 ],
-          "type" : "Point"
-        },
-        "count" : "311"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.34330929, 47.62521263 ],
-          "type" : "Point"
-        },
-        "count" : "299"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.36887594, 47.66456153 ],
-          "type" : "Point"
-        },
-        "count" : "296"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.27733726, 47.69764908 ],
-          "type" : "Point"
-        },
-        "count" : "294"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.35909047, 47.69408641 ],
-          "type" : "Point"
-        },
-        "count" : "288"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.26852884, 47.52698473 ],
-          "type" : "Point"
-        },
-        "count" : "277"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.31573087, 47.59619576 ],
-          "type" : "Point"
-        },
-        "count" : "268"
-      }, {
-        "item" : {
-          "coordinates" : [ -122.29818765, 47.54205485 ],
-          "type" : "Point"
-        },
-        "count" : "264"
-      } ],
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735066,
-    "name" : "ZIP Code",
-    "dataTypeName" : "text",
-    "description" : "The USPS postal code for the service request location",
-    "fieldName" : "zipcode",
-    "position" : 12,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325677,
-    "cachedContents" : {
-      "non_null" : "483893",
-      "largest" : "99999-8122",
-      "null" : "35298",
-      "top" : [ {
-        "item" : "98107",
-        "count" : "45800"
-      }, {
-        "item" : "98103",
-        "count" : "42837"
-      }, {
-        "item" : "98108",
-        "count" : "33767"
-      }, {
-        "item" : "98144",
-        "count" : "32169"
-      }, {
-        "item" : "98118",
-        "count" : "31503"
-      }, {
-        "item" : "98117",
-        "count" : "29194"
-      }, {
-        "item" : "98115",
-        "count" : "28972"
-      }, {
-        "item" : "98125",
-        "count" : "24122"
-      }, {
-        "item" : "98106",
-        "count" : "23146"
-      }, {
-        "item" : "98122",
-        "count" : "22226"
-      }, {
-        "item" : "98133",
-        "count" : "19378"
-      }, {
-        "item" : "98199",
-        "count" : "17421"
-      }, {
-        "item" : "98102",
-        "count" : "16704"
-      }, {
-        "item" : "98126",
-        "count" : "15636"
-      }, {
-        "item" : "98119",
-        "count" : "15516"
-      }, {
-        "item" : "98112",
-        "count" : "14457"
-      }, {
-        "item" : "98116",
-        "count" : "13882"
-      }, {
-        "item" : "98105",
-        "count" : "13717"
-      }, {
-        "item" : "98109",
-        "count" : "12508"
-      }, {
-        "item" : "98134",
-        "count" : "7024"
-      } ],
-      "smallest" : "08103",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735067,
-    "name" : "Council District",
-    "dataTypeName" : "text",
-    "description" : "Seattle City Council district for the service request location",
-    "fieldName" : "councildistrict",
-    "position" : 13,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325678,
-    "cachedContents" : {
-      "non_null" : "517384",
-      "largest" : "7",
-      "null" : "1807",
-      "top" : [ {
-        "item" : "6",
-        "count" : "108325"
-      }, {
-        "item" : "2",
-        "count" : "86980"
-      }, {
-        "item" : "1",
-        "count" : "78944"
-      }, {
-        "item" : "3",
-        "count" : "71961"
-      }, {
-        "item" : "5",
-        "count" : "71696"
-      }, {
-        "item" : "4",
-        "count" : "50524"
-      }, {
-        "item" : "7",
-        "count" : "48954"
-      } ],
-      "smallest" : "1",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735068,
-    "name" : "Police Precinct",
-    "dataTypeName" : "text",
-    "description" : "Seattle Police Department precinct for the service request location",
-    "fieldName" : "policeprecinct",
-    "position" : 14,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325679,
-    "cachedContents" : {
-      "non_null" : "518625",
-      "largest" : "WEST",
-      "null" : "566",
-      "top" : [ {
-        "item" : "NORTH",
-        "count" : "224783"
-      }, {
-        "item" : "SOUTH",
-        "count" : "95772"
-      }, {
-        "item" : "SOUTHWEST",
-        "count" : "71576"
-      }, {
-        "item" : "EAST",
-        "count" : "65899"
-      }, {
-        "item" : "WEST",
-        "count" : "60595"
-      } ],
-      "smallest" : "EAST",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735074,
-    "name" : "Community Reporting Area",
-    "dataTypeName" : "text",
-    "description" : "Community reporting area for the service request location",
-    "fieldName" : "community_reporting_area",
-    "position" : 16,
-    "renderTypeName" : "text",
-    "tableColumnId" : 159943817,
-    "cachedContents" : {
-      "non_null" : "385141",
-      "largest" : "WHITTIER HEIGHTS",
-      "null" : "134050",
-      "top" : [ {
-        "item" : "BALLARD",
-        "count" : "19569"
-      }, {
-        "item" : "QUEEN ANNE",
-        "count" : "18534"
-      }, {
-        "item" : "FREMONT",
-        "count" : "16816"
-      }, {
-        "item" : "GREENWOOD",
-        "count" : "13186"
-      }, {
-        "item" : "COLUMBIA CITY",
-        "count" : "12425"
-      }, {
-        "item" : "INTERBAY",
-        "count" : "11770"
-      }, {
-        "item" : "GEORGETOWN",
-        "count" : "11733"
-      }, {
-        "item" : "WHITTIER HEIGHTS",
-        "count" : "10946"
-      }, {
-        "item" : "WALLINGFORD",
-        "count" : "10330"
-      }, {
-        "item" : "GREEN LAKE",
-        "count" : "10281"
-      }, {
-        "item" : "LICTON SPRINGS",
-        "count" : "10090"
-      }, {
-        "item" : "CENTRAL AREA",
-        "count" : "9669"
-      }, {
-        "item" : "RAINIER BEACH",
-        "count" : "9344"
-      }, {
-        "item" : "GREENWOOD/PHINNEY RIDGE",
-        "count" : "8709"
-      }, {
-        "item" : "RAVENNA",
-        "count" : "8290"
-      }, {
-        "item" : "NORTH BEACON HILL",
-        "count" : "8015"
-      }, {
-        "item" : "HALLER LAKE",
-        "count" : "6568"
-      }, {
-        "item" : "SUNSET HILL",
-        "count" : "5529"
-      }, {
-        "item" : "DUWAMISH",
-        "count" : "5452"
-      }, {
-        "item" : "SEAVIEW",
-        "count" : "5369"
-      } ],
-      "smallest" : "ALKI",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735070,
-    "name" : "License Plate Number",
-    "dataTypeName" : "text",
-    "description" : "Unique alphanumeric identifier assigned to a vehicle by the licensing authority",
-    "fieldName" : "licenseplatenumber",
-    "position" : 17,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325681,
-    "cachedContents" : {
-      "non_null" : "502097",
-      "largest" : "Zzzzzzx",
-      "null" : "17094",
-      "top" : [ {
-        "item" : "None",
-        "count" : "12716"
-      }, {
-        "item" : ".",
-        "count" : "10246"
-      }, {
-        "item" : "NONE",
-        "count" : "10025"
-      }, {
-        "item" : "/",
-        "count" : "5835"
-      }, {
-        "item" : "Unknown",
-        "count" : "5358"
-      }, {
-        "item" : "N/A",
-        "count" : "3566"
-      }, {
-        "item" : "NA",
-        "count" : "2422"
-      }, {
-        "item" : "No plates",
-        "count" : "2025"
-      }, {
-        "item" : "No plate",
-        "count" : "1988"
-      }, {
-        "item" : "none",
-        "count" : "1580"
-      }, {
-        "item" : "Na",
-        "count" : "1333"
-      }, {
-        "item" : "UNKNOWN",
-        "count" : "1327"
-      }, {
-        "item" : "No license",
-        "count" : "720"
-      }, {
-        "item" : "N/a",
-        "count" : "650"
-      }, {
-        "item" : "NO PLATES",
-        "count" : "570"
-      }, {
-        "item" : "Multiple",
-        "count" : "555"
-      }, {
-        "item" : "?",
-        "count" : "518"
-      }, {
-        "item" : "NO PLATE",
-        "count" : "498"
-      }, {
-        "item" : "unknown",
-        "count" : "487"
-      }, {
-        "item" : "Xxxxx",
-        "count" : "455"
-      } ],
-      "smallest" : "_______",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735071,
-    "name" : "State",
-    "dataTypeName" : "text",
-    "description" : "The state or region that issued the license plate associated with a vehicle",
-    "fieldName" : "state",
-    "position" : 18,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325682,
-    "cachedContents" : {
-      "non_null" : "501736",
-      "largest" : "YT",
-      "null" : "17455",
-      "top" : [ {
-        "item" : "WA",
-        "count" : "465951"
-      }, {
-        "item" : "CA",
-        "count" : "6867"
-      }, {
-        "item" : "OR",
-        "count" : "5656"
-      }, {
-        "item" : "TX",
-        "count" : "2465"
-      }, {
-        "item" : "AZ",
-        "count" : "1631"
-      }, {
-        "item" : "CO",
-        "count" : "1402"
-      }, {
-        "item" : "ID",
-        "count" : "1335"
-      }, {
-        "item" : "MT",
-        "count" : "1304"
-      }, {
-        "item" : "FL",
-        "count" : "1249"
-      }, {
-        "item" : "IL",
-        "count" : "748"
-      }, {
-        "item" : "AK",
-        "count" : "730"
-      }, {
-        "item" : "MI",
-        "count" : "638"
-      }, {
-        "item" : "UT",
-        "count" : "611"
-      }, {
-        "item" : "MN",
-        "count" : "595"
-      }, {
-        "item" : "WI",
-        "count" : "590"
-      }, {
-        "item" : "OH",
-        "count" : "579"
-      }, {
-        "item" : "NV",
-        "count" : "504"
-      }, {
-        "item" : "VA",
-        "count" : "500"
-      }, {
-        "item" : "IA",
-        "count" : "441"
-      }, {
-        "item" : "GA",
-        "count" : "440"
-      } ],
-      "smallest" : "AB",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735072,
-    "name" : "Vehicle Color",
-    "dataTypeName" : "text",
-    "description" : "The color of the vehicle",
-    "fieldName" : "vehiclecolor",
-    "position" : 19,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325683,
-    "cachedContents" : {
-      "non_null" : "502613",
-      "largest" : "ZScooter",
-      "null" : "16578",
-      "top" : [ {
-        "item" : "White",
-        "count" : "148280"
-      }, {
-        "item" : "Silver",
-        "count" : "60097"
-      }, {
-        "item" : "Black",
-        "count" : "57106"
-      }, {
-        "item" : "Blue",
-        "count" : "44959"
-      }, {
-        "item" : "Red",
-        "count" : "33746"
-      }, {
-        "item" : "Brown",
-        "count" : "25166"
-      }, {
-        "item" : "Green",
-        "count" : "22472"
-      }, {
-        "item" : "Yellow",
-        "count" : "11093"
-      }, {
-        "item" : ".",
-        "count" : "10027"
-      }, {
-        "item" : "Other",
-        "count" : "6398"
-      }, {
-        "item" : "white",
-        "count" : "5365"
-      }, {
-        "item" : "/",
-        "count" : "5226"
-      }, {
-        "item" : "WHITE",
-        "count" : "3668"
-      }, {
-        "item" : "Purple",
-        "count" : "2816"
-      }, {
-        "item" : "Grey",
-        "count" : "2794"
-      }, {
-        "item" : "black",
-        "count" : "2353"
-      }, {
-        "item" : "BLACK",
-        "count" : "2032"
-      }, {
-        "item" : "Gold",
-        "count" : "1946"
-      }, {
-        "item" : "Gray",
-        "count" : "1729"
-      }, {
-        "item" : "Orange",
-        "count" : "1664"
-      } ],
-      "smallest" : ">",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  }, {
-    "id" : 613735073,
-    "name" : "Vehicle Make",
-    "dataTypeName" : "text",
-    "description" : "The make of the vehicle",
-    "fieldName" : "vehiclemake",
-    "position" : 20,
-    "renderTypeName" : "text",
-    "tableColumnId" : 152325684,
-    "cachedContents" : {
-      "non_null" : "490283",
-      "largest" : "Znen",
-      "null" : "28908",
-      "top" : [ {
-        "item" : "Other",
-        "count" : "62315"
-      }, {
-        "item" : "Ford",
-        "count" : "59483"
-      }, {
-        "item" : "Unknown",
-        "count" : "42099"
-      }, {
-        "item" : "Chevrolet",
-        "count" : "40170"
-      }, {
-        "item" : "Toyota",
-        "count" : "37353"
-      }, {
-        "item" : "Honda",
-        "count" : "27296"
-      }, {
-        "item" : "Dodge",
-        "count" : "18186"
-      }, {
-        "item" : "Subaru",
-        "count" : "13876"
-      }, {
-        "item" : "Nissan",
-        "count" : "12652"
-      }, {
-        "item" : "Volkswagen",
-        "count" : "12158"
-      }, {
-        "item" : "GMC",
-        "count" : "11132"
-      }, {
-        "item" : ".",
-        "count" : "10685"
-      }, {
-        "item" : "BMW",
-        "count" : "8466"
-      }, {
-        "item" : "Mercedes-Benz",
-        "count" : "8218"
-      }, {
-        "item" : "Volvo",
-        "count" : "6390"
-      }, {
-        "item" : "/",
-        "count" : "6208"
-      }, {
-        "item" : "Hyundai",
-        "count" : "6146"
-      }, {
-        "item" : "Chrysler",
-        "count" : "6051"
-      }, {
-        "item" : "Kia",
-        "count" : "4363"
-      }, {
-        "item" : "Acura",
-        "count" : "4186"
-      } ],
-      "smallest" : "=",
-      "count" : "519191",
-      "cardinality" : "519191"
-    },
-    "format" : { }
-  } ],
-  "grants" : [ {
-    "inherited" : false,
-    "type" : "viewer",
-    "flags" : [ "public" ]
-  } ],
-  "license" : {
-    "name" : "Public Domain"
-  },
-  "metadata" : {
-    "attachments" : [ {
-      "filename" : "72hr_Parking_Ordinance_Violations_metadata.pdf",
-      "assetId" : "a93548b3-cd2b-47ec-b535-9917e61332d6",
-      "name" : "72hr_Parking_Ordinance_Violations_metadata.pdf"
-    } ],
-    "custom_fields" : {
-      "Department" : {
-        "Department" : "Seattle Police Department"
+  "id": "74ix-6xdj",
+  "name": "72hr Parking Ordinance Violations",
+  "assetType": "dataset",
+  "attribution": "City of Seattle",
+  "averageRating": 0,
+  "category": "City Administration",
+  "createdAt": 1712617188,
+  "description": "This data set contains selected information for Abandoned Vehicle/72hr Parking Ordinance service requests.",
+  "diciBackend": false,
+  "displayType": "table",
+  "domainCName": "data.seattle.gov",
+  "downloadCount": 1662,
+  "hideFromCatalog": false,
+  "hideFromDataJson": false,
+  "licenseId": "PUBLIC_DOMAIN",
+  "locked": false,
+  "newBackend": true,
+  "numberOfComments": 0,
+  "oid": 41439537,
+  "provenance": "official",
+  "publicationAppendEnabled": false,
+  "publicationDate": 1752262856,
+  "publicationGroup": 19496515,
+  "publicationStage": "published",
+  "rowsUpdatedAt": 1792772467,
+  "rowsUpdatedBy": "2866-np2t",
+  "tableId": 19957403,
+  "totalTimesRated": 0,
+  "viewCount": 14763,
+  "viewLastModified": 1792771938,
+  "viewType": "tabular",
+  "approvals": [
+    {
+      "reviewedAt": 1723057283,
+      "reviewedAutomatically": false,
+      "state": "approved",
+      "submissionId": 6964262,
+      "submissionObject": "public_audience_request",
+      "submissionOutcome": "change_audience",
+      "submittedAt": 1723057173,
+      "targetAudience": "public",
+      "workflowId": 3127,
+      "reviewer": {
+        "id": "wt5u-xzdz"
       },
-      "Common Core" : {
-        "Contact Email" : "open.data@seattle.gov",
-        "Publisher" : "data.seattle.gov"
+      "submissionDetails": {
+        "permissionType": "read"
       },
-      "Refresh Frequency" : {
-        "Frequency" : "Daily"
+      "submissionOutcomeApplication": {
+        "endedAt": 1723057283,
+        "failureCount": 0,
+        "startedAt": 1723057283,
+        "status": "success"
+      },
+      "submitter": {
+        "id": "wt5u-xzdz"
       }
     },
-    "rowLabel" : "Customer Service Request",
-    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+    {
+      "message": "The `strict_permissions` flag must be on to enable internal approvals.",
+      "state": "unsubmittable",
+      "targetAudience": "internal",
+      "workflowId": 4739,
+      "submitter": null,
+      "reviewer": null
+    }
+  ],
+  "clientContext": {
+    "clientContextVariables": [],
+    "inheritedVariables": {}
   },
-  "owner" : {
-    "id" : "eng5-32q9",
-    "displayName" : "Bolinger, Brandon",
-    "screenName" : "Bolinger, Brandon",
-    "type" : "interactive",
-    "flags" : [ "acceptedEula" ]
+  "columns": [
+    {
+      "id": 613735056,
+      "name": "Service Request Number",
+      "dataTypeName": "text",
+      "description": "The unique record number of the service request",
+      "fieldName": "servicerequestnumber",
+      "position": 2,
+      "renderTypeName": "text",
+      "tableColumnId": 152325686,
+      "cachedContents": {
+        "non_null": "519191",
+        "null": "0",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735057,
+      "name": "Created Date",
+      "dataTypeName": "calendar_date",
+      "description": "The date and time the service request was created",
+      "fieldName": "createddate",
+      "position": 3,
+      "renderTypeName": "calendar_date",
+      "tableColumnId": 152572191,
+      "cachedContents": {
+        "non_null": "519191",
+        "null": "0",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {
+        "view": "date_time"
+      }
+    },
+    {
+      "id": 613735058,
+      "name": "Method Received",
+      "dataTypeName": "text",
+      "description": "The channel through which the service request was received",
+      "fieldName": "methodreceivedname",
+      "position": 4,
+      "renderTypeName": "text",
+      "tableColumnId": 152325688,
+      "cachedContents": {
+        "non_null": "519191",
+        "null": "0",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735059,
+      "name": "Status",
+      "dataTypeName": "text",
+      "description": "The current status of the service request",
+      "fieldName": "servicerequeststatusname",
+      "position": 5,
+      "renderTypeName": "text",
+      "tableColumnId": 152325689,
+      "cachedContents": {
+        "non_null": "519191",
+        "null": "0",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735060,
+      "name": "Location",
+      "dataTypeName": "text",
+      "description": "The location of the service request",
+      "fieldName": "location",
+      "position": 6,
+      "renderTypeName": "text",
+      "tableColumnId": 152325690,
+      "cachedContents": {
+        "non_null": "519188",
+        "null": "3",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735061,
+      "name": "X_Value",
+      "dataTypeName": "number",
+      "description": "The X (state plane) coordinate of the service request location",
+      "fieldName": "x_value",
+      "position": 7,
+      "renderTypeName": "number",
+      "tableColumnId": 152325673,
+      "cachedContents": {
+        "non_null": "519191",
+        "null": "0",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {
+        "noCommas": "true"
+      }
+    },
+    {
+      "id": 613735062,
+      "name": "Y_Value",
+      "dataTypeName": "number",
+      "description": "The Y (state plane) coordinate of the service request location",
+      "fieldName": "y_value",
+      "position": 8,
+      "renderTypeName": "number",
+      "tableColumnId": 152325674,
+      "cachedContents": {
+        "non_null": "519191",
+        "null": "0",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {
+        "noCommas": "true"
+      }
+    },
+    {
+      "id": 613735063,
+      "name": "Latitude",
+      "dataTypeName": "number",
+      "description": "The latitude coordinate of the service request location",
+      "fieldName": "latitude",
+      "position": 9,
+      "renderTypeName": "number",
+      "tableColumnId": 152572192,
+      "cachedContents": {
+        "non_null": "518125",
+        "null": "1066",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {
+        "noCommas": "true"
+      }
+    },
+    {
+      "id": 613735064,
+      "name": "Longitude",
+      "dataTypeName": "number",
+      "description": "The longitude coordinate of the service request location",
+      "fieldName": "longitude",
+      "position": 10,
+      "renderTypeName": "number",
+      "tableColumnId": 152572193,
+      "cachedContents": {
+        "non_null": "518125",
+        "null": "1066",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {
+        "noCommas": "true"
+      }
+    },
+    {
+      "id": 613735065,
+      "name": "Latitude/Longitude",
+      "dataTypeName": "point",
+      "description": "Georeferenced column for map visualizations",
+      "fieldName": "latitude_longitude",
+      "position": 11,
+      "renderTypeName": "point",
+      "tableColumnId": 152572339,
+      "cachedContents": {
+        "non_null": "518125",
+        "null": "1066",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735066,
+      "name": "ZIP Code",
+      "dataTypeName": "text",
+      "description": "The USPS postal code for the service request location",
+      "fieldName": "zipcode",
+      "position": 12,
+      "renderTypeName": "text",
+      "tableColumnId": 152325677,
+      "cachedContents": {
+        "non_null": "483893",
+        "null": "35298",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735067,
+      "name": "Council District",
+      "dataTypeName": "text",
+      "description": "Seattle City Council district for the service request location",
+      "fieldName": "councildistrict",
+      "position": 13,
+      "renderTypeName": "text",
+      "tableColumnId": 152325678,
+      "cachedContents": {
+        "non_null": "517384",
+        "null": "1807",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735068,
+      "name": "Police Precinct",
+      "dataTypeName": "text",
+      "description": "Seattle Police Department precinct for the service request location",
+      "fieldName": "policeprecinct",
+      "position": 14,
+      "renderTypeName": "text",
+      "tableColumnId": 152325679,
+      "cachedContents": {
+        "non_null": "518625",
+        "null": "566",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735074,
+      "name": "Community Reporting Area",
+      "dataTypeName": "text",
+      "description": "Community reporting area for the service request location",
+      "fieldName": "community_reporting_area",
+      "position": 16,
+      "renderTypeName": "text",
+      "tableColumnId": 159943817,
+      "cachedContents": {
+        "non_null": "385141",
+        "null": "134050",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735070,
+      "name": "License Plate Number",
+      "dataTypeName": "text",
+      "description": "Unique alphanumeric identifier assigned to a vehicle by the licensing authority",
+      "fieldName": "licenseplatenumber",
+      "position": 17,
+      "renderTypeName": "text",
+      "tableColumnId": 152325681,
+      "cachedContents": {
+        "non_null": "502097",
+        "null": "17094",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735071,
+      "name": "State",
+      "dataTypeName": "text",
+      "description": "The state or region that issued the license plate associated with a vehicle",
+      "fieldName": "state",
+      "position": 18,
+      "renderTypeName": "text",
+      "tableColumnId": 152325682,
+      "cachedContents": {
+        "non_null": "501736",
+        "null": "17455",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735072,
+      "name": "Vehicle Color",
+      "dataTypeName": "text",
+      "description": "The color of the vehicle",
+      "fieldName": "vehiclecolor",
+      "position": 19,
+      "renderTypeName": "text",
+      "tableColumnId": 152325683,
+      "cachedContents": {
+        "non_null": "502613",
+        "null": "16578",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    },
+    {
+      "id": 613735073,
+      "name": "Vehicle Make",
+      "dataTypeName": "text",
+      "description": "The make of the vehicle",
+      "fieldName": "vehiclemake",
+      "position": 20,
+      "renderTypeName": "text",
+      "tableColumnId": 152325684,
+      "cachedContents": {
+        "non_null": "490283",
+        "null": "28908",
+        "count": "519191",
+        "cardinality": "519191"
+      },
+      "format": {}
+    }
+  ],
+  "grants": [
+    {
+      "inherited": false,
+      "type": "viewer",
+      "flags": [
+        "public"
+      ]
+    }
+  ],
+  "license": {
+    "name": "Public Domain"
   },
-  "query" : { },
-  "rights" : [ "read" ],
-  "tableAuthor" : {
-    "id" : "eng5-32q9",
-    "displayName" : "Bolinger, Brandon",
-    "screenName" : "Bolinger, Brandon",
-    "type" : "interactive",
-    "flags" : [ "acceptedEula" ]
+  "metadata": {
+    "attachments": [
+      {
+        "filename": "72hr_Parking_Ordinance_Violations_metadata.pdf",
+        "assetId": "a93548b3-cd2b-47ec-b535-9917e61332d6",
+        "name": "72hr_Parking_Ordinance_Violations_metadata.pdf"
+      }
+    ],
+    "custom_fields": {
+      "Department": {
+        "Department": "Seattle Police Department"
+      },
+      "Common Core": {
+        "Contact Email": "open.data@seattle.gov",
+        "Publisher": "data.seattle.gov"
+      },
+      "Refresh Frequency": {
+        "Frequency": "Daily"
+      }
+    },
+    "rowLabel": "Customer Service Request",
+    "availableDisplayTypes": [
+      "table",
+      "fatrow",
+      "page"
+    ]
   },
-  "tags" : [ "service request", "neighborhood", "customer", "parking", "vehicle infractions" ],
-  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+  "owner": {
+    "id": "eng5-32q9",
+    "type": "interactive",
+    "flags": [
+      "acceptedEula"
+    ]
+  },
+  "query": {},
+  "rights": [
+    "read"
+  ],
+  "tableAuthor": {
+    "id": "eng5-32q9",
+    "type": "interactive",
+    "flags": [
+      "acceptedEula"
+    ]
+  },
+  "tags": [
+    "service request",
+    "neighborhood",
+    "customer",
+    "parking",
+    "vehicle infractions"
+  ],
+  "flags": [
+    "default",
+    "federated",
+    "internalToPublicFederatedView",
+    "ownerMayBeContacted",
+    "restorable",
+    "restorePossibleForType"
+  ]
 }

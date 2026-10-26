@@ -1,1646 +1,583 @@
 {
-  "id" : "7jzm-ucez",
-  "name" : "Annual Parking Study Data",
-  "assetType" : "dataset",
-  "attribution" : "City of Seattle",
-  "attributionLink" : "http://www.seattle.gov/parking",
-  "averageRating" : 0,
-  "category" : "Transportation",
-  "createdAt" : 1488480801,
-  "description" : "Manual parking study details from citywide paid parking study, presented by blockface and date/hour of study.  Most data is from spring of each year, with some data sets including summer studies.\n\nStudy time periods:\n•\t2014\n•\t2015\n•\t2016\n•\t2017\n•\t2018\n•\t2019\n\nPurpose: To determine hourly parking occupancy for most paid blockfaces in Seattle\n\n\nNote: In the column descriptions below, a street segment is typically defined as a drivable public street, or as a public walkway or trail, within Seattle city limits. A blockface is defined as one side of a block between road intersections, and often features a sidewalk.",
-  "diciBackend" : false,
-  "displayType" : "table",
-  "domainCName" : "data.seattle.gov",
-  "downloadCount" : 1319,
-  "hideFromCatalog" : false,
-  "hideFromDataJson" : false,
-  "indexUpdatedAt" : 1574807415,
-  "licenseId" : "PUBLIC_DOMAIN",
-  "locked" : false,
-  "newBackend" : true,
-  "numberOfComments" : 0,
-  "oid" : 32940109,
-  "provenance" : "official",
-  "publicationAppendEnabled" : false,
-  "publicationDate" : 1574807442,
-  "publicationGroup" : 14067857,
-  "publicationStage" : "published",
-  "rowsUpdatedAt" : 1574807442,
-  "tableId" : 16729589,
-  "totalTimesRated" : 0,
-  "viewCount" : 15254,
-  "viewLastModified" : 1738130081,
-  "viewType" : "tabular",
-  "approvals" : [ {
-    "reviewedAt" : 1541175957,
-    "reviewedAutomatically" : true,
-    "state" : "approved",
-    "submissionId" : 1542234,
-    "submissionObject" : "public_audience_request",
-    "submissionOutcome" : "change_audience",
-    "submittedAt" : 1541175957,
-    "targetAudience" : "public",
-    "workflowId" : 3127,
-    "submissionDetails" : {
-      "permissionType" : "READ"
-    },
-    "submissionOutcomeApplication" : {
-      "failureCount" : 0,
-      "status" : "success"
-    },
-    "submitter" : {
-      "id" : "geh9-fb2x",
-      "displayName" : "SDOT GIS"
-    }
-  }, {
-    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
-    "state" : "unsubmittable",
-    "targetAudience" : "internal",
-    "workflowId" : 4739
-  } ],
-  "clientContext" : {
-    "clientContextVariables" : [ ],
-    "inheritedVariables" : { }
-  },
-  "columns" : [ {
-    "id" : 440174679,
-    "name" : "Elmntkey",
-    "dataTypeName" : "number",
-    "description" : "Unique identifier for the city street segment (blockface).",
-    "fieldName" : "elmntkey",
-    "position" : 1,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44402989,
-    "width" : 125,
-    "cachedContents" : {
-      "largest" : "136322",
-      "non_null" : "167721",
-      "null" : "78",
-      "top" : [ {
-        "item" : "94731",
-        "count" : "184"
-      }, {
-        "item" : "94732",
-        "count" : "184"
-      }, {
-        "item" : "94736",
-        "count" : "184"
-      }, {
-        "item" : "20842",
-        "count" : "146"
-      }, {
-        "item" : "8302",
-        "count" : "146"
-      }, {
-        "item" : "94847",
-        "count" : "146"
-      }, {
-        "item" : "123744",
-        "count" : "146"
-      }, {
-        "item" : "120399",
-        "count" : "146"
-      }, {
-        "item" : "8306",
-        "count" : "146"
-      }, {
-        "item" : "66613",
-        "count" : "146"
-      }, {
-        "item" : "66618",
-        "count" : "146"
-      }, {
-        "item" : "66622",
-        "count" : "146"
-      }, {
-        "item" : "94846",
-        "count" : "146"
-      }, {
-        "item" : "8305",
-        "count" : "146"
-      }, {
-        "item" : "88634",
-        "count" : "146"
-      }, {
-        "item" : "79678",
-        "count" : "146"
-      }, {
-        "item" : "53241",
-        "count" : "146"
-      }, {
-        "item" : "119445",
-        "count" : "146"
-      }, {
-        "item" : "75865",
-        "count" : "146"
-      }, {
-        "item" : "20845",
-        "count" : "146"
-      } ],
-      "smallest" : "1001",
-      "count" : "167799",
-      "cardinality" : "2277"
-    },
-    "format" : {
-      "precisionStyle" : "standard",
-      "noCommas" : "true",
-      "align" : "right"
-    }
-  }, {
-    "id" : 440174680,
-    "name" : "Study_Area",
-    "dataTypeName" : "text",
-    "description" : "Area of the neighborhood for which study data was collected, usually an existing paid parking neighborhood.",
-    "fieldName" : "study_area",
-    "position" : 2,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44402990,
-    "width" : 220,
-    "cachedContents" : {
-      "largest" : "West Seattle",
-      "non_null" : "167773",
-      "null" : "26",
-      "top" : [ {
-        "item" : "South Lake Union",
-        "count" : "16679"
-      }, {
-        "item" : "Belltown",
-        "count" : "15306"
-      }, {
-        "item" : "First Hill",
-        "count" : "12546"
-      }, {
-        "item" : "Pike-Pine",
-        "count" : "10567"
-      }, {
-        "item" : "Uptown",
-        "count" : "10264"
-      }, {
-        "item" : "Commercial Core",
-        "count" : "8168"
-      }, {
-        "item" : "Ballard",
-        "count" : "7614"
-      }, {
-        "item" : "Pioneer Square",
-        "count" : "6775"
-      }, {
-        "item" : "University District",
-        "count" : "6697"
-      }, {
-        "item" : "Chinatown/ID",
-        "count" : "6456"
-      }, {
-        "item" : "Capitol Hill",
-        "count" : "5068"
-      }, {
-        "item" : "Denny Triangle",
-        "count" : "3922"
-      }, {
-        "item" : "Fremont",
-        "count" : "2690"
-      }, {
-        "item" : "Belltown - Weekday",
-        "count" : "2386"
-      }, {
-        "item" : "Roosevelt",
-        "count" : "2295"
-      }, {
-        "item" : "First Hill - Weekday",
-        "count" : "2250"
-      }, {
-        "item" : "Uptown Triangle",
-        "count" : "2217"
-      }, {
-        "item" : "South Lake Union - Weekday",
-        "count" : "2002"
-      }, {
-        "item" : "Pike-Pine - Weekday",
-        "count" : "1843"
-      }, {
-        "item" : "Commercial Core - Weekday",
-        "count" : "1829"
-      } ],
-      "smallest" : "12th Ave",
-      "count" : "167799",
-      "cardinality" : "75"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174681,
-    "name" : "Sub_Area",
-    "dataTypeName" : "text",
-    "description" : "Area within the Study_Area, for example “North” or “South”, “Core” or “Edge”. Not every Study_Area has a Sub_Area. When Sub_Area is “Unpaid” that study data is from unpaid blocks near paid blocks.",
-    "fieldName" : "sub_area",
-    "position" : 3,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44402991,
-    "width" : 196,
-    "cachedContents" : {
-      "largest" : "Waterfront",
-      "non_null" : "154619",
-      "null" : "13180",
-      "top" : [ {
-        "item" : "North",
-        "count" : "22770"
-      }, {
-        "item" : "Edge",
-        "count" : "21154"
-      }, {
-        "item" : "Core",
-        "count" : "18795"
-      }, {
-        "item" : "Paid",
-        "count" : "18761"
-      }, {
-        "item" : "South",
-        "count" : "18103"
-      }, {
-        "item" : "Unpaid",
-        "count" : "12800"
-      }, {
-        "item" : "Retail",
-        "count" : "7766"
-      }, {
-        "item" : "Periphery",
-        "count" : "6461"
-      }, {
-        "item" : "PAID",
-        "count" : "4634"
-      }, {
-        "item" : "Waterfront",
-        "count" : "3861"
-      }, {
-        "item" : "Financial",
-        "count" : "3811"
-      }, {
-        "item" : "Non-RPZ",
-        "count" : "2565"
-      }, {
-        "item" : "2",
-        "count" : "2314"
-      }, {
-        "item" : "Edge Unpaid",
-        "count" : "2100"
-      }, {
-        "item" : "RPZ",
-        "count" : "1980"
-      }, {
-        "item" : "10",
-        "count" : "1846"
-      }, {
-        "item" : "UNPAID",
-        "count" : "1674"
-      }, {
-        "item" : "2 Hour",
-        "count" : "1313"
-      }, {
-        "item" : "10 Hour",
-        "count" : "741"
-      }, {
-        "item" : "NorthWest",
-        "count" : "520"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "25"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174683,
-    "name" : "Date Time",
-    "dataTypeName" : "text",
-    "description" : "Reported date and hour of observation.",
-    "fieldName" : "date_time",
-    "position" : 5,
-    "renderTypeName" : "text",
-    "tableColumnId" : 71228691,
-    "cachedContents" : {
-      "largest" : "9/27/2017 9:00",
-      "non_null" : "167799",
-      "null" : "0",
-      "top" : [ {
-        "item" : "4/14/2015 11:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 10:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 20:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 18:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 12:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 9:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 15:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 19:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 17:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 13:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 21:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 8:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 14:00",
-        "count" : "406"
-      }, {
-        "item" : "4/14/2015 16:00",
-        "count" : "406"
-      }, {
-        "item" : "4/7/2015 17:00",
-        "count" : "380"
-      }, {
-        "item" : "4/7/2015 16:00",
-        "count" : "380"
-      }, {
-        "item" : "4/7/2015 12:00",
-        "count" : "380"
-      }, {
-        "item" : "4/7/2015 13:00",
-        "count" : "380"
-      }, {
-        "item" : "4/7/2015 11:00",
-        "count" : "380"
-      }, {
-        "item" : "4/7/2015 9:00",
-        "count" : "380"
-      } ],
-      "smallest" : "1-00-00 00:00:00",
-      "count" : "167799",
-      "cardinality" : "1799"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174685,
-    "name" : "Side",
-    "dataTypeName" : "text",
-    "description" : "Side of street on which study data was collected.",
-    "fieldName" : "side",
-    "position" : 7,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44402994,
-    "width" : 148,
-    "cachedContents" : {
-      "largest" : "W",
-      "non_null" : "167760",
-      "null" : "39",
-      "top" : [ {
-        "item" : "W",
-        "count" : "27641"
-      }, {
-        "item" : "E",
-        "count" : "25754"
-      }, {
-        "item" : "S",
-        "count" : "24175"
-      }, {
-        "item" : "N",
-        "count" : "24030"
-      }, {
-        "item" : "NE",
-        "count" : "18369"
-      }, {
-        "item" : "SW",
-        "count" : "17233"
-      }, {
-        "item" : "SE",
-        "count" : "16258"
-      }, {
-        "item" : "NW",
-        "count" : "14300"
-      } ],
-      "smallest" : "E",
-      "count" : "167799",
-      "cardinality" : "8"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174686,
-    "name" : "Unitdesc",
-    "dataTypeName" : "text",
-    "description" : "Description of block where study data was collected, in the format of on-street and intersecting streets.",
-    "fieldName" : "unitdesc",
-    "position" : 8,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44402995,
-    "width" : 421,
-    "cachedContents" : {
-      "largest" : "YESLER WAY BETWEEN WESTERN AVE AND POST AVE",
-      "non_null" : "167773",
-      "null" : "26",
-      "top" : [ {
-        "item" : "NW 54TH SR ST BETWEEN 30TH WR AVE NW AND 32ND AVE NW",
-        "count" : "368"
-      }, {
-        "item" : "MAYNARD AVE S BETWEEN S KING ST AND S WELLER ST",
-        "count" : "292"
-      }, {
-        "item" : "S KING ST BETWEEN 6TH AVE S AND MAYNARD AVE S",
-        "count" : "292"
-      }, {
-        "item" : "S WELLER ST BETWEEN MAYNARD AVE S AND MAYNARD AL S",
-        "count" : "292"
-      }, {
-        "item" : "S WELLER ST BETWEEN 7TH AVE S AND CANTON AL S",
-        "count" : "292"
-      }, {
-        "item" : "S KING ST BETWEEN MAYNARD AVE S AND MAYNARD AL S",
-        "count" : "292"
-      }, {
-        "item" : "S WELLER ST BETWEEN MAYNARD AL S AND 7TH AVE S",
-        "count" : "292"
-      }, {
-        "item" : "7TH AVE S BETWEEN S WELLER ST AND S LANE ST",
-        "count" : "292"
-      }, {
-        "item" : "6TH AVE S BETWEEN S KING ST AND S WELLER ST",
-        "count" : "292"
-      }, {
-        "item" : "6TH AVE S BETWEEN S WELLER ST AND S LANE ST",
-        "count" : "292"
-      }, {
-        "item" : "MAYNARD AVE S BETWEEN S WELLER ST AND S LANE ST",
-        "count" : "292"
-      }, {
-        "item" : "S WELLER ST BETWEEN CANTON AL S AND 8TH AVE S",
-        "count" : "292"
-      }, {
-        "item" : "S KING ST BETWEEN 7TH AVE S AND CANTON AL S",
-        "count" : "292"
-      }, {
-        "item" : "S KING ST BETWEEN CANTON AL S AND 8TH AVE S",
-        "count" : "292"
-      }, {
-        "item" : "7TH AVE S BETWEEN S KING ST AND S WELLER ST",
-        "count" : "292"
-      }, {
-        "item" : "S KING ST BETWEEN MAYNARD AL S AND 7TH AVE S",
-        "count" : "292"
-      }, {
-        "item" : "S WELLER ST BETWEEN 6TH AVE S AND MAYNARD AVE S",
-        "count" : "292"
-      }, {
-        "item" : "8TH AVE S BETWEEN S WELLER ST AND S LANE ST",
-        "count" : "260"
-      }, {
-        "item" : "5TH AVE S BETWEEN S KING ST AND S WELLER ST",
-        "count" : "260"
-      }, {
-        "item" : "8TH AVE S BETWEEN S KING ST AND S WELLER ST",
-        "count" : "260"
-      } ],
-      "smallest" : "10TH AVE BETWEEN E MADISON ST AND E SENECA ST",
-      "count" : "167799",
-      "cardinality" : "1344"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174688,
-    "name" : "Peak Hour_SDOT",
-    "dataTypeName" : "text",
-    "description" : "Notes peak hour restrictions for a blockface. If no peak hour restrictions, this field is blank.",
-    "fieldName" : "peak_hour_sdot",
-    "position" : 10,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44402997,
-    "width" : 268,
-    "cachedContents" : {
-      "largest" : "7AM-7PM",
-      "non_null" : "17225",
-      "null" : "150574",
-      "top" : [ {
-        "item" : "6-9AM 3-7PM",
-        "count" : "4696"
-      }, {
-        "item" : "3-7PM",
-        "count" : "3363"
-      }, {
-        "item" : "7-9AM",
-        "count" : "2435"
-      }, {
-        "item" : "4-6PM",
-        "count" : "2307"
-      }, {
-        "item" : "6-9AM 3-6PM",
-        "count" : "1145"
-      }, {
-        "item" : "6-9AM",
-        "count" : "985"
-      }, {
-        "item" : "3-6PM",
-        "count" : "881"
-      }, {
-        "item" : "7-9AM 4-6PM",
-        "count" : "721"
-      }, {
-        "item" : "6-9AM 3-6:30PM",
-        "count" : "238"
-      }, {
-        "item" : "7-9AM 3-7PM",
-        "count" : "225"
-      }, {
-        "item" : "10PM-5AM",
-        "count" : "64"
-      }, {
-        "item" : "3-6:30PM",
-        "count" : "39"
-      }, {
-        "item" : "6-10AM/2-6PM",
-        "count" : "28"
-      }, {
-        "item" : "2-6PM",
-        "count" : "28"
-      }, {
-        "item" : "4-6 PM",
-        "count" : "16"
-      }, {
-        "item" : "7AM-7PM",
-        "count" : "15"
-      }, {
-        "item" : "5-9AM",
-        "count" : "13"
-      }, {
-        "item" : "7-9 AM",
-        "count" : "13"
-      }, {
-        "item" : "2-7 PM",
-        "count" : "13"
-      } ],
-      "smallest" : "10PM-5AM",
-      "count" : "167799",
-      "cardinality" : "19"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174689,
-    "name" : "Parking_Spaces",
-    "dataTypeName" : "number",
-    "description" : "Total number of legal parking spaces on a blockface.",
-    "fieldName" : "parking_spaces",
-    "position" : 11,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44402998,
-    "width" : 153,
-    "cachedContents" : {
-      "largest" : "120",
-      "non_null" : "167501",
-      "null" : "298",
-      "top" : [ {
-        "item" : "0",
-        "count" : "22167"
-      }, {
-        "item" : "6",
-        "count" : "16167"
-      }, {
-        "item" : "5",
-        "count" : "16069"
-      }, {
-        "item" : "7",
-        "count" : "15674"
-      }, {
-        "item" : "8",
-        "count" : "15347"
-      }, {
-        "item" : "4",
-        "count" : "14230"
-      }, {
-        "item" : "9",
-        "count" : "12118"
-      }, {
-        "item" : "3",
-        "count" : "11015"
-      }, {
-        "item" : "10",
-        "count" : "10063"
-      }, {
-        "item" : "2",
-        "count" : "5754"
-      }, {
-        "item" : "11",
-        "count" : "5074"
-      }, {
-        "item" : "12",
-        "count" : "3712"
-      }, {
-        "item" : "13",
-        "count" : "2433"
-      }, {
-        "item" : "14",
-        "count" : "2419"
-      }, {
-        "item" : "15",
-        "count" : "2071"
-      }, {
-        "item" : "16",
-        "count" : "1451"
-      }, {
-        "item" : "1",
-        "count" : "1411"
-      }, {
-        "item" : "17",
-        "count" : "1387"
-      }, {
-        "item" : "19",
-        "count" : "1300"
-      }, {
-        "item" : "18",
-        "count" : "1295"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "61"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174690,
-    "name" : "Total_Vehicle_Count",
-    "dataTypeName" : "number",
-    "description" : "Total number of vehicles observed parked on a blockface.",
-    "fieldName" : "total_vehicle_count",
-    "position" : 12,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44402999,
-    "width" : 328,
-    "cachedContents" : {
-      "largest" : "111",
-      "non_null" : "167314",
-      "null" : "485",
-      "top" : [ {
-        "item" : "0",
-        "count" : "29721"
-      }, {
-        "item" : "4",
-        "count" : "17054"
-      }, {
-        "item" : "5",
-        "count" : "15679"
-      }, {
-        "item" : "3",
-        "count" : "15605"
-      }, {
-        "item" : "6",
-        "count" : "14100"
-      }, {
-        "item" : "2",
-        "count" : "13065"
-      }, {
-        "item" : "7",
-        "count" : "12416"
-      }, {
-        "item" : "8",
-        "count" : "10310"
-      }, {
-        "item" : "1",
-        "count" : "8605"
-      }, {
-        "item" : "9",
-        "count" : "7626"
-      }, {
-        "item" : "10",
-        "count" : "5933"
-      }, {
-        "item" : "11",
-        "count" : "3855"
-      }, {
-        "item" : "12",
-        "count" : "2758"
-      }, {
-        "item" : "13",
-        "count" : "1792"
-      }, {
-        "item" : "14",
-        "count" : "1516"
-      }, {
-        "item" : "15",
-        "count" : "1303"
-      }, {
-        "item" : "16",
-        "count" : "982"
-      }, {
-        "item" : "17",
-        "count" : "789"
-      }, {
-        "item" : "18",
-        "count" : "674"
-      }, {
-        "item" : "19",
-        "count" : "480"
-      } ],
-      "smallest" : "-5",
-      "count" : "167799",
-      "cardinality" : "93"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174691,
-    "name" : "Dp_Count",
-    "dataTypeName" : "number",
-    "description" : "Total number of vehicles displaying a disabled placard or plates observed parked on a blockface.",
-    "fieldName" : "dp_count",
-    "position" : 13,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44403000,
-    "width" : 196,
-    "cachedContents" : {
-      "largest" : "21",
-      "non_null" : "125112",
-      "null" : "42687",
-      "top" : [ {
-        "item" : "0",
-        "count" : "75672"
-      }, {
-        "item" : "1",
-        "count" : "26938"
-      }, {
-        "item" : "2",
-        "count" : "11612"
-      }, {
-        "item" : "3",
-        "count" : "5222"
-      }, {
-        "item" : "4",
-        "count" : "2630"
-      }, {
-        "item" : "5",
-        "count" : "1421"
-      }, {
-        "item" : "6",
-        "count" : "751"
-      }, {
-        "item" : "7",
-        "count" : "375"
-      }, {
-        "item" : "8",
-        "count" : "208"
-      }, {
-        "item" : "9",
-        "count" : "112"
-      }, {
-        "item" : "10",
-        "count" : "55"
-      }, {
-        "item" : "12",
-        "count" : "37"
-      }, {
-        "item" : "11",
-        "count" : "34"
-      }, {
-        "item" : "13",
-        "count" : "20"
-      }, {
-        "item" : "14",
-        "count" : "13"
-      }, {
-        "item" : "15",
-        "count" : "9"
-      }, {
-        "item" : "16",
-        "count" : "2"
-      }, {
-        "item" : "21",
-        "count" : "1"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "18"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174692,
-    "name" : "Rpz_Count",
-    "dataTypeName" : "number",
-    "description" : "In some study areas, vehicles displaying the appropriate Restricted Parking Zone (RPZ) permit can park without observing the posted time limit or paying the posted rate. In these study areas, RPZ_Count is the number of vehicles displaying an RPZ permit observed parked on a blockface. ",
-    "fieldName" : "rpz_count",
-    "position" : 14,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44403001,
-    "width" : 208,
-    "cachedContents" : {
-      "largest" : "27",
-      "non_null" : "36577",
-      "null" : "131222",
-      "top" : [ {
-        "item" : "0",
-        "count" : "24428"
-      }, {
-        "item" : "4",
-        "count" : "1685"
-      }, {
-        "item" : "3",
-        "count" : "1612"
-      }, {
-        "item" : "1",
-        "count" : "1550"
-      }, {
-        "item" : "5",
-        "count" : "1537"
-      }, {
-        "item" : "2",
-        "count" : "1463"
-      }, {
-        "item" : "6",
-        "count" : "1253"
-      }, {
-        "item" : "7",
-        "count" : "1015"
-      }, {
-        "item" : "8",
-        "count" : "799"
-      }, {
-        "item" : "9",
-        "count" : "469"
-      }, {
-        "item" : "10",
-        "count" : "334"
-      }, {
-        "item" : "11",
-        "count" : "139"
-      }, {
-        "item" : "12",
-        "count" : "82"
-      }, {
-        "item" : "13",
-        "count" : "67"
-      }, {
-        "item" : "14",
-        "count" : "43"
-      }, {
-        "item" : "16",
-        "count" : "28"
-      }, {
-        "item" : "15",
-        "count" : "26"
-      }, {
-        "item" : "17",
-        "count" : "10"
-      }, {
-        "item" : "22",
-        "count" : "8"
-      }, {
-        "item" : "26",
-        "count" : "8"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "27"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174693,
-    "name" : "TG_Car2Go",
-    "dataTypeName" : "number",
-    "description" : "Total number of car2go vehicles observed parked on a blockface.",
-    "fieldName" : "tg_car2go",
-    "position" : 15,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44403002,
-    "width" : 208,
-    "cachedContents" : {
-      "largest" : "9",
-      "non_null" : "36362",
-      "null" : "131437",
-      "top" : [ {
-        "item" : "0",
-        "count" : "28254"
-      }, {
-        "item" : "1",
-        "count" : "6685"
-      }, {
-        "item" : "2",
-        "count" : "1075"
-      }, {
-        "item" : "3",
-        "count" : "213"
-      }, {
-        "item" : "4",
-        "count" : "74"
-      }, {
-        "item" : "5",
-        "count" : "27"
-      }, {
-        "item" : "7",
-        "count" : "13"
-      }, {
-        "item" : "6",
-        "count" : "12"
-      }, {
-        "item" : "9",
-        "count" : "4"
-      }, {
-        "item" : "8",
-        "count" : "4"
-      }, {
-        "item" : "-1",
-        "count" : "1"
-      } ],
-      "smallest" : "-1",
-      "count" : "167799",
-      "cardinality" : "11"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174694,
-    "name" : "BMW_DN",
-    "dataTypeName" : "number",
-    "description" : "Total number of ReachNow vehicles observed parked on a blockface.",
-    "fieldName" : "bmw_dn",
-    "position" : 16,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44403003,
-    "width" : 172,
-    "cachedContents" : {
-      "largest" : "6",
-      "non_null" : "15432",
-      "null" : "152367",
-      "top" : [ {
-        "item" : "0",
-        "count" : "12100"
-      }, {
-        "item" : "1",
-        "count" : "2910"
-      }, {
-        "item" : "2",
-        "count" : "305"
-      }, {
-        "item" : "3",
-        "count" : "92"
-      }, {
-        "item" : "4",
-        "count" : "19"
-      }, {
-        "item" : "5",
-        "count" : "5"
-      }, {
-        "item" : "6",
-        "count" : "1"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "7"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174704,
-    "name" : "Lime",
-    "dataTypeName" : "number",
-    "description" : "Total number of Lime vehicles observed parked on a blockface. Column added in 2019.",
-    "fieldName" : "lime",
-    "position" : 17,
-    "renderTypeName" : "number",
-    "tableColumnId" : 91318556,
-    "cachedContents" : {
-      "largest" : "5",
-      "non_null" : "2247",
-      "null" : "165552",
-      "top" : [ {
-        "item" : "0",
-        "count" : "1345"
-      }, {
-        "item" : "1",
-        "count" : "767"
-      }, {
-        "item" : "2",
-        "count" : "114"
-      }, {
-        "item" : "4",
-        "count" : "11"
-      }, {
-        "item" : "3",
-        "count" : "8"
-      }, {
-        "item" : "5",
-        "count" : "2"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "6"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174705,
-    "name" : "Idling",
-    "dataTypeName" : "number",
-    "description" : "Total number of vehicles observed stopped in a paid space with someone either sitting in the vehicle or waiting to pick up/drop off or actively loading/unloading. Column added in 2019.",
-    "fieldName" : "idling",
-    "position" : 18,
-    "renderTypeName" : "number",
-    "tableColumnId" : 91318557,
-    "cachedContents" : {
-      "largest" : "5",
-      "non_null" : "4085",
-      "null" : "163714",
-      "top" : [ {
-        "item" : "1",
-        "count" : "2324"
-      }, {
-        "item" : "0",
-        "count" : "1368"
-      }, {
-        "item" : "2",
-        "count" : "333"
-      }, {
-        "item" : "3",
-        "count" : "51"
-      }, {
-        "item" : "4",
-        "count" : "8"
-      }, {
-        "item" : "5",
-        "count" : "1"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "6"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174695,
-    "name" : "Field Notes",
-    "dataTypeName" : "text",
-    "description" : "Comments from data collectors.",
-    "fieldName" : "field_notes",
-    "position" : 19,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44403004,
-    "width" : 232,
-    "cachedContents" : {
-      "largest" : "zone 13 permit",
-      "non_null" : "15977",
-      "null" : "151822",
-      "top" : [ {
-        "item" : "Duration",
-        "count" : "2193"
-      }, {
-        "item" : "other-motorcycle",
-        "count" : "500"
-      }, {
-        "item" : "Other (type in additional comments)\n30m",
-        "count" : "304"
-      }, {
-        "item" : "No Parking Allowed",
-        "count" : "280"
-      }, {
-        "item" : "duration",
-        "count" : "270"
-      }, {
-        "item" : "Illegal",
-        "count" : "226"
-      }, {
-        "item" : "illegal",
-        "count" : "222"
-      }, {
-        "item" : "Motorcycle",
-        "count" : "195"
-      }, {
-        "item" : "Other (type in additional comments)\n3m",
-        "count" : "182"
-      }, {
-        "item" : "Construction",
-        "count" : "147"
-      }, {
-        "item" : "motorcycle",
-        "count" : "141"
-      }, {
-        "item" : "PLZ=3M",
-        "count" : "140"
-      }, {
-        "item" : "1x mc",
-        "count" : "111"
-      }, {
-        "item" : "Other (type in additional comments)\nmc x1",
-        "count" : "94"
-      }, {
-        "item" : "1 motorcycle",
-        "count" : "85"
-      }, {
-        "item" : "1mc",
-        "count" : "85"
-      }, {
-        "item" : "PLZ=30M",
-        "count" : "84"
-      }, {
-        "item" : "No parking",
-        "count" : "81"
-      }, {
-        "item" : "CVLZ =30M",
-        "count" : "80"
-      }, {
-        "item" : "paid: mc x1",
-        "count" : "80"
-      } ],
-      "smallest" : ".",
-      "count" : "167799",
-      "cardinality" : "2672"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174696,
-    "name" : "Construction",
-    "dataTypeName" : "text",
-    "description" : "“Yes” or “No” whether there was construction blocking any of the parking spaces.",
-    "fieldName" : "construction",
-    "position" : 20,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44403005,
-    "width" : 244,
-    "cachedContents" : {
-      "largest" : "Yes",
-      "non_null" : "167786",
-      "null" : "13",
-      "top" : [ {
-        "item" : "No",
-        "count" : "154203"
-      }, {
-        "item" : "Yes",
-        "count" : "13456"
-      }, {
-        "item" : "yes",
-        "count" : "113"
-      }, {
-        "item" : "no",
-        "count" : "13"
-      }, {
-        "item" : "ERROR: #N/A",
-        "count" : "1"
-      } ],
-      "smallest" : "ERROR: #N/A",
-      "count" : "167799",
-      "cardinality" : "5"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174697,
-    "name" : "Event Closure",
-    "dataTypeName" : "text",
-    "description" : "“Yes” or “No” whether there was an event in the right-of-way blocking any of the parking spaces.",
-    "fieldName" : "event_closure",
-    "position" : 21,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44403006,
-    "width" : 256,
-    "cachedContents" : {
-      "largest" : "Yes",
-      "non_null" : "167786",
-      "null" : "13",
-      "top" : [ {
-        "item" : "No",
-        "count" : "166482"
-      }, {
-        "item" : "Yes",
-        "count" : "1291"
-      }, {
-        "item" : "yes",
-        "count" : "13"
-      } ],
-      "smallest" : "No",
-      "count" : "167799",
-      "cardinality" : "3"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174698,
-    "name" : "Subarea Label",
-    "dataTypeName" : "text",
-    "description" : "Combines fields Study_Area and Sub_Area.",
-    "fieldName" : "subarea_label",
-    "position" : 22,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44403007,
-    "width" : 256,
-    "cachedContents" : {
-      "largest" : "West Seattle",
-      "non_null" : "167799",
-      "null" : "0",
-      "top" : [ {
-        "item" : "Belltown (North Subarea)",
-        "count" : "10413"
-      }, {
-        "item" : "Pike-Pine (Paid Subarea)",
-        "count" : "9365"
-      }, {
-        "item" : "South Lake Union (South Subarea)",
-        "count" : "8489"
-      }, {
-        "item" : "Uptown (Edge Subarea)",
-        "count" : "5330"
-      }, {
-        "item" : "University District (Core Subarea)",
-        "count" : "4950"
-      }, {
-        "item" : "Belltown (South Subarea)",
-        "count" : "4893"
-      }, {
-        "item" : "Pioneer Square (Edge Subarea)",
-        "count" : "4247"
-      }, {
-        "item" : "Commercial Core (Retail Subarea)",
-        "count" : "4010"
-      }, {
-        "item" : "Ballard (Edge Subarea)",
-        "count" : "3930"
-      }, {
-        "item" : "First Hill (Paid Subarea)",
-        "count" : "3892"
-      }, {
-        "item" : "First Hill",
-        "count" : "3801"
-      }, {
-        "item" : "Chinatown/ID (Edge Subarea)",
-        "count" : "3576"
-      }, {
-        "item" : "Denny Triangle (North Subarea)",
-        "count" : "3121"
-      }, {
-        "item" : "Chinatown/ID (Core Subarea)",
-        "count" : "2880"
-      }, {
-        "item" : "South Lake Union (North Subarea)",
-        "count" : "2847"
-      }, {
-        "item" : "First Hill (Non-RPZ Subarea)",
-        "count" : "2565"
-      }, {
-        "item" : "Pioneer Square (Core Subarea)",
-        "count" : "2528"
-      }, {
-        "item" : "Capitol Hill (South Subarea)",
-        "count" : "2325"
-      }, {
-        "item" : "South Lake Union (2 Hour Subarea)",
-        "count" : "2314"
-      }, {
-        "item" : "First Hill - Weekday",
-        "count" : "2250"
-      } ],
-      "smallest" : "12th Ave 2017 Annual Study (Paid Subarea)",
-      "count" : "167799",
-      "cardinality" : "156"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174699,
-    "name" : "Study Year",
-    "dataTypeName" : "number",
-    "description" : "The year in which the data was collected.",
-    "fieldName" : "study_year",
-    "position" : 23,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44403008,
-    "width" : 220,
-    "cachedContents" : {
-      "largest" : "2019",
-      "non_null" : "167773",
-      "null" : "26",
-      "top" : [ {
-        "item" : "2015",
-        "count" : "46250"
-      }, {
-        "item" : "2017",
-        "count" : "27322"
-      }, {
-        "item" : "2014",
-        "count" : "27081"
-      }, {
-        "item" : "2018",
-        "count" : "22789"
-      }, {
-        "item" : "2019",
-        "count" : "22444"
-      }, {
-        "item" : "2016",
-        "count" : "21887"
-      } ],
-      "smallest" : "2014",
-      "count" : "167799",
-      "cardinality" : "6"
-    },
-    "format" : {
-      "precisionStyle" : "standard",
-      "noCommas" : "true",
-      "align" : "right"
-    }
-  }, {
-    "id" : 440174700,
-    "name" : "Peak Hour? (Yes or No)",
-    "dataTypeName" : "text",
-    "description" : "\"Yes\" or \"No\" whether there were peak hour parking restrictions for any of the parking spaces.",
-    "fieldName" : "peak_hour_yes_or_no",
-    "position" : 24,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44403009,
-    "width" : 364,
-    "cachedContents" : {
-      "largest" : "YES",
-      "non_null" : "167799",
-      "null" : "0",
-      "top" : [ {
-        "item" : "No",
-        "count" : "163804"
-      }, {
-        "item" : "Yes",
-        "count" : "3856"
-      }, {
-        "item" : "TBD",
-        "count" : "109"
-      }, {
-        "item" : "NO",
-        "count" : "16"
-      }, {
-        "item" : "YES",
-        "count" : "12"
-      }, {
-        "item" : "yes",
-        "count" : "2"
-      } ],
-      "smallest" : "No",
-      "count" : "167799",
-      "cardinality" : "6"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174701,
-    "name" : "RPZ Blocks",
-    "dataTypeName" : "number",
-    "description" : "Restricted Parking Zone (RPZ) blocks.",
-    "fieldName" : "rpz_blocks",
-    "position" : 25,
-    "renderTypeName" : "number",
-    "tableColumnId" : 44403010,
-    "width" : 220,
-    "cachedContents" : {
-      "largest" : "126",
-      "non_null" : "89696",
-      "null" : "78103",
-      "top" : [ {
-        "item" : "0",
-        "count" : "73008"
-      }, {
-        "item" : "21",
-        "count" : "5238"
-      }, {
-        "item" : "13",
-        "count" : "2960"
-      }, {
-        "item" : "4",
-        "count" : "2824"
-      }, {
-        "item" : "7",
-        "count" : "2169"
-      }, {
-        "item" : "27",
-        "count" : "967"
-      }, {
-        "item" : "24",
-        "count" : "907"
-      }, {
-        "item" : "2",
-        "count" : "616"
-      }, {
-        "item" : "25",
-        "count" : "582"
-      }, {
-        "item" : "10",
-        "count" : "110"
-      }, {
-        "item" : "19",
-        "count" : "108"
-      }, {
-        "item" : "29",
-        "count" : "57"
-      }, {
-        "item" : "15",
-        "count" : "51"
-      }, {
-        "item" : "40",
-        "count" : "1"
-      }, {
-        "item" : "41",
-        "count" : "1"
-      }, {
-        "item" : "42",
-        "count" : "1"
-      }, {
-        "item" : "43",
-        "count" : "1"
-      }, {
-        "item" : "44",
-        "count" : "1"
-      }, {
-        "item" : "45",
-        "count" : "1"
-      }, {
-        "item" : "46",
-        "count" : "1"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "112"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174702,
-    "name" : "CSM",
-    "dataTypeName" : "text",
-    "description" : "Curbspace managed block.",
-    "fieldName" : "csm",
-    "position" : 26,
-    "renderTypeName" : "text",
-    "tableColumnId" : 44403011,
-    "width" : 136,
-    "cachedContents" : {
-      "largest" : "Y",
-      "non_null" : "89904",
-      "null" : "77895",
-      "top" : [ {
-        "item" : "Y",
-        "count" : "80084"
-      }, {
-        "item" : "N",
-        "count" : "9673"
-      }, {
-        "item" : "ERROR: #N/A",
-        "count" : "117"
-      }, {
-        "item" : "parking, paid, load (0,0,0 to 20,20,17)",
-        "count" : "12"
-      }, {
-        "item" : "0",
-        "count" : "4"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1)",
-        "count" : "4"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); total, 3m (25,0 to 24,1), moved 4 from paid to other",
-        "count" : "2"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); total, 30m (21,4 to 18,7)",
-        "count" : "2"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); total, 30m (24,3 to 18,9)",
-        "count" : "1"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); total, 30m (24,5 to 18,11)",
-        "count" : "1"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); total, 30m (25,3 to 18,10)",
-        "count" : "1"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); total, 3m (23,0 to 22,1), moved 2 from paid to other",
-        "count" : "1"
-      }, {
-        "item" : "parking, paid, load (0,0,0 to 20,20,17); total,30m (23,6 to 20,10)",
-        "count" : "1"
-      }, {
-        "item" : "Parking, paid, load, zone (7,7,1,2 to 18,18,11,1); Total, 30m (22,9 to 19,11)",
-        "count" : "1"
-      } ],
-      "smallest" : "0",
-      "count" : "167799",
-      "cardinality" : "14"
-    },
-    "format" : { }
-  }, {
-    "id" : 440174703,
-    "name" : "Time Stamp",
-    "dataTypeName" : "calendar_date",
-    "description" : "Exact time of blockface parking occupancy observation",
-    "fieldName" : "time_stamp",
-    "position" : 27,
-    "renderTypeName" : "calendar_date",
-    "tableColumnId" : 71325803,
-    "cachedContents" : {
-      "largest" : "2019-09-19T00:00:00.000",
-      "non_null" : "84209",
-      "null" : "83590",
-      "top" : [ {
-        "item" : "2019-09-19T00:00:00.000",
-        "count" : "1050"
-      }, {
-        "item" : "2019-05-22T00:00:00.000",
-        "count" : "182"
-      }, {
-        "item" : "2019-03-21T00:00:00.000",
-        "count" : "90"
-      }, {
-        "item" : "2017-05-11T18:11:00.000",
-        "count" : "20"
-      }, {
-        "item" : "2017-05-10T19:02:00.000",
-        "count" : "20"
-      }, {
-        "item" : "2017-05-11T20:12:00.000",
-        "count" : "19"
-      }, {
-        "item" : "2016-06-02T20:16:00.000",
-        "count" : "18"
-      }, {
-        "item" : "2017-05-16T14:18:00.000",
-        "count" : "17"
-      }, {
-        "item" : "2017-05-18T12:12:00.000",
-        "count" : "17"
-      }, {
-        "item" : "2017-05-11T20:13:00.000",
-        "count" : "16"
-      }, {
-        "item" : "2017-05-11T23:02:00.000",
-        "count" : "16"
-      }, {
-        "item" : "2017-05-10T22:10:00.000",
-        "count" : "16"
-      }, {
-        "item" : "2017-05-11T22:13:00.000",
-        "count" : "16"
-      }, {
-        "item" : "2016-06-02T18:21:00.000",
-        "count" : "16"
-      }, {
-        "item" : "2017-05-10T22:07:00.000",
-        "count" : "16"
-      }, {
-        "item" : "2016-06-02T20:17:00.000",
-        "count" : "15"
-      }, {
-        "item" : "2017-05-09T22:10:00.000",
-        "count" : "15"
-      }, {
-        "item" : "2017-05-11T21:31:00.000",
-        "count" : "15"
-      }, {
-        "item" : "2017-05-16T11:22:00.000",
-        "count" : "15"
-      }, {
-        "item" : "2017-05-16T09:17:00.000",
-        "count" : "14"
-      } ],
-      "smallest" : "2016-04-05T08:03:00.000",
-      "count" : "167799",
-      "cardinality" : "35299"
-    },
-    "format" : { }
-  } ],
-  "grants" : [ {
-    "inherited" : false,
-    "type" : "viewer",
-    "flags" : [ "public" ]
-  } ],
-  "license" : {
-    "name" : "Public Domain"
-  },
-  "metadata" : {
-    "custom_fields" : {
-      "Department" : {
-        "Department" : "Seattle Department of Transportation"
+  "id": "7jzm-ucez",
+  "name": "Annual Parking Study Data",
+  "assetType": "dataset",
+  "attribution": "City of Seattle",
+  "attributionLink": "http://www.seattle.gov/parking",
+  "averageRating": 0,
+  "category": "Transportation",
+  "createdAt": 1488480801,
+  "description": "Manual parking study details from citywide paid parking study, presented by blockface and date/hour of study.  Most data is from spring of each year, with some data sets including summer studies.\n\nStudy time periods:\n•\t2014\n•\t2015\n•\t2016\n•\t2017\n•\t2018\n•\t2019\n\nPurpose: To determine hourly parking occupancy for most paid blockfaces in Seattle\n\n\nNote: In the column descriptions below, a street segment is typically defined as a drivable public street, or as a public walkway or trail, within Seattle city limits. A blockface is defined as one side of a block between road intersections, and often features a sidewalk.",
+  "diciBackend": false,
+  "displayType": "table",
+  "domainCName": "data.seattle.gov",
+  "downloadCount": 1319,
+  "hideFromCatalog": false,
+  "hideFromDataJson": false,
+  "indexUpdatedAt": 1574807415,
+  "licenseId": "PUBLIC_DOMAIN",
+  "locked": false,
+  "newBackend": true,
+  "numberOfComments": 0,
+  "oid": 32940109,
+  "provenance": "official",
+  "publicationAppendEnabled": false,
+  "publicationDate": 1574807442,
+  "publicationGroup": 14067857,
+  "publicationStage": "published",
+  "rowsUpdatedAt": 1574807442,
+  "tableId": 16729589,
+  "totalTimesRated": 0,
+  "viewCount": 15254,
+  "viewLastModified": 1738130081,
+  "viewType": "tabular",
+  "approvals": [
+    {
+      "reviewedAt": 1541175957,
+      "reviewedAutomatically": true,
+      "state": "approved",
+      "submissionId": 1542234,
+      "submissionObject": "public_audience_request",
+      "submissionOutcome": "change_audience",
+      "submittedAt": 1541175957,
+      "targetAudience": "public",
+      "workflowId": 3127,
+      "submissionDetails": {
+        "permissionType": "READ"
       },
-      "Common Core" : {
-        "Contact Email" : "open.data@seattle.gov",
-        "Publisher" : "data.seattle.gov"
+      "submissionOutcomeApplication": {
+        "failureCount": 0,
+        "status": "success"
       },
-      "Refresh Frequency" : {
-        "Frequency" : "Annually"
+      "submitter": {
+        "id": "geh9-fb2x"
+      },
+      "reviewer": null
+    },
+    {
+      "message": "The `strict_permissions` flag must be on to enable internal approvals.",
+      "state": "unsubmittable",
+      "targetAudience": "internal",
+      "workflowId": 4739,
+      "submitter": null,
+      "reviewer": null
+    }
+  ],
+  "clientContext": {
+    "clientContextVariables": [],
+    "inheritedVariables": {}
+  },
+  "columns": [
+    {
+      "id": 440174679,
+      "name": "Elmntkey",
+      "dataTypeName": "number",
+      "description": "Unique identifier for the city street segment (blockface).",
+      "fieldName": "elmntkey",
+      "position": 1,
+      "renderTypeName": "number",
+      "tableColumnId": 44402989,
+      "width": 125,
+      "cachedContents": {
+        "non_null": "167721",
+        "null": "78",
+        "count": "167799",
+        "cardinality": "2277"
+      },
+      "format": {
+        "precisionStyle": "standard",
+        "noCommas": "true",
+        "align": "right"
       }
     },
-    "rowLabel" : "Observed hourly parking occupancy",
-    "availableDisplayTypes" : [ "table", "fatrow", "page" ],
-    "renderTypeConfig" : {
-      "visible" : {
-        "table" : true
+    {
+      "id": 440174680,
+      "name": "Study_Area",
+      "dataTypeName": "text",
+      "description": "Area of the neighborhood for which study data was collected, usually an existing paid parking neighborhood.",
+      "fieldName": "study_area",
+      "position": 2,
+      "renderTypeName": "text",
+      "tableColumnId": 44402990,
+      "width": 220,
+      "cachedContents": {
+        "non_null": "167773",
+        "null": "26",
+        "count": "167799",
+        "cardinality": "75"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174681,
+      "name": "Sub_Area",
+      "dataTypeName": "text",
+      "description": "Area within the Study_Area, for example “North” or “South”, “Core” or “Edge”. Not every Study_Area has a Sub_Area. When Sub_Area is “Unpaid” that study data is from unpaid blocks near paid blocks.",
+      "fieldName": "sub_area",
+      "position": 3,
+      "renderTypeName": "text",
+      "tableColumnId": 44402991,
+      "width": 196,
+      "cachedContents": {
+        "non_null": "154619",
+        "null": "13180",
+        "count": "167799",
+        "cardinality": "25"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174683,
+      "name": "Date Time",
+      "dataTypeName": "text",
+      "description": "Reported date and hour of observation.",
+      "fieldName": "date_time",
+      "position": 5,
+      "renderTypeName": "text",
+      "tableColumnId": 71228691,
+      "cachedContents": {
+        "non_null": "167799",
+        "null": "0",
+        "count": "167799",
+        "cardinality": "1799"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174685,
+      "name": "Side",
+      "dataTypeName": "text",
+      "description": "Side of street on which study data was collected.",
+      "fieldName": "side",
+      "position": 7,
+      "renderTypeName": "text",
+      "tableColumnId": 44402994,
+      "width": 148,
+      "cachedContents": {
+        "non_null": "167760",
+        "null": "39",
+        "count": "167799",
+        "cardinality": "8"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174686,
+      "name": "Unitdesc",
+      "dataTypeName": "text",
+      "description": "Description of block where study data was collected, in the format of on-street and intersecting streets.",
+      "fieldName": "unitdesc",
+      "position": 8,
+      "renderTypeName": "text",
+      "tableColumnId": 44402995,
+      "width": 421,
+      "cachedContents": {
+        "non_null": "167773",
+        "null": "26",
+        "count": "167799",
+        "cardinality": "1344"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174688,
+      "name": "Peak Hour_SDOT",
+      "dataTypeName": "text",
+      "description": "Notes peak hour restrictions for a blockface. If no peak hour restrictions, this field is blank.",
+      "fieldName": "peak_hour_sdot",
+      "position": 10,
+      "renderTypeName": "text",
+      "tableColumnId": 44402997,
+      "width": 268,
+      "cachedContents": {
+        "non_null": "17225",
+        "null": "150574",
+        "count": "167799",
+        "cardinality": "19"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174689,
+      "name": "Parking_Spaces",
+      "dataTypeName": "number",
+      "description": "Total number of legal parking spaces on a blockface.",
+      "fieldName": "parking_spaces",
+      "position": 11,
+      "renderTypeName": "number",
+      "tableColumnId": 44402998,
+      "width": 153,
+      "cachedContents": {
+        "non_null": "167501",
+        "null": "298",
+        "count": "167799",
+        "cardinality": "61"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174690,
+      "name": "Total_Vehicle_Count",
+      "dataTypeName": "number",
+      "description": "Total number of vehicles observed parked on a blockface.",
+      "fieldName": "total_vehicle_count",
+      "position": 12,
+      "renderTypeName": "number",
+      "tableColumnId": 44402999,
+      "width": 328,
+      "cachedContents": {
+        "non_null": "167314",
+        "null": "485",
+        "count": "167799",
+        "cardinality": "93"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174691,
+      "name": "Dp_Count",
+      "dataTypeName": "number",
+      "description": "Total number of vehicles displaying a disabled placard or plates observed parked on a blockface.",
+      "fieldName": "dp_count",
+      "position": 13,
+      "renderTypeName": "number",
+      "tableColumnId": 44403000,
+      "width": 196,
+      "cachedContents": {
+        "non_null": "125112",
+        "null": "42687",
+        "count": "167799",
+        "cardinality": "18"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174692,
+      "name": "Rpz_Count",
+      "dataTypeName": "number",
+      "description": "In some study areas, vehicles displaying the appropriate Restricted Parking Zone (RPZ) permit can park without observing the posted time limit or paying the posted rate. In these study areas, RPZ_Count is the number of vehicles displaying an RPZ permit observed parked on a blockface. ",
+      "fieldName": "rpz_count",
+      "position": 14,
+      "renderTypeName": "number",
+      "tableColumnId": 44403001,
+      "width": 208,
+      "cachedContents": {
+        "non_null": "36577",
+        "null": "131222",
+        "count": "167799",
+        "cardinality": "27"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174693,
+      "name": "TG_Car2Go",
+      "dataTypeName": "number",
+      "description": "Total number of car2go vehicles observed parked on a blockface.",
+      "fieldName": "tg_car2go",
+      "position": 15,
+      "renderTypeName": "number",
+      "tableColumnId": 44403002,
+      "width": 208,
+      "cachedContents": {
+        "non_null": "36362",
+        "null": "131437",
+        "count": "167799",
+        "cardinality": "11"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174694,
+      "name": "BMW_DN",
+      "dataTypeName": "number",
+      "description": "Total number of ReachNow vehicles observed parked on a blockface.",
+      "fieldName": "bmw_dn",
+      "position": 16,
+      "renderTypeName": "number",
+      "tableColumnId": 44403003,
+      "width": 172,
+      "cachedContents": {
+        "non_null": "15432",
+        "null": "152367",
+        "count": "167799",
+        "cardinality": "7"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174704,
+      "name": "Lime",
+      "dataTypeName": "number",
+      "description": "Total number of Lime vehicles observed parked on a blockface. Column added in 2019.",
+      "fieldName": "lime",
+      "position": 17,
+      "renderTypeName": "number",
+      "tableColumnId": 91318556,
+      "cachedContents": {
+        "non_null": "2247",
+        "null": "165552",
+        "count": "167799",
+        "cardinality": "6"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174705,
+      "name": "Idling",
+      "dataTypeName": "number",
+      "description": "Total number of vehicles observed stopped in a paid space with someone either sitting in the vehicle or waiting to pick up/drop off or actively loading/unloading. Column added in 2019.",
+      "fieldName": "idling",
+      "position": 18,
+      "renderTypeName": "number",
+      "tableColumnId": 91318557,
+      "cachedContents": {
+        "non_null": "4085",
+        "null": "163714",
+        "count": "167799",
+        "cardinality": "6"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174695,
+      "name": "Field Notes",
+      "dataTypeName": "text",
+      "description": "Comments from data collectors.",
+      "fieldName": "field_notes",
+      "position": 19,
+      "renderTypeName": "text",
+      "tableColumnId": 44403004,
+      "width": 232,
+      "cachedContents": {
+        "non_null": "15977",
+        "null": "151822",
+        "count": "167799",
+        "cardinality": "2672"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174696,
+      "name": "Construction",
+      "dataTypeName": "text",
+      "description": "“Yes” or “No” whether there was construction blocking any of the parking spaces.",
+      "fieldName": "construction",
+      "position": 20,
+      "renderTypeName": "text",
+      "tableColumnId": 44403005,
+      "width": 244,
+      "cachedContents": {
+        "non_null": "167786",
+        "null": "13",
+        "count": "167799",
+        "cardinality": "5"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174697,
+      "name": "Event Closure",
+      "dataTypeName": "text",
+      "description": "“Yes” or “No” whether there was an event in the right-of-way blocking any of the parking spaces.",
+      "fieldName": "event_closure",
+      "position": 21,
+      "renderTypeName": "text",
+      "tableColumnId": 44403006,
+      "width": 256,
+      "cachedContents": {
+        "non_null": "167786",
+        "null": "13",
+        "count": "167799",
+        "cardinality": "3"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174698,
+      "name": "Subarea Label",
+      "dataTypeName": "text",
+      "description": "Combines fields Study_Area and Sub_Area.",
+      "fieldName": "subarea_label",
+      "position": 22,
+      "renderTypeName": "text",
+      "tableColumnId": 44403007,
+      "width": 256,
+      "cachedContents": {
+        "non_null": "167799",
+        "null": "0",
+        "count": "167799",
+        "cardinality": "156"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174699,
+      "name": "Study Year",
+      "dataTypeName": "number",
+      "description": "The year in which the data was collected.",
+      "fieldName": "study_year",
+      "position": 23,
+      "renderTypeName": "number",
+      "tableColumnId": 44403008,
+      "width": 220,
+      "cachedContents": {
+        "non_null": "167773",
+        "null": "26",
+        "count": "167799",
+        "cardinality": "6"
+      },
+      "format": {
+        "precisionStyle": "standard",
+        "noCommas": "true",
+        "align": "right"
+      }
+    },
+    {
+      "id": 440174700,
+      "name": "Peak Hour? (Yes or No)",
+      "dataTypeName": "text",
+      "description": "\"Yes\" or \"No\" whether there were peak hour parking restrictions for any of the parking spaces.",
+      "fieldName": "peak_hour_yes_or_no",
+      "position": 24,
+      "renderTypeName": "text",
+      "tableColumnId": 44403009,
+      "width": 364,
+      "cachedContents": {
+        "non_null": "167799",
+        "null": "0",
+        "count": "167799",
+        "cardinality": "6"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174701,
+      "name": "RPZ Blocks",
+      "dataTypeName": "number",
+      "description": "Restricted Parking Zone (RPZ) blocks.",
+      "fieldName": "rpz_blocks",
+      "position": 25,
+      "renderTypeName": "number",
+      "tableColumnId": 44403010,
+      "width": 220,
+      "cachedContents": {
+        "non_null": "89696",
+        "null": "78103",
+        "count": "167799",
+        "cardinality": "112"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174702,
+      "name": "CSM",
+      "dataTypeName": "text",
+      "description": "Curbspace managed block.",
+      "fieldName": "csm",
+      "position": 26,
+      "renderTypeName": "text",
+      "tableColumnId": 44403011,
+      "width": 136,
+      "cachedContents": {
+        "non_null": "89904",
+        "null": "77895",
+        "count": "167799",
+        "cardinality": "14"
+      },
+      "format": {}
+    },
+    {
+      "id": 440174703,
+      "name": "Time Stamp",
+      "dataTypeName": "calendar_date",
+      "description": "Exact time of blockface parking occupancy observation",
+      "fieldName": "time_stamp",
+      "position": 27,
+      "renderTypeName": "calendar_date",
+      "tableColumnId": 71325803,
+      "cachedContents": {
+        "non_null": "84209",
+        "null": "83590",
+        "count": "167799",
+        "cardinality": "35299"
+      },
+      "format": {}
+    }
+  ],
+  "grants": [
+    {
+      "inherited": false,
+      "type": "viewer",
+      "flags": [
+        "public"
+      ]
+    }
+  ],
+  "license": {
+    "name": "Public Domain"
+  },
+  "metadata": {
+    "custom_fields": {
+      "Department": {
+        "Department": "Seattle Department of Transportation"
+      },
+      "Common Core": {
+        "Contact Email": "open.data@seattle.gov",
+        "Publisher": "data.seattle.gov"
+      },
+      "Refresh Frequency": {
+        "Frequency": "Annually"
+      }
+    },
+    "rowLabel": "Observed hourly parking occupancy",
+    "availableDisplayTypes": [
+      "table",
+      "fatrow",
+      "page"
+    ],
+    "renderTypeConfig": {
+      "visible": {
+        "table": true
       }
     }
   },
-  "owner" : {
-    "id" : "4pks-8wcm",
-    "disabledAt" : 1643045277,
-    "displayName" : "Snyder, MaryCatherine",
-    "screenName" : "Snyder, MaryCatherine",
-    "type" : "interactive",
-    "flags" : [ "acceptedEula" ]
+  "owner": {
+    "id": "4pks-8wcm",
+    "disabledAt": 1643045277,
+    "type": "interactive",
+    "flags": [
+      "acceptedEula"
+    ]
   },
-  "query" : { },
-  "rights" : [ "read" ],
-  "tableAuthor" : {
-    "id" : "4pks-8wcm",
-    "disabledAt" : 1643045277,
-    "displayName" : "Snyder, MaryCatherine",
-    "screenName" : "Snyder, MaryCatherine",
-    "type" : "interactive",
-    "flags" : [ "acceptedEula" ]
+  "query": {},
+  "rights": [
+    "read"
+  ],
+  "tableAuthor": {
+    "id": "4pks-8wcm",
+    "disabledAt": 1643045277,
+    "type": "interactive",
+    "flags": [
+      "acceptedEula"
+    ]
   },
-  "tags" : [ "parking", "occupancy", "sdot", "parking pricing program", "parking study", "annual parking study", "manual study", "disabled parking" ],
-  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+  "tags": [
+    "parking",
+    "occupancy",
+    "sdot",
+    "parking pricing program",
+    "parking study",
+    "annual parking study",
+    "manual study",
+    "disabled parking"
+  ],
+  "flags": [
+    "default",
+    "federated",
+    "internalToPublicFederatedView",
+    "ownerMayBeContacted",
+    "restorable",
+    "restorePossibleForType"
+  ]
 }
