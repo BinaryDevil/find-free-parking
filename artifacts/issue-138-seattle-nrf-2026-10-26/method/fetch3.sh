@@ -18,4 +18,4 @@ get item-kcm-stops.json "https://www.arcgis.com/sharing/rest/content/items/55413
 get svc-kcm-stops.json "$K/TRANSITSTOP_POINT_2648/FeatureServer?f=json"
 get meta-kcm-stops-0.json "$K/TRANSITSTOP_POINT_2648/FeatureServer/0?f=json"
 get count-kcm-stops-0.json "$K/TRANSITSTOP_POINT_2648/FeatureServer/0/query?where=1%3D1&returnCountOnly=true&f=json"
-get signal-74ix-6xdj-rows.json "https://data.seattle.gov/resource/74ix-6xdj.json?\$limit=3&\$order=:updated_at%20DESC"
+# The 74ix-6xdj row sample was removed after the first run: rows hold licence plates and addresses.

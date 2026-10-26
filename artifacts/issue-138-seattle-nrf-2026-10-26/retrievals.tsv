@@ -112,3 +112,5 @@ utc	http	file	url	note
 2026-10-26T23:22:52Z	200	probe-signs0.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Signs/FeatureServer/0/query (POST)
 2026-10-26T23:22:53Z	200	probe-streetsigns1.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/SDOT_Street_Signs/FeatureServer/1/query (POST)
 2026-10-26T23:24:54Z	200	stats-kcm-stops-jurisdiction.json	https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/TRANSITSTOP_POINT_2648/FeatureServer/0/query?groupBy=JURISDICTION,IN_SERVICE_FLAG,STOP_STATUS
+2026-10-26T23:35:42Z	200	side-76913-peak3.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Peak_Hour_Parking_Restrictions/FeatureServer/3/query?where=ELMNTKEY%3D76913&outFields=*&returnGeometry=false&f=json
+2026-10-26T23:35:42Z	200	side-76913-blockface.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Blockface/FeatureServer/1/query?where=ELMNTKEY%3D76913&outFields=ELMNTKEY,SEGKEY,UNITDESC,PARKING_CATEGORY,PEAK_HOUR,NOPARK,NOSTOP&returnGeometry=false&f=json

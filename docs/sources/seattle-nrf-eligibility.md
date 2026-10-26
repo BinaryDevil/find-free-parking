@@ -10,21 +10,21 @@ This is the **author** review under [ADR-0005](../adr/0005-agent-verified-gates.
 
 1. **No temporary-restriction (E5) source is approved** (rule 4, freshness). Temporary No Parking is still pending on C4, because its scheduled, actual and custom-time semantics are unresolved. A city with no approved E5 source for a place type cannot show the label for that type. Lots have no E5 source at all.
 2. **Measurement (rule 5): no signal both tests the main failure mode and could plausibly pass.** The only held-out source that tests the main failure mode is the SDOT sign inventory. A pre-registered probe on that inventory predicts a hard-block miss: in-service no-parking or tow-away signs stand on 25 of 60 sides that Blockface alone would label (42%, exact 95% CI 29–55%). That is still 11 of 60 if 30 ft clearance signs are set aside. The only other source that passes the letter of rule 5 is King County Metro's stop layer. It would measure bus stops only.
-3. **Parking layer (rule 2): no layer is approved.** The author finds SDOT Blockface passes ADR-0002 C1–6 **only for a narrow role**: sides whose category is "Unrestricted Parking", with no limit shown. That finding is pending the two-agent review. Blockface fails C4 for any role that shows a time limit. No E3 or E6 layer passes.
-4. **Restriction register (rule 3): drafted below, not approved.** No source records three categories as parking restrictions: vehicle class, street cleaning, and events with dates. On unpaid streets, loading, bus, disabled, school and partial no-parking are recorded only as sign points with no published extent.
+3. **Parking layer (rule 2): no layer is eligible.** SDOT Blockface fails ADR-0002 C4 for every No Restriction Found role, including the narrowest one, "Unrestricted Parking" sides. Its only documented field, `PARKING_CATEGORY`, does not rule out partial time limits or partial no-parking on those sides. The count fields that would rule them out are undocumented, and an undocumented zero cannot ground a grant. No E3 or E6 layer passes either.
+4. **Restriction register (rule 3): drafted below, not approved.** No source records three categories as parking restrictions: vehicle class, street cleaning, and events with dates. On unpaid streets, loading, disabled-only and school zones are recorded only as sign points with no published extent. No stopping, tow-away, partial no-parking and peak hour are partial: where Blockface misses them, only sign points record them.
 5. **The owner has not set the maximum acceptable miss bound** (rule 5). That is an owner decision and needs no action from this ticket.
 
 The three questions in #138:
 
 | # | Question | Author answer (2026-10-26) |
 |---|---|---|
-| 1 | Does a Seattle E1, E3 or E6 layer pass C1–6 in full for the parking-layer role? | **Blockface, narrow role only:** pass, for "Unrestricted Parking" sides with all competing-use fields zero (28,647 sides) and no limit shown. It **fails** C4 for time-limited sides, because hours are null on 1,468 of 1,486. **Parking Signs (E3): fail** (C3/C4). **Metro and Sound Transit lots (E6): fail** (C3/C4, reused 2026-10-24 evidence). |
-| 2 | What is Seattle's restriction register? | Drafted below: 26 official sources from SDOT, SPU and King County Metro, mapped to the 16 rule 3 categories. Three categories have no restriction source; five more are covered on unpaid streets only by sign points. |
+| 1 | Does a Seattle E1, E3 or E6 layer pass C1–6 in full for the parking-layer role? | **No.** **Blockface (E1): fail C4 for every role.** For "Unrestricted Parking" sides (the narrowest role), the documented category allows partial time limits and partial no-parking, and the count fields that would exclude them are undocumented. For time-limited sides, hours are null on 1,468 of 1,486. **Parking Signs (E3): fail** (C3/C4). **Metro and Sound Transit lots (E6): fail** (C3/C4, reused 2026-10-24 evidence). |
+| 2 | What is Seattle's restriction register? | Drafted below: 26 official sources from SDOT, SPU and King County Metro, mapped to the 16 rule 3 categories. Three categories have no restriction source. Three more (loading, disabled-only, school) are recorded on unpaid streets only as sign points. Four (no stopping, tow-away, no parking, peak hour) are partial. |
 | 3 | Can any source serve as the rule 5 measurement signal? | **Sign inventory (hold-out): qualifies on the letter, but predicted to fail** (25/60). **King County Metro stops (hold-out): qualifies on the letter, but tests bus stops only.** Whether that satisfies rule 5's intent is an open question for the reviewer and owner. No independent (non-input) official signal exists. |
 
 ## Evidence
 
-All files are in [`artifacts/issue-138-seattle-nrf-2026-10-26/`](../../artifacts/issue-138-seattle-nrf-2026-10-26/), with `SHA256SUMS`. Every request is listed in [`retrievals.tsv`](../../artifacts/issue-138-seattle-nrf-2026-10-26/retrievals.tsv) with its UTC time and HTTP status. Retrieval ran from 2026-10-26T23:17:53Z to 23:24:54Z as anonymous HTTPS GET and POST queries, with no sign-in, payment or access-control bypass.
+All files are in [`artifacts/issue-138-seattle-nrf-2026-10-26/`](../../artifacts/issue-138-seattle-nrf-2026-10-26/), with `SHA256SUMS`. Every request is listed in [`retrievals.tsv`](../../artifacts/issue-138-seattle-nrf-2026-10-26/retrievals.tsv) with its UTC time and HTTP status. Retrieval ran from 2026-10-26T23:17:53Z to 23:24:54Z, plus two side-76913 queries at 23:35:42Z added for the review, as anonymous HTTPS GET and POST queries, with no sign-in, payment or access-control bypass.
 
 | File | Contents |
 |---|---|
@@ -35,7 +35,7 @@ All files are in [`artifacts/issue-138-seattle-nrf-2026-10-26/`](../../artifacts
 | `raw/item-*.json` | Item records (owner, access, licence text) for Blockface, Parking Signs, Temporary No Parking and King County Metro Stops |
 | [`probe-preregistration.json`](../../artifacts/issue-138-seattle-nrf-2026-10-26/probe-preregistration.json) | The sign hold-out feasibility probe, committed in `542db53` at 2026-10-26T23:22:17Z, before any sign record was fetched |
 | [`probe-results.json`](../../artifacts/issue-138-seattle-nrf-2026-10-26/probe-results.json), [`probe-breakdown.json`](../../artifacts/issue-138-seattle-nrf-2026-10-26/probe-breakdown.json), `raw/probe-*.json` | Probe output and the descriptive breakdown by sign type |
-| `method/` | `fetch.sh`, `fetch2.sh`, `fetch3.sh`, `fetch4.sh`, `probe_prereg.py`, `probe.py`, `probe_breakdown.py`, `redact.py` |
+| `method/` | `fetch.sh`, `fetch2.sh`, `fetch3.sh`, `fetch4.sh`, `fetch5.sh`, `probe_prereg.py`, `probe.py`, `probe_breakdown.py`, `redact.py` |
 
 **Reused, not re-fetched:**
 - The Blockface and Street Signs attribute forms (`Blockface_Elements_OD.pdf`, `Street_Signs_OD.pdf`) from [`issue-126-seattle-sign-test-2026-10-24/docs-raw/`](../../artifacts/issue-126-seattle-sign-test-2026-10-24/docs-raw/).
@@ -44,7 +44,7 @@ All files are in [`artifacts/issue-138-seattle-nrf-2026-10-26/`](../../artifacts
 
 The dates below say which is which.
 
-**Privacy handling.** The Socrata dataset "72hr Parking Ordinance Violations" (`74ix-6xdj`) holds service requests with licence plates and street addresses. A 3-row sample fetched at 23:21:19Z was deleted unread into the repository and is logged as not retained. The view metadata files are kept only as `-redacted` copies, with the `cachedContents` top-value blocks removed. The older [`issue-24-seattle-review-2026-10-23/raw/signal-74ix-6xdj.json`](../../artifacts/issue-24-seattle-review-2026-10-23/raw/signal-74ix-6xdj.json) on `dev` carries the same unredacted block. It is out of this ticket's scope and is reported as a follow-up.
+**Privacy handling.** The Socrata dataset "72hr Parking Ordinance Violations" (`74ix-6xdj`) holds service requests with licence plates and street addresses. A 3-row sample fetched at 23:21:19Z was deleted and is logged as not retained. That request has since been removed from `method/fetch3.sh`, so re-running the scripts fetches only the dataset's metadata. The view metadata files are kept only as `-redacted` copies, with the `cachedContents` top-value blocks removed. The older `issue-24-seattle-review-2026-10-23/raw/signal-74ix-6xdj.json` carried the same block. It has since been redacted on `dev` in #142.
 
 [`method/redact.py`](../../artifacts/issue-138-seattle-nrf-2026-10-26/method/redact.py) then replaced third-party identifiers in 11 catalog and metadata files with `[redacted-third-party]`. It covered personal email addresses, non-agency ArcGIS Online owner accounts, and Socrata owner, author and approval records. Functional agency addresses (for example `DOT_IT_GIS@seattle.gov`) and official org accounts are kept. No conclusion depends on the redacted values. The pre-redaction versions of those 11 files are in this branch's pre-registration commit `542db53`. They were not rewritten, because rewriting would change the pre-registration anchor. A squash merge keeps them out of `dev`.
 
@@ -59,7 +59,7 @@ Rule 2 needs an E1, E3 or E6 layer that positively records the exact block side 
 | C1 Authority | pass | Owner `Transportation_SeattleCityGIS`; form contact "SDOT Traffic Management, Parking Controls Group"; item `b35fb25c…` re-fetched |
 | C2 Machine-readable, stable | pass | Queryable feature service; 74 fields, unchanged from 2026-10-23 (`meta-Blockface-1.json`); key `ELMNTKEY` (Hansen) |
 | C3 Precision | **pass at block side for this role** | One polyline per block side, with `SIDE`, `DISTANCE` and `END_DISTANCE`. In 2026-10-23 C3 was pending because partial competing-use extents (no parking, loading and similar) are not located. Under the amendment those become register restrictions withheld for the **whole** side (rule 4, location uncertain), so the label claims nothing about sub-side extents. |
-| C4 Schedule semantics | **pass only for the Unrestricted role; fail otherwise** | See below |
+| C4 Schedule semantics | **fail for every No Restriction Found role** | See below |
 | C5 Freshness | pass | `lastEditDate` 2026-10-26T13:53:29Z; form says "Update Frequency: Weekly" |
 | C6 Public | pass | Item `access: public`, retrieved anonymously; licence text is the City accuracy disclaimer (recorded 2026-10-23) |
 
@@ -68,9 +68,17 @@ Rule 2 needs an E1, E3 or E6 layer that positively records the exact block side 
 - `PARKING_CATEGORY` is documented. Its seven values are assigned in priority order, and "Unrestricted Parking" means "if none of the above applies, parking is not restricted by signs". Live counts: 30,727 Unrestricted, 9,646 No Parking Allowed, 2,878 RPZ, 1,692 None, 1,495 Paid, 1,486 Time Limited, 2 Carpool.
 - **Time limits are not usable.** The form defines `PARKING_TIME_LIMIT` only as "Parking limit for the paid area in minutes", yet it is set on 1,446 of 1,461 unpaid (CSM `N`) time-limited sides. Its weekday, Saturday and Sunday hour fields are null on 1,468 of 1,486 time-limited sides (`stats-blockface-tl-hours.json`). The 2026-10-23 spot check T1 shows the real limit is "2 HOUR 7AM-6PM EXC SUN-HOL". No field holds holidays. A label that shows a Blockface time limit would show a value without its hours, which C4 makes `UNKNOWN`. **Time Limited sides fail.**
 - **Paid, RPZ, No Parking and Carpool sides** are never label candidates: payment, permit and no-parking are withholding restrictions under rule 4. A null paid band is Unknown, never "none found".
-- **Unrestricted sides need no limit, hour or eligibility value** for the "No limit recorded" text. The only general limit shown is the jurisdiction's 72 hours (rule 4, the stay is too long), from the municipal code, not from Blockface. The label does rely on zero values in `TL_SPACES`, `NOPARK`, `TOTAL_NOPARK`, `NOSTOP`, `BUS`, `ZONE`, `TOTAL_ZONES`, `CARPOOL_SPACES`, `RPZ_SPACES` and `PAID_SPACES`, and on a null `PEAK_HOUR`. **Nine of these eleven fields are not in the attribute form**; only `ZONE` and `TOTAL_ZONES` are. The documented `LOAD` field (live `LOAD_`) is null on all 47,926 rows (`count-Blockface-1-LOAD_notnull.json`), although the form says non-CSM blocks count load signs. The author's reading is that these fields act only as withholding inputs in the register. Any non-zero or null value withholds, so a misread can only show Unknown more often, never grant the label. They are not values the label shows. **This reading is the main point for the reviewer to accept or reject.** If rejected, Blockface fails C4 for every role.
+- **Unrestricted sides, using documented fields only.** The "No limit recorded" text needs no limit, hour or eligibility value. The only general limit shown is the jurisdiction's 72 hours (rule 4, the stay is too long), which comes from the municipal code, not Blockface. But the label also asserts that official data records no limit and no restriction on the **whole side**, and the only documented field cannot carry that:
+  - "Time Limited Parking" is assigned only when "more than half of the block has time limited parking", and "No Parking Allowed" means "no parking allowed on block face". A side with up to half time-limited parking, or with partial no-parking, therefore falls through to "Unrestricted Parking" ("if none of the above applies, parking is not restricted by signs"). The two definitions conflict for such a side, which C4 makes `UNKNOWN`.
+  - The count fields that could exclude those portions are `TL_SPACES`, `NOPARK`, `TOTAL_NOPARK`, `NOSTOP`, `BUS`, `CARPOOL_SPACES`, `RPZ_SPACES`, `PAID_SPACES` and `PEAK_HOUR`. None of them is in the attribute form; `ZONE` and `TOTAL_ZONES` are. The documented `LOAD` field (live `LOAD_`) is null on all 47,926 rows (`count-Blockface-1-LOAD_notnull.json`), although the form says non-CSM blocks count load signs.
+  - **An undocumented zero cannot ground a grant.** In this role a zero in those fields is what makes a side eligible, so a misread zero grants the label. An earlier draft of this review called these fields "withhold-only"; the independent review of PR #140 rejected that, and this revision accepts the rejection. The probe shows the risk directly. All 25 hit sides have zero `NOPARK` and `TOTAL_NOPARK` under in-service no-parking signs. Side 76913 has a null `PEAK_HOUR` under a live "NO PARKING 6-9AM 3-7PM … TOW-AWAY ZONE" sign, and the Peak Hour layer has no record for it either (`raw/side-76913-peak3.json`, fetched 2026-10-26T23:35:42Z by `method/fetch5.sh`).
 
-**Author verdict:** Blockface **passes C1–6 for the narrow role** "block sides with `PARKING_CATEGORY='Unrestricted Parking'`, all competing-use counts zero, `PEAK_HOUR` and `LOAD_` null, no limit shown". That is 28,647 sides on 2026-10-26 (`stats-blockface-unrestricted-competing.json`, `probe-population-ids.json`). It **fails C4** for any role that shows a Blockface time limit. Two-agent approval and an inventory entry for this role are still required (rule 2).
+**Author verdict:** Blockface **fails C4 for every No Restriction Found role**:
+- the Unrestricted role, for the reasons above;
+- time-limited sides, because their hours are null;
+- paid, RPZ, no-parking and carpool sides, which are withheld anyway.
+
+C1, C2, C3 (block side), C5 and C6 pass. The undocumented count fields can still serve as **register** inputs, because there they only withhold: a non-zero or null value withholds the label. They cannot define the population that receives it. **No Seattle layer is eligible for the parking-layer role.**
 
 ### SDOT Parking Signs (E3), `Parking_Signs/FeatureServer/0`, `Parking_Features/FeatureServer/4`, `SDOT_Street_Signs/FeatureServer/1`
 
@@ -143,9 +151,9 @@ Counts and edit dates are fresh as of 2026-10-26 unless marked. "Location" gives
 | No stopping | R1 `NOSTOP`, R2 PNS, R9 | — | Partial: signs are points, extent unknown |
 | Tow-away | R2 PPEAK, R6, R1 `PEAK_HOUR`; other tow-away only in sign free text | — | Partial |
 | No parking (incl. partial) | R1 `NOPARK`/category, R2 PNP | — | Partial: Blockface misses it on 42% of clean Unrestricted sides (probe) |
-| Peak hour | R6, R1 `PEAK_HOUR`, R2 PPEAK, R9 | — | Covered as lines and signs |
+| Peak hour | R6, R1 `PEAK_HOUR`, R2 PPEAK, R9 | — | Partial: probe side 76913 has a live peak tow-away sign, but neither R1 `PEAK_HOUR` nor R6 records it |
 | Loading (commercial, truck, passenger) | R2 PLU, PCVL, PTRKL, PPL; R10 in paid areas; R1 `ZONE`; R1 `LOAD_` empty | — | Unpaid streets: sign points only |
-| Bus and transit layover | R22, R2 PBZ and PBLO, R7, R8, R1 `BUS`, R9 | — | Covered as points and spaces |
+| Bus and transit layover | R22, R2 PBZ and PBLO, R7, R8, R1 `BUS`, R9 | — | Covered: Metro stop points (15 m rule), layover spaces and signs |
 | Disabled-only | R2 PDIS, R10 (paid areas), R1 `ZONE` | — | Unpaid streets: sign points only |
 | Permit or resident-only | R4, R1 `RPZ_SPACES`, R2 PRZ | R23, R24 (HTML) | Covered, with known hour conflicts |
 | Eligibility (customers, riders, carpool) | R1 `CARPOOL_SPACES`, R2 PCARPL and PGA | R23, R24 (HTML only) | Streets partial; lots not machine-readable |
@@ -157,7 +165,7 @@ Counts and edit dates are fresh as of 2026-10-26 unless marked. "Location" gives
 | Payment | R1 paid fields, R10, R11, R12, R2 PS and PPP | R23, R24 (HTML) | Streets covered in paid areas. No payment source is approved, so the label text must use the "payment is not recorded" variant (rule 1). |
 | Time limit shorter than stay | R1 `TL_SPACES`/`PARKING_TIME_LIMIT` (hours null), R2 PTIML and P1H, R4 | R23, R24 (maximum stay, HTML) | Streets partial; lots not machine-readable |
 
-**Categories to name on the city page and in the popup**, in the style rule 3 gives: "Vehicle-class restrictions, street cleaning and event-day parking rules are not in any official dataset here. Loading, bus, disabled and school zones on unpaid streets are recorded only as sign locations."
+**Categories to name on the city page and in the popup**, in the style rule 3 gives: "Vehicle-class restrictions, street cleaning and event-day parking rules are not in any official dataset here. Loading, disabled and school zones on unpaid streets are recorded only as sign locations."
 
 ## 3. Measurement signal (rule 5)
 
@@ -208,8 +216,8 @@ The other register sources (R6, R9, R22) cover few of these sides, so the estima
 These are conditions for a re-review, not requests to anyone (ADR-0004):
 
 1. Temporary No Parking passes C4: its scheduled, actual and custom-time semantics are documented or determinable from fields. It is then approved as E5 for streets by two agents.
-2. The reviewer accepts the Blockface narrow-role reading in section 1, and two agents approve it for the parking-layer role.
-3. The register above, or an amended one, is approved by two agents, and the checker treats undocumented fields as withhold-only.
+2. A parking layer passes C4 for its role from documented fields. For Blockface that means SDOT publishing definitions for the count fields, or a category definition that excludes partial time limits and partial no-parking. Two agents then approve it for the parking-layer role.
+3. The register above, or an amended one, is approved by two agents. The checker uses undocumented fields only to withhold, never to define the population that receives the label.
 4. The owner sets the maximum miss bound and decides whether a held-out source that detects one category satisfies rule 5. Alternatively, a broader independent signal appears, for example a current geocoded citation feed.
 5. An independent agent pre-registers and runs the rule 5 measurement and passes it.
 

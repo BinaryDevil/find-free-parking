@@ -18,3 +18,8 @@ for id in 554131a7d4d84d79a1db05ddd2b06d3c 4ad7e91f e6717e9a; do :; done
 get search-kcm-stops-owner.json "https://www.arcgis.com/sharing/rest/search?num=20&f=json&q=owner%3AKingCounty%20Metro%20Stops"
 get socrata-views-search-parking.json "https://data.seattle.gov/api/views.json?limit=50&q=parking"
 for v in 74ix-6xdj jxcr-rhfz; do get "signal-$v.json" "https://data.seattle.gov/api/views/$v.json"; done
+# Strip cached top values at once: for 74ix-6xdj they hold licence plates and addresses.
+for v in 74ix-6xdj jxcr-rhfz; do python3 -I -c 'import json,sys,os
+f=sys.argv[1]; j=json.load(open(f))
+[c.pop("cachedContents",None) for c in j.get("columns",[])]
+json.dump(j,open(f.replace(".json","-redacted.json"),"w"),indent=1); os.remove(f)' "$OUT/signal-$v.json"; done
