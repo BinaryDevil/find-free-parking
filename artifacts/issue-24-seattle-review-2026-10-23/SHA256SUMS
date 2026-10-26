@@ -1,3 +1,4 @@
+4dc4a6fee43f70ab6b429585cc72bfbd77bd7074890feba980fc8d36321d2990  ./REDACTION.md
 c9765d707487e16186bdee05965cc0671e18def207a2d253747e62c22d3a28fb  ./method/audit.py
 117b6a1cb85adc2fee140c143940ba5d02e9919d2ced7012401ccfe1ddf8ca2a  ./method/prereg.py
 c303163ec32f18b0c6f35ba4d511af6d878c5c8e321322fdd0881cd8ba0e203c  ./method/sample.py
@@ -69,12 +70,12 @@ c9601c32b53464c48c26defe28a619234d0b29a9615fa58742d0e6a2c036dcbe  ./raw/meta-Tem
 d41ccc8c179a80aa08a86492bc029fd704dab6cf754fc2bf30ed36a7d6edb0fc  ./raw/page-www_soundtransit_org_ride-with-us_parking.html
 11c6bd65f2d2ce28f8821adf27f5cb7446ff66e1b15775356f8cb710361dcf41  ./raw/rpz-zones-4-attributes.json
 d6cf8b727536090aee32c91592218b41cebeafdf1eec0853a50db2bdf610f430  ./raw/sdot-street-parking-rates.html
-0ab7b3a9a666133c356861270c4fb5b5d3d32ed0b33ac4147feec4daddb93422  ./raw/signal-74ix-6xdj.json
-122ac3f2526c400d1c7d55937c69c5ec165d66134c6edf8135cc089ff16140c1  ./raw/signal-7jzm-ucez.json
-240aa7f410585f53556bd516f62be59082f6897e025697a3c1ba7ecb851c966f  ./raw/signal-gg89-k5p6.json
-50a8d3d83792359bc4b7cb4f762f8c4e796c0b438da38fa77bf61ce409e22118  ./raw/signal-hiyf-7edq.json
-56111469d84bd4cc1760e16c1166d15c7def033e29da126ccf1ec98db7a0855b  ./raw/signal-jxcr-rhfz.json
-18f8eae82ae9470171a9101518e0ddc53d3be42cd72bfdd2af034e82c7246cb2  ./raw/signal-q2e4-e7e5.json
+1aa8defd9366f1bc552996df5748f37a2573d08c0ec34fc071d43c05437ab22d  ./raw/signal-74ix-6xdj.json
+45595ab9928e3342ce3c21a7076ed594e53ea3491102226f672fa7f606d9472b  ./raw/signal-7jzm-ucez.json
+d47bd7954adda2f7bfd4371acefeb501205b89f4940a15abaa5dae587aaf5501  ./raw/signal-gg89-k5p6.json
+17c5d0cfcd889bc867dd4bd44f989340f8ea8f1eb4e93da51f1e2f67993508a6  ./raw/signal-hiyf-7edq.json
+5d69a615f059c1a8434775bb93f4110ca6b562d1a576f81d329c87c6cc34ab57  ./raw/signal-jxcr-rhfz.json
+3e715341262b195baec38eb42211b6d3db8dfe1c33d56895022d5ffeca90515f  ./raw/signal-q2e4-e7e5.json
 4cc0b35ea4e61854cb523345557c2f34d307e97f86f851d9c025357649154fb6  ./raw/stats-blockface-category-csm.json
 0d65bfe1821ab0b9f3b7bab5cdbeb582a6962668a091a26813e6d43a92587e4b  ./raw/stats-signs-category.json
 3771a0d168e56c733ef881a47d9df614f8e56d9bec8421d0ba8cee91332ed4a4  ./register.json
