@@ -25,7 +25,7 @@ Categories: `no_stopping`, `tow_away`, `no_parking`, `peak_hour`, `loading`, `bu
 - `register`: approval state, approvers, references, measurement, and its entries (`category`, `placeType`, `sourceId`).
 - `sources`: every register and parking-layer source with evidence type, approval, roles, last successful sync, format check, freshness limit and, for citations, `dataAsOf`.
 - `place`: id, `placeType`, and for streets the `blockId`.
-- `parkingLayer`: the record that positively records this exact side or lot. It has its source, record id, as-of date, whether every assigned sign is parsed (E3), and any recorded limit.
+- `parkingLayer`: the record that positively records this exact side or lot. It has its source, record id, as-of date, whether every assigned sign is parsed (E3), and any `limit` the layer itself records (minutes, bands, `scheduleComplete`). That limit is checked like a time-limit restriction at the place.
 - `restrictions`: candidate records near the place. Each has:
   - its source and category, where `null` means it cannot be classified;
   - `bands` (days and minutes) with `scheduleComplete`;
@@ -51,6 +51,7 @@ Categories: `no_stopping`, `tow_away`, `no_parking`, `peak_hour`, `loading`, `bu
 | `register_not_approved`, `register_not_measured`, `register_source_unapproved` | 3, 5 |
 | `no_parking_layer`, `parking_layer_ineligible`, `parking_layer_unparsed` | 2 |
 | `restriction_applies` | 4: payment, permit, eligibility or any category at the selected time and vehicle |
+| `restriction_recorded` | 1, 4: coordinator decision on #139. A listed source records payment or a restriction category for the place at any time, even with a complete schedule and outside its hours. Rule 1's fixed texts say no payment or restriction is recorded here, so the label is withheld. Expired dated records do not count; time limits are handled by the limit variants. |
 | `limit_exceeded` | 4: a limit or lot (operator) maximum shorter than the stay |
 | `incomplete_schedule` | 4: silence outside listed hours |
 | `empty_band` | 4: an empty or null band is Unknown |

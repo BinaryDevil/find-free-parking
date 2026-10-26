@@ -37,15 +37,15 @@ const street = (extra = {}) => ({ register: register(), sources: sources(), plac
 const lot = (extra = {}) => street({ place: { id: 'lot-1', placeType: 'lot' },
   parkingLayer: { sourceId: 'lots', recordId: 'lot-1', fetchedAt: hoursAgo(2) }, ...extra });
 const withSources = (patch) => sources().map(item => ({ ...item, ...(patch[item.id] ?? {}) }));
-const withheld = (input, reason) => {
+const withheld = (input, reason, name = '') => {
   const result = checkNoRestrictionFound(input);
-  assert.equal(result.classification, 'WITHHELD', JSON.stringify(result));
-  if (reason) assert.ok(result.reasons.includes(reason), `${reason} not in ${result.reasons}`);
+  assert.equal(result.classification, 'WITHHELD', `${name}: ${JSON.stringify(result)}`);
+  if (reason) assert.ok(result.reasons.includes(reason), `${name}: ${reason} not in ${result.reasons}`);
   return result;
 };
-const shown = input => {
+const shown = (input, name = '') => {
   const result = checkNoRestrictionFound(input);
-  assert.equal(result.classification, 'NO_RESTRICTION_FOUND', JSON.stringify(result));
+  assert.equal(result.classification, 'NO_RESTRICTION_FOUND', `${name}: ${JSON.stringify(result)}`);
   assert.equal(result.notVerified, true);
   return result;
 };
@@ -112,18 +112,42 @@ test('rule 4: a restriction that applies at the selected time and vehicle withho
   for (const category of RESTRICTION_CATEGORIES.filter(category => category !== 'time_limit')) {
     withheld(street({ restrictions: [record(category)] }), 'restriction_applies');
   }
-  // Outside a complete schedule the record does not apply.
-  shown(street({ restrictions: [record('payment', { bands: [{ days: [1, 2, 3, 4, 5], startMinute: 1080, endMinute: 1320 }] })] }));
+  // Outside its hours the record does not apply, but it is still recorded here.
+  const evening = withheld(street({ restrictions: [record('payment', { bands: [{ days: [1, 2, 3, 4, 5], startMinute: 1080, endMinute: 1320 }] })] }), 'restriction_recorded');
+  assert.ok(!evening.reasons.includes('restriction_applies'));
   // A stay that runs into the band does.
   withheld(street({ stayMinutes: 420, restrictions: [record('payment', { bands: [{ days: [1], startMinute: 1080, endMinute: 1320 }] })] }), 'restriction_applies');
-  // A band ending exactly when the stay starts does not.
-  shown(street({ restrictions: [record('no_parking', { bands: [{ days: [1], startMinute: 420, endMinute: 720 }] })] }));
-  // A dated closure applies only within its dates.
-  shown(street({ restrictions: [record('events_closures', { validFrom: '2026-11-01T00:00:00Z', validUntil: '2026-11-02T00:00:00Z' })] }));
+  // A band ending exactly when the stay starts does not apply, but is recorded.
+  assert.ok(!withheld(street({ restrictions: [record('no_parking', { bands: [{ days: [1], startMinute: 420, endMinute: 720 }] })] }), 'restriction_recorded').reasons.includes('restriction_applies'));
+  // A dated closure applies only within its dates; a future one is still recorded, an expired one is not.
+  assert.ok(!withheld(street({ restrictions: [record('events_closures', { validFrom: '2026-11-01T00:00:00Z', validUntil: '2026-11-02T00:00:00Z' })] }), 'restriction_recorded').reasons.includes('restriction_applies'));
+  shown(street({ restrictions: [record('events_closures', { validFrom: '2026-10-01T00:00:00Z', validUntil: '2026-10-02T00:00:00Z' })] }), 'expired closure');
   withheld(street({ stayMinutes: 600, restrictions: [record('events_closures', { validFrom: '2026-10-27T00:00:00Z', validUntil: '2026-11-02T00:00:00Z' })] }), 'restriction_applies');
   // Vehicle: an exemption for the selected vehicle lifts that record only.
   shown(street({ vehicleType: 'motorcycle', restrictions: [record('vehicle_class', { exemptVehicles: ['motorcycle'] })] }));
   withheld(street({ restrictions: [record('vehicle_class', { exemptVehicles: ['motorcycle'] })] }), 'restriction_applies');
+});
+
+test('review probe: payment or a restriction recorded only at other times still withholds', () => {
+  for (const [name, item] of [
+    ['payment Mon–Fri 18:00–22:00, queried Monday noon', record('payment', { sourceId: 'meters', bands: [{ days: [1, 2, 3, 4, 5], startMinute: 1080, endMinute: 1320 }] })],
+    ['street cleaning on Tuesday', record('street_cleaning', { bands: [{ days: [2], startMinute: 480, endMinute: 600 }] })],
+  ]) {
+    const result = withheld(street({ restrictions: [item] }), 'restriction_recorded', name);
+    assert.ok(!result.reasons.includes('restriction_applies'), name);
+  }
+});
+
+test('rule 1: a limit recorded by the parking layer itself reaches the limit variants', () => {
+  const layer = limit => ({ sourceId: 'blockface', recordId: 'bf-1', fetchedAt: hoursAgo(2), limit });
+  const band = [{ days: [1, 2, 3, 4, 5, 6], startMinute: 420, endMinute: 1080 }];
+  const fits = shown(street({ parkingLayer: layer({ minutes: 120, bands: band, scheduleComplete: true }) }), 'layer limit fits');
+  assert.equal(fits.variant, 'limit_fits');
+  assert.deepEqual(fits.limits, [{ minutes: 120, bands: band }]);
+  withheld(street({ stayMinutes: 180, parkingLayer: layer({ minutes: 120, bands: band, scheduleComplete: true }) }), 'limit_exceeded', 'layer limit exceeded');
+  withheld(street({ parkingLayer: layer({ minutes: null, bands: band, scheduleComplete: true }) }), 'unclassifiable_record', 'layer limit without minutes');
+  withheld(street({ parkingLayer: layer({ minutes: 120, bands: null, scheduleComplete: true }) }), 'empty_band', 'layer limit without hours');
+  withheld(street({ parkingLayer: layer({ minutes: 120, bands: band, scheduleComplete: false }) }), 'incomplete_schedule', 'layer limit incomplete');
 });
 
 test('rule 4: a limit shorter than the stay withholds; a fitting limit is shown', () => {
@@ -161,7 +185,7 @@ test('rule 4: location uncertainty withholds every place a record could belong t
     ['lot: beyond 15 m', lot({ restrictions: [record('loading', { location: { kind: 'point', distanceMeters: 16 } })] }), null],
     ['NaN distance', street({ restrictions: [record('loading', { location: { kind: 'point', distanceMeters: NaN } })] }), 'restriction_applies'],
   ]) {
-    if (expected) withheld(input, expected, name); else shown(input);
+    if (expected) withheld(input, expected, name); else shown(input, name);
   }
 });
 

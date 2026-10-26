@@ -14,7 +14,7 @@ export type NrfVariant = 'no_limit' | 'limit_fits' | 'no_payment_source' | 'limi
 export type WithholdReason =
   | 'invalid_input' | 'register_not_approved' | 'register_not_measured' | 'register_source_unapproved'
   | 'no_parking_layer' | 'parking_layer_ineligible' | 'parking_layer_unparsed'
-  | 'restriction_applies' | 'limit_exceeded' | 'incomplete_schedule' | 'empty_band' | 'unclassifiable_record'
+  | 'restriction_applies' | 'restriction_recorded' | 'limit_exceeded' | 'incomplete_schedule' | 'empty_band' | 'unclassifiable_record'
   | 'uncertain_location' | 'operator_conflict' | 'stale_source' | 'stale_citations' | 'no_temporary_source' | 'stay_too_long';
 
 export interface Approval { state: string; approvedBy: string[]; approvalRefs: string[] }
@@ -55,7 +55,14 @@ export interface RestrictionRecord {
   validUntil?: string | null;
   location: RecordLocation;
 }
-export interface ParkingLayerRecord { sourceId: string; recordId: string; fetchedAt: string | null; allSignsParsed?: boolean }
+export interface ParkingLayerRecord {
+  sourceId: string;
+  recordId: string;
+  fetchedAt: string | null;
+  allSignsParsed?: boolean;
+  // A limit the layer itself records for this place (rule 1 limit variants).
+  limit?: { minutes: number | null; bands: Band[] | null; scheduleComplete: boolean } | null;
+}
 export interface NrfInput {
   register: RestrictionRegister | null;
   sources: NrfSource[];
@@ -186,7 +193,10 @@ export function checkNoRestrictionFound(input: NrfInput): NrfResult {
 
   const limits: { minutes: number; bands: Band[] }[] = [];
   const operatorRules = new Map<string, string[]>();
-  for (const record of input.restrictions) {
+  const layerLimit: RestrictionRecord[] = layer?.limit ? [{ id: layer.recordId, sourceId: layer.sourceId, category: 'time_limit',
+    limitMinutes: layer.limit.minutes, bands: layer.limit.bands, scheduleComplete: layer.limit.scheduleComplete,
+    location: { kind: 'exact', placeId: place.id } }] : [];
+  for (const record of [...layerLimit, ...input.restrictions]) {
     if (!reaches(record.location, place)) continue;
     if (record.location.kind === 'unknown') reasons.add('uncertain_location');
     if (place.placeType === 'lot' && record.operator) {
@@ -208,7 +218,12 @@ export function checkNoRestrictionFound(input: NrfInput): NrfResult {
     if (record.category === 'time_limit') {
       if (active && stay > (record.limitMinutes as number)) reasons.add('limit_exceeded');
       else limits.push({ minutes: record.limitMinutes as number, bands: record.bands });
-    } else if (active) reasons.add('restriction_applies');
+    } else {
+      // Rule 1's texts claim no payment or restriction at the place, so any
+      // recorded one withholds even outside its hours. Expired records do not.
+      if (!(record.validUntil && Date.parse(record.validUntil) <= start)) reasons.add('restriction_recorded');
+      if (active) reasons.add('restriction_applies');
+    }
   }
   // Rule 4, lots: different published rules from different operators mean Unknown.
   if (new Set([...operatorRules.values()].map(rules => JSON.stringify(rules.sort()))).size > 1) reasons.add('operator_conflict');
