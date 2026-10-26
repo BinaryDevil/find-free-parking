@@ -5,6 +5,7 @@
 Help unfamiliar drivers find nearby places with Verified Free Parking Rules for now or a selected time; paid parking is a secondary view. Keep the map fast, clear, mobile-friendly, and explicit about costs and conditions. The map displays rules; authoritative evidence establishes them. The service does not observe vacancy.
 
 - Recommend free parking only from current authoritative rules with precise location, schedule, and applicable vehicle conditions. Missing meters, generic road types, OSM tags, or absent payment data do not establish permission.
+- The weaker "No Restriction Found" answer is not a free-parking recommendation. Show it only under the [ADR-0001 amendment](docs/adr/0001-verified-rules-only.md#no-restriction-found-amendment): an approved parking layer, a two-agent-approved restriction register, and a passed measurement. Always label it "Not verified".
 - Treat Driver Reports as advisory Driver Warnings, never authoritative verification. A city polygon or page registry entry does not establish Coverage.
 - Current code does not fully meet this promise. Do not describe intended behavior as implemented, or existing heuristics as approved policy.
 

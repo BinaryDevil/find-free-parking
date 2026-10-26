@@ -2,30 +2,79 @@
 
 The service will recommend nearby places only from Verified Free Parking Rules, city by city. It will not infer free parking from missing data, road type, or a lack of a meter, and it will not claim that a physical space is vacant; this trades breadth for a promise that unfamiliar drivers can trust.
 
-## No Restriction Found amendment — proposed 2026-10-26, awaiting owner acceptance
+## No Restriction Found amendment
 
-**Status: proposed.** Nothing changes until the project owner accepts this by merging the PR that adds it (ADR-0005). Until then the paragraph above applies unchanged.
+**Acceptance.** This section takes effect when the project owner merges the PR that adds it (ADR-0005: ADR changes are owner decisions). An agent must not merge it. On acceptance it qualifies the paragraph above. Besides Verified Free Parking Rules, the service may show **No Restriction Found** places as a separate, weaker answer under the rules below. It is not a recommendation of free parking, never counts as Coverage, and never infers anything from a place that no official parking layer records.
 
-**Why.** Public city data has not supported a single Verified Free Parking Rule. Four pre-registered tests failed ADR-0002 criterion 7: Seattle Blockface ([#123](https://github.com/BinaryDevil/find-free-parking/pull/123)), the Vancouver meter feed ([#124](https://github.com/BinaryDevil/find-free-parking/pull/124)), the Seattle sign inventory ([#128](https://github.com/BinaryDevil/find-free-parking/pull/128)) and Seattle-region lots ([#132](https://github.com/BinaryDevil/find-free-parking/pull/132)). Most failures were omissions: bus stops, loading zones, partial no-parking stretches, carpool-only lots and closures that the tested data does not record. A rule that waits for complete data shows drivers nothing. The owner asked for a weaker, clearly separate answer that is honest about this gap.
+**Why.** Public city data has not supported a single Verified Free Parking Rule. Four pre-registered tests failed ADR-0002 criterion 7: Seattle Blockface ([#123](https://github.com/BinaryDevil/find-free-parking/pull/123)), the Vancouver meter feed ([#124](https://github.com/BinaryDevil/find-free-parking/pull/124)), the Seattle sign inventory ([#128](https://github.com/BinaryDevil/find-free-parking/pull/128)) and Seattle-region lots ([#132](https://github.com/BinaryDevil/find-free-parking/pull/132)). They failed in three ways:
+- **Omissions.** Restrictions the data does not record: bus stops, loading, partial no-parking, carpool-only lots, closures.
+- **Wrong values.** Recorded hours that are wrong: permit hours in 7 of 35 Seattle zones.
+- **Conflicts between official layers.** For example SDOT's sign and curb layers, and the Metro and Sound Transit lot limits.
 
-**Decision.** Add a second, weaker answer, **No Restriction Found**, beside Verified Free. It is never called free and never counts as Coverage.
+A rule that waits for complete data shows drivers nothing. The owner asked for a clearly weaker answer that is honest about these gaps.
 
-1. **What it says.** "No payment or restriction found in official data. Signs may differ: read them before you park." The map, popup and filters never present it as free parking or as a Verified Free Parking Rule.
-2. **When it may be shown.** All of these must hold for the selected time, stay and vehicle:
-   - **A parking layer records the place.** An official parking-regulation layer (ADR-0002 E1, E3 or E6) positively records the exact block side or lot, and that layer passes ADR-0002 criteria 1–6 for this role. Road maps, road class, OpenStreetMap, missing meters or the absence of any record never qualify. A place no parking layer records stays Unknown.
-   - **No restriction anywhere.** No official restriction source for that city shows a restriction, payment, permit requirement, time limit shorter than the stay, or condition on or near the place. Sources include meter and payment feeds, permit zones, sign inventories, curb-space layers, temporary restrictions and official citation data. A restriction found anywhere on a block side withholds the label for the **whole side**; a restriction at a lot withholds the whole lot. Citation data may withhold the label, never grant it (ADR-0002 signals).
-   - **Everything is fresh.** Every source the city uses for this check is within its ADR-0002 freshness limit, and a temporary-restriction source has synced within 24 hours. If any of them failed, is stale or is missing, the place is Unknown.
-   - **The stay fits.** The intended stay is at most 72 hours and fits any time limit the parking layer records.
-3. **How it looks.** It uses a marking clearly distinct from Verified Free and from conditional free (#127), for example a muted outline rather than the free colour. It has its own legend entry, and in the Free view it is ranked below Verified Free. The popup names every source checked and its as-of date.
-4. **Measured before use, and the result shown.** A city enables the label only after an independent agent runs a pre-registered random sample of at least 30 labelled places. Each is checked against an official signal not used to make the label. The observed rate of missed restrictions is published on the city page in plain words (for example "in a check of 30 places, 2 had a restriction the data missed"). If no such signal exists, the page says the rate is unmeasured. **Any** missed no-stopping, tow-away, bus-zone or fire-lane restriction in the sample blocks the label for that city. The owner sets the maximum acceptable rate for other restriction types before the first city is enabled.
-5. **Unchanged.**
-   - Verified Free Parking Rules, ADR-0002 criteria and Coverage levels.
-   - City pages still say "not covered" unless real Coverage exists. A page with this label adds one line saying it shows places where no restriction was found in official data.
-   - Driver Reports stay display-only warnings that never change an answer.
-   - No outreach (ADR-0004), and agents verify while the owner merges releases (ADR-0005).
+**1. What drivers see.** Every surface uses the full text, in every locale, never shortened:
+- **No limit recorded:** "Not verified: official data shows no payment or restriction here. Posted signs and parking laws (hydrants, driveways, crosswalks) still apply."
+- **A recorded limit fits the stay:** "Not verified: official data shows no payment here. Limit: <limit and hours>. Posted signs and parking laws still apply." The words "no restriction" are used only where no source records any limit.
+- **"No payment" needs a payment source.** It is claimed only where an approved payment source covers that place type. Otherwise the text says "Not verified: official data shows no restriction here; payment is not recorded for this place."
+- **Map marking.** A hollow blue outline, distinct from Verified Free (solid green), conditional free (#127, dashed green) and Unknown (grey dashed). The legend entry reads "Not verified: no restriction found".
+- **Free view.** These places show by default, ranked below Verified Free, with a toggle to hide them. The summary bar counts them separately.
+- **Popup.** Lists every source checked with its as-of date, the categories no source records here, and the city's measured miss rate.
 
-**Accepted risk.** Some places with this label will carry a restriction the data omits. The tests above show that omissions are common, so a driver may be ticketed or towed if they ignore the signs. The safeguards are the separate wording and marking, the whole-side withholding rule, the published measured rate, and the hard block on tow-away-type misses. They reduce this risk; they do not remove it. The owner accepts this residual risk in exchange for giving drivers a useful but clearly qualified answer. The glossary gains a **No Restriction Found** entry with the wording in rule 1.
+**2. Parking layer.** An official parking-regulation layer (ADR-0002 E1, E3 or E6) must positively record the exact block side or lot.
+- It must pass ADR-0002 criteria 1–6 **in full**: C3 at block side or lot footprint or entrance, and C4 for every limit, hour or eligibility value the label shows or relies on.
+- Two agents must approve it for this role under ADR-0005, and the city inventory records that role.
+- An E3 side qualifies only when every sign assigned to it is parsed (ADR-0002 E3).
+- E2 meter feeds, E4 zones, road maps, road class, OSM and missing meters are never parking layers.
+
+**3. Restriction register.** Before the label is enabled, the city has a pre-registered restriction register approved by two agents under ADR-0005. It must:
+- list every official source in the jurisdiction and from any agency operating there (transit, port, state);
+- map each restriction category to the sources that record it. The categories are no stopping, tow-away, no parking, peak hour, loading (commercial, truck, passenger), bus and transit layover, disabled-only, permit or resident-only, eligibility (customers, riders, carpool), vehicle class, school zone, street cleaning, events and closures, temporary restrictions, payment and time limits.
+
+The checker reads every listed source. A category with no source is named on the city page and in the popup, for example "Bus stops and loading zones are not in any official dataset here". Citation data may withhold the label, never grant it (ADR-0002 signals).
+
+**4. When it is withheld.** The label is withheld, and the place shows the stricter answer or Unknown, if any of these hold:
+- **A restriction applies.** Any listed source shows, for the selected time and vehicle, payment, a permit or eligibility requirement, a limit shorter than the stay, or any restriction category above.
+- **Silence outside listed hours.** A source records payment, permit or a restriction there at any time, and its schedule is not a complete documented schedule. An empty or null band is Unknown, never "none found".
+- **A record the checker cannot classify** lies on or near the place.
+- **Location is uncertain.** A restriction record withholds the label from every place it could belong to: every side within 15 m of a point record, both sides for records located only to a block, and the whole lot for any record inside or within 15 m of its footprint.
+- **Lots.** User eligibility, operator system-wide rules and the shortest published maximum stay are restrictions. If operators publish different rules for one lot, it is Unknown.
+- **Freshness.** A parking or restriction source has not synced successfully within 7 days, E5 within 24 hours, or citation data is more than 60 days behind. A city with no approved E5 source for a place type (street or lot) cannot show the label for that type.
+- **The stay is too long.** The stay exceeds the shortest of 72 hours, the jurisdiction's general limit and any operator maximum. With no stay given, the service assumes 2 hours and shows that assumption.
+
+**5. Measurement, which can never be skipped.** A city enables the label only after an independent agent's measurement has run and passed.
+- **Sample.** Pre-register a uniform random sample of at least 30 labelled (place, time) pairs across the week. The pre-registration names the signal, what it can and cannot detect, and the miss rule.
+- **The signal must be independent.** It must be an official source not used to compute the sampled labels.
+- **Holding a source back.** If every available official source is already a label input, hold out one restriction source. Compute the sampled labels without it and check them against it. The served label uses all sources, so it can only withhold more. The measured rate is therefore an upper bound for what that source detects.
+- **No independent signal means no label.** "Unmeasured" is never an enabled state.
+- **Hard block.** A single sampled miss blocks the label for the city if the missed restriction prohibits an ordinary vehicle of the general public from parking at that time, or may lead to towing.
+- **Publish the uncertainty.** The miss count and its 95% upper bound appear on the city page and in the popup ("up to 1 in 5 places may have a restriction the data missed"). The owner sets the maximum acceptable bound before the first city is enabled.
+- **Re-measure** after any change to sources, parser or classifier, and at least every 6 months.
+
+**6. Unchanged.**
+- Verified Free Parking Rules, ADR-0002 criteria, and Coverage levels and pages. A page gains one line saying it also shows places where no restriction was found in official data.
+- Driver Reports stay display-only warnings.
+- No outreach (ADR-0004).
+- ADR-0005 gates.
+
+**Accepted risk.** Some labelled places will carry restrictions the data omits or records wrongly, so a driver who relies on the label without reading signs may be ticketed or towed. The safeguards reduce this risk; they do not remove it:
+- the "Not verified" wording;
+- the distinct marking;
+- whole-side and lot-wide withholding;
+- the restriction register;
+- the measured upper bound;
+- the hard block on prohibiting or tow-type misses.
+
+The owner accepts this residual risk in exchange for giving drivers a useful but clearly qualified answer.
 
 **Consequences.**
-- **Implementation tickets after acceptance:** a new result type in the evaluator, the restriction-check pipeline across a city's sources, the distinct map and popup style in all eight locales, the city-page line and the measurement procedure.
-- **No current source is assumed eligible.** Each parking and restriction layer needs a fresh review for this role. For example, Seattle Blockface could be a parking layer, with the sign inventory and citation data used to withhold the label. Vancouver has no official parking layer for unmetered streets, so most of Vancouver would stay Unknown.
+- Accepting this also accepts the matching edits in this PR to `AGENTS.md` and `GLOSSARY.md`.
+- **Implementation tickets after acceptance:**
+  - the result type and texts in all eight locales;
+  - the restriction register and its checker;
+  - the map, legend, popup and toggle;
+  - the city-page line;
+  - the measurement procedure.
+- **No source is assumed eligible.**
+  - Seattle Blockface is pending on C3 and C4 (2026-10-23 review) and would need to pass them in full first.
+  - Vancouver has no E1 or E3 parking layer, so all Vancouver streets, metered or not, stay Unknown. Only lots could qualify.

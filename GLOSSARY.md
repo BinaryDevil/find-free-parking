@@ -38,6 +38,6 @@ _Avoid_: verified data, correction
 A visible caution derived from one or more Driver Reports that a place may not be usable. It does not change the underlying Parking Rule.
 _Avoid_: corrected status, reported truth
 
-**No Restriction Found** *(proposed, pending owner acceptance of the ADR-0001 amendment)*:
-A weaker answer than a Verified Free Parking Rule. An official parking layer records the place, and none of the city's checked official sources shows a payment, restriction or condition there for the selected time and vehicle. It is shown as "No payment or restriction found in official data. Signs may differ: read them before you park." It is never called free and never counts as Coverage.
-_Avoid_: free, likely free, probably free, unrestricted
+**No Restriction Found**:
+A weaker answer than a Verified Free Parking Rule, defined in [ADR-0001](docs/adr/0001-verified-rules-only.md#no-restriction-found-amendment). An approved official parking layer records the place, and no source in the city's restriction register shows a payment, restriction or condition there for the selected time, stay and vehicle. It is always shown as "Not verified", never called free, and never counts as Coverage.
+_Avoid_: free, likely free, probably free, unrestricted, verified
