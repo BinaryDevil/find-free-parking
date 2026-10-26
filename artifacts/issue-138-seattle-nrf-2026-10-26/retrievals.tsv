@@ -104,3 +104,11 @@ utc	http	file	url	note
 2026-10-26T23:21:18Z	200	meta-kcm-stops-0.json	https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/TRANSITSTOP_POINT_2648/FeatureServer/0?f=json
 2026-10-26T23:21:19Z	200	count-kcm-stops-0.json	https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/TRANSITSTOP_POINT_2648/FeatureServer/0/query?where=1%3D1&returnCountOnly=true&f=json
 2026-10-26T23:21:19Z	200	signal-74ix-6xdj-rows.json	https://data.seattle.gov/resource/74ix-6xdj.json?$limit=3&$order=:updated_at%20DESC	not retained: rows hold licence plates and addresses
+2026-10-26T23:22:38Z	200	probe-population-ids.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Blockface/FeatureServer/1/query (POST)
+2026-10-26T23:22:38Z	200	probe-sample-blockface.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Blockface/FeatureServer/1/query (POST)
+2026-10-26T23:22:39Z	200	probe-signs0-attempt1-error.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Signs/FeatureServer/0/query (POST)	HTTP 200 with error body: outFields named TEXT, which layer 0 lacks; superseded by the rerun below
+2026-10-26T23:22:52Z	200	probe-population-ids.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Blockface/FeatureServer/1/query (POST)
+2026-10-26T23:22:52Z	200	probe-sample-blockface.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Blockface/FeatureServer/1/query (POST)
+2026-10-26T23:22:52Z	200	probe-signs0.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parking_Signs/FeatureServer/0/query (POST)
+2026-10-26T23:22:53Z	200	probe-streetsigns1.json	https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/SDOT_Street_Signs/FeatureServer/1/query (POST)
+2026-10-26T23:24:54Z	200	stats-kcm-stops-jurisdiction.json	https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/TRANSITSTOP_POINT_2648/FeatureServer/0/query?groupBy=JURISDICTION,IN_SERVICE_FLAG,STOP_STATUS

@@ -1,0 +1,18 @@
+{
+ "sides_by_sign_type": {
+  "R7-WI30 | NO PARKING WITHIN 30 FEET": 14,
+  "R7-NPR | [SLASH OVER CIRCLE] P [RIGHT ARROW]": 5,
+  "R7-NPL | [SLASH OVER CIRCLE] P [LEFT ARROW]": 4,
+  "R7-WI30 | [CIRCLE SLASH P] WITHIN 30 FEET": 2,
+  "R7-NPW | NO PARKING WEST OF HERE": 1,
+  "R7-2A5A | NO PARKING 2-5AM": 1,
+  "R7-PKAPD | NO PARKING 6-9AM 3-7PM EXCEPT SAT-SUN-HOL TOW-AWAY ZONE PHON": 1,
+  "R7-NPN | NO PARKING NORTH OF HERE": 1
+ },
+ "sides_any_prohibiting_or_tow": 25,
+ "sides_excluding_30ft_clearance_only": 11,
+ "p_zero_misses_in_30_if_rate_holds": {
+  "25/60": 9.495193488304152e-08,
+  "11/60": 0.002297972829094315
+ }
+}
