@@ -42,6 +42,10 @@
     {
       "path": "sql/preservation-v1/1792627200000_foundation.sql",
       "sha256": "4a83f4bc5dce1c6f2cbf69f8113ebc0871354af50869a8f6e2c29dd504605fbc"
+    },
+    {
+      "path": "sql/preservation-v1/1792972800000_no_restriction_found.sql",
+      "sha256": "9ad322d1a01e26198d736d7e46d0ffe3aeeba9e89d58f92372d62fb56f3c04ab"
     }
   ],
   "superseded": [
