@@ -39,5 +39,5 @@ A visible caution derived from one or more Driver Reports that a place may not b
 _Avoid_: corrected status, reported truth
 
 **No Restriction Found**:
-A weaker answer than a Verified Free Parking Rule, defined in [ADR-0001](docs/adr/0001-verified-rules-only.md#no-restriction-found-amendment). An approved official parking layer records the place, and no source in the city's restriction register shows a payment, restriction or condition there for the selected time, stay and vehicle. It is always shown as "Not verified", never called free, and never counts as Coverage.
+A weaker answer than a Verified Free Parking Rule, defined in [ADR-0001](docs/adr/0001-verified-rules-only.md#no-restriction-found-amendment). An approved official parking layer records the place, and no source in the city's restriction register shows a payment, a limit shorter than the stay, or any other restriction there for the selected time, stay and vehicle. It is always shown as "Not verified", never called free, and never counts as Coverage.
 _Avoid_: free, likely free, probably free, unrestricted, verified
