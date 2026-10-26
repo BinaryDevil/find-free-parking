@@ -79,7 +79,7 @@ test('guarded commands bootstrap, compare, adopt and replay preservation without
       await cli('up', env);
       const state = await readMigrationState(client);
       assert.deepEqual(state.legacy, ['1791676800000_baseline']);
-      assert.deepEqual(state.preservation, ['1792627200000_foundation']);
+      assert.deepEqual(state.preservation, manifest.preservation.map(entry => entry.path.split('/').at(-1).replace(/\.sql$/, '')));
       assert.equal(state.adoption.snapshot_reference, env.MIGRATION_SNAPSHOT_REFERENCE);
       assert.equal((await client.query('SELECT count(*)::int AS n FROM public.evidence_sources')).rows[0].n, 0);
       assert.equal((await client.query("SELECT count(*)::int AS n FROM public.coverage_areas WHERE level='none'")).rows[0].n, 24);
