@@ -3,9 +3,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { addParkingLayers, NO_RESTRICTION_FOUND_STYLE } from '../components/parking-map/layers.ts';
 import { classifiedMapFeatures, summarySegments } from '../components/parking-map/data.ts';
-import { displayClassification, missUpperBound, noRestrictionFoundPopupLines } from '../components/parking-map/no-restriction-found.ts';
+import { displayClassification, measurementText, missingCategoriesText, noRestrictionFoundPopupLines } from '../components/parking-map/no-restriction-found.ts';
+import { clopperPearsonUpper, oneIn } from '../lib/nrf-bound.ts';
 import { parkingLabelKey, popupLines } from '../components/parking-map/popup.ts';
-import { noRestrictionFoundEnabled } from '../lib/no-restriction-found-city.ts';
+import { cityNoRestrictionFound, noRestrictionFoundEnabled } from '../lib/no-restriction-found-city.ts';
 
 const locales = ['ar', 'bn', 'en', 'es', 'fr', 'hi', 'pt', 'zh'];
 const messages = Object.fromEntries(locales.map(locale => [locale, JSON.parse(readFileSync(new URL(`../messages/${locale}.json`, import.meta.url), 'utf8'))]));
@@ -15,7 +16,7 @@ const t = (key, values = {}) => {
   return message.replace(/\{(\w+)\}/g, (_, name) => String(values[name]));
 };
 
-const measurement = { sampled: 30, misses: 1, checkedAgainst: "Seattle's sign inventory", measuredAt: '2026-10-01T00:00:00Z' };
+const measurement = { sampled: 30, misses: 1, checkedAgainst: "Seattle's sign inventory", measuredAt: '2026-10-01T00:00:00Z', verdict: 'pass' };
 function evaluation(variant, overrides = {}) {
   const limits = variant.startsWith('limit') ? [{ minutes: 120, bands: [{ days: [1, 2, 3, 4, 5], startMinute: 480, endMinute: 1080 }] }] : [];
   return {
@@ -75,10 +76,10 @@ test('popup gives the full rule-1 text per variant, sources with as-of dates, mi
       { role: 'title', text: 'Not verified: no restriction found' },
       { role: 'text', text },
       { role: 'note', text: 'Assumes a stay of 120 min.' },
+      { role: 'text', text: "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6)." },
       { role: 'heading', text: 'Sources checked:' },
       { role: 'item', text: `SDOT Blockface, as of ${new Date('2026-10-20T12:00:00Z').toLocaleDateString('en')}` },
       { role: 'text', text: 'No official dataset here records the following, so they were not checked: bus stops and transit layovers and loading zones (commercial, truck, passenger).' },
-      { role: 'text', text: "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 7)." },
     ], variant);
   }
 });
@@ -112,6 +113,11 @@ test('the label shows only with a passed check and a valid measurement; otherwis
     { noRestrictionFoundMeasurement: { ...measurement, sampled: 29 } },
     { noRestrictionFoundMeasurement: { ...measurement, misses: 31 } },
     { noRestrictionFoundMeasurement: { ...measurement, checkedAgainst: ' ' } },
+    // Rule 5: only a passed run enables the label (#143 verdicts; a hard block is 'fail').
+    { noRestrictionFoundMeasurement: { ...measurement, verdict: 'fail' } },
+    { noRestrictionFoundMeasurement: { ...measurement, verdict: 'no_threshold' } },
+    { noRestrictionFoundMeasurement: { ...measurement, verdict: 'insufficient_sample' } },
+    { noRestrictionFoundMeasurement: { ...measurement, verdict: undefined } },
     { noRestrictionFound: { ...evaluation('no_limit').noRestrictionFound, classification: 'WITHHELD' } },
     { noRestrictionFound: { ...evaluation('no_limit').noRestrictionFound, variant: 'free' } },
     { noRestrictionFound: undefined },
@@ -123,13 +129,17 @@ test('the label shows only with a passed check and a valid measurement; otherwis
   assert.equal(parkingLabelKey({ classification: 'NO_RESTRICTION_FOUND' }), 'noRestrictionFound.legend');
 });
 
-test('exact one-sided 95% Clopper-Pearson upper bound', () => {
-  assert.ok(Math.abs(missUpperBound(30, 0) - (1 - 0.05 ** (1 / 30))) < 1e-9);
-  // 1 miss in 30: P(X <= 1) = 0.05 at the bound, about 0.1486 ("about 1 in 7").
-  const bound = missUpperBound(30, 1);
-  assert.ok(Math.abs((1 - bound) ** 30 + 30 * bound * (1 - bound) ** 29 - 0.05) < 1e-9);
-  assert.equal(Math.round(1 / bound), 7);
-  assert.equal(missUpperBound(30, 30), 1);
+test('the bound is the shared exact Clopper-Pearson value and "1 in N" rounds down, as in the #143 tool', () => {
+  assert.ok(Math.abs(clopperPearsonUpper(0, 30) - (1 - 0.05 ** (1 / 30))) < 1e-12);
+  assert.ok(Math.abs(clopperPearsonUpper(1, 30) - 0.14859606865911315) < 1e-9);
+  const sentence = misses => measurementText({ ...measurement, misses }, t);
+  assert.equal(sentence(0), "Checked 30 places against Seattle's sign inventory: 0 had a restriction the other data missed (up to about 1 in 10).");
+  assert.equal(sentence(1), "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6).");
+  for (const misses of [0, 1, 2, 3]) {
+    const bound = clopperPearsonUpper(misses, 30);
+    assert.ok(1 / oneIn(bound) >= bound, 'never understates the bound');
+  }
+  assert.equal(missingCategoriesText([], t, 'en'), null);
 });
 
 test('Free view shows these places by default, apart from Verified Free; the toggle hides them; Paid view never shows them', () => {
@@ -177,6 +187,24 @@ test('English texts match ADR-0001 rule 1 exactly, and every locale has the same
     assert.deepEqual(placeholders(home.noRestrictionFound), placeholders(nrf), locale);
     assert.ok(!JSON.stringify(home.noRestrictionFound).includes("'"), `${locale}: no ICU-escaping apostrophes`);
   }
+});
+
+test('city page shows its line, the miss rate and the missing categories only with a passed summary and an enabled register', async () => {
+  const approved = { approval_state: 'approved', approved_by: ['agent-a', 'agent-b'], approval_refs: ['#1', '#2'], measurement_ref: '#137' };
+  const queries = [];
+  const query = row => async sql => { queries.push(sql); return sql.includes('to_regclass') ? { rows: [{ ready: true }] } : { rows: row ? [row] : [] }; };
+  const summary = { measurement, missingCategories: ['bus_transit', 'loading'] };
+  assert.equal(await cityNoRestrictionFound(query(approved), 'area', summary), summary);
+  assert.equal(await cityNoRestrictionFound(query(undefined), 'area', summary), null, 'no register');
+  assert.equal(await cityNoRestrictionFound(query({ ...approved, measurement_ref: null }), 'area', summary), null);
+  for (const verdict of ['fail', 'no_threshold', 'insufficient_sample']) {
+    assert.equal(await cityNoRestrictionFound(query(approved), 'area', { ...summary, measurement: { ...measurement, verdict } }), null, verdict);
+  }
+  queries.length = 0;
+  assert.equal(await cityNoRestrictionFound(query(approved), 'area', null), null, 'no stored summary: dark today');
+  assert.deepEqual(queries, [], 'no summary, no query');
+  assert.equal(missingCategoriesText(summary.missingCategories, t, 'en'),
+    'No official dataset here records the following, so they were not checked: bus stops and transit layovers and loading zones (commercial, truck, passenger).');
 });
 
 test('city-page line needs the latest register approved by two distinct agents and measured', async () => {

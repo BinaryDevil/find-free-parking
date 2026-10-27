@@ -1,5 +1,6 @@
 import type { RuleEvaluation } from '../../lib/parking-rules.ts';
-import type { Band, NrfMeasurement, NrfVariant } from '../../lib/no-restriction-found.ts';
+import type { Band, NrfMeasurement, NrfVariant, RestrictionCategory } from '../../lib/no-restriction-found.ts';
+import { clopperPearsonUpper, oneIn, validMeasurement } from '../../lib/nrf-bound.ts';
 
 // Presentation of the ADR-0001 No Restriction Found amendment (#136). The
 // label is never free parking; it shows only with its passed measurement.
@@ -13,12 +14,6 @@ const variantKeys: Record<NrfVariant, string> = {
   no_payment_source: 'noRestrictionFound.noPaymentSource', limit_no_payment_source: 'noRestrictionFound.limitNoPaymentSource',
 };
 
-export function validMeasurement(measurement: NrfMeasurement | undefined): measurement is NrfMeasurement {
-  return !!measurement && Number.isInteger(measurement.sampled) && measurement.sampled >= 30 &&
-    Number.isInteger(measurement.misses) && measurement.misses >= 0 && measurement.misses <= measurement.sampled &&
-    typeof measurement.checkedAgainst === 'string' && measurement.checkedAgainst.trim() !== '';
-}
-
 // Map class for a server evaluation. "Unmeasured is never an enabled state"
 // (rule 5), so a label without a passed check or measurement shows Unknown.
 export function displayClassification(evaluation: RuleEvaluation) {
@@ -29,25 +24,19 @@ export function displayClassification(evaluation: RuleEvaluation) {
     validMeasurement(evaluation.noRestrictionFoundMeasurement) ? NRF : 'UNKNOWN';
 }
 
-// Exact one-sided 95% Clopper-Pearson upper bound on the miss rate.
-export function missUpperBound(sampled: number, misses: number, confidence = 0.95) {
-  if (misses >= sampled) return 1;
-  const alpha = 1 - confidence;
-  const cdf = (p: number) => {
-    let logTerm = sampled * Math.log1p(-p);
-    let sum = Math.exp(logTerm);
-    for (let i = 0; i < misses; i++) {
-      logTerm += Math.log((sampled - i) / (i + 1)) + Math.log(p) - Math.log1p(-p);
-      sum += Math.exp(logTerm);
-    }
-    return sum;
-  };
-  let low = 0, high = 1;
-  for (let i = 0; i < 100; i++) {
-    const mid = (low + high) / 2;
-    if (cdf(mid) > alpha) low = mid; else high = mid;
-  }
-  return high;
+// Rule 5 sentence, shared by the popup and the city page. N rounds down so
+// the miss rate is never understated (lib/nrf-bound.ts, as in #143's tool).
+export function measurementText(measurement: NrfMeasurement, t: Translate) {
+  return t('noRestrictionFound.measurement', { sampled: measurement.sampled, signal: measurement.checkedAgainst,
+    misses: measurement.misses, oneIn: oneIn(clopperPearsonUpper(measurement.misses, measurement.sampled)) });
+}
+
+// Rule 3: categories that no source records here.
+export function missingCategoriesText(categories: RestrictionCategory[], t: Translate, locale: string) {
+  if (!categories.length) return null;
+  const list = new Intl.ListFormat(locale, { type: 'conjunction' });
+  return t('noRestrictionFound.missingCategories',
+    { categories: list.format(categories.map(category => t(`noRestrictionFound.categories.${category}`))) });
 }
 
 const clock = (minute: number) => `${String(Math.floor(minute / 60)).padStart(2, '0')}:${String(minute % 60).padStart(2, '0')}`;
@@ -62,7 +51,6 @@ export function noRestrictionFoundPopupLines(evaluation: RuleEvaluation, t: Tran
   const check = evaluation.noRestrictionFound;
   const measurement = evaluation.noRestrictionFoundMeasurement;
   if (displayClassification(evaluation) !== NRF || check?.classification !== NRF || !validMeasurement(measurement)) return [];
-  const list = new Intl.ListFormat(locale, { type: 'conjunction' });
   const limit = check.limits.map(entry => t('noRestrictionFound.limitValue',
     { minutes: entry.minutes, hours: entry.bands.map(band => bandText(band, locale)).join('; ') })).join('; ');
   const lines: PopupLine[] = [
@@ -70,19 +58,15 @@ export function noRestrictionFoundPopupLines(evaluation: RuleEvaluation, t: Tran
     { role: 'text', text: t(variantKeys[check.variant], { limit }) },
   ];
   if (check.stayAssumed) lines.push({ role: 'note', text: t('noRestrictionFound.stayAssumed', { minutes: check.stayMinutes }) });
+  // The miss rate comes before the long lists so it is visible on a phone.
+  lines.push({ role: 'text', text: measurementText(measurement, t) });
   lines.push({ role: 'heading', text: t('noRestrictionFound.sourcesChecked') });
   for (const source of check.sourcesChecked) {
     const date = new Date(source.asOf ?? '');
     lines.push({ role: 'item', text: t('noRestrictionFound.sourceAsOf', { name: source.name,
       date: Number.isFinite(date.getTime()) ? date.toLocaleDateString(locale) : t('unknown') }) });
   }
-  if (check.missingCategories.length) {
-    lines.push({ role: 'text', text: t('noRestrictionFound.missingCategories',
-      { categories: list.format(check.missingCategories.map(category => t(`noRestrictionFound.categories.${category}`))) }) });
-  }
-  lines.push({ role: 'text', text: t('noRestrictionFound.measurement', {
-    sampled: measurement.sampled, signal: measurement.checkedAgainst, misses: measurement.misses,
-    oneIn: Math.max(1, Math.round(1 / missUpperBound(measurement.sampled, measurement.misses))),
-  }) });
+  const missing = missingCategoriesText(check.missingCategories, t, locale);
+  if (missing) lines.push({ role: 'text', text: missing });
   return lines;
 }

@@ -12,11 +12,13 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import {
   checkNoRestrictionFound, RESTRICTION_CATEGORIES,
   type NrfInput, type NrfPlaceType, type NrfResult, type NrfSource, type ParkingLayerRecord,
-  type RestrictionCategory, type RestrictionRecord, type RestrictionRegister,
+  type NrfVerdict, type RestrictionCategory, type RestrictionRecord, type RestrictionRegister,
 } from '../lib/no-restriction-found.ts';
+import { binomialCdf, clopperPearsonUpper, CONFIDENCE, MIN_SAMPLE, oneIn } from '../lib/nrf-bound.ts';
 
-export const MIN_SAMPLE = 30;
-export const CONFIDENCE = 0.95;
+// Re-exported for callers of this tool; the map shares the same module.
+export { binomialCdf, clopperPearsonUpper, CONFIDENCE, MIN_SAMPLE, oneIn };
+
 const WEEK_MINUTES = 7 * 1440;
 const MAX_DRAWS_PER_PAIR = 1000;
 
@@ -55,7 +57,7 @@ export interface MeasurementInputs {
 }
 export interface SamplePair { placeId: string; minute: number; instant: string }
 export interface Miss { placeId: string; instant: string; reasons: string[]; recordIds: string[]; categories: (RestrictionCategory | null)[]; hardBlock: boolean }
-export type Verdict = 'pass' | 'fail' | 'no_threshold' | 'insufficient_sample';
+export type Verdict = NrfVerdict;
 export interface MeasurementResult {
   preregistrationId: string;
   city: string;
@@ -96,31 +98,6 @@ export function mulberry32(seed: number): () => number {
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
-}
-
-function lnChoose(n: number, k: number) {
-  let total = 0;
-  for (let i = 1; i <= k; i++) total += Math.log(n - k + i) - Math.log(i);
-  return total;
-}
-export function binomialCdf(x: number, n: number, p: number) {
-  if (p <= 0) return 1;
-  if (p >= 1) return x >= n ? 1 : 0;
-  let total = 0;
-  for (let i = 0; i <= x; i++) total += Math.exp(lnChoose(n, i) + i * Math.log(p) + (n - i) * Math.log(1 - p));
-  return Math.min(1, total);
-}
-// Exact one-sided upper bound: the p at which seeing x or fewer misses has probability 1 - confidence.
-export function clopperPearsonUpper(x: number, n: number, confidence = CONFIDENCE) {
-  if (!Number.isInteger(n) || n < 1 || !Number.isInteger(x) || x < 0 || x > n) throw new Error(`invalid count ${x}/${n}`);
-  if (x === n) return 1;
-  const alpha = 1 - confidence;
-  let low = x / n, high = 1;
-  for (let i = 0; i < 200; i++) {
-    const mid = (low + high) / 2;
-    if (binomialCdf(x, n, mid) > alpha) low = mid; else high = mid;
-  }
-  return high;
 }
 
 // Inputs with the signal left out: its register entries and records are removed.
@@ -221,11 +198,6 @@ const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
 export function joinList(items: string[]) {
   if (items.length <= 2) return items.join(' and ');
   return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
-}
-// "up to about 1 in N" must never understate the bound, so N rounds down
-// (14.9% -> 1 in 6). The ADR's "1 in 7" example is illustrative.
-export function oneIn(bound: number) {
-  return Math.max(1, Math.floor(1 / bound));
 }
 export function publicationSentence(args: { n: number; misses: number; upperBound: number; signalLabel: string; noSource: RestrictionCategory[]; notBySignal: RestrictionCategory[] }) {
   const count = args.misses === 0 ? 'none' : String(args.misses);

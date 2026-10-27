@@ -7,7 +7,7 @@ import { Map, MapGeoJSONFeature } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
 import { submitCoverageRequest } from "@/app/actions/request-coverage";
 import { LocateFixed, Loader2, Search } from "lucide-react";
-import { FormEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useEffectEvent, useId, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
 import HelpModal from "@/components/HelpModal";
@@ -138,7 +138,7 @@ interface MainMapProps {
   initialZoom?: number;
   cityName?: string;
   cityCoverageText?: string;
-  cityNoRestrictionFoundText?: string;
+  cityNoRestrictionFoundLines?: string[];
 }
 
 export default function MainMap({
@@ -146,7 +146,7 @@ export default function MainMap({
   initialZoom,
   cityName,
   cityCoverageText,
-  cityNoRestrictionFoundText,
+  cityNoRestrictionFoundLines,
 }: MainMapProps) {
   const t = useTranslations("HomePage");
   const locale = useLocale();
@@ -355,13 +355,14 @@ export default function MainMap({
 
   // The No Restriction Found popup is long and opens below the place. Pan it
   // up until its end is on screen, without moving its title under the
-  // search and filter overlay (the map's top padding).
+  // search, city and filter overlay.
   function keepPopupInView(map: Map, popup: maplibregl.Popup) {
     // Measure after MapLibre has positioned the popup.
     requestAnimationFrame(() => {
       const box = popup.getElement().getBoundingClientRect();
       const container = map.getContainer().getBoundingClientRect();
-      const pan = Math.min(box.bottom - container.bottom + 8, box.top - container.top - (map.getPadding().top ?? 0));
+      const overlayBottom = overlayRef.current?.getBoundingClientRect().bottom ?? container.top + (map.getPadding().top ?? 0);
+      const pan = Math.min(box.bottom - container.bottom + 8, box.top - overlayBottom - 8);
       if (pan > 0) map.panBy([0, pan]);
     });
   }
@@ -1055,6 +1056,9 @@ export default function MainMap({
   }
 
   const summaryText = summarySegments(featureCounts);
+  // The search, city and filter panel; NRF popups stay below it.
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const nrfLegendId = useId();
 
   return (
     <div className="relative bg-black text-white h-full w-full">
@@ -1084,7 +1088,7 @@ export default function MainMap({
       </div>
 
       <div className="pointer-events-none absolute top-0 left-0 right-0 flex justify-center px-4 pt-4">
-        <div className="pointer-events-auto w-full max-w-3xl">
+        <div ref={overlayRef} className="pointer-events-auto w-full max-w-3xl">
           <form
             onSubmit={handleSearch}
             className="flex w-full items-center gap-3 rounded-full border border-slate-200 bg-white text-slate-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ring-1 ring-black/5 transition focus-within:ring-2 focus-within:ring-blue-500/70"
@@ -1126,7 +1130,7 @@ export default function MainMap({
               )}
             </button>
           </form>
-          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{cityCoverageText ?? t("cityNotCovered", { city: cityName })}{cityNoRestrictionFoundText ? <span className="mt-1 block text-slate-200">{cityNoRestrictionFoundText}</span> : null}</p> : null}
+          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{cityCoverageText ?? t("cityNotCovered", { city: cityName })}{cityNoRestrictionFoundLines?.map((line) => <span key={line} className="mt-1 block text-slate-200">{line}</span>)}</p> : null}
           <div className="mt-3 w-full">
             <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">
@@ -1201,7 +1205,7 @@ export default function MainMap({
                     <line x1="3" y1="5" x2="19" y2="5" stroke={NO_RESTRICTION_FOUND_STYLE.outline} strokeWidth="8" strokeLinecap="round" />
                     <line x1="3" y1="5" x2="19" y2="5" stroke={NO_RESTRICTION_FOUND_STYLE.inner} strokeWidth="3" strokeLinecap="round" />
                   </svg>
-                  {t("noRestrictionFound.legend")}
+                  <span id={nrfLegendId}>{t("noRestrictionFound.legend")}</span>
                 </span>
                 <span className="flex items-center gap-1.5">
                   <svg width="22" height="10" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5" stroke="#64748b" strokeWidth="4" strokeDasharray="4 4" /></svg>
@@ -1211,6 +1215,8 @@ export default function MainMap({
                   <input
                     type="checkbox"
                     checked={showNoRestrictionFound}
+                    // Named "Show these places" + "Not verified: no restriction found".
+                    aria-labelledby={`${nrfLegendId}-toggle ${nrfLegendId}`}
                     onChange={(e) => {
                       showNoRestrictionFoundRef.current = e.target.checked;
                       setShowNoRestrictionFound(e.target.checked);
@@ -1218,7 +1224,7 @@ export default function MainMap({
                     }}
                     className="h-4 w-4 accent-blue-700"
                   />
-                  {t("noRestrictionFound.toggle")}
+                  <span id={`${nrfLegendId}-toggle`}>{t("noRestrictionFound.toggle")}</span>
                 </label>
               </div>
             </div>
