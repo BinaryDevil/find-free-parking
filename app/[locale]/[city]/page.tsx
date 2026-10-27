@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import MainMap from "@/components/MainMap";
 import { getCityBySlug } from "@/lib/cities";
+import { query } from "@/lib/db";
+import { noRestrictionFoundEnabled } from "@/lib/no-restriction-found-city";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 
@@ -46,6 +48,7 @@ export default async function CityPage({ params }: Props) {
   const coverageText = cityInfo.level === 'none' ? t('cityNotCovered', { city: cityInfo.name }) :
     cityInfo.level === 'full' ? t('cityFullCoverage', { city: cityInfo.name }) :
     t('cityPartialCoverage', { city: cityInfo.name, subset: cityInfo.declaredSubset ?? '' });
+  const showsNoRestrictionFound = 'id' in cityInfo && await noRestrictionFoundEnabled(query, cityInfo.id);
 
   return (
     <MainMap
@@ -53,6 +56,7 @@ export default async function CityPage({ params }: Props) {
       initialZoom={14}
       cityName={cityInfo.name}
       cityCoverageText={coverageText}
+      cityNoRestrictionFoundText={showsNoRestrictionFound ? t('cityNoRestrictionFound') : undefined}
     />
   );
 }

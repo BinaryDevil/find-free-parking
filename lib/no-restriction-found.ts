@@ -81,6 +81,10 @@ export type NrfResult =
   | NrfCommon & { classification: 'NO_RESTRICTION_FOUND'; notVerified: true; variant: NrfVariant; textKey: string; limits: { minutes: number; bands: Band[] }[] }
   | NrfCommon & { classification: 'WITHHELD'; reasons: WithholdReason[] };
 
+// Rule 5: the passed measurement shown with every label. Recorded by the
+// measurement procedure (#137); the checker never computes it.
+export interface NrfMeasurement { sampled: number; misses: number; checkedAgainst: string; measuredAt: string | null }
+
 export const DEFAULT_STAY_MINUTES = 120;
 export const MAX_STAY_MINUTES = 72 * 60;
 export const LOCATION_BUFFER_METERS = 15;

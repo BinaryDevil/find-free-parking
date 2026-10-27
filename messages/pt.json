@@ -56,7 +56,41 @@
     "unknownCount": "Desconhecido: {count}",
     "cityNotCovered": "{city}: sem cobertura",
     "cityFullCoverage": "{city}: cobertura completa",
-    "cityPartialCoverage": "{city}: cobertura parcial — {subset}"
+    "cityPartialCoverage": "{city}: cobertura parcial — {subset}",
+    "cityNoRestrictionFound": "Este mapa também mostra locais onde nenhuma restrição foi encontrada nos dados oficiais.",
+    "noRestrictionFound": {
+      "legend": "Não verificado: nenhuma restrição encontrada",
+      "noLimit": "Não verificado: os dados oficiais não mostram pagamento nem restrição aqui. As placas no local e as leis de estacionamento (hidrantes, entradas de garagem, faixas de pedestres) continuam valendo.",
+      "limitFits": "Não verificado: os dados oficiais não mostram pagamento aqui. Limite: {limit}. As placas no local e as leis de estacionamento continuam valendo.",
+      "noPaymentSource": "Não verificado: os dados oficiais não mostram restrição aqui, e o pagamento não está registrado para este local. As placas no local e as leis de estacionamento (hidrantes, entradas de garagem, faixas de pedestres) continuam valendo.",
+      "limitNoPaymentSource": "Não verificado: o pagamento não está registrado para este local. Limite: {limit}. As placas no local e as leis de estacionamento (hidrantes, entradas de garagem, faixas de pedestres) continuam valendo.",
+      "limitValue": "{minutes} min ({hours})",
+      "stayAssumed": "Supõe uma permanência de {minutes} min.",
+      "sourcesChecked": "Fontes verificadas:",
+      "sourceAsOf": "{name}, dados de {date}",
+      "missingCategories": "Nenhum conjunto de dados oficial registra aqui o seguinte, por isso não foi verificado: {categories}.",
+      "measurement": "{sampled} locais verificados com {signal}: {misses} tinham uma restrição que os outros dados não registraram (até cerca de 1 em {oneIn}).",
+      "count": "Não verificado: nenhuma restrição encontrada: {count}",
+      "toggle": "Mostrar estes locais",
+      "categories": {
+        "no_stopping": "parada proibida",
+        "tow_away": "zonas de reboque",
+        "no_parking": "estacionamento proibido",
+        "peak_hour": "restrições em horário de pico",
+        "loading": "zonas de carga e descarga (comercial, caminhões, passageiros)",
+        "bus_transit": "pontos de ônibus e de transporte público",
+        "disabled_only": "vagas exclusivas para pessoas com deficiência",
+        "permit": "estacionamento com autorização ou só para moradores",
+        "eligibility": "regras de elegibilidade (clientes, passageiros, carona)",
+        "vehicle_class": "restrições por tipo de veículo",
+        "school_zone": "zonas escolares",
+        "street_cleaning": "limpeza de ruas",
+        "events_closures": "eventos e interdições",
+        "temporary": "restrições temporárias",
+        "payment": "pagamento",
+        "time_limit": "limites de tempo"
+      }
+    }
   },
   "ReportModal": {
     "title": "Atualizar Status",

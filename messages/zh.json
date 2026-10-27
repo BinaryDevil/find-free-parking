@@ -56,7 +56,41 @@
     "unknownCount": "未知：{count}",
     "cityNotCovered": "{city}：未覆盖",
     "cityFullCoverage": "{city}：完整覆盖",
-    "cityPartialCoverage": "{city}：部分覆盖 — {subset}"
+    "cityPartialCoverage": "{city}：部分覆盖 — {subset}",
+    "cityNoRestrictionFound": "本地图还显示官方数据中未发现限制的地点。",
+    "noRestrictionFound": {
+      "legend": "未经核实：未发现限制",
+      "noLimit": "未经核实：官方数据显示此处没有收费或限制。现场标志和停车法规（消防栓、车道出入口、人行横道）仍然适用。",
+      "limitFits": "未经核实：官方数据显示此处没有收费。限时：{limit}。现场标志和停车法规仍然适用。",
+      "noPaymentSource": "未经核实：官方数据显示此处没有限制，且此地点没有收费记录。现场标志和停车法规（消防栓、车道出入口、人行横道）仍然适用。",
+      "limitNoPaymentSource": "未经核实：此地点没有收费记录。限时：{limit}。现场标志和停车法规（消防栓、车道出入口、人行横道）仍然适用。",
+      "limitValue": "{minutes} 分钟（{hours}）",
+      "stayAssumed": "按停留 {minutes} 分钟计算。",
+      "sourcesChecked": "已核查的来源：",
+      "sourceAsOf": "{name}，数据截至 {date}",
+      "missingCategories": "此处没有任何官方数据集记录以下内容，因此未核查：{categories}。",
+      "measurement": "已对照{signal}核查 {sampled} 个地点：其中 {misses} 个存在其他数据遗漏的限制（最多约每 {oneIn} 个中有 1 个）。",
+      "count": "未经核实：未发现限制：{count}",
+      "toggle": "显示这些地点",
+      "categories": {
+        "no_stopping": "禁止停靠",
+        "tow_away": "拖车区",
+        "no_parking": "禁止停车",
+        "peak_hour": "高峰时段限制",
+        "loading": "装卸区（商用、货车、乘客）",
+        "bus_transit": "公交车站和公交停靠区",
+        "disabled_only": "残障人士专用车位",
+        "permit": "许可证或居民专用停车",
+        "eligibility": "资格限制（顾客、乘客、拼车）",
+        "vehicle_class": "车型限制",
+        "school_zone": "学校区域",
+        "street_cleaning": "街道清扫",
+        "events_closures": "活动和封路",
+        "temporary": "临时限制",
+        "payment": "收费",
+        "time_limit": "限时"
+      }
+    }
   },
   "ReportModal": {
     "title": "更新状态",
