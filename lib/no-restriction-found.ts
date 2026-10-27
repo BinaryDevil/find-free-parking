@@ -226,7 +226,9 @@ export function checkNoRestrictionFound(input: NrfInput): NrfResult {
     }
   }
   // Rule 4, lots: different published rules from different operators mean Unknown.
-  if (new Set([...operatorRules.values()].map(rules => JSON.stringify(rules.sort()))).size > 1) reasons.add('operator_conflict');
+  // Two operators with any two distinct rules conflict, so adding a record can
+  // never resolve a conflict (rule 5 relies on withholding being a union).
+  if (operatorRules.size > 1 && new Set([...operatorRules.values()].flat()).size > 1) reasons.add('operator_conflict');
 
   if (reasons.size) return withheld();
   const payment = granting('payment');
