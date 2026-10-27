@@ -29,6 +29,9 @@ export async function executeMigration(command, env = process.env) {
   }
   if (command === 'bootstrap-preservation' && env.MIGRATION_BOOTSTRAP_APPROVED !== manifest.baseline.sha256) throw new Error('Explicit baseline hash required for fresh bootstrap');
   const database = new Client({ connectionString: url.toString(), connectionTimeoutMillis: 15000, options: '-c statement_timeout=120000 -c lock_timeout=15000' });
+  // pg rejects any pending query and then emits 'error' when the socket drops;
+  // unhandled, that event would crash before the finally block below can roll back and unlock.
+  database.on('error', () => {});
   let locked = false;
   let transaction = false;
   try {
