@@ -7,6 +7,7 @@ Independent review: [2026-10-19 partial review](review-24-2026-10-19.md); [2026-
 Timezone: America/Los_Angeles
 Coverage verdict: none (no source approved; Seattle remains not covered)
 Lots and park-and-rides (E6): see [seattle-lots.md](seattle-lots.md) ([#125](https://github.com/BinaryDevil/find-free-parking/issues/125)).
+No Restriction Found eligibility (ADR-0001 amendment): see [seattle-nrf-eligibility.md](seattle-nrf-eligibility.md) ([#138](https://github.com/BinaryDevil/find-free-parking/issues/138), author side, 2026-10-26: not enableable).
 Policy: [Evidence Source Policy in #2](https://github.com/BinaryDevil/find-free-parking/issues/2)
 Observed: 2026-10-09. Counts are live `returnCountOnly` query results, not counts imported or validated in our database. Edit times below are UTC service `editingInfo.lastEditDate`, not evidence that every rule was inspected that day.
 
