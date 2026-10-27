@@ -62,7 +62,8 @@ The script refuses a signal that:
 - has no records in the frame;
 - is not marked as separately maintained;
 - claims categories the register does not map to it (held-out kind).
- Whether a source is really separately maintained, and whether its records really span the area, are judgements for the pre-registration and the reviewing agent.
+
+Whether a source is really separately maintained, and whether its records really span the area, are judgements for the pre-registration and the reviewing agent.
 
 Citation data may withhold the label, never grant it. A citation source can be a signal only if it meets the same conditions.
 
