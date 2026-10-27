@@ -152,6 +152,9 @@ still requires the separate human approval below.
 
 ### Adopting the baseline on an existing database
 
+For the shared dev database's reconciliation prerequisite, see
+[shared-dev-baseline](implementation/shared-dev-baseline.md).
+
 **Never run the baseline DDL on production or existing dev.** Baseline ledger
 marking is a database write: for production it is a release-PR *Production action*; for dev it follows ADR-0005's shared-dev rule.
 Ticket #9 remains incomplete until production marking and verification are done.

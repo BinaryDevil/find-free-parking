@@ -57,7 +57,7 @@ Categories: `no_stopping`, `tow_away`, `no_parking`, `peak_hour`, `loading`, `bu
 | `empty_band` | 4: an empty or null band is Unknown |
 | `unclassifiable_record` | 4 |
 | `uncertain_location` | 4: an `unknown` location; the 15 m, both-sides and lot-wide rules decide which records reach the place |
-| `operator_conflict` | 4: operators publish different rules for one lot |
+| `operator_conflict` | 4: operators publish different rules for one lot. Two or more operators with more than one distinct rule between them conflict, so adding a record never resolves a conflict (rule 5 relies on this). |
 | `stale_source`, `stale_citations`, `no_temporary_source` | 4: freshness and E5 |
 | `stay_too_long` | 4: 72 h or the jurisdiction's general limit; operator maximums report `limit_exceeded` |
 | `invalid_input` | malformed time, stay or time zone |
