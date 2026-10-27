@@ -303,3 +303,41 @@ test('the evaluator answer is unchanged unless it is Unknown for lack of any rul
   assert.equal(upgraded.explanation, 'noRestrictionFound.noLimit');
   assert.equal(upgraded.noRestrictionFound, passed);
 });
+
+test('rule 5 union: adding any restriction record never turns withheld into shown', () => {
+  const at = placeId => ({ location: { kind: 'exact', placeId } });
+  const evening = [{ days: [1, 2, 3, 4, 5], startMinute: 1080, endMinute: 1320 }];
+  const pool = placeId => [
+    record('time_limit', { ...at(placeId), id: 'a-240', sourceId: 'lots', operator: 'a', limitMinutes: 240 }),
+    record('time_limit', { ...at(placeId), id: 'a-300', sourceId: 'signs', operator: 'a', limitMinutes: 300 }),
+    record('time_limit', { ...at(placeId), id: 'b-240', sourceId: 'lots', operator: 'b', limitMinutes: 240 }),
+    record('time_limit', { ...at(placeId), id: 'b-300', sourceId: 'signs', operator: 'b', limitMinutes: 300 }),
+    record('time_limit', { ...at(placeId), id: 'limit-60', limitMinutes: 60 }),
+    record('time_limit', { ...at(placeId), id: 'limit-evening', limitMinutes: 240, bands: evening }),
+    record('loading', { ...at(placeId), id: 'loading-evening', bands: evening }),
+    record('no_parking', { ...at(placeId), id: 'np-car-exempt', exemptVehicles: ['car'] }),
+    record('payment', { ...at(placeId), id: 'expired-pay', validUntil: '2026-01-01T00:00:00Z' }),
+    record('permit', { ...at(placeId), id: 'permit-partial', bands: evening, scheduleComplete: false }),
+    record(null, { ...at(placeId), id: 'unclassified' }),
+    record('loading', { id: 'far-point', location: { kind: 'point', distanceMeters: 30 } }),
+  ];
+  for (const fixture of [street, lot]) {
+    const placeId = fixture === street ? 'side-1' : 'lot-1';
+    const records = pool(placeId);
+    const bases = [[], ...records.map(item => [item]), ...records.flatMap((a, i) => records.slice(i + 1).map(b => [a, b]))];
+    for (const base of bases) {
+      if (checkNoRestrictionFound(fixture({ restrictions: base })).classification !== 'WITHHELD') continue;
+      for (const added of records) {
+        if (base.includes(added)) continue;
+        const result = checkNoRestrictionFound(fixture({ restrictions: [...base, added] }));
+        assert.equal(result.classification, 'WITHHELD', `${placeId}: [${base.map(item => item.id)}] + ${added.id}`);
+      }
+    }
+  }
+  // Review case on #143: operator B publishes 240 and 300 min, A 240; the held-out source adds 300 for A.
+  const opAt = { sourceId: 'lots', location: { kind: 'exact', placeId: 'lot-1' } };
+  const measured = [record('time_limit', { ...opAt, id: 'a-240', operator: 'a', limitMinutes: 240 }),
+    record('time_limit', { ...opAt, id: 'b-240', operator: 'b', limitMinutes: 240 }), record('time_limit', { ...opAt, id: 'b-300', operator: 'b', limitMinutes: 300 })];
+  withheld(lot({ restrictions: measured }), 'operator_conflict');
+  withheld(lot({ restrictions: [...measured, record('time_limit', { ...opAt, id: 'a-300', sourceId: 'signs', operator: 'a', limitMinutes: 300 })] }), 'operator_conflict');
+});

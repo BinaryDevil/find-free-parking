@@ -66,10 +66,9 @@ test('the seeded sample is reproducible and independent of input order', () => {
   assert.notDeepEqual(a.sample.map(item => item.pair), other.sample.map(item => item.pair));
   const keys = a.sample.map(item => `${item.pair.placeId}@${item.pair.minute}`);
   assert.equal(new Set(keys).size, keys.length, 'no repeated pair');
-  // Only labelled pairs, spread over the week.
   assert.ok(a.sample.every(item => item.label.classification === 'NO_RESTRICTION_FOUND'));
   assert.ok(a.sample.every(item => item.pair.minute >= 0 && item.pair.minute < 7 * 1440));
-  assert.ok(new Set(a.sample.map(item => Math.floor(item.pair.minute / 1440))).size >= 4);
+  assert.ok(new Set(a.sample.map(item => Math.floor(item.pair.minute / 1440))).size >= 4, 'spread over the week');
   const r1 = mulberry32(42), r2 = mulberry32(42);
   for (let i = 0; i < 5; i++) assert.equal(r1(), r2());
 });
@@ -93,7 +92,8 @@ test('exact one-sided 95% Clopper-Pearson upper bounds', () => {
   assert.equal(clopperPearsonUpper(30, 30), 1);
   assert.ok(clopperPearsonUpper(0, 60) < clopperPearsonUpper(0, 30));
   assert.throws(() => clopperPearsonUpper(31, 30));
-  assert.deepEqual([0, 1, 2].map(x => oneIn(exact[x])), [11, 7, 5]);
+  assert.deepEqual([0, 1, 2].map(x => oneIn(exact[x])), [10, 6, 5]);
+  for (const x of [0, 1, 2]) assert.ok(1 / oneIn(exact[x]) >= exact[x], 'never understates the bound');
 });
 
 test('held-out labels drop the signal; the served label can only withhold more', () => {
@@ -111,10 +111,8 @@ test('held-out labels drop the signal; the served label can only withhold more',
   const miss = grade(pre(), data, frame, instant);
   assert.deepEqual(miss.recordIds, ['sign-np']);
   assert.ok(miss.reasons.includes('restriction_applies'));
-  // A signal record out of reach (40 m point) is not a miss.
-  assert.equal(grade(pre(), data, data.places[1], instant), null);
-  // A record the inputs already withhold is never sampled.
-  assert.ok(drawSample(pre(), data).sample.every(item => Number(item.pair.placeId.slice(-3)) % 5 !== 0));
+  assert.equal(grade(pre(), data, data.places[1], instant), null, 'a signal record 40 m away does not reach the place');
+  assert.ok(drawSample(pre(), data).sample.every(item => Number(item.pair.placeId.slice(-3)) % 5 !== 0), 'places the inputs withhold are never sampled');
 });
 
 test('hard block: a prohibiting or tow-type miss at the sampled time blocks; payment and inactive records do not', () => {
@@ -123,7 +121,7 @@ test('hard block: a prohibiting or tow-type miss at the sampled time blocks; pay
   const grading = (category, extra = {}) => {
     const copy = structuredClone(data);
     copy.places[3].restrictions.push(record('sign-x', 'signs', category, copy.places[3].place.id, extra));
-    return grade(pre({ signal: { ...pre().signal, detects: ['no_stopping', 'no_parking', 'loading', 'permit'] } }), copy, copy.places[3], at);
+    return grade(pre(), copy, copy.places[3], at);
   };
   assert.equal(grading('no_parking').hardBlock, true);
   assert.equal(grading('loading').hardBlock, true);
@@ -134,7 +132,6 @@ test('hard block: a prohibiting or tow-type miss at the sampled time blocks; pay
   assert.equal(outside.hardBlock, false, 'recorded outside the sampled stay');
   assert.equal(grading(null).hardBlock, true, 'an unclassifiable record cannot be cleared');
 
-  // A single prohibiting miss fails the city even when the bound would pass.
   const blocked = inputs();
   const first = drawSample(pre(), blocked).sample[0].pair.placeId;
   blocked.places.find(frame => frame.place.id === first).restrictions.push(record('sign-np', 'signs', 'no_parking', first));
@@ -142,7 +139,7 @@ test('hard block: a prohibiting or tow-type miss at the sampled time blocks; pay
   assert.ok(result.misses >= 1);
   assert.ok(result.upperBound95 <= 0.5);
   assert.equal(result.hardBlock, true);
-  assert.equal(result.verdict, 'fail');
+  assert.equal(result.verdict, 'fail', 'one prohibiting miss fails even when the bound passes');
 });
 
 test('measure: counts, bound, verdicts and the published sentence', () => {
@@ -156,7 +153,6 @@ test('measure: counts, bound, verdicts and the published sentence', () => {
   assert.equal(measure(pre({ maxUpperBound: 0.05 }), inputs()).verdict, 'fail');
   assert.deepEqual(measure(pre(), inputs()), clean, 'deterministic');
 
-  // Payment-only signal records on every place: misses that are not hard blocks.
   const paid = inputs();
   paid.register.entries.push({ category: 'payment', placeType: 'street', sourceId: 'signs' });
   for (const frame of paid.places) frame.restrictions.push(record(`sign-pay-${frame.place.id}`, 'signs', 'payment', frame.place.id, { bands: rarely }));
@@ -169,18 +165,31 @@ test('measure: counts, bound, verdicts and the published sentence', () => {
   assert.ok(clean.notCheckedNoSource.includes('bus_transit'));
   assert.ok(clean.notCheckedBySignal.includes('street_cleaning'));
   assert.ok(!clean.notCheckedBySignal.includes('loading'));
-  assert.match(clean.sentence, /^Checked 30 places against Synthetic City's sign inventory: none had a restriction the other data missed \(up to about 1 in 11\)\. /);
+  assert.match(clean.sentence, /^Checked 30 places against Synthetic City's sign inventory: none had a restriction the other data missed \(up to about 1 in 10\)\. /);
   assert.match(clean.sentence, /Bus stops and transit layovers.* are not in any official dataset here and were not checked\./);
-  assert.match(clean.sentence, /Synthetic City's sign inventory does not record .*street cleaning.*, so they were not checked\.$/);
+  assert.match(clean.sentence, /Synthetic City's sign inventory does not record .*street cleaning.*, so they were not checked\. /);
+  assert.match(clean.sentence, /The check cannot catch restrictions that no official source records, that Synthetic City's sign inventory also misses, or that all sources record wrongly\.$/);
 });
 
-test('sentence formatting follows the ADR example', () => {
+test('an independent signal checks the categories it detects even when no register source records them', () => {
+  const data = inputs();
+  data.sources.push(source('transit', 'E1'));
+  data.places[4].restrictions.push(record('transit-far', 'transit', 'bus_transit', data.places[4].place.id, { location: { kind: 'point', distanceMeters: 50 } }));
+  const result = measure(pre({ signal: { kind: 'independent', sourceId: 'transit', label: "the transit agency's stop inventory",
+    reason: 'Separate agency dataset of stops', separatelyMaintained: true, detects: ['bus_transit'] } }), data);
+  assert.ok(!result.notCheckedNoSource.includes('bus_transit'));
+  assert.ok(!result.notCheckedBySignal.includes('bus_transit'));
+  assert.ok(result.notCheckedNoSource.includes('school_zone'));
+  assert.doesNotMatch(result.sentence, /bus stops/i);
+});
+
+test('sentence formatting follows the ADR format', () => {
   assert.equal(
     publicationSentence({ n: 30, misses: 1, upperBound: clopperPearsonUpper(1, 30), signalLabel: "Seattle's sign inventory", noSource: ['bus_transit', 'loading'], notBySignal: [] }),
-    "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 7). Bus stops and transit layovers and loading zones are not in any official dataset here and were not checked.");
+    "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6). Bus stops and transit layovers and loading zones are not in any official dataset here and were not checked. The check cannot catch restrictions that no official source records, that Seattle's sign inventory also misses, or that all sources record wrongly.");
   assert.equal(
     publicationSentence({ n: 30, misses: 2, upperBound: clopperPearsonUpper(2, 30), signalLabel: 'the closure feed', noSource: [], notBySignal: ['payment', 'time_limit', 'school_zone'] }),
-    'Checked 30 places against the closure feed: 2 had a restriction the other data missed (up to about 1 in 5). The closure feed does not record payment, time limits and school zones, so they were not checked.');
+    'Checked 30 places against the closure feed: 2 had a restriction the other data missed (up to about 1 in 5). The closure feed does not record payment, time limits and school zones, so they were not checked. The check cannot catch restrictions that no official source records, that the closure feed also misses, or that all sources record wrongly.');
 });
 
 test('validation enforces rule 5 eligibility', () => {
@@ -191,14 +200,14 @@ test('validation enforces rule 5 eligibility', () => {
   assert.match(errors(pre({ signal: { ...pre().signal, sourceId: 'blockface' } })), /parking layer/);
   assert.match(errors(pre({ signal: { ...pre().signal, detects: ['school_zone'] } })), /does not record school_zone/);
   assert.match(errors(pre({ signal: { ...pre().signal, kind: 'independent' } })), /must not be a label input/);
+  assert.match(errors(pre({ signal: { ...pre().signal, sourceId: 'closures', detects: ['temporary'] } })), /cannot be held out/);
   const noRecords = inputs();
   noRecords.places[1].restrictions = noRecords.places[1].restrictions.filter(item => item.sourceId !== 'signs');
   assert.match(errors(pre(), noRecords), /no records/);
   assert.throws(() => measure(pre({ seed: 1.5 }), inputs()), /seed/);
-  // A frame with too few labelled pairs is reported, not padded.
   const dark = inputs();
   for (const frame of dark.places) frame.restrictions.push(record(`bf-all-${frame.place.id}`, 'blockface', 'no_parking', frame.place.id));
   const short = measure(pre(), dark);
   assert.equal(short.sampleSize, 0);
-  assert.equal(short.verdict, 'insufficient_sample');
+  assert.equal(short.verdict, 'insufficient_sample', 'never padded');
 });

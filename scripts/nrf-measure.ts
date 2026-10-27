@@ -153,6 +153,9 @@ export function validate(pre: Preregistration, inputs: MeasurementInputs) {
   const registered = inputs.register.entries.filter(entry => entry.sourceId === signal?.sourceId);
   if (signal?.kind === 'held_out') {
     if (!registered.length) errors.push('a held-out source must be in the approved register');
+    // The temporary-restrictions source is a precondition for showing the label at
+    // all, so leaving it out would not give labels the served answer contains.
+    if (source?.evidenceType === 'E5' && registered.some(entry => entry.category === 'temporary')) errors.push('the temporary-restrictions (E5) source cannot be held out');
     const recorded = new Set(registered.map(entry => entry.category));
     for (const category of signal.detects ?? []) if (!recorded.has(category)) errors.push(`held-out source does not record ${category} in the register`);
   } else if (signal?.kind === 'independent') {
@@ -219,25 +222,28 @@ export function joinList(items: string[]) {
   if (items.length <= 2) return items.join(' and ');
   return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 }
-// "about 1 in N" rounds 1 / bound, matching the ADR example (14.9% -> 1 in 7).
+// "up to about 1 in N" must never understate the bound, so N rounds down
+// (14.9% -> 1 in 6). The ADR's "1 in 7" example is illustrative.
 export function oneIn(bound: number) {
-  return Math.max(1, Math.round(1 / bound));
+  return Math.max(1, Math.floor(1 / bound));
 }
 export function publicationSentence(args: { n: number; misses: number; upperBound: number; signalLabel: string; noSource: RestrictionCategory[]; notBySignal: RestrictionCategory[] }) {
   const count = args.misses === 0 ? 'none' : String(args.misses);
   const parts = [`Checked ${args.n} places against ${args.signalLabel}: ${count} had a restriction the other data missed (up to about 1 in ${oneIn(args.upperBound)}).`];
   if (args.noSource.length) parts.push(`${capitalize(joinList(args.noSource.map(category => CATEGORY_LABELS[category])))} are not in any official dataset here and were not checked.`);
   if (args.notBySignal.length) parts.push(`${capitalize(args.signalLabel)} does not record ${joinList(args.notBySignal.map(category => CATEGORY_LABELS[category]))}, so they were not checked.`);
+  parts.push(`The check cannot catch restrictions that no official source records, that ${args.signalLabel} also misses, or that all sources record wrongly.`);
   return parts.join(' ');
 }
 
-// Categories no non-citation source records for a sampled place type, and the
-// remaining ones the signal does not detect.
+// Categories that neither a non-citation register source (for a sampled place
+// type) nor the signal records, and the remaining ones the signal does not detect.
 export function uncheckedCategories(pre: Preregistration, inputs: MeasurementInputs, placeTypes: NrfPlaceType[]) {
   const evidence = new Map(inputs.sources.map(source => [source.id, source.evidenceType]));
   const recorded = (category: RestrictionCategory, placeType: NrfPlaceType) => inputs.register.entries.some(entry =>
     entry.category === category && entry.placeType === placeType && evidence.has(entry.sourceId) && evidence.get(entry.sourceId) !== 'signal');
-  const noSource = RESTRICTION_CATEGORIES.filter(category => placeTypes.some(placeType => !recorded(category, placeType)));
+  const noSource = RESTRICTION_CATEGORIES.filter(category => !pre.signal.detects.includes(category) &&
+    placeTypes.some(placeType => !recorded(category, placeType)));
   const notBySignal = RESTRICTION_CATEGORIES.filter(category => !noSource.includes(category) && !pre.signal.detects.includes(category));
   return { noSource, notBySignal };
 }

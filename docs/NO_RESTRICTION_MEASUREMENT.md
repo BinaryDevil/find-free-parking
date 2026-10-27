@@ -55,7 +55,14 @@ The signal must be an official source that was not used to compute the sampled l
   - be separately maintained, not a view or export of another input;
   - carry records across the sampled area.
 
-The script refuses a signal that is not approved, is a parking layer, has no records in the frame, is not separately maintained, or claims categories the register does not map to it. Whether a source is really separately maintained, and whether its records really span the area, are judgements for the pre-registration and the reviewing agent.
+The script refuses a signal that:
+- is not approved;
+- is a parking layer;
+- is the register's E5 temporary-restrictions source, which the label needs in order to be shown at all;
+- has no records in the frame;
+- is not marked as separately maintained;
+- claims categories the register does not map to it (held-out kind).
+ Whether a source is really separately maintained, and whether its records really span the area, are judgements for the pre-registration and the reviewing agent.
 
 Citation data may withhold the label, never grant it. A citation source can be a signal only if it meets the same conditions.
 
@@ -69,7 +76,7 @@ A recorded restriction counts as a miss even outside its hours, because the driv
 
 ## What the number means
 
-Withholding is a union. The served label also uses the signal, so it can only withhold more than the measured label. The measurement therefore bounds the misses **that the signal can detect**.
+For restriction records, withholding is a union: adding a record can only add withholding reasons, never remove one. This includes operator conflicts on lots, where two or more operators with more than one distinct rule between them always conflict. The property is tested in `tests/no-restriction-found.test.mjs`. Two inputs work the other way, because the label needs them in order to be shown: the parking layer and the E5 temporary-restrictions source. Neither can be the signal. So the served label, which also uses the signal, withholds at least as much as the measured label, and the measurement bounds the misses **that the signal can detect**.
 
 It does **not** measure, and the publication names rather than counts:
 - restrictions that no official source records (missing categories);
@@ -79,9 +86,10 @@ It does **not** measure, and the publication names rather than counts:
 
 ## Hard block
 
-A single sampled miss blocks the label for the city if the missed restriction prohibits an ordinary vehicle of the general public from parking at that time, or may lead to towing. The script marks a miss as a hard block when:
-- a missed record applies during the sampled stay and its category is anything other than `payment` or `time_limit`; or
-- the grader cannot clear it: the record is unclassifiable, has an empty band or an incomplete schedule, has an unknown location, or the miss comes only from an operator conflict.
+A single sampled miss blocks the label for the city if the missed restriction prohibits an ordinary vehicle of the general public from parking at that time, or may lead to towing. The script marks a miss as a hard block when any of these hold:
+- a missed record applies during the sampled stay and its category is anything other than `payment` or `time_limit`;
+- any withholding reason for the pair, from all the signal's records together or from one alone, is `unclassifiable_record`, `empty_band`, `incomplete_schedule`, `uncertain_location` or `operator_conflict`;
+- no single signal record reproduces the miss on its own.
 
 A missed restriction that is recorded but not active during the sampled stay, payment, or a limit shorter than the stay is a miss but not a hard block. The reviewing agent checks every miss and may only make the result stricter.
 
@@ -89,7 +97,7 @@ A missed restriction that is recorded but not active during the sampled stay, pa
 
 `results.json` contains the sample, the miss count and details, `upperBound95`, `hardBlock`, the unchecked categories, the sentence and the verdict.
 
-- **Bound.** The exact one-sided 95% Clopper-Pearson upper bound: the miss rate at which seeing this many misses or fewer has probability 5%. For 30 pairs: 0 misses ≈ 9.5%, 1 ≈ 14.9%, 2 ≈ 19.5%.
+- **Bound.** The exact one-sided 95% Clopper-Pearson upper bound: the miss rate at which seeing this many misses or fewer has probability 5%. For 30 pairs: 0 misses ≈ 9.50%, 1 ≈ 14.86%, 2 ≈ 19.53%.
 - **Verdict.**
   - `insufficient_sample`: fewer labelled pairs than pre-registered.
   - `fail`: any hard block, or the bound is above `maxUpperBound`.
@@ -100,11 +108,12 @@ A missed restriction that is recorded but not active during the sampled stay, pa
 
 The city page and the popup show the miss count, the bound and what was checked, in the ADR's format:
 
-> Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 7). Bus stops and transit layovers and loading zones are not in any official dataset here and were not checked.
+> Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6). Bus stops and transit layovers and loading zones are not in any official dataset here and were not checked. The check cannot catch restrictions that no official source records, that Seattle's sign inventory also misses, or that all sources record wrongly.
 
-- "about 1 in N" rounds 1 / bound to the nearest whole number, as in the ADR example (14.9% becomes 1 in 7). The exact bound is kept in `results.json`.
-- The second sentence names categories that no non-citation source in the register records for the sampled place types.
-- A third sentence names the other categories the signal does not record: "<Signal> does not record …, so they were not checked."
+- **"about 1 in N" rounds down:** N = floor(1 / bound), so the stated rate is never below the bound. For 30 pairs, 0, 1 and 2 misses give 1 in 10, 1 in 6 and 1 in 5. The ADR example's "1 in 7" for one miss illustrates the format; rounding to the nearest number would understate the 14.9% bound. The exact bound is kept in `results.json`.
+- **Missing categories.** The next sentence names categories that neither the signal nor any non-citation register source records for the sampled place types.
+- **Categories the signal does not record.** Another sentence names the other categories the signal does not record: "<Signal> does not record …, so they were not checked."
+- **What it cannot catch.** A fixed last sentence names what rule 5 says is named, not counted: restrictions no official source records, blind spots the signal shares with the inputs, and wrong values all sources agree on.
 - Translating the sentence into the eight locales belongs to the display work ([#136](https://github.com/BinaryDevil/find-free-parking/issues/136)).
 
 ## Re-measurement
