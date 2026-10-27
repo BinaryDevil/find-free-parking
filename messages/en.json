@@ -56,7 +56,41 @@
     "unknownCount": "Unknown: {count}",
     "cityNotCovered": "{city}: not covered",
     "cityFullCoverage": "{city}: full coverage",
-    "cityPartialCoverage": "{city}: partial coverage — {subset}"
+    "cityPartialCoverage": "{city}: partial coverage — {subset}",
+    "cityNoRestrictionFound": "This map also shows places where no restriction was found in official data.",
+    "noRestrictionFound": {
+      "legend": "Not verified: no restriction found",
+      "noLimit": "Not verified: official data shows no payment or restriction here. Posted signs and parking laws (hydrants, driveways, crosswalks) still apply.",
+      "limitFits": "Not verified: official data shows no payment here. Limit: {limit}. Posted signs and parking laws still apply.",
+      "noPaymentSource": "Not verified: official data shows no restriction here, and payment is not recorded for this place. Posted signs and parking laws (hydrants, driveways, crosswalks) still apply.",
+      "limitNoPaymentSource": "Not verified: payment is not recorded for this place. Limit: {limit}. Posted signs and parking laws (hydrants, driveways, crosswalks) still apply.",
+      "limitValue": "{minutes} min ({hours})",
+      "stayAssumed": "Assumes a stay of {minutes} min.",
+      "sourcesChecked": "Sources checked:",
+      "sourceAsOf": "{name}, as of {date}",
+      "missingCategories": "No official dataset here records the following, so they were not checked: {categories}.",
+      "measurement": "Checked {sampled} places against {signal}: {misses} had a restriction the other data missed (up to about 1 in {oneIn}).",
+      "count": "Not verified: no restriction found: {count}",
+      "toggle": "Show these places",
+      "categories": {
+        "no_stopping": "no stopping",
+        "tow_away": "tow-away zones",
+        "no_parking": "no parking",
+        "peak_hour": "peak-hour restrictions",
+        "loading": "loading zones (commercial, truck, passenger)",
+        "bus_transit": "bus stops and transit layovers",
+        "disabled_only": "disabled-only spaces",
+        "permit": "permit or resident-only parking",
+        "eligibility": "eligibility rules (customers, riders, carpool)",
+        "vehicle_class": "vehicle-class rules",
+        "school_zone": "school zones",
+        "street_cleaning": "street cleaning",
+        "events_closures": "events and closures",
+        "temporary": "temporary restrictions",
+        "payment": "payment",
+        "time_limit": "time limits"
+      }
+    }
   },
   "ReportModal": {
     "title": "Update Status",

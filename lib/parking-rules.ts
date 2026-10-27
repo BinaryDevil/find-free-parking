@@ -1,5 +1,5 @@
 import { ruleClock } from './rule-clock.ts';
-import type { NrfResult } from './no-restriction-found.ts';
+import type { NrfMeasurement, NrfResult } from './no-restriction-found.ts';
 
 export type RuleKind = 'no_stopping' | 'tow_away' | 'no_parking' | 'loading' | 'temporary_no_parking' | 'permit_only' | 'paid' | 'free';
 // NO_RESTRICTION_FOUND is never free parking; see lib/no-restriction-found.ts.
@@ -54,6 +54,7 @@ export interface RuleEvaluation {
   asOf: string | null;
   driverWarnings: unknown[];
   noRestrictionFound?: NrfResult;
+  noRestrictionFoundMeasurement?: NrfMeasurement;
 }
 
 const precedence: Record<RuleKind, number> = {

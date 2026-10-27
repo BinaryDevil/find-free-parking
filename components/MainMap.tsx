@@ -7,7 +7,7 @@ import { Map, MapGeoJSONFeature } from "maplibre-gl";
 import { checkCoverage } from "@/app/actions/coverage";
 import { submitCoverageRequest } from "@/app/actions/request-coverage";
 import { LocateFixed, Loader2, Search } from "lucide-react";
-import { FormEvent, useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, useEffect, useEffectEvent, useId, useMemo, useRef, useState } from "react";
 import type { FeatureCollection, Point } from "geojson";
 import ReportModal from "@/components/ReportModal";
 import HelpModal from "@/components/HelpModal";
@@ -17,8 +17,10 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { isVisibleInParkingView, type ParkingClassification } from "@/lib/parking-classification";
 
 import { addParkingLayers } from "./parking-map/layers";
-import { popupElement, parkingLabelKey } from "./parking-map/popup";
-import { parkingSelectionParams, classifiedMapFeatures } from "./parking-map/data";
+import { popupElement, parkingLabelKey, popupLines } from "./parking-map/popup";
+import { parkingSelectionParams, classifiedMapFeatures, summarySegments } from "./parking-map/data";
+import { noRestrictionFoundPopupLines } from "./parking-map/no-restriction-found";
+import { NO_RESTRICTION_FOUND_STYLE } from "./parking-map/layers";
 
 maplibregl.setWorkerUrl(
   new URL("maplibre-gl/dist/maplibre-gl-worker.mjs", import.meta.url).href
@@ -136,6 +138,7 @@ interface MainMapProps {
   initialZoom?: number;
   cityName?: string;
   cityCoverageText?: string;
+  cityNoRestrictionFoundLines?: string[];
 }
 
 export default function MainMap({
@@ -143,6 +146,7 @@ export default function MainMap({
   initialZoom,
   cityName,
   cityCoverageText,
+  cityNoRestrictionFoundLines,
 }: MainMapProps) {
   const t = useTranslations("HomePage");
   const locale = useLocale();
@@ -155,8 +159,11 @@ export default function MainMap({
     meters: 0,
     streets: 0,
     zones: 0,
+    noRestrictionFound: 0,
     unknown: 0,
   });
+  const [noRestrictionFoundAvailable, setNoRestrictionFoundAvailable] = useState(0);
+  const [showNoRestrictionFound, setShowNoRestrictionFound] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLocating, setIsLocating] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
@@ -197,6 +204,7 @@ export default function MainMap({
 
   // Refs for map event listeners to avoid stale closures
   const filterTypeRef = useRef(filterType);
+  const showNoRestrictionFoundRef = useRef(showNoRestrictionFound);
   const parkingTimeRef = useRef(parkingTime);
   const isCustomTimeRef = useRef(isCustomTime);
   const loadSpotsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -328,6 +336,36 @@ export default function MainMap({
           date: date.toLocaleDateString(locale) })));
     }
   });
+
+  // No Restriction Found popup details (rule 1 text, sources, missing
+  // categories, measurement), or null for any other answer.
+  const noRestrictionFoundDetails = useEffectEvent((props: Record<string, unknown>) => {
+    if (props.classification !== "NO_RESTRICTION_FOUND" || typeof props.evaluation !== "string") return null;
+    try {
+      const lines = noRestrictionFoundPopupLines(JSON.parse(props.evaluation), t, locale);
+      if (!lines.length) return null;
+      // The full text never shortens, so it scrolls on small screens.
+      const details = popupElement("div", "max-height:35vh;overflow-y:auto");
+      details.append(...popupLines(lines.filter((line) => line.role !== "title")));
+      return [details];
+    } catch {
+      return null;
+    }
+  });
+
+  // The No Restriction Found popup is long and opens below the place. Pan it
+  // up until its end is on screen, without moving its title under the
+  // search, city and filter overlay.
+  function keepPopupInView(map: Map, popup: maplibregl.Popup) {
+    // Measure after MapLibre has positioned the popup.
+    requestAnimationFrame(() => {
+      const box = popup.getElement().getBoundingClientRect();
+      const container = map.getContainer().getBoundingClientRect();
+      const overlayBottom = overlayRef.current?.getBoundingClientRect().bottom ?? container.top + (map.getPadding().top ?? 0);
+      const pan = Math.min(box.bottom - container.bottom + 8, box.top - overlayBottom - 8);
+      if (pan > 0) map.panBy([0, pan]);
+    });
+  }
 
   function appendPopupControls(
     content: HTMLElement,
@@ -465,8 +503,10 @@ export default function MainMap({
             props.location_desc ?? props.city ?? ""
           )
         );
+        const nrfDetails = noRestrictionFoundDetails(props);
+        if (nrfDetails) content.append(...nrfDetails);
         appendWalkingInfo(content, coords as [number, number]);
-        if (props.timeLimitMinutes) {
+        if (props.timeLimitMinutes && !nrfDetails) {
           content.append(
             popupElement(
               "div",
@@ -533,7 +573,7 @@ export default function MainMap({
           );
         }
         appendDriverWarnings(content, props.driver_warnings);
-        content.append(
+        if (!nrfDetails) content.append(
           popupElement(
             "div",
             "margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0;font-size:11px;color:#ef4444;",
@@ -547,10 +587,11 @@ export default function MainMap({
           props.kind === "lot" || props.kind === "zone" ? "ZONE" : "METER",
           filterTypeRef.current
         );
-        new maplibregl.Popup()
+        const popup = new maplibregl.Popup(nrfDetails ? { anchor: "top" } : undefined)
           .setLngLat(coords as [number, number])
           .setDOMContent(content)
           .addTo(map);
+        if (nrfDetails) keepPopupInView(map, popup);
       });
 
       map.on("click", "spots-clusters", (e) => {
@@ -584,11 +625,12 @@ export default function MainMap({
           "div",
           "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
         );
+        const nrfDetails = noRestrictionFoundDetails(props);
         content.append(
           popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", props.name || t("parkingLot")),
           popupElement("div", "margin-top:4px;color:#64748b", t(parkingLabelKey(props))),
           ...(!props.kind ? [popupElement("div", "margin-top:8px;color:#475569", t("unverifiedLot"))] : []),
-          popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
+          ...(nrfDetails ?? [popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))])
         );
         appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
         appendDriverWarnings(content, props.driver_warnings);
@@ -599,14 +641,18 @@ export default function MainMap({
           "ZONE",
           "PAID"
         );
-        new maplibregl.Popup()
+        const popup = new maplibregl.Popup(nrfDetails ? { anchor: "top" } : undefined)
           .setLngLat(e.lngLat)
           .setDOMContent(content)
           .addTo(map);
+        if (nrfDetails) keepPopupInView(map, popup);
       });
 
+      // No Restriction Found lines draw on their own layer (#136).
+      const STREET_LAYERS = ["streets-line", "streets-nrf-outer"];
+
       // Valid click handler for Streets
-      map.on("click", "streets-line", (e) => {
+      map.on("click", STREET_LAYERS, (e) => {
         const feature = e.features?.[0] as MapGeoJSONFeature | undefined;
         if (!feature) return;
 
@@ -615,10 +661,11 @@ export default function MainMap({
           "div",
           "font-family:system-ui,sans-serif;font-size:14px;line-height:1.4"
         );
+        const nrfDetails = noRestrictionFoundDetails(props);
         content.append(
           popupElement("div", "font-weight:600;font-size:15px;color:#0f172a", t(parkingLabelKey(props))),
-          popupElement("div", "color:#475569;font-size:12px", props.block_id ?? t("unknownLocation")),
-          popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))
+          popupElement("div", "color:#475569;font-size:12px", props.block_id ?? props.name ?? t("unknownLocation")),
+          ...(nrfDetails ?? [popupElement("div", "margin-top:8px;color:#475569", t("unknownGuidance"))])
         );
         appendWalkingInfo(content, [e.lngLat.lng, e.lngLat.lat]);
         appendDriverWarnings(content, props.driver_warnings);
@@ -629,16 +676,17 @@ export default function MainMap({
           "STREET",
           "PAID"
         );
-        new maplibregl.Popup()
+        const popup = new maplibregl.Popup(nrfDetails ? { anchor: "top" } : undefined)
           .setLngLat(e.lngLat)
           .setDOMContent(content)
           .addTo(map);
+        if (nrfDetails) keepPopupInView(map, popup);
       });
 
       // Interactive hover effect for streets
       let hoveredStreetId: string | number | null = null;
 
-      map.on("mousemove", "streets-line", (e) => {
+      map.on("mousemove", STREET_LAYERS, (e) => {
         map.getCanvas().style.cursor = "pointer";
         if (e.features && e.features.length > 0) {
           if (hoveredStreetId !== null) {
@@ -657,7 +705,7 @@ export default function MainMap({
         }
       });
 
-      map.on("mouseleave", "streets-line", () => {
+      map.on("mouseleave", STREET_LAYERS, () => {
         map.getCanvas().style.cursor = "";
         if (hoveredStreetId !== null) {
           map.setFeatureState(
@@ -762,7 +810,7 @@ export default function MainMap({
 
       // Map Meters to Spots Source (Clusters)
       // Enhance properties for display
-      const classifiedFeatures = classifiedMapFeatures(data.places ?? [], filterTypeRef.current);
+      const classifiedFeatures = classifiedMapFeatures(data.places ?? [], filterTypeRef.current, showNoRestrictionFoundRef.current);
 
       // --- Process Meters ---
       // 1. Filter raw meters based on logic
@@ -874,8 +922,10 @@ export default function MainMap({
         meters: meterCount + classifiedFeatures.pointCount,
         streets: streetCount + classifiedFeatures.lineCount,
         zones: zoneCount + classifiedFeatures.polygonCount,
+        noRestrictionFound: classifiedFeatures.noRestrictionFoundCount,
         unknown: unknownCount + classifiedFeatures.unknownCount,
       });
+      setNoRestrictionFoundAvailable(classifiedFeatures.noRestrictionFoundAvailable);
 
       setStatus("idle");
     } catch (err) {
@@ -1005,6 +1055,11 @@ export default function MainMap({
     }
   }
 
+  const summaryText = summarySegments(featureCounts);
+  // The search, city and filter panel; NRF popups stay below it.
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const nrfLegendId = useId();
+
   return (
     <div className="relative bg-black text-white h-full w-full">
       <div ref={containerRef} className="h-full w-full" />
@@ -1033,7 +1088,7 @@ export default function MainMap({
       </div>
 
       <div className="pointer-events-none absolute top-0 left-0 right-0 flex justify-center px-4 pt-4">
-        <div className="pointer-events-auto w-full max-w-3xl">
+        <div ref={overlayRef} className="pointer-events-auto w-full max-w-3xl">
           <form
             onSubmit={handleSearch}
             className="flex w-full items-center gap-3 rounded-full border border-slate-200 bg-white text-slate-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] ring-1 ring-black/5 transition focus-within:ring-2 focus-within:ring-blue-500/70"
@@ -1075,7 +1130,7 @@ export default function MainMap({
               )}
             </button>
           </form>
-          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{cityCoverageText ?? t("cityNotCovered", { city: cityName })}</p> : null}
+          {cityName ? <p className="mt-2 rounded-lg bg-slate-900/90 px-3 py-2 text-sm text-white">{cityCoverageText ?? t("cityNotCovered", { city: cityName })}{cityNoRestrictionFoundLines?.map((line) => <span key={line} className="mt-1 block text-slate-200">{line}</span>)}</p> : null}
           <div className="mt-3 w-full">
             <div className="flex w-full items-center gap-2 overflow-x-auto no-scrollbar">
               <label className="relative inline-flex cursor-pointer shrink-0">
@@ -1134,24 +1189,46 @@ export default function MainMap({
               {filterType === "FREE" ? t("freeParking") : t("paidParking")}
               {status === "loading" || isSearching
                 ? ` · ${t("loading")}`
-                : ` · ${
-                    [
-                      featureCounts.meters > 0
-                        ? t("spots", { count: featureCounts.meters })
-                        : null,
-                      featureCounts.streets > 0
-                        ? t("blocks", { count: featureCounts.streets })
-                        : null,
-                      featureCounts.zones > 0
-                        ? t("lots", { count: featureCounts.zones })
-                        : null,
-                    ]
-                      .filter(Boolean)
-                      .join(" · ") || t("noneFound")
-                  }`}
-              {featureCounts.unknown > 0 ? ` · ${t("unknownCount", { count: featureCounts.unknown })}` : ""}
+                : ` · ${summaryText.main.map(({ key, count }) => t(key, { count })).join(" · ") || t("noneFound")}`}
+              {summaryText.extra.map(({ key, count }) => ` · ${t(key, { count })}`).join("")}
             </div>
           </div>
+          {filterType === "FREE" && noRestrictionFoundAvailable > 0 ? (
+            <div className="mt-2 flex justify-center">
+              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-white/90 px-3 py-2 text-xs font-medium text-slate-800 shadow">
+                <span className="flex items-center gap-1.5">
+                  <svg width="22" height="10" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5" stroke="#00A651" strokeWidth="4" strokeLinecap="round" /></svg>
+                  {t("verifiedFree")}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <svg width="22" height="10" aria-hidden="true">
+                    <line x1="3" y1="5" x2="19" y2="5" stroke={NO_RESTRICTION_FOUND_STYLE.outline} strokeWidth="8" strokeLinecap="round" />
+                    <line x1="3" y1="5" x2="19" y2="5" stroke={NO_RESTRICTION_FOUND_STYLE.inner} strokeWidth="3" strokeLinecap="round" />
+                  </svg>
+                  <span id={nrfLegendId}>{t("noRestrictionFound.legend")}</span>
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <svg width="22" height="10" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5" stroke="#64748b" strokeWidth="4" strokeDasharray="4 4" /></svg>
+                  {t("unknown")}
+                </span>
+                <label className="flex cursor-pointer items-center gap-1.5">
+                  <input
+                    type="checkbox"
+                    checked={showNoRestrictionFound}
+                    // Named "Show these places" + "Not verified: no restriction found".
+                    aria-labelledby={`${nrfLegendId}-toggle ${nrfLegendId}`}
+                    onChange={(e) => {
+                      showNoRestrictionFoundRef.current = e.target.checked;
+                      setShowNoRestrictionFound(e.target.checked);
+                      if (mapRef.current) void loadSpots(mapRef.current);
+                    }}
+                    className="h-4 w-4 accent-blue-700"
+                  />
+                  <span id={`${nrfLegendId}-toggle`}>{t("noRestrictionFound.toggle")}</span>
+                </label>
+              </div>
+            </div>
+          ) : null}
           {error ? (
             <div className="mt-2 flex justify-center">
               <div className="rounded-full bg-red-600/90 px-4 py-2 text-sm font-medium text-white shadow">

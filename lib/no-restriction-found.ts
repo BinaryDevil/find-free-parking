@@ -81,6 +81,12 @@ export type NrfResult =
   | NrfCommon & { classification: 'NO_RESTRICTION_FOUND'; notVerified: true; variant: NrfVariant; textKey: string; limits: { minutes: number; bands: Band[] }[] }
   | NrfCommon & { classification: 'WITHHELD'; reasons: WithholdReason[] };
 
+// Rule 5: the measurement shown with every label, recorded by the measurement
+// procedure (#137, scripts/nrf-measure.ts); the checker never computes it.
+// Only verdict 'pass' enables the label; a hard block is a 'fail'.
+export type NrfVerdict = 'pass' | 'fail' | 'no_threshold' | 'insufficient_sample';
+export interface NrfMeasurement { sampled: number; misses: number; checkedAgainst: string; measuredAt: string | null; verdict: NrfVerdict }
+
 export const DEFAULT_STAY_MINUTES = 120;
 export const MAX_STAY_MINUTES = 72 * 60;
 export const LOCATION_BUFFER_METERS = 15;

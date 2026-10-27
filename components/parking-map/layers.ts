@@ -1,4 +1,11 @@
-import type { Map } from "maplibre-gl";
+import type { ExpressionSpecification, Map } from "maplibre-gl";
+
+// No Restriction Found (#136): a hollow blue outline, a wide blue line with a
+// narrower inner line in the background colour. Its shape differs from solid
+// Verified Free and dashed Unknown, so colour is not the only cue.
+export const NO_RESTRICTION_FOUND_STYLE = { outline: "#1d4ed8", inner: "#ffffff", outerWidth: 8, innerWidth: 3 } as const;
+const isNrf: ExpressionSpecification = ["==", ["get", "classification"], "NO_RESTRICTION_FOUND"];
+const notNrf: ExpressionSpecification = ["!=", ["get", "classification"], "NO_RESTRICTION_FOUND"];
 
 export function addParkingLayers(map: Map) {
       map.addLayer({
@@ -17,13 +24,28 @@ export function addParkingLayers(map: Map) {
             "#d97706",
             "#94a3b8", // Default gray
           ],
-          "fill-opacity": 0.4,
+          "fill-opacity": ["case", isNrf, 0, 0.4],
         },
+      });
+      map.addLayer({
+        id: "zones-nrf-outer",
+        type: "line",
+        source: "zones",
+        filter: isNrf,
+        paint: { "line-color": NO_RESTRICTION_FOUND_STYLE.outline, "line-width": NO_RESTRICTION_FOUND_STYLE.outerWidth - 2 },
+      });
+      map.addLayer({
+        id: "zones-nrf-inner",
+        type: "line",
+        source: "zones",
+        filter: isNrf,
+        paint: { "line-color": NO_RESTRICTION_FOUND_STYLE.inner, "line-width": NO_RESTRICTION_FOUND_STYLE.innerWidth - 1 },
       });
       map.addLayer({
         id: "zones-line",
         type: "line",
         source: "zones",
+        filter: notNrf,
         paint: {
           "line-color": [
             "match",
@@ -40,11 +62,33 @@ export function addParkingLayers(map: Map) {
         },
       });
 
+      // Drawn first so Verified Free and other answers rank above it.
+      map.addLayer({
+        id: "streets-nrf-outer",
+        type: "line",
+        source: "streets",
+        filter: isNrf,
+        layout: { "line-join": "round", "line-cap": "round" },
+        paint: {
+          "line-color": NO_RESTRICTION_FOUND_STYLE.outline,
+          "line-width": ["case", ["boolean", ["feature-state", "hover"], false], NO_RESTRICTION_FOUND_STYLE.outerWidth + 2, NO_RESTRICTION_FOUND_STYLE.outerWidth],
+        },
+      });
+      map.addLayer({
+        id: "streets-nrf-inner",
+        type: "line",
+        source: "streets",
+        filter: isNrf,
+        layout: { "line-join": "round", "line-cap": "round" },
+        paint: { "line-color": NO_RESTRICTION_FOUND_STYLE.inner, "line-width": NO_RESTRICTION_FOUND_STYLE.innerWidth },
+      });
+
       // Streets Outline Layer (Background for contrast)
       map.addLayer({
         id: "streets-line-outline",
         type: "line",
         source: "streets",
+        filter: notNrf,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -66,6 +110,7 @@ export function addParkingLayers(map: Map) {
         id: "streets-line",
         type: "line",
         source: "streets",
+        filter: notNrf,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -123,10 +168,13 @@ export function addParkingLayers(map: Map) {
         filter: ["!", ["has", "point_count"]],
         paint: {
           "circle-radius": 6,
-          "circle-color": ["match", ["get", "classification"], "FREE", "#16a34a", "PAID", "#DC2626", "RESTRICTED", "#d97706", "#64748b"],
-          "circle-stroke-color": "#fff",
-          "circle-stroke-width": 1.5,
+          "circle-color": ["match", ["get", "classification"], "FREE", "#16a34a", "PAID", "#DC2626", "RESTRICTED", "#d97706",
+            "NO_RESTRICTION_FOUND", NO_RESTRICTION_FOUND_STYLE.inner, "#64748b"],
+          "circle-stroke-color": ["case", isNrf, NO_RESTRICTION_FOUND_STYLE.outline, "#fff"],
+          "circle-stroke-width": ["case", isNrf, 3, 1.5],
         },
+        // Higher keys draw on top, so No Restriction Found ranks below.
+        layout: { "circle-sort-key": ["case", isNrf, 0, 1] },
       });
       map.addLayer({
         id: "user-location",
