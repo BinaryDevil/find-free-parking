@@ -111,7 +111,7 @@ The city page and the popup show the miss count, the bound and what was checked,
 
 > Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6). Bus stops and transit layovers and loading zones are not in any official dataset here and were not checked. The check cannot catch restrictions that no official source records, that Seattle's sign inventory also misses, or that all sources record wrongly.
 
-- **"about 1 in N" rounds down:** N = floor(1 / bound), so the stated rate is never below the bound. For 30 pairs, 0, 1 and 2 misses give 1 in 10, 1 in 6 and 1 in 5. The ADR example's "1 in 7" for one miss illustrates the format; rounding to the nearest number would understate the 14.9% bound. The exact bound is kept in `results.json`.
+- **"about 1 in N" rounds down:** N = floor(1 / bound), so the stated rate is never below the bound. For 30 pairs, 0, 1 and 2 misses give 1 in 10, 1 in 6 and 1 in 5. Rounding to the nearest number would understate the 14.9% bound for one miss in 30. The exact bound is kept in `results.json`.
 - **Missing categories.** The next sentence names categories that neither the signal nor any non-citation register source records for the sampled place types.
 - **Categories the signal does not record.** Another sentence names the other categories the signal does not record: "<Signal> does not record …, so they were not checked."
 - **What it cannot catch.** A fixed last sentence names what rule 5 says is named, not counted: restrictions no official source records, blind spots the signal shares with the inputs, and wrong values all sources agree on.

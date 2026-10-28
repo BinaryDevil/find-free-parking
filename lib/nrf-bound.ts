@@ -35,7 +35,7 @@ export function clopperPearsonUpper(x: number, n: number, confidence = CONFIDENC
 }
 
 // "up to about 1 in N" must never understate the bound, so N rounds down
-// (14.9% -> 1 in 6). The ADR's "1 in 7" example is illustrative.
+// (14.9% -> 1 in 6).
 export function oneIn(bound: number) {
   return Math.max(1, Math.floor(1 / bound));
 }
