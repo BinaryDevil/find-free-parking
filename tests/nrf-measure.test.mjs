@@ -50,7 +50,7 @@ const pre = (extra = {}) => ({
   id: 'synthetic-1', city: 'Synthetic City', seed: 20261026, sampleSize: 30, weekStart: '2026-11-02T08:00:00.000Z', stayMinutes: null,
   signal: { kind: 'held_out', sourceId: 'signs', label: "Synthetic City's sign inventory", reason: 'Separately maintained sign inventory with records citywide',
     separatelyMaintained: true, detects: ['no_stopping', 'no_parking', 'loading', 'permit'] },
-  maxUpperBound: 0.2, ...extra,
+  maxUpperBound: 0.1, ...extra,
 });
 
 test('the seeded sample is reproducible and independent of input order', () => {
@@ -135,9 +135,9 @@ test('hard block: a prohibiting or tow-type miss at the sampled time blocks; pay
   const blocked = inputs();
   const first = drawSample(pre(), blocked).sample[0].pair.placeId;
   blocked.places.find(frame => frame.place.id === first).restrictions.push(record('sign-np', 'signs', 'no_parking', first));
-  const result = measure(pre({ maxUpperBound: 0.5 }), blocked);
+  const result = measure(pre({ sampleSize: 80 }), blocked);
   assert.ok(result.misses >= 1);
-  assert.ok(result.upperBound95 <= 0.5);
+  assert.ok(result.upperBound95 <= 0.1);
   assert.equal(result.hardBlock, true);
   assert.equal(result.verdict, 'fail', 'one prohibiting miss fails even when the bound passes');
 });
@@ -151,6 +151,7 @@ test('measure: counts, bound, verdicts and the published sentence', () => {
   assert.equal(clean.verdict, 'pass');
   assert.equal(measure(pre({ maxUpperBound: null }), inputs()).verdict, 'no_threshold');
   assert.equal(measure(pre({ maxUpperBound: 0.05 }), inputs()).verdict, 'fail');
+  assert.throws(() => measure(pre({ maxUpperBound: 0.2 }), inputs()), /owner's maximum/, 'a looser bound than the owner set is refused');
   assert.deepEqual(measure(pre(), inputs()), clean, 'deterministic');
 
   const paid = inputs();

@@ -16,7 +16,7 @@ const t = (key, values = {}) => {
   return message.replace(/\{(\w+)\}/g, (_, name) => String(values[name]));
 };
 
-const measurement = { sampled: 30, misses: 1, checkedAgainst: "Seattle's sign inventory", measuredAt: '2026-10-01T00:00:00Z', verdict: 'pass' };
+const measurement = { sampled: 50, misses: 1, checkedAgainst: "Seattle's sign inventory", measuredAt: '2026-10-01T00:00:00Z', verdict: 'pass' };
 function evaluation(variant, overrides = {}) {
   const limits = variant.startsWith('limit') ? [{ minutes: 120, bands: [{ days: [1, 2, 3, 4, 5], startMinute: 480, endMinute: 1080 }] }] : [];
   return {
@@ -76,7 +76,7 @@ test('popup gives the full rule-1 text per variant, sources with as-of dates, mi
       { role: 'title', text: 'Not verified: no restriction found' },
       { role: 'text', text },
       { role: 'note', text: 'Assumes a stay of 120 min.' },
-      { role: 'text', text: "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6)." },
+      { role: 'text', text: "Checked 50 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 10)." },
       { role: 'heading', text: 'Sources checked:' },
       { role: 'item', text: `SDOT Blockface, as of ${new Date('2026-10-20T12:00:00Z').toLocaleDateString('en')}` },
       { role: 'text', text: 'No official dataset here records the following, so they were not checked: bus stops and transit layovers and loading zones (commercial, truck, passenger).' },
@@ -111,6 +111,8 @@ test('the label shows only with a passed check and a valid measurement; otherwis
   for (const broken of [
     { noRestrictionFoundMeasurement: undefined },
     { noRestrictionFoundMeasurement: { ...measurement, sampled: 29 } },
+    { noRestrictionFoundMeasurement: { ...measurement, sampled: 30 } },
+    { noRestrictionFoundMeasurement: { ...measurement, sampled: 20000, misses: 2001 } },
     { noRestrictionFoundMeasurement: { ...measurement, misses: 31 } },
     { noRestrictionFoundMeasurement: { ...measurement, checkedAgainst: ' ' } },
     // Rule 5: only a passed run enables the label (#143 verdicts; a hard block is 'fail').
@@ -132,7 +134,7 @@ test('the label shows only with a passed check and a valid measurement; otherwis
 test('the bound is the shared exact Clopper-Pearson value and "1 in N" rounds down, as in the #143 tool', () => {
   assert.ok(Math.abs(clopperPearsonUpper(0, 30) - (1 - 0.05 ** (1 / 30))) < 1e-12);
   assert.ok(Math.abs(clopperPearsonUpper(1, 30) - 0.14859606865911315) < 1e-9);
-  const sentence = misses => measurementText({ ...measurement, misses }, t);
+  const sentence = misses => measurementText({ ...measurement, sampled: 30, misses }, t);
   assert.equal(sentence(0), "Checked 30 places against Seattle's sign inventory: 0 had a restriction the other data missed (up to about 1 in 10).");
   assert.equal(sentence(1), "Checked 30 places against Seattle's sign inventory: 1 had a restriction the other data missed (up to about 1 in 6).");
   for (const misses of [0, 1, 2, 3]) {
