@@ -5,6 +5,9 @@ import type { NrfMeasurement } from './no-restriction-found.ts';
 
 export const CONFIDENCE = 0.95;
 export const MIN_SAMPLE = 30;
+// The owner's maximum acceptable bound (set 2026-10-28). A pre-registration may
+// set a stricter one; no measurement whose bound is above this enables the label.
+export const MAX_UPPER_BOUND = 0.1;
 
 function lnChoose(n: number, k: number) {
   let total = 0;
@@ -38,9 +41,10 @@ export function oneIn(bound: number) {
 }
 
 // Only a passed measurement enables the label. A failed (including a hard
-// block), unthresholded or too-small measurement keeps it dark.
+// block), unthresholded, too-small or over-the-maximum measurement keeps it dark.
 export function validMeasurement(measurement: NrfMeasurement | null | undefined): measurement is NrfMeasurement {
   return !!measurement && measurement.verdict === 'pass' && Number.isInteger(measurement.sampled) && measurement.sampled >= MIN_SAMPLE &&
     Number.isInteger(measurement.misses) && measurement.misses >= 0 && measurement.misses <= measurement.sampled &&
-    typeof measurement.checkedAgainst === 'string' && measurement.checkedAgainst.trim() !== '';
+    typeof measurement.checkedAgainst === 'string' && measurement.checkedAgainst.trim() !== '' &&
+    clopperPearsonUpper(measurement.misses, measurement.sampled) <= MAX_UPPER_BOUND;
 }

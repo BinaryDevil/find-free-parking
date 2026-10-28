@@ -2,7 +2,7 @@
 
 Refs [#137](https://github.com/BinaryDevil/find-free-parking/issues/137). The spec is rule 5 of the [ADR-0001 No Restriction Found amendment](adr/0001-verified-rules-only.md#no-restriction-found-amendment). The checker is described in [implementation/no-restriction-found.md](implementation/no-restriction-found.md).
 
-**Status.** The procedure and the tool exist. No city has been measured, no register records a passed measurement, and the owner has not yet set the maximum acceptable bound. The label stays dark everywhere.
+**Status.** The procedure and the tool exist. No city has been measured and no register records a passed measurement. The label stays dark everywhere. The owner set the maximum acceptable bound at 10% on 2026-10-28.
 
 A city shows No Restriction Found only after an independent agent runs this measurement and it passes. "Unmeasured" is never an enabled state. If no eligible signal exists, the city gets no label.
 
@@ -32,7 +32,7 @@ Fields read by the script:
 | `signal.reason` | Why this source was chosen. |
 | `signal.separatelyMaintained` | Must be `true`. State in `reason` why it is not a view or export of an input. |
 | `signal.detects` | The categories the signal can detect. A held-out source may list only categories the register maps to it. |
-| `maxUpperBound` | The owner's maximum acceptable bound. `null` until the owner sets it; no measurement passes while it is `null`. |
+| `maxUpperBound` | The bound the measurement must meet. At most the owner's maximum, 10% (`MAX_UPPER_BOUND` in `lib/nrf-bound.ts`); a stricter value is allowed. The script rejects a larger value, and no measurement passes while it is `null`. |
 
 The pre-registration must also state, in prose next to the JSON:
 - what the signal cannot detect (see "What the number means");
@@ -98,11 +98,11 @@ A missed restriction that is recorded but not active during the sampled stay, pa
 
 `results.json` contains the sample, the miss count and details, `upperBound95`, `hardBlock`, the unchecked categories, the sentence and the verdict.
 
-- **Bound.** The exact one-sided 95% Clopper-Pearson upper bound: the miss rate at which seeing this many misses or fewer has probability 5%. For 30 pairs: 0 misses ≈ 9.50%, 1 ≈ 14.86%, 2 ≈ 19.53%.
+- **Bound.** The exact one-sided 95% Clopper-Pearson upper bound: the miss rate at which seeing this many misses or fewer has probability 5%. For 30 pairs: 0 misses ≈ 9.50%, 1 ≈ 14.86%, 2 ≈ 19.53%. Under the 10% maximum, 0 misses pass at 30 pairs, 1 miss needs at least 46 pairs and 2 misses at least 61.
 - **Verdict.**
   - `insufficient_sample`: fewer labelled pairs than pre-registered.
   - `fail`: any hard block, or the bound is above `maxUpperBound`.
-  - `no_threshold`: the owner has not set `maxUpperBound`.
+  - `no_threshold`: the pre-registration left `maxUpperBound` unset.
   - `pass`: otherwise.
 
 ## Published sentence

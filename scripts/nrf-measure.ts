@@ -14,7 +14,7 @@ import {
   type NrfInput, type NrfPlaceType, type NrfResult, type NrfSource, type ParkingLayerRecord,
   type NrfVerdict, type RestrictionCategory, type RestrictionRecord, type RestrictionRegister,
 } from '../lib/no-restriction-found.ts';
-import { binomialCdf, clopperPearsonUpper, CONFIDENCE, MIN_SAMPLE, oneIn } from '../lib/nrf-bound.ts';
+import { binomialCdf, clopperPearsonUpper, CONFIDENCE, MAX_UPPER_BOUND, MIN_SAMPLE, oneIn } from '../lib/nrf-bound.ts';
 
 // Re-exported for callers of this tool; the map shares the same module.
 export { binomialCdf, clopperPearsonUpper, CONFIDENCE, MIN_SAMPLE, oneIn };
@@ -42,7 +42,7 @@ export interface Preregistration {
     separatelyMaintained: boolean;
     detects: RestrictionCategory[];
   };
-  // Set by the owner before the first city is enabled. Null means no verdict can pass.
+  // At most the owner's maximum (MAX_UPPER_BOUND); stricter is allowed. Null means no verdict can pass.
   maxUpperBound: number | null;
 }
 export interface FramePlace { place: NrfInput['place']; parkingLayer: ParkingLayerRecord | null; restrictions: RestrictionRecord[] }
@@ -120,7 +120,7 @@ export function validate(pre: Preregistration, inputs: MeasurementInputs) {
   if (!Number.isInteger(pre.seed)) errors.push('seed must be an integer');
   if (!Number.isInteger(pre.sampleSize) || pre.sampleSize < MIN_SAMPLE) errors.push(`sampleSize must be an integer of at least ${MIN_SAMPLE}`);
   if (!Number.isFinite(Date.parse(pre.weekStart))) errors.push('weekStart must be an instant');
-  if (pre.maxUpperBound != null && !(pre.maxUpperBound > 0 && pre.maxUpperBound < 1)) errors.push('maxUpperBound must be in (0, 1) or null');
+  if (pre.maxUpperBound != null && !(pre.maxUpperBound > 0 && pre.maxUpperBound <= MAX_UPPER_BOUND)) errors.push(`maxUpperBound must be in (0, ${MAX_UPPER_BOUND}] (the owner's maximum) or null`);
   if (!signal?.label?.trim() || !signal.reason?.trim()) errors.push('signal needs a label and a reason');
   if (signal?.separatelyMaintained !== true) errors.push('signal must be separately maintained, not a view or export of an input');
   if (!signal?.detects?.length || !signal.detects.every(category => RESTRICTION_CATEGORIES.includes(category))) errors.push('signal.detects must list known categories');
