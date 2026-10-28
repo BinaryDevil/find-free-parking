@@ -23,7 +23,7 @@
   "dependencies": {
     "lucide-react": "^0.559.0",
     "maplibre-gl": "^6.13.0",
-    "next": "16.4.0",
+    "next": "16.4.3",
     "next-intl": "^4.14.9",
     "pg": "^8.23.1",
     "react": "19.3.0",
@@ -37,7 +37,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.3",
     "node-pg-migrate": "9.0.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5"
