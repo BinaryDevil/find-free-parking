@@ -112,6 +112,7 @@ test('the label shows only with a passed check and a valid measurement; otherwis
     { noRestrictionFoundMeasurement: undefined },
     { noRestrictionFoundMeasurement: { ...measurement, sampled: 29 } },
     { noRestrictionFoundMeasurement: { ...measurement, sampled: 30 } },
+    { noRestrictionFoundMeasurement: { ...measurement, sampled: 20000, misses: 2000 } },
     { noRestrictionFoundMeasurement: { ...measurement, misses: 31 } },
     { noRestrictionFoundMeasurement: { ...measurement, checkedAgainst: ' ' } },
     // Rule 5: only a passed run enables the label (#143 verdicts; a hard block is 'fail').

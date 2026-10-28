@@ -46,5 +46,6 @@ export function validMeasurement(measurement: NrfMeasurement | null | undefined)
   return !!measurement && measurement.verdict === 'pass' && Number.isInteger(measurement.sampled) && measurement.sampled >= MIN_SAMPLE &&
     Number.isInteger(measurement.misses) && measurement.misses >= 0 && measurement.misses <= measurement.sampled &&
     typeof measurement.checkedAgainst === 'string' && measurement.checkedAgainst.trim() !== '' &&
-    clopperPearsonUpper(measurement.misses, measurement.sampled) <= MAX_UPPER_BOUND;
+    // The bound is never below the observed rate, so this cheap check skips the search for large failing counts.
+    measurement.misses / measurement.sampled <= MAX_UPPER_BOUND && clopperPearsonUpper(measurement.misses, measurement.sampled) <= MAX_UPPER_BOUND;
 }
