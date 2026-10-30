@@ -1,5 +1,7 @@
 # Project instructions
 
+**Status: stopped.** The owner stopped the project on 2026-10-29 ([ADR-0006](docs/adr/0006-project-stopped.md)). Do not start new work unless the owner explicitly restarts it.
+
 ## Goal and trust boundary
 
 Help unfamiliar drivers find nearby places with Verified Free Parking Rules for now or a selected time; paid parking is a secondary view. Keep the map fast, clear, mobile-friendly, and explicit about costs and conditions. The map displays rules; authoritative evidence establishes them. The service does not observe vacancy.
