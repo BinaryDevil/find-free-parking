@@ -9,8 +9,8 @@ The product promise is to recommend free parking only from authoritative rules (
 - **Seattle.**
   - SDOT Blockface contradicted the City's own sign inventory on 6 of 12 sampled sides ([review](../sources/seattle-review-2026-10-23.md)).
   - The sign inventory lacks published arrow and extent semantics ([sign test](../sources/seattle-sign-test-2026-10-24.md)).
-  - Transit lots contradicted operator pages on 8 of 12 lots ([lots review](../sources/seattle-lots-review-2026-10-24.md)).
-  - The weaker No Restriction Found label is not eligible either ([eligibility](../sources/seattle-nrf-eligibility.md)).
+  - Transit lots contradicted operator pages on 8 of 12 lots ([lots review](../sources/seattle-lots-review-2026-10-24.md); author review, not independently re-checked).
+  - The weaker No Restriction Found label is not eligible either ([eligibility](../sources/seattle-nrf-eligibility.md); author review, not independently re-checked).
 - **Vancouver.**
   - The City publishes no sign inventory or block-level regulations.
   - Meters contradicted 2026 ticket records on 8 of 12 checks ([review](../sources/vancouver-review-2026-10-23.md)).
